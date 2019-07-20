@@ -10,16 +10,20 @@
   "version": "1.17.3",
   "license": "proprietary",
   "keywords": [
-    "gamejitsu",
-    "esport",
     "coaching",
-    "coach"
+    "coach",
+    "esports",
+    "dota2",
+    "dota",
+    "gamejitsu"
   ],
   "description": "A React.js project",
   "repository": "github:gamejitsu/gamejitsu-web",
-  "main": "",
+  "main": "src/index.tsx",
   "private": true,
   "scripts": {
+    "lint": "eslint '**/*.{ts,tsx}'",
+    "lint:fix": "eslint '**/*.{ts,tsx}' --fix",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -32,13 +36,24 @@
     "@types/react-dom": "16.8.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
-    "typescript": "3.5.3"
+    "react-scripts": "3.0.1"
   },
   "engines": {
     "node": "^10.16.0",
     "npm": "^6.10.0",
     "yarn": "^1.17.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^1.12.0",
+    "@typescript-eslint/parser": "^1.12.0",
+    "eslint-plugin-jest": "^22.12.0",
+    "eslint-plugin-react": "^7.14.2",
+    "husky": "^3.0.1",
+    "lint-staged": "^9.2.0",
+    "pnp-webpack-plugin": "^1.5.0",
+    "prettier": "^1.18.2",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3"
   },
   "browserslist": {
     "production": [
@@ -54,5 +69,10 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "prettier --write"
+    }
   }
 }
