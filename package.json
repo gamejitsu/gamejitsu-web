@@ -1,7 +1,30 @@
 {
   "name": "gamejitsu-web",
-  "version": "0.1.0",
+  "author": "support@gamejitsu.com",
+  "contributors": [
+    "Riccardo <r.persiani@protonmail.com> (http://riccardopersiani.com)",
+    "Eugenio <eugeniodepalo@gmail.com> (http://eugeniodepalo.com)"
+  ],
+  "bugs": "https://github.com/gamejitsu/gamejitsu-web/issues",
+  "homepage": "http://gamjitsu.io",
+  "version": "1.17.3",
+  "license": "proprietary",
+  "keywords": [
+    "gamejitsu",
+    "esport",
+    "coaching",
+    "coach"
+  ],
+  "description": "A React.js project",
+  "repository": "github:gamejitsu/gamejitsu-web",
+  "main": "",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@types/jest": "24.0.15",
     "@types/node": "12.6.8",
@@ -12,14 +35,10 @@
     "react-scripts": "3.0.1",
     "typescript": "3.5.3"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+  "engines": {
+    "node": "^10.16.0",
+    "npm": "^6.10.0",
+    "yarn": "^1.17.3"
   },
   "browserslist": {
     "production": [
@@ -32,5 +51,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   }
 }
