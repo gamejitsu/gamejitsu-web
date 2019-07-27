@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Test 1`] = `
+<ThemeProvider
+  theme={
+    Object {
+      "backgroundColor": "#1D0D0D",
+      "primaryColor": "#ADD90D",
+      "secondaryColor": "#488C03",
+      "textColor": "#F1F2E9",
+      "textFont": "'Exo 2',sans-serif",
+    }
+  }
+>
+  <Home>
+    <div>
+      <div>
+        Welcome to Next.js!
+      </div>
+      <h1>
+        Gamejitsu
+      </h1>
+      <Button
+        text="Send Replay"
+      >
+        <styled.button>
+          <StyledComponent
+            forwardedComponent={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "sc-bdVaJa",
+                  "isStatic": false,
+                  "lastClassName": "hGTcSD",
+                  "rules": Array [
+                    "
+  background: linear-gradient(
+    to bottom,
+    ",
+                    [Function],
+                    ",
+    ",
+                    [Function],
+                    "
+  );
+  padding: 12px 30px;
+  font-size: 25px;
+  outline: 0;
+  border: 0;
+",
+                  ],
+                },
+                "displayName": "styled.button",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "sc-bdVaJa",
+                "target": "button",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            forwardedRef={null}
+          >
+            <button
+              className="sc-bdVaJa hGTcSD"
+            >
+              Send Replay
+            </button>
+          </StyledComponent>
+        </styled.button>
+      </Button>
+    </div>
+  </Home>
+</ThemeProvider>
+`;
