@@ -24,8 +24,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "test": "npm run lint && tsc && jest",
-    "deploy": "npm run build && aws s3 sync build/ s3://$(echo $DEPLOY_BUCKET)"
+    "test": "npm run lint && tsc && jest"
   },
   "dependencies": {
     "@rebass/grid": "^6.0.0",
@@ -37,6 +36,7 @@
     "@types/react-dom": "^16.8.5",
     "@types/rebass__grid": "^6.0.5",
     "@types/styled-components": "^4.1.18",
+    "babel-plugin-styled-components": "^1.10.6",
     "next": "^9.0.2",
     "next-redux-saga": "^4.0.2",
     "next-redux-wrapper": "^3.0.0-alpha.3",
