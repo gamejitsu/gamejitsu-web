@@ -30,15 +30,22 @@
   "dependencies": {
     "@rebass/grid": "^6.0.0",
     "@types/next": "^8.0.6",
+    "@types/next-redux-saga": "^3.0.1",
+    "@types/next-redux-wrapper": "^2.0.2",
     "@types/node": "^12.6.8",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.5",
     "@types/rebass__grid": "^6.0.5",
     "@types/styled-components": "^4.1.18",
     "next": "^9.0.2",
+    "next-redux-saga": "^4.0.2",
+    "next-redux-wrapper": "^3.0.0-alpha.3",
     "polished": "^3.4.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.4",
+    "redux-saga": "^1.0.5",
     "styled-components": "^4.3.2",
     "styled-reset": "^3.0.0"
   },
@@ -62,9 +69,7 @@
     "prettier": "^1.18.2",
     "typescript": "^3.5.3"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "prettier --write"
-    }
+  "lint-staged": {
+    "**/*.ts?(x)": "prettier --write"
   }
 }
