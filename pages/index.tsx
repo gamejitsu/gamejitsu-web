@@ -1,12 +1,9 @@
 import React from 'react'
-import { Button } from '../lib/components/Button'
+import { NextPage } from 'next'
 
-const Home = (): React.ReactElement => (
+const Index: NextPage = () => (
   <div>
-    <div>Welcome to Next.js!</div>
-    <h1>Gamejitsu</h1>
-    <Button text="Send Replay" />
   </div>
 )
 
-export default Home
+export default Index 
