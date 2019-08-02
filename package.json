@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@rebass/grid": "^6.0.0",
+    "@rebass/hide": "^1.0.0-2",
     "@types/next": "^8.0.6",
     "@types/next-redux-saga": "^3.0.1",
     "@types/next-redux-wrapper": "^2.0.2",
