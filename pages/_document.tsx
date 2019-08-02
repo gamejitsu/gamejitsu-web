@@ -3,7 +3,9 @@ import NextDocument from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 import { DocumentType } from 'next-server/dist/lib/utils'
 
-const Document: DocumentType = ({ children, ...props }) => <NextDocument {...props}>{children}</NextDocument>
+const Document: DocumentType = ({ children, ...props }) => (
+  <NextDocument {...props}>{children}</NextDocument>
+)
 
 Document.getInitialProps = async (ctx) => {
   const sheet = new ServerStyleSheet()
