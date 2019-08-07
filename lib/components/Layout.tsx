@@ -4,7 +4,7 @@ import { Box } from '@rebass/grid'
 import Head from 'next/head'
 
 interface Props {
-  title: string
+  title?: string
 }
 
 const Container = styled(Box)`
@@ -14,10 +14,10 @@ const Container = styled(Box)`
 const Layout: React.FC<Props> = ({ title, children }) => (
   <Container mx="auto">
     <Head>
-      <title>Gamejitsu - {title}</title>
+      <title>{title === undefined ? 'Gamejitsu' : `Gamejitsu - ${title}`}</title>
     </Head>
     {children}
   </Container>
 )
 
-export { Layout }
+export default Layout

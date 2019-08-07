@@ -2,14 +2,14 @@ import React from 'react'
 import { AppProps, Container } from 'next/app'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import { Reset } from 'styled-reset'
-import { theme } from '../lib/theme'
+import { theme, createStore } from '~'
 import { Provider } from 'react-redux'
-import makeStore, { StoreWithSaga } from '../lib/store'
+import { Store } from '~/createStore'
 import withReduxSaga from 'next-redux-saga'
 import withRedux from 'next-redux-wrapper'
 
 interface Props extends AppProps {
-  store: StoreWithSaga
+  store: Store
 }
 
 const Content: React.FC = styled.div`
@@ -18,6 +18,7 @@ const Content: React.FC = styled.div`
   color: ${props => props.theme.textColor};
   font-family: ${props => props.theme.textFont};
 `
+
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Exo+2');
 `
@@ -36,4 +37,4 @@ const App: React.FC<Props> = ({ store, Component, pageProps }): React.ReactEleme
   </Container>
 )
 
-export default withRedux(makeStore)(withReduxSaga(App))
+export default withRedux(createStore)(withReduxSaga(App))

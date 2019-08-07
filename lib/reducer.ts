@@ -1,7 +1,8 @@
-const initialState = {}
-type State = typeof initialState 
+import { State } from './createStore'
 
-const reducer = (state = {}, action): State => {
+const initialState: State = {}
+
+const reducer = (state = initialState, action): State => {
   switch (action.type) {
     default:
       return state

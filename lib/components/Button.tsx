@@ -8,6 +8,7 @@ const Content = styled.button`
     ${props => lighten(0.2, props.theme.primaryColor)},
     ${props => props.theme.primaryColor}
   );
+
   padding: 12px 30px;
   font-size: 25px;
   outline: 0;
@@ -22,4 +23,4 @@ const Button: React.FC<Props> = ({ text }): React.ReactElement => {
   return <Content>{text}</Content>
 }
 
-export { Button }
+export default Button

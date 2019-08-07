@@ -7,7 +7,7 @@ const Document: DocumentType = ({ children, ...props }) => (
   <NextDocument {...props}>{children}</NextDocument>
 )
 
-Document.getInitialProps = async (ctx) => {
+Document.getInitialProps = async ctx => {
   const sheet = new ServerStyleSheet()
   const originalRenderPage = ctx.renderPage
 

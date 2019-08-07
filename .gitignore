@@ -1,8 +1,8 @@
 .DS_Store
-.next
 *.swp
 /.env
 /.env.*
+/.next
 /.pnp
 /.pnp.js
 /.vscode
