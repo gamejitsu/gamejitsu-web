@@ -24,7 +24,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "test": "npm run lint && tsc && jest"
+    "test": "npm run lint && tsc && jest",
+    "coverage": "jest --coverage"
   },
   "dependencies": {
     "@rebass/grid": "^6.0.0",
