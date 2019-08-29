@@ -4,7 +4,10 @@ exports[`Home Test 1`] = `
 <ThemeProvider
   theme={
     Object {
+      "activeColor": "#ffD74f",
       "backgroundColor": "#1D0D0D",
+      "errorColor": "#ff665a",
+      "linkColor": "#fff",
       "primaryColor": "#ADD90D",
       "secondaryColor": "#488C03",
       "textColor": "#F1F2E9",
@@ -12,66 +15,88 @@ exports[`Home Test 1`] = `
     }
   }
 >
-  <Home>
-    <div>
-      <div>
-        Welcome to Next.js!
-      </div>
-      <h1>
-        Gamejitsu
-      </h1>
-      <Button
-        text="Send Replay"
+  <Index>
+    <Layout>
+      <Layout__Container
+        mx="auto"
       >
-        <styled.button>
-          <StyledComponent
-            forwardedComponent={
-              Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "attrs": Array [],
-                "componentStyle": ComponentStyle {
-                  "componentId": "sc-bdVaJa",
-                  "isStatic": false,
-                  "lastClassName": "hGTcSD",
-                  "rules": Array [
-                    "
-  background: linear-gradient(
-    to bottom,
-    ",
-                    [Function],
-                    ",
-    ",
-                    [Function],
-                    "
-  );
-  padding: 12px 30px;
-  font-size: 25px;
-  outline: 0;
-  border: 0;
-",
-                  ],
-                },
-                "displayName": "styled.button",
-                "foldedComponentIds": Array [],
-                "render": [Function],
-                "styledComponentId": "sc-bdVaJa",
-                "target": "button",
-                "toString": [Function],
-                "warnTooManyClasses": [Function],
-                "withComponent": [Function],
-              }
+        <StyledComponent
+          forwardedComponent={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "Layout__Container-r40m3r-0",
+                "isStatic": false,
+                "lastClassName": "gqCvHi",
+                "rules": Array [
+                  "box-sizing: border-box;",
+                  [Function],
+                  [Function],
+                  [Function],
+                  [Function],
+                  [Function],
+                  [Function],
+                  [Function],
+                  "max-width:1024px;",
+                ],
+              },
+              "displayName": "Layout__Container",
+              "foldedComponentIds": Array [
+                "sc-bdVaJa",
+              ],
+              "propTypes": Object {
+                "backgroundColor": [Function],
+                "bg": [Function],
+                "color": [Function],
+                "fontSize": [Function],
+                "m": [Function],
+                "margin": [Function],
+                "marginBottom": [Function],
+                "marginLeft": [Function],
+                "marginRight": [Function],
+                "marginTop": [Function],
+                "mb": [Function],
+                "ml": [Function],
+                "mr": [Function],
+                "mt": [Function],
+                "p": [Function],
+                "padding": [Function],
+                "paddingBottom": [Function],
+                "paddingLeft": [Function],
+                "paddingRight": [Function],
+                "paddingTop": [Function],
+                "pb": [Function],
+                "pl": [Function],
+                "pr": [Function],
+                "pt": [Function],
+                "width": [Function],
+              },
+              "render": [Function],
+              "styledComponentId": "Layout__Container-r40m3r-0",
+              "target": "div",
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
             }
-            forwardedRef={null}
+          }
+          forwardedRef={null}
+          mx="auto"
+        >
+          <div
+            className="sc-bdVaJa Layout__Container-r40m3r-0 gqCvHi"
           >
-            <button
-              className="sc-bdVaJa hGTcSD"
-            >
-              Send Replay
-            </button>
-          </StyledComponent>
-        </styled.button>
-      </Button>
-    </div>
-  </Home>
+            <Head>
+              <Component
+                handleStateChange={null}
+                inAmpMode={false}
+                reduceComponentsToState={[Function]}
+              />
+            </Head>
+          </div>
+        </StyledComponent>
+      </Layout__Container>
+    </Layout>
+  </Index>
 </ThemeProvider>
 `;
