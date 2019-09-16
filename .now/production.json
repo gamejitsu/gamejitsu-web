@@ -2,7 +2,9 @@
   "name": "gamejitsu-web",
   "version": 2,
   "alias": "gamejitsu.io",
-  "builds": [
-    { "src": "package.json", "use": "@now/next" }
-  ]
+  "build": {
+    "env": {
+      "API_ENDPOINT": "https://api.gamejitsu.io"
+    }
+  }
 }
