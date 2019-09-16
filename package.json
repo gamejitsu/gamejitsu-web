@@ -75,7 +75,8 @@
     "prettier": "^1.18.2",
     "typescript": "^3.5.3"
   },
-  "lint-staged": {
-    "**/*.ts?(x)": "prettier --write"
+  "jestWebpackResolver": {
+    "silent": true,
+    "webpackConfig": "./webpack.config.js"
   }
 }

@@ -1,0 +1,8 @@
+{
+  "name": "gamejitsu-web",
+  "version": 2,
+  "alias": "gamejitsu.io",
+  "builds": [
+    { "src": "package.json", "use": "@now/next" }
+  ]
+}
