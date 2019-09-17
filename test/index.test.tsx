@@ -1,14 +1,15 @@
-import React from 'react'
 import { mount } from 'enzyme'
+import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { theme } from '~'
-import Home from '../pages/index'
+import IndexPage from '../pages/index'
 
-test('Home Test', () => {
+test('Index page should match snapshot', () => {
   const home = mount(
     <ThemeProvider theme={theme}>
-      <Home />
+      <IndexPage />
     </ThemeProvider>
   )
+
   expect(home).toMatchSnapshot()
 })

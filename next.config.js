@@ -1,9 +1,12 @@
 /* eslint-env node */
 const webpackConfig = require('./webpack.config')
-const update = require('immutability-helper')
+const webpackMerge = require('webpack-merge')
 
 module.exports = {
+  env: {
+    API_ENDPOINT: process.env.API_ENDPOINT
+  },
   webpack(config) {
-    return update(config, { resolve: { alias: { $merge: webpackConfig.resolve.alias } } })
+    return webpackMerge(config, webpackConfig)
   }
 }

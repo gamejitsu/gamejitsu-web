@@ -1,12 +1,13 @@
+import { NextComponentType } from 'next'
+import { AppProps, Container, AppContext, AppInitialProps } from 'next/app'
+import withReduxSaga from 'next-redux-saga'
+import withRedux from 'next-redux-wrapper'
 import React from 'react'
-import { AppProps, Container } from 'next/app'
+import { Provider } from 'react-redux'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import { Reset } from 'styled-reset'
 import { theme, createStore } from '~'
-import { Provider } from 'react-redux'
 import { Store } from '~/createStore'
-import withReduxSaga from 'next-redux-saga'
-import withRedux from 'next-redux-wrapper'
 
 interface Props extends AppProps {
   store: Store
@@ -23,7 +24,11 @@ const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Exo+2');
 `
 
-const App: React.FC<Props> = ({ store, Component, pageProps }): React.ReactElement => (
+const App: NextComponentType<AppContext, AppInitialProps, Props> = ({
+  store,
+  Component,
+  pageProps
+}): React.ReactElement => (
   <Container>
     <Reset />
     <GlobalStyle />
@@ -36,5 +41,15 @@ const App: React.FC<Props> = ({ store, Component, pageProps }): React.ReactEleme
     </ThemeProvider>
   </Container>
 )
+
+App.getInitialProps = async ({ Component, ctx }) => {
+  let pageProps = {}
+
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx)
+  }
+
+  return { pageProps }
+}
 
 export default withRedux(createStore)(withReduxSaga(App))

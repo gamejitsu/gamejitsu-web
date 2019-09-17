@@ -9,13 +9,9 @@
   "homepage": "http://gamjitsu.io",
   "version": "1.0.0",
   "license": "private",
-  "keywords": [
-    "gamejitsu",
-    "coaching"
-  ],
   "description": "gamejitsu-next webclient",
   "repository": "github:gamejitsu/gamejitsu-next",
-  "main": "src/index.tsx",
+  "main": "lib/index.ts",
   "private": true,
   "scripts": {
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -24,20 +20,16 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "test": "npm run lint && tsc && jest",
-    "coverage": "jest --coverage",
-    "snapshot-update": "jest --update-snapshot"
+    "test": "npm run lint && tsc && jest"
   },
   "dependencies": {
-    "@rebass/grid": "^6.0.0",
-    "@rebass/hide": "^1.0.0-2",
     "@types/next": "^8.0.6",
     "@types/next-redux-saga": "^3.0.1",
     "@types/next-redux-wrapper": "^2.0.2",
     "@types/node": "^12.6.8",
     "@types/react": "^16.8.23",
     "@types/react-dom": "^16.8.5",
-    "@types/rebass__grid": "^6.0.5",
+    "@types/rebass": "^4.0.0",
     "@types/styled-components": "^4.1.18",
     "babel-plugin-styled-components": "^1.10.6",
     "immutability-helper": "^3.0.1",
@@ -48,10 +40,12 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
+    "rebass": "^4.0.5",
     "redux": "^4.0.4",
     "redux-saga": "^1.0.5",
     "styled-components": "^4.3.2",
-    "styled-reset": "^3.0.0"
+    "styled-reset": "^3.0.0",
+    "webpack-merge": "^4.2.2"
   },
   "engines": {
     "node": "^10.16.0",
@@ -75,7 +69,8 @@
     "prettier": "^1.18.2",
     "typescript": "^3.5.3"
   },
-  "lint-staged": {
-    "**/*.ts?(x)": "prettier --write"
+  "jestWebpackResolver": {
+    "silent": true,
+    "webpackConfig": "./webpack.config.js"
   }
 }

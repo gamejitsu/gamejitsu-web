@@ -1,0 +1,9 @@
+{
+  "name": "gamejitsu-web",
+  "version": 2,
+  "build": {
+    "env": {
+      "API_ENDPOINT": "https://staging-api.gamejitsu.io"
+    }
+  }
+}

@@ -1,12 +1,8 @@
 .DS_Store
 *.swp
 /.env
-/.env.*
 /.next
-/.pnp
-/.pnp.js
 /.vscode
 /build
-/coverage
 /node_modules
 npm-debug.log*
