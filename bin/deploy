@@ -70,7 +70,7 @@ const now = async (args = []) => {
 }
 
 const deploy = async () => {
-  const prUrlParts = CIRCLE_PULL_REQUEST.split('/')
+  const prUrlParts = (CIRCLE_PULL_REQUEST || '').split('/')
   const prNumber = prUrlParts[prUrlParts.length - 1]
   const slug = isMaster ? 'production' : `${nowConfig.name}-pr-${prNumber}`
   const repoPath = `/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}`
@@ -113,4 +113,10 @@ const deploy = async () => {
   })
 }
 
-deploy()
+(async () => {
+  try {
+    await deploy()
+  } catch(err) {
+    throw err
+  }
+})()
