@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+process.on('unhandledRejection', (error) => {
+  throw error
+})
+
 const https = require('https')
 const execa = require('execa')
 const { bin: { now: NOW_BIN_PATH } } = require('now/package.json')
@@ -70,7 +74,7 @@ const now = async (args = []) => {
 }
 
 const deploy = async () => {
-  const prUrlParts = (CIRCLE_PULL_REQUEST || '').split('/')
+  const prUrlParts = (CIRCLE_PULL_REQUEST).split('/')
   const prNumber = prUrlParts[prUrlParts.length - 1]
   const slug = isMaster ? 'production' : `${nowConfig.name}-pr-${prNumber}`
   const repoPath = `/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}`
@@ -96,7 +100,7 @@ const deploy = async () => {
     }
   })
 
-  const deploymentUrl = await now(['--target', isMaster ? 'production' : 'staging'])
+  const deploymentUrl = await now(isMaster ? ['--prod'] : ['--target', 'staging'])
   if (!isMaster) { await now(['alias', deploymentUrl, slug]) }
   const aliasedUrl = `https://${slug}.now.sh`
 
@@ -113,10 +117,4 @@ const deploy = async () => {
   })
 }
 
-(async () => {
-  try {
-    await deploy()
-  } catch(err) {
-    throw err
-  }
-})()
+deploy()
