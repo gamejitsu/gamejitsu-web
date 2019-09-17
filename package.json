@@ -9,10 +9,6 @@
   "homepage": "http://gamjitsu.io",
   "version": "1.0.0",
   "license": "private",
-  "keywords": [
-    "gamejitsu",
-    "coaching"
-  ],
   "description": "gamejitsu-next webclient",
   "repository": "github:gamejitsu/gamejitsu-next",
   "main": "src/index.tsx",
@@ -24,9 +20,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "test": "npm run lint && tsc && jest",
-    "coverage": "jest --coverage",
-    "snapshot-update": "jest --update-snapshot"
+    "test": "npm run lint && tsc && jest"
   },
   "dependencies": {
     "@rebass/grid": "^6.0.0",
@@ -51,7 +45,8 @@
     "redux": "^4.0.4",
     "redux-saga": "^1.0.5",
     "styled-components": "^4.3.2",
-    "styled-reset": "^3.0.0"
+    "styled-reset": "^3.0.0",
+    "webpack-merge": "^4.2.2"
   },
   "engines": {
     "node": "^10.16.0",
