@@ -11,7 +11,7 @@
   "license": "private",
   "description": "gamejitsu-next webclient",
   "repository": "github:gamejitsu/gamejitsu-next",
-  "main": "src/index.tsx",
+  "main": "lib/index.ts",
   "private": true,
   "scripts": {
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
