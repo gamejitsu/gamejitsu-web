@@ -1,6 +1,6 @@
+import { lighten } from 'polished'
 import React from 'react'
 import styled from 'styled-components'
-import { lighten } from 'polished'
 
 const Content = styled.button`
   background: linear-gradient(

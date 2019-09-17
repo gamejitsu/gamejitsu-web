@@ -1,7 +1,7 @@
+import { Box } from 'rebass'
+import Head from 'next/head'
 import React from 'react'
 import styled from 'styled-components'
-import { Box } from '@rebass/grid'
-import Head from 'next/head'
 
 interface Props {
   title?: string

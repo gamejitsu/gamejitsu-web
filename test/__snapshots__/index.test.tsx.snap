@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home Test 1`] = `
+exports[`Index page should match snapshot 1`] = `
 <ThemeProvider
   theme={
     Object {
@@ -24,57 +24,77 @@ exports[`Home Test 1`] = `
           forwardedComponent={
             Object {
               "$$typeof": Symbol(react.forward_ref),
+              "__emotion_base": "div",
+              "__emotion_forwardProp": [Function],
+              "__emotion_real": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "__emotion_base": "div",
+                "__emotion_forwardProp": [Function],
+                "__emotion_real": [Circular],
+                "__emotion_styles": Array [
+                  Object {
+                    "boxSizing": "border-box",
+                    "margin": 0,
+                    "minWidth": 0,
+                  },
+                  [Function],
+                  [Function],
+                  [Function],
+                  [Function],
+                  [Function],
+                ],
+                "defaultProps": undefined,
+                "displayName": "Styled(div)",
+                "render": [Function],
+                "withComponent": [Function],
+              },
+              "__emotion_styles": Array [
+                Object {
+                  "boxSizing": "border-box",
+                  "margin": 0,
+                  "minWidth": 0,
+                },
+                [Function],
+                [Function],
+                [Function],
+                [Function],
+                [Function],
+              ],
               "attrs": Array [],
               "componentStyle": ComponentStyle {
                 "componentId": "Layout__Container-r40m3r-0",
-                "isStatic": false,
-                "lastClassName": "gqCvHi",
+                "isStatic": true,
+                "lastClassName": "oOCfI",
                 "rules": Array [
-                  "box-sizing: border-box;",
-                  [Function],
-                  [Function],
-                  [Function],
-                  [Function],
-                  [Function],
-                  [Function],
-                  [Function],
                   "max-width:1024px;",
                 ],
               },
               "displayName": "Layout__Container",
-              "foldedComponentIds": Array [
-                "sc-bdVaJa",
-              ],
-              "propTypes": Object {
-                "backgroundColor": [Function],
-                "bg": [Function],
-                "color": [Function],
-                "fontSize": [Function],
-                "m": [Function],
-                "margin": [Function],
-                "marginBottom": [Function],
-                "marginLeft": [Function],
-                "marginRight": [Function],
-                "marginTop": [Function],
-                "mb": [Function],
-                "ml": [Function],
-                "mr": [Function],
-                "mt": [Function],
-                "p": [Function],
-                "padding": [Function],
-                "paddingBottom": [Function],
-                "paddingLeft": [Function],
-                "paddingRight": [Function],
-                "paddingTop": [Function],
-                "pb": [Function],
-                "pl": [Function],
-                "pr": [Function],
-                "pt": [Function],
-                "width": [Function],
-              },
+              "foldedComponentIds": Array [],
               "render": [Function],
               "styledComponentId": "Layout__Container-r40m3r-0",
-              "target": "div",
+              "target": Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "__emotion_base": "div",
+                "__emotion_forwardProp": [Function],
+                "__emotion_real": [Circular],
+                "__emotion_styles": Array [
+                  Object {
+                    "boxSizing": "border-box",
+                    "margin": 0,
+                    "minWidth": 0,
+                  },
+                  [Function],
+                  [Function],
+                  [Function],
+                  [Function],
+                  [Function],
+                ],
+                "defaultProps": undefined,
+                "displayName": "Styled(div)",
+                "render": [Function],
+                "withComponent": [Function],
+              },
               "toString": [Function],
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
@@ -83,17 +103,22 @@ exports[`Home Test 1`] = `
           forwardedRef={null}
           mx="auto"
         >
-          <div
-            className="sc-bdVaJa Layout__Container-r40m3r-0 gqCvHi"
+          <Styled(div)
+            className="Layout__Container-r40m3r-0 oOCfI"
+            mx="auto"
           >
-            <Head>
-              <Component
-                handleStateChange={null}
-                inAmpMode={false}
-                reduceComponentsToState={[Function]}
-              />
-            </Head>
-          </div>
+            <div
+              className="Layout__Container-r40m3r-0 oOCfI css-1ntkiwo"
+            >
+              <Head>
+                <Component
+                  handleStateChange={null}
+                  inAmpMode={false}
+                  reduceComponentsToState={[Function]}
+                />
+              </Head>
+            </div>
+          </Styled(div)>
         </StyledComponent>
       </Layout__Container>
     </Layout>

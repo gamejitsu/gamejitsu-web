@@ -2,6 +2,8 @@
 
 const https = require('https')
 const execa = require('execa')
+const { bin: { now: NOW_BIN_PATH } } = require('now/package.json')
+const NOW_BIN = require.resolve(`now/${NOW_BIN_PATH}`)
 
 const {
   CIRCLE_PROJECT_USERNAME,
@@ -13,13 +15,9 @@ const {
   NOW_TOKEN
 } = process.env
 
-const {
-  bin: {now: NOW_BIN_PATH}
-} = require('now/package.json')
-
-const NOW_BIN = require.resolve(`now/${NOW_BIN_PATH}`)
 const isMaster = CIRCLE_BRANCH === 'master'
 const nowConfigPath = `${__dirname}/../.now/${isMaster ? 'production' : 'staging'}.json`
+const nowConfig = require(nowConfigPath)
 
 const githubRequest = (path, {
   method = 'GET',
@@ -72,7 +70,6 @@ const now = async (args = []) => {
 }
 
 const deploy = async () => {
-  const nowConfig = require(nowConfigPath)
   const prUrlParts = CIRCLE_PULL_REQUEST.split('/')
   const prNumber = prUrlParts[prUrlParts.length - 1]
   const slug = isMaster ? 'production' : `${nowConfig.name}-pr-${prNumber}`
@@ -100,11 +97,7 @@ const deploy = async () => {
   })
 
   const deploymentUrl = await now(['--target', isMaster ? 'production' : 'staging'])
-
-  if (!isMaster) {
-    await now(['alias', deploymentUrl, slug])
-  }
-
+  if (!isMaster) { await now(['alias', deploymentUrl, slug]) }
   const aliasedUrl = `https://${slug}.now.sh`
 
   await githubRequest(`${deploymentPath}/statuses`, {
