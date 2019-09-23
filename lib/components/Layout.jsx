@@ -1,17 +1,14 @@
-import { Box } from 'rebass'
 import Head from 'next/head'
+import PropTypes from 'prop-types'
 import React from 'react'
+import { Box } from 'rebass'
 import styled from 'styled-components'
-
-interface Props {
-  title?: string
-}
 
 const Container = styled(Box)`
   max-width: 1024px;
 `
 
-const Layout: React.FC<Props> = ({ title, children }) => (
+const Layout = ({ title, children }) => (
   <Container mx="auto">
     <Head>
       <title>{title === undefined ? 'Gamejitsu' : `Gamejitsu - ${title}`}</title>
@@ -19,5 +16,10 @@ const Layout: React.FC<Props> = ({ title, children }) => (
     {children}
   </Container>
 )
+
+Layout.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.node
+}
 
 export default Layout

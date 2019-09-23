@@ -15,7 +15,7 @@ exports[`Index page should match snapshot 1`] = `
     }
   }
 >
-  <Index>
+  <_default>
     <Layout>
       <Layout__Container
         mx="auto"
@@ -62,9 +62,9 @@ exports[`Index page should match snapshot 1`] = `
               ],
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "Layout__Container-r40m3r-0",
+                "componentId": "Layout__Container-pcoicd-0",
                 "isStatic": true,
-                "lastClassName": "oOCfI",
+                "lastClassName": "kAVbbH",
                 "rules": Array [
                   "max-width:1024px;",
                 ],
@@ -72,7 +72,7 @@ exports[`Index page should match snapshot 1`] = `
               "displayName": "Layout__Container",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "Layout__Container-r40m3r-0",
+              "styledComponentId": "Layout__Container-pcoicd-0",
               "target": Object {
                 "$$typeof": Symbol(react.forward_ref),
                 "__emotion_base": "div",
@@ -104,11 +104,11 @@ exports[`Index page should match snapshot 1`] = `
           mx="auto"
         >
           <Styled(div)
-            className="Layout__Container-r40m3r-0 oOCfI"
+            className="Layout__Container-pcoicd-0 kAVbbH"
             mx="auto"
           >
             <div
-              className="Layout__Container-r40m3r-0 oOCfI css-1ntkiwo"
+              className="Layout__Container-pcoicd-0 kAVbbH css-1ntkiwo"
             >
               <Head>
                 <Component
@@ -122,6 +122,6 @@ exports[`Index page should match snapshot 1`] = `
         </StyledComponent>
       </Layout__Container>
     </Layout>
-  </Index>
+  </_default>
 </ThemeProvider>
 `;

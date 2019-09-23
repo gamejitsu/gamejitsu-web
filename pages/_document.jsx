@@ -1,12 +1,13 @@
-import { NextComponentType } from 'next'
-import NextDocument, { DocumentContext, DocumentInitialProps, DocumentProps } from 'next/document'
+import NextDocument from 'next/document'
+import PropTypes from 'prop-types'
 import React from 'react'
 import { ServerStyleSheet } from 'styled-components'
 
-const Document: NextComponentType<DocumentContext, DocumentInitialProps, DocumentProps> = ({
-  children,
-  ...props
-}) => <NextDocument {...props}>{children}</NextDocument>
+const Document = ({ children, ...props }) => <NextDocument {...props}>{children}</NextDocument>
+
+Document.propTypes = {
+  children: PropTypes.node
+}
 
 Document.getInitialProps = async ctx => {
   const sheet = new ServerStyleSheet()
