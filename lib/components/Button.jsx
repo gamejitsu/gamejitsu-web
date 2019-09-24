@@ -1,4 +1,5 @@
 import { lighten } from 'polished'
+import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -15,12 +16,10 @@ const Content = styled.button`
   border: 0;
 `
 
-interface Props {
-  text: string
-}
+const Button = ({ text }) => <Content>{text}</Content>
 
-const Button: React.FC<Props> = ({ text }): React.ReactElement => {
-  return <Content>{text}</Content>
+Button.propTypes = {
+  text: PropTypes.string.isRequired
 }
 
 export default Button
