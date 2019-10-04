@@ -1,0 +1,9 @@
+import React from 'react'
+import { ReviewCard, Layout } from '~/components'
+
+export default () => (
+  <Layout title="Dashboard">
+    Test
+    <Card>Test Card</Card>
+  </Layout>
+)

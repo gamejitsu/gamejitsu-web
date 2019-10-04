@@ -1,9 +1,6 @@
-import withReduxSaga from 'next-redux-saga'
-import withRedux from 'next-redux-wrapper'
 import { Container } from 'next/app'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Provider } from 'react-redux'
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components'
 import { Reset } from 'styled-reset'
 import { theme, createStore } from '~'
@@ -25,9 +22,7 @@ const App = ({ store, Component, pageProps }) => (
     <GlobalStyle />
     <ThemeProvider theme={theme}>
       <Content>
-        <Provider store={store}>
-          <Component {...pageProps} />
-        </Provider>
+        <Component {...pageProps} />
       </Content>
     </ThemeProvider>
   </Container>
@@ -35,7 +30,7 @@ const App = ({ store, Component, pageProps }) => (
 
 App.propTypes = {
   store: PropTypes.object,
-  Component: PropTypes.node,
+  Component: PropTypes.elementType,
   pageProps: PropTypes.object
 }
 
@@ -49,4 +44,4 @@ App.getInitialProps = async ({ Component, ctx }) => {
   return { pageProps }
 }
 
-export default withRedux(createStore)(withReduxSaga(App))
+export default App
