@@ -11,7 +11,7 @@ const Content = styled.button`
   );
 
   padding: 12px 30px;
-  font-size: 25px;
+  font-size: 15px;
   outline: 0;
   border: 0;
 `
