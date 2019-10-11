@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 
-process.on('unhandledRejection', (error) => {
-  throw error
-})
+process.on('unhandledRejection', (error) => { throw error })
 
-const https = require('https')
+const axios = require('axios').default
 const execa = require('execa')
 const { bin: { now: NOW_BIN_PATH } } = require('now/package.json')
 const NOW_BIN = require.resolve(`now/${NOW_BIN_PATH}`)
@@ -23,49 +21,24 @@ const isMaster = CIRCLE_BRANCH === 'master'
 const nowConfigPath = `${__dirname}/../.now/${isMaster ? 'production' : 'staging'}.json`
 const nowConfig = require(nowConfigPath)
 
-const githubRequest = (path, {
+const githubRequest = async (path, {
   method = 'GET',
-  body = {},
-  headers = {}
-}) => (
-  new Promise((resolve, reject) => {
-    const options = {
-      hostname: 'api.github.com',
-      path,
-      method,
-      auth: `${GITHUB_USERNAME}:${GITHUB_TOKEN}`,
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'User-Agent': GITHUB_USERNAME,
-        ...headers
-      }
+  body = {}
+}) => {
+  const { data } = await axios.request(`https://api.github.com${path}`, {
+    data: body,
+    method,
+    headers: {
+      'User-Agent': GITHUB_USERNAME
+    },
+    auth: {
+      username: GITHUB_USERNAME,
+      password: GITHUB_TOKEN
     }
-
-    const req = https.request(options, (res) => {
-      res.setEncoding('utf8')
-      const chunks = []
-
-      res.on('data', (chunk) => {
-        chunks.push(chunk)
-      })
-
-      res.on('end', () => {
-        const responseBody = chunks.join('')
-
-        if (res.statusCode < 200 || res.statusCode > 299) {
-          reject(new Error(`HTTP Error: ${res.statusCode} - ${responseBody}`))
-        } else {
-          resolve(JSON.parse(responseBody))
-        }
-      });
-    })
-
-    req.write(JSON.stringify(body))
-    req.end()
-    req.on('error', (err) => reject(err))
   })
-)
+
+  return data
+}
 
 const now = async (args = []) => {
   const nowArgs = ['--token', NOW_TOKEN, '--local-config', nowConfigPath, ...args]
@@ -88,27 +61,12 @@ const deploy = async () => {
     }
   })
 
-  const deploymentPath = `${repoPath}/deployments/${deployment.id}`
-
-  await githubRequest(`${deploymentPath}/statuses`, {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/vnd.github.flash-preview+json'
-    },
-    body: {
-      state: 'in_progress'
-    }
-  })
-
   const deploymentUrl = await now(isMaster ? ['--prod'] : ['--target', 'staging'])
   if (!isMaster) { await now(['alias', deploymentUrl, slug]) }
   const aliasedUrl = `https://${slug}.now.sh`
 
-  await githubRequest(`${deploymentPath}/statuses`, {
+  await githubRequest(`${repoPath}/deployments/${deployment.id}/statuses`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/vnd.github.flash-preview+json'
-    },
     body: {
       state: 'success',
       environment_url: aliasedUrl,

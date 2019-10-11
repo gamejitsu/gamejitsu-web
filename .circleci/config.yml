@@ -32,8 +32,10 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/app
-      - run: sudo npm install --global now
+      - run: sudo npm install -g now axios execa
       - run: npm link now
+      - run: npm link axios
+      - run: npm link execa
       - deploy:
           name: Deploy
           command: bin/deploy
