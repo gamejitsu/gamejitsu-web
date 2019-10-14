@@ -1,10 +1,12 @@
 import React from 'react'
-import { ReviewsCard } from '.'
+import { ReviewsCard, RecentMatchesCard } from '.'
 import { Layout } from '~/components'
 
 export default () => (
   <Layout title="Dashboard">
-    Test
+    Requested Reviews
     <ReviewsCard>Test Card</ReviewsCard>
+    Recent Matches
+    <RecentMatchesCard>Test Card</RecentMatchesCard>
   </Layout>
 )
