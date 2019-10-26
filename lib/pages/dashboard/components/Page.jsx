@@ -1,6 +1,6 @@
 import React from 'react'
 import { ReviewsCard, RecentMatchesCard } from '.'
-import { Layout } from '~/components'
+import { Layout, Spinner } from '~/components'
 import axios from 'axios'
 import nextCookie from 'next-cookies'
 import { Socket } from 'phoenix'
@@ -44,6 +44,14 @@ const getCurrentUser = async authToken => {
 }
 
 class Dashboard extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      user: {
+        attributes: {}
+      }
+    }
+  }
   componentDidMount() {
     const socket = new Socket(process.env.SOCKET_ENDPOINT + '/socket', {
       params: { token: this.props.authToken }
@@ -69,6 +77,9 @@ class Dashboard extends React.Component {
       <Layout title="Dashboard">
         Requested Reviews
         <ReviewsCard>Test Card</ReviewsCard>
+        {this.state.user.attributes['is-syncing-replays']
+        ? <Spinner />
+        : console.log("non c'è un cazzo frociiiiii")}
         Recent Matches
         {this.props.replays.map(replay => {
           return <RecentMatchesCard key={replay.id} replay={replay} user={this.props.user} />
