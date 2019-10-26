@@ -3,6 +3,7 @@ import { ReviewsCard, RecentMatchesCard } from '.'
 import { Layout } from '~/components'
 import axios from 'axios'
 import nextCookie from 'next-cookies'
+import { Socket } from 'phoenix'
 
 const deserializePlayers = players => {
   return players.map(player => {
@@ -17,10 +18,11 @@ const deserializeReplays = data => {
   return data.data.map(replay => {
     const playersDire = deserializePlayers(replay.attributes.players.slice(0, 5))
     const playersRadiant = deserializePlayers(replay.attributes.players.slice(5, 10))
-    console.log("rad0:", playersRadiant[0])
-    console.log("dire0:", playersDire[0])
+    console.log(replay)
     return {
+      id: replay.id,
       matchId: replay.attributes['match-id'],
+      playedAt: replay.attributes['played-at'],
       playersDire,
       playersRadiant
     }
@@ -41,23 +43,46 @@ const getCurrentUser = async authToken => {
   return response.data.data
 }
 
-const Dashboard = ({ replays, user }) => (
-  <Layout title="Dashboard">
-    Requested Reviews
-    <ReviewsCard>Test Card</ReviewsCard>
-    Recent Matches
-    {replays.map((replay) => {
-      return <RecentMatchesCard replay={replay} user={user}/>
-    })}
-  </Layout>
-)
+class Dashboard extends React.Component {
+  componentDidMount() {
+    const socket = new Socket(process.env.SOCKET_ENDPOINT + '/socket', {
+      params: { token: this.props.authToken }
+    })
+    socket.connect()
+    console.log('post connection')
+    const channel = socket.channel('users:' + this.props.user.id)
+    channel.join().receive('ok', async ({ messages }) => {
+      console.log('catching up', messages)
+      const user = await getCurrentUser(this.props.authToken)
+      this.setState({ user: user })
+      console.log('user receive:', user)
+
+    })
+    channel.on('update', userData => {
+      this.setState({ user: userData.data })
+      console.log('user update:', userData.data)
+    })
+  }
+
+  render() {
+    return (
+      <Layout title="Dashboard">
+        Requested Reviews
+        <ReviewsCard>Test Card</ReviewsCard>
+        Recent Matches
+        {this.props.replays.map(replay => {
+          return <RecentMatchesCard key={replay.id} replay={replay} user={this.props.user} />
+        })}
+      </Layout>
+    )
+  }
+}
 
 Dashboard.getInitialProps = async ctx => {
   const { authToken } = nextCookie(ctx)
   const replays = await getReplays(authToken)
   const user = await getCurrentUser(authToken)
-  console.log(user)
-  return { replays, user }
+  return { replays, user, authToken }
 }
 
 export default Dashboard
