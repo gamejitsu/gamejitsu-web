@@ -34,13 +34,20 @@ const getReplays = async authToken => {
   return deserializeReplays(response.data)
 }
 
-const Dashboard = ({ replays }) => (
+const getCurrentUser = async authToken => {
+  const response = await axios.get(process.env.API_ENDPOINT + '/users/current', {
+    headers: { Accept: 'application/vnd.api+json', Authorization: 'Bearer ' + authToken }
+  })
+  return response.data.data
+}
+
+const Dashboard = ({ replays, user }) => (
   <Layout title="Dashboard">
     Requested Reviews
     <ReviewsCard>Test Card</ReviewsCard>
     Recent Matches
     {replays.map((replay) => {
-      return <RecentMatchesCard>{replay}</RecentMatchesCard>
+      return <RecentMatchesCard replay={replay} user={user}/>
     })}
   </Layout>
 )
@@ -48,7 +55,9 @@ const Dashboard = ({ replays }) => (
 Dashboard.getInitialProps = async ctx => {
   const { authToken } = nextCookie(ctx)
   const replays = await getReplays(authToken)
-  return { replays }
+  const user = await getCurrentUser(authToken)
+  console.log(user)
+  return { replays, user }
 }
 
 export default Dashboard
