@@ -16,7 +16,7 @@ const Container = styled(Flex)`
 const Navbar = () => (
   <Container py={2} px={2} color="white" alignItems="center">
     <Text mr="auto" p={2} fontWeight="bold">
-      Gamejitsu
+      <NavLink href="/">Gamejitsu</NavLink>
     </Text>
     <NavLink href="/dashboard">Dashboard</NavLink>
     <NavLink href="/reviews">Reviews</NavLink>
