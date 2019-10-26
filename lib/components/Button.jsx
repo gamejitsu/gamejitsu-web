@@ -16,10 +16,11 @@ const Content = styled.button`
   border: 0;
 `
 
-const Button = ({ text }) => <Content>{text}</Content>
+const Button = ({ text, onClick }) => <Content onClick={onClick}>{text}</Content>
 
 Button.propTypes = {
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
 }
 
 export default Button
