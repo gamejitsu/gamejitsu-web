@@ -14,12 +14,14 @@ const Content = styled.button`
   font-size: 15px;
   outline: 0;
   border: 0;
+  cursor: pointer;
 `
 
-const Button = ({ text }) => <Content>{text}</Content>
+const Button = ({ text, onClick }) => <Content onClick={onClick}>{text}</Content>
 
 Button.propTypes = {
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
 }
 
 export default Button

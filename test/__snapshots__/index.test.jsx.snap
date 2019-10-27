@@ -17,6 +17,393 @@ exports[`Index page should match snapshot 1`] = `
 >
   <_default>
     <Layout>
+      <Navbar>
+        <Navbar__Container
+          alignItems="center"
+          color="white"
+          px={2}
+          py={2}
+        >
+          <StyledComponent
+            alignItems="center"
+            color="white"
+            forwardedComponent={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "__emotion_base": "div",
+                "__emotion_forwardProp": [Function],
+                "__emotion_real": Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "__emotion_base": "div",
+                  "__emotion_forwardProp": [Function],
+                  "__emotion_real": [Circular],
+                  "__emotion_styles": Array [
+                    Object {
+                      "boxSizing": "border-box",
+                      "margin": 0,
+                      "minWidth": 0,
+                    },
+                    [Function],
+                    [Function],
+                    [Function],
+                    [Function],
+                    [Function],
+                    Object {
+                      "display": "flex",
+                    },
+                  ],
+                  "defaultProps": undefined,
+                  "displayName": "Styled(div)",
+                  "render": [Function],
+                  "withComponent": [Function],
+                },
+                "__emotion_styles": Array [
+                  Object {
+                    "boxSizing": "border-box",
+                    "margin": 0,
+                    "minWidth": 0,
+                  },
+                  [Function],
+                  [Function],
+                  [Function],
+                  [Function],
+                  [Function],
+                  Object {
+                    "display": "flex",
+                  },
+                ],
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "Navbar__Container-poa0vc-0",
+                  "isStatic": false,
+                  "lastClassName": "cMkwtj",
+                  "rules": Array [
+                    "background-color:",
+                    [Function],
+                    ";",
+                  ],
+                },
+                "displayName": "Navbar__Container",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "Navbar__Container-poa0vc-0",
+                "target": Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "__emotion_base": "div",
+                  "__emotion_forwardProp": [Function],
+                  "__emotion_real": [Circular],
+                  "__emotion_styles": Array [
+                    Object {
+                      "boxSizing": "border-box",
+                      "margin": 0,
+                      "minWidth": 0,
+                    },
+                    [Function],
+                    [Function],
+                    [Function],
+                    [Function],
+                    [Function],
+                    Object {
+                      "display": "flex",
+                    },
+                  ],
+                  "defaultProps": undefined,
+                  "displayName": "Styled(div)",
+                  "render": [Function],
+                  "withComponent": [Function],
+                },
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            forwardedRef={null}
+            px={2}
+            py={2}
+          >
+            <Styled(div)
+              alignItems="center"
+              className="Navbar__Container-poa0vc-0 cMkwtj"
+              color="white"
+              px={2}
+              py={2}
+            >
+              <div
+                className="Navbar__Container-poa0vc-0 cMkwtj css-p1imuz"
+              >
+                <NavLink
+                  fontWeight="bold"
+                  href="/"
+                >
+                  <Styled(div)
+                    m={1}
+                  >
+                    <div
+                      className="css-1ee7t57"
+                    >
+                      <Link
+                        href="/"
+                      >
+                        <Link
+                          href="/"
+                          prefetch={true}
+                        >
+                          <Link__Content
+                            onClick={[Function]}
+                            onMouseEnter={[Function]}
+                          >
+                            <StyledComponent
+                              forwardedComponent={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": Array [],
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Link__Content-j1roec-0",
+                                    "isStatic": false,
+                                    "lastClassName": "senXN",
+                                    "rules": Array [
+                                      "color:",
+                                      [Function],
+                                      ";cursor:pointer;",
+                                    ],
+                                  },
+                                  "displayName": "Link__Content",
+                                  "foldedComponentIds": Array [],
+                                  "render": [Function],
+                                  "styledComponentId": "Link__Content-j1roec-0",
+                                  "target": "a",
+                                  "toString": [Function],
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={[Function]}
+                              onClick={[Function]}
+                              onMouseEnter={[Function]}
+                            >
+                              <a
+                                className="Link__Content-j1roec-0 senXN"
+                                onClick={[Function]}
+                                onMouseEnter={[Function]}
+                              >
+                                Gamejitsu
+                              </a>
+                            </StyledComponent>
+                          </Link__Content>
+                        </Link>
+                      </Link>
+                    </div>
+                  </Styled(div)>
+                </NavLink>
+                <NavLink
+                  href="/dashboard"
+                >
+                  <Styled(div)
+                    m={1}
+                  >
+                    <div
+                      className="css-1ee7t57"
+                    >
+                      <Link
+                        href="/dashboard"
+                      >
+                        <Link
+                          href="/dashboard"
+                          prefetch={true}
+                        >
+                          <Link__Content
+                            onClick={[Function]}
+                            onMouseEnter={[Function]}
+                          >
+                            <StyledComponent
+                              forwardedComponent={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": Array [],
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Link__Content-j1roec-0",
+                                    "isStatic": false,
+                                    "lastClassName": "senXN",
+                                    "rules": Array [
+                                      "color:",
+                                      [Function],
+                                      ";cursor:pointer;",
+                                    ],
+                                  },
+                                  "displayName": "Link__Content",
+                                  "foldedComponentIds": Array [],
+                                  "render": [Function],
+                                  "styledComponentId": "Link__Content-j1roec-0",
+                                  "target": "a",
+                                  "toString": [Function],
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={[Function]}
+                              onClick={[Function]}
+                              onMouseEnter={[Function]}
+                            >
+                              <a
+                                className="Link__Content-j1roec-0 senXN"
+                                onClick={[Function]}
+                                onMouseEnter={[Function]}
+                              >
+                                Dashboard
+                              </a>
+                            </StyledComponent>
+                          </Link__Content>
+                        </Link>
+                      </Link>
+                    </div>
+                  </Styled(div)>
+                </NavLink>
+                <ForwardRef
+                  mr="auto"
+                  p={1}
+                >
+                  <Styled(div)
+                    mr="auto"
+                    p={1}
+                    tx="text"
+                  >
+                    <div
+                      className="css-8qeq2s"
+                    >
+                      <NavLink
+                        href="/reviews"
+                      >
+                        <Styled(div)
+                          m={1}
+                        >
+                          <div
+                            className="css-1ee7t57"
+                          >
+                            <Link
+                              href="/reviews"
+                            >
+                              <Link
+                                href="/reviews"
+                                prefetch={true}
+                              >
+                                <Link__Content
+                                  onClick={[Function]}
+                                  onMouseEnter={[Function]}
+                                >
+                                  <StyledComponent
+                                    forwardedComponent={
+                                      Object {
+                                        "$$typeof": Symbol(react.forward_ref),
+                                        "attrs": Array [],
+                                        "componentStyle": ComponentStyle {
+                                          "componentId": "Link__Content-j1roec-0",
+                                          "isStatic": false,
+                                          "lastClassName": "senXN",
+                                          "rules": Array [
+                                            "color:",
+                                            [Function],
+                                            ";cursor:pointer;",
+                                          ],
+                                        },
+                                        "displayName": "Link__Content",
+                                        "foldedComponentIds": Array [],
+                                        "render": [Function],
+                                        "styledComponentId": "Link__Content-j1roec-0",
+                                        "target": "a",
+                                        "toString": [Function],
+                                        "warnTooManyClasses": [Function],
+                                        "withComponent": [Function],
+                                      }
+                                    }
+                                    forwardedRef={[Function]}
+                                    onClick={[Function]}
+                                    onMouseEnter={[Function]}
+                                  >
+                                    <a
+                                      className="Link__Content-j1roec-0 senXN"
+                                      onClick={[Function]}
+                                      onMouseEnter={[Function]}
+                                    >
+                                      Reviews
+                                    </a>
+                                  </StyledComponent>
+                                </Link__Content>
+                              </Link>
+                            </Link>
+                          </div>
+                        </Styled(div)>
+                      </NavLink>
+                    </div>
+                  </Styled(div)>
+                </ForwardRef>
+                <NavLink
+                  href="/"
+                >
+                  <Styled(div)
+                    m={1}
+                  >
+                    <div
+                      className="css-1ee7t57"
+                    >
+                      <Link
+                        href="/"
+                      >
+                        <Link
+                          href="/"
+                          prefetch={true}
+                        >
+                          <Link__Content
+                            onClick={[Function]}
+                            onMouseEnter={[Function]}
+                          >
+                            <StyledComponent
+                              forwardedComponent={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": Array [],
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Link__Content-j1roec-0",
+                                    "isStatic": false,
+                                    "lastClassName": "senXN",
+                                    "rules": Array [
+                                      "color:",
+                                      [Function],
+                                      ";cursor:pointer;",
+                                    ],
+                                  },
+                                  "displayName": "Link__Content",
+                                  "foldedComponentIds": Array [],
+                                  "render": [Function],
+                                  "styledComponentId": "Link__Content-j1roec-0",
+                                  "target": "a",
+                                  "toString": [Function],
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
+                                }
+                              }
+                              forwardedRef={[Function]}
+                              onClick={[Function]}
+                              onMouseEnter={[Function]}
+                            >
+                              <a
+                                className="Link__Content-j1roec-0 senXN"
+                                onClick={[Function]}
+                                onMouseEnter={[Function]}
+                              >
+                                userTest
+                              </a>
+                            </StyledComponent>
+                          </Link__Content>
+                        </Link>
+                      </Link>
+                    </div>
+                  </Styled(div)>
+                </NavLink>
+              </div>
+            </Styled(div)>
+          </StyledComponent>
+        </Navbar__Container>
+      </Navbar>
       <Layout__Container
         mx="auto"
       >
@@ -62,9 +449,9 @@ exports[`Index page should match snapshot 1`] = `
               ],
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "Layout__Container-pcoicd-0",
+                "componentId": "Layout__Container-sc-16wg312-0",
                 "isStatic": true,
-                "lastClassName": "kAVbbH",
+                "lastClassName": "hEWBOx",
                 "rules": Array [
                   "max-width:1024px;",
                 ],
@@ -72,7 +459,7 @@ exports[`Index page should match snapshot 1`] = `
               "displayName": "Layout__Container",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "Layout__Container-pcoicd-0",
+              "styledComponentId": "Layout__Container-sc-16wg312-0",
               "target": Object {
                 "$$typeof": Symbol(react.forward_ref),
                 "__emotion_base": "div",
@@ -104,11 +491,11 @@ exports[`Index page should match snapshot 1`] = `
           mx="auto"
         >
           <Styled(div)
-            className="Layout__Container-pcoicd-0 kAVbbH"
+            className="Layout__Container-sc-16wg312-0 hEWBOx"
             mx="auto"
           >
             <div
-              className="Layout__Container-pcoicd-0 kAVbbH css-1ntkiwo"
+              className="Layout__Container-sc-16wg312-0 hEWBOx css-1ntkiwo"
             >
               <Head>
                 <Component
