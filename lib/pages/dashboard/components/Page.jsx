@@ -7,7 +7,6 @@ import { Socket } from 'phoenix'
 import { UserContext } from '../../../components'
 import PropTypes from 'prop-types'
 
-
 const deserializePlayers = players => {
   return players.map(player => {
     return {
@@ -73,12 +72,10 @@ class Dashboard extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log(this.state.socket)
     this.state.socket.disconnect()
   }
 
   render() {
-    console.log(this.context.user)
     return (
       <Layout title="Dashboard">
         Requested Reviews
@@ -100,8 +97,8 @@ Dashboard.getInitialProps = async ctx => {
 }
 
 Dashboard.propTypes = {
-  replays: PropTypes.object,
-  authToken:PropTypes.string
+  replays: PropTypes.array,
+  authToken: PropTypes.string
 }
 
 Dashboard.contextType = UserContext
