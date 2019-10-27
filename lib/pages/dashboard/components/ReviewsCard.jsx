@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Card } from '~/components'
-import { Box, Flex, Text } from 'rebass'
-
+import { Box, Text } from 'rebass'
+import PropTypes from 'prop-types'
 
 
 const ReviewsCard = ({ children }) => (
@@ -16,5 +16,10 @@ const ReviewsCard = ({ children }) => (
     </Box>
   </Card>
 )
+
+ReviewsCard.propTypes = {
+  children: PropTypes.node,
+}
+
 
 export default ReviewsCard

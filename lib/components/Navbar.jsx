@@ -1,7 +1,9 @@
 import React, { useContext } from 'react'
 import { Box, Flex, Text } from 'rebass'
-import { Link, Button, ButtonSteam, UserContext } from '.'
+import { Link, ButtonSteam, UserContext } from '.'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
+
 
 const NavLink = ({ children, href }) => (
   <Box m={1}>
@@ -36,6 +38,11 @@ const Navbar = () => {
       }
     </Container>
   )
+}
+
+NavLink.propTypes = {
+  children: PropTypes.node,
+  href: PropTypes.string.isRequired
 }
 
 export default Navbar

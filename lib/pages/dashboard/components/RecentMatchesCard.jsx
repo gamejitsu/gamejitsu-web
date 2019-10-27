@@ -1,8 +1,10 @@
 import React, { useContext } from 'react'
 import { Button, Card } from '~/components'
 import { HeroImage } from '.'
-import { Box, Flex, Text } from 'rebass'
+import { Box, Text } from 'rebass'
 import { UserContext } from '../../../components'
+import PropTypes from 'prop-types'
+
 
 const RecentMatchesCard = ({ replay }) => {
   const { user } = useContext(UserContext)
@@ -35,6 +37,10 @@ const RecentMatchesCard = ({ replay }) => {
       </Box>
     </Card>
   )
+}
+
+RecentMatchesCard.propTypes = {
+  replay: PropTypes.object,
 }
 
 export default RecentMatchesCard

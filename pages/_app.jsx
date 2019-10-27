@@ -38,7 +38,8 @@ const App = ({ Component, pageProps, user }) => {
 App.propTypes = {
   store: PropTypes.object,
   Component: PropTypes.elementType,
-  pageProps: PropTypes.object
+  pageProps: PropTypes.object,
+  user: PropTypes.object
 }
 
 const getCurrentUser = async authToken => {

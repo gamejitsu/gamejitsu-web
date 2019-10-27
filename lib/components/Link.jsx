@@ -1,8 +1,8 @@
-import { lighten } from 'polished'
 import NextLink from 'next/link'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
+
 
 const Content = styled.a`
   color: ${props => props.theme.linkColor};
@@ -16,6 +16,7 @@ const Link = ({ children, href }) => (
 )
 
 Link.propTypes = {
+  children: PropTypes.node,
   href: PropTypes.string.isRequired
 }
 

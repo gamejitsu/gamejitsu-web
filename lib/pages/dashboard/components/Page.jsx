@@ -5,6 +5,8 @@ import axios from 'axios'
 import nextCookie from 'next-cookies'
 import { Socket } from 'phoenix'
 import { UserContext } from '../../../components'
+import PropTypes from 'prop-types'
+
 
 const deserializePlayers = players => {
   return players.map(player => {
@@ -58,7 +60,7 @@ class Dashboard extends React.Component {
     })
     socket.connect()
     const channel = socket.channel('users:' + this.context.user.id)
-    channel.join().receive('ok', async ({ messages }) => {
+    channel.join().receive('ok', async () => {
       const user = await getCurrentUser(this.props.authToken)
       this.setState({
         user,
@@ -95,6 +97,11 @@ Dashboard.getInitialProps = async ctx => {
   const { authToken } = nextCookie(ctx)
   const replays = await getReplays(authToken)
   return { replays, authToken }
+}
+
+Dashboard.propTypes = {
+  replays: PropTypes.object,
+  authToken:PropTypes.string
 }
 
 Dashboard.contextType = UserContext
