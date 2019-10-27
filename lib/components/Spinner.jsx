@@ -20,27 +20,27 @@ const Dot = styled.div`
   border-radius: 50%;
   background-color: red;
   animation: pulse 0.85s infinite ease-in-out;
-  animation-delay: ${props => props.delay || "0"}s;
- 
-  @keyframes pulse {
-  0%,
-  100%,
-  80% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
+  animation-delay: ${props => props.delay || '0'}s;
 
-  40% {
-    opacity: 1;
-    transform: scale(1);
+  @keyframes pulse {
+    0%,
+    100%,
+    80% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+
+    40% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
-}
 `
 
 const Spinner = () => (
   <Container>
-    <Dot delay={"-0.2"} />
-    <Dot delay={"-0.1"} />
+    <Dot delay={'-0.2'} />
+    <Dot delay={'-0.1'} />
     <Dot />
   </Container>
 )

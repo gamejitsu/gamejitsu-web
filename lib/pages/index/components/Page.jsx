@@ -8,7 +8,6 @@ const login = () => {
 
 export default () => (
   <Layout>
-    <Button text="Login" onClick={login} />
     {process.env.API_ENDPOINT}
   </Layout>
 )

@@ -4,6 +4,7 @@ import { Layout, Spinner } from '~/components'
 import axios from 'axios'
 import nextCookie from 'next-cookies'
 import { Socket } from 'phoenix'
+import { UserContext } from '../../../components'
 
 const deserializePlayers = players => {
   return players.map(player => {
@@ -18,7 +19,6 @@ const deserializeReplays = data => {
   return data.data.map(replay => {
     const playersDire = deserializePlayers(replay.attributes.players.slice(0, 5))
     const playersRadiant = deserializePlayers(replay.attributes.players.slice(5, 10))
-    console.log(replay)
     return {
       id: replay.id,
       matchId: replay.attributes['match-id'],
@@ -44,45 +44,47 @@ const getCurrentUser = async authToken => {
 }
 
 class Dashboard extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor(props, context) {
+    super(props, context)
     this.state = {
-      user: {
-        attributes: {}
-      }
+      user: context.user,
+      socket: null
     }
   }
+
   componentDidMount() {
     const socket = new Socket(process.env.SOCKET_ENDPOINT + '/socket', {
       params: { token: this.props.authToken }
     })
     socket.connect()
-    console.log('post connection')
-    const channel = socket.channel('users:' + this.props.user.id)
+    const channel = socket.channel('users:' + this.context.user.id)
     channel.join().receive('ok', async ({ messages }) => {
-      console.log('catching up', messages)
       const user = await getCurrentUser(this.props.authToken)
-      this.setState({ user: user })
-      console.log('user receive:', user)
-
+      this.setState({
+        user,
+        socket
+      })
     })
     channel.on('update', userData => {
       this.setState({ user: userData.data })
-      console.log('user update:', userData.data)
     })
   }
 
+  componentWillUnmount() {
+    console.log(this.state.socket)
+    this.state.socket.disconnect()
+  }
+
   render() {
+    console.log(this.context.user)
     return (
       <Layout title="Dashboard">
         Requested Reviews
         <ReviewsCard>Test Card</ReviewsCard>
-        {this.state.user.attributes['is-syncing-replays']
-        ? <Spinner />
-        : console.log("non c'è un cazzo frociiiiii")}
+        {this.state.user.attributes['is-syncing-replays'] ? <Spinner /> : <div></div>}
         Recent Matches
         {this.props.replays.map(replay => {
-          return <RecentMatchesCard key={replay.id} replay={replay} user={this.props.user} />
+          return <RecentMatchesCard key={replay.id} replay={replay} />
         })}
       </Layout>
     )
@@ -92,8 +94,9 @@ class Dashboard extends React.Component {
 Dashboard.getInitialProps = async ctx => {
   const { authToken } = nextCookie(ctx)
   const replays = await getReplays(authToken)
-  const user = await getCurrentUser(authToken)
-  return { replays, user, authToken }
+  return { replays, authToken }
 }
+
+Dashboard.contextType = UserContext
 
 export default Dashboard

@@ -14,6 +14,7 @@ const Content = styled.button`
   font-size: 15px;
   outline: 0;
   border: 0;
+  cursor: pointer;
 `
 
 const Button = ({ text, onClick }) => <Content onClick={onClick}>{text}</Content>
