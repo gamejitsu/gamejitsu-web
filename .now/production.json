@@ -4,7 +4,8 @@
   "alias": "gamejitsu.io",
   "build": {
     "env": {
-      "API_ENDPOINT": "https://api.gamejitsu.io"
+      "API_ENDPOINT": "https://api.gamejitsu.io",
+      "SOCKET_ENDPOINT": "wss://api.gamejitsu.io"
     }
   }
 }

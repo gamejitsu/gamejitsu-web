@@ -3,7 +3,8 @@
   "version": 2,
   "build": {
     "env": {
-      "API_ENDPOINT": "https://staging-api.gamejitsu.io"
+      "API_ENDPOINT": "https://staging-api.gamejitsu.io",
+      "SOCKET_ENDPOINT": "wss://staging-api.gamejitsu.io"
     }
   }
 }
