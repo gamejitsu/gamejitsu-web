@@ -1,9 +1,9 @@
-import React, { useContext } from 'react'
 import { Box, Flex, Text } from 'rebass'
 import { Link, ButtonSteam, UserContext } from '.'
-import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
+import React, { useContext } from 'react'
+import styled from 'styled-components'
 
 const NavLink = ({ children, href }) => (
   <Box m={1}>

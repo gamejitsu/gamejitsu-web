@@ -1,12 +1,11 @@
-import React, { useContext } from 'react'
+import { Box, Text } from 'rebass'
 import { Button, Card } from '~/components'
 import { HeroImage } from '.'
-import { Box, Text } from 'rebass'
 import { UserContext } from '../../../components'
 import PropTypes from 'prop-types'
+import React, { useContext } from 'react'
 
-
-const RecentMatchesCard = ({ replay }) => {
+const RecentMatchesCard = ({ replay, onSelectReplay }) => {
   const { user } = useContext(UserContext)
 
   return (
@@ -33,7 +32,12 @@ const RecentMatchesCard = ({ replay }) => {
         </div>
       </Box>
       <Box alignSelf="center" pr={3}>
-        <Button onClick={() => {}} text="Request Review" />
+        <Button
+          onClick={() => {
+            onSelectReplay({ replay })
+          }}
+          text="Request Review"
+        />
       </Box>
     </Card>
   )
@@ -41,6 +45,7 @@ const RecentMatchesCard = ({ replay }) => {
 
 RecentMatchesCard.propTypes = {
   replay: PropTypes.object,
+  onSelectReplay: PropTypes.func.isRequired
 }
 
 export default RecentMatchesCard

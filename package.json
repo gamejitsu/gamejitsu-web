@@ -25,6 +25,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "babel-plugin-styled-components": "^1.10.6",
+    "formik": "^2.0.2",
     "immutability-helper": "^3.0.1",
     "js-cookie": "^2.2.1",
     "next": "^9.0.2",

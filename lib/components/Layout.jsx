@@ -1,9 +1,9 @@
+import { Box } from 'rebass'
 import Head from 'next/head'
+import Navbar from './Navbar'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Box } from 'rebass'
 import styled from 'styled-components'
-import Navbar from './Navbar'
 
 const Container = styled(Box)`
   max-width: 1024px;
