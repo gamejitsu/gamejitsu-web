@@ -11,6 +11,7 @@ const Auth = ({ authToken }) => {
 }
 
 Auth.getInitialProps = async ({ query }) => {
+  console.log(new URLSearchParams(query).toString())
   const response = await axios.post(
     process.env.API_ENDPOINT + '/sessions',
     {

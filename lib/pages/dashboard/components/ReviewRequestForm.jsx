@@ -3,9 +3,11 @@ import { Formik, Form, Field } from 'formik'
 import axios from 'axios'
 import PropTypes from 'prop-types'
 import React from 'react'
+import cookie from 'js-cookie'
 
 const ReviewRequestForm = ({ replay }) => {
   console.log(replay)
+
   return (
     <Layout title="Dashboard">
       <div>
@@ -14,9 +16,9 @@ const ReviewRequestForm = ({ replay }) => {
           onSubmit={async (values, { setSubmitting }) => {
             console.log(values)
             console.log(setSubmitting)
-            await axios.post(process.env.API_ENDPOINT + '/review-request', {
-              headers: { Accept: 'application/vnd.api+json' },
-              body: {
+            await axios.post(
+              process.env.API_ENDPOINT + '/review-requests',
+              {
                 data: {
                   type: 'review-request',
                   attributes: {
@@ -24,8 +26,15 @@ const ReviewRequestForm = ({ replay }) => {
                     'skill-level': values.skill
                   }
                 }
+              },
+              {
+                headers: {
+                  Accept: 'application/vnd.api+json',
+                  'Content-Type': 'application/vnd.api+json',
+                  Authorization: 'Bearer ' + cookie.get('authToken')
+                }
               }
-            })
+            )
           }}
         >
           {({ isSubmitting }) => (

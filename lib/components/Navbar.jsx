@@ -1,9 +1,10 @@
 import { Box, Flex, Text } from 'rebass'
-import { Link, ButtonSteam, UserContext } from '.'
+import { Link, Button, ButtonSteam, UserContext } from '.'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
+import cookie from 'js-cookie'
 
 const NavLink = ({ children, href }) => (
   <Box m={1}>
@@ -29,6 +30,11 @@ const login = () => {
   window.location.href = urlBase + '?' + stringified
 }
 
+const logout = () => {
+  cookie.remove('authToken')
+  window.location.href = '/'
+}
+
 const Navbar = () => {
   const { user } = useContext(UserContext)
 
@@ -42,7 +48,10 @@ const Navbar = () => {
         <NavLink href="/reviews">Reviews</NavLink>
       </Text>
       {user ? (
-        <NavLink href="/">{user.attributes.username}</NavLink>
+        <Box>
+          <NavLink href="/">{user.attributes.username}</NavLink>
+          <Button text="Logout" onClick={logout} />
+        </Box>
       ) : (
         <ButtonSteam onClick={login} />
       )}

@@ -7,6 +7,10 @@ import { theme } from '~'
 import axios from 'axios'
 import nextCookie from 'next-cookies'
 import { UserContext } from '~/components'
+import jwtDecode from 'jwt-decode'
+import cookie from 'js-cookie'
+
+
 
 const Content = styled.div`
   background-color: ${props => props.theme.backgroundColor};
@@ -49,13 +53,30 @@ const getCurrentUser = async authToken => {
   return response.data.data
 }
 
+const validateTokenExpirationTime = (authToken) => {
+  if (authToken == null)
+  {
+    return null
+  }
+  const decoded = jwtDecode(authToken);
+  if (decoded.exp > Date.now() / 1000) {
+    return authToken
+  } else {
+    return null
+  }
+}
+
 App.getInitialProps = async ({ Component, ctx }) => {
   let pageProps = {}
   let user
   if (Component.getInitialProps) {
     pageProps = await Component.getInitialProps(ctx)
-    const { authToken } = nextCookie(ctx)
-    user = await getCurrentUser(authToken)
+    let { authToken } = nextCookie(ctx)
+    authToken = validateTokenExpirationTime(authToken)
+    if(authToken == null) {
+      cookie.remove('authToken')
+    }
+    authToken && (user = await getCurrentUser(authToken))
   }
   return { pageProps, user }
 }
