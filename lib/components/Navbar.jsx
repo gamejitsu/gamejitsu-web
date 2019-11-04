@@ -47,11 +47,12 @@ const Navbar = () => {
       <Text mr="auto" p={1}>
         <NavLink href="/reviews">Reviews</NavLink>
       </Text>
+      <Box mx="auto" />
       {user ? (
-        <Box>
-          <NavLink href="/">{user.attributes.username}</NavLink>
-          <Button text="Logout" onClick={logout} />
-        </Box>
+        [
+          <NavLink key='username' href="/">{user.attributes.username}</NavLink>,
+          <Button key='logout' text="Logout" onClick={logout} />
+        ]
       ) : (
         <ButtonSteam onClick={login} />
       )}

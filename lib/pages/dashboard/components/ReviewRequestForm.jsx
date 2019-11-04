@@ -1,4 +1,5 @@
 import { Button, Layout } from '~/components'
+import { Box, Flex, Text } from 'rebass'
 import { Formik, Form, Field } from 'formik'
 import axios from 'axios'
 import PropTypes from 'prop-types'
@@ -37,23 +38,32 @@ const ReviewRequestForm = ({ replay }) => {
         >
           {({ isSubmitting }) => (
             <Form>
-              <div>
-                <Field type="radio" name="skill" value="pro" />
-                <label for="skill">Pro</label>
-              </div>
-              <div>
-                <Field type="radio" name="skill" value="very_high" />
-                <label for="skill">Very High</label>
-              </div>
-              <div>
-                <Field type="radio" name="skill" value="high" />
-                <label for="skill">High</label>
-              </div>
-              <div>
-                <Field type="radio" name="skill" value="medium" />
-                <label for="skill">Medium</label>
-              </div>
-              <Button text="Requst Replay" type="submit" disabled={isSubmitting} replay={replay} />
+              <Box>
+                <Box m={2} p={2} bg="primary" width={[1, 1, 1]}>
+                  <Field type="radio" name="skill" value="pro" />
+                  <label for="skill">Pro</label>
+                </Box>
+                <Box m={2} p={2} width={[1, 1, 1]}>
+                  <Field type="radio" name="skill" value="very_high" />
+                  <label for="skill">Very High</label>
+                </Box>
+                <Box m={2} p={2} width={[1, 1, 1]}>
+                  <Field type="radio" name="skill" value="high" />
+                  <label for="skill">High</label>
+                </Box>
+                <Box m={2} p={2} width={[1, 1, 1]}>
+                  <Field type="radio" name="skill" value="medium" />
+                  <label for="skill">Medium</label>
+                </Box>
+              </Box>
+              <Box>
+                <Button
+                  text="Requst Replay"
+                  type="submit"
+                  disabled={isSubmitting}
+                  replay={replay}
+                />
+              </Box>
             </Form>
           )}
         </Formik>
