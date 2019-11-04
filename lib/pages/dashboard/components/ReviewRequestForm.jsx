@@ -6,8 +6,6 @@ import React from 'react'
 import cookie from 'js-cookie'
 
 const ReviewRequestForm = ({ replay }) => {
-  console.log(replay)
-
   return (
     <Layout title="Dashboard">
       <div>
@@ -39,13 +37,23 @@ const ReviewRequestForm = ({ replay }) => {
         >
           {({ isSubmitting }) => (
             <Form>
-              <Field type="radio" name="skill" value="pro" />
-              <Field type="radio" name="skill" value="very_high" />
-              <Field type="radio" name="skill" value="high" />
-              <Field type="radio" name="skill" value="medium" />
-              <Button text="Hello" type="submit" disabled={isSubmitting} replay={replay}>
-                Submit
-              </Button>
+              <div>
+                <Field type="radio" name="skill" value="pro" />
+                <label for="skill">Pro</label>
+              </div>
+              <div>
+                <Field type="radio" name="skill" value="very_high" />
+                <label for="skill">Very High</label>
+              </div>
+              <div>
+                <Field type="radio" name="skill" value="high" />
+                <label for="skill">High</label>
+              </div>
+              <div>
+                <Field type="radio" name="skill" value="medium" />
+                <label for="skill">Medium</label>
+              </div>
+              <Button text="Requst Replay" type="submit" disabled={isSubmitting} replay={replay} />
             </Form>
           )}
         </Formik>
