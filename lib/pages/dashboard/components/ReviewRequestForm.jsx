@@ -5,8 +5,10 @@ import axios from 'axios'
 import PropTypes from 'prop-types'
 import React from 'react'
 import cookie from 'js-cookie'
+import { HeroImage } from '.'
 
 const ReviewRequestForm = ({ replay }) => {
+  console.log(replay)
   return (
     <Layout title="Dashboard">
       <div>
@@ -38,27 +40,48 @@ const ReviewRequestForm = ({ replay }) => {
         >
           {({ isSubmitting }) => (
             <Form>
-              <Box>
+              <Box align-items='center'>
+                <Box p={3} mr="auto">
+                  <Text p={2}>MatchId: {replay.matchId}</Text>
+                  <Text p={2}>playedAt: {replay.playedAt}</Text>
+                </Box>
+                <Box p={3} mr="auto">
+                  <div className="Grid">
+                    <HeroImage src={replay.playersDire[0].image}></HeroImage>
+                    <HeroImage src={replay.playersDire[1].image}></HeroImage>
+                    <HeroImage src={replay.playersDire[2].image}></HeroImage>
+                    <HeroImage src={replay.playersDire[3].image}></HeroImage>
+                    <HeroImage src={replay.playersDire[4].image}></HeroImage>
+                  </div>
+                  <div className="Grid">
+                    <HeroImage src={replay.playersRadiant[0].image}></HeroImage>
+                    <HeroImage src={replay.playersRadiant[1].image}></HeroImage>
+                    <HeroImage src={replay.playersRadiant[2].image}></HeroImage>
+                    <HeroImage src={replay.playersRadiant[3].image}></HeroImage>
+                    <HeroImage src={replay.playersRadiant[4].image}></HeroImage>
+                  </div>
+                </Box>
                 <Box m={2} p={2} bg="primary" width={[1, 1, 1]}>
                   <Field type="radio" name="skill" value="pro" />
-                  <label for="skill">Pro</label>
+                  <label htmlFor="skill">Pro</label>
                 </Box>
                 <Box m={2} p={2} width={[1, 1, 1]}>
                   <Field type="radio" name="skill" value="very_high" />
-                  <label for="skill">Very High</label>
+                  <label htmlFor="skill">Very High</label>
                 </Box>
                 <Box m={2} p={2} width={[1, 1, 1]}>
                   <Field type="radio" name="skill" value="high" />
-                  <label for="skill">High</label>
+                  <label htmlFor="skill">High</label>
                 </Box>
                 <Box m={2} p={2} width={[1, 1, 1]}>
                   <Field type="radio" name="skill" value="medium" />
-                  <label for="skill">Medium</label>
+                  <label htmlFor="skill">Medium</label>
                 </Box>
+                <Text p={2}>Price: 4£</Text>
               </Box>
               <Box>
                 <Button
-                  text="Requst Replay"
+                  text="Request Replay"
                   type="submit"
                   disabled={isSubmitting}
                   replay={replay}
