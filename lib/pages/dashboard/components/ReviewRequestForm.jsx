@@ -1,13 +1,14 @@
 import { Button, Layout } from '~/components'
 import { Box, Flex, Text } from 'rebass'
 import { Formik, Form, Field } from 'formik'
+import Router from 'next/router'
 import axios from 'axios'
 import PropTypes from 'prop-types'
 import React from 'react'
 import cookie from 'js-cookie'
 import { HeroImage } from '.'
 
-const ReviewRequestForm = ({ replay }) => {
+const ReviewRequestForm = ({ replay, onFinish }) => {
   console.log(replay)
   return (
     <Layout title="Dashboard">
@@ -36,11 +37,13 @@ const ReviewRequestForm = ({ replay }) => {
                 }
               }
             )
+            Router.push(`/dashboard`)
+            onFinish()
           }}
         >
           {({ isSubmitting }) => (
             <Form>
-              <Box align-items='center'>
+              <Flex direction='column' alignItems='center'>
                 <Box p={3} mr="auto">
                   <Text p={2}>MatchId: {replay.matchId}</Text>
                   <Text p={2}>playedAt: {replay.playedAt}</Text>
@@ -78,7 +81,7 @@ const ReviewRequestForm = ({ replay }) => {
                   <label htmlFor="skill">Medium</label>
                 </Box>
                 <Text p={2}>Price: 4£</Text>
-              </Box>
+              </Flex>
               <Box>
                 <Button
                   text="Request Replay"
@@ -96,7 +99,8 @@ const ReviewRequestForm = ({ replay }) => {
 }
 
 ReviewRequestForm.propTypes = {
-  replay: PropTypes.object
+  replay: PropTypes.object,
+  onFinish: PropTypes.func.isRequired
 }
 
 export default ReviewRequestForm
