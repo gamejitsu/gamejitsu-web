@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from 'rebass'
+import { Box, Flex } from 'rebass'
 import { Link, Button, ButtonSteam, UserContext } from '.'
 import PropTypes from 'prop-types'
 import queryString from 'query-string'
