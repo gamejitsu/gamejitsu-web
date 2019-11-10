@@ -44,9 +44,6 @@ const Navbar = () => {
         Gamejitsu
       </NavLink>
       <NavLink href="/dashboard">Dashboard</NavLink>
-      <Text mr="auto" p={1}>
-        <NavLink href="/reviews">Reviews</NavLink>
-      </Text>
       <Box mx="auto" />
       {user ? (
         [

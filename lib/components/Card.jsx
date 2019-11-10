@@ -6,13 +6,7 @@ import styled from 'styled-components'
 const Container = styled(Box)`
   background-color: ${props => props.theme.secondaryColor};
 `
-const Card = ({ children }) => (
-  <Container>
-    <Flex>
-      {children}
-    </Flex>
-  </Container>
-)
+const Card = ({ children }) => <Container>{children}</Container>
 
 Card.propTypes = {
   children: PropTypes.node
