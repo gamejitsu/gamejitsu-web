@@ -1,11 +1,11 @@
-import React from 'react'
-import { ReviewsCard, RecentMatchesCard } from '.'
 import { Layout, Spinner } from '~/components'
-import axios from 'axios'
-import nextCookie from 'next-cookies'
+import { ReviewsCard, RecentMatchesCard, ReviewRequestForm } from '.'
 import { Socket } from 'phoenix'
 import { UserContext } from '../../../components'
+import axios from 'axios'
+import nextCookie from 'next-cookies'
 import PropTypes from 'prop-types'
+import React from 'react'
 
 const deserializePlayers = players => {
   return players.map(player => {
@@ -44,6 +44,43 @@ const getCurrentUser = async authToken => {
   return response.data.data
 }
 
+function onSelectReplay({ replay }) {
+  this.setState({ replay })
+}
+
+function onFinish() {
+  this.setState({ replay: null })
+}
+
+const deserializeReplayReviewRequests = data => {
+  return data.data.map(data => {
+    return {
+      id: data.id,
+      matchId: data.relationships.replay.data.id,
+      'skill-level': data.attributes['skill-level'],
+      review: data.relationships.review || {
+        data: {
+          attributes: {
+            comments: [
+              {
+                text: 'ultra kill',
+                timestamp: Date.now()
+              }
+            ]
+          }
+        }
+      }
+    }
+  })
+}
+
+const getReplayReviewRequests = async authToken => {
+  const response = await axios.get(process.env.API_ENDPOINT + '/review-requests', {
+    headers: { Accept: 'application/vnd.api+json', Authorization: 'Bearer ' + authToken }
+  })
+  return deserializeReplayReviewRequests(response.data)
+}
+
 class Dashboard extends React.Component {
   constructor(props, context) {
     super(props, context)
@@ -76,14 +113,24 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    return (
+    return this.state.replay ? (
+      <ReviewRequestForm replay={this.state.replay} onFinish={onFinish.bind(this)} />
+    ) : (
       <Layout title="Dashboard">
-        Requested Reviews
-        <ReviewsCard>Test Card</ReviewsCard>
         {this.state.user.attributes['is-syncing-replays'] ? <Spinner /> : <div></div>}
+        Requested Reviews
+        {this.props.replayReviewRequests.map(replayReview => {
+          return <ReviewsCard key={replayReview.id} replayReview={replayReview} />
+        })}
         Recent Matches
         {this.props.replays.map(replay => {
-          return <RecentMatchesCard key={replay.id} replay={replay} />
+          return (
+            <RecentMatchesCard
+              key={replay.id}
+              replay={replay}
+              onSelectReplay={onSelectReplay.bind(this)}
+            />
+          )
         })}
       </Layout>
     )
@@ -93,11 +140,13 @@ class Dashboard extends React.Component {
 Dashboard.getInitialProps = async ctx => {
   const { authToken } = nextCookie(ctx)
   const replays = await getReplays(authToken)
-  return { replays, authToken }
+  const replayReviewRequests = await getReplayReviewRequests(authToken)
+  return { replays, replayReviewRequests, authToken }
 }
 
 Dashboard.propTypes = {
   replays: PropTypes.array,
+  replayReviewRequests: PropTypes.array,
   authToken: PropTypes.string
 }
 

@@ -17,11 +17,17 @@ const Content = styled.button`
   cursor: pointer;
 `
 
-const Button = ({ text, onClick }) => <Content onClick={onClick}>{text}</Content>
+const Button = ({ text, onClick, type = 'button', disabled = false }) => (
+  <Content onClick={onClick} type={type} disabled={disabled}>
+    {text}
+  </Content>
+)
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func,
+  type: PropTypes.string,
+  disabled: PropTypes.bool
 }
 
 export default Button

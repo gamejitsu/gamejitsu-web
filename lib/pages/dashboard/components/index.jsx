@@ -1,6 +1,7 @@
-import Page from './Page'
-import ReviewsCard from './ReviewsCard'
-import RecentMatchesCard from './RecentMatchesCard'
 import HeroImage from './HeroImage'
+import Page from './Page'
+import RecentMatchesCard from './RecentMatchesCard'
+import ReviewRequestForm from './ReviewRequestForm'
+import ReviewsCard from './ReviewsCard'
 
-export { Page, ReviewsCard, RecentMatchesCard, HeroImage }
+export { HeroImage, Page, ReviewsCard, RecentMatchesCard, ReviewRequestForm }

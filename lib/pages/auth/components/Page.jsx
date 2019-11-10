@@ -1,6 +1,6 @@
-import React from 'react'
 import axios from 'axios'
 import cookie from 'js-cookie'
+import React from 'react'
 
 const Auth = ({ authToken }) => {
   React.useEffect(() => {
@@ -11,6 +11,7 @@ const Auth = ({ authToken }) => {
 }
 
 Auth.getInitialProps = async ({ query }) => {
+  console.log(new URLSearchParams(query).toString())
   const response = await axios.post(
     process.env.API_ENDPOINT + '/sessions',
     {
