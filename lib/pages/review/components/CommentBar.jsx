@@ -16,7 +16,7 @@ const getX = props => {
 }
 
 function clickBarEvent(e) {
-  const rect = e.target.getBoundingClientRect()
+  const rect = this.containerRef.current.getBoundingClientRect()
   const x = e.clientX - rect.left
   const y = e.clientY - rect.top
   const timestamp = Math.floor((x / this.state.containerWidth) * this.props.videoDuration)

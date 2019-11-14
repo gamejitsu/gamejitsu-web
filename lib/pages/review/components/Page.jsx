@@ -101,7 +101,7 @@ class Review extends React.Component {
       const endTimestamp = commentTimestamp + timeRange
       return videoTimestamp > beginTimestamp && videoTimestamp < endTimestamp
     })
-
+     
     return (
       <Layout title="Review">
         <Card>
