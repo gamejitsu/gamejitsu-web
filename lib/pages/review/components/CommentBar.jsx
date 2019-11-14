@@ -19,7 +19,7 @@ function clickBarEvent(e) {
   const rect = e.target.getBoundingClientRect()
   const x = e.clientX - rect.left
   const y = e.clientY - rect.top
-  const timestamp = Math.floor(x / this.state.containerWidth * this.props.videoDuration)
+  const timestamp = Math.floor((x / this.state.containerWidth) * this.props.videoDuration)
   this.props.onMoveVideoCursor(timestamp)
 }
 
@@ -40,22 +40,21 @@ const Square = styled(Box)`
 class CommentBar extends React.Component {
   constructor() {
     super()
+    this.containerRef = React.createRef()
     this.state = {
       containerWidth: 0
     }
   }
 
+  componentDidMount() {
+    this.setState({
+      containerWidth: this.containerRef.current.offsetWidth
+    })
+  }
+
   render() {
     return (
-      <Container
-      onClick={clickBarEvent.bind(this)}
-        ref={ref => {
-          const width = ref ? ref.offsetWidth : 0
-          if (ref && this.state.containerWidth !== width) {
-            this.setState({ containerWidth: width })
-          }
-        }}
-      >
+      <Container onClick={clickBarEvent.bind(this)} ref={this.containerRef}>
         {this.props.comments.map(comment => {
           return (
             <Square
