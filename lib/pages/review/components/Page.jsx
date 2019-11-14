@@ -73,7 +73,6 @@ function updateVideoTimestamp(timestamp) {
   this.setState({
     videoTimestamp: timestamp
   })
-  this.videoRef.current.currentTime = timestamp
 }
 
 class Review extends React.Component {
@@ -82,7 +81,13 @@ class Review extends React.Component {
     this.videoRef = React.createRef()
     this.state = {
       videoTimestamp: 0,
-      videoDuration: 0,
+      videoDuration: 0
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.videoTimestamp !== prevState.videoTimestamp) {
+      this.videoRef.current.currentTime = this.state.videoTimestamp
     }
   }
 
