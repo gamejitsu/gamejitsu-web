@@ -2,16 +2,19 @@ import { Box } from 'rebass'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
+import { commentDuration } from '.'
 
 const getWidth = props => {
+  console.log(commentDuration)
   const totalDuration = props.duration
-  return (10 / totalDuration) * props.containerWidth
+  console.log(props)
+  return (commentDuration / totalDuration) * props.containerWidth
 }
 
 const getX = props => {
   const commentTimestamp = props.comment.timestamp
   const totalDuration = props.duration
-  const ratio = commentTimestamp / totalDuration
+  const ratio = (commentTimestamp - commentDuration / 2) / totalDuration
   return ratio * props.containerWidth
 }
 

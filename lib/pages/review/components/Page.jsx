@@ -4,7 +4,7 @@ import nextCookie from 'next-cookies'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import { Flex, Box, Text } from 'rebass'
-import { CommentBar } from '.'
+import { CommentBar, commentDuration } from '.'
 
 const deserializeReplayReviewRequests = data => {
   return data.data.map(data => {
@@ -85,6 +85,12 @@ class Review extends React.Component {
     }
   }
 
+  componentDidMount() {
+   this.setState({
+     videoDuration: this.videoRef.current.duration
+   })
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (this.state.videoTimestamp !== prevState.videoTimestamp) {
       this.videoRef.current.currentTime = this.state.videoTimestamp
@@ -94,7 +100,7 @@ class Review extends React.Component {
   render() {
     const comments = this.props.reviewRequested.review.data.attributes.comments
     const shownComments = comments.filter(comment => {
-      const timeRange = 5
+      const timeRange = commentDuration / 2
       const videoTimestamp = this.state.videoTimestamp
       const commentTimestamp = comment.timestamp
       const beginTimestamp = commentTimestamp - timeRange
