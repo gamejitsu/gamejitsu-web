@@ -15,6 +15,14 @@ const getX = props => {
   return ratio * props.containerWidth
 }
 
+function clickBarEvent(e) {
+  const rect = e.target.getBoundingClientRect()
+  const x = e.clientX - rect.left
+  const y = e.clientY - rect.top
+  const timestamp = Math.floor(x / this.state.containerWidth * this.props.videoDuration)
+  this.props.onMoveVideoCursor(timestamp)
+}
+
 const Container = styled(Box)`
   background-color: ${props => props.theme.primaryColor};
   position: relative;
@@ -40,6 +48,7 @@ class CommentBar extends React.Component {
   render() {
     return (
       <Container
+      onClick={clickBarEvent.bind(this)}
         ref={ref => {
           const width = ref ? ref.offsetWidth : 0
           if (ref && this.state.containerWidth !== width) {

@@ -69,6 +69,12 @@ function setVideoTimestamp(event) {
   })
 }
 
+function updateVideoTimestamp(timestamp) {
+  this.setState({
+    videoTimestamp: timestamp
+  })
+}
+
 class Review extends React.Component {
   constructor() {
     super()
@@ -113,7 +119,7 @@ class Review extends React.Component {
             </Box>
           </Flex>
         </Card>
-        <CommentBar comments={comments} videoDuration={this.state.videoDuration}/>
+        <CommentBar comments={comments} videoDuration={this.state.videoDuration} onMoveVideoCursor={updateVideoTimestamp.bind(this)}/>
       </Layout>
     )
   }
