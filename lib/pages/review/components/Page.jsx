@@ -55,6 +55,13 @@ const getReplayReviewRequests = async authToken => {
   return deserializeReplayReviewRequests(response.data)
 }
 
+function setVideoDuration(event) {
+  const duration = event.target.duration
+  this.setState({
+    videoDuration: Math.floor(duration)
+  })
+}
+
 function setVideoTimestamp(event) {
   const timestamp = event.target.currentTime
   this.setState({
@@ -66,7 +73,8 @@ class Review extends React.Component {
   constructor() {
     super()
     this.state = {
-      videoTimestamp: 0
+      videoTimestamp: 0,
+      videoDuration: 0
     }
   }
 
@@ -92,7 +100,7 @@ class Review extends React.Component {
               <Text p={2}>Review Id: {this.props.reviewRequested.id}</Text>
               <Flex>
                 <Box p={0} mx="auto">
-                  <video onTimeUpdate={setVideoTimestamp.bind(this)} width="800" controls>
+                  <video onDurationChange={setVideoDuration.bind(this)} onTimeUpdate={setVideoTimestamp.bind(this)} width="800" controls>
                     <source src="/static/video/sample.mp4" type="video/mp4" />
                   </video>
                 </Box>
@@ -105,7 +113,7 @@ class Review extends React.Component {
             </Box>
           </Flex>
         </Card>
-        <CommentBar comments={comments}/>
+        <CommentBar comments={comments} videoDuration={this.state.videoDuration}/>
       </Layout>
     )
   }

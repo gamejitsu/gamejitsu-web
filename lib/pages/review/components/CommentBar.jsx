@@ -1,13 +1,7 @@
 import { Box } from 'rebass'
+import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
-
-const Container = styled(Box)`
-  background-color: ${props => props.theme.primaryColor};
-  position: relative;
-  height: 80px;
-`
 
 const getWidth = props => {
   const totalDuration = props.duration
@@ -21,6 +15,11 @@ const getX = props => {
   return ratio * props.containerWidth
 }
 
+const Container = styled(Box)`
+  background-color: ${props => props.theme.primaryColor};
+  position: relative;
+  height: 80px;
+`
 const Square = styled(Box)`
   background-color: ${props => props.theme.textColor};
   left: ${props => `${getX(props)}px`};
@@ -54,7 +53,7 @@ class CommentBar extends React.Component {
               key={comment.timestamp}
               comment={comment}
               containerWidth={this.state.containerWidth}
-              duration={469.25}
+              duration={this.props.videoDuration}
             />
           )
         })}
@@ -64,7 +63,8 @@ class CommentBar extends React.Component {
 }
 
 CommentBar.propTypes = {
-  comments: PropTypes.array
+  comments: PropTypes.array,
+  videoDuration: PropTypes.number
 }
 
 export default CommentBar
