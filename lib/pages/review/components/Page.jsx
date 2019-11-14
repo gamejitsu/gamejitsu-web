@@ -86,9 +86,9 @@ class Review extends React.Component {
   }
 
   componentDidMount() {
-   this.setState({
-     videoDuration: this.videoRef.current.duration
-   })
+    this.setState({
+      videoDuration: this.videoRef.current.duration
+    })
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -107,7 +107,7 @@ class Review extends React.Component {
       const endTimestamp = commentTimestamp + timeRange
       return videoTimestamp > beginTimestamp && videoTimestamp < endTimestamp
     })
-     
+
     return (
       <Layout title="Review">
         <Card>
