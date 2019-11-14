@@ -4,6 +4,7 @@ import nextCookie from 'next-cookies'
 import PropTypes from 'prop-types'
 import axios from 'axios'
 import { Flex, Box, Text } from 'rebass'
+import { CommentBar } from '.'
 
 const deserializeReplayReviewRequests = data => {
   return data.data.map(data => {
@@ -70,7 +71,8 @@ class Review extends React.Component {
   }
 
   render() {
-    const shownComments = this.props.reviewRequested.review.data.attributes.comments.filter(
+    const comments = this.props.reviewRequested.review.data.attributes.comments
+    const shownComments = comments.filter(
       comment => {
         const timeRange = 5
         const videoTimestamp = this.state.videoTimestamp
@@ -103,6 +105,7 @@ class Review extends React.Component {
             </Box>
           </Flex>
         </Card>
+        <CommentBar comments={comments}/>
       </Layout>
     )
   }

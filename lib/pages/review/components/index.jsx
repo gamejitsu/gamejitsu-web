@@ -1,3 +1,4 @@
 import Page from './Page'
+import CommentBar from './CommentBar'
 
-export { Page }
+export { Page, CommentBar }
