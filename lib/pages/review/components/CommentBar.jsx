@@ -1,8 +1,8 @@
 import { Box } from 'rebass'
+import { commentDuration } from '.'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-import { commentDuration } from '.'
 
 const getWidth = props => {
   const totalDuration = props.duration
@@ -30,22 +30,22 @@ function clickBarEvent(e) {
 }
 
 const Container = styled(Box)`
-  background-color: ${props => props.theme.primaryColor};
+  background-color: ${props => props.theme.secondaryColor};
   position: relative;
   height: 80px;
 `
 const Square = styled(Box)`
-  background-color: ${props => props.theme.textColor};
+  background-color: ${props => props.theme.primaryColor};
   left: ${props => `${getX(props)}px`};
   width: ${props => `${getWidth(props)}px`};
   height: 100%;
   position: absolute;
-  border: 1px solid red;
+  border: 1px solid ${props => props.theme.secondaryColor};
 `
 
 const CursorOverlay = styled(Box)`
   background-color: black;
-  opacity: 0.7;
+  opacity: 0.4;
   right: 0;
   left: ${props => `${getCursorLeft(props)}px`};
   position: absolute;
@@ -70,7 +70,6 @@ class CommentBar extends React.Component {
   render() {
     return (
       <Container onClick={clickBarEvent.bind(this)} ref={this.containerRef}>
-        <CursorOverlay timestamp={this.props.videoTimestamp} containerWidth={this.state.containerWidth} duration={this.props.videoDuration} />
         {this.props.comments.map(comment => {
           return (
             <Square
@@ -81,6 +80,7 @@ class CommentBar extends React.Component {
             />
           )
         })}
+        <CursorOverlay timestamp={this.props.videoTimestamp} containerWidth={this.state.containerWidth} duration={this.props.videoDuration} />
       </Container>
     )
   }

@@ -4,7 +4,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Container = styled(Box)`
-  background-color: ${props => props.theme.secondaryColor};
+  background-color: ${props => props.theme.backgroundColor};
 `
 const Card = ({ children }) => <Container>{children}</Container>
 
