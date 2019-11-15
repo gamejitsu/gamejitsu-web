@@ -5,8 +5,6 @@ import PropTypes from 'prop-types'
 import axios from 'axios'
 import { Flex, Box, Text } from 'rebass'
 import { CommentBar, commentDuration } from '.'
-import { Tooltip } from 'react-tippy'
-import 'react-tippy/dist/tippy.css'
 
 const deserializeReplayReviewRequests = data => {
   return data.data.map(data => {
@@ -31,7 +29,9 @@ const deserializeReplayReviewRequests = data => {
                 timestamp: 43
               },
               {
-                text: 'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
+                text:
+                  'lorem ipsum lorem ipsum lorem ipsum' +
+                  'lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
                 timestamp: 90
               },
               {

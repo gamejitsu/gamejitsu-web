@@ -17,9 +17,9 @@ const getX = props => {
 }
 
 const getCursorLeft = props => {
-  const timestamp = props.timestamp 
+  const timestamp = props.timestamp
   const totalDuration = props.duration
-  return (timestamp / totalDuration) * props.containerWidth 
+  return (timestamp / totalDuration) * props.containerWidth
 }
 
 function clickBarEvent(e) {
@@ -80,7 +80,11 @@ class CommentBar extends React.Component {
             />
           )
         })}
-        <CursorOverlay timestamp={this.props.videoTimestamp} containerWidth={this.state.containerWidth} duration={this.props.videoDuration} />
+        <CursorOverlay
+          timestamp={this.props.videoTimestamp}
+          containerWidth={this.state.containerWidth}
+          duration={this.props.videoDuration}
+        />
       </Container>
     )
   }
