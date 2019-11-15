@@ -5,9 +5,7 @@ import styled from 'styled-components'
 import { commentDuration } from '.'
 
 const getWidth = props => {
-  console.log(commentDuration)
   const totalDuration = props.duration
-  console.log(props)
   return (commentDuration / totalDuration) * props.containerWidth
 }
 
@@ -16,6 +14,12 @@ const getX = props => {
   const totalDuration = props.duration
   const ratio = (commentTimestamp - commentDuration / 2) / totalDuration
   return ratio * props.containerWidth
+}
+
+const getCursorLeft = props => {
+  const timestamp = props.timestamp 
+  const totalDuration = props.duration
+  return (timestamp / totalDuration) * props.containerWidth 
 }
 
 function clickBarEvent(e) {
@@ -39,6 +43,15 @@ const Square = styled(Box)`
   border: 1px solid red;
 `
 
+const CursorOverlay = styled(Box)`
+  background-color: black;
+  opacity: 0.7;
+  right: 0;
+  left: ${props => `${getCursorLeft(props)}px`};
+  position: absolute;
+  height: 100%;
+`
+
 class CommentBar extends React.Component {
   constructor() {
     super()
@@ -57,6 +70,7 @@ class CommentBar extends React.Component {
   render() {
     return (
       <Container onClick={clickBarEvent.bind(this)} ref={this.containerRef}>
+        <CursorOverlay timestamp={this.props.videoTimestamp} containerWidth={this.state.containerWidth} duration={this.props.videoDuration} />
         {this.props.comments.map(comment => {
           return (
             <Square
@@ -74,7 +88,8 @@ class CommentBar extends React.Component {
 
 CommentBar.propTypes = {
   comments: PropTypes.array,
-  videoDuration: PropTypes.number
+  videoDuration: PropTypes.number,
+  videoTimestamp: PropTypes.number
 }
 
 export default CommentBar

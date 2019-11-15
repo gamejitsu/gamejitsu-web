@@ -140,6 +140,7 @@ class Review extends React.Component {
           comments={comments}
           videoDuration={this.state.videoDuration}
           onMoveVideoCursor={updateVideoTimestamp.bind(this)}
+          videoTimestamp={this.state.videoTimestamp}
         />
       </Layout>
     )
