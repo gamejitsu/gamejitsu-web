@@ -1,5 +1,5 @@
 import { Layout, Spinner } from '~/components'
-import { ReviewsCard, RecentMatchesCard, ReviewRequestForm } from '.'
+import { ReviewRequestCard, ReplayCard, ReviewRequestForm } from '.'
 import { Socket } from 'phoenix'
 import { UserContext } from '../../../components'
 import axios from 'axios'
@@ -52,7 +52,7 @@ function onFinish() {
   this.setState({ replay: null })
 }
 
-const deserializeReplayReviewRequests = data => {
+const deserializeReviewRequests = data => {
   return data.data.map(data => {
     return {
       id: data.id,
@@ -74,11 +74,11 @@ const deserializeReplayReviewRequests = data => {
   })
 }
 
-const getReplayReviewRequests = async authToken => {
+const getReviewRequests = async authToken => {
   const response = await axios.get(process.env.API_ENDPOINT + '/review-requests', {
     headers: { Accept: 'application/vnd.api+json', Authorization: 'Bearer ' + authToken }
   })
-  return deserializeReplayReviewRequests(response.data)
+  return deserializeReviewRequests(response.data)
 }
 
 class Dashboard extends React.Component {
@@ -118,14 +118,14 @@ class Dashboard extends React.Component {
     ) : (
       <Layout title="Dashboard">
         {this.state.user.attributes['is-syncing-replays'] ? <Spinner /> : <div></div>}
-        Requested Reviews
-        {this.props.replayReviewRequests.map(replayReview => {
-          return <ReviewsCard key={replayReview.id} replayReview={replayReview} />
+        Reviews Requested
+        {this.props.reviewRequests.map(reviewRequest => {
+          return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
         })}
-        Recent Matches
+        Replay
         {this.props.replays.map(replay => {
           return (
-            <RecentMatchesCard
+            <ReplayCard
               key={replay.id}
               replay={replay}
               onSelectReplay={onSelectReplay.bind(this)}
@@ -140,13 +140,13 @@ class Dashboard extends React.Component {
 Dashboard.getInitialProps = async ctx => {
   const { authToken } = nextCookie(ctx)
   const replays = await getReplays(authToken)
-  const replayReviewRequests = await getReplayReviewRequests(authToken)
-  return { replays, replayReviewRequests, authToken }
+  const reviewRequests = await getReviewRequests(authToken)
+  return { replays, reviewRequests, authToken }
 }
 
 Dashboard.propTypes = {
   replays: PropTypes.array,
-  replayReviewRequests: PropTypes.array,
+  reviewRequests: PropTypes.array,
   authToken: PropTypes.string
 }
 

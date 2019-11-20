@@ -1,7 +1,7 @@
 import HeroImage from './HeroImage'
 import Page from './Page'
-import RecentMatchesCard from './RecentMatchesCard'
+import ReplayCard from './ReplayCard'
+import ReviewRequestCard from './ReviewRequestCard'
 import ReviewRequestForm from './ReviewRequestForm'
-import ReviewsCard from './ReviewsCard'
 
-export { HeroImage, Page, ReviewsCard, RecentMatchesCard, ReviewRequestForm }
+export { HeroImage, Page, ReplayCard, ReviewRequestCard, ReviewRequestForm }

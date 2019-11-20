@@ -48,6 +48,7 @@
     "npm": "^6.11.3"
   },
   "devDependencies": {
+    "axios-mock-adapter": "^1.17.0",
     "babel-eslint": "^10.0.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",

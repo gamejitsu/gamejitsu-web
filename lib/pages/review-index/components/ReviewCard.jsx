@@ -8,30 +8,29 @@ const goToReviewPage = id => {
   Router.push('/review/' + id)
 }
 
-const ReviewsCard = ({ replayReview }) => (
+const ReviewCard = ({ review }) => (
   <Card>
     <Flex>
       <Box p={3} mr="auto">
         <Text p={2}>Review</Text>
-        <Text p={2}>Review Id: {replayReview.id}</Text>
-        <Text p={2}>Match ID: {replayReview.matchId}</Text>
-        <Text p={2}>Skill Level: {replayReview['skill-level']}</Text>
+        <Text p={2}>Review Id: {review.id}</Text>
+        <Text p={2}>Match ID: {review.matchId}</Text>
+        <Text p={2}>Skill Level: {review.skillLevel}</Text>
       </Box>
       <Box alignSelf="center" pr={3}>
         <Button
           onClick={() => {
-            goToReviewPage(replayReview.id)
+            goToReviewPage(review.id)
           }}
           text="See completed review"
         />
-        <Button onClick={() => {}} text="Cancel" />
       </Box>
     </Flex>
   </Card>
 )
 
-ReviewsCard.propTypes = {
-  replayReview: PropTypes.object
+ReviewCard.propTypes = {
+  review: PropTypes.object
 }
 
-export default ReviewsCard
+export default ReviewCard
