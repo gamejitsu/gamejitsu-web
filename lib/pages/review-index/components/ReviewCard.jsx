@@ -5,7 +5,7 @@ import React from 'react'
 import Router from 'next/router'
 
 const goToReviewPage = id => {
-  Router.push('/review/' + id)
+  Router.push('/reviews/' + id)
 }
 
 const ReviewCard = ({ review }) => (
