@@ -3,8 +3,7 @@ import { ReviewCard } from '.'
 import { Layout } from '~/components'
 import nextCookie from 'next-cookies'
 import PropTypes from 'prop-types'
-import axios from 'axios'
-//import { Flex, Box, Text } from 'rebass'
+//import axios from 'axios'
 
 const deserializeReviews = data => {
   return data.map(review => {
@@ -23,7 +22,8 @@ const deserializeReviews = data => {
   })
 }
 
-const getReviews = async authToken => {
+//const getReviews = async authToken => {
+const getReviews = () => {
   //const response = await axios.get(process.env.API_ENDPOINT + '/reviews', {
   //  headers: { Accept: 'application/vnd.api+json', Authorization: 'Bearer ' + authToken }
   //})
@@ -109,7 +109,6 @@ class ReviewIndex extends React.Component {
 
 ReviewIndex.getInitialProps = async ctx => {
   const { authToken } = nextCookie(ctx)
-  const urlId = ctx.query.id
   const reviews = await getReviews(authToken)
   return { reviews }
 }

@@ -2,11 +2,6 @@ import { Flex, Box, Text } from 'rebass'
 import { Button, Card } from '~/components'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Router from 'next/router'
-
-const goToReviewPage = id => {
-  Router.push('/review/' + id)
-}
 
 const ReviewRequestCard = ({ reviewRequest }) => (
   <Card>
