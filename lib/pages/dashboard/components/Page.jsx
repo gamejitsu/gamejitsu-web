@@ -34,6 +34,7 @@ const getReplays = async authToken => {
   const response = await axios.get(process.env.API_ENDPOINT + '/replays', {
     headers: { Accept: 'application/vnd.api+json', Authorization: 'Bearer ' + authToken }
   })
+  console.log(response.data)
   return deserializeReplays(response.data)
 }
 
@@ -86,6 +87,7 @@ class Dashboard extends React.Component {
     super(props, context)
     this.state = {
       user: context.user,
+      replays: props.replays,
       socket: null
     }
   }
@@ -103,8 +105,9 @@ class Dashboard extends React.Component {
         socket
       })
     })
-    channel.on('update', userData => {
-      this.setState({ user: userData.data })
+    channel.on('update', async userData => {
+      const replays = await getReplays(this.props.authToken)
+      this.setState({ user: userData.data , replays })
     })
   }
 
@@ -123,7 +126,7 @@ class Dashboard extends React.Component {
           return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
         })}
         Replay
-        {this.props.replays.map(replay => {
+        {this.state.replays.map(replay => {
           return (
             <ReplayCard
               key={replay.id}
