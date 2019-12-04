@@ -30,7 +30,7 @@ const getReviews = () => {
   const response = {
     data: [
       {
-        id: 1,
+        id: 5,
         attributes: {
           'skill-level': 'high'
         },
@@ -60,7 +60,7 @@ const getReviews = () => {
         }
       },
       {
-        id: 2,
+        id: 6,
         attributes: {
           'skill-level': 'pro'
         },

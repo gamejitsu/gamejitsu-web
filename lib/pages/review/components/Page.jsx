@@ -6,55 +6,70 @@ import axios from 'axios'
 import { Flex, Box, Text } from 'rebass'
 import { CommentBar, commentDuration } from '.'
 
-const deserializeReplayReviewRequests = data => {
-  return data.data.map(data => {
+const deserializeReview = ({data, included}) => {
+  console.log('in deserialize')
+    console.log('before return')
     return {
       id: data.id,
-      matchId: data.relationships.replay.data.id,
       'skill-level': data.attributes['skill-level'],
-      review: data.relationships.review || {
-        data: {
+      comments: data.relationships.comments.map(comment => {
+        return included.find(includedComment => {
+          return comment.id === includedComment.id
+        })
+      })
+    }
+}
+
+const getReview = async authToken => {
+  /*const response = await axios.get(process.env.API_ENDPOINT + '/reviews/id', {
+    headers: { Accept: 'application/vnd.api+json', Authorization: 'Bearer ' + authToken }
+  })*/
+  const response = {
+    included: [
+      {
+        "type": "comment",
+        "id": 1,
+        attributes: {
+          text: 'ultra kill',
+          timestamp: 11
+        }
+      },
+      {
+        "type": "comment",
+        "id": 2,
+        attributes: {
+          text: 'kill',
+          timestamp: 21
+        }
+
+      }
+    ],
+    data: {
+      "type": "review",
+      id: 1,
+      attributes: {
+        'skill-level': 'high'
+      },
+      relationships: {
+        comments: [
+          {
+            id: 1
+          },
+          {
+            id: 2
+          }
+        ],
+        replay: {
+          id: 1,
           attributes: {
-            comments: [
-              {
-                text: 'ultra kill',
-                timestamp: 11
-              },
-              {
-                text: 'ultra',
-                timestamp: 38
-              },
-              {
-                text: 'test kill test test test test',
-                timestamp: 43
-              },
-              {
-                text:
-                  'lorem ipsum lorem ipsum lorem ipsum' +
-                  'lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
-                timestamp: 90
-              },
-              {
-                text: 'yo kill',
-                timestamp: 100
-              },
-              {
-                text: 'kill',
-                timestamp: 120
-              }
-            ]
+            'match-id': '200000'
           }
         }
       }
     }
-  })
-}
-
-const getReplayReviewRequests = async authToken => {
-  const response = await axios.get(process.env.API_ENDPOINT + '/review-requests', {
-    headers: { Accept: 'application/vnd.api+json', Authorization: 'Bearer ' + authToken }
-  })
-  return deserializeReplayReviewRequests(response.data)
+  }
+  console.log(response)
+  return deserializeReview(response)
 }
 
 function setVideoDuration(event) {
@@ -100,7 +115,7 @@ class Review extends React.Component {
   }
 
   render() {
-    const comments = this.props.reviewRequested.review.data.attributes.comments
+    const comments = this.props.review.comments
     const shownComments = comments.filter(comment => {
       const timeRange = commentDuration / 2
       const videoTimestamp = this.state.videoTimestamp
@@ -115,7 +130,7 @@ class Review extends React.Component {
           <Flex flexDirection="column">
             <Box p={3}>
               <Text p={2}>Review</Text>
-              <Text p={2}>Review Id: {this.props.reviewRequested.id}</Text>
+              <Text p={2}>Review Id: {this.props.review.id}</Text>
               <Flex>
                 <Box p={0} mx="auto">
                   <video
@@ -151,15 +166,14 @@ class Review extends React.Component {
 Review.getInitialProps = async ctx => {
   const { authToken } = nextCookie(ctx)
   const urlId = ctx.query.id
-  const replayReviewRequests = await getReplayReviewRequests(authToken)
-  const reviewRequested = replayReviewRequests.find(review => {
-    return review.id === urlId
-  })
-  return { reviewRequested }
+  const review = await getReview(authToken)
+  console.log(review)
+  console.log('url: ', urlId)
+  return { review }
 }
 
 Review.propTypes = {
-  reviewRequested: PropTypes.object
+  review: PropTypes.object
 }
 
 export default Review
