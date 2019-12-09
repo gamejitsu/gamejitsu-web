@@ -16,7 +16,7 @@ const Image = styled.img`
 
 const ButtonSteam = ({ onClick }) => (
   <Content onClick={onClick}>
-    <Image src="/static/img/sits_01.png" />
+    <Image src="/static/images/sits_01.png" />
   </Content>
 )
 

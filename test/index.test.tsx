@@ -1,7 +1,7 @@
 import { mount } from 'enzyme'
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { theme } from '~'
+import { theme } from 'gamejitsu'
 import IndexPage from '../pages/index'
 import { UserContext } from '../lib/components'
 

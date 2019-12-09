@@ -1,5 +1,5 @@
 import { Flex, Box, Text } from 'rebass'
-import { Button, Card } from '~/components'
+import { Button, Card } from 'gamejitsu/components'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Router from 'next/router'

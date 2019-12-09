@@ -1,4 +1,4 @@
-import { Layout, Spinner } from '~/components'
+import { Layout, Spinner } from 'gamejitsu/components'
 import { ReviewRequestCard, ReplayCard, ReviewRequestForm } from '.'
 import { Socket } from 'phoenix'
 import { UserContext } from '../../../components'

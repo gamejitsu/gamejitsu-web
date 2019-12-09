@@ -19,9 +19,9 @@
     "process": true
   },
   "rules": {
-    "indent": ["error", 2, { "SwitchCase": 1 }],
-    "max-len": ["error", 100],
-    "react/display-name": "off"
+    "indent": "off",
+    "max-len": "off",
+    "react/prop-types": "off"
   },
   "settings": {
     "react": {

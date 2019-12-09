@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, Card, Comment } from '~/components'
+import { Layout, Card, Comment } from 'gamejitsu/components'
 import nextCookie from 'next-cookies'
 import PropTypes from 'prop-types'
 import axios from 'axios'

@@ -1,6 +1,6 @@
 import React from 'react'
 import { ReviewCard } from '.'
-import { Layout } from '~/components'
+import { Layout } from 'gamejitsu/components'
 import nextCookie from 'next-cookies'
 import PropTypes from 'prop-types'
 //import axios from 'axios'

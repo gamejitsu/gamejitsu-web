@@ -40,7 +40,7 @@ const Navbar = () => {
 
   return (
     <Container py={2} px={2} color="white" alignItems="center">
-      <NavLink href="/" fontWeight="bold">
+      <NavLink href="/">
         Gamejitsu
       </NavLink>
       <NavLink href="/dashboard">Dashboard</NavLink>

@@ -1,4 +1,4 @@
-import { Button, Layout } from '~/components'
+import { Button, Layout } from 'gamejitsu/components'
 import { Box, Flex, Text } from 'rebass'
 import { Formik, Form, Field } from 'formik'
 import Router from 'next/router'
