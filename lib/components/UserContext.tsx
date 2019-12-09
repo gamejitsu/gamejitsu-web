@@ -1,5 +1,11 @@
-import { createContext } from 'react'
+import { createContext } from "react"
 
-const UserContext = createContext({ user: undefined })
+interface User {
+  username?: string
+  id?: string
+}
+
+const defaultUser: User = {}
+const UserContext = createContext({ user: defaultUser })
 
 export default UserContext

@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "lint": "eslint \"**/*.{ts,tsx}\"",
-    "prettier": "prettier **/*.{ts,tsx}",
+    "prettier": "prettier \"**/*.{ts,tsx}\"",
     "dev": "next",
     "build": "next build",
     "start": "next start",
@@ -37,7 +37,12 @@
     "npm": "^6.12.1"
   },
   "devDependencies": {
+    "@types/js-cookie": "^2.2.4",
+    "@types/jwt-decode": "^2.2.1",
+    "@types/phoenix": "^1.4.3",
     "@types/react": "^16.9.16",
+    "@types/rebass": "^4.0.3",
+    "@types/styled-components": "^4.4.0",
     "babel-eslint": "^10.0.3",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",

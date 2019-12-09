@@ -38,7 +38,7 @@ jobs:
       - run: npm link @octokit/rest
       - deploy:
           name: Deploy
-          command: bin/deploy
+          command: .circleci/bin/deploy
 workflows:
   version: 2
   build-and-deploy:

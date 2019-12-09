@@ -1,3 +1,3 @@
-import { Page } from 'gamejitsu/pages/index/components'
+import { Page } from "gamejitsu/pages/index/components"
 
 export default Page

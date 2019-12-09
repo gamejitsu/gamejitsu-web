@@ -1,15 +1,11 @@
-import { Box } from 'rebass'
-import PropTypes from 'prop-types'
-import React from 'react'
-import styled from 'styled-components'
+import { Box } from "rebass"
+import { FunctionComponent } from "react"
+import styled from "styled-components"
 
-const Container = styled(Box)`
-  background-color: ${props => props.theme.backgroundColor};
+const Content = styled(Box)`
+  background-color: ${(props) => props.theme.backgroundColor};
 `
-const Card = ({ children }) => <Container>{children}</Container>
 
-Card.propTypes = {
-  children: PropTypes.node
-}
+const Card: FunctionComponent = ({ children }) => <Content>{children}</Content>
 
 export default Card

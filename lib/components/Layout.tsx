@@ -1,29 +1,27 @@
-import { Box } from 'rebass'
-import Head from 'next/head'
-import Navbar from './Navbar'
-import PropTypes from 'prop-types'
-import React from 'react'
-import styled from 'styled-components'
+import { Box } from "rebass"
+import Head from "next/head"
+import Navbar from "./Navbar"
+import { FunctionComponent } from "react"
+import styled from "styled-components"
+
+interface Props {
+  title?: string
+}
 
 const Container = styled(Box)`
   max-width: 1024px;
 `
 
-const Layout = ({ title, children }) => (
-  <React.Fragment>
-    <Navbar/>
+const Layout: FunctionComponent<Props> = ({ title, children }) => (
+  <>
+    <Navbar />
     <Container mx="auto">
       <Head>
-        <title>{title === undefined ? 'Gamejitsu' : `Gamejitsu - ${title}`}</title>
+        <title>{title === undefined ? "Gamejitsu" : `Gamejitsu - ${title}`}</title>
       </Head>
       {children}
     </Container>
-  </React.Fragment>
+  </>
 )
-
-Layout.propTypes = {
-  title: PropTypes.string,
-  children: PropTypes.node
-}
 
 export default Layout

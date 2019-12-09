@@ -1,7 +1,4 @@
-import React from 'react'
-import { Layout } from 'gamejitsu/components'
+import React from "react"
+import { Layout } from "gamejitsu/components"
 
-export default () => (
-  <Layout>
-  </Layout>
-)
+export default () => <Layout></Layout>

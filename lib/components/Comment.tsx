@@ -1,6 +1,11 @@
-import PropTypes from 'prop-types'
-import React from 'react'
-import styled from 'styled-components'
+import { FunctionComponent } from "react"
+import styled from "styled-components"
+
+interface Props {
+  comment: {
+    text: string
+  }
+}
 
 const Content = styled.button`
   align-items:flex-start;
@@ -83,14 +88,6 @@ const Content = styled.button`
   writing-mode:horizontal-tb;
 `
 
-const Comment = ({ comment }) => (
-  <Content>
-    {comment.text}
-  </Content>
-)
-
-Comment.propTypes = {
-  comment: PropTypes.object.isRequired
-}
+const Comment: FunctionComponent<Props> = ({ comment }) => <Content>{comment.text}</Content>
 
 export default Comment

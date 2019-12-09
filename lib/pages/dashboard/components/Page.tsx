@@ -1,70 +1,69 @@
-import { Layout, Spinner } from 'gamejitsu/components'
-import { ReviewRequestCard, ReplayCard, ReviewRequestForm } from '.'
-import { Socket } from 'phoenix'
-import { UserContext } from '../../../components'
-import axios from 'axios'
-import nextCookie from 'next-cookies'
-import PropTypes from 'prop-types'
-import React from 'react'
+import { Layout, Spinner } from "gamejitsu/components"
+import { ReviewRequestCard, ReplayCard, ReviewRequestForm } from "."
+import { Socket } from "phoenix"
+import { UserContext } from "../../../components"
+import axios from "axios"
+import nextCookie from "next-cookies"
+import React from "react"
 
-const deserializePlayers = players => {
-  return players.map(player => {
+const deserializePlayers = (players: any) => {
+  return players.map((player: any) => {
     return {
-      name: player['hero-name'],
-      image: player['hero-portrait-url']
+      name: player["hero-name"],
+      image: player["hero-portrait-url"]
     }
   })
 }
 
-const deserializeReplays = data => {
-  return data.data.map(replay => {
+const deserializeReplays = (data: any) => {
+  return data.data.map((replay: any) => {
     const playersDire = deserializePlayers(replay.attributes.players.slice(0, 5))
     const playersRadiant = deserializePlayers(replay.attributes.players.slice(5, 10))
     return {
       id: replay.id,
-      matchId: replay.attributes['match-id'],
-      playedAt: replay.attributes['played-at'],
+      matchId: replay.attributes["match-id"],
+      playedAt: replay.attributes["played-at"],
       playersDire,
       playersRadiant
     }
   })
 }
 
-const getReplays = async authToken => {
-  const response = await axios.get(process.env.API_ENDPOINT + '/replays', {
-    headers: { Accept: 'application/vnd.api+json', Authorization: 'Bearer ' + authToken }
+const getReplays = async (authToken: string) => {
+  const response = await axios.get(process.env.API_ENDPOINT + "/replays", {
+    headers: { Accept: "application/vnd.api+json", Authorization: "Bearer " + authToken }
   })
   console.log(response.data)
   return deserializeReplays(response.data)
 }
 
-const getCurrentUser = async authToken => {
-  const response = await axios.get(process.env.API_ENDPOINT + '/users/current', {
-    headers: { Accept: 'application/vnd.api+json', Authorization: 'Bearer ' + authToken }
+const getCurrentUser = async (authToken: string) => {
+  const response = await axios.get(process.env.API_ENDPOINT + "/users/current", {
+    headers: { Accept: "application/vnd.api+json", Authorization: "Bearer " + authToken }
   })
   return response.data.data
 }
 
-function onSelectReplay({ replay }) {
+function onSelectReplay(this: Dashboard, { replay }: any) {
   this.setState({ replay })
 }
 
-function onFinish() {
+function onFinish(this: Dashboard) {
   this.setState({ replay: null })
 }
 
-const deserializeReviewRequests = data => {
-  return data.data.map(data => {
+const deserializeReviewRequests = (data: any) => {
+  return data.data.map((data: any) => {
     return {
       id: data.id,
       matchId: data.relationships.replay.data.id,
-      'skill-level': data.attributes['skill-level'],
+      "skill-level": data.attributes["skill-level"],
       review: data.relationships.review || {
         data: {
           attributes: {
             comments: [
               {
-                text: 'ultra kill',
+                text: "ultra kill",
                 timestamp: Date.now()
               }
             ]
@@ -75,16 +74,24 @@ const deserializeReviewRequests = data => {
   })
 }
 
-const getReviewRequests = async authToken => {
-  const response = await axios.get(process.env.API_ENDPOINT + '/review-requests', {
-    headers: { Accept: 'application/vnd.api+json', Authorization: 'Bearer ' + authToken }
+const getReviewRequests = async (authToken: string) => {
+  const response = await axios.get(process.env.API_ENDPOINT + "/review-requests", {
+    headers: { Accept: "application/vnd.api+json", Authorization: "Bearer " + authToken }
   })
   return deserializeReviewRequests(response.data)
 }
 
-class Dashboard extends React.Component {
-  constructor(props, context) {
-    super(props, context)
+class Dashboard extends React.Component<any, any> {
+  static getInitialProps = async (ctx: any) => {
+    const { authToken } = nextCookie(ctx) as any
+    const replays = await getReplays(authToken)
+    const reviewRequests = await getReviewRequests(authToken)
+    return { replays, reviewRequests, authToken }
+  }
+
+  constructor(props: any, context: any) {
+    super(props)
+
     this.state = {
       user: context.user,
       replays: props.replays,
@@ -93,21 +100,21 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    const socket = new Socket(process.env.SOCKET_ENDPOINT + '/socket', {
+    const socket = new Socket(process.env.SOCKET_ENDPOINT + "/socket", {
       params: { token: this.props.authToken }
     })
     socket.connect()
-    const channel = socket.channel('users:' + this.context.user.id)
-    channel.join().receive('ok', async () => {
+    const channel = socket.channel("users:" + this.context.user.id)
+    channel.join().receive("ok", async () => {
       const user = await getCurrentUser(this.props.authToken)
       this.setState({
         user,
         socket
       })
     })
-    channel.on('update', async userData => {
+    channel.on("update", async (userData) => {
       const replays = await getReplays(this.props.authToken)
-      this.setState({ user: userData.data , replays })
+      this.setState({ user: userData.data, replays })
     })
   }
 
@@ -120,13 +127,13 @@ class Dashboard extends React.Component {
       <ReviewRequestForm replay={this.state.replay} onFinish={onFinish.bind(this)} />
     ) : (
       <Layout title="Dashboard">
-        {this.state.user.attributes['is-syncing-replays'] ? <Spinner /> : <div></div>}
+        {this.state.user.attributes["is-syncing-replays"] ? <Spinner /> : <div></div>}
         Reviews Requested
-        {this.props.reviewRequests.map(reviewRequest => {
+        {this.props.reviewRequests.map((reviewRequest: any) => {
           return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
         })}
         Replay
-        {this.state.replays.map(replay => {
+        {this.state.replays.map((replay: any) => {
           return (
             <ReplayCard
               key={replay.id}
@@ -138,19 +145,6 @@ class Dashboard extends React.Component {
       </Layout>
     )
   }
-}
-
-Dashboard.getInitialProps = async ctx => {
-  const { authToken } = nextCookie(ctx)
-  const replays = await getReplays(authToken)
-  const reviewRequests = await getReviewRequests(authToken)
-  return { replays, reviewRequests, authToken }
-}
-
-Dashboard.propTypes = {
-  replays: PropTypes.array,
-  reviewRequests: PropTypes.array,
-  authToken: PropTypes.string
 }
 
 Dashboard.contextType = UserContext

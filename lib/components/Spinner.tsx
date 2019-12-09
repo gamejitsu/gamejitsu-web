@@ -1,5 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
+
+interface DotProps {
+  delay?: string
+}
 
 const Container = styled.div`
   width: 40px;
@@ -13,14 +17,14 @@ const Container = styled.div`
   margin-left: 5px;
 `
 
-const Dot = styled.div`
+const Dot = styled.div<DotProps>`
   width: 6px;
   height: 6px;
 
   border-radius: 50%;
   background-color: red;
   animation: pulse 0.85s infinite ease-in-out;
-  animation-delay: ${props => props.delay || '0'}s;
+  animation-delay: ${(props) => props.delay || "0"}s;
 
   @keyframes pulse {
     0%,
@@ -39,8 +43,8 @@ const Dot = styled.div`
 
 const Spinner = () => (
   <Container>
-    <Dot delay={'-0.2'} />
-    <Dot delay={'-0.1'} />
+    <Dot delay={"-0.2"} />
+    <Dot delay={"-0.1"} />
     <Dot />
   </Container>
 )

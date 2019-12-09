@@ -1,6 +1,10 @@
-import PropTypes from 'prop-types'
-import React from 'react'
-import styled from 'styled-components'
+import PropTypes from "prop-types"
+import React, { FunctionComponent } from "react"
+import styled from "styled-components"
+
+interface Props {
+  onClick: () => void
+}
 
 const Content = styled.button`
   margin: 0;
@@ -14,14 +18,14 @@ const Image = styled.img`
   width: 80%;
 `
 
-const ButtonSteam = ({ onClick }) => (
+const SteamButton: FunctionComponent<Props> = ({ onClick }) => (
   <Content onClick={onClick}>
     <Image src="/static/images/sits_01.png" />
   </Content>
 )
 
-ButtonSteam.propTypes = {
+SteamButton.propTypes = {
   onClick: PropTypes.func.isRequired
 }
 
-export default ButtonSteam
+export default SteamButton

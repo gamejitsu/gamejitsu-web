@@ -1,3 +1,3 @@
-import { Page } from 'gamejitsu/pages/dashboard/components'
+import { Page } from "gamejitsu/pages/dashboard/components"
 
 export default Page

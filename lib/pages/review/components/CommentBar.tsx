@@ -1,28 +1,28 @@
-import { Box } from 'rebass'
-import { commentDuration } from '.'
-import PropTypes from 'prop-types'
-import React from 'react'
-import styled from 'styled-components'
+import { Box } from "rebass"
+import { commentDuration } from "."
+import PropTypes from "prop-types"
+import React, { RefObject } from "react"
+import styled from "styled-components"
 
-const getWidth = props => {
+const getWidth = (props: any) => {
   const totalDuration = props.duration
   return (commentDuration / totalDuration) * props.containerWidth
 }
 
-const getX = props => {
+const getX = (props: any) => {
   const commentTimestamp = props.comment.timestamp
   const totalDuration = props.duration
   const ratio = (commentTimestamp - commentDuration / 2) / totalDuration
   return ratio * props.containerWidth
 }
 
-const getCursorLeft = props => {
+const getCursorLeft = (props: any) => {
   const timestamp = props.timestamp
   const totalDuration = props.duration
   return (timestamp / totalDuration) * props.containerWidth
 }
 
-function clickBarEvent(e) {
+function clickBarEvent(this: any, e: any) {
   const rect = this.containerRef.current.getBoundingClientRect()
   const x = e.clientX - rect.left
   const timestamp = Math.floor((x / this.state.containerWidth) * this.props.videoDuration)
@@ -30,31 +30,33 @@ function clickBarEvent(e) {
 }
 
 const Container = styled(Box)`
-  background-color: ${props => props.theme.secondaryColor};
+  background-color: ${(props) => props.theme.secondaryColor};
   position: relative;
   height: 80px;
 `
-const Square = styled(Box)`
-  background-color: ${props => props.theme.primaryColor};
-  left: ${props => `${getX(props)}px`};
-  width: ${props => `${getWidth(props)}px`};
+const Square = styled<any>(Box)`
+  background-color: ${(props) => props.theme.primaryColor};
+  left: ${(props) => `${getX(props)}px`};
+  width: ${(props) => `${getWidth(props)}px`};
   height: 100%;
   position: absolute;
-  border: 1px solid ${props => props.theme.secondaryColor};
+  border: 1px solid ${(props) => props.theme.secondaryColor};
 `
 
-const CursorOverlay = styled(Box)`
+const CursorOverlay = styled<any>(Box)`
   background-color: black;
   opacity: 0.4;
   right: 0;
-  left: ${props => `${getCursorLeft(props)}px`};
+  left: ${(props) => `${getCursorLeft(props)}px`};
   position: absolute;
   height: 100%;
 `
 
-class CommentBar extends React.Component {
-  constructor() {
-    super()
+class CommentBar extends React.Component<any, any> {
+  containerRef: RefObject<HTMLElement>
+  
+  constructor(props: any) {
+    super(props)
     this.containerRef = React.createRef()
     this.state = {
       containerWidth: 0
@@ -63,14 +65,14 @@ class CommentBar extends React.Component {
 
   componentDidMount() {
     this.setState({
-      containerWidth: this.containerRef.current.offsetWidth
+      containerWidth: this.containerRef.current && this.containerRef.current.offsetWidth
     })
   }
 
   render() {
     return (
       <Container onClick={clickBarEvent.bind(this)} ref={this.containerRef}>
-        {this.props.comments.map(comment => {
+        {this.props.comments.map((comment: any) => {
           return (
             <Square
               key={comment.timestamp}
@@ -88,12 +90,6 @@ class CommentBar extends React.Component {
       </Container>
     )
   }
-}
-
-CommentBar.propTypes = {
-  comments: PropTypes.array,
-  videoDuration: PropTypes.number,
-  videoTimestamp: PropTypes.number
 }
 
 export default CommentBar

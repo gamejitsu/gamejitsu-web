@@ -1,23 +1,23 @@
-import React from 'react'
-import { ReviewCard } from '.'
-import { Layout } from 'gamejitsu/components'
-import nextCookie from 'next-cookies'
-import PropTypes from 'prop-types'
+import React from "react"
+import { ReviewCard } from "."
+import { Layout } from "gamejitsu/components"
+import nextCookie from "next-cookies"
+import PropTypes from "prop-types"
 //import axios from 'axios'
 
-const deserializeReviews = data => {
-  return data.map(review => {
+const deserializeReviews = (data: any) => {
+  return data.map((review: any) => {
     return {
       id: review.id,
-      comments: review.relationships.comments.map(comment => {
+      comments: review.relationships.comments.map((comment: any) => {
         return {
           id: comment.id,
           text: comment.attributes.text,
           timestamp: comment.attributes.timestamp
         }
       }),
-      matchId: review.relationships.replay.attributes['match-id'],
-      skillLevel: review.attributes['skill-level']
+      matchId: review.relationships.replay.attributes["match-id"],
+      skillLevel: review.attributes["skill-level"]
     }
   })
 }
@@ -32,21 +32,21 @@ const getReviews = () => {
       {
         id: 5,
         attributes: {
-          'skill-level': 'high'
+          "skill-level": "high"
         },
         relationships: {
           comments: [
             {
               id: 1,
               attributes: {
-                text: 'ultra kill',
+                text: "ultra kill",
                 timestamp: 11
               }
             },
             {
               id: 2,
               attributes: {
-                text: 'kill',
+                text: "kill",
                 timestamp: 21
               }
             }
@@ -54,7 +54,7 @@ const getReviews = () => {
           replay: {
             id: 1,
             attributes: {
-              'match-id': '200000'
+              "match-id": "200000"
             }
           }
         }
@@ -62,21 +62,21 @@ const getReviews = () => {
       {
         id: 6,
         attributes: {
-          'skill-level': 'pro'
+          "skill-level": "pro"
         },
         relationships: {
           comments: [
             {
               id: 1,
               attributes: {
-                text: 'ultra kill',
+                text: "ultra kill",
                 timestamp: 31
               }
             },
             {
               id: 2,
               attributes: {
-                text: 'kill',
+                text: "kill",
                 timestamp: 41
               }
             }
@@ -84,7 +84,7 @@ const getReviews = () => {
           replay: {
             id: 1,
             attributes: {
-              'match-id': '5500000'
+              "match-id": "5500000"
             }
           }
         }
@@ -94,27 +94,23 @@ const getReviews = () => {
   return deserializeReviews(response.data)
 }
 
-class ReviewIndex extends React.Component {
+class ReviewIndex extends React.Component<any> {
+  static getInitialProps = async (ctx: any) => {
+    const { authToken } = nextCookie(ctx)
+    const reviews = await getReviews()
+    return { reviews }
+  }
+
   render() {
     return (
       <Layout title="Reviews">
         Completed Reviews
-        {this.props.reviews.map(review => {
+        {this.props.reviews.map((review: any) => {
           return <ReviewCard key={review.id} review={review} />
         })}
       </Layout>
     )
   }
-}
-
-ReviewIndex.getInitialProps = async ctx => {
-  const { authToken } = nextCookie(ctx)
-  const reviews = await getReviews(authToken)
-  return { reviews }
-}
-
-ReviewIndex.propTypes = {
-  reviews: PropTypes.array
 }
 
 export default ReviewIndex

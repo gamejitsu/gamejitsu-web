@@ -1,39 +1,39 @@
-import { Button, Layout } from 'gamejitsu/components'
-import { Box, Flex, Text } from 'rebass'
-import { Formik, Form, Field } from 'formik'
-import Router from 'next/router'
-import axios from 'axios'
-import PropTypes from 'prop-types'
-import React from 'react'
-import cookie from 'js-cookie'
-import { HeroImage } from '.'
+import { Button, Layout } from "gamejitsu/components"
+import { Box, Flex, Text } from "rebass"
+import { Formik, Form, Field } from "formik"
+import Router from "next/router"
+import axios from "axios"
+import PropTypes from "prop-types"
+import React from "react"
+import cookie from "js-cookie"
+import { HeroImage } from "."
 
-const ReviewRequestForm = ({ replay, onFinish }) => {
+const ReviewRequestForm = ({ replay, onFinish }: any) => {
   console.log(replay)
   return (
     <Layout title="Dashboard">
       <div>
         <Formik
           initialValues={{}}
-          onSubmit={async (values, { setSubmitting }) => {
+          onSubmit={async (values: any, { setSubmitting }) => {
             console.log(values)
             console.log(setSubmitting)
             await axios.post(
-              process.env.API_ENDPOINT + '/review-requests',
+              process.env.API_ENDPOINT + "/review-requests",
               {
                 data: {
-                  type: 'review-request',
+                  type: "review-request",
                   attributes: {
-                    'replay-id': replay.id,
-                    'skill-level': values.skill
+                    "replay-id": replay.id,
+                    "skill-level": values.skill
                   }
                 }
               },
               {
                 headers: {
-                  Accept: 'application/vnd.api+json',
-                  'Content-Type': 'application/vnd.api+json',
-                  Authorization: 'Bearer ' + cookie.get('authToken')
+                  Accept: "application/vnd.api+json",
+                  "Content-Type": "application/vnd.api+json",
+                  Authorization: "Bearer " + cookie.get("authToken")
                 }
               }
             )
@@ -43,7 +43,7 @@ const ReviewRequestForm = ({ replay, onFinish }) => {
         >
           {({ isSubmitting }) => (
             <Form>
-              <Flex direction='column' alignItems='center'>
+              <Flex flexDirection="column" alignItems="center">
                 <Box p={3} mr="auto">
                   <Text p={2}>MatchId: {replay.matchId}</Text>
                   <Text p={2}>playedAt: {replay.playedAt}</Text>
@@ -87,7 +87,6 @@ const ReviewRequestForm = ({ replay, onFinish }) => {
                   text="Request Replay"
                   type="submit"
                   disabled={isSubmitting}
-                  replay={replay}
                 />
               </Box>
             </Form>

@@ -1,14 +1,14 @@
-import { Flex, Box, Text } from 'rebass'
-import { Button, Card } from 'gamejitsu/components'
-import PropTypes from 'prop-types'
-import React from 'react'
-import Router from 'next/router'
+import { Flex, Box, Text } from "rebass"
+import { Button, Card } from "gamejitsu/components"
+import PropTypes from "prop-types"
+import React from "react"
+import Router from "next/router"
 
-const goToReviewPage = id => {
-  Router.push('/reviews/' + id)
+const goToReviewPage = (id: any) => {
+  Router.push("/reviews/" + id)
 }
 
-const ReviewCard = ({ review }) => (
+const ReviewCard = ({ review }: any) => (
   <Card>
     <Flex>
       <Box p={3} mr="auto">

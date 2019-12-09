@@ -1,11 +1,11 @@
-import { Flex, Box, Text } from 'rebass'
-import { Button, Card } from 'gamejitsu/components'
-import { HeroImage } from '.'
-import { UserContext } from '../../../components'
-import PropTypes from 'prop-types'
-import React, { useContext } from 'react'
+import { Flex, Box, Text } from "rebass"
+import { Button, Card } from "gamejitsu/components"
+import { HeroImage } from "."
+import { UserContext } from "../../../components"
+import PropTypes from "prop-types"
+import React, { useContext } from "react"
 
-const RecentMatchesCard = ({ replay, onSelectReplay }) => {
+const RecentMatchesCard = ({ replay, onSelectReplay }: any) => {
   const { user } = useContext(UserContext)
 
   return (
