@@ -28,6 +28,7 @@
   ],
   "include": [
     "next-env.d.js",
+    "types.d.ts",
     "**/*.ts",
     "**/*.tsx", "jest.config.js", "jest.setup.js", "next.config.js"
   ]

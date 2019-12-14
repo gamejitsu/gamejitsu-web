@@ -54,7 +54,7 @@ const CursorOverlay = styled<any>(Box)`
 
 class CommentBar extends React.Component<any, any> {
   containerRef: RefObject<HTMLElement>
-  
+
   constructor(props: any) {
     super(props)
     this.containerRef = React.createRef()
