@@ -45,6 +45,7 @@ const Navbar = () => {
       </NavLink>
       <NavLink href="/dashboard">Dashboard</NavLink>
       <NavLink href="/reviews">Reviews</NavLink>
+      <NavLink href="/coach-reviews">Coach Reviews</NavLink>
       <Box mx="auto" />
       {user ? (
         [
