@@ -1,40 +1,29 @@
-import * as t from "io-ts"
 import dasherize from "dasherize"
-import models from "../models"
+import { ModelOfType } from "../schema"
+import models, { ModelType } from "../models"
 
-interface BaseModel {
-  id: string
-}
-
-export type ModelAttributes = t.TypeOf<typeof ModelRegistry>
-export type ModelType = keyof ModelAttributes
-export type ModelOfType<T extends ModelType> = ModelAttributes[T] & BaseModel
-export type Model = t.TypeOf<typeof Model>
-
-export const ModelRegistry = t.type(models)
-
-export const Model =
-  Object.values(ModelRegistry.props).reduce<t.Mixed | undefined>((union, model) => {
-    if (!union) {
-      return model
-    } else {
-      return t.union([union, model])
-    }
-  }, undefined) || t.undefined
-
-export const serializeModel = <T extends BaseModel>(model?: T) => {
+export const serializeModel = <T extends ModelType>(model?: ModelOfType<T>) => {
   if (!model) {
     return null
   }
 
-  const { id, ...attributes } = model
+  const { id } = model
+  const schema = models[model.type]
+
+  const attributes = Object.keys(schema).reduce((acc, key) => {
+    const field = schema[key]
+
+    if (field.kind === "attr") {
+      return { ...acc, [key]: model[key] }
+    }
+  }, {} as any)
 
   return JSON.stringify({
     jsonapi: {
       version: "1.0"
     },
     data: {
-      id: model.id,
+      id: id,
       attributes: dasherize(attributes)
     }
   })

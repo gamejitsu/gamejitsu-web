@@ -1,8 +1,13 @@
-import { ModelOfType } from "../api/model"
+import reviewRequest from "./review-request"
 import session from "./session"
 import user from "./user"
+import replay from "./replay"
 
-export type Session = ModelOfType<"session">
-export type User = ModelOfType<"user">
+export type ModelType = "review-request" | "session" | "user" | "replay"
 
-export default { session, user }
+export default {
+  "review-request": reviewRequest,
+  session,
+  user,
+  replay
+}

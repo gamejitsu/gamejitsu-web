@@ -1,5 +1,5 @@
-import * as t from "io-ts"
+import { attr, schema } from "../schema"
 
-export default t.type({
-  username: t.string
+export default schema({
+  username: attr("string")
 })
