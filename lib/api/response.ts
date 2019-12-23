@@ -1,33 +1,38 @@
 import * as t from "io-ts"
-import { isRight, Either } from "fp-ts/lib/Either"
-import { Model, ModelAttributes, ModelRegistry, ModelType, ModelOfType } from "./model"
+import { isRight } from "fp-ts/lib/Either"
+import { ResponseType } from "./api"
+import { Schemas, ModelOfType, Attr, Attrs, isAttr, attrTypes } from "../schema"
+import models, { ModelType } from "../models"
 
-export type ResponseType = "one" | "many"
-
-interface DeserializedResponse<T extends ModelType, U extends ResponseType> {
-  data: U extends "one" ? ModelOfType<T> : (ModelOfType<T> | undefined)[]
-  included: {
-    [K in ModelType]: (ModelOfType<K> | undefined)[]
-  }
+type AttributesType<T extends ModelType> = {
+  [K in keyof Schemas[T]]: Schemas[T][K] extends Attr ? Attrs[Schemas[T][K]["type"]] : never
 }
 
-interface Response<T extends ModelType, U extends ResponseType> {
-  jsonapi: {
-    version: "1.0"
-  }
-  data: ResponseData<T, U>
-  included: Model[]
-}
+type AttributesC<T extends ModelType> = t.TypeC<AttributesType<T>>
 
-type ResponseData<T extends ModelType, U extends ResponseType> = U extends "one"
-  ? ResponseRecord<T>
-  : ResponseRecord<T>[]
+type ModelC<T extends ModelType = ModelType> = t.TypeC<{
+  type: t.LiteralC<T>
+  id: t.StringC
+  attributes: AttributesC<T>
+}>
 
-interface ResponseRecord<T extends ModelType> {
-  id: string
-  type: T
-  attributes: ModelAttributes[T]
-}
+type DataC<T extends ModelType, U extends ResponseType> = U extends "one"
+  ? ModelC<T>
+  : t.ArrayC<ModelC<T>>
+
+type IncludedC = t.UnionC<[t.ArrayC<ModelC<ModelType>>, t.UndefinedC]>
+
+type ResponseC<T extends ModelType, U extends ResponseType> = t.TypeC<{
+  jsonapi: t.TypeC<{
+    version: t.LiteralC<"1.0">
+  }>
+  data: DataC<T, U>
+  included: IncludedC
+}>
+
+type DeserializedData<T extends ModelType, U extends ResponseType> = U extends "one"
+  ? ModelOfType<T>
+  : (ModelOfType<T> | undefined)[]
 
 class DeserializationError extends Error {
   errors: t.Errors
@@ -39,73 +44,100 @@ class DeserializationError extends Error {
   }
 }
 
-const ResponseRecord = (modelType: ModelType) =>
-  t.type({
+const modelTypes = Object.keys(models) as ModelType[]
+
+const Models = (() => {
+  if (modelTypes.length === 0) {
+    return t.undefined
+  }
+
+  if (modelTypes.length === 1) {
+    return Model(modelTypes[0])
+  }
+
+  return t.union([
+    Model(modelTypes[0]),
+    Model(modelTypes[1]),
+    ...modelTypes.slice(2).map((t) => Model(t))
+  ])
+})()
+
+function Attributes<T extends ModelType>(modelType: T): AttributesC<T> {
+  const schema = models[modelType]
+
+  return t.type(
+    Object.keys(schema).reduce((acc, key) => {
+      const field = schema[key]
+      return isAttr(field) ? { ...acc, [key]: attrTypes[field.type] } : acc
+    }, {} as AttributesType<T>)
+  )
+}
+
+function Model<T extends ModelType>(modelType: T): ModelC<T> {
+  return t.type({
     id: t.string,
     type: t.literal(modelType),
-    attributes: ModelRegistry.props[modelType]
+    attributes: Attributes(modelType)
   })
+}
 
-const Response = (modelType: ModelType, responseType: ResponseType) =>
-  t.type({
+function Response<T extends ModelType, U extends ResponseType>(
+  modelType: T,
+  responseType: U
+): ResponseC<T, U> {
+  return t.type({
     jsonapi: t.type({
       version: t.literal("1.0")
     }),
 
-    data: responseType === "one" ? ResponseRecord(modelType) : t.array(ResponseRecord(modelType)),
-
-    included: t.array(Model)
-  })
-
-const extractRecord = <T extends ModelType>(record: ResponseRecord<T>) => {
-  const model: ModelOfType<T> = {
-    id: record.id,
-    ...record.attributes
-  }
-
-  return model
+    data: responseType === "one" ? Model(modelType) : t.array(Model(modelType)),
+    included: t.union([t.array(Models), t.undefined])
+  }) as ResponseC<T, U>
 }
 
-const extractData = <T extends ModelType, U extends ResponseType>(
+function extractModel<T extends ModelType>(model: t.TypeOf<ModelC<T>>): ModelOfType<T> {
+  return { type: model.type, id: model.id, ...model.attributes } as ModelOfType<T>
+}
+
+function extractData<T extends ModelType, U extends ResponseType>(
   responseType: U,
-  data: ResponseData<T, U>
-) => {
-  if (responseType === "one") {
-    return extractRecord(data as ResponseData<T, "one">)
+  data: t.TypeOf<DataC<T, U>>
+): DeserializedData<T, U> {
+  if (responseType === "many") {
+    return (data as t.TypeOf<DataC<T, "many">>).map((m) => extractModel(m)) as DeserializedData<
+      T,
+      U
+    >
   } else {
-    return (data as ResponseData<T, "many">).map((r) => extractRecord(r))
+    return extractModel(data as t.TypeOf<DataC<T, "one">>) as DeserializedData<T, U>
   }
 }
 
-const extractResponse = <T extends ModelType, U extends ResponseType>(
-  responseType: U,
-  { data, included }: Response<T, U>
-) => {
-  const deserializedResponse = {
-    data: extractData(responseType, data),
-    included: included.reduce((acc, record) => ({
+function extractIncluded(included: t.TypeOf<IncludedC> = []) {
+  return included.reduce((acc, model) => {
+    return {
       ...acc,
-      [record.type]: [...acc[record.type], record]
-    }))
-  }
-
-  return deserializedResponse
+      [model.type]: [...(acc[model.type] || []), model]
+    }
+  }, {} as Record<ModelType, (ModelOfType<ModelType> | undefined)[] | undefined>)
 }
 
-export function deserializeResponse<T extends ModelType, U extends ResponseType>(
-  modelType: T,
+function extractResponse<T extends ModelType, U extends ResponseType>(
   responseType: U,
-  data: any
-): DeserializedResponse<T, U>
+  { data, included }: t.TypeOf<ResponseC<T, U>>
+) {
+  return {
+    data: extractData(responseType, data),
+    included: extractIncluded(included)
+  }
+}
 
 export function deserializeResponse<T extends ModelType, U extends ResponseType>(
   modelType: T,
   responseType: U,
   data: any
 ) {
-  const response: Either<t.Errors, Response<T, U>> = Response(modelType, responseType).decode(
-    data
-  ) as Either<t.Errors, Response<T, U>>
+  const response = Response(modelType, responseType).decode(data)
 
   if (isRight(response)) {
     return extractResponse(responseType, response.right)

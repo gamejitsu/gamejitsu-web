@@ -1,21 +1,21 @@
 import * as t from "io-ts"
-import date from "io-ts-types/es6/DateFromISOString"
+import { DateFromISOString } from "io-ts-types/es6/DateFromISOString"
 import models, { ModelType } from "./models"
 
 const { string, number, boolean } = t
-const attrTypes = { string, number, date, boolean }
+export const attrTypes = { string, number, date: DateFromISOString, boolean }
 
-type Models = typeof models
-type Attrs = typeof attrTypes
+export type Schemas = typeof models
+export type Attrs = typeof attrTypes
 type AttrType = keyof Attrs
 type RelationshipType = "one" | "many"
 
-interface Attr<T extends AttrType = any> {
+export interface Attr<T extends AttrType = AttrType> {
   kind: "attr"
   type: T
 }
 
-interface Relationship<T extends RelationshipType = any> {
+interface Relationship<T extends RelationshipType = RelationshipType> {
   kind: "relationship"
   type: T
   modelType: ModelType
@@ -23,25 +23,33 @@ interface Relationship<T extends RelationshipType = any> {
 
 type TypeOfAttr<T extends Attr> = t.TypeOf<Attrs[T["type"]]>
 type TypeOfRelationship<T extends Relationship> = T["type"] extends "one" ? string : string[]
-type Model<T, U> = T & { type: U, id: string }
-type Field = Attr | Relationship
-type Schema<T> = T & { [K: string]: Field }
+type Schema<T = {}> = T & { [K: string]: Attr | Relationship }
 
-export type ModelOfType<T extends ModelType> = Model<{
-  [K in keyof Models[T]]:
-    Models[T][K] extends Attr ?
-      TypeOfAttr<Models[T][K]> :
-      Models[T][K] extends Relationship ?
-        TypeOfRelationship<Models[T][K]> :
-        never
-}, T>
+export type ModelOfType<T extends ModelType> = {
+  [K in keyof Schemas[T]]: Schemas[T][K] extends Attr
+    ? TypeOfAttr<Schemas[T][K]>
+    : Schemas[T][K] extends Relationship
+    ? TypeOfRelationship<Schemas[T][K]>
+    : never
+} & {
+  type: T
+  id: string
+}
 
 function relationship<T extends RelationshipType>(type: T, modelType: ModelType): Relationship<T> {
   return { kind: "relationship", type, modelType }
 }
 
-export function schema<T extends Record<string, Field>>(type: T): Schema<T> {
-  return type
+export function schema<T>(type: T) {
+  return type as Schema<T>
+}
+
+export function isAttr(type: Attr | Relationship): type is Attr {
+  return type.kind === "attr"
+}
+
+export function isRelationship(type: Attr | Relationship): type is Relationship {
+  return type.kind === "relationship"
 }
 
 export function attr<T extends AttrType>(type: T): Attr<T> {

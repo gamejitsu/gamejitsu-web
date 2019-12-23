@@ -4,10 +4,9 @@ import { Reset } from "styled-reset"
 import { theme } from "gamejitsu"
 import axios from "axios"
 import NextApp, { AppContext } from "next/app"
-import nextCookie from "next-cookies"
 import { UserContext } from "gamejitsu/components"
 import jwtDecode from "jwt-decode"
-import cookie from "js-cookie"
+import { parseCookies, destroyCookie } from "nookies"
 
 interface Props {
   user: any
@@ -30,10 +29,10 @@ export default class App extends NextApp<Props> {
     let user
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
-      let { authToken } = nextCookie(ctx)
+      let { authToken } = parseCookies(ctx)
       authToken = validateTokenExpirationTime(authToken as any) as any
       if (authToken == null) {
-        cookie.remove("authToken")
+        destroyCookie({}, "authToken")
       }
       authToken && (user = await getCurrentUser(authToken))
     }

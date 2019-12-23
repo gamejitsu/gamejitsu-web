@@ -18,7 +18,7 @@ const {
 
 const octokit = new Octokit({ auth: GITHUB_TOKEN })
 const isMaster = CIRCLE_BRANCH === 'master'
-const nowConfigPath = `${__dirname}/../.now/${isMaster ? 'production' : 'staging'}.json`
+const nowConfigPath = `${__dirname}/../../.now/${isMaster ? 'production' : 'staging'}.json`
 const nowConfig = require(nowConfigPath)
 
 const now = async (args = []) => {

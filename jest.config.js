@@ -5,6 +5,7 @@ module.exports = {
   snapshotSerializers: ['enzyme-to-json/serializer'],
   testEnvironment: 'jsdom',
   moduleNameMapper: {
-    "^gamejitsu/(.*)": "<rootDir>/lib/$1"
+    "^gamejitsu/(.*)": "<rootDir>/lib/$1",
+    "^gamejitsu": "<rootDir>/lib"
   }
 }

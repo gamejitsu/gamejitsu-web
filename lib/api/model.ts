@@ -2,7 +2,7 @@ import dasherize from "dasherize"
 import { ModelOfType } from "../schema"
 import models, { ModelType } from "../models"
 
-export const serializeModel = <T extends ModelType>(model?: ModelOfType<T>) => {
+export function serializeModel<T extends ModelType>(model?: ModelOfType<T>) {
   if (!model) {
     return null
   }
@@ -12,11 +12,8 @@ export const serializeModel = <T extends ModelType>(model?: ModelOfType<T>) => {
 
   const attributes = Object.keys(schema).reduce((acc, key) => {
     const field = schema[key]
-
-    if (field.kind === "attr") {
-      return { ...acc, [key]: model[key] }
-    }
-  }, {} as any)
+    return field && field.kind === "attr" ? { ...acc, [key]: model[key] } : acc
+  }, {} as Record<string, any>)
 
   return JSON.stringify({
     jsonapi: {

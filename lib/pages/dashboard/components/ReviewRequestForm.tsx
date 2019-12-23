@@ -5,7 +5,7 @@ import Router from "next/router"
 import axios from "axios"
 import PropTypes from "prop-types"
 import React from "react"
-import cookie from "js-cookie"
+import { parseCookies } from "nookies"
 import { HeroImage } from "."
 
 const ReviewRequestForm = ({ replay, onFinish }: any) => {
@@ -33,7 +33,7 @@ const ReviewRequestForm = ({ replay, onFinish }: any) => {
                 headers: {
                   Accept: "application/vnd.api+json",
                   "Content-Type": "application/vnd.api+json",
-                  Authorization: "Bearer " + cookie.get("authToken")
+                  Authorization: "Bearer " + parseCookies({}).authToken
                 }
               }
             )

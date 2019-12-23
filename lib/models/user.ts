@@ -1,4 +1,4 @@
-import { attr, schema } from "../schema"
+import { schema, attr } from "../schema"
 
 export default schema({
   username: attr("string")

@@ -3,7 +3,7 @@ import { Link, Button, SteamButton, UserContext } from "."
 import queryString from "query-string"
 import { useContext, FunctionComponent } from "react"
 import styled from "styled-components"
-import cookie from "js-cookie"
+import { destroyCookie } from "nookies"
 
 interface NavLinkProps {
   href: string
@@ -34,7 +34,7 @@ const login = () => {
 }
 
 const logout = () => {
-  cookie.remove("authToken")
+  destroyCookie({}, "authToken")
   window.location.href = "/"
 }
 
