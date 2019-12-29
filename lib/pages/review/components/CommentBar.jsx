@@ -5,12 +5,14 @@ import React from 'react'
 import styled from 'styled-components'
 
 const getWidth = props => {
+  console.log("props: ", props)
+
   const totalDuration = props.duration
   return (commentDuration / totalDuration) * props.containerWidth
 }
 
 const getX = props => {
-  const commentTimestamp = props.comment.timestamp
+  const commentTimestamp = props.comment.attributes.timestamp
   const totalDuration = props.duration
   const ratio = (commentTimestamp - commentDuration / 2) / totalDuration
   return ratio * props.containerWidth
@@ -26,6 +28,7 @@ function clickBarEvent(e) {
   const rect = this.containerRef.current.getBoundingClientRect()
   const x = e.clientX - rect.left
   const timestamp = Math.floor((x / this.state.containerWidth) * this.props.videoDuration)
+  console.log(timestamp)
   this.props.onMoveVideoCursor(timestamp)
 }
 
@@ -73,7 +76,7 @@ class CommentBar extends React.Component {
         {this.props.comments.map(comment => {
           return (
             <Square
-              key={comment.timestamp}
+              key={comment.attributes.timestamp}
               comment={comment}
               containerWidth={this.state.containerWidth}
               duration={this.props.videoDuration}

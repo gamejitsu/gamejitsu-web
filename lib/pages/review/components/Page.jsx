@@ -31,7 +31,7 @@ const getReview = async authToken => {
         "id": 1,
         attributes: {
           text: 'ultra kill',
-          timestamp: 11
+          timestamp: 100
         }
       },
       {
@@ -39,7 +39,7 @@ const getReview = async authToken => {
         "id": 2,
         attributes: {
           text: 'kill',
-          timestamp: 21
+          timestamp: 200
         }
 
       }
@@ -116,12 +116,24 @@ class Review extends React.Component {
 
   render() {
     const comments = this.props.review.comments
+    console.log("comments:", comments)
     const shownComments = comments.filter(comment => {
+      console.log("comment: ", comment)
       const timeRange = commentDuration / 2
+      console.log("timeRange: ", timeRange)
+
       const videoTimestamp = this.state.videoTimestamp
-      const commentTimestamp = comment.timestamp
+      console.log("videoTimestamp: ", videoTimestamp)
+
+      const commentTimestamp = comment.attributes.timestamp
+      console.log("commentTimestamp: ", commentTimestamp)
+
       const beginTimestamp = commentTimestamp - timeRange
+      console.log("beginTimestamp: ", beginTimestamp)
+
       const endTimestamp = commentTimestamp + timeRange
+      console.log("endTimestamp: ", endTimestamp)
+
       return videoTimestamp > beginTimestamp && videoTimestamp < endTimestamp
     })
     return (
@@ -144,8 +156,10 @@ class Review extends React.Component {
                   </video>
                 </Box>
                 <Box>
+                  test
                   {shownComments.map(comment => {
-                    return <Comment key={comment.timestamp} comment={comment} />
+                    console.log(comment)
+                    return <Comment key={comment.attributes.timestamp} comment={comment} />
                   })}
                 </Box>
               </Flex>

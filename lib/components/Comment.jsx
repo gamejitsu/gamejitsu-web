@@ -83,11 +83,12 @@ const Content = styled.button`
   writing-mode:horizontal-tb;
 `
 
-const Comment = ({ comment }) => (
-  <Content>
-    {comment.text}
+const Comment = ({ comment }) => {
+  console.log("comment component: ", comment)
+  return <Content>
+    {comment.attributes.text}
   </Content>
-)
+}
 
 Comment.propTypes = {
   comment: PropTypes.object.isRequired
