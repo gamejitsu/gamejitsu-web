@@ -13,7 +13,8 @@ const {
   CIRCLE_PULL_REQUEST,
   CIRCLE_BRANCH,
   GITHUB_TOKEN,
-  NOW_TOKEN
+  NOW_TOKEN,
+  NOW_TEAM
 } = process.env
 
 const octokit = new Octokit({ auth: GITHUB_TOKEN })
@@ -22,7 +23,7 @@ const nowConfigPath = `${__dirname}/../../.now/${isMaster ? 'production' : 'stag
 const nowConfig = require(nowConfigPath)
 
 const now = async (args = []) => {
-  const nowArgs = ['--token', NOW_TOKEN, '--local-config', nowConfigPath, ...args]
+  const nowArgs = ['--token', NOW_TOKEN, '--scope', NOW_TEAM, '--local-config', nowConfigPath, ...args]
   const { stdout } = await execa(NOW_BIN, nowArgs, { stderr: 'inherit' })
   return stdout
 }

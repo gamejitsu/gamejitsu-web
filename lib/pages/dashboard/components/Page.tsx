@@ -3,7 +3,7 @@ import { ReviewRequestCard, ReplayCard, ReviewRequestForm } from "."
 import { Socket } from "phoenix"
 import { UserContext } from "../../../components"
 import axios from "axios"
-import nextCookie from "next-cookies"
+import { parseCookies } from "nookies"
 import React from "react"
 
 const deserializePlayers = (players: any) => {
@@ -83,7 +83,7 @@ const getReviewRequests = async (authToken: string) => {
 
 class Dashboard extends React.Component<any, any> {
   static getInitialProps = async (ctx: any) => {
-    const { authToken } = nextCookie(ctx) as any
+    const { authToken } = parseCookies(ctx)
     const replays = await getReplays(authToken)
     const reviewRequests = await getReviewRequests(authToken)
     return { replays, reviewRequests, authToken }

@@ -1,6 +1,6 @@
 import React, { RefObject } from "react"
 import { Layout, Card, Comment } from "gamejitsu/components"
-import nextCookie from "next-cookies"
+import { parseCookies } from "nookies"
 import PropTypes from "prop-types"
 import axios from "axios"
 import { Flex, Box, Text } from "rebass"
@@ -95,7 +95,7 @@ class Review extends React.Component<any, any> {
   videoRef: RefObject<HTMLVideoElement>
 
   static getInitialProps = async (ctx: any) => {
-    const { authToken } = nextCookie(ctx)
+    const { authToken } = parseCookies(ctx)
     const urlId = ctx.query.id
     const review = await getReview(authToken as any)
     console.log(review)

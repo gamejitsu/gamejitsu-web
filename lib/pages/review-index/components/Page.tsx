@@ -1,7 +1,7 @@
 import React from "react"
 import { ReviewCard } from "."
 import { Layout } from "gamejitsu/components"
-import nextCookie from "next-cookies"
+import { parseCookies } from "nookies"
 import PropTypes from "prop-types"
 //import axios from 'axios'
 
@@ -96,7 +96,7 @@ const getReviews = () => {
 
 class ReviewIndex extends React.Component<any> {
   static getInitialProps = async (ctx: any) => {
-    const { authToken } = nextCookie(ctx)
+    const { authToken } = parseCookies(ctx)
     const reviews = await getReviews()
     return { reviews }
   }

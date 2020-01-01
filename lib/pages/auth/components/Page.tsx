@@ -15,7 +15,7 @@ const Auth: NextPage = () => {
 
 Auth.getInitialProps = async (ctx) => {
   const { query } = ctx
-  const { authToken } = createRecord("session", { openidParams: stringifyQueryString(query) })
+  const { authToken } = { authToken: "123" } //createRecord("session", { openidParams: stringifyQueryString(query) })
   setCookie(ctx, "authToken", authToken, {})
 
   return {}
