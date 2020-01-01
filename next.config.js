@@ -1,4 +1,3 @@
-/* eslint-env node */
 const path = require('path')
 const withCSS = require('@zeit/next-css')
 const webpackMerge = require('webpack-merge')

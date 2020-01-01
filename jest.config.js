@@ -1,4 +1,3 @@
-/* eslint-env node */
 module.exports = {
   clearMocks: true,
   setupFiles: ['<rootDir>/jest.setup.js'],
