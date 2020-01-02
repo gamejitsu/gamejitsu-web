@@ -1,19 +1,21 @@
+import * as t from "io-ts"
 import dasherize from "dasherize"
+import { ModelC } from "."
 import { ModelOfType } from "../schema"
-import models, { ModelType } from "../models"
+import schemas, { ModelType } from "../schemas"
 
-export function serializeModel<T extends ModelType>(model?: ModelOfType<T>) {
+export function serializeRequest<T extends ModelType>(model?: ModelOfType<T>) {
   if (!model) {
     return null
   }
 
   const { id } = model
-  const schema = models[model.type]
+  const schema = schemas[model.type]
 
   const attributes = Object.keys(schema).reduce((acc, key) => {
     const field = schema[key]
     return field && field.kind === "attr" ? { ...acc, [key]: model[key] } : acc
-  }, {} as Record<string, any>)
+  }, {} as t.TypeOf<ModelC<T>>)
 
   return JSON.stringify({
     jsonapi: {

@@ -1,20 +1,8 @@
 import * as t from "io-ts"
 import { isRight } from "fp-ts/lib/Either"
-import { ResponseType } from "./api"
-import { Schemas, ModelOfType, Attr, Attrs, isAttr, attrTypes } from "../schema"
-import models, { ModelType } from "../models"
-
-type AttributesType<T extends ModelType> = {
-  [K in keyof Schemas[T]]: Schemas[T][K] extends Attr ? Attrs[Schemas[T][K]["type"]] : never
-}
-
-type AttributesC<T extends ModelType> = t.TypeC<AttributesType<T>>
-
-type ModelC<T extends ModelType = ModelType> = t.TypeC<{
-  type: t.LiteralC<T>
-  id: t.StringC
-  attributes: AttributesC<T>
-}>
+import { ResponseType, AttributesType, AttributesC, ModelC } from "."
+import { ModelOfType, isAttr, attrTypes } from "../schema"
+import schemas, { ModelType } from "../schemas"
 
 type DataC<T extends ModelType, U extends ResponseType> = U extends "one"
   ? ModelC<T>
@@ -44,7 +32,7 @@ class DeserializationError extends Error {
   }
 }
 
-const modelTypes = Object.keys(models) as ModelType[]
+const modelTypes = Object.keys(schemas) as ModelType[]
 
 const Models = (() => {
   if (modelTypes.length === 0) {
@@ -63,12 +51,12 @@ const Models = (() => {
 })()
 
 function Attributes<T extends ModelType>(modelType: T): AttributesC<T> {
-  const schema = models[modelType]
+  const schema = schemas[modelType]
 
   return t.type(
     Object.keys(schema).reduce((acc, key) => {
       const field = schema[key]
-      return isAttr(field) ? { ...acc, [key]: attrTypes[field.type] } : acc
+      return field && isAttr(field) ? { ...acc, [key]: attrTypes[field.type] } : acc
     }, {} as AttributesType<T>)
   )
 }

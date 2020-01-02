@@ -1,10 +1,9 @@
 import axios, { Method } from "axios"
-import { serializeModel } from "./model"
-import { ModelType } from "../models"
+import { ResponseType } from "."
+import { serializeRequest } from "./request"
+import { ModelType } from "../schemas"
 import { ModelOfType } from "../schema"
 import { deserializeResponse } from "./response"
-
-export type ResponseType = "one" | "many"
 
 interface RequestOptions<T extends ModelType> {
   params?: Record<string, string>
@@ -29,6 +28,6 @@ async function request<T extends ModelType, U extends ResponseType>(
   { params, model }: RequestOptions<T> = {}
 ) {
   const url = `${process.env.API_ENDPOINT}${path}`
-  const response = await axios.request({ method, url, params, data: serializeModel(model) })
+  const response = await axios.request({ method, url, params, data: serializeRequest(model) })
   return deserializeResponse(modelType, responseType, response.data)
 }

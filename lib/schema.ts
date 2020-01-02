@@ -1,11 +1,11 @@
 import * as t from "io-ts"
 import { DateFromISOString } from "io-ts-types/es6/DateFromISOString"
-import models, { ModelType } from "./models"
+import schemas, { ModelType } from "./schemas"
 
 const { string, number, boolean } = t
 export const attrTypes = { string, number, date: DateFromISOString, boolean }
 
-export type Schemas = typeof models
+export type Schemas = typeof schemas
 export type Attrs = typeof attrTypes
 type AttrType = keyof Attrs
 type RelationshipType = "one" | "many"
@@ -23,7 +23,7 @@ interface Relationship<T extends RelationshipType = RelationshipType> {
 
 type TypeOfAttr<T extends Attr> = t.TypeOf<Attrs[T["type"]]>
 type TypeOfRelationship<T extends Relationship> = T["type"] extends "one" ? string : string[]
-type Schema<T = {}> = T & { [K: string]: Attr | Relationship }
+type Schema = { [K: string]: Attr | Relationship | undefined }
 
 export type ModelOfType<T extends ModelType> = {
   [K in keyof Schemas[T]]: Schemas[T][K] extends Attr
@@ -41,7 +41,7 @@ function relationship<T extends RelationshipType>(type: T, modelType: ModelType)
 }
 
 export function schema<T>(type: T) {
-  return type as Schema<T>
+  return type as T & Schema
 }
 
 export function isAttr(type: Attr | Relationship): type is Attr {
