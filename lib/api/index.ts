@@ -1,6 +1,6 @@
 import * as t from "io-ts"
 import { ModelType } from "../schemas"
-import { Schemas, Attrs, Attr } from "../schema"
+import { ModelOfType, Schemas, Attrs, Attr } from "../schema"
 
 export type ResponseType = "one" | "many"
 
@@ -15,5 +15,25 @@ export type ModelC<T extends ModelType = ModelType> = t.TypeC<{
   id: t.StringC
   attributes: AttributesC<T>
 }>
+
+export type DataC<T extends ModelType, U extends ResponseType> = U extends "one"
+  ? ModelC<T>
+  : t.ArrayC<ModelC<T>>
+
+export type IncludedC = t.UnionC<[t.ArrayC<ModelC<ModelType>>, t.UndefinedC]>
+
+export type DeserializedData<T extends ModelType, U extends ResponseType> = U extends "one"
+  ? ModelOfType<T>
+  : (ModelOfType<T> | undefined)[]
+
+export type DeserializedIncluded = Record<
+  ModelType,
+  (ModelOfType<ModelType> | undefined)[] | undefined
+>
+
+export interface DeserializedResponse<T extends ModelType, U extends ResponseType> {
+  data: DeserializedData<T, U>
+  included: DeserializedIncluded
+}
 
 export * from "./api"

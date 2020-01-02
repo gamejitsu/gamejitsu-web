@@ -1,14 +1,18 @@
 import * as t from "io-ts"
 import { isRight } from "fp-ts/lib/Either"
-import { ResponseType, AttributesType, AttributesC, ModelC } from "."
+import {
+  ResponseType,
+  AttributesType,
+  AttributesC,
+  ModelC,
+  DataC,
+  IncludedC,
+  DeserializedIncluded,
+  DeserializedData,
+  DeserializedResponse
+} from "."
 import { ModelOfType, isAttr, attrTypes } from "../schema"
 import schemas, { ModelType } from "../schemas"
-
-type DataC<T extends ModelType, U extends ResponseType> = U extends "one"
-  ? ModelC<T>
-  : t.ArrayC<ModelC<T>>
-
-type IncludedC = t.UnionC<[t.ArrayC<ModelC<ModelType>>, t.UndefinedC]>
 
 type ResponseC<T extends ModelType, U extends ResponseType> = t.TypeC<{
   jsonapi: t.TypeC<{
@@ -17,10 +21,6 @@ type ResponseC<T extends ModelType, U extends ResponseType> = t.TypeC<{
   data: DataC<T, U>
   included: IncludedC
 }>
-
-type DeserializedData<T extends ModelType, U extends ResponseType> = U extends "one"
-  ? ModelOfType<T>
-  : (ModelOfType<T> | undefined)[]
 
 class DeserializationError extends Error {
   errors: t.Errors
@@ -107,13 +107,13 @@ function extractIncluded(included: t.TypeOf<IncludedC> = []) {
       ...acc,
       [model.type]: [...(acc[model.type] || []), model]
     }
-  }, {} as Record<ModelType, (ModelOfType<ModelType> | undefined)[] | undefined>)
+  }, {} as DeserializedIncluded)
 }
 
 function extractResponse<T extends ModelType, U extends ResponseType>(
   responseType: U,
   { data, included }: t.TypeOf<ResponseC<T, U>>
-) {
+): DeserializedResponse<T, U> {
   return {
     data: extractData(responseType, data),
     included: extractIncluded(included)
