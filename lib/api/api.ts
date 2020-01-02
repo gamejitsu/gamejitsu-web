@@ -1,4 +1,5 @@
 import axios, { Method } from "axios"
+import pluralize from "pluralize"
 import { ResponseType } from "."
 import { serializeRequest } from "./request"
 import { ModelType } from "../schemas"
@@ -10,15 +11,25 @@ interface RequestOptions<T extends ModelType> {
   model?: ModelOfType<T>
 }
 
-export function findRecord() {}
+export function findRecord<T extends ModelType>(modelType: T, id: string) {
+  return request(modelType, "one", "GET", `/${pluralize(modelType)}/${id}`)
+}
 
-export function createRecord() {}
+export function createRecord<T extends ModelType>(model: ModelOfType<T>) {
+  return request(model.type, "one", "POST", `/${pluralize(model.type)}`, { model })
+}
 
-export function updateRecord() {}
+export function updateRecord<T extends ModelType>(model: ModelOfType<T>) {
+  return request(model.type, "one", "PUT", `/${pluralize(model.type)}/${model.id}`, { model })
+}
 
-export function deleteRecord() {}
+export function deleteRecord<T extends ModelType>(model: ModelOfType<T>) {
+  return request(model.type, "one", "DELETE", `/${pluralize(model.type)}/${model.id}`)
+}
 
-export function findAll() {}
+export function findAll<T extends ModelType>(modelType: T) {
+  return request(modelType, "many", "GET", `/${pluralize(modelType)}`)
+}
 
 async function request<T extends ModelType, U extends ResponseType>(
   modelType: T,
