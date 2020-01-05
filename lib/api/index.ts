@@ -4,25 +4,30 @@ import { ModelOfType, Schemas, Attrs, Attr, Relationship, Embedded } from "../sc
 
 export type ResponseType = "one" | "many"
 
-export type AttributesType<T extends ModelType> = {
-  [K in keyof Schemas[T]]: Schemas[T][K] extends Attr | Embedded ? AttributeC<Schemas[T][K]> : never
-}
-
-export type RelationshipType<T extends Relationship> = T["type"] extends "one"
+export type RelationshipValue<T extends Relationship> = T["type"] extends "one"
   ? RelationshipC<T>
   : t.ArrayC<RelationshipC<T>>
 
-export type RelationshipsType<T extends ModelType> = {
-  [K in keyof Schemas[T]]: Schemas[T][K] extends Relationship
-    ? RelationshipType<Schemas[T][K]>
-    : never
-}
+export type AttributesC<T extends ModelType> = t.TypeC<
+  {
+    [K in keyof Schemas[T]["_T"]]: Schemas[T][K] extends Attr | Embedded
+      ? AttributeC<Schemas[T][K]>
+      : never
+  }
+>
 
-export type AttributesC<T extends ModelType> = t.TypeC<AttributesType<T>>
-export type RelationshipsC<T extends ModelType> = t.TypeC<RelationshipsType<T>>
+export type RelationshipsC<T extends ModelType> = t.TypeC<
+  {
+    [K in keyof Schemas[T]["_T"]]: Schemas[T][K] extends Relationship
+      ? RelationshipValue<Schemas[T][K]>
+      : never
+  }
+>
 
 export type AttributeC<T extends Attr | Embedded> = T extends Attr
-  ? Attrs[T["type"]]
+  ? T["isOptional"] extends true
+    ? Attrs[T["type"]]
+    : t.UnionC<[Attrs[T["type"]], t.UndefinedC]>
   : T extends Embedded
   ? T["modelType"]
   : never

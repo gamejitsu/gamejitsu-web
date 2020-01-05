@@ -3,11 +3,9 @@ import { isRight } from "fp-ts/lib/Either"
 
 import {
   ResponseType,
-  AttributesType,
   AttributesC,
   AttributeC,
   RelationshipsC,
-  RelationshipsType,
   ModelC,
   DataC,
   IncludedC,
@@ -15,7 +13,7 @@ import {
   DeserializedData,
   DeserializedResponse,
   RelationshipC,
-  RelationshipType
+  RelationshipValue
 } from "."
 
 import {
@@ -26,6 +24,7 @@ import {
   isRelationship,
   isEmbedded,
   Relationship,
+  RelationshipType,
   Embedded
 } from "../schema"
 
@@ -69,7 +68,9 @@ const Models = (() => {
 
 function Attribute<T extends Attr | Embedded>(attr: T): AttributeC<T> {
   if (isAttr(attr)) {
-    return attrTypes[attr.type] as AttributeC<T>
+    return (attr.isOptional
+      ? attrTypes[attr.type]
+      : t.union([attrTypes[attr.type], t.undefined])) as AttributeC<T>
   } else {
     return (attr as Embedded).modelType as AttributeC<T>
   }
@@ -84,7 +85,7 @@ function Attributes<T extends ModelType>(modelType: T): AttributesC<T> {
       return field && (isAttr(field) || isEmbedded(field))
         ? { ...acc, [key]: Attribute(field) }
         : acc
-    }, {} as AttributesType<T>)
+    }, {} as AttributesC<T>["props"])
   )
 }
 
@@ -102,7 +103,7 @@ function Relationships<T extends ModelType>(modelType: T): RelationshipsC<T> {
     Object.keys(schema).reduce((acc, key) => {
       const field = schema[key]
       return field && isRelationship(field) ? { ...acc, [key]: Relationship(field) } : acc
-    }, {} as RelationshipsType<T>)
+    }, {} as RelationshipsC<T>["props"])
   )
 }
 
@@ -129,28 +130,36 @@ function Response<T extends ModelType, U extends ResponseType>(
   }) as ResponseC<T, U>
 }
 
+function extractRelationship<T extends RelationshipType>(
+  relationship: t.TypeOf<RelationshipValue<Relationship<T>>>,
+  type: T
+) {
+  return type === "one"
+    ? (relationship as t.TypeOf<RelationshipValue<Relationship<"one">>>).id
+    : (relationship as t.TypeOf<RelationshipValue<Relationship<"many">>>).map((m) => m.id)
+}
+
 function extractRelationships<T extends ModelType>(
   model: t.TypeOf<ModelC<T>>
 ): Partial<ModelOfType<T>> {
   const schema = schemas[model.type]
 
-  return Object.keys(model.relationships).reduce((acc, key) => {
-    const field = schema[key]
+  return (Object.keys(model.relationships) as (keyof RelationshipsC<T>["props"])[]).reduce(
+    (acc, key) => {
+      const field = schema[key as string]
 
-    if (field && isRelationship(field)) {
-      return {
-        ...acc,
-        [key]:
-          field.type === "one"
-            ? (model.relationships[key] as t.TypeOf<RelationshipType<Relationship<"one">>>).id
-            : (model.relationships[key] as t.TypeOf<RelationshipType<Relationship<"many">>>).map(
-                (m) => m.id
-              )
-      }
-    } else {
-      return acc
-    }
-  }, {} as Partial<ModelOfType<T>>)
+      return field && isRelationship(field)
+        ? {
+            ...acc,
+            [key]: extractRelationship(
+              model.relationships[key] as t.TypeOf<RelationshipValue<Relationship>>,
+              field.type
+            )
+          }
+        : acc
+    },
+    {} as Partial<ModelOfType<T>>
+  )
 }
 
 function extractModel<T extends ModelType>(model: t.TypeOf<ModelC<T>>): ModelOfType<T> {

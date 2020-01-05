@@ -3,7 +3,7 @@ import axios, { Method } from "axios"
 import dasherize from "dasherize"
 import { ModelC, DeserializedResponse, ResponseType } from "."
 import { deserializeResponse } from "./response"
-import { ModelOfType } from "../schema"
+import { ModelOfType, isAttr } from "../schema"
 import schemas, { ModelType } from "../schemas"
 
 type ResponseStatus = 200 | 201 | 204
@@ -37,9 +37,9 @@ export function serializeRequest<T extends ModelType>(model?: ModelOfType<T>) {
   const { id } = model
   const schema = schemas[model.type]
 
-  const attributes = Object.keys(schema).reduce((acc, key) => {
-    const field = schema[key]
-    return field && field.kind === "attr" ? { ...acc, [key]: model[key] } : acc
+  const attributes = (Object.keys(model) as (keyof ModelOfType<T>)[]).reduce((acc, key) => {
+    const field = schema[key as string]
+    return field && isAttr(field) ? { ...acc, [key]: model[key] } : acc
   }, {} as t.TypeOf<ModelC<T>>)
 
   return JSON.stringify({

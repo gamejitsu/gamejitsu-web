@@ -8,7 +8,7 @@ export const attrTypes = { string, number, date: DateFromISOString, boolean }
 export type Schemas = typeof schemas
 export type Attrs = typeof attrTypes
 type AttrType = keyof Attrs
-type RelationshipType = "one" | "many"
+export type RelationshipType = "one" | "many"
 
 export interface Attr<T extends AttrType = AttrType, U extends boolean = boolean> {
   kind: "attr"
@@ -39,11 +39,10 @@ type TypeOfEmbedded<T extends Embedded> = T["type"] extends "one"
   : (t.TypeOf<T["modelType"]> | undefined)[]
 
 type Field = Attr | Relationship | Embedded
-type Schema = { [K: string]: Field | undefined }
+type Schema<T> = T & { _T: T } & { [K: string]: Field | undefined }
 
 export type ModelOfType<T extends ModelType> = {
-  [K in keyof Schemas[T]]:
-    Schemas[T][K] extends Attr
+  [K in keyof Schemas[T]["_T"]]: Schemas[T][K] extends Attr
     ? TypeOfAttr<Schemas[T][K]>
     : Schemas[T][K] extends Relationship
     ? TypeOfRelationship<Schemas[T][K]>
@@ -51,8 +50,8 @@ export type ModelOfType<T extends ModelType> = {
     ? TypeOfEmbedded<Schemas[T][K]>
     : never
 } & {
-  type: T
   id?: string
+  type: T
 }
 
 function relationship<T extends RelationshipType>(type: T, modelType: ModelType): Relationship<T> {
@@ -67,7 +66,7 @@ function embedded<T extends RelationshipType, U extends t.Any>(
 }
 
 export function schema<T>(type: T) {
-  return type as T & Schema
+  return { ...type, _T: type } as Schema<T>
 }
 
 export function isAttr(field: Field): field is Attr {

@@ -4,7 +4,6 @@ import { useEffect } from "react"
 import { stringify as stringifyQueryString } from "querystring"
 import { createModel } from "gamejitsu/api"
 import Router from "next/router"
-import { Session } from "gamejitsu/models"
 
 const Auth: NextPage = () => {
   useEffect(() => {
@@ -16,11 +15,13 @@ const Auth: NextPage = () => {
 
 Auth.getInitialProps = async (ctx) => {
   const { query } = ctx
-  const session = {} as Session
-  session.type = "session"
-  session.accessToken = ""
-  session.openidParams = stringifyQueryString(query)
-  const { data: { accessToken } } = await createModel(session)
+  const {
+    data: { accessToken }
+  } = await createModel({
+    type: "session",
+    accessToken: "",
+    openidParams: stringifyQueryString(query)
+  })
   setCookie(ctx, "authToken", accessToken, {})
 
   return {}
