@@ -3,22 +3,22 @@ import { request } from "./request"
 import { ModelType } from "../schemas"
 import { ModelOfType } from "../schema"
 
-export function findRecord<T extends ModelType>(modelType: T, id: string) {
+export function findModel<T extends ModelType>(modelType: T, id: string) {
   return request(modelType, "one", 200, "GET", `/${pluralize(modelType)}/${id}`)
 }
 
-export function createRecord<T extends ModelType>(model: ModelOfType<T>) {
+export function createModel<T extends ModelType>(model: ModelOfType<T>) {
   return request(model.type, "one", 201, "POST", `/${pluralize(model.type)}`, { model })
 }
 
-export function updateRecord<T extends ModelType>(model: ModelOfType<T>) {
+export function updateModel<T extends ModelType>(model: ModelOfType<T>) {
   return request(model.type, "one", 200, "PUT", `/${pluralize(model.type)}/${model.id}`, { model })
 }
 
-export function deleteRecord<T extends ModelType>(model: ModelOfType<T>) {
+export function deleteModel<T extends ModelType>(model: ModelOfType<T>) {
   return request(model.type, undefined, 204, "DELETE", `/${pluralize(model.type)}/${model.id}`)
 }
 
-export function findAll<T extends ModelType>(modelType: T) {
+export function listModels<T extends ModelType>(modelType: T) {
   return request(modelType, "many", 200, "GET", `/${pluralize(modelType)}`)
 }

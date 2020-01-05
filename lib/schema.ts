@@ -15,41 +15,69 @@ export interface Attr<T extends AttrType = AttrType> {
   type: T
 }
 
-interface Relationship<T extends RelationshipType = RelationshipType> {
+export interface Relationship<T extends RelationshipType = RelationshipType> {
   kind: "relationship"
   type: T
   modelType: ModelType
 }
 
+export interface Embedded<
+  T extends RelationshipType = RelationshipType,
+  U extends t.TypeC<any> = t.TypeC<any>
+> {
+  kind: "embedded"
+  type: T
+  modelType: U
+}
+
 type TypeOfAttr<T extends Attr> = t.TypeOf<Attrs[T["type"]]>
 type TypeOfRelationship<T extends Relationship> = T["type"] extends "one" ? string : string[]
-type Schema = { [K: string]: Attr | Relationship | undefined }
+
+type TypeOfEmbedded<T extends Embedded> = T["type"] extends "one"
+  ? t.TypeOf<T["modelType"]>
+  : (t.TypeOf<T["modelType"]> | undefined)[]
+
+type Field = Attr | Relationship | Embedded
+type Schema = { [K: string]: Field | undefined }
 
 export type ModelOfType<T extends ModelType> = {
   [K in keyof Schemas[T]]: Schemas[T][K] extends Attr
     ? TypeOfAttr<Schemas[T][K]>
     : Schemas[T][K] extends Relationship
     ? TypeOfRelationship<Schemas[T][K]>
+    : Schemas[T][K] extends Embedded
+    ? TypeOfEmbedded<Schemas[T][K]>
     : never
 } & {
   type: T
-  id: string
+  id?: string
 }
 
 function relationship<T extends RelationshipType>(type: T, modelType: ModelType): Relationship<T> {
   return { kind: "relationship", type, modelType }
 }
 
+function embedded<T extends RelationshipType, U extends t.TypeC<any>>(
+  type: T,
+  modelType: U
+): Embedded<T, U> {
+  return { kind: "embedded", type, modelType }
+}
+
 export function schema<T>(type: T) {
   return type as T & Schema
 }
 
-export function isAttr(type: Attr | Relationship): type is Attr {
-  return type.kind === "attr"
+export function isAttr(field: Field): field is Attr {
+  return field.kind === "attr"
 }
 
-export function isRelationship(type: Attr | Relationship): type is Relationship {
-  return type.kind === "relationship"
+export function isRelationship(field: Field): field is Relationship {
+  return field.kind === "relationship"
+}
+
+export function isEmbedded(field: Field): field is Embedded {
+  return field.kind === "embedded"
 }
 
 export function attr<T extends AttrType>(type: T): Attr<T> {
@@ -62,4 +90,12 @@ export function hasOne(modelType: ModelType) {
 
 export function hasMany(modelType: ModelType) {
   return relationship("many", modelType)
+}
+
+export function embedsOne<T extends t.TypeC<any>>(modelType: T) {
+  return embedded("one", modelType)
+}
+
+export function embedsMany<T extends t.TypeC<any>>(modelType: T) {
+  return embedded("many", modelType)
 }

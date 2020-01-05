@@ -1,17 +1,33 @@
 import * as t from "io-ts"
 import { isRight } from "fp-ts/lib/Either"
+
 import {
   ResponseType,
   AttributesType,
   AttributesC,
+  AttributeC,
+  RelationshipsC,
+  RelationshipsType,
   ModelC,
   DataC,
   IncludedC,
   DeserializedIncluded,
   DeserializedData,
-  DeserializedResponse
+  DeserializedResponse,
+  RelationshipC
 } from "."
-import { ModelOfType, isAttr, attrTypes } from "../schema"
+
+import {
+  ModelOfType,
+  Attr,
+  isAttr,
+  attrTypes,
+  isRelationship,
+  isEmbedded,
+  Relationship,
+  Embedded
+} from "../schema"
+
 import schemas, { ModelType } from "../schemas"
 
 type ResponseC<T extends ModelType, U extends ResponseType> = t.TypeC<{
@@ -50,14 +66,42 @@ const Models = (() => {
   ])
 })()
 
+function Attribute<T extends Attr | Embedded>(attr: T): AttributeC<T> {
+  if (isAttr(attr)) {
+    return attrTypes[attr.type] as AttributeC<T>
+  } else {
+    return (attr as Embedded).modelType as AttributeC<T>
+  }
+}
+
 function Attributes<T extends ModelType>(modelType: T): AttributesC<T> {
   const schema = schemas[modelType]
 
   return t.type(
     Object.keys(schema).reduce((acc, key) => {
       const field = schema[key]
-      return field && isAttr(field) ? { ...acc, [key]: attrTypes[field.type] } : acc
+      return field && (isAttr(field) || isEmbedded(field))
+        ? { ...acc, [key]: Attribute(field) }
+        : acc
     }, {} as AttributesType<T>)
+  )
+}
+
+function Relationship<T extends Relationship>(relationship: T): RelationshipC<T> {
+  return t.type({
+    type: t.literal(relationship.modelType),
+    id: t.string
+  })
+}
+
+function Relationships<T extends ModelType>(modelType: T): RelationshipsC<T> {
+  const schema = schemas[modelType]
+
+  return t.type(
+    Object.keys(schema).reduce((acc, key) => {
+      const field = schema[key]
+      return field && isRelationship(field) ? { ...acc, [key]: Relationship(field) } : acc
+    }, {} as RelationshipsType<T>)
   )
 }
 
@@ -65,7 +109,8 @@ function Model<T extends ModelType>(modelType: T): ModelC<T> {
   return t.type({
     id: t.string,
     type: t.literal(modelType),
-    attributes: Attributes(modelType)
+    attributes: Attributes(modelType),
+    relationships: Relationships(modelType)
   })
 }
 
