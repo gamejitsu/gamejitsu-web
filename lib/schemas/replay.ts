@@ -1,5 +1,14 @@
-import { schema, attr } from "../schema"
+import * as t from "io-ts"
+import { schema, attr, embedsMany } from "../schema"
+
+export const Player = t.type({
+  steamId: t.string,
+  heroName: t.string,
+  heroPortraitUrl: t.string
+})
 
 export default schema({
-  playedAt: attr("date")
+  matchId: attr("string"),
+  playedAt: attr("date"),
+  players: embedsMany(Player)
 })

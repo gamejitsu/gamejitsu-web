@@ -1,4 +1,3 @@
-import PropTypes from "prop-types"
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 
@@ -23,9 +22,5 @@ const SteamButton: FunctionComponent<Props> = ({ onClick }) => (
     <Image src="/static/images/sits_01.png" />
   </Content>
 )
-
-SteamButton.propTypes = {
-  onClick: PropTypes.func.isRequired
-}
 
 export default SteamButton

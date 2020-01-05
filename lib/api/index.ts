@@ -8,11 +8,13 @@ export type AttributesType<T extends ModelType> = {
   [K in keyof Schemas[T]]: Schemas[T][K] extends Attr | Embedded ? AttributeC<Schemas[T][K]> : never
 }
 
+export type RelationshipType<T extends Relationship> = T["type"] extends "one"
+  ? RelationshipC<T>
+  : t.ArrayC<RelationshipC<T>>
+
 export type RelationshipsType<T extends ModelType> = {
   [K in keyof Schemas[T]]: Schemas[T][K] extends Relationship
-    ? Schemas[T][K]["type"] extends "one"
-      ? RelationshipC<Schemas[T][K]>
-      : t.ArrayC<RelationshipC<Schemas[T][K]>>
+    ? RelationshipType<Schemas[T][K]>
     : never
 }
 
@@ -25,7 +27,7 @@ export type AttributeC<T extends Attr | Embedded> = T extends Attr
   ? T["modelType"]
   : never
 
-export type RelationshipC<T extends Relationship> = t.TypeC<{
+export type RelationshipC<T extends Relationship = Relationship> = t.TypeC<{
   type: t.LiteralC<T["modelType"]>
   id: t.StringC
 }>

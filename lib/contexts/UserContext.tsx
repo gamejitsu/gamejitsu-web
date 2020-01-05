@@ -1,11 +1,7 @@
 import { createContext } from "react"
+import { User } from "../models"
 
-interface User {
-  username?: string
-  id?: string
-}
-
-const defaultUser: User = {}
+const defaultUser: User | null = null
 const UserContext = createContext({ user: defaultUser })
 
 export default UserContext

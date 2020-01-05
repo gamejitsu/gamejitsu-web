@@ -2,8 +2,9 @@ import { NextPage } from "next"
 import { setCookie } from "nookies"
 import { useEffect } from "react"
 import { stringify as stringifyQueryString } from "querystring"
-import { createRecord } from "gamejitsu/api"
+import { createModel } from "gamejitsu/api"
 import Router from "next/router"
+import { Session } from "gamejitsu/models"
 
 const Auth: NextPage = () => {
   useEffect(() => {
@@ -15,8 +16,12 @@ const Auth: NextPage = () => {
 
 Auth.getInitialProps = async (ctx) => {
   const { query } = ctx
-  const { authToken } = { authToken: "123" } //createRecord("session", { openidParams: stringifyQueryString(query) })
-  setCookie(ctx, "authToken", authToken, {})
+  const session = {} as Session
+  session.type = "session"
+  session.accessToken = ""
+  session.openidParams = stringifyQueryString(query)
+  const { data: { accessToken } } = await createModel(session)
+  setCookie(ctx, "authToken", accessToken, {})
 
   return {}
 }
