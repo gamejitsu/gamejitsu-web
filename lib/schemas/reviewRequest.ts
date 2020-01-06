@@ -1,7 +1,7 @@
-import { schema, hasOne, embedsOne } from "../schema"
+import { schema, embedsOne, attr } from "../schema"
 import * as t from "io-ts"
 
-const SkillLevel = t.union([
+export const SkillLevel = t.union([
   t.literal("medium"),
   t.literal("high"),
   t.literal("very_high"),
@@ -10,5 +10,5 @@ const SkillLevel = t.union([
 
 export default schema({
   skillLevel: embedsOne(SkillLevel),
-  replay: hasOne("replay")
+  replayId: attr("string", true)
 })

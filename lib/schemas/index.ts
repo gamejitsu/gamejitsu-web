@@ -1,4 +1,4 @@
-import reviewRequest from "./review-request"
+import reviewRequest from "./reviewRequest"
 import session from "./session"
 import user from "./user"
 import replay from "./replay"

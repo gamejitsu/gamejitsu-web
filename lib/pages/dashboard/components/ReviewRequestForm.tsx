@@ -1,42 +1,29 @@
-import { Button, Layout } from "gamejitsu/components"
 import { Box, Flex, Text } from "rebass"
 import { Formik, Form, Field } from "formik"
 import Router from "next/router"
-import axios from "axios"
-import PropTypes from "prop-types"
-import React from "react"
-import { parseCookies } from "nookies"
+import React, { FunctionComponent } from "react"
+import { Button, Layout } from "gamejitsu/components"
 import { HeroImage } from "."
+import { DeserializedReplay } from "./Page"
+import { createModel } from "gamejitsu/api"
+import { SkillLevel } from "gamejitsu/models/reviewRequest"
 
-const ReviewRequestForm = ({ replay, onFinish }: any) => {
+interface Props {
+  replay: DeserializedReplay
+  onFinish: () => void
+}
+
+const ReviewRequestForm: FunctionComponent<Props> = ({ replay, onFinish }) => {
   console.log(replay)
   return (
     <Layout title="Dashboard">
       <div>
         <Formik
-          initialValues={{}}
-          onSubmit={async (values: any, { setSubmitting }) => {
+          initialValues={{ skill: "medium" } as { skill: SkillLevel }}
+          onSubmit={async (values, { setSubmitting }) => {
             console.log(values)
             console.log(setSubmitting)
-            await axios.post(
-              process.env.API_ENDPOINT + "/review-requests",
-              {
-                data: {
-                  type: "review-request",
-                  attributes: {
-                    "replay-id": replay.id,
-                    "skill-level": values.skill
-                  }
-                }
-              },
-              {
-                headers: {
-                  Accept: "application/vnd.api+json",
-                  "Content-Type": "application/vnd.api+json",
-                  Authorization: "Bearer " + parseCookies({}).authToken
-                }
-              }
-            )
+            await createModel("review-request", { replayId: replay.id, skillLevel: values.skill })
             Router.push(`/dashboard`)
             onFinish()
           }}
@@ -46,22 +33,22 @@ const ReviewRequestForm = ({ replay, onFinish }: any) => {
               <Flex flexDirection="column" alignItems="center">
                 <Box p={3} mr="auto">
                   <Text p={2}>MatchId: {replay.matchId}</Text>
-                  <Text p={2}>playedAt: {replay.playedAt}</Text>
+                  <Text p={2}>playedAt: {new Date(replay.playedAt).toUTCString()}</Text>
                 </Box>
                 <Box p={3} mr="auto">
                   <div className="Grid">
-                    <HeroImage src={replay.playersDire[0].image}></HeroImage>
-                    <HeroImage src={replay.playersDire[1].image}></HeroImage>
-                    <HeroImage src={replay.playersDire[2].image}></HeroImage>
-                    <HeroImage src={replay.playersDire[3].image}></HeroImage>
-                    <HeroImage src={replay.playersDire[4].image}></HeroImage>
+                    <HeroImage src={replay.playersDire[0].heroPortraitUrl}></HeroImage>
+                    <HeroImage src={replay.playersDire[1].heroPortraitUrl}></HeroImage>
+                    <HeroImage src={replay.playersDire[2].heroPortraitUrl}></HeroImage>
+                    <HeroImage src={replay.playersDire[3].heroPortraitUrl}></HeroImage>
+                    <HeroImage src={replay.playersDire[4].heroPortraitUrl}></HeroImage>
                   </div>
                   <div className="Grid">
-                    <HeroImage src={replay.playersRadiant[0].image}></HeroImage>
-                    <HeroImage src={replay.playersRadiant[1].image}></HeroImage>
-                    <HeroImage src={replay.playersRadiant[2].image}></HeroImage>
-                    <HeroImage src={replay.playersRadiant[3].image}></HeroImage>
-                    <HeroImage src={replay.playersRadiant[4].image}></HeroImage>
+                    <HeroImage src={replay.playersRadiant[0].heroPortraitUrl}></HeroImage>
+                    <HeroImage src={replay.playersRadiant[1].heroPortraitUrl}></HeroImage>
+                    <HeroImage src={replay.playersRadiant[2].heroPortraitUrl}></HeroImage>
+                    <HeroImage src={replay.playersRadiant[3].heroPortraitUrl}></HeroImage>
+                    <HeroImage src={replay.playersRadiant[4].heroPortraitUrl}></HeroImage>
                   </div>
                 </Box>
                 <Box m={2} p={2} bg="primary" width={[1, 1, 1]}>
@@ -91,11 +78,6 @@ const ReviewRequestForm = ({ replay, onFinish }: any) => {
       </div>
     </Layout>
   )
-}
-
-ReviewRequestForm.propTypes = {
-  replay: PropTypes.object,
-  onFinish: PropTypes.func.isRequired
 }
 
 export default ReviewRequestForm

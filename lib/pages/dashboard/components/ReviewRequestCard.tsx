@@ -1,15 +1,19 @@
 import { Flex, Box, Text } from "rebass"
+import React, { FunctionComponent } from "react"
 import { Button, Card } from "gamejitsu/components"
-import PropTypes from "prop-types"
-import React from "react"
+import { ReviewRequest } from "gamejitsu/models"
 
-const ReviewRequestCard = ({ reviewRequest }: any) => (
+interface Props {
+  reviewRequest: ReviewRequest
+}
+
+const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => (
   <Card>
     <Flex>
       <Box p={3} mr="auto">
         <Text p={2}>Review Request</Text>
-        <Text p={2}>Match ID: {reviewRequest.matchId}</Text>
-        <Text p={2}>Skill Level: {reviewRequest["skill-level"]}</Text>
+        <Text p={2}>Match ID: {reviewRequest.replayId}</Text>
+        <Text p={2}>Skill Level: {reviewRequest.skillLevel}</Text>
       </Box>
       <Box alignSelf="center" pr={3}>
         <Text>State todo</Text>
@@ -18,9 +22,5 @@ const ReviewRequestCard = ({ reviewRequest }: any) => (
     </Flex>
   </Card>
 )
-
-ReviewRequestCard.propTypes = {
-  reviewRequest: PropTypes.object
-}
 
 export default ReviewRequestCard

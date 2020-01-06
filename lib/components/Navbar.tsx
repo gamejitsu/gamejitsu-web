@@ -1,9 +1,10 @@
 import { Box, Flex } from "rebass"
-import { Link, Button, SteamButton, UserContext } from "."
+import { Link, Button, SteamButton } from "."
 import queryString from "query-string"
 import { useContext, FunctionComponent } from "react"
 import styled from "styled-components"
 import { destroyCookie } from "nookies"
+import { UserContext } from "../contexts"
 
 interface NavLinkProps {
   href: string
@@ -39,7 +40,7 @@ const logout = () => {
 }
 
 const Navbar: FunctionComponent = () => {
-  const { user } = useContext(UserContext)
+  const user = useContext(UserContext)
 
   return (
     <Container py={2} px={2} color="white" alignItems="center">

@@ -1,50 +1,54 @@
-import { Layout, Spinner } from "gamejitsu/components"
-import { ReviewRequestCard, ReplayCard, ReviewRequestForm } from "."
-import { Socket } from "phoenix"
-import { UserContext } from "../../../components"
-import axios from "axios"
-import { parseCookies } from "nookies"
 import React from "react"
+import { Socket } from "phoenix"
+import { NextPageContext, NextPage } from "next"
+import { parseCookies } from "nookies"
+import { Layout, Spinner } from "gamejitsu/components"
+import { UserContext } from "gamejitsu/contexts"
+import { listModels, findModel, deserializeResponse } from "gamejitsu/api"
+import { Replay, User, ReviewRequest } from "gamejitsu/models"
+import { ReviewRequestCard, ReplayCard, ReviewRequestForm } from "."
 
-const deserializePlayers = (players: any) => {
-  return players.map((player: any) => {
-    return {
-      name: player["hero-name"],
-      image: player["hero-portrait-url"]
-    }
-  })
+export type DeserializedReplay = ReturnType<typeof deserializeReplays>[number]
+
+interface Props {
+  user: User
+  replays: DeserializedReplay[]
+  reviewRequests: ReviewRequest[]
 }
 
-const deserializeReplays = (data: any) => {
-  return data.data.map((replay: any) => {
-    const playersDire = deserializePlayers(replay.attributes.players.slice(0, 5))
-    const playersRadiant = deserializePlayers(replay.attributes.players.slice(5, 10))
+interface State {
+  replay: DeserializedReplay | null
+  replays: DeserializedReplay[]
+  socket: Socket | null
+  user: User
+}
+
+const deserializeReplays = (replays: Replay[]) => {
+  return replays.map((replay) => {
+    const playersDire = replay.players.slice(0, 5)
+    const playersRadiant = replay.players.slice(5, 10)
+
     return {
       id: replay.id,
-      matchId: replay.attributes["match-id"],
-      playedAt: replay.attributes["played-at"],
+      matchId: replay.matchId,
+      playedAt: replay.playedAt,
       playersDire,
       playersRadiant
     }
   })
 }
 
-const getReplays = async (authToken: string) => {
-  const response = await axios.get(process.env.API_ENDPOINT + "/replays", {
-    headers: { Accept: "application/vnd.api+json", Authorization: "Bearer " + authToken }
-  })
-  console.log(response.data)
-  return deserializeReplays(response.data)
+const getReplays = async (ctx?: NextPageContext) => {
+  const { data } = await listModels("replay", ctx)
+  return deserializeReplays(data)
 }
 
-const getCurrentUser = async (authToken: string) => {
-  const response = await axios.get(process.env.API_ENDPOINT + "/users/current", {
-    headers: { Accept: "application/vnd.api+json", Authorization: "Bearer " + authToken }
-  })
-  return response.data.data
+const getCurrentUser = async () => {
+  const { data } = await findModel("user", "current")
+  return data
 }
 
-function onSelectReplay(this: Dashboard, { replay }: any) {
+function onSelectReplay(this: Dashboard, { replay }: { replay: DeserializedReplay }) {
   this.setState({ replay })
 }
 
@@ -52,74 +56,52 @@ function onFinish(this: Dashboard) {
   this.setState({ replay: null })
 }
 
-const deserializeReviewRequests = (data: any) => {
-  return data.data.map((data: any) => {
-    return {
-      id: data.id,
-      matchId: data.relationships.replay.data.id,
-      "skill-level": data.attributes["skill-level"],
-      review: data.relationships.review || {
-        data: {
-          attributes: {
-            comments: [
-              {
-                text: "ultra kill",
-                timestamp: Date.now()
-              }
-            ]
-          }
-        }
-      }
-    }
-  })
+const getReviewRequests = async (ctx: NextPageContext) => {
+  const { data } = await listModels("review-request", ctx)
+  return data
 }
 
-const getReviewRequests = async (authToken: string) => {
-  const response = await axios.get(process.env.API_ENDPOINT + "/review-requests", {
-    headers: { Accept: "application/vnd.api+json", Authorization: "Bearer " + authToken }
-  })
-  return deserializeReviewRequests(response.data)
-}
-
-class Dashboard extends React.Component<any, any> {
-  static getInitialProps = async (ctx: any) => {
-    const { authToken } = parseCookies(ctx)
-    const replays = await getReplays(authToken)
-    const reviewRequests = await getReviewRequests(authToken)
-    return { replays, reviewRequests, authToken }
-  }
-
-  constructor(props: any, context: any) {
+class Dashboard extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props)
 
     this.state = {
-      user: context.user,
+      user: props.user,
       replays: props.replays,
+      replay: null,
       socket: null
     }
   }
 
   componentDidMount() {
+    const { authToken } = parseCookies({})
     const socket = new Socket(process.env.SOCKET_ENDPOINT + "/socket", {
-      params: { token: this.props.authToken }
+      params: { token: authToken }
     })
+    this.setState({ socket })
     socket.connect()
-    const channel = socket.channel("users:" + this.context.user.id)
+    const channel = socket.channel("users:" + this.state.user.id)
     channel.join().receive("ok", async () => {
-      const user = await getCurrentUser(this.props.authToken)
+      const user = await getCurrentUser()
       this.setState({
-        user,
-        socket
+        user
       })
     })
     channel.on("update", async (userData) => {
-      const replays = await getReplays(this.props.authToken)
-      this.setState({ user: userData.data, replays })
+      const { data: user } = deserializeResponse("user", "one", userData)
+
+      if (user.isSyncingReplays) {
+        this.setState({ user })
+      } else {
+        socket.disconnect()
+        const replays = await getReplays()
+        this.setState({ user, replays })
+      }
     })
   }
 
   componentWillUnmount() {
-    this.state.socket.disconnect()
+    this.state.socket && this.state.socket.disconnect()
   }
 
   render() {
@@ -127,13 +109,13 @@ class Dashboard extends React.Component<any, any> {
       <ReviewRequestForm replay={this.state.replay} onFinish={onFinish.bind(this)} />
     ) : (
       <Layout title="Dashboard">
-        {this.state.user.attributes["is-syncing-replays"] ? <Spinner /> : <div></div>}
+        {this.state.user.isSyncingReplays ? <Spinner /> : <div></div>}
         Reviews Requested
-        {this.props.reviewRequests.map((reviewRequest: any) => {
+        {this.props.reviewRequests.map((reviewRequest) => {
           return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
         })}
         Replay
-        {this.state.replays.map((replay: any) => {
+        {this.state.replays.map((replay) => {
           return (
             <ReplayCard
               key={replay.id}
@@ -147,6 +129,18 @@ class Dashboard extends React.Component<any, any> {
   }
 }
 
-Dashboard.contextType = UserContext
+const Page: NextPage<Omit<Props, "user">> = ({ replays, reviewRequests }) => (
+  <UserContext.Consumer>
+    {(user) =>
+      user ? <Dashboard user={user} replays={replays} reviewRequests={reviewRequests} /> : null
+    }
+  </UserContext.Consumer>
+)
 
-export default Dashboard
+Page.getInitialProps = async (ctx) => {
+  const replays = await getReplays(ctx)
+  const reviewRequests = await getReviewRequests(ctx)
+  return { replays, reviewRequests }
+}
+
+export default Page

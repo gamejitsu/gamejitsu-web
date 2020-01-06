@@ -1,109 +1,52 @@
-import React, { RefObject } from "react"
-import { Layout, Card, Comment } from "gamejitsu/components"
-import { parseCookies } from "nookies"
-import PropTypes from "prop-types"
-import axios from "axios"
+import React, { RefObject, SyntheticEvent } from "react"
 import { Flex, Box, Text } from "rebass"
+import { NextPageContext } from "next"
+import { Layout, Card, Comment } from "gamejitsu/components"
+import { Review } from "gamejitsu/models"
+import { findModel } from "gamejitsu/api"
 import { CommentBar, commentDuration } from "."
 
-const deserializeReview = ({ data, included }: any) => {
-  console.log("in deserialize")
-  console.log("before return")
-  return {
-    id: data.id,
-    "skill-level": data.attributes["skill-level"],
-    comments: data.relationships.comments.map((comment: any) => {
-      return included.find((includedComment: any) => {
-        return comment.id === includedComment.id
-      })
-    })
-  }
+interface Props {
+  review: Review
 }
 
-const getReview = async (authToken: string) => {
-  /*const response = await axios.get(process.env.API_ENDPOINT + '/reviews/id', {
-    headers: { Accept: 'application/vnd.api+json', Authorization: 'Bearer ' + authToken }
-  })*/
-  const response = {
-    included: [
-      {
-        type: "comment",
-        id: 1,
-        attributes: {
-          text: "ultra kill",
-          timestamp: 11
-        }
-      },
-      {
-        type: "comment",
-        id: 2,
-        attributes: {
-          text: "kill",
-          timestamp: 21
-        }
-      }
-    ],
-    data: {
-      type: "review",
-      id: 1,
-      attributes: {
-        "skill-level": "high"
-      },
-      relationships: {
-        comments: [
-          {
-            id: 1
-          },
-          {
-            id: 2
-          }
-        ],
-        replay: {
-          id: 1,
-          attributes: {
-            "match-id": "200000"
-          }
-        }
-      }
-    }
-  }
-  console.log(response)
-  return deserializeReview(response)
+interface State {
+  videoTimestamp: number
+  videoDuration: number
 }
 
-function setVideoDuration(this: any, event: any) {
-  const duration = event.target.duration
+function setVideoDuration(this: ReviewPage, event: SyntheticEvent<HTMLVideoElement, Event>) {
+  const duration = event.target instanceof HTMLVideoElement ? event.target.duration : 0
   this.setState({
     videoDuration: Math.floor(duration)
   })
 }
 
-function setVideoTimestamp(this: any, event: any) {
-  const timestamp = event.target.currentTime
+function setVideoTimestamp(this: ReviewPage, event: SyntheticEvent<HTMLVideoElement, Event>) {
+  const timestamp = event.target instanceof HTMLVideoElement ? event.target.currentTime : 0
   this.setState({
     videoTimestamp: Math.floor(timestamp)
   })
 }
 
-function updateVideoTimestamp(this: any, timestamp: any) {
+function updateVideoTimestamp(this: ReviewPage, timestamp: number) {
   this.setState({
     videoTimestamp: timestamp
   })
 }
 
-class Review extends React.Component<any, any> {
+class ReviewPage extends React.Component<Props, State> {
   videoRef: RefObject<HTMLVideoElement>
 
-  static getInitialProps = async (ctx: any) => {
-    const { authToken } = parseCookies(ctx)
+  static getInitialProps = async (ctx: NextPageContext) => {
     const urlId = ctx.query.id
-    const review = await getReview(authToken as any)
+    const { data: review } = await findModel("review", urlId.toString(), ctx)
     console.log(review)
     console.log("url: ", urlId)
     return { review }
   }
 
-  constructor(props: any) {
+  constructor(props: Props) {
     super(props)
     this.videoRef = React.createRef()
     this.state = {
@@ -114,11 +57,11 @@ class Review extends React.Component<any, any> {
 
   componentDidMount() {
     this.setState({
-      videoDuration: this.videoRef.current && this.videoRef.current.duration
+      videoDuration: this.videoRef.current ? this.videoRef.current.duration : 0
     })
   }
 
-  componentDidUpdate(prevProps: any, prevState: any) {
+  componentDidUpdate(_: Props, prevState: State) {
     if (this.state.videoTimestamp !== prevState.videoTimestamp) {
       this.videoRef.current && (this.videoRef.current.currentTime = this.state.videoTimestamp)
     }
@@ -126,7 +69,7 @@ class Review extends React.Component<any, any> {
 
   render() {
     const comments = this.props.review.comments
-    const shownComments = comments.filter((comment: any) => {
+    const shownComments = comments.filter((comment) => {
       const timeRange = commentDuration / 2
       const videoTimestamp = this.state.videoTimestamp
       const commentTimestamp = comment.timestamp
@@ -154,7 +97,7 @@ class Review extends React.Component<any, any> {
                   </video>
                 </Box>
                 <Box>
-                  {shownComments.map((comment: any) => {
+                  {shownComments.map((comment) => {
                     return <Comment key={comment.timestamp} comment={comment} />
                   })}
                 </Box>
@@ -173,4 +116,4 @@ class Review extends React.Component<any, any> {
   }
 }
 
-export default Review
+export default ReviewPage

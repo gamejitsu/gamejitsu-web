@@ -6,6 +6,5 @@ import Layout from "./Layout"
 import Link from "./Link"
 import Navbar from "./Navbar"
 import Spinner from "./Spinner"
-import UserContext from "../contexts/UserContext"
 
-export { Button, SteamButton, Card, Layout, Link, Navbar, Spinner, UserContext, Comment }
+export { Button, SteamButton, Card, Layout, Link, Navbar, Spinner, Comment }

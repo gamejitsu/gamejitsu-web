@@ -1,5 +1,6 @@
 import * as t from "io-ts"
 import { isRight } from "fp-ts/lib/Either"
+import camelize from "camelize"
 
 import {
   ResponseType,
@@ -13,6 +14,7 @@ import {
   DeserializedData,
   DeserializedResponse,
   RelationshipC,
+  NonNullableRelationshipsC,
   RelationshipValue
 } from "."
 
@@ -38,11 +40,15 @@ type ResponseC<T extends ModelType, U extends ResponseType> = t.TypeC<{
   included: IncludedC
 }>
 
+const reportErrors = (errors: t.Errors) => {
+  return errors.map((error) => error.context.map(({ key }) => key).join(".")).join(", ")
+}
+
 class DeserializationError extends Error {
   errors: t.Errors
 
   constructor(errors: t.Errors) {
-    super(`Deserialization failed: ${errors}`)
+    super(`Deserialization failed: ${reportErrors(errors)}`)
     this.errors = errors
     Object.setPrototypeOf(this, new.target.prototype)
   }
@@ -50,73 +56,79 @@ class DeserializationError extends Error {
 
 const modelTypes = Object.keys(schemas) as ModelType[]
 
-const Models = (() => {
+const ModelsT = (() => {
   if (modelTypes.length === 0) {
     return t.undefined
   }
 
   if (modelTypes.length === 1) {
-    return Model(modelTypes[0])
+    return ModelT(modelTypes[0])
   }
 
   return t.union([
-    Model(modelTypes[0]),
-    Model(modelTypes[1]),
-    ...modelTypes.slice(2).map((t) => Model(t))
+    ModelT(modelTypes[0]),
+    ModelT(modelTypes[1]),
+    ...modelTypes.slice(2).map((t) => ModelT(t))
   ])
 })()
 
-function Attribute<T extends Attr | Embedded>(attr: T): AttributeC<T> {
-  if (isAttr(attr)) {
-    return (attr.isOptional
-      ? attrTypes[attr.type]
-      : t.union([attrTypes[attr.type], t.undefined])) as AttributeC<T>
+function AttributeT<T extends Attr | Embedded>(field: T): AttributeC<T> {
+  if (isAttr(field)) {
+    return (field.isOptional
+      ? t.union([attrTypes[field.type], t.undefined])
+      : attrTypes[field.type]) as AttributeC<T>
   } else {
-    return (attr as Embedded).modelType as AttributeC<T>
+    const embeddedField = field as Embedded
+    return (embeddedField.type === "one"
+      ? embeddedField.modelType
+      : t.array(embeddedField.modelType)) as AttributeC<T>
   }
 }
 
-function Attributes<T extends ModelType>(modelType: T): AttributesC<T> {
+function AttributesT<T extends ModelType>(modelType: T): AttributesC<T> {
   const schema = schemas[modelType]
 
   return t.type(
     Object.keys(schema).reduce((acc, key) => {
       const field = schema[key]
       return field && (isAttr(field) || isEmbedded(field))
-        ? { ...acc, [key]: Attribute(field) }
+        ? { ...acc, [key]: AttributeT(field) }
         : acc
     }, {} as AttributesC<T>["props"])
   )
 }
 
-function Relationship<T extends Relationship>(relationship: T): RelationshipC<T> {
+function RelationshipT<T extends Relationship>(relationship: T): RelationshipC<T> {
   return t.type({
     type: t.literal(relationship.modelType),
     id: t.string
   })
 }
 
-function Relationships<T extends ModelType>(modelType: T): RelationshipsC<T> {
+function RelationshipsT<T extends ModelType>(modelType: T): RelationshipsC<T> {
   const schema = schemas[modelType]
 
-  return t.type(
-    Object.keys(schema).reduce((acc, key) => {
-      const field = schema[key]
-      return field && isRelationship(field) ? { ...acc, [key]: Relationship(field) } : acc
-    }, {} as RelationshipsC<T>["props"])
-  )
+  return t.union([
+    t.type(
+      Object.keys(schema).reduce((acc, key) => {
+        const field = schema[key]
+        return field && isRelationship(field) ? { ...acc, [key]: RelationshipT(field) } : acc
+      }, {} as NonNullableRelationshipsC<T>["props"])
+    ),
+    t.undefined
+  ])
 }
 
-function Model<T extends ModelType>(modelType: T): ModelC<T> {
+function ModelT<T extends ModelType>(modelType: T): ModelC<T> {
   return t.type({
     id: t.string,
     type: t.literal(modelType),
-    attributes: Attributes(modelType),
-    relationships: Relationships(modelType)
+    attributes: AttributesT(modelType),
+    relationships: RelationshipsT(modelType)
   })
 }
 
-function Response<T extends ModelType, U extends ResponseType>(
+function ResponseT<T extends ModelType, U extends ResponseType>(
   modelType: T,
   responseType: U
 ): ResponseC<T, U> {
@@ -125,8 +137,8 @@ function Response<T extends ModelType, U extends ResponseType>(
       version: t.literal("1.0")
     }),
 
-    data: responseType === "one" ? Model(modelType) : t.array(Model(modelType)),
-    included: t.union([t.array(Models), t.undefined])
+    data: responseType === "one" ? ModelT(modelType) : t.array(ModelT(modelType)),
+    included: t.union([t.array(ModelsT), t.undefined])
   }) as ResponseC<T, U>
 }
 
@@ -139,27 +151,29 @@ function extractRelationship<T extends RelationshipType>(
     : (relationship as t.TypeOf<RelationshipValue<Relationship<"many">>>).map((m) => m.id)
 }
 
-function extractRelationships<T extends ModelType>(
-  model: t.TypeOf<ModelC<T>>
-): Partial<ModelOfType<T>> {
-  const schema = schemas[model.type]
+function extractRelationships<T extends ModelType>({
+  relationships,
+  type
+}: t.TypeOf<ModelC<T>>): Partial<ModelOfType<T>> {
+  const schema = schemas[type]
 
-  return (Object.keys(model.relationships) as (keyof RelationshipsC<T>["props"])[]).reduce(
-    (acc, key) => {
+  if (relationships) {
+    return (Object.keys(relationships) as (keyof typeof relationships)[]).reduce((acc, key) => {
       const field = schema[key as string]
 
       return field && isRelationship(field)
         ? {
             ...acc,
             [key]: extractRelationship(
-              model.relationships[key] as t.TypeOf<RelationshipValue<Relationship>>,
+              relationships[key] as t.TypeOf<RelationshipValue<Relationship>>,
               field.type
             )
           }
         : acc
-    },
-    {} as Partial<ModelOfType<T>>
-  )
+    }, {} as Partial<ModelOfType<T>>)
+  } else {
+    return {}
+  }
 }
 
 function extractModel<T extends ModelType>(model: t.TypeOf<ModelC<T>>): ModelOfType<T> {
@@ -168,7 +182,7 @@ function extractModel<T extends ModelType>(model: t.TypeOf<ModelC<T>>): ModelOfT
     id: model.id,
     ...model.attributes,
     ...extractRelationships(model)
-  } as ModelOfType<T>
+  }
 }
 
 function extractData<T extends ModelType, U extends ResponseType>(
@@ -209,11 +223,12 @@ export function deserializeResponse<T extends ModelType, U extends ResponseType>
   responseType: U,
   data: any
 ) {
-  const response = Response(modelType, responseType).decode(data)
+  const response = ResponseT(modelType, responseType).decode(camelize(data))
 
   if (isRight(response)) {
     return extractResponse(responseType, response.right)
   } else {
+    console.error(JSON.stringify(data, null, 2))
     throw new DeserializationError(response.left)
   }
 }

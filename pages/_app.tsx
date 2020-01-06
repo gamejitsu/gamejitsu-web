@@ -2,14 +2,16 @@ import React from "react"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 import { Reset } from "styled-reset"
 import { theme } from "gamejitsu"
-import axios from "axios"
-import NextApp, { AppContext } from "next/app"
-import { UserContext } from "gamejitsu/components"
 import jwtDecode from "jwt-decode"
 import { parseCookies, destroyCookie } from "nookies"
+import NextApp, { AppContext } from "next/app"
+import { UserContext } from "gamejitsu/contexts"
+import { User } from "gamejitsu/models"
+import { NextPageContext } from "next"
+import { findModel } from "gamejitsu/api"
 
 interface Props {
-  user: any
+  user: User
 }
 
 const Content = styled.div`
@@ -29,12 +31,12 @@ export default class App extends NextApp<Props> {
     let user
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
-      let { authToken } = parseCookies(ctx)
-      authToken = validateTokenExpirationTime(authToken as any) as any
-      if (authToken == null) {
+      let { authToken } = parseCookies(ctx) as { authToken?: string }
+      authToken = validateTokenExpirationTime(authToken)
+      if (authToken === undefined) {
         destroyCookie({}, "authToken")
       }
-      authToken && (user = await getCurrentUser(authToken))
+      authToken && (user = await getCurrentUser(ctx))
     }
     return { pageProps, user }
   }
@@ -48,7 +50,7 @@ export default class App extends NextApp<Props> {
         <GlobalStyle />
         <ThemeProvider theme={theme}>
           <Content>
-            <UserContext.Provider value={{ user }}>
+            <UserContext.Provider value={user}>
               <Component {...pageProps} />
             </UserContext.Provider>
           </Content>
@@ -58,21 +60,19 @@ export default class App extends NextApp<Props> {
   }
 }
 
-const getCurrentUser = async (authToken: string) => {
-  const response = await axios.get(process.env.API_ENDPOINT + "/users/current", {
-    headers: { Accept: "application/vnd.api+json", Authorization: "Bearer " + authToken }
-  })
-  return response.data.data
+const getCurrentUser = async (ctx: NextPageContext) => {
+  const { data } = await findModel("user", "current", ctx)
+  return data
 }
 
-const validateTokenExpirationTime = (authToken: string) => {
-  if (authToken == null) {
-    return null
+const validateTokenExpirationTime = (authToken?: string) => {
+  if (authToken === undefined) {
+    return undefined
   }
   const decoded: { exp: number } = jwtDecode(authToken)
   if (decoded.exp > Date.now() / 1000) {
     return authToken
   } else {
-    return null
+    return undefined
   }
 }

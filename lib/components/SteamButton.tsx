@@ -19,7 +19,7 @@ const Image = styled.img`
 
 const SteamButton: FunctionComponent<Props> = ({ onClick }) => (
   <Content onClick={onClick}>
-    <Image src="/static/images/sits_01.png" />
+    <Image src="/images/sits_01.png" />
   </Content>
 )
 

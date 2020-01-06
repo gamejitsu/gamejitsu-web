@@ -1,5 +1,5 @@
 import * as t from "io-ts"
-import { DateFromISOString } from "io-ts-types/es6/DateFromISOString"
+import { DateFromISOString } from "io-ts-types/lib/DateFromISOString"
 import schemas, { ModelType } from "./schemas"
 
 const { string, number, boolean } = t
@@ -36,7 +36,7 @@ type TypeOfRelationship<T extends Relationship> = T["type"] extends "one" ? stri
 
 type TypeOfEmbedded<T extends Embedded> = T["type"] extends "one"
   ? t.TypeOf<T["modelType"]>
-  : (t.TypeOf<T["modelType"]> | undefined)[]
+  : t.TypeOf<T["modelType"]>[]
 
 type Field = Attr | Relationship | Embedded
 type Schema<T> = T & { _T: T } & { [K: string]: Field | undefined }

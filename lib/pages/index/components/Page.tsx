@@ -1,4 +1,6 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import { Layout } from "gamejitsu/components"
 
-export default () => <Layout></Layout>
+const Page: FunctionComponent = () => <Layout></Layout>
+
+export default Page

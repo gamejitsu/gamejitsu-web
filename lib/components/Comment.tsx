@@ -87,6 +87,8 @@ const Content = styled.button`
   writing-mode: horizontal-tb;
 `
 
-const Comment: FunctionComponent<Props> = ({ comment }) => <Content>{comment.text}</Content>
+const CommentComponent: FunctionComponent<Props> = ({ comment }) => (
+  <Content>{comment.text}</Content>
+)
 
-export default Comment
+export default CommentComponent

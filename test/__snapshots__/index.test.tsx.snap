@@ -15,7 +15,7 @@ exports[`Index page should match snapshot 1`] = `
     }
   }
 >
-  <_default>
+  <Page>
     <Layout>
       <Navbar>
         <Navbar__Container
@@ -377,7 +377,9 @@ exports[`Index page should match snapshot 1`] = `
                                 className="Link__Content-j0sqir-0 jgHxZN"
                                 onClick={[Function]}
                                 onMouseEnter={[Function]}
-                              />
+                              >
+                                userTest
+                              </a>
                             </StyledComponent>
                           </Link__Content>
                         </Link>
@@ -548,6 +550,6 @@ exports[`Index page should match snapshot 1`] = `
         </StyledComponent>
       </Layout__Container>
     </Layout>
-  </_default>
+  </Page>
 </ThemeProvider>
 `;

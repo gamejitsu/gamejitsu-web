@@ -1,24 +1,34 @@
 import pluralize from "pluralize"
+import { NextPageContext } from "next"
 import { request } from "./request"
 import { ModelType } from "../schemas"
 import { ModelOfType } from "../schema"
 
-export function findModel<T extends ModelType>(modelType: T, id: string) {
-  return request(modelType, "one", 200, "GET", `/${pluralize(modelType)}/${id}`)
+export function findModel<T extends ModelType>(modelType: T, id: string, ctx?: NextPageContext) {
+  return request(modelType, "one", 200, "GET", `/${pluralize(modelType)}/${id}`, { ctx })
 }
 
-export function createModel<T extends ModelType>(model: ModelOfType<T>) {
-  return request(model.type, "one", 201, "POST", `/${pluralize(model.type)}`, { model })
+export function createModel<T extends ModelType>(
+  modelType: T,
+  model: Partial<ModelOfType<T>>,
+  ctx?: NextPageContext
+) {
+  return request(modelType, "one", 201, "POST", `/${pluralize(modelType)}`, { model, ctx })
 }
 
-export function updateModel<T extends ModelType>(model: ModelOfType<T>) {
-  return request(model.type, "one", 200, "PUT", `/${pluralize(model.type)}/${model.id}`, { model })
+export function updateModel<T extends ModelType>(model: ModelOfType<T>, ctx?: NextPageContext) {
+  return request(model.type, "one", 200, "PUT", `/${pluralize(model.type)}/${model.id}`, {
+    model: model as Partial<ModelOfType<T>>,
+    ctx
+  })
 }
 
-export function deleteModel<T extends ModelType>(model: ModelOfType<T>) {
-  return request(model.type, undefined, 204, "DELETE", `/${pluralize(model.type)}/${model.id}`)
+export function deleteModel<T extends ModelType>(model: ModelOfType<T>, ctx?: NextPageContext) {
+  return request(model.type, undefined, 204, "DELETE", `/${pluralize(model.type)}/${model.id}`, {
+    ctx
+  })
 }
 
-export function listModels<T extends ModelType>(modelType: T) {
-  return request(modelType, "many", 200, "GET", `/${pluralize(modelType)}`)
+export function listModels<T extends ModelType>(modelType: T, ctx?: NextPageContext) {
+  return request(modelType, "many", 200, "GET", `/${pluralize(modelType)}`, { ctx })
 }

@@ -16,12 +16,16 @@ export type AttributesC<T extends ModelType> = t.TypeC<
   }
 >
 
-export type RelationshipsC<T extends ModelType> = t.TypeC<
+export type NonNullableRelationshipsC<T extends ModelType> = t.TypeC<
   {
     [K in keyof Schemas[T]["_T"]]: Schemas[T][K] extends Relationship
       ? RelationshipValue<Schemas[T][K]>
       : never
   }
+>
+
+export type RelationshipsC<T extends ModelType> = t.UnionC<
+  [NonNullableRelationshipsC<T>, t.UndefinedC]
 >
 
 export type AttributeC<T extends Attr | Embedded> = T extends Attr
@@ -52,12 +56,9 @@ export type IncludedC = t.UnionC<[t.ArrayC<ModelC<ModelType>>, t.UndefinedC]>
 
 export type DeserializedData<T extends ModelType, U extends ResponseType> = U extends "one"
   ? ModelOfType<T>
-  : (ModelOfType<T> | undefined)[]
+  : ModelOfType<T>[]
 
-export type DeserializedIncluded = Record<
-  ModelType,
-  (ModelOfType<ModelType> | undefined)[] | undefined
->
+export type DeserializedIncluded = Record<ModelType, ModelOfType<ModelType>[] | undefined>
 
 export interface DeserializedResponse<T extends ModelType, U extends ResponseType> {
   data: DeserializedData<T, U>
@@ -65,3 +66,4 @@ export interface DeserializedResponse<T extends ModelType, U extends ResponseTyp
 }
 
 export * from "./api"
+export { deserializeResponse } from "./response"
