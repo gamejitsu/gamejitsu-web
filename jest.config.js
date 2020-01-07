@@ -1,8 +1,10 @@
-/* eslint-env node */
 module.exports = {
   clearMocks: true,
-  resolver: 'jest-webpack-resolver',
   setupFiles: ['<rootDir>/jest.setup.js'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
-  testEnvironment: 'jsdom'
+  testEnvironment: 'jsdom',
+  moduleNameMapper: {
+    "^gamejitsu/(.*)": "<rootDir>/lib/$1",
+    "^gamejitsu": "<rootDir>/lib"
+  }
 }
