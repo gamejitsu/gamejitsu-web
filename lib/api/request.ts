@@ -3,9 +3,18 @@ import axios, { Method } from "axios"
 import dasherize from "dasherize"
 import { parseCookies } from "nookies"
 import { NextPageContext } from "next"
-import { ModelC, DeserializedResponse, ResponseType } from "."
+import { ModelC, DeserializedResponse, ResponseType, NonNullableRelationshipsC, RelationshipValue } from "."
 import { deserializeResponse } from "./response"
-import { ModelOfType, isAttr, isEmbedded } from "../schema"
+import {
+  ModelOfType,
+  isAttr,
+  isEmbedded,
+  isRelationship,
+  TypeOfRelationship,
+  Relationship,
+  Schema,
+  RelationshipType
+} from "../schema"
 import schemas, { ModelType } from "../schemas"
 
 interface RequestOptions<T extends ModelType> {
@@ -32,6 +41,37 @@ class StatusError extends Error {
   }
 }
 
+function serializeAttributes<T extends ModelType>(schema: Schema, model: Partial<ModelOfType<T>>) {
+  return (Object.keys(model) as (keyof ModelOfType<T>)[]).reduce((acc, key) => {
+    const field = schema[key as string]
+    return field && (isAttr(field) || isEmbedded(field)) ? { ...acc, [key]: model[key] } : acc
+  }, {} as t.TypeOf<NonNullableRelationshipsC<T>>)
+}
+
+function serializeRelationship<T extends RelationshipType>(relationship: Relationship<T>, value: TypeOfRelationship<Relationship<T>>): t.TypeOf<RelationshipValue<Relationship<T>>> {
+  return relationship.type === "one"
+  ? { id: value as TypeOfRelationship<Relationship<"one">>, type: relationship.modelType } as t.TypeOf<RelationshipValue<Relationship<T>>>
+  : (value as TypeOfRelationship<Relationship<"many">>).map((id) => ({
+      id,
+      type: relationship.modelType
+    })) as t.TypeOf<RelationshipValue<Relationship<T>>>
+}
+
+function serializeRelationships<T extends ModelType>(
+  schema: Schema,
+  model: Partial<ModelOfType<T>>
+) {
+  return (Object.keys(model) as (keyof ModelOfType<T>)[]).reduce((acc, key) => {
+    const field = schema[key as string]
+    return field && isRelationship(field)
+      ? {
+          ...acc,
+          [key]: serializeRelationship(field, model[key] as t.TypeOf<TypeOfRelationship<Relationship<T>>>)
+        }
+      : acc
+  }, {} as t.TypeOf<NonNullableRelationshipsC<T>>)
+}
+
 export function serializeRequest<T extends ModelType>(
   modelType: T,
   model?: Partial<ModelOfType<T>>
@@ -43,19 +83,15 @@ export function serializeRequest<T extends ModelType>(
   const { id } = model
   const schema = schemas[modelType]
 
-  const attributes = (Object.keys(model) as (keyof ModelOfType<T>)[]).reduce((acc, key) => {
-    const field = schema[key as string]
-    return field && (isAttr(field) || isEmbedded(field)) ? { ...acc, [key]: model[key] } : acc
-  }, {} as t.TypeOf<ModelC<T>>)
-
   return JSON.stringify({
     jsonapi: {
       version: "1.0"
     },
-    data: {
-      id: id,
-      attributes: dasherize(attributes)
-    }
+    data: dasherize({
+      id,
+      attributes: serializeAttributes(schema, model),
+      relationships: serializeRelationships(schema, model)
+    })
   })
 }
 
