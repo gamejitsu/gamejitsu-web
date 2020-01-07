@@ -52,7 +52,7 @@ export type Model<T extends ModelType = ModelType> = {
     ? TypeOfEmbedded<Schemas[T][K]>
     : never
 } & {
-  id?: string
+  id: string
   type: T
 }
 
