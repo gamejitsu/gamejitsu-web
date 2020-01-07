@@ -14,12 +14,11 @@ import {
   DeserializedData,
   DeserializedResponse,
   RelationshipC,
-  NonNullableRelationshipsC,
-  RelationshipValue
+  NonNullableRelationshipsC
 } from "."
 
 import {
-  ModelOfType,
+  Model,
   Attr,
   isAttr,
   attrTypes,
@@ -39,6 +38,10 @@ type ResponseC<T extends ModelType, U extends ResponseType> = t.TypeC<{
   data: DataC<T, U>
   included: IncludedC
 }>
+
+type AnyRelationship =
+  | t.TypeOf<RelationshipC<Relationship<"one">>>
+  | t.TypeOf<RelationshipC<Relationship<"many">>>
 
 const reportErrors = (errors: t.Errors) => {
   return errors.map((error) => error.context.map(({ key }) => key).join(".")).join(", ")
@@ -99,10 +102,13 @@ function AttributesT<T extends ModelType>(modelType: T): AttributesC<T> {
 }
 
 function RelationshipT<T extends Relationship>(relationship: T): RelationshipC<T> {
-  return t.type({
+  const type = t.type({
     type: t.literal(relationship.modelType),
     id: t.string
   })
+
+  const dataType = relationship.type === "one" ? type : t.array(type)
+  return t.type({ data: dataType }) as RelationshipC<T>
 }
 
 function RelationshipsT<T extends ModelType>(modelType: T): RelationshipsC<T> {
@@ -142,19 +148,24 @@ function ResponseT<T extends ModelType, U extends ResponseType>(
   }) as ResponseC<T, U>
 }
 
-function extractRelationship<T extends RelationshipType>(
-  relationship: t.TypeOf<RelationshipValue<Relationship<T>>>,
-  type: T
-) {
-  return type === "one"
-    ? (relationship as t.TypeOf<RelationshipValue<Relationship<"one">>>).id
-    : (relationship as t.TypeOf<RelationshipValue<Relationship<"many">>>).map((m) => m.id)
+function isManyRelationship(
+  relationship: AnyRelationship
+): relationship is t.TypeOf<RelationshipC<Relationship<"many">>> {
+  return Array.isArray(relationship.data)
+}
+
+function extractRelationship(relationship: AnyRelationship) {
+  if (isManyRelationship(relationship)) {
+    return relationship.data.map((m) => m.id)
+  } else {
+    return relationship.data.id
+  }
 }
 
 function extractRelationships<T extends ModelType>({
   relationships,
   type
-}: t.TypeOf<ModelC<T>>): Partial<ModelOfType<T>> {
+}: t.TypeOf<ModelC<T>>): Partial<Model<T>> {
   const schema = schemas[type]
 
   if (relationships) {
@@ -164,19 +175,16 @@ function extractRelationships<T extends ModelType>({
       return field && isRelationship(field)
         ? {
             ...acc,
-            [key]: extractRelationship(
-              relationships[key] as t.TypeOf<RelationshipValue<Relationship>>,
-              field.type
-            )
+            [key]: extractRelationship(relationships[key] as AnyRelationship)
           }
         : acc
-    }, {} as Partial<ModelOfType<T>>)
+    }, {} as Partial<Model<T>>)
   } else {
     return {}
   }
 }
 
-function extractModel<T extends ModelType>(model: t.TypeOf<ModelC<T>>): ModelOfType<T> {
+function extractModel<T extends ModelType>(model: t.TypeOf<ModelC<T>>): Model<T> {
   return {
     type: model.type,
     id: model.id,
@@ -228,7 +236,6 @@ export function deserializeResponse<T extends ModelType, U extends ResponseType>
   if (isRight(response)) {
     return extractResponse(responseType, response.right)
   } else {
-    console.error(JSON.stringify(data, null, 2))
     throw new DeserializationError(response.left)
   }
 }

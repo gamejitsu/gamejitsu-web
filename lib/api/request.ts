@@ -3,10 +3,10 @@ import axios, { Method } from "axios"
 import dasherize from "dasherize"
 import { parseCookies } from "nookies"
 import { NextPageContext } from "next"
-import { ModelC, DeserializedResponse, ResponseType, NonNullableRelationshipsC, RelationshipValue } from "."
+import { DeserializedResponse, ResponseType, AttributesC, NonNullableRelationshipsC } from "."
 import { deserializeResponse } from "./response"
 import {
-  ModelOfType,
+  Model,
   isAttr,
   isEmbedded,
   isRelationship,
@@ -19,7 +19,7 @@ import schemas, { ModelType } from "../schemas"
 
 interface RequestOptions<T extends ModelType> {
   params?: Record<string, string>
-  model?: Partial<ModelOfType<T>>
+  model?: Partial<Model<T>>
   ctx?: NextPageContext
 }
 
@@ -28,6 +28,10 @@ type ResponseStatus = 200 | 201 | 204
 type RequestResult<T extends ModelType, U extends ResponseType | undefined> = U extends undefined
   ? undefined
   : DeserializedResponse<T, NonNullable<U>>
+
+type AnyRelationship =
+  | TypeOfRelationship<Relationship<"one">>
+  | TypeOfRelationship<Relationship<"many">>
 
 class StatusError extends Error {
   status: number
@@ -41,41 +45,44 @@ class StatusError extends Error {
   }
 }
 
-function serializeAttributes<T extends ModelType>(schema: Schema, model: Partial<ModelOfType<T>>) {
-  return (Object.keys(model) as (keyof ModelOfType<T>)[]).reduce((acc, key) => {
+function isManyRelationship(
+  relationship: AnyRelationship
+): relationship is TypeOfRelationship<Relationship<"many">> {
+  return Array.isArray(relationship)
+}
+
+function serializeAttributes(schema: Schema, model: Partial<Model>) {
+  return (Object.keys(model) as (keyof typeof model)[]).reduce((acc, key) => {
     const field = schema[key as string]
     return field && (isAttr(field) || isEmbedded(field)) ? { ...acc, [key]: model[key] } : acc
-  }, {} as t.TypeOf<NonNullableRelationshipsC<T>>)
+  }, {} as t.TypeOf<AttributesC<ModelType>>)
 }
 
-function serializeRelationship<T extends RelationshipType>(relationship: Relationship<T>, value: TypeOfRelationship<Relationship<T>>): t.TypeOf<RelationshipValue<Relationship<T>>> {
-  return relationship.type === "one"
-  ? { id: value as TypeOfRelationship<Relationship<"one">>, type: relationship.modelType } as t.TypeOf<RelationshipValue<Relationship<T>>>
-  : (value as TypeOfRelationship<Relationship<"many">>).map((id) => ({
-      id,
-      type: relationship.modelType
-    })) as t.TypeOf<RelationshipValue<Relationship<T>>>
+function serializeRelationship(relationship: Relationship, value: AnyRelationship) {
+  return {
+    data: isManyRelationship(value)
+      ? value.map((id) => ({
+          id,
+          type: relationship.modelType
+        }))
+      : { id: value, type: relationship.modelType }
+  }
 }
 
-function serializeRelationships<T extends ModelType>(
-  schema: Schema,
-  model: Partial<ModelOfType<T>>
-) {
-  return (Object.keys(model) as (keyof ModelOfType<T>)[]).reduce((acc, key) => {
+function serializeRelationships(schema: Schema, model: Partial<Model>) {
+  return (Object.keys(model) as (keyof typeof model)[]).reduce((acc, key) => {
     const field = schema[key as string]
+
     return field && isRelationship(field)
       ? {
           ...acc,
-          [key]: serializeRelationship(field, model[key] as t.TypeOf<TypeOfRelationship<Relationship<T>>>)
+          [key]: serializeRelationship(field, model[key])
         }
       : acc
-  }, {} as t.TypeOf<NonNullableRelationshipsC<T>>)
+  }, {} as t.TypeOf<NonNullableRelationshipsC>)
 }
 
-export function serializeRequest<T extends ModelType>(
-  modelType: T,
-  model?: Partial<ModelOfType<T>>
-) {
+export function serializeRequest(modelType: ModelType, model?: Partial<Model>) {
   if (!model) {
     return null
   }

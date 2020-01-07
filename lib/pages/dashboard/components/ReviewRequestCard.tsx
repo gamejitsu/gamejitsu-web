@@ -12,7 +12,7 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => (
     <Flex>
       <Box p={3} mr="auto">
         <Text p={2}>Review Request</Text>
-        <Text p={2}>Match ID: {reviewRequest.replayId}</Text>
+        <Text p={2}>Match ID: {reviewRequest.replay}</Text>
         <Text p={2}>Skill Level: {reviewRequest.skillLevel}</Text>
       </Box>
       <Box alignSelf="center" pr={3}>

@@ -32,7 +32,9 @@ type TypeOfAttr<T extends Attr> = T["isOptional"] extends true
   ? t.TypeOf<Attrs[T["type"]]> | undefined
   : t.TypeOf<Attrs[T["type"]]>
 
-export type TypeOfRelationship<T extends Relationship> = T["type"] extends "one" ? string : string[]
+export type TypeOfRelationship<T extends Relationship> = T["type"] extends "one"
+  ? string | undefined
+  : string[]
 
 type TypeOfEmbedded<T extends Embedded> = T["type"] extends "one"
   ? t.TypeOf<T["modelType"]>

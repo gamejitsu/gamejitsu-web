@@ -23,7 +23,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, onFinish }) => {
           onSubmit={async (values, { setSubmitting }) => {
             console.log(values)
             console.log(setSubmitting)
-            await createModel("review-request", { replayId: replay.id, skillLevel: values.skill })
+            await createModel("review-request", { replay: replay.id, skillLevel: values.skill })
             Router.push(`/dashboard`)
             onFinish()
           }}

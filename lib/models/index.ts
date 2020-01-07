@@ -1,7 +1,7 @@
-import { ModelOfType } from "../schema"
+import { Model } from "../schema"
 
-export type ReviewRequest = ModelOfType<"review-request">
-export type Session = ModelOfType<"session">
-export type User = ModelOfType<"user">
-export type Replay = ModelOfType<"replay">
-export type Review = ModelOfType<"review">
+export type ReviewRequest = Model<"review-request">
+export type Session = Model<"session">
+export type User = Model<"user">
+export type Replay = Model<"replay">
+export type Review = Model<"review">
