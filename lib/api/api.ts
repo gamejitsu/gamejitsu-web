@@ -1,8 +1,8 @@
 import pluralize from "pluralize"
 import { NextPageContext } from "next"
 import { request } from "./request"
+import { Model } from "./response"
 import { ModelType } from "../schemas"
-import { Model } from "../schema"
 
 export function findModel<T extends ModelType>(modelType: T, id: string, ctx?: NextPageContext) {
   return request(modelType, "one", 200, "GET", `/${pluralize(modelType)}/${id}`, { ctx })
@@ -18,7 +18,7 @@ export function createModel<T extends ModelType>(
 
 export function updateModel<T extends ModelType>(model: Model<T>, ctx?: NextPageContext) {
   return request(model.type, "one", 200, "PUT", `/${pluralize(model.type)}/${model.id}`, {
-    model: model as Partial<Model<T>>,
+    model,
     ctx
   })
 }
