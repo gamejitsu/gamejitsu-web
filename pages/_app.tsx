@@ -31,13 +31,13 @@ export default class App extends NextApp<Props> {
     let user
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
-      let { authToken } = parseCookies(ctx) as { authToken?: string }
-      authToken = validateTokenExpirationTime(authToken)
-      if (authToken === undefined) {
-        destroyCookie({}, "authToken")
-      }
-      authToken && (user = await getCurrentUser(ctx))
     }
+    let { authToken } = parseCookies(ctx) as { authToken?: string }
+    authToken = validateTokenExpirationTime(authToken)
+    if (authToken === undefined) {
+      destroyCookie({}, "authToken")
+    }
+    authToken && (user = await getCurrentUser(ctx))
     return { pageProps, user }
   }
 
