@@ -21,14 +21,14 @@ const getReview = async (ctx: NextPageContext, id: string) => {
 }
 
 function setVideoDuration(this: ReviewPage, event: SyntheticEvent<HTMLVideoElement, Event>) {
-  const duration = event.target instanceof HTMLVideoElement ? event.target.duration : 0
+  const duration = event.currentTarget.duration
   this.setState({
     videoDuration: Math.floor(duration)
   })
 }
 
 function setVideoTimestamp(this: ReviewPage, event: SyntheticEvent<HTMLVideoElement, Event>) {
-  const timestamp = event.target instanceof HTMLVideoElement ? event.target.currentTime : 0
+  const timestamp = event.currentTarget.currentTime
   this.setState({
     videoTimestamp: Math.floor(timestamp)
   })

@@ -3,35 +3,27 @@ import axios, { Method } from "axios"
 import dasherize from "dasherize"
 import { parseCookies } from "nookies"
 import { NextPageContext } from "next"
-import { DeserializedResponse, ResponseType, AttributesC, NonNullableRelationshipsC } from "."
-import { deserializeResponse } from "./response"
-import {
-  Model,
-  isAttr,
-  isEmbedded,
-  isRelationship,
-  TypeOfRelationship,
-  Relationship,
-  Schema,
-  RelationshipType
-} from "../schema"
 import schemas, { ModelType } from "../schemas"
+import { deserializeResponse, Model, ModelRelationship } from "./response"
+import { isAttr, isEmbedded, isRelationship, Relationship, Schema } from "../schema"
+import {
+  DeserializedResponse,
+  ResponseType,
+  AttributesC,
+  NonNullableRelationshipsC
+} from "./response"
 
 interface RequestOptions<T extends ModelType> {
   params?: Record<string, string>
-  model?: Partial<Model<T>>
+  model?: Partial<Model<T>> | Model<T>
   ctx?: NextPageContext
 }
-
-type ResponseStatus = 200 | 201 | 204
 
 type RequestResult<T extends ModelType, U extends ResponseType | undefined> = U extends undefined
   ? undefined
   : DeserializedResponse<T, NonNullable<U>>
 
-type AnyRelationship =
-  | TypeOfRelationship<Relationship<"one">>
-  | TypeOfRelationship<Relationship<"many">>
+type ResponseStatus = 200 | 201 | 204
 
 class StatusError extends Error {
   status: number
@@ -46,8 +38,8 @@ class StatusError extends Error {
 }
 
 function isManyRelationship(
-  relationship: AnyRelationship
-): relationship is TypeOfRelationship<Relationship<"many">> {
+  relationship: ModelRelationship
+): relationship is ModelRelationship<"many"> {
   return Array.isArray(relationship)
 }
 
@@ -58,13 +50,10 @@ function serializeAttributes(schema: Schema, model: Partial<Model>) {
   }, {} as t.TypeOf<AttributesC<ModelType>>)
 }
 
-function serializeRelationship(relationship: Relationship, value: AnyRelationship) {
+function serializeRelationship(relationship: Relationship, value: ModelRelationship) {
   return {
     data: isManyRelationship(value)
-      ? value.map((id) => ({
-          id,
-          type: relationship.modelType
-        }))
+      ? value.map((id) => ({ id, type: relationship.modelType }))
       : { id: value, type: relationship.modelType }
   }
 }
@@ -72,12 +61,8 @@ function serializeRelationship(relationship: Relationship, value: AnyRelationshi
 function serializeRelationships(schema: Schema, model: Partial<Model>) {
   return (Object.keys(model) as (keyof typeof model)[]).reduce((acc, key) => {
     const field = schema[key as string]
-
     return field && isRelationship(field)
-      ? {
-          ...acc,
-          [key]: serializeRelationship(field, model[key])
-        }
+      ? { ...acc, [key]: serializeRelationship(field, model[key]) }
       : acc
   }, {} as t.TypeOf<NonNullableRelationshipsC>)
 }
