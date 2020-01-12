@@ -5,7 +5,6 @@ import styled from "styled-components"
 import { Comment } from "gamejitsu/models/review"
 import { darken } from "polished"
 
-
 interface Props {
   comments: Comment[]
   videoDuration: number

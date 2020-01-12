@@ -24,7 +24,7 @@ const Content = styled.div`
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Exo+2');
   body {
-    background-color: ${props => props.theme.backgroundColor};
+    background-color: ${(props) => props.theme.backgroundColor};
   }
 `
 
@@ -51,7 +51,7 @@ export default class App extends NextApp<Props> {
       <>
         <Reset />
         <ThemeProvider theme={theme}>
-        <GlobalStyle />
+          <GlobalStyle />
           <Content>
             <UserContext.Provider value={user}>
               <Component {...pageProps} />

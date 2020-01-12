@@ -24,23 +24,22 @@ const CommentForm: FunctionComponent<Props> = ({ onFinish, onDelete, comment }) 
           <Form>
             <Flex alignItems="center">
               <Box p={3} mr="auto">
-                {
-                  <Field type="text" name="comment" placeholder="Comment text..." />
-                }
+                {<Field type="text" name="comment" placeholder="Comment text..." />}
               </Box>
             </Flex>
             <Box>
-              {comment !== null
-                ? <Fragment>
+              {comment !== null ? (
+                <Fragment>
                   <Box p={0}>
                     <Button text="Update comment" type="submit" disabled={isSubmitting} />
                   </Box>
-                  < Box>
-                    <Button text="Delete comment" type="submit" onClick={onDelete}/>
+                  <Box>
+                    <Button text="Delete comment" type="submit" onClick={onDelete} />
                   </Box>
                 </Fragment>
-                : <Button text="Insert comment" type="submit" disabled={isSubmitting} />
-              }
+              ) : (
+                <Button text="Insert comment" type="submit" disabled={isSubmitting} />
+              )}
             </Box>
           </Form>
         )}

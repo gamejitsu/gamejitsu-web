@@ -6,8 +6,7 @@ interface Props {
   comment: Comment
 }
 
-const Content = styled.button`
-`
+const Content = styled.button``
 
 const CommentComponent: FunctionComponent<Props> = ({ comment }) => (
   <Content>{comment.text}</Content>

@@ -50,10 +50,9 @@ async function onFinish(this: ReviewPage, commentText: string) {
   }
   const selectedComment = this.state.selectedComment
   selectedComment !== null
-    ? this.state.review.comments = this.state.review.comments.map((comment, index) =>
-      index === this.state.review.comments.indexOf(selectedComment)
-        ? newComment
-        : comment)
+    ? (this.state.review.comments = this.state.review.comments.map((comment, index) =>
+        index === this.state.review.comments.indexOf(selectedComment) ? newComment : comment
+      ))
     : this.state.review.comments.push(newComment)
   const response = await updateModel(this.state.review)
   this.setState({ review: response.data })
@@ -62,8 +61,8 @@ async function onFinish(this: ReviewPage, commentText: string) {
 async function onDelete(this: ReviewPage) {
   const selectedComment = this.state.selectedComment
   selectedComment !== null &&
-    (this.state.review.comments = this.state.review.comments.filter((_, index) =>
-      index === this.state.review.comments.indexOf(selectedComment)
+    (this.state.review.comments = this.state.review.comments.filter(
+      (_, index) => index === this.state.review.comments.indexOf(selectedComment)
     ))
   const response = await updateModel(this.state.review)
   this.setState({ review: response.data })
@@ -110,13 +109,11 @@ class ReviewPage extends React.Component<Props, State> {
     })
   }
 
-
   render() {
     const comments = this.state.review.comments
 
     return (
       <Layout title="Review">
-
         <Box m="20px">
           <Card>
             <Flex flexDirection="column">
@@ -136,8 +133,17 @@ class ReviewPage extends React.Component<Props, State> {
                     </video>
                   </Box>
                   <Box ref={this.sidebarRef}>
-                    <CommentMenu comments={comments} videoTimestamp={this.state.videoTimestamp} onSelect={this.onSelect} sidebarRef={this.sidebarRef} />
-                    <CommentForm comment={this.state.selectedComment} onFinish={onFinish.bind(this)} onDelete={onDelete.bind(this)}/>
+                    <CommentMenu
+                      comments={comments}
+                      videoTimestamp={this.state.videoTimestamp}
+                      onSelect={this.onSelect}
+                      sidebarRef={this.sidebarRef}
+                    />
+                    <CommentForm
+                      comment={this.state.selectedComment}
+                      onFinish={onFinish.bind(this)}
+                      onDelete={onDelete.bind(this)}
+                    />
                   </Box>
                 </Flex>
               </Box>

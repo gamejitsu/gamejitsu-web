@@ -22,7 +22,12 @@ const getBackgroundColor = (videoTimestamp: number, comment: Comment, color: str
     : color
 
 const ListItem = styled.li<ListItemProps>`
-  background-color: ${props => getBackgroundColor(props.videoTimestamp, props.comment, lighten(0.1, props.theme.lightBackgroundColor))}; };
+  background-color: ${(props) =>
+    getBackgroundColor(
+      props.videoTimestamp,
+      props.comment,
+      lighten(0.1, props.theme.lightBackgroundColor)
+    )}; };
   cursor: pointer;
 `
 
@@ -40,22 +45,22 @@ const didUpdate = (sidebarRef: React.RefObject<Element>, onSelect: Props["onSele
   }
 }
 
-const CommentMenu: FunctionComponent<Props> = ({ comments, videoTimestamp, onSelect, sidebarRef }) => {
-  useEffect(didUpdate.bind(null, sidebarRef, onSelect));
+const CommentMenu: FunctionComponent<Props> = ({
+  comments,
+  videoTimestamp,
+  onSelect,
+  sidebarRef
+}) => {
+  useEffect(didUpdate.bind(null, sidebarRef, onSelect))
 
   return (
     <Box overflow="auto" mr="auto">
       <ul>
-        {
-          comments.map((comment, index) =>
-            <ListItem
-              key={index.toString()}
-              videoTimestamp={videoTimestamp}
-              comment={comment}
-            >
-              <a onClick={onSelect.bind(null, comment)}>{comment.text}</a>
-            </ListItem>)
-        }
+        {comments.map((comment, index) => (
+          <ListItem key={index.toString()} videoTimestamp={videoTimestamp} comment={comment}>
+            <a onClick={onSelect.bind(null, comment)}>{comment.text}</a>
+          </ListItem>
+        ))}
       </ul>
     </Box>
   )
