@@ -1,32 +1,46 @@
 import { Button } from "gamejitsu/components"
 import { Box, Flex, Text } from "rebass"
 import { Formik, Form, Field } from "formik"
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, Fragment } from "react"
+import { Comment } from "gamejitsu/models/review"
 
 interface Props {
-  onFinish: () => void
+  comment: Comment | null
+  onFinish: (comment: string) => void
+  onDelete: () => void
 }
 
-const CommentForm: FunctionComponent<Props> = ({ onFinish }) => {
+const CommentForm: FunctionComponent<Props> = ({ onFinish, onDelete, comment }) => {
   return (
     <div>
       <Formik
-        initialValues={{}}
+        enableReinitialize={true}
+        initialValues={comment !== null ? { comment: comment.text } : { comment: "" }}
         onSubmit={async (values, { setSubmitting }) => {
-          console.log(values)
-          console.log(setSubmitting)
-          onFinish()
+          onFinish(values.comment)
         }}
       >
         {({ isSubmitting }) => (
           <Form>
             <Flex alignItems="center">
               <Box p={3} mr="auto">
-                <Field type="comment" name="comment" placeholder="Insert comment" />
+                {
+                  <Field type="text" name="comment" placeholder="Comment text..." />
+                }
               </Box>
             </Flex>
             <Box>
-              <Button text="Submit comment" type="submit" disabled={isSubmitting} />
+              {comment !== null
+                ? <Fragment>
+                  <Box p={0}>
+                    <Button text="Update comment" type="submit" disabled={isSubmitting} />
+                  </Box>
+                  < Box>
+                    <Button text="Delete comment" type="submit" onClick={onDelete}/>
+                  </Box>
+                </Fragment>
+                : <Button text="Insert comment" type="submit" disabled={isSubmitting} />
+              }
             </Box>
           </Form>
         )}

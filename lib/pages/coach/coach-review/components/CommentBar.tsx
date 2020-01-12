@@ -3,6 +3,8 @@ import { commentDuration } from "."
 import React, { RefObject } from "react"
 import styled from "styled-components"
 import { Comment } from "gamejitsu/models/review"
+import { darken } from "polished"
+
 
 interface Props {
   comments: Comment[]
@@ -55,15 +57,20 @@ function clickBarEvent(this: CommentBar, e: React.MouseEvent) {
 const Container = styled(Box)`
   background-color: ${(props) => props.theme.secondaryColor};
   position: relative;
-  height: 80px;
+  height: 40px;
+  background: linear-gradient(
+    to bottom,
+    ${(props) => darken(0.3, props.theme.primaryColor)},
+    ${(props) => props.theme.primaryColor}
+  );
 `
 const Square = styled(Box)<SquareProps>`
-  background-color: ${(props) => props.theme.primaryColor};
+  background-color: ${(props) => props.theme.secondaryColor};
   left: ${(props) => `${getX(props)}px`};
   width: ${(props) => `${getWidth(props)}px`};
   height: 100%;
   position: absolute;
-  border: 1px solid ${(props) => props.theme.secondaryColor};
+  border: 1px solid ${(props) => props.theme.lightBackgroundColor};
 `
 
 const CursorOverlay = styled(Box)<CursorOverlayProps>`

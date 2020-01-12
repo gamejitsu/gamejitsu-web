@@ -93,7 +93,7 @@ class ReviewPage extends React.Component<Props, State> {
                     width="800"
                     controls
                   >
-                    <source src="/static/video/sample.mp4" type="video/mp4" />
+                    <source src="/video/sample.mp4" type="video/mp4" />
                   </video>
                 </Box>
                 <Box>
