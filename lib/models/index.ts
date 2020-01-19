@@ -1,4 +1,4 @@
-import { Model } from "../schema"
+import { Model } from "../api/response"
 
 export type ReviewRequest = Model<"review-request">
 export type Session = Model<"session">

@@ -23,6 +23,9 @@ const Content = styled.div`
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Exo+2');
+  body {
+    background-color: ${(props) => props.theme.backgroundColor};
+  }
 `
 
 export default class App extends NextApp<Props> {
@@ -31,13 +34,13 @@ export default class App extends NextApp<Props> {
     let user
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
-      let { authToken } = parseCookies(ctx) as { authToken?: string }
-      authToken = validateTokenExpirationTime(authToken)
-      if (authToken === undefined) {
-        destroyCookie({}, "authToken")
-      }
-      authToken && (user = await getCurrentUser(ctx))
     }
+    let { authToken } = parseCookies(ctx) as { authToken?: string }
+    authToken = validateTokenExpirationTime(authToken)
+    if (authToken === undefined) {
+      destroyCookie({}, "authToken")
+    }
+    authToken && (user = await getCurrentUser(ctx))
     return { pageProps, user }
   }
 
@@ -47,8 +50,8 @@ export default class App extends NextApp<Props> {
     return (
       <>
         <Reset />
-        <GlobalStyle />
         <ThemeProvider theme={theme}>
+          <GlobalStyle />
           <Content>
             <UserContext.Provider value={user}>
               <Component {...pageProps} />

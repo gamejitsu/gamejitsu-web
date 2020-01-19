@@ -3,7 +3,11 @@ import { FunctionComponent } from "react"
 import styled from "styled-components"
 
 const Content = styled(Box)`
-  background-color: ${(props) => props.theme.backgroundColor};
+  background: linear-gradient(
+    to bottom,
+    ${(props) => props.theme.lightBackgroundColor},
+    transparent
+  );
 `
 
 const Card: FunctionComponent = ({ children }) => <Content>{children}</Content>

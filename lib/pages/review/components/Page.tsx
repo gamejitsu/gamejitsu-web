@@ -16,14 +16,14 @@ interface State {
 }
 
 function setVideoDuration(this: ReviewPage, event: SyntheticEvent<HTMLVideoElement, Event>) {
-  const duration = event.target instanceof HTMLVideoElement ? event.target.duration : 0
+  const duration = event.currentTarget.duration
   this.setState({
     videoDuration: Math.floor(duration)
   })
 }
 
 function setVideoTimestamp(this: ReviewPage, event: SyntheticEvent<HTMLVideoElement, Event>) {
-  const timestamp = event.target instanceof HTMLVideoElement ? event.target.currentTime : 0
+  const timestamp = event.currentTarget.currentTime
   this.setState({
     videoTimestamp: Math.floor(timestamp)
   })
@@ -93,7 +93,7 @@ class ReviewPage extends React.Component<Props, State> {
                     width="800"
                     controls
                   >
-                    <source src="/static/video/sample.mp4" type="video/mp4" />
+                    <source src="/video/sample.mp4" type="video/mp4" />
                   </video>
                 </Box>
                 <Box>

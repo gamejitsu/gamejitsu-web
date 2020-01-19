@@ -12,7 +12,7 @@ interface Props {
 const Content = styled.button`
   background: linear-gradient(
     to bottom,
-    ${(props) => lighten(0.2, props.theme.primaryColor)},
+    ${(props) => lighten(0.3, props.theme.primaryColor)},
     ${(props) => props.theme.primaryColor}
   );
 
