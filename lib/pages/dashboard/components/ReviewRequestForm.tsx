@@ -14,17 +14,15 @@ interface Props {
 }
 
 const ReviewRequestForm: FunctionComponent<Props> = ({ replay, onFinish }) => {
-  console.log(replay)
   return (
     <Layout title="Dashboard">
       <div>
         <Formik
           initialValues={{ skill: "medium" } as { skill: SkillLevel }}
           onSubmit={async (values, { setSubmitting }) => {
-            console.log(values)
-            console.log(setSubmitting)
+            setSubmitting(true)
             await createModel("review-request", { replay: replay.id, skillLevel: values.skill })
-            Router.push(`/dashboard`)
+            setSubmitting(false)
             onFinish()
           }}
         >

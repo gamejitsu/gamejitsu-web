@@ -1,7 +1,8 @@
-import { schema, attr } from "../schema"
+import { schema, attr, hasOne } from "../schema"
 
 export default schema({
   steamId: attr("string"),
   isSyncingReplays: attr("boolean"),
-  username: attr("string")
+  username: attr("string"),
+  coach: hasOne("coach")
 })

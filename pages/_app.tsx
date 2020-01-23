@@ -1,4 +1,5 @@
 import React from "react"
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 import { Reset } from "styled-reset"
 import { theme } from "gamejitsu"

@@ -48,6 +48,7 @@ const Navbar: FunctionComponent = () => {
       <NavLink href="/dashboard">Dashboard</NavLink>
       <NavLink href="/reviews">Reviews</NavLink>
       <NavLink href="/coach-reviews">Coach Reviews</NavLink>
+      <NavLink href="/coach-signup">Coach SignUp</NavLink>
       <Box mx="auto" />
       {user ? (
         [
