@@ -1,10 +1,13 @@
-import { Box, Flex } from "rebass"
-import { Link, Button, SteamButton } from "."
 import queryString from "query-string"
-import { useContext, FunctionComponent } from "react"
 import styled from "styled-components"
+
+import { Box, Flex } from "rebass"
 import { destroyCookie } from "nookies"
 import { UserContext } from "../contexts"
+import { Link, Button, SteamButton } from "."
+import { useContext, FunctionComponent } from "react"
+
+const urlBase = "https://steamcommunity.com/openid/login"
 
 interface NavLinkProps {
   href: string
@@ -21,7 +24,6 @@ const Container = styled(Flex)`
 `
 
 const login = () => {
-  const urlBase = "https://steamcommunity.com/openid/login"
   const urlQuery = {
     "openid.claimed_id": "http://specs.openid.net/auth/2.0/identifier_select",
     "openid.identity": "http://specs.openid.net/auth/2.0/identifier_select",

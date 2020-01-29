@@ -1,9 +1,10 @@
-import { NextPage } from "next"
-import { setCookie } from "nookies"
-import { useEffect } from "react"
-import { stringify as stringifyQueryString } from "querystring"
-import { createModel } from "gamejitsu/api"
 import Router from "next/router"
+
+import { NextPage } from "next"
+import { useEffect } from "react"
+import { setCookie } from "nookies"
+import { createModel } from "gamejitsu/api"
+import { stringify as stringifyQueryString } from "querystring"
 
 const Auth: NextPage = () => {
   useEffect(() => {
