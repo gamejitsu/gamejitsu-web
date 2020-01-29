@@ -17,7 +17,9 @@ const CommentForm: FunctionComponent<Props> = ({ onFinish, onDelete, comment }) 
         enableReinitialize={true}
         initialValues={comment !== null ? { comment: comment.text } : { comment: "" }}
         onSubmit={async (values, { setSubmitting }) => {
-          onFinish(values.comment)
+          setSubmitting(true)
+          await onFinish(values.comment)
+          setSubmitting(false)
         }}
       >
         {({ isSubmitting }) => (

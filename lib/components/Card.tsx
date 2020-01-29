@@ -1,6 +1,7 @@
+import styled from "styled-components"
+
 import { Box } from "rebass"
 import { FunctionComponent } from "react"
-import styled from "styled-components"
 
 const Content = styled(Box)`
   background: linear-gradient(

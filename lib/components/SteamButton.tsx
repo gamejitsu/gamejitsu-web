@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 
+const imageSrc = "/images/sits_01.png"
+
 interface Props {
   onClick: () => void
 }
@@ -19,7 +21,7 @@ const Image = styled.img`
 
 const SteamButton: FunctionComponent<Props> = ({ onClick }) => (
   <Content onClick={onClick}>
-    <Image src="/images/sits_01.png" />
+    <Image src={imageSrc} />
   </Content>
 )
 

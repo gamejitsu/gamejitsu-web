@@ -1,6 +1,7 @@
+import styled from "styled-components"
+
 import { lighten } from "polished"
 import { FunctionComponent } from "react"
-import styled from "styled-components"
 
 interface Props {
   text: string
@@ -15,7 +16,6 @@ const Content = styled.button`
     ${(props) => lighten(0.3, props.theme.primaryColor)},
     ${(props) => props.theme.primaryColor}
   );
-
   padding: 12px 30px;
   font-size: 15px;
   outline: 0;

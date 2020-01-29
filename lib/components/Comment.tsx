@@ -1,6 +1,7 @@
+import styled from "styled-components"
+
 import { FunctionComponent } from "react"
 import { Comment } from "../models/review"
-import styled from "styled-components"
 
 interface Props {
   comment: Comment

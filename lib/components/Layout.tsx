@@ -1,8 +1,11 @@
-import { Box } from "rebass"
 import Head from "next/head"
 import Navbar from "./Navbar"
-import { FunctionComponent } from "react"
 import styled from "styled-components"
+
+import { Box } from "rebass"
+import { FunctionComponent } from "react"
+
+const companyName = "Gamejitsu"
 
 interface Props {
   title?: string
@@ -17,7 +20,7 @@ const Layout: FunctionComponent<Props> = ({ title, children }) => (
     <Navbar />
     <Container mx="auto">
       <Head>
-        <title>{title === undefined ? "Gamejitsu" : `Gamejitsu - ${title}`}</title>
+        <title>{title === undefined ? companyName : `${companyName} - ${title}`}</title>
       </Head>
       {children}
     </Container>
