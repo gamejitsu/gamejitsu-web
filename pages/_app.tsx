@@ -10,6 +10,7 @@ import { UserContext } from "gamejitsu/contexts"
 import { User } from "gamejitsu/models"
 import { NextPageContext } from "next"
 import { findModel } from "gamejitsu/api"
+import Head from "next/head"
 
 interface Props {
   user: User
@@ -50,6 +51,9 @@ export default class App extends NextApp<Props> {
 
     return (
       <>
+        <Head>
+          <script src="https://js.stripe.com/v3/" />
+        </Head>
         <Reset />
         <ThemeProvider theme={theme}>
           <GlobalStyle />

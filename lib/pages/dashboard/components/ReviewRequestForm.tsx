@@ -1,12 +1,19 @@
 import { Box, Flex, Text } from "rebass"
 import { Formik, Form, Field } from "formik"
-import Router from "next/router"
 import React, { FunctionComponent } from "react"
 import { Button, Layout } from "gamejitsu/components"
 import { HeroImage } from "."
 import { DeserializedReplay } from "./Page"
 import { createModel } from "gamejitsu/api"
 import { SkillLevel } from "gamejitsu/models/reviewRequest"
+
+const redirectToCheckout = async () => {
+  const stripe = Stripe("pk_test_gO4hZHVOjk7E3GjH0etoiBAO00c0qpfX0m")
+  const {
+    data: { id }
+  } = await createModel("checkout", {})
+  return await stripe.redirectToCheckout({ sessionId: id })
+}
 
 interface Props {
   replay: DeserializedReplay
@@ -68,7 +75,12 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, onFinish }) => {
                 <Text p={2}>Price: 4£</Text>
               </Flex>
               <Box>
-                <Button text="Request Replay" type="submit" disabled={isSubmitting} />
+                <Button
+                  text="Request Replay"
+                  type="submit"
+                  disabled={isSubmitting}
+                  onClick={redirectToCheckout}
+                />
               </Box>
             </Form>
           )}
