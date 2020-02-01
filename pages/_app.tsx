@@ -10,7 +10,7 @@ import { UserContext } from "gamejitsu/contexts"
 import { User } from "gamejitsu/models"
 import { NextPageContext } from "next"
 import { findModel } from "gamejitsu/api"
-import Head from "next/head";
+import Head from "next/head"
 
 interface Props {
   user: User

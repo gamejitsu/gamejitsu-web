@@ -9,7 +9,9 @@ import { SkillLevel } from "gamejitsu/models/reviewRequest"
 
 const redirectToCheckout = async () => {
   const stripe = Stripe("pk_test_gO4hZHVOjk7E3GjH0etoiBAO00c0qpfX0m")
-  const { data: { id } } = await createModel("checkout", {})
+  const {
+    data: { id }
+  } = await createModel("checkout", {})
   return await stripe.redirectToCheckout({ sessionId: id })
 }
 
@@ -73,7 +75,12 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, onFinish }) => {
                 <Text p={2}>Price: 4£</Text>
               </Flex>
               <Box>
-                <Button text="Request Replay" type="submit" disabled={isSubmitting} onClick={redirectToCheckout} />
+                <Button
+                  text="Request Replay"
+                  type="submit"
+                  disabled={isSubmitting}
+                  onClick={redirectToCheckout}
+                />
               </Box>
             </Form>
           )}

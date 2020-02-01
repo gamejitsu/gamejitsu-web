@@ -6,7 +6,14 @@ import review from "./review"
 import coach from "./coach"
 import checkout from "./checkout"
 
-export type ModelType = "review-request" | "session" | "user" | "replay" | "review" | "coach" | "checkout"
+export type ModelType =
+  | "review-request"
+  | "session"
+  | "user"
+  | "replay"
+  | "review"
+  | "coach"
+  | "checkout"
 
 export default {
   "review-request": reviewRequest,
