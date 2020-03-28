@@ -95,12 +95,7 @@ class Dashboard extends React.Component<Props, State> {
         })}
         Replay
         {this.state.replays.map((replay) => {
-          return (
-            <ReplayCard
-              key={replay.id}
-              replay={replay}
-            />
-          )
+          return <ReplayCard key={replay.id} replay={replay} />
         })}
       </Layout>
     )

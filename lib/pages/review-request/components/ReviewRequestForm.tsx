@@ -75,11 +75,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
                 <Text p={2}>Price: 4£</Text>
               </Flex>
               <Box>
-                <Button
-                  text="Request Replay"
-                  type="submit"
-                  disabled={isSubmitting}
-                />
+                <Button text="Request Replay" type="submit" disabled={isSubmitting} />
               </Box>
             </Form>
           )}
