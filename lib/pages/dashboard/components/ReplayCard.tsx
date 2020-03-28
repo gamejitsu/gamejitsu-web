@@ -1,16 +1,16 @@
-import { Flex, Box, Text } from "rebass"
 import React, { useContext, FunctionComponent } from "react"
-import { Button, Card } from "gamejitsu/components"
-import { UserContext } from "gamejitsu/contexts"
+
+import { Button, Card, Link } from "gamejitsu/components"
+import { DeserializedReplay } from "gamejitsu/models/replay"
+import { Flex, Box, Text } from "rebass"
 import { HeroImage } from "."
-import { DeserializedReplay } from "./Page"
+import { UserContext } from "gamejitsu/contexts"
 
 interface Props {
   replay: DeserializedReplay
-  onSelectReplay: ({ replay }: { replay: DeserializedReplay }) => void
 }
 
-const RecentMatchesCard: FunctionComponent<Props> = ({ replay, onSelectReplay }) => {
+const RecentMatchesCard: FunctionComponent<Props> = ({ replay }) => {
   const user = useContext(UserContext)
 
   return (
@@ -38,9 +38,10 @@ const RecentMatchesCard: FunctionComponent<Props> = ({ replay, onSelectReplay })
           </div>
         </Box>
         <Box alignSelf="center" pr={3}>
+          <Link href={`/review-requests/${replay.id}`}>Request Review Link</Link>
           <Button
             onClick={() => {
-              onSelectReplay({ replay })
+              //onSelectReplay({ replay })
             }}
             text="Request Review"
           />

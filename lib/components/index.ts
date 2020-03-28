@@ -6,5 +6,6 @@ import Layout from "./Layout"
 import Comment from "./Comment"
 import Spinner from "./Spinner"
 import SteamButton from "./SteamButton"
+import HeroImage from "./HeroImage"
 
-export { Button, SteamButton, Card, Layout, Link, Navbar, Spinner, Comment }
+export { Button, SteamButton, Card, Layout, Link, Navbar, Spinner, Comment, HeroImage }

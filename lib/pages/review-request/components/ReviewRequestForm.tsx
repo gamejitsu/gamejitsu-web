@@ -1,10 +1,11 @@
-import { Box, Flex, Text } from "rebass"
-import { Formik, Form, Field } from "formik"
 import React, { FunctionComponent } from "react"
+
+import { Box, Flex, Text } from "rebass"
 import { Button, Layout } from "gamejitsu/components"
-import { HeroImage } from "."
-import { DeserializedReplay } from "./Page"
 import { createModel } from "gamejitsu/api"
+import { DeserializedReplay } from "gamejitsu/models/replay"
+import { Formik, Form, Field } from "formik"
+import { HeroImage } from "gamejitsu/components"
 import { SkillLevel } from "gamejitsu/models/reviewRequest"
 
 const redirectToCheckout = async () => {
@@ -17,10 +18,9 @@ const redirectToCheckout = async () => {
 
 interface Props {
   replay: DeserializedReplay
-  onFinish: () => void
 }
 
-const ReviewRequestForm: FunctionComponent<Props> = ({ replay, onFinish }) => {
+const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
   return (
     <Layout title="Dashboard">
       <div>
@@ -28,9 +28,9 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, onFinish }) => {
           initialValues={{ skill: "medium" } as { skill: SkillLevel }}
           onSubmit={async (values, { setSubmitting }) => {
             setSubmitting(true)
-            await createModel("review-request", { replay: replay.id, skillLevel: values.skill })
-            setSubmitting(false)
-            onFinish()
+            redirectToCheckout()
+            //await createModel("review-request", { replay: replay.id, skillLevel: values.skill })
+            //setSubmitting(false)
           }}
         >
           {({ isSubmitting }) => (
@@ -79,7 +79,6 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, onFinish }) => {
                   text="Request Replay"
                   type="submit"
                   disabled={isSubmitting}
-                  onClick={redirectToCheckout}
                 />
               </Box>
             </Form>

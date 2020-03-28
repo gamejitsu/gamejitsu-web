@@ -1,14 +1,14 @@
 import React from "react"
-import { Socket } from "phoenix"
+
+import { DeserializedReplay, deserializeReplays } from "gamejitsu/models/replay"
+import { Layout, Spinner } from "gamejitsu/components"
+import { listModels, findModel, deserializeResponse } from "gamejitsu/api"
 import { NextPageContext, NextPage } from "next"
 import { parseCookies } from "nookies"
-import { Layout, Spinner } from "gamejitsu/components"
+import { ReviewRequestCard, ReplayCard } from "."
+import { Socket } from "phoenix"
+import { User, ReviewRequest } from "gamejitsu/models"
 import { UserContext } from "gamejitsu/contexts"
-import { listModels, findModel, deserializeResponse } from "gamejitsu/api"
-import { Replay, User, ReviewRequest } from "gamejitsu/models"
-import { ReviewRequestCard, ReplayCard, ReviewRequestForm } from "."
-
-export type DeserializedReplay = ReturnType<typeof deserializeReplays>[number]
 
 interface Props {
   user: User
@@ -23,21 +23,6 @@ interface State {
   user: User
 }
 
-const deserializeReplays = (replays: Replay[]) => {
-  return replays.map((replay) => {
-    const playersDire = replay.players.slice(0, 5)
-    const playersRadiant = replay.players.slice(5, 10)
-
-    return {
-      id: replay.id,
-      matchId: replay.matchId,
-      playedAt: replay.playedAt,
-      playersDire,
-      playersRadiant
-    }
-  })
-}
-
 const getReplays = async (ctx?: NextPageContext) => {
   const { data } = await listModels("replay", ctx)
   return deserializeReplays(data)
@@ -46,10 +31,6 @@ const getReplays = async (ctx?: NextPageContext) => {
 const getCurrentUser = async () => {
   const { data } = await findModel("user", "current")
   return data
-}
-
-function onSelectReplay(this: Dashboard, { replay }: { replay: DeserializedReplay }) {
-  this.setState({ replay })
 }
 
 function onFinish(this: Dashboard) {
@@ -105,9 +86,7 @@ class Dashboard extends React.Component<Props, State> {
   }
 
   render() {
-    return this.state.replay ? (
-      <ReviewRequestForm replay={this.state.replay} onFinish={onFinish.bind(this)} />
-    ) : (
+    return (
       <Layout title="Dashboard">
         {this.state.user.isSyncingReplays ? <Spinner /> : <div></div>}
         Reviews Requested
@@ -120,7 +99,6 @@ class Dashboard extends React.Component<Props, State> {
             <ReplayCard
               key={replay.id}
               replay={replay}
-              onSelectReplay={onSelectReplay.bind(this)}
             />
           )
         })}
