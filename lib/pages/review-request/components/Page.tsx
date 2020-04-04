@@ -20,6 +20,7 @@ Page.getInitialProps = async (ctx) => {
     throw new Error(`Expected to find reply with id ${urlId}`)
   }
   return { replay: deserializeReplays([replay])[0] }
+  // TODO maybe remove?
   Router.push("/dashboard")
 }
 

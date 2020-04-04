@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from "react"
+import Router from "next/router"
 
 import { Box, Flex, Text } from "rebass"
 import { Button, Layout } from "gamejitsu/components"
@@ -28,9 +29,11 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
           initialValues={{ skill: "medium" } as { skill: SkillLevel }}
           onSubmit={async (values, { setSubmitting }) => {
             setSubmitting(true)
-            redirectToCheckout()
-            //await createModel("review-request", { replay: replay.id, skillLevel: values.skill })
-            //setSubmitting(false)
+            // TODO re add redirect to checkout
+            //redirectToCheckout()
+            await createModel("review-request", { replay: replay.id, skillLevel: values.skill })
+            setSubmitting(false)
+            Router.push("/dashboard")
           }}
         >
           {({ isSubmitting }) => (

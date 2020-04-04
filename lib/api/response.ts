@@ -1,7 +1,8 @@
 import * as t from "io-ts"
-import { isRight } from "fp-ts/lib/Either"
 import camelize from "camelize"
+import schemas, { ModelType } from "../schemas"
 
+import { isRight } from "fp-ts/lib/Either"
 import {
   Attr,
   Attrs,
@@ -15,7 +16,6 @@ import {
   Schemas
 } from "../schema"
 
-import schemas, { ModelType } from "../schemas"
 
 type AttributeC<T extends Attr | Embedded> = T extends Attr
   ? T["isOptional"] extends true

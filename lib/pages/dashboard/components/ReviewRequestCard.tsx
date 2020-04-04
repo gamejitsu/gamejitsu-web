@@ -1,6 +1,7 @@
-import { Flex, Box, Text } from "rebass"
 import React, { FunctionComponent } from "react"
+
 import { Button, Card } from "gamejitsu/components"
+import { Flex, Box, Text } from "rebass"
 import { ReviewRequest } from "gamejitsu/models"
 
 interface Props {

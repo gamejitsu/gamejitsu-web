@@ -1,8 +1,9 @@
 import pluralize from "pluralize"
-import { NextPageContext } from "next"
-import { request } from "./request"
+
 import { Model } from "./response"
 import { ModelType } from "../schemas"
+import { NextPageContext } from "next"
+import { request } from "./request"
 
 export function findModel<T extends ModelType>(modelType: T, id: string, ctx?: NextPageContext) {
   return request(modelType, "one", 200, "GET", `/${pluralize(modelType)}/${id}`, { ctx })

@@ -1,11 +1,12 @@
-import React, { RefObject, SyntheticEvent, useRef } from "react"
-import { Layout, Card, Comment } from "gamejitsu/components"
+import React, { RefObject, SyntheticEvent } from "react"
+
+import { Comment as CommentType } from "gamejitsu/models/review"
+import { CommentBar, CommentForm, CommentMenu } from "."
 import { findModel, updateModel } from "gamejitsu/api"
 import { Flex, Box, Text } from "rebass"
-import { CommentBar, commentDuration, CommentForm, CommentMenu } from "."
+import { Layout, Card } from "gamejitsu/components"
 import { NextPageContext } from "next"
 import { Review } from "gamejitsu/models"
-import { Comment as CommentType } from "gamejitsu/models/review"
 
 interface Props {
   review: Review

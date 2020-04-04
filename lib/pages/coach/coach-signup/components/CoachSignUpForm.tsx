@@ -1,12 +1,13 @@
-import { Box, Flex } from "rebass"
-import { Formik } from "formik"
-import Router from "next/router"
 import React, { FunctionComponent, useContext } from "react"
+import Router from "next/router"
+
+import { Box, Flex } from "rebass"
 import { Button } from "gamejitsu/components"
 import { createModel } from "gamejitsu/api"
-import { UserContext } from "gamejitsu/contexts"
-import { object, string } from "yup" // for only what you need
 import { Form, Col } from "react-bootstrap"
+import { Formik } from "formik"
+import { object, string } from "yup"
+import { UserContext } from "gamejitsu/contexts"
 
 const getUser = () => {
   const user = useContext(UserContext)
@@ -33,11 +34,10 @@ const CoachSignUpForm: FunctionComponent = () => {
         onSubmit={async ({ email, firstName, lastName, photoUrl }, { setSubmitting }) => {
           setSubmitting(true)
           await createModel("coach", { user: user.id, email, firstName, lastName, photoUrl })
-
-          // go to landing page or send alert on dashboard explaining
+          // TODO go to landing page or send alert on dashboard explaining
           Router.push(`/dashboard`)
           setSubmitting(false)
-          //onFinish()
+          //TODO onFinish()
         }}
       >
         {({ isSubmitting, values, errors, touched, handleChange, handleSubmit }) => (

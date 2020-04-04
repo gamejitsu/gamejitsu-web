@@ -1,16 +1,17 @@
 import * as t from "io-ts"
 import axios, { Method } from "axios"
 import dasherize from "dasherize"
-import { parseCookies } from "nookies"
-import { NextPageContext } from "next"
 import schemas, { ModelType } from "../schemas"
+
 import { deserializeResponse, Model, ModelRelationship } from "./response"
 import { isAttr, isEmbedded, isRelationship, Relationship, Schema } from "../schema"
+import { NextPageContext } from "next"
+import { parseCookies } from "nookies"
 import {
-  DeserializedResponse,
-  ResponseType,
   AttributesC,
-  NonNullableRelationshipsC
+  DeserializedResponse,
+  NonNullableRelationshipsC,
+  ResponseType
 } from "./response"
 
 interface RequestOptions<T extends ModelType> {
