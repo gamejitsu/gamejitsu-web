@@ -41,8 +41,6 @@ class ReviewPage extends React.Component<Props, State> {
   static getInitialProps = async (ctx: NextPageContext) => {
     const urlId = ctx.query.id
     const { data: review } = await findModel("review", urlId.toString(), ctx)
-    console.log(review)
-    console.log("url: ", urlId)
     return { review }
   }
 

@@ -25,22 +25,25 @@ const Content = styled.button`
   cursor: pointer;
 `
 
-const Button: FunctionComponent<Props> = ({ text, onClick, type = "button", disabled = false, href = ""}) => (
+const Button: FunctionComponent<Props> = ({
+  text,
+  onClick,
+  type = "button",
+  disabled = false,
+  href = ""
+}) => (
   <div>
-  { href != ""
-    ? (  
+    {href != "" ? (
       <Link href={href}>
         <Content type={type} disabled={disabled}>
           {text}
         </Content>
       </Link>
-    )
-    : (
+    ) : (
       <Content onClick={onClick} type={type} disabled={disabled}>
         {text}
       </Content>
-    )
-  }
+    )}
   </div>
 )
 

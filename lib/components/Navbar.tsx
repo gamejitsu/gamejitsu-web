@@ -51,6 +51,7 @@ const Navbar: FunctionComponent = () => {
       <NavLink href="/reviews">Reviews</NavLink>
       <NavLink href="/coach-reviews">Coach Reviews</NavLink>
       <NavLink href="/coach-signup">Coach SignUp</NavLink>
+      <NavLink href="/coach-dashboard">Coach Dashboard</NavLink>
       <Box mx="auto" />
       {user ? (
         [

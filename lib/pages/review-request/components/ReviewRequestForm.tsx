@@ -44,19 +44,17 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
                   <Text p={2}>playedAt: {new Date(replay.playedAt).toUTCString()}</Text>
                 </Box>
                 <Box p={3} mr="auto">
-                  <div className="Grid">
-                    <HeroImage src={replay.playersDire[0].heroPortraitUrl}></HeroImage>
-                    <HeroImage src={replay.playersDire[1].heroPortraitUrl}></HeroImage>
-                    <HeroImage src={replay.playersDire[2].heroPortraitUrl}></HeroImage>
-                    <HeroImage src={replay.playersDire[3].heroPortraitUrl}></HeroImage>
-                    <HeroImage src={replay.playersDire[4].heroPortraitUrl}></HeroImage>
+                  <div>
+                    {replay.playersDire.map((player, index) => {
+                      const key = player.steamId ? player.steamId : index.toString()
+                      return <HeroImage key={key} player={player} />
+                    })}
                   </div>
-                  <div className="Grid">
-                    <HeroImage src={replay.playersRadiant[0].heroPortraitUrl}></HeroImage>
-                    <HeroImage src={replay.playersRadiant[1].heroPortraitUrl}></HeroImage>
-                    <HeroImage src={replay.playersRadiant[2].heroPortraitUrl}></HeroImage>
-                    <HeroImage src={replay.playersRadiant[3].heroPortraitUrl}></HeroImage>
-                    <HeroImage src={replay.playersRadiant[4].heroPortraitUrl}></HeroImage>
+                  <div>
+                    {replay.playersRadiant.map((player, index) => {
+                      const key = player.steamId ? player.steamId : index.toString()
+                      return <HeroImage key={key} player={player} />
+                    })}
                   </div>
                 </Box>
                 <Box m={2} p={2} bg="primary" width={[1, 1, 1]}>

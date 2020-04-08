@@ -16,7 +16,6 @@ import {
   Schemas
 } from "../schema"
 
-
 type AttributeC<T extends Attr | Embedded> = T extends Attr
   ? T["isOptional"] extends true
     ? Attrs[T["type"]]
@@ -156,7 +155,7 @@ const ModelsT = (() => {
 function AttributeT<T extends Attr | Embedded>(field: T): AttributeC<T> {
   if (isAttr(field)) {
     return (field.isOptional
-      ? t.union([attrTypes[field.type], t.undefined])
+      ? t.union([attrTypes[field.type], t.null, t.undefined])
       : attrTypes[field.type]) as AttributeC<T>
   } else {
     const embeddedField = field as Embedded

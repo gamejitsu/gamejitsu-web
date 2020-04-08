@@ -26,7 +26,7 @@ type RequestResult<T extends ModelType, U extends ResponseType | undefined> = U 
 
 type ResponseStatus = 200 | 201 | 204
 
-class StatusError extends Error {
+export class StatusError extends Error {
   status: number
   expectedStatus: ResponseStatus
 

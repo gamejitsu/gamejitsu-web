@@ -1,5 +1,5 @@
 import React, { useContext, FunctionComponent } from "react"
-import ReactTooltip from 'react-tooltip'
+import ReactTooltip from "react-tooltip"
 
 import { Button, Card } from "gamejitsu/components"
 import { DeserializedReplay } from "gamejitsu/models/replay"
@@ -13,7 +13,6 @@ interface Props {
 
 const RecentMatchesCard: FunctionComponent<Props> = ({ replay }) => {
   const user = useContext(UserContext)
-
   return (
     <Card>
       <ReactTooltip place="top" type="light" effect="solid" />
@@ -25,21 +24,20 @@ const RecentMatchesCard: FunctionComponent<Props> = ({ replay }) => {
         </Box>
         <Box p={3} mr="auto">
           <div>
-            {replay.playersDire.map((playerDire) => {
-              return <HeroImage data-tip={playerDire.heroName} src={playerDire.heroPortraitUrl} />
+            {replay.playersDire.map((player, index) => {
+              const key = player.steamId ? player.steamId : index.toString()
+              return <HeroImage key={key} player={player} />
             })}
           </div>
           <div>
-            {replay.playersRadiant.map((playerRadiant) => {
-              return <HeroImage data-tip={playerRadiant.heroName} src={playerRadiant.heroPortraitUrl} />
+            {replay.playersRadiant.map((player, index) => {
+              const key = player.steamId ? player.steamId : index.toString()
+              return <HeroImage key={key} player={player} />
             })}
           </div>
         </Box>
         <Box alignSelf="center" pr={3}>
-          <Button 
-            href={`/review-requests/${replay.id}`}
-            text="Request Review"
-          />
+          <Button href={`/review-requests/${replay.id}`} text="Request Review" />
         </Box>
       </Flex>
     </Card>

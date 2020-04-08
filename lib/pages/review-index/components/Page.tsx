@@ -10,10 +10,14 @@ interface Props {
   reviews: Review[]
 }
 
-const Page: NextPage<Props> = ({ reviews }) => (<Layout title="Reviews">
-  Completed Reviews
-  {reviews.map((review) => <ReviewCard key={review.id} review={review} />)}
-</Layout>)
+const Page: NextPage<Props> = ({ reviews }) => (
+  <Layout title="Reviews">
+    Completed Reviews
+    {reviews.map((review) => (
+      <ReviewCard key={review.id} review={review} />
+    ))}
+  </Layout>
+)
 
 Page.getInitialProps = async (ctx) => {
   const { data } = await listModels("review", ctx)
