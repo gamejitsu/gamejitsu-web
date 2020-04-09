@@ -3,7 +3,7 @@
 process.on('unhandledRejection', (error) => { throw error })
 
 const execa = require('execa')
-const Octokit = require('@octokit/rest')
+const { Octokit } = require('@octokit/rest')
 const { bin: { now: NOW_BIN_PATH } } = require('now/package.json')
 const NOW_BIN = require.resolve(`now/${NOW_BIN_PATH}`)
 
