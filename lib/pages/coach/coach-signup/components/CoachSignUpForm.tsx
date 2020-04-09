@@ -8,6 +8,10 @@ import { Form, Col } from "react-bootstrap"
 import { Formik } from "formik"
 import { object, string } from "yup"
 import { UserContext } from "gamejitsu/contexts"
+import { SelectSkillLevel } from "gamejitsu/components"
+
+
+//TODO if coach signed up, can't access to the signup page
 
 const getUser = () => {
   const user = useContext(UserContext)
@@ -20,7 +24,8 @@ const schema = object({
   lastName: string().required(),
   email: string()
     .email()
-    .required()
+    .required(),
+  skillLevel: string().required()
 })
 
 const CoachSignUpForm: FunctionComponent = () => {
@@ -30,10 +35,13 @@ const CoachSignUpForm: FunctionComponent = () => {
     <div>
       <Formik
         validationSchema={schema}
-        initialValues={{ email: "", firstName: "", lastName: "", photoUrl: "" }}
-        onSubmit={async ({ email, firstName, lastName, photoUrl }, { setSubmitting }) => {
+        initialValues={{ email: "", firstName: "", lastName: "", photoUrl: "", skillLevel: "medium" }}
+        onSubmit={async ({ email, firstName, lastName, photoUrl, skillLevel }, { setSubmitting }) => {
           setSubmitting(true)
-          await createModel("coach", { user: user.id, email, firstName, lastName, photoUrl })
+          if (skillLevel !== "medium" && skillLevel !== "high" && skillLevel !== "very_high" && skillLevel !== "pro") {
+            throw new Error(`Invalid skill level value in coach signup: ${skillLevel}`)
+          }
+          await createModel("coach", { user: user.id, email, firstName, lastName, photoUrl, skillLevel })
           // TODO go to landing page or send alert on dashboard explaining
           Router.push(`/dashboard`)
           setSubmitting(false)
@@ -83,6 +91,7 @@ const CoachSignUpForm: FunctionComponent = () => {
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   </Form.Group>
                 </Form.Row>
+                <SelectSkillLevel />
                 <Form.Row>
                   <Button text="Sign Up as Coach" type="submit" disabled={isSubmitting} />
                 </Form.Row>
