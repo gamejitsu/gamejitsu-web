@@ -7,7 +7,7 @@ import { createModel } from "gamejitsu/api"
 import { DeserializedReplay } from "gamejitsu/models/replay"
 import { Formik, Form, Field } from "formik"
 import { HeroImage } from "gamejitsu/components"
-import { SkillLevel } from "gamejitsu/models/reviewRequest"
+import { SkillLevel } from "gamejitsu/models"
 
 const redirectToCheckout = async () => {
   const stripe = Stripe("pk_test_gO4hZHVOjk7E3GjH0etoiBAO00c0qpfX0m")
