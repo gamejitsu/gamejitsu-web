@@ -25,27 +25,27 @@ const acceptReviewRequest = async (reviewRequestId: string) => {
 const CoachDashboardPage: NextPage<Props> = ({ reviewRequests }) => {
   return (
     <Layout title="Coach Dashboard">
-    <Box m="20px">
-      <Card>
-        <Flex flexDirection="column">
-          {reviewRequests.map((reviewRequest) => {
-            return (
-              <Box p={3} key={reviewRequest.id}>
-                <Text p={2}>Review Request</Text>
-                <Text p={2}>Review Request Id: {reviewRequest.id}</Text>
-                <Button
-                  onClick={() => {
-                    acceptReviewRequest(reviewRequest.id)
-                  }}
-                  text="Accept review"
-                />
-              </Box>
-            )
-          })}
-        </Flex>
-      </Card>
-    </Box>
-  </Layout>
+      <Box m="20px">
+        <Card>
+          <Flex flexDirection="column">
+            {reviewRequests.map((reviewRequest) => {
+              return (
+                <Box p={3} key={reviewRequest.id}>
+                  <Text p={2}>Review Request</Text>
+                  <Text p={2}>Review Request Id: {reviewRequest.id}</Text>
+                  <Button
+                    onClick={() => {
+                      acceptReviewRequest(reviewRequest.id)
+                    }}
+                    text="Accept review"
+                  />
+                </Box>
+              )
+            })}
+          </Flex>
+        </Card>
+      </Box>
+    </Layout>
   )
 }
 

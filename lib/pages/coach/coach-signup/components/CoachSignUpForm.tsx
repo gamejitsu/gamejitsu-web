@@ -10,7 +10,6 @@ import { object, string } from "yup"
 import { UserContext } from "gamejitsu/contexts"
 import { SelectSkillLevel } from "gamejitsu/components"
 
-
 //TODO if coach signed up, can't access to the signup page
 
 const getUser = () => {
@@ -35,13 +34,34 @@ const CoachSignUpForm: FunctionComponent = () => {
     <div>
       <Formik
         validationSchema={schema}
-        initialValues={{ email: "", firstName: "", lastName: "", photoUrl: "", skillLevel: "medium" }}
-        onSubmit={async ({ email, firstName, lastName, photoUrl, skillLevel }, { setSubmitting }) => {
+        initialValues={{
+          email: "",
+          firstName: "",
+          lastName: "",
+          photoUrl: "",
+          skillLevel: "medium"
+        }}
+        onSubmit={async (
+          { email, firstName, lastName, photoUrl, skillLevel },
+          { setSubmitting }
+        ) => {
           setSubmitting(true)
-          if (skillLevel !== "medium" && skillLevel !== "high" && skillLevel !== "very_high" && skillLevel !== "pro") {
+          if (
+            skillLevel !== "medium" &&
+            skillLevel !== "high" &&
+            skillLevel !== "very_high" &&
+            skillLevel !== "pro"
+          ) {
             throw new Error(`Invalid skill level value in coach signup: ${skillLevel}`)
           }
-          await createModel("coach", { user: user.id, email, firstName, lastName, photoUrl, skillLevel })
+          await createModel("coach", {
+            user: user.id,
+            email,
+            firstName,
+            lastName,
+            photoUrl,
+            skillLevel
+          })
           // TODO go to landing page or send alert on dashboard explaining
           Router.push(`/dashboard`)
           setSubmitting(false)
