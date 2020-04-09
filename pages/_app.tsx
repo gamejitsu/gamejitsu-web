@@ -1,16 +1,20 @@
+import Head from "next/head"
+import jwtDecode from "jwt-decode"
+import NextApp, { AppContext } from "next/app"
 import React from "react"
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+import Router from "next/router"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
+
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+
+import { AuthenticatedComponent } from "gamejitsu/interfaces/authenticated-component"
+import { findModel, StatusError } from "gamejitsu/api"
+import { NextPageContext } from "next"
+import { parseCookies, destroyCookie } from "nookies"
 import { Reset } from "styled-reset"
 import { theme } from "gamejitsu"
-import jwtDecode from "jwt-decode"
-import { parseCookies, destroyCookie } from "nookies"
-import NextApp, { AppContext } from "next/app"
-import { UserContext } from "gamejitsu/contexts"
 import { User } from "gamejitsu/models"
-import { NextPageContext } from "next"
-import { findModel } from "gamejitsu/api"
-import Head from "next/head"
+import { UserContext } from "gamejitsu/contexts"
 
 interface Props {
   user: User
@@ -30,25 +34,52 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
+function isAuthenticatedComponent(component: any): component is AuthenticatedComponent {
+  return "skipAuthentication" in component
+}
+
 export default class App extends NextApp<Props> {
   static async getInitialProps({ Component, ctx }: AppContext) {
     let pageProps = {}
-    let user
+    if (ctx.req && ctx.req.url && ctx.req.url.startsWith("/auth?")) {
+      if (Component.getInitialProps) {
+        pageProps = await Component.getInitialProps(ctx)
+      }
+      return { pageProps }
+    }
+    let requiresAuthentication = true
+    let user = null
+    let { authToken } = parseCookies(ctx) as { authToken?: string }
+    if (isAuthenticatedComponent(Component) && Component.skipAuthentication) {
+      requiresAuthentication = false
+    }
+    if (requiresAuthentication && !isAuthTokenValid(authToken)) {
+      handleUnauthorized(ctx)
+      return { pageProps }
+    }
+    if (authToken) {
+      try {
+        user = await getCurrentUser(ctx)
+      } catch (e) {
+        if (e.response && e.response.status === 401) {
+          if (requiresAuthentication) {
+            handleUnauthorized(ctx)
+            return { pageProps }
+          }
+        } else {
+          destroyCookie(ctx, "authToken")
+          throw e
+        }
+      }
+    }
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx)
     }
-    let { authToken } = parseCookies(ctx) as { authToken?: string }
-    authToken = validateTokenExpirationTime(authToken)
-    if (authToken === undefined) {
-      destroyCookie({}, "authToken")
-    }
-    authToken && (user = await getCurrentUser(ctx))
     return { pageProps, user }
   }
 
   render() {
     const { Component, pageProps, user } = this.props
-
     return (
       <>
         <Head>
@@ -73,14 +104,28 @@ const getCurrentUser = async (ctx: NextPageContext) => {
   return data
 }
 
-const validateTokenExpirationTime = (authToken?: string) => {
+const isAuthTokenValid = (authToken?: string) => {
   if (authToken === undefined) {
-    return undefined
+    return false
   }
-  const decoded: { exp: number } = jwtDecode(authToken)
-  if (decoded.exp > Date.now() / 1000) {
-    return authToken
+  let decoded: { exp: number }
+  try {
+    decoded = jwtDecode(authToken)
+  } catch (e) {
+    if (e.name === "InvalidTokenError") {
+      return false
+    }
+    throw e
+  }
+  return decoded.exp > Date.now() / 1000
+}
+
+const handleUnauthorized = (ctx: NextPageContext) => {
+  destroyCookie(ctx, "authToken")
+  if (ctx.res) {
+    ctx.res.writeHead(302, { Location: "/" })
+    ctx.res.end()
   } else {
-    return undefined
+    Router.replace("/")
   }
 }

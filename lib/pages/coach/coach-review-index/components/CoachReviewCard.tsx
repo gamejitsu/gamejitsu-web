@@ -1,12 +1,8 @@
-import { Flex, Box, Text } from "rebass"
-import { Button, Card } from "gamejitsu/components"
 import React, { FunctionComponent } from "react"
-import Router from "next/router"
-import { Review } from "gamejitsu/models"
 
-const goToReviewPage = (id: string | undefined) => {
-  Router.push("/coach-reviews/" + id)
-}
+import { Button, Card } from "gamejitsu/components"
+import { Flex, Box, Text } from "rebass"
+import { Review } from "gamejitsu/models"
 
 interface Props {
   review: Review
@@ -21,12 +17,7 @@ const CoachReviewCard: FunctionComponent<Props> = ({ review }) => (
         <Text p={2}>Review Request Id: {review.id}</Text>
       </Box>
       <Box alignSelf="center" pr={3}>
-        <Button
-          onClick={() => {
-            goToReviewPage(review.id)
-          }}
-          text="Complete review"
-        />
+        <Button href={"/coach-reviews/" + review.id} text="Complete review" />
       </Box>
     </Flex>
   </Card>

@@ -1,7 +1,7 @@
 import React, { RefObject, SyntheticEvent } from "react"
 import { Flex, Box, Text } from "rebass"
 import { NextPageContext } from "next"
-import { Layout, Card, Comment } from "gamejitsu/components"
+import { Layout, Card } from "gamejitsu/components"
 import { Review } from "gamejitsu/models"
 import { findModel } from "gamejitsu/api"
 import { CommentBar, commentDuration } from "."
@@ -41,8 +41,6 @@ class ReviewPage extends React.Component<Props, State> {
   static getInitialProps = async (ctx: NextPageContext) => {
     const urlId = ctx.query.id
     const { data: review } = await findModel("review", urlId.toString(), ctx)
-    console.log(review)
-    console.log("url: ", urlId)
     return { review }
   }
 
@@ -98,7 +96,8 @@ class ReviewPage extends React.Component<Props, State> {
                 </Box>
                 <Box>
                   {shownComments.map((comment) => {
-                    return <Comment key={comment.timestamp} comment={comment} />
+                    //return <Comment key={comment.timestamp} comment={comment} />
+                    return <div key={comment.timestamp}>{comment.text}</div>
                   })}
                 </Box>
               </Flex>

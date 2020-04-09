@@ -1,6 +1,7 @@
-import { Box } from "rebass"
 import React, { RefObject } from "react"
 import styled from "styled-components"
+
+import { Box } from "rebass"
 import { Comment } from "gamejitsu/models/review"
 import { commentDuration } from "."
 

@@ -1,13 +1,15 @@
 import styled from "styled-components"
 
-import { lighten } from "polished"
 import { FunctionComponent } from "react"
+import { lighten } from "polished"
+import { Link } from "rebass"
 
 interface Props {
   text: string
   onClick?: () => void
   type?: "submit" | "reset" | "button"
   disabled?: boolean
+  href?: string
 }
 
 const Content = styled.button`
@@ -23,10 +25,26 @@ const Content = styled.button`
   cursor: pointer;
 `
 
-const Button: FunctionComponent<Props> = ({ text, onClick, type = "button", disabled = false }) => (
-  <Content onClick={onClick} type={type} disabled={disabled}>
-    {text}
-  </Content>
+const Button: FunctionComponent<Props> = ({
+  text,
+  onClick,
+  type = "button",
+  disabled = false,
+  href = ""
+}) => (
+  <div>
+    {href != "" ? (
+      <Link href={href}>
+        <Content type={type} disabled={disabled}>
+          {text}
+        </Content>
+      </Link>
+    ) : (
+      <Content onClick={onClick} type={type} disabled={disabled}>
+        {text}
+      </Content>
+    )}
+  </div>
 )
 
 export default Button

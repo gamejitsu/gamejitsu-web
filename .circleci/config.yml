@@ -32,7 +32,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/app
-      - run: sudo npm install -g now execa @octokit/rest
+      - run: sudo npm install -g now@^16.7.3 execa@^4.0.0 @octokit/rest@^17.1.0
       - run: npm link now
       - run: npm link execa
       - run: npm link @octokit/rest

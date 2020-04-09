@@ -2,7 +2,7 @@ import * as t from "io-ts"
 import { schema, attr, embedsMany } from "../schema"
 
 export const Player = t.type({
-  steamId: t.string,
+  steamId: t.union([t.string, t.null]),
   heroName: t.string,
   heroPortraitUrl: t.string
 })

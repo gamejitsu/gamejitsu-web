@@ -1,8 +1,9 @@
-import { Button } from "gamejitsu/components"
-import { Box, Flex, Text } from "rebass"
-import { Formik, Form, Field } from "formik"
 import React, { FunctionComponent, Fragment } from "react"
+
+import { Box, Flex } from "rebass"
+import { Button } from "gamejitsu/components"
 import { Comment } from "gamejitsu/models/review"
+import { Formik, Form, Field } from "formik"
 
 interface Props {
   comment: Comment | null

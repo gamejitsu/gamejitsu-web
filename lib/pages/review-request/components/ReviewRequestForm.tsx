@@ -1,11 +1,13 @@
-import { Box, Flex, Text } from "rebass"
-import { Formik, Form, Field } from "formik"
 import React, { FunctionComponent } from "react"
+import Router from "next/router"
+
+import { Box, Flex, Text } from "rebass"
 import { Button, Layout } from "gamejitsu/components"
-import { HeroImage } from "."
-import { DeserializedReplay } from "./Page"
 import { createModel } from "gamejitsu/api"
-import { SkillLevel } from "gamejitsu/models/reviewRequest"
+import { DeserializedReplay } from "gamejitsu/models/replay"
+import { Formik, Form, Field } from "formik"
+import { HeroImage } from "gamejitsu/components"
+import { SkillLevel } from "gamejitsu/models"
 
 const redirectToCheckout = async () => {
   const stripe = Stripe("pk_test_gO4hZHVOjk7E3GjH0etoiBAO00c0qpfX0m")
@@ -17,10 +19,9 @@ const redirectToCheckout = async () => {
 
 interface Props {
   replay: DeserializedReplay
-  onFinish: () => void
 }
 
-const ReviewRequestForm: FunctionComponent<Props> = ({ replay, onFinish }) => {
+const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
   return (
     <Layout title="Dashboard">
       <div>
@@ -28,9 +29,11 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, onFinish }) => {
           initialValues={{ skill: "medium" } as { skill: SkillLevel }}
           onSubmit={async (values, { setSubmitting }) => {
             setSubmitting(true)
+            // TODO re add redirect to checkout
+            //redirectToCheckout()
             await createModel("review-request", { replay: replay.id, skillLevel: values.skill })
             setSubmitting(false)
-            onFinish()
+            Router.push("/dashboard")
           }}
         >
           {({ isSubmitting }) => (
@@ -41,19 +44,17 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, onFinish }) => {
                   <Text p={2}>playedAt: {new Date(replay.playedAt).toUTCString()}</Text>
                 </Box>
                 <Box p={3} mr="auto">
-                  <div className="Grid">
-                    <HeroImage src={replay.playersDire[0].heroPortraitUrl}></HeroImage>
-                    <HeroImage src={replay.playersDire[1].heroPortraitUrl}></HeroImage>
-                    <HeroImage src={replay.playersDire[2].heroPortraitUrl}></HeroImage>
-                    <HeroImage src={replay.playersDire[3].heroPortraitUrl}></HeroImage>
-                    <HeroImage src={replay.playersDire[4].heroPortraitUrl}></HeroImage>
+                  <div>
+                    {replay.playersDire.map((player, index) => {
+                      const key = player.steamId ? player.steamId : index.toString()
+                      return <HeroImage key={key} player={player} />
+                    })}
                   </div>
-                  <div className="Grid">
-                    <HeroImage src={replay.playersRadiant[0].heroPortraitUrl}></HeroImage>
-                    <HeroImage src={replay.playersRadiant[1].heroPortraitUrl}></HeroImage>
-                    <HeroImage src={replay.playersRadiant[2].heroPortraitUrl}></HeroImage>
-                    <HeroImage src={replay.playersRadiant[3].heroPortraitUrl}></HeroImage>
-                    <HeroImage src={replay.playersRadiant[4].heroPortraitUrl}></HeroImage>
+                  <div>
+                    {replay.playersRadiant.map((player, index) => {
+                      const key = player.steamId ? player.steamId : index.toString()
+                      return <HeroImage key={key} player={player} />
+                    })}
                   </div>
                 </Box>
                 <Box m={2} p={2} bg="primary" width={[1, 1, 1]}>
@@ -75,12 +76,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, onFinish }) => {
                 <Text p={2}>Price: 4£</Text>
               </Flex>
               <Box>
-                <Button
-                  text="Request Replay"
-                  type="submit"
-                  disabled={isSubmitting}
-                  onClick={redirectToCheckout}
-                />
+                <Button text="Request Replay" type="submit" disabled={isSubmitting} />
               </Box>
             </Form>
           )}

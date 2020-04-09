@@ -1,6 +1,7 @@
 import React from "react"
-import { Layout } from "gamejitsu/components"
+
 import { CoachSignUpForm } from "."
+import { Layout } from "gamejitsu/components"
 import { NextPage } from "next"
 
 const CoachSignUpPage: NextPage = () => (

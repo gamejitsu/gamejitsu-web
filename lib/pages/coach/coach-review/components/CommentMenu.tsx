@@ -1,7 +1,8 @@
-import { Box } from "rebass"
 import React, { FunctionComponent, useEffect, useRef, RefObject } from "react"
-import { Comment } from "gamejitsu/models/review"
 import styled from "styled-components"
+
+import { Box } from "rebass"
+import { Comment } from "gamejitsu/models/review"
 import { lighten } from "polished"
 
 interface Props {

@@ -1,7 +1,8 @@
 import * as t from "io-ts"
-import { isRight } from "fp-ts/lib/Either"
 import camelize from "camelize"
+import schemas, { ModelType } from "../schemas"
 
+import { isRight } from "fp-ts/lib/Either"
 import {
   Attr,
   Attrs,
@@ -14,8 +15,6 @@ import {
   RelationshipType,
   Schemas
 } from "../schema"
-
-import schemas, { ModelType } from "../schemas"
 
 type AttributeC<T extends Attr | Embedded> = T extends Attr
   ? T["isOptional"] extends true
@@ -156,7 +155,7 @@ const ModelsT = (() => {
 function AttributeT<T extends Attr | Embedded>(field: T): AttributeC<T> {
   if (isAttr(field)) {
     return (field.isOptional
-      ? t.union([attrTypes[field.type], t.undefined])
+      ? t.union([attrTypes[field.type], t.null, t.undefined])
       : attrTypes[field.type]) as AttributeC<T>
   } else {
     const embeddedField = field as Embedded
