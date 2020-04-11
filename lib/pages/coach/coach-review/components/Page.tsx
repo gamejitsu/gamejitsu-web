@@ -1,22 +1,15 @@
-import React, { RefObject, SyntheticEvent } from "react"
+import React, { SyntheticEvent, useRef, useState, useEffect } from "react"
 
-import { Comment as CommentType } from "gamejitsu/models/review"
-import { CommentBar, CommentForm, CommentMenu } from "."
+import { Comment } from "gamejitsu/models/review"
+import { CommentBar, CommentForm, CommentList } from "."
 import { findModel, updateModel } from "gamejitsu/api"
 import { Flex, Box, Text } from "rebass"
 import { Layout, Card } from "gamejitsu/components"
-import { NextPageContext } from "next"
+import { NextPageContext, NextPage } from "next"
 import { Review } from "gamejitsu/models"
 
 interface Props {
   review: Review
-}
-
-interface State {
-  videoTimestamp: number
-  videoDuration: number
-  review: Review
-  selectedComment: CommentType | null
 }
 
 const getReview = async (ctx: NextPageContext, id: string) => {
@@ -24,142 +17,115 @@ const getReview = async (ctx: NextPageContext, id: string) => {
   return response.data
 }
 
-function setVideoDuration(this: ReviewPage, event: SyntheticEvent<HTMLVideoElement, Event>) {
-  const duration = event.currentTarget.duration
-  this.setState({
-    videoDuration: Math.floor(duration)
-  })
-}
+const CoachReviewPage: NextPage<Props> = (props) => {
+  const [review, setReview] = useState(props.review)
+  const [videoDuration, setVideoDuration] = useState(0)
+  const [videoTimestamp, setVideoTimestamp] = useState(0)
+  const [selectedComment, setSelectedComment] = useState<Comment | null>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
-function setVideoTimestamp(this: ReviewPage, event: SyntheticEvent<HTMLVideoElement, Event>) {
-  const timestamp = event.currentTarget.currentTime
-  this.setState({
-    videoTimestamp: Math.floor(timestamp)
-  })
-}
-
-function updateVideoTimestamp(this: ReviewPage, timestamp: number) {
-  this.setState({
-    videoTimestamp: timestamp
-  })
-}
-
-async function onFinish(this: ReviewPage, commentText: string) {
-  const newComment = {
-    text: commentText,
-    timestamp: this.state.videoTimestamp
-  }
-  const selectedComment = this.state.selectedComment
-  selectedComment !== null
-    ? (this.state.review.comments = this.state.review.comments.map((comment, index) =>
-        index === this.state.review.comments.indexOf(selectedComment) ? newComment : comment
-      ))
-    : this.state.review.comments.push(newComment)
-  const response = await updateModel(this.state.review)
-  this.setState({ review: response.data })
-}
-
-async function onDelete(this: ReviewPage) {
-  const selectedComment = this.state.selectedComment
-  selectedComment !== null &&
-    (this.state.review.comments = this.state.review.comments.filter(
-      (_, index) => index === this.state.review.comments.indexOf(selectedComment)
-    ))
-  const response = await updateModel(this.state.review)
-  this.setState({ review: response.data })
-}
-
-class ReviewPage extends React.Component<Props, State> {
-  videoRef: RefObject<HTMLVideoElement>
-  sidebarRef: RefObject<Element>
-
-  static getInitialProps = async (ctx: NextPageContext) => {
-    const urlId = ctx.query.id
-    const review = await getReview(ctx, urlId.toString())
-    return { review }
-  }
-
-  constructor(props: Props) {
-    super(props)
-    this.videoRef = React.createRef()
-    this.sidebarRef = React.createRef()
-    this.state = {
-      videoTimestamp: 0,
-      videoDuration: 0,
-      review: props.review,
-      selectedComment: null
+  const onSaveComment = async (savedComment: Comment) => {
+    const newComments = selectedComment
+      ? review.comments.map((comment) => (comment === selectedComment ? savedComment : comment))
+      : review.comments.concat(savedComment)
+    const updatedReview = {
+      ...review,
+      comments: newComments
     }
+    const { data: serverReview } = await updateModel(updatedReview)
+    setReview(serverReview)
+    setSelectedComment(serverReview.comments[newComments.indexOf(savedComment)])
   }
 
-  componentDidMount() {
-    this.setState({
-      videoDuration: this.videoRef.current ? this.videoRef.current.duration : 0
-    })
-  }
-
-  componentDidUpdate(_: Props, prevState: State) {
-    if (this.state.videoTimestamp !== prevState.videoTimestamp) {
-      this.videoRef.current && (this.videoRef.current.currentTime = this.state.videoTimestamp)
+  const onDeleteComment = async () => {
+    const newComments = selectedComment
+      ? review.comments.filter((comment) => comment !== selectedComment)
+      : review.comments
+    const updatedReview = {
+      ...review,
+      comments: newComments
     }
+    const { data: serverReview } = await updateModel(updatedReview)
+    setReview(serverReview)
+    setSelectedComment(null)
   }
 
-  private onSelect = (comment: CommentType | null) => {
-    this.setState({
-      videoTimestamp: comment !== null ? comment.timestamp : this.state.videoTimestamp,
-      selectedComment: comment
-    })
+  const onSetVideoDuration = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
+    const duration = event.currentTarget.duration
+    setVideoDuration(Math.floor(duration))
   }
 
-  render() {
-    const comments = this.state.review.comments
-
-    return (
-      <Layout title="Review">
-        <Box m="20px">
-          <Card>
-            <Flex flexDirection="column">
-              <Box p={3}>
-                <Text p={2}>Review</Text>
-                <Text p={2}>Review Id: {this.state.review.id}</Text>
-                <Flex>
-                  <Box p={0} flex="1">
-                    <video
-                      ref={this.videoRef}
-                      onDurationChange={setVideoDuration.bind(this)}
-                      onTimeUpdate={setVideoTimestamp.bind(this)}
-                      width="100%"
-                      controls
-                    >
-                      <source src="/video/sample.mp4" type="video/mp4" />
-                    </video>
-                  </Box>
-                  <Box ref={this.sidebarRef}>
-                    <CommentMenu
-                      comments={comments}
-                      videoTimestamp={this.state.videoTimestamp}
-                      onSelect={this.onSelect}
-                      sidebarRef={this.sidebarRef}
-                    />
-                    <CommentForm
-                      comment={this.state.selectedComment}
-                      onFinish={onFinish.bind(this)}
-                      onDelete={onDelete.bind(this)}
-                    />
-                  </Box>
-                </Flex>
-              </Box>
-            </Flex>
-          </Card>
-          <CommentBar
-            comments={comments}
-            videoDuration={this.state.videoDuration}
-            onMoveVideoCursor={updateVideoTimestamp.bind(this)}
-            videoTimestamp={this.state.videoTimestamp}
-          />
-        </Box>
-      </Layout>
-    )
+  const onSetVideoTimestamp = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
+    const timestamp = event.currentTarget.currentTime
+    setVideoTimestamp(Math.floor(timestamp))
   }
+
+  useEffect(() => {
+    if (videoRef.current) {
+      setVideoDuration(videoRef.current.duration)
+      videoRef.current.currentTime = videoTimestamp
+    } else {
+      setVideoDuration(0)
+    }
+  })
+
+  const onSelectComment = (comment: Comment | null) => {
+    setVideoTimestamp(comment !== null ? comment.timestamp : videoTimestamp)
+    setSelectedComment(comment)
+  }
+
+  return (
+    <Layout title="Coach Review">
+      <Box m="20px">
+        <Card>
+          <Flex flexDirection="column">
+            <Box p={3}>
+              <Text p={2}>Review</Text>
+              <Text p={2}>Review Id: {review.id}</Text>
+              <Flex>
+                <Box p={0} flex="1">
+                  <video
+                    ref={videoRef}
+                    onDurationChange={onSetVideoDuration}
+                    onTimeUpdate={onSetVideoTimestamp}
+                    width="100%"
+                    controls
+                  >
+                    <source src="/video/sample.mp4" type="video/mp4" />
+                  </video>
+                </Box>
+                <Box>
+                  <CommentList
+                    comments={review.comments}
+                    selectedComment={selectedComment}
+                    onSelect={onSelectComment}
+                  />
+                  <CommentForm
+                    comment={selectedComment}
+                    onSave={onSaveComment}
+                    onDelete={onDeleteComment}
+                    timestamp={videoTimestamp}
+                  />
+                </Box>
+              </Flex>
+            </Box>
+          </Flex>
+        </Card>
+        <CommentBar
+          comments={review.comments}
+          videoDuration={videoDuration}
+          onVideoTimestampChange={setVideoTimestamp}
+          videoTimestamp={videoTimestamp}
+        />
+      </Box>
+    </Layout>
+  )
 }
 
-export default ReviewPage
+CoachReviewPage.getInitialProps = async (ctx: NextPageContext) => {
+  const urlId = ctx.query.id
+  const review = await getReview(ctx, urlId.toString())
+  return { review }
+}
+
+export default CoachReviewPage

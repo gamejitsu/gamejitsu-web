@@ -1,5 +1,6 @@
-import { Model } from "../api/response"
 import * as t from "io-ts"
+
+import { Model } from "../api/response"
 import { SkillLevel } from "../schemas/skillLevel"
 
 export type User = Model<"user">
