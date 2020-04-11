@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 
 const firstDotDelay = "-0.2"
@@ -40,7 +40,7 @@ const Dot = styled.div<DotProps>`
   }
 `
 
-const Spinner = () => (
+const Spinner: FunctionComponent = () => (
   <Container>
     <Dot delay={firstDotDelay} />
     <Dot delay={secondDotDelay} />

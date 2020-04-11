@@ -7,19 +7,20 @@ import { Formik, Form, Field } from "formik"
 
 interface Props {
   comment: Comment | null
-  onFinish: (comment: string) => void
+  timestamp: number
+  onSave: (comment: Comment) => void
   onDelete: () => void
 }
 
-const CommentForm: FunctionComponent<Props> = ({ onFinish, onDelete, comment }) => {
+const CommentForm: FunctionComponent<Props> = ({ onSave, onDelete, comment, timestamp }) => {
   return (
     <div>
       <Formik
         enableReinitialize={true}
-        initialValues={comment !== null ? { comment: comment.text } : { comment: "" }}
-        onSubmit={async (values, { setSubmitting }) => {
+        initialValues={comment !== null ? { text: comment.text } : { text: "" }}
+        onSubmit={async ({ text }, { setSubmitting }) => {
           setSubmitting(true)
-          await onFinish(values.comment)
+          await onSave({ text, timestamp })
           setSubmitting(false)
         }}
       >
@@ -27,7 +28,7 @@ const CommentForm: FunctionComponent<Props> = ({ onFinish, onDelete, comment }) 
           <Form>
             <Flex alignItems="center">
               <Box p={3} mr="auto">
-                {<Field type="text" name="comment" placeholder="Comment text..." />}
+                {<Field type="text" name="text" placeholder="Comment text..." />}
               </Box>
             </Flex>
             <Box>
@@ -37,7 +38,7 @@ const CommentForm: FunctionComponent<Props> = ({ onFinish, onDelete, comment }) 
                     <Button text="Update comment" type="submit" disabled={isSubmitting} />
                   </Box>
                   <Box>
-                    <Button text="Delete comment" type="submit" onClick={onDelete} />
+                    <Button text="Delete comment" type="button" onClick={onDelete} />
                   </Box>
                 </Fragment>
               ) : (

@@ -1,6 +1,6 @@
+import { Field } from "formik"
 import { Flex, Box } from "rebass"
 import { FunctionComponent } from "react"
-import { Field } from "formik"
 
 const SelectSkillLevel: FunctionComponent = () => (
   <Flex flexDirection="column" alignItems="center">

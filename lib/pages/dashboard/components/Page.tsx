@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect, FunctionComponent } from "react"
 
 import { DeserializedReplay, deserializeReplays } from "gamejitsu/models/replay"
 import { Layout, Spinner } from "gamejitsu/components"
@@ -33,73 +33,59 @@ const getCurrentUser = async () => {
   return data
 }
 
-function onFinish(this: Dashboard) {
-  this.setState({ replay: null })
-}
-
 const getReviewRequests = async (ctx: NextPageContext) => {
   const { data } = await listModels("review-request", ctx)
   return data
 }
 
-class Dashboard extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props)
-
-    this.state = {
-      user: props.user,
-      replays: props.replays,
-      replay: null,
-      socket: null
-    }
-  }
-
-  componentDidMount() {
+const Dashboard: FunctionComponent<Props> = (props) => {
+  const [user, setUser] = useState(props.user)
+  const [replays, setReplays] = useState(props.replays)
+  const [socket, setSocket] = useState<Socket | null>(null)
+  useEffect(() => {
     const { authToken } = parseCookies({})
-    const socket = new Socket(process.env.SOCKET_ENDPOINT + "/socket", {
-      params: { token: authToken }
-    })
-    this.setState({ socket })
-    socket.connect()
-    const channel = socket.channel("users:" + this.state.user.id)
+    const currentSocket = socket
+      ? socket
+      : new Socket(process.env.SOCKET_ENDPOINT + "/socket", {
+          params: { token: authToken }
+        })
+    setSocket(currentSocket)
+    currentSocket.connect()
+    const channel = currentSocket.channel("users:" + user.id)
     channel.join().receive("ok", async () => {
       const user = await getCurrentUser()
-      this.setState({
-        user
-      })
+      setUser(user)
     })
     channel.on("update", async (userData) => {
       const { data: user } = deserializeResponse("user", "one", userData)
-
       if (user.isSyncingReplays) {
-        this.setState({ user })
+        setUser(user)
       } else {
-        socket.disconnect()
+        currentSocket.disconnect()
         const replays = await getReplays()
-        this.setState({ user, replays })
+        setUser(user)
+        setReplays(replays)
       }
     })
-  }
+    return () => {
+      console.log("disconnet")
+      currentSocket.disconnect()
+    }
+  }, [])
 
-  componentWillUnmount() {
-    this.state.socket && this.state.socket.disconnect()
-  }
-
-  render() {
-    return (
-      <Layout title="Dashboard">
-        {this.state.user.isSyncingReplays ? <Spinner /> : <div></div>}
-        Reviews Requested
-        {this.props.reviewRequests.map((reviewRequest) => {
-          return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
-        })}
-        Replay
-        {this.state.replays.map((replay) => {
-          return <ReplayCard key={replay.id} replay={replay} />
-        })}
-      </Layout>
-    )
-  }
+  return (
+    <Layout title="Dashboard">
+      {user.isSyncingReplays ? <Spinner /> : <div></div>}
+      Reviews Requested
+      {props.reviewRequests.map((reviewRequest) => {
+        return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
+      })}
+      Replay
+      {replays.map((replay) => {
+        return <ReplayCard key={replay.id} replay={replay} />
+      })}
+    </Layout>
+  )
 }
 
 const Page: NextPage<Omit<Props, "user">> = ({ replays, reviewRequests }) => (

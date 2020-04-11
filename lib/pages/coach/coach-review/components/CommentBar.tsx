@@ -1,4 +1,4 @@
-import React, { RefObject } from "react"
+import React, { FunctionComponent, useState, useRef, useEffect } from "react"
 import styled from "styled-components"
 
 import { Box } from "rebass"
@@ -10,11 +10,7 @@ interface Props {
   comments: Comment[]
   videoDuration: number
   videoTimestamp: number
-  onMoveVideoCursor: (timestamp: number) => void
-}
-
-interface State {
-  containerWidth: number
+  onVideoTimestampChange: (timestamp: number) => void
 }
 
 interface SquareProps {
@@ -47,13 +43,6 @@ const getCursorLeft = (props: CursorOverlayProps) => {
   return (timestamp / totalDuration) * props.containerWidth
 }
 
-function clickBarEvent(this: CommentBar, e: React.MouseEvent) {
-  const rect = this.containerRef.current && this.containerRef.current.getBoundingClientRect()
-  const x = e.clientX - (rect ? rect.left : 0)
-  const timestamp = Math.floor((x / this.state.containerWidth) * this.props.videoDuration)
-  this.props.onMoveVideoCursor(timestamp)
-}
-
 const Container = styled(Box)`
   background-color: ${(props) => props.theme.secondaryColor};
   position: relative;
@@ -82,44 +71,45 @@ const CursorOverlay = styled(Box)<CursorOverlayProps>`
   height: 100%;
 `
 
-class CommentBar extends React.Component<Props, State> {
-  containerRef: RefObject<HTMLElement>
+const CommentBar: FunctionComponent<Props> = ({
+  comments,
+  videoDuration,
+  videoTimestamp,
+  onVideoTimestampChange
+}) => {
+  let [containerWidth, setContainerWidth] = useState(0)
+  let containerRef = useRef<HTMLElement>(null)
 
-  constructor(props: Props) {
-    super(props)
-    this.containerRef = React.createRef()
-    this.state = {
-      containerWidth: 0
-    }
+  const onBarClick = (e: React.MouseEvent) => {
+    const rect = containerRef.current && containerRef.current.getBoundingClientRect()
+    const x = e.clientX - (rect ? rect.left : 0)
+    const timestamp = Math.floor((x / containerWidth) * videoDuration)
+    onVideoTimestampChange(timestamp)
   }
 
-  componentDidMount() {
-    this.setState({
-      containerWidth: this.containerRef.current ? this.containerRef.current.offsetWidth : 0
-    })
-  }
+  useEffect(() => {
+    setContainerWidth(containerRef.current ? containerRef.current.offsetWidth : 0)
+  })
 
-  render() {
-    return (
-      <Container onClick={clickBarEvent.bind(this)} ref={this.containerRef}>
-        {this.props.comments.map((comment) => {
-          return (
-            <Square
-              key={comment.timestamp}
-              comment={comment}
-              containerWidth={this.state.containerWidth}
-              duration={this.props.videoDuration}
-            />
-          )
-        })}
-        <CursorOverlay
-          timestamp={this.props.videoTimestamp}
-          containerWidth={this.state.containerWidth}
-          duration={this.props.videoDuration}
-        />
-      </Container>
-    )
-  }
+  return (
+    <Container onClick={onBarClick} ref={containerRef}>
+      {comments.map((comment, index) => {
+        return (
+          <Square
+            key={index.toString()}
+            comment={comment}
+            containerWidth={containerWidth}
+            duration={videoDuration}
+          />
+        )
+      })}
+      <CursorOverlay
+        timestamp={videoTimestamp}
+        containerWidth={containerWidth}
+        duration={videoDuration}
+      />
+    </Container>
+  )
 }
 
 export default CommentBar
