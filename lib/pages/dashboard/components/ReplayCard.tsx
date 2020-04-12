@@ -1,6 +1,5 @@
 import React, { useContext, FunctionComponent } from "react"
 
-import { Popover, Position, Tooltip } from "@blueprintjs/core"
 import { Button, Card } from "gamejitsu/components"
 import { DeserializedReplay } from "gamejitsu/models/replay"
 import { Flex, Box, Text } from "rebass"

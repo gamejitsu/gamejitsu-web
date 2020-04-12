@@ -15,14 +15,15 @@ interface ContentProps {
 
 const Content = styled.img<ContentProps>`
   width: 40px;
-  border: ${(props) => props.isYourHero ? "1px" : "0px" } solid ${(props) => props.theme.primaryColor} 
+  border: ${(props) => (props.isYourHero ? "1px" : "0px")} solid
+    ${(props) => props.theme.primaryColor};
 `
 
 const HeroImage: FunctionComponent<Props> = ({ player }) => {
   const user = useContext(UserContext)
   const isYourHero = player?.steamId === user?.steamId
   const heroName = isYourHero ? player.heroName + " (you)" : player.heroName
-  
+
   return (
     <Tooltip content={heroName} position={Position.RIGHT}>
       <Content src={player.heroPortraitUrl} isYourHero={isYourHero} />
