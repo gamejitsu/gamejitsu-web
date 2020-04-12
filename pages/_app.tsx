@@ -8,7 +8,7 @@ import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces/authenticated-component"
-import { findModel, StatusError } from "gamejitsu/api"
+import { findModel } from "gamejitsu/api"
 import { NextPageContext } from "next"
 import { parseCookies, destroyCookie } from "nookies"
 import { Reset } from "styled-reset"
