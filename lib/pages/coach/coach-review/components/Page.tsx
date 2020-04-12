@@ -4,9 +4,10 @@ import { Comment } from "gamejitsu/models/review"
 import { CommentBar, CommentForm, CommentList } from "."
 import { findModel, updateModel } from "gamejitsu/api"
 import { Flex, Box, Text } from "rebass"
-import { Layout, Card } from "gamejitsu/components"
+import { Layout, Card, Button } from "gamejitsu/components"
 import { NextPageContext, NextPage } from "next"
 import { Review } from "gamejitsu/models"
+import { toast } from "react-toastify"
 
 interface Props {
   review: Review
@@ -32,9 +33,8 @@ const CoachReviewPage: NextPage<Props> = (props) => {
       ...review,
       comments: newComments
     }
-    const { data: serverReview } = await updateModel(updatedReview)
-    setReview(serverReview)
-    setSelectedComment(serverReview.comments[newComments.indexOf(savedComment)])
+    setReview(updatedReview)
+    setSelectedComment(null)
   }
 
   const onDeleteComment = async () => {
@@ -45,8 +45,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
       ...review,
       comments: newComments
     }
-    const { data: serverReview } = await updateModel(updatedReview)
-    setReview(serverReview)
+    setReview(updatedReview)
     setSelectedComment(null)
   }
 
@@ -74,6 +73,23 @@ const CoachReviewPage: NextPage<Props> = (props) => {
     setSelectedComment(comment)
   }
 
+  const onSaveReview = async () => {
+    try {
+      const { data: serverReview } = await updateModel(review)
+      toast.success("Review Saved!", {
+        position: toast.POSITION.TOP_CENTER
+      })
+      setReview(serverReview)
+      if (selectedComment) {
+        setSelectedComment(serverReview.comments[review.comments.indexOf(selectedComment)])
+      }
+    } catch (error) {
+      toast.error("Error while saving review!", {
+        position: toast.POSITION.TOP_CENTER
+      })
+    }
+  }
+
   return (
     <Layout title="Coach Review">
       <Box m="20px">
@@ -82,6 +98,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
             <Box p={3}>
               <Text p={2}>Review</Text>
               <Text p={2}>Review Id: {review.id}</Text>
+              <Button text="Save review" type="button" onClick={onSaveReview} />
               <Flex>
                 <Box p={0} flex="1">
                   <video

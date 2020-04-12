@@ -1,5 +1,4 @@
 import React, { useContext, FunctionComponent } from "react"
-import ReactTooltip from "react-tooltip"
 
 import { Button, Card } from "gamejitsu/components"
 import { DeserializedReplay } from "gamejitsu/models/replay"
@@ -15,7 +14,6 @@ const RecentMatchesCard: FunctionComponent<Props> = ({ replay }) => {
   const user = useContext(UserContext)
   return (
     <Card>
-      <ReactTooltip place="top" type="light" effect="solid" />
       <Flex flexDirection="row">
         <Box p={3} mr="auto">
           <Text p={2}>User ID: {user?.id}</Text>

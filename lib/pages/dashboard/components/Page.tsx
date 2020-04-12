@@ -68,7 +68,6 @@ const Dashboard: FunctionComponent<Props> = (props) => {
       }
     })
     return () => {
-      console.log("disconnet")
       currentSocket.disconnect()
     }
   }, [])

@@ -4,6 +4,7 @@ import { Box, Flex } from "rebass"
 import { Button } from "gamejitsu/components"
 import { Comment } from "gamejitsu/models/review"
 import { Formik, Form, Field } from "formik"
+import { Review } from "gamejitsu/models"
 
 interface Props {
   comment: Comment | null
@@ -18,9 +19,10 @@ const CommentForm: FunctionComponent<Props> = ({ onSave, onDelete, comment, time
       <Formik
         enableReinitialize={true}
         initialValues={comment !== null ? { text: comment.text } : { text: "" }}
-        onSubmit={async ({ text }, { setSubmitting }) => {
+        onSubmit={async ({ text }, { setSubmitting, resetForm }) => {
           setSubmitting(true)
           await onSave({ text, timestamp })
+          resetForm()
           setSubmitting(false)
         }}
       >
