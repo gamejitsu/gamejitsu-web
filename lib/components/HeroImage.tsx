@@ -3,19 +3,31 @@ import styled from "styled-components"
 import { FunctionComponent, useContext } from "react"
 import { Player } from "gamejitsu/models/replay"
 import { UserContext } from "gamejitsu/contexts"
+import { Position, Tooltip } from "@blueprintjs/core"
 
 interface Props {
   player: Player
 }
 
-const Content = styled.img`
+interface ContentProps {
+  isYourHero: boolean
+}
+
+const Content = styled.img<ContentProps>`
   width: 40px;
+  border: ${(props) => props.isYourHero ? "1px" : "0px" } solid ${(props) => props.theme.primaryColor} 
 `
 
 const HeroImage: FunctionComponent<Props> = ({ player }) => {
   const user = useContext(UserContext)
-  const dataTip = player?.steamId === user?.steamId ? player.heroName + " (you)" : player.heroName
-  return <Content data-tip={dataTip} src={player.heroPortraitUrl} />
+  const isYourHero = player?.steamId === user?.steamId
+  const heroName = isYourHero ? player.heroName + " (you)" : player.heroName
+  
+  return (
+    <Tooltip content={heroName} position={Position.RIGHT}>
+      <Content src={player.heroPortraitUrl} isYourHero={isYourHero} />
+    </Tooltip>
+  )
 }
 
 export default HeroImage
