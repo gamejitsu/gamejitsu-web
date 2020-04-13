@@ -37,6 +37,15 @@ const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${(props) => props.theme.backgroundColor};
   }
+  @font-face {
+    font-family: 'Japanese 3017';
+    src: url('/fonts/Japanese-3017.eot');
+    src: url('/fonts/Japanese-3017.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/Japanese-3017.woff2') format('woff2'),
+         url('/fonts/Japanese-3017.woff') format('woff'),
+         url('/fonts/Japanese-3017.ttf')  format('truetype'),
+         url('/fonts/Japanese-3017.svg#Japanese 3017') format('svg');
+  }
 `
 
 function isAuthenticatedComponent(component: any): component is AuthenticatedComponent {

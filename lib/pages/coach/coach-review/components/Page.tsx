@@ -7,7 +7,7 @@ import { Flex, Box, Text } from "rebass"
 import { Layout, Card, Button } from "gamejitsu/components"
 import { NextPageContext, NextPage } from "next"
 import { Review } from "gamejitsu/models"
-import { toast } from "react-toastify"
+import { Position, Toaster, Intent } from "@blueprintjs/core";
 
 interface Props {
   review: Review
@@ -74,18 +74,25 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   }
 
   const onSaveReview = async () => {
+    const AppToaster = Toaster.create({
+      className: "recipe-toaster",
+      position: Position.TOP,
+    })
     try {
       const { data: serverReview } = await updateModel(review)
-      toast.success("Review Saved!", {
-        position: toast.POSITION.TOP_CENTER
+      AppToaster.show({
+        intent: Intent.SUCCESS, icon: "tick",
+        message: "Review saved!"
       })
       setReview(serverReview)
       if (selectedComment) {
         setSelectedComment(serverReview.comments[review.comments.indexOf(selectedComment)])
       }
     } catch (error) {
-      toast.error("Error while saving review!", {
-        position: toast.POSITION.TOP_CENTER
+      AppToaster.show({
+        intent: Intent.DANGER, icon: "warning-sign",
+        message: "Error saving review. \
+        Please try later or contact our support."
       })
     }
   }

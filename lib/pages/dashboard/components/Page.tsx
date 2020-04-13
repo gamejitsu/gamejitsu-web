@@ -1,7 +1,7 @@
 import React, { useState, useEffect, FunctionComponent } from "react"
 
 import { DeserializedReplay, deserializeReplays } from "gamejitsu/models/replay"
-import { Layout, Spinner } from "gamejitsu/components"
+import { Layout, Spinner, Title } from "gamejitsu/components"
 import { listModels, findModel, deserializeResponse } from "gamejitsu/api"
 import { NextPageContext, NextPage } from "next"
 import { parseCookies } from "nookies"
@@ -14,13 +14,6 @@ interface Props {
   user: User
   replays: DeserializedReplay[]
   reviewRequests: ReviewRequest[]
-}
-
-interface State {
-  replay: DeserializedReplay | null
-  replays: DeserializedReplay[]
-  socket: Socket | null
-  user: User
 }
 
 const getReplays = async (ctx?: NextPageContext) => {
@@ -75,11 +68,11 @@ const Dashboard: FunctionComponent<Props> = (props) => {
   return (
     <Layout title="Dashboard">
       {user.isSyncingReplays ? <Spinner /> : <div></div>}
-      Reviews Requested
+      <Title text="Reviews Requested"/>
       {props.reviewRequests.map((reviewRequest) => {
         return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
       })}
-      Replay
+      <Title text="Replays"/>
       {replays.map((replay) => {
         return <ReplayCard key={replay.id} replay={replay} />
       })}

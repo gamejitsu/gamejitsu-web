@@ -1,9 +1,21 @@
 import React from "react"
+import styled from "styled-components"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces/authenticated-component"
 import { Layout } from "gamejitsu/components"
+import { Flex } from "rebass"
 
-const Page: AuthenticatedComponent = () => <Layout></Layout>
+const mainLogo = "/images/gamejitsu-main-logo.svg"
+
+const Image = styled.img`
+ width: 510px;
+`
+const Page: AuthenticatedComponent = () =>
+    <Layout>
+        <Flex alignItems="center" justifyContent="center" height="100%" marginTop="100px">
+            <Image src={mainLogo} />
+        </Flex>
+    </Layout>
 
 Page.skipAuthentication = true
 

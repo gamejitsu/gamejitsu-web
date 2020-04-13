@@ -55,7 +55,7 @@ const Button: FunctionComponent<Props> = ({
   <div>
     {href != "" ? (
       <Link href={href}>
-        <Content type={type} disabled={disabled}>
+        <Content disabled={disabled}>
           {text}
         </Content>
       </Link>
