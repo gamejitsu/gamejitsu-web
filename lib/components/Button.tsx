@@ -13,14 +13,13 @@ interface Props {
 }
 
 const Content = styled.button`
-  transition: background, box-shadow 0.2s ease-in-out;
   border-radius: ${(props) => props.theme.borderRadius};
   border: 0;
-  border-bottom: 3px solid ${(props) => darken(0.1, props.theme.primaryColor)};
+  box-shadow: inset 0px -3px 0px 0px ${(props) => darken(0.1, props.theme.primaryColor)};
 
-  background: linear-gradient(
+  background-image: linear-gradient(
     to bottom,
-    ${(props) => lighten(0.25, props.theme.primaryColor)},
+    ${(props) => lighten(0.15, props.theme.primaryColor)},
     ${(props) => props.theme.primaryColor}
   );
 
@@ -30,18 +29,23 @@ const Content = styled.button`
   cursor: pointer;
   font-weight: bold;
 
-  &:active, &:focus {
-    outline: 0;
-  }
-
   &:hover {
-    background: linear-gradient(
+    background-image: linear-gradient(
       to bottom,
-      ${(props) => lighten(0.3, props.theme.primaryColor)},
+      ${(props) => lighten(0.25, props.theme.primaryColor)},
       ${(props) => props.theme.primaryColor}
     );
+  }
 
-    box-shadow: 0px 0px 20px 0px ${(props) => transparentize(0.8, props.theme.primaryColor)};
+  &:active, &:focus {
+    background-image: linear-gradient(
+      to bottom,
+      ${(props) => props.theme.primaryColor},
+      ${(props) => darken(0.10, props.theme.primaryColor)}
+    );
+  
+    outline: 0;
+    box-shadow: inset 0px 3px 0px 0px ${(props) => darken(0.1, props.theme.primaryColor)};
   }
 `
 

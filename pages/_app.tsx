@@ -9,7 +9,6 @@ import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "../node_modules/normalize.css/normalize.css"
 import "../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css"
 import "../node_modules/@blueprintjs/core/lib/css/blueprint.css"
-import "react-toastify/dist/ReactToastify.css"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces/authenticated-component"
 import { findModel } from "gamejitsu/api"
@@ -19,7 +18,7 @@ import { Reset } from "styled-reset"
 import { theme } from "gamejitsu"
 import { User } from "gamejitsu/models"
 import { UserContext } from "gamejitsu/contexts"
-import { ToastContainer } from "react-toastify"
+import { Button } from "gamejitsu/components"
 
 interface Props {
   user: User
@@ -103,16 +102,6 @@ export default class App extends NextApp<Props> {
         <ThemeProvider theme={theme}>
           <GlobalStyle />
           <Content>
-            <ToastContainer
-              position="top-center"
-              autoClose={5000}
-              hideProgressBar
-              newestOnTop
-              closeOnClick
-              rtl={false}
-              draggable
-              pauseOnHover
-            />
             <UserContext.Provider value={user}>
               <Component {...pageProps} />
             </UserContext.Provider>
