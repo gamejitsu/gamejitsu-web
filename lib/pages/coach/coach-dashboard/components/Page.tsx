@@ -2,7 +2,7 @@ import React from "react"
 
 import { listModels, createModel } from "gamejitsu/api"
 import { Flex, Box, Text } from "rebass"
-import { Layout, Card, Button } from "gamejitsu/components"
+import { Layout, Card, Button, Title } from "gamejitsu/components"
 import { NextPageContext, NextPage } from "next"
 import { ReviewRequest } from "gamejitsu/models"
 
@@ -25,6 +25,7 @@ const acceptReviewRequest = async (reviewRequestId: string) => {
 const CoachDashboardPage: NextPage<Props> = ({ reviewRequests }) => {
   return (
     <Layout title="Coach Dashboard">
+      <Title text="Available review requests"/>
       <Box m="20px">
         <Card>
           <Flex flexDirection="column">

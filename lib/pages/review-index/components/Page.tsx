@@ -1,6 +1,6 @@
 import React from "react"
 
-import { Layout } from "gamejitsu/components"
+import { Layout, Title } from "gamejitsu/components"
 import { listModels } from "gamejitsu/api"
 import { NextPage } from "next"
 import { Review } from "gamejitsu/models"
@@ -12,7 +12,7 @@ interface Props {
 
 const Page: NextPage<Props> = ({ reviews }) => (
   <Layout title="Reviews">
-    Completed Reviews
+    <Title text="Completed Reviews"/>
     {reviews.map((review) => (
       <ReviewCard key={review.id} review={review} />
     ))}
