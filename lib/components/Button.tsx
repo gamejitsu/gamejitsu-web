@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 import { FunctionComponent } from "react"
-import { lighten, darken, transparentize } from "polished"
+import { lighten, darken } from "polished"
 import { Link } from "rebass"
 
 interface Props {
@@ -24,8 +24,9 @@ const Content = styled.button`
   );
 
   padding: 12px 30px;
+  font-family: ${(props) => props.theme.textFont};
   font-size: 15px;
-  outline: 0;
+  outline: none;
   cursor: pointer;
   font-weight: bold;
 
@@ -37,14 +38,23 @@ const Content = styled.button`
     );
   }
 
-  &:active, &:focus {
+  &:active {
     background-image: linear-gradient(
       to bottom,
       ${(props) => props.theme.primaryColor},
       ${(props) => darken(0.10, props.theme.primaryColor)}
     );
-  
-    outline: 0;
+    outline: none;
+    box-shadow: inset 0px 3px 0px 0px ${(props) => darken(0.1, props.theme.primaryColor)};
+  }
+
+  &:focus {
+    background-image: linear-gradient(
+      to bottom,
+      ${(props) => props.theme.primaryColor},
+      ${(props) => darken(0.10, props.theme.primaryColor)}
+    );
+    outline: none;
     box-shadow: inset 0px 3px 0px 0px ${(props) => darken(0.1, props.theme.primaryColor)};
   }
 `

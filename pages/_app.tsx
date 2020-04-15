@@ -5,10 +5,7 @@ import React from "react"
 import Router from "next/router"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
-import "../node_modules/normalize.css/normalize.css"
-import "../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css"
-import "../node_modules/@blueprintjs/core/lib/css/blueprint.css"
+import "../lib/styles.scss"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces/authenticated-component"
 import { findModel } from "gamejitsu/api"
@@ -18,7 +15,6 @@ import { Reset } from "styled-reset"
 import { theme } from "gamejitsu"
 import { User } from "gamejitsu/models"
 import { UserContext } from "gamejitsu/contexts"
-import { Button } from "gamejitsu/components"
 
 interface Props {
   user: User
@@ -27,14 +23,14 @@ interface Props {
 const Content = styled.div`
   background-color: ${(props) => props.theme.backgroundColor};
   min-height: 100vh;
-  color: ${(props) => props.theme.textColor};
-  font-family: ${(props) => props.theme.textFont};
 `
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Exo+2');
   body {
     background-color: ${(props) => props.theme.backgroundColor};
+    font-family: ${(props) => props.theme.textFont};
+    color: ${(props) => props.theme.textColor};
   }
   @font-face {
     font-family: 'Japanese 3017';

@@ -10,6 +10,9 @@ interface Props {
 const Content = styled.a`
   color: ${(props) => props.theme.linkColor};
   cursor: pointer;
+  &:hover {
+    text-decoration: none
+  }
 `
 
 const Link: FunctionComponent<Props> = ({ children, href }) => (
