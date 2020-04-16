@@ -4,7 +4,7 @@ import Router from "next/router"
 import { Box, Flex } from "rebass"
 import { Button } from "gamejitsu/components"
 import { createModel } from "gamejitsu/api"
-import { Form, Col } from "react-bootstrap"
+//import { Form, Col } from "react-bootstrap"
 import { Formik } from "formik"
 import { object, string } from "yup"
 import { UserContext } from "gamejitsu/contexts"
@@ -30,7 +30,7 @@ const schema = object({
 const CoachSignUpForm: FunctionComponent = () => {
   const user = getUser()
 
-  return (
+  /*return (
     <div>
       <Formik
         validationSchema={schema}
@@ -121,7 +121,7 @@ const CoachSignUpForm: FunctionComponent = () => {
         )}
       </Formik>
     </div>
-  )
+  )*/
 }
 
 export default CoachSignUpForm

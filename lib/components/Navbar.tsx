@@ -8,16 +8,22 @@ import { Link, Button, ImageButton } from "."
 import { useContext, FunctionComponent } from "react"
 import { transparentize } from "polished";
 
+import { useRouter } from 'next/router'
+
 const urlBase = "https://steamcommunity.com/openid/login"
 
 const steamImageSrc = "/images/steam-button.png"
 const gamejitsuWritingImageSrc = "/images/gamejitsu-writing.svg"
 
+interface NavLinkContentProps {
+  isActive: boolean
+}
+
 interface NavLinkProps {
   href: string
 }
 
-const NavLinkContent = styled(Link)`
+const NavLinkContent = styled(Link)<NavLinkContentProps>`
   font-weight: bold;
   transition: all 0.15s ease-in-out;
   position: relative;
@@ -32,7 +38,7 @@ const NavLinkContent = styled(Link)`
     content: '';
     height: 10px;
     left: 0;
-    opacity: 0;
+    opacity: ${(props) => (props.isActive ? "1" : "0" )};
     pointer-events: none;
     position: absolute;
     right: 0;
@@ -46,11 +52,13 @@ const NavLinkContent = styled(Link)`
   }
 `
 
-const NavLink: FunctionComponent<NavLinkProps> = ({ children, href }) => (
-  <Box m={2}>
-    <NavLinkContent href={href}>{children}</NavLinkContent>
+const NavLink: FunctionComponent<NavLinkProps> = ({ children, href}) => {
+  const router = useRouter()
+  const isActive = router.pathname === href 
+  return <Box m={2}>
+    <NavLinkContent isActive={isActive} href={href}>{children}</NavLinkContent>
   </Box>
-)
+}
 
 const Container = styled(Flex)`
   background-color: ${(props) => props.theme.lightBackgroundColor};
