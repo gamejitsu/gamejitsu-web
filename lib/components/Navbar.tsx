@@ -6,6 +6,7 @@ import { destroyCookie } from "nookies"
 import { UserContext } from "../contexts"
 import { Link, Button, ImageButton } from "."
 import { useContext, FunctionComponent } from "react"
+import { transparentize } from "polished";
 
 const urlBase = "https://steamcommunity.com/openid/login"
 
@@ -16,15 +17,38 @@ interface NavLinkProps {
   href: string
 }
 
-const NavLinkContent = styled.div`
+const NavLinkContent = styled(Link)`
   font-weight: bold;
+  transition: all 0.15s ease-in-out;
+  position: relative;
+
+  &::before {
+    background: -webkit-radial-gradient(
+      center,
+      ellipse,
+      ${(props) => transparentize(0.5, props.theme.textColor)} 0,
+      transparent 80%
+    );
+    content: '';
+    height: 10px;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    transition: opacity .2s;
+    width: 100%;
+  }
+
+  &:hover::before {
+    opacity: 1;
+  }
 `
 
 const NavLink: FunctionComponent<NavLinkProps> = ({ children, href }) => (
   <Box m={2}>
-    <NavLinkContent>
-      <Link href={href}>{children}</Link>
-    </NavLinkContent>
+    <NavLinkContent href={href}>{children}</NavLinkContent>
   </Box>
 )
 

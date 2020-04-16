@@ -5,6 +5,7 @@ import { FunctionComponent } from "react"
 
 interface Props {
   href: string
+  className?: string
 }
 
 const Content = styled.a`
@@ -15,9 +16,9 @@ const Content = styled.a`
   }
 `
 
-const Link: FunctionComponent<Props> = ({ children, href }) => (
+const Link: FunctionComponent<Props> = ({ children, className, href }) => (
   <NextLink href={href}>
-    <Content>{children}</Content>
+    <Content className={className}>{children}</Content>
   </NextLink>
 )
 

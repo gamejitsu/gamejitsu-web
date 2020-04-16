@@ -23,7 +23,7 @@ const Content = styled.button`
     ${(props) => props.theme.primaryColor}
   );
 
-  padding: 12px 30px;
+  padding: 12px 30px 14px 30px;
   font-family: ${(props) => props.theme.textFont};
   font-size: 15px;
   outline: none;
@@ -46,6 +46,8 @@ const Content = styled.button`
     );
     outline: none;
     box-shadow: inset 0px 3px 0px 0px ${(props) => darken(0.1, props.theme.primaryColor)};
+    padding-bottom: 12px;
+    margin-top: 2px;
   }
 
   &:focus {
