@@ -4,7 +4,8 @@ import styled from "styled-components"
 import { Box, Flex } from "rebass"
 import { destroyCookie } from "nookies"
 import { UserContext } from "../contexts"
-import { Link, Button, ImageButton } from "."
+import { Button, ImageButton } from "."
+import Link from "./Link"
 import { useContext, FunctionComponent } from "react"
 import { transparentize } from "polished";
 

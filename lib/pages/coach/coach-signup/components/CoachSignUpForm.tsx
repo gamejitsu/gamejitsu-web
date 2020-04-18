@@ -4,11 +4,16 @@ import Router from "next/router"
 import { Box, Flex } from "rebass"
 import { Button } from "gamejitsu/components"
 import { createModel } from "gamejitsu/api"
-//import { Form, Col } from "react-bootstrap"
 import { Formik } from "formik"
 import { object, string } from "yup"
 import { UserContext } from "gamejitsu/contexts"
-import { SelectSkillLevel } from "gamejitsu/components"
+import { Form, FormGroup, InputGroup } from "gamejitsu/components"
+import { Slider, Divider, Card, Elevation } from "@blueprintjs/core"
+import { SkillLevel } from "gamejitsu/schemas/skillLevel"
+import titleize from 'titleize'
+import humanize from 'humanize-string'
+
+
 
 //TODO if coach signed up, can't access to the signup page
 
@@ -17,6 +22,8 @@ const getUser = () => {
   if (user) return user
   else throw new Error("user null")
 }
+
+const skillLevels = SkillLevel.types.map((t) => t.value)
 
 const schema = object({
   firstName: string().required(),
@@ -30,98 +37,52 @@ const schema = object({
 const CoachSignUpForm: FunctionComponent = () => {
   const user = getUser()
 
-  /*return (
-    <div>
-      <Formik
-        validationSchema={schema}
-        initialValues={{
-          email: "",
-          firstName: "",
-          lastName: "",
-          photoUrl: "",
-          skillLevel: "medium"
-        }}
-        onSubmit={async (
-          { email, firstName, lastName, photoUrl, skillLevel },
-          { setSubmitting }
-        ) => {
-          setSubmitting(true)
-          if (
-            skillLevel !== "medium" &&
-            skillLevel !== "high" &&
-            skillLevel !== "very_high" &&
-            skillLevel !== "pro"
-          ) {
-            throw new Error(`Invalid skill level value in coach signup: ${skillLevel}`)
-          }
-          await createModel("coach", {
-            user: user.id,
-            email,
-            firstName,
-            lastName,
-            photoUrl,
-            skillLevel
-          })
-          // TODO go to landing page or send alert on dashboard explaining
-          Router.push(`/dashboard`)
-          setSubmitting(false)
-          //TODO onFinish()
-        }}
-      >
-        {({ isSubmitting, values, errors, touched, handleChange, handleSubmit }) => (
-          <Flex justifyContent="center">
-            <Box width="60%">
-              <Form noValidate onSubmit={handleSubmit}>
-                <Form.Row>
-                  <Form.Group as={Col} controlId="validationFormik01">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control
-                      type="email"
-                      name="email"
-                      value={values.email}
-                      onChange={handleChange}
-                      isValid={touched.email && !errors.email}
-                    />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                  </Form.Group>
-                </Form.Row>
-                <Form.Row>
-                  <Form.Group as={Col} controlId="validationFormik02">
-                    <Form.Label>First name</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="firstName"
-                      value={values.firstName}
-                      onChange={handleChange}
-                      isValid={touched.firstName && !errors.firstName}
-                    />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                  </Form.Group>
-                </Form.Row>
-                <Form.Row>
-                  <Form.Group as={Col} controlId="validationFormik03">
-                    <Form.Label>Last name</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="lastName"
-                      value={values.lastName}
-                      onChange={handleChange}
-                      isValid={touched.lastName && !errors.lastName}
-                    />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                  </Form.Group>
-                </Form.Row>
-                <SelectSkillLevel />
-                <Form.Row>
-                  <Button text="Sign Up as Coach" type="submit" disabled={isSubmitting} />
-                </Form.Row>
-              </Form>
+  let sliderVal = 0
+
+  const renderLabel = (val: number) =>
+    titleize(humanize(skillLevels[val]))
+
+  return (
+    <Box width="700px" mx="auto" p={3}>
+      <Card elevation={Elevation.THREE}>
+        <Form title="Sign up as a coach">
+          <FormGroup label="First Name" labelFor="text-input">
+            <InputGroup id="text-input" />
+          </FormGroup>
+          <FormGroup label="Last Name" labelFor="text-input">
+            <InputGroup id="text-input" />
+          </FormGroup>
+          <FormGroup label="Email" labelFor="text-input">
+            <InputGroup id="text-input" />
+          </FormGroup>
+          <FormGroup label="Photo URL" labelFor="text-input" labelInfo="(optional)">
+            <InputGroup id="text-input" placeholder="Placeholder text" />
+          </FormGroup>
+          <FormGroup label="Skill Level" labelFor="text-input">
+            <Box width="250px">
+              <Slider
+                min={0}
+                max={3}
+                stepSize={1}
+                labelStepSize={1}
+                onChange={() => { }}
+                labelRenderer={renderLabel}
+                showTrackFill={true}
+                value={sliderVal}
+                vertical={false}
+              />
             </Box>
+          </FormGroup>
+          <Box my={4}>
+            <Divider />
+          </Box>
+          <Flex justifyContent="flex-end">
+            <Button text="Register" />
           </Flex>
-        )}
-      </Formik>
-    </div>
-  )*/
+        </Form>
+      </Card>
+    </Box>
+  )
 }
 
 export default CoachSignUpForm

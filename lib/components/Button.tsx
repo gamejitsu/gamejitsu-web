@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 import { FunctionComponent } from "react"
 import { lighten, darken } from "polished"
-import { Link } from "rebass"
+import { Link } from "."
 import { Button as BPButton, Classes } from "@blueprintjs/core";
 
 interface Props {

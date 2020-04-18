@@ -2,7 +2,7 @@ import { Field } from "formik"
 import { Flex, Box } from "rebass"
 import { FunctionComponent } from "react"
 
-const SelectSkillLevel: FunctionComponent = () => (
+const SkillLevelSelect: FunctionComponent = () => (
   <Flex flexDirection="column" alignItems="center">
     <Box m={2} p={2} bg="primary" width={[1, 1, 1]}>
       <Field type="radio" name="skill" value="pro" />
@@ -23,4 +23,4 @@ const SelectSkillLevel: FunctionComponent = () => (
   </Flex>
 )
 
-export default SelectSkillLevel
+export default SkillLevelSelect

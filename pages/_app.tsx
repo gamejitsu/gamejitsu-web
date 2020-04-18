@@ -32,6 +32,9 @@ const GlobalStyle = createGlobalStyle`
     font-family: ${(props) => props.theme.textFont};
     color: ${(props) => props.theme.textColor};
   }
+  input {
+    font-family: ${(props) => props.theme.textFont};
+  }
   @font-face {
     font-family: 'Japanese 3017';
     src: url('/fonts/Japanese-3017.eot');
