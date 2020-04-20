@@ -2,10 +2,14 @@ $pt-font-family: 'Exo 2';
 $pt-link-color: #ffffff;
 $pt-intent-success: #08ff07;
 
-$pt-divider-black: #A9A7B3;
+$pt-divider-black: rgb(117, 116, 119);
 $divider-margin: 0px;
 $card-background-color: #4d425e;
+$pt-drop-shadow-opacity: 0.2 !default;
+$pt-border-shadow-opacity: 0.1 !default;
 
+$pt-elevation-shadow-3:  0 0 0 1px rgba($pt-divider-black, $pt-drop-shadow-opacity),
+                        0 2px 4px rgba($pt-divider-black, $pt-drop-shadow-opacity),
+                        0 8px 24px rgba($pt-divider-black, $pt-drop-shadow-opacity) !default;
 
 @import "../node_modules/@blueprintjs/core/src/blueprint.scss";
-

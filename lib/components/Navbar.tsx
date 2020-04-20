@@ -1,14 +1,13 @@
 import queryString from "query-string"
 import styled from "styled-components"
+import Link from "./Link"
 
 import { Box, Flex } from "rebass"
 import { destroyCookie } from "nookies"
 import { UserContext } from "../contexts"
 import { Button, ImageButton } from "."
-import Link from "./Link"
 import { useContext, FunctionComponent } from "react"
-import { transparentize } from "polished";
-
+import { transparentize } from "polished"
 import { useRouter } from 'next/router'
 
 const urlBase = "https://steamcommunity.com/openid/login"
@@ -30,14 +29,10 @@ const NavLinkContent = styled(Link)<NavLinkContentProps>`
   position: relative;
 
   &::before {
-    background: -webkit-radial-gradient(
-      center,
-      ellipse,
-      ${(props) => transparentize(0.5, props.theme.textColor)} 0,
-      transparent 80%
-    );
+    background-color: ${(props) => transparentize(0.5, props.theme.textColor)};
     content: '';
-    height: 10px;
+    height: 5px;
+    margin-top: 3px;  
     left: 0;
     opacity: ${(props) => (props.isActive ? "1" : "0" )};
     pointer-events: none;
@@ -62,7 +57,11 @@ const NavLink: FunctionComponent<NavLinkProps> = ({ children, href}) => {
 }
 
 const Container = styled(Flex)`
-  background-color: ${(props) => props.theme.lightBackgroundColor};
+  background-color: ${(props) => transparentize(0.1, props.theme.lightBackgroundColor)};
+  position: fixed;
+  top: 0;
+  left: 0;
+  right 0;
 `
 
 const Logo = styled.div`
@@ -95,7 +94,7 @@ const Navbar: FunctionComponent = () => {
   const user = useContext(UserContext)
 
   return (
-    <Container py={3} px={3} color="white" alignItems="center">
+    <Container py={2} px={3} color="white" alignItems="center">
       <Box mr="auto">
         <Flex alignItems="center">
           <Box width="175px" mr={3}>
