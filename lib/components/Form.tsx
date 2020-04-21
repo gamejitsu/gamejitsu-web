@@ -17,11 +17,13 @@ interface Props<T> {
 }
 
 const Header = styled(Box)`
+  border-radius: 3px;
+
   background: linear-gradient(
     to bottom,
     ${(props) => props.theme.lightBackgroundColor},
     ${(props) => darken(0.15, props.theme.lightBackgroundColor)}
-  ); 
+  );
 `
 
 const FormCard = styled(Card)`

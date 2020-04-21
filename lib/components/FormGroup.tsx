@@ -14,6 +14,7 @@ const Label = styled.div`
   width: 150px;
   text-align: right;
   margin-right: 35px;
+  color: ${(props) => props.theme.linkColor};
 `
 
 const FormGroup: FunctionComponent<Props> = ({ children, label, labelInfo, labelFor }) =>
