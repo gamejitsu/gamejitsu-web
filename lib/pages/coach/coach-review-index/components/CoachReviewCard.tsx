@@ -9,7 +9,7 @@ interface Props {
 }
 
 const CoachReviewCard: FunctionComponent<Props> = ({ review }) => (
-  <Card>
+  <Card title="Reviews">
     <Flex>
       <Box p={3} mr="auto">
         <Text p={2}>Review</Text>

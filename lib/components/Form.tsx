@@ -5,7 +5,7 @@ import { Title } from "."
 import { Button } from "gamejitsu/components"
 import { Divider, Card, Elevation } from "@blueprintjs/core"
 import styled from "styled-components"
-import { lighten, darken } from "polished"
+import { darken } from "polished"
 
 interface Props<T> {
   initialValues: T
@@ -40,9 +40,7 @@ const Form: FormComponent = ({ children, initialValues, title, schema, onSubmit,
         <Title text={title} />
       </Header>
     </Flex>
-    <Box>
       <Divider />
-    </Box>
     <Box px={4} pt={4}>
       <Formik validationSchema={schema}
         initialValues={initialValues}

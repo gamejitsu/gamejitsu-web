@@ -18,7 +18,6 @@ const getReviews = async (ctx: NextPageContext) => {
 const CoachReviewIndex: NextPage<Props> = ({ reviews }) => {
   return (
     <Layout title="Reviews">
-      <Title text="Reviews"/>
       {reviews.map((review) => {
         return <CoachReviewCard key={review.id} review={review} />
       })}

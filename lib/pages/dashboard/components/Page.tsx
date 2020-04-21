@@ -1,7 +1,7 @@
 import React, { useState, useEffect, FunctionComponent } from "react"
 
 import { DeserializedReplay, deserializeReplays } from "gamejitsu/models/replay"
-import { Layout, Spinner, Title } from "gamejitsu/components"
+import { Layout, Spinner, Title, Card } from "gamejitsu/components"
 import { listModels, findModel, deserializeResponse } from "gamejitsu/api"
 import { NextPageContext, NextPage } from "next"
 import { parseCookies } from "nookies"
@@ -9,6 +9,7 @@ import { ReviewRequestCard, ReplayCard } from "."
 import { Socket } from "phoenix"
 import { User, ReviewRequest } from "gamejitsu/models"
 import { UserContext } from "gamejitsu/contexts"
+import { Box } from "rebass"
 
 interface Props {
   user: User
@@ -40,8 +41,8 @@ const Dashboard: FunctionComponent<Props> = (props) => {
     const currentSocket = socket
       ? socket
       : new Socket(process.env.SOCKET_ENDPOINT + "/socket", {
-          params: { token: authToken }
-        })
+        params: { token: authToken }
+      })
     setSocket(currentSocket)
     currentSocket.connect()
     const channel = currentSocket.channel("users:" + user.id)
@@ -68,14 +69,19 @@ const Dashboard: FunctionComponent<Props> = (props) => {
   return (
     <Layout title="Dashboard">
       {user.isSyncingReplays ? <Spinner /> : <div></div>}
-      <Title text="Reviews Requested"/>
-      {props.reviewRequests.map((reviewRequest) => {
-        return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
-      })}
-      <Title text="Replays"/>
-      {replays.map((replay) => {
-        return <ReplayCard key={replay.id} replay={replay} />
-      })}
+
+      <Card title="Review Requested">
+        {props.reviewRequests.map((reviewRequest) => {
+          return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
+        })}
+      </Card>
+      <Box mt={4}>
+        <Card title="Replays">
+          {replays.map((replay) => {
+            return <ReplayCard key={replay.id} replay={replay} />
+          })}
+        </Card>
+      </Box>
     </Layout>
   )
 }

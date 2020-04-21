@@ -13,7 +13,7 @@ const goToReviewPage = (id?: string) => {
 }
 
 const ReviewCard: FunctionComponent<Props> = ({ review }) => (
-  <Card>
+  <Card title="Completed reviews">
     <Flex>
       <Box p={3} mr="auto">
         <Text p={2}>Review</Text>

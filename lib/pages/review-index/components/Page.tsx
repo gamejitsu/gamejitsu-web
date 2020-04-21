@@ -12,7 +12,6 @@ interface Props {
 
 const Page: NextPage<Props> = ({ reviews }) => (
   <Layout title="Reviews">
-    <Title text="Completed Reviews"/>
     {reviews.map((review) => (
       <ReviewCard key={review.id} review={review} />
     ))}
