@@ -1,29 +1,29 @@
 import * as t from "io-ts"
-import { isRight } from "fp-ts/lib/Either"
+import { isLeft, Either } from "fp-ts/lib/Either"
 
 export type Decode<T> = (value: unknown) => T
 export type Encode<T> = (value: T) => any
 type Transform<T, U> = (value: T) => U
-type Decoder<D, I> = Response<t.Type<D>, t.Type<I>>
-type Transformer<D, I, TD, TI> = Response<Transform<D, TD>, Transform<I, TI>>
+type DecodeOptions<D, R> = Options<Decode<D>, Decode<R>>
+type TransformOptions<D, R, TD, TR> = Options<Transform<D, TD>, Transform<R, TR>>
 
-interface Response<D, I> {
+interface Options<D, R> {
   data: D
-  included: I
+  response: R
 }
 
-interface BuildResourceOptions<D, I, TD, TI> {
+interface BuildResourceOptions<D, R, TD, TR> {
   name: string
-  decoder: Decoder<D, I>
-  transformer: Transformer<D, I, TD, TI>
+  decode: DecodeOptions<D, R>
+  transform: TransformOptions<D, R, TD, TR>
   encode: Encode<TD>
 }
 
-export default interface Resource<D, I> {
-  name: string;
-  decodeOne: Decode<D>, 
-  decodeMany: Decode<Response<D[], I>>
-  encode: Encode<D>
+export default interface Resource<D, R> {
+  name: string
+  decodeOne: Decode<{ data: D } & R>
+  decodeMany: Decode<{ data: D[] } & R>
+  encoder: Encode<D>
 }
 
 export class DecodingError extends Error {
@@ -36,41 +36,45 @@ export class DecodingError extends Error {
   }
 }
  
-export function buildResource<D, I, TD, TI>({ name, decoder, transformer, encode }: BuildResourceOptions<D, I, TD, TI>) {
-  return {
+export function buildResource<D, R, TD, TR>({ name, decode, transform, encode }: BuildResourceOptions<D, R, TD, TR>) {
+  const resource: Resource<TD, TR> = {
     name,
-    decodeOne: buildDecode(decoder, transformer),
+    decodeOne: buildDecode(decode, transform),
     decodeMany: buildDecode(
-      { ...decoder, data: t.array(decoder.data) },
-      { ...transformer, data: (value) => value.map((v) => transformer.data(v)) }
+      { ...decode, data: (value) => extractValue(t.array(t.any).decode(value)).map((v) => decode.data(v)) },
+      { ...transform, data: (value) => value.map((v) => transform.data(v)) }
     ),
-    encode: buildEncode(name, encode)
+    encoder: buildEncode(encode)
   }
+
+  return resource
 }
 
-function buildEncode<T>(name: string, encode: Encode<T>) {
+export function extractValue<T>(value: Either<t.Errors, T>) {
+  if (isLeft(value)) { throw new DecodingError(value.left) }
+  return value.right
+}
+
+function buildEncode<T>(encode: Encode<T>) {
   return (value: T) => ({
     jsonapi: { version: "1.0" },
     ...encode(value)
   })
 }
 
-function buildDecode<D, I, TD, TI>(decoder: Decoder<D, I>, transformer: Transformer<D, I, TD, TI>) {
+function buildDecode<D, R, TD, TR>(decoder: DecodeOptions<D, R>, transformer: TransformOptions<D, R, TD, TR>) {
   return (value: unknown) => {
-    const decodedValue = t.type({
+    const decodedValue = extractValue(t.type({
       jsonapi: t.type({
         version: t.literal("1.0")
       }),
-      data: decoder.data,
-      included: decoder.included
-    }).decode(value)
+      data: t.any
+    }).decode(value))
 
-    if (isRight(decodedValue)) {
-      const { data, included } = decodedValue.right
-      return { data: transformer.data(data), included: transformer.included(included) }
-    } else {
-      throw new DecodingError(decodedValue.left)
-    }
+    const { data } = decodedValue
+    const decodedResponse = decoder.response(value)
+    const decodedData = decoder.data(data)
+    return { data: transformer.data(decodedData), ...transformer.response(decodedResponse) }
   }
 }
 

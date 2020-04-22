@@ -1,37 +1,47 @@
-import { buildResource } from "../resource"
+import { buildResource, extractValue } from "../resource"
+import { Model } from "gamejitsu/interfaces"
+import { SkillLevel } from "./skill-level"
 import * as t from "io-ts"
 
+export interface Coach extends Model {
+  email: string
+  firstName: string
+  lastName: string
+  photoUrl: string
+  skillLevel: SkillLevel
+}
+
+export const decoder = (value: unknown) => (
+  extractValue(t.type({
+    id: t.string,
+    attributes: t.type({
+      "email": t.string,
+      "first-name": t.string,
+      "last-name": t.string,
+      "photo-url": t.string,
+      "skill-level": SkillLevel
+    })
+  }).decode(value))
+)
+
+export const transformer = (value: ReturnType<typeof decoder>): Coach => ({
+  id: value.id,
+  email: value.attributes["email"],
+  firstName: value.attributes["first-name"],
+  lastName: value.attributes["last-name"],
+  photoUrl: value.attributes["photo-url"],
+  skillLevel: value.attributes["skill-level"]
+})
+
 export default buildResource({
-  name: "review",
-  decoder: {
-    data: t.type({
-      attributes: t.type({
-        comments: t.array(t.type({
-          text: t.string,
-          timestamp: t.number
-        }))
-      }),
-      relationships: t.type({
-        coach: t.type({
-          data: t.type({
-            type: t.literal("coach"),
-            id: t.string
-          })
-        })
-      })
-    }),
-    included: t.union([
-      t.type({
-
-      }),
-      t.type({
-
-      })
-    ])
+  name: "coach",
+  decode: {
+    data: decoder,
+    response: (value) => ({})
   },
-  transformer: {
-    data: (value) => (value),
-    included: (value) => (value)
+  transform: {
+    data: transformer,
+    response: (value: unknown) => ({})
   },
-  encode: () => {}
+  encode: (value: unknown) => ({})
 })
