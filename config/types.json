@@ -1,0 +1,21 @@
+{
+  "skill-level": {
+    "type": "union",
+    "values": ["medium", "high", "very_high", "pro"]
+  },
+  "player": {
+    "type": "object",
+    "attributes": {
+      "steamId": { "type": "string" },
+      "heroName": { "type": "string" },
+      "heroPortraitUrl": { "type": "string" }
+    }
+  },
+  "comment": {
+    "type": "object",
+    "attributes": {
+      "text": { "type": "string" },
+      "timestamp": { "type": "timestamp" }
+    }
+  }
+}
