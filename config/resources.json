@@ -17,7 +17,7 @@
     "attributes": {
       "matchId": { "type": "string" },
       "playedAt": { "type": "date" },
-      "players": { "type": "player" }
+      "players": { "type": "array", "value": "player" }
     },
     "relationships": {}
   },
@@ -31,11 +31,11 @@
   },
   "review": {
     "attributes": {
-      "comments": { "type": "array", "arrayType": "comment" },
+      "comments": { "type": "array", "value": "comment" },
       "isPublished": { "type": "boolean" }
     },
     "relationships": {
-      "request": { "cardinality": "one", "type": "request" },
+      "request": { "cardinality": "one", "type": "review-request" },
       "coach": { "cardinality": "one", "type": "coach" }
     }
   },

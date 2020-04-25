@@ -25,7 +25,7 @@ const acceptReviewRequest = async (reviewRequestId: string) => {
 const CoachDashboardPage: NextPage<Props> = ({ reviewRequests }) => {
   return (
     <Layout title="Coach Dashboard">
-      <Title text="Available review requests"/>
+      <Title text="Available review requests" />
       <Box m="20px">
         <Card>
           <Flex flexDirection="column">

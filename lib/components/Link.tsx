@@ -12,7 +12,7 @@ const Content = styled.a`
   color: ${(props) => props.theme.linkColor};
   cursor: pointer;
   &:hover {
-    text-decoration: none
+    text-decoration: none;
   }
 `
 

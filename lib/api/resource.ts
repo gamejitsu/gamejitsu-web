@@ -35,13 +35,21 @@ export class DecodingError extends Error {
     Object.setPrototypeOf(this, new.target.prototype)
   }
 }
- 
-export function buildResource<D, R, TD, TR>({ name, decode, transform, encode }: BuildResourceOptions<D, R, TD, TR>) {
+
+export function buildResource<D, R, TD, TR>({
+  name,
+  decode,
+  transform,
+  encode
+}: BuildResourceOptions<D, R, TD, TR>) {
   const resource: Resource<TD, TR> = {
     name,
     decodeOne: buildDecode(decode, transform),
     decodeMany: buildDecode(
-      { ...decode, data: (value) => extractValue(t.array(t.any).decode(value)).map((v) => decode.data(v)) },
+      {
+        ...decode,
+        data: (value) => extractValue(t.array(t.any).decode(value)).map((v) => decode.data(v))
+      },
       { ...transform, data: (value) => value.map((v) => transform.data(v)) }
     ),
     encoder: buildEncode(encode)
@@ -51,25 +59,34 @@ export function buildResource<D, R, TD, TR>({ name, decode, transform, encode }:
 }
 
 export function extractValue<T>(value: Either<t.Errors, T>) {
-  if (isLeft(value)) { throw new DecodingError(value.left) }
+  if (isLeft(value)) {
+    throw new DecodingError(value.left)
+  }
   return value.right
 }
 
 function buildEncode<T>(encode: Encode<T>) {
   return (value: T) => ({
     jsonapi: { version: "1.0" },
-    ...encode(value)
+    data: { ...encode(value) }
   })
 }
 
-function buildDecode<D, R, TD, TR>(decoder: DecodeOptions<D, R>, transformer: TransformOptions<D, R, TD, TR>) {
+function buildDecode<D, R, TD, TR>(
+  decoder: DecodeOptions<D, R>,
+  transformer: TransformOptions<D, R, TD, TR>
+) {
   return (value: unknown) => {
-    const decodedValue = extractValue(t.type({
-      jsonapi: t.type({
-        version: t.literal("1.0")
-      }),
-      data: t.any
-    }).decode(value))
+    const decodedValue = extractValue(
+      t
+        .type({
+          jsonapi: t.type({
+            version: t.literal("1.0")
+          }),
+          data: t.any
+        })
+        .decode(value)
+    )
 
     const { data } = decodedValue
     const decodedResponse = decoder.response(value)

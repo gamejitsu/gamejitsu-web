@@ -8,7 +8,7 @@ import { UserContext } from "../contexts"
 import { Button, ImageButton } from "."
 import { useContext, FunctionComponent } from "react"
 import { transparentize } from "polished"
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router"
 
 const urlBase = "https://steamcommunity.com/openid/login"
 
@@ -30,16 +30,16 @@ const NavLinkContent = styled(Link)<NavLinkContentProps>`
 
   &::before {
     background-color: ${(props) => transparentize(0.5, props.theme.textColor)};
-    content: '';
+    content: "";
     height: 5px;
-    margin-top: 3px;  
+    margin-top: 3px;
     left: 0;
-    opacity: ${(props) => (props.isActive ? "1" : "0" )};
+    opacity: ${(props) => (props.isActive ? "1" : "0")};
     pointer-events: none;
     position: absolute;
     right: 0;
     top: 100%;
-    transition: opacity .2s;
+    transition: opacity 0.2s;
     width: 100%;
   }
 
@@ -48,12 +48,16 @@ const NavLinkContent = styled(Link)<NavLinkContentProps>`
   }
 `
 
-const NavLink: FunctionComponent<NavLinkProps> = ({ children, href}) => {
+const NavLink: FunctionComponent<NavLinkProps> = ({ children, href }) => {
   const router = useRouter()
-  const isActive = router.pathname === href 
-  return <Box m={2}>
-    <NavLinkContent isActive={isActive} href={href}>{children}</NavLinkContent>
-  </Box>
+  const isActive = router.pathname === href
+  return (
+    <Box m={2}>
+      <NavLinkContent isActive={isActive} href={href}>
+        {children}
+      </NavLinkContent>
+    </Box>
+  )
 }
 
 const Container = styled(Flex)`
@@ -107,7 +111,7 @@ const Navbar: FunctionComponent = () => {
           <NavLink href="/coach-reviews">Coach Reviews</NavLink>
           <NavLink href="/coach-signup">Coach SignUp</NavLink>
           <NavLink href="/coach-dashboard">Coach Dashboard</NavLink>
-        </Flex >
+        </Flex>
       </Box>
       {user ? (
         [
@@ -117,10 +121,10 @@ const Navbar: FunctionComponent = () => {
           <Button key="logout" text="Logout" onClick={logout} />
         ]
       ) : (
-          <Box width="150px">
-            <ImageButton onClick={login} imageSrc={steamImageSrc} />
-          </Box>
-        )}
+        <Box width="150px">
+          <ImageButton onClick={login} imageSrc={steamImageSrc} />
+        </Box>
+      )}
     </Container>
   )
 }

@@ -27,19 +27,45 @@ export class StatusError extends Error {
   }
 }
 
-export function findModel<T, U>({ decodeOne, name }: Resource<T, U>, id: string, ctx?: NextPageContext) {
+export function findModel<T, U>(
+  { decodeOne, name }: Resource<T, U>,
+  id: string,
+  ctx?: NextPageContext
+) {
   return makeRequest(200, "GET", `/${pluralize(name)}/${id}`, { decode: decodeOne, ctx })
 }
 
-export function createModel<T, U>({ encoder, decodeOne, name }: Resource<T, U>, model: T, ctx?: NextPageContext) {
-  return makeRequest(201, "POST", `/${pluralize(name)}`, { encode: encoder, decode: decodeOne, payload: model, ctx })
+export function createModel<T, U>(
+  { encoder, decodeOne, name }: Resource<T, U>,
+  model: T,
+  ctx?: NextPageContext
+) {
+  return makeRequest(201, "POST", `/${pluralize(name)}`, {
+    encode: encoder,
+    decode: decodeOne,
+    payload: model,
+    ctx
+  })
 }
 
-export function updateModel<T extends Model, U>({ encoder, decodeOne, name }: Resource<T, U>, model: T, ctx?: NextPageContext) {
-  return makeRequest(200, "PUT", `/${pluralize(name)}/${model.id}`, { encode: encoder, decode: decodeOne, payload: model, ctx })
+export function updateModel<T extends Model, U>(
+  { encoder, decodeOne, name }: Resource<T, U>,
+  model: T,
+  ctx?: NextPageContext
+) {
+  return makeRequest(200, "PUT", `/${pluralize(name)}/${model.id}`, {
+    encode: encoder,
+    decode: decodeOne,
+    payload: model,
+    ctx
+  })
 }
 
-export function deleteModel<T extends Model, U>({ name }: Resource<T, U>, model: T, ctx?: NextPageContext) {
+export function deleteModel<T extends Model, U>(
+  { name }: Resource<T, U>,
+  model: T,
+  ctx?: NextPageContext
+) {
   return makeRequest(204, "DELETE", `/${pluralize(name)}/${model.id}`, { ctx })
 }
 

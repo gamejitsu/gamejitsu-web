@@ -15,16 +15,16 @@ const Header = styled(Box)`
     to bottom,
     ${(props) => props.theme.lightBackgroundColor},
     ${(props) => darken(0.15, props.theme.lightBackgroundColor)}
-  ); 
+  );
 `
 
 const Content = styled(BPCard)`
   padding: 0;
 `
 
-const Card: FunctionComponent<Props> = ({ children, title }) =>
+const Card: FunctionComponent<Props> = ({ children, title }) => (
   <Content elevation={Elevation.THREE}>
-    {title &&
+    {title && (
       <Fragment>
         <Flex alignItems="center">
           <Header px={3} py={25} flex={1}>
@@ -33,8 +33,9 @@ const Card: FunctionComponent<Props> = ({ children, title }) =>
         </Flex>
         <Divider />
       </Fragment>
-    }
+    )}
     {children}
   </Content>
+)
 
 export default Card

@@ -5,16 +5,20 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
-    "module": "esnext",
+    "module": "commonjs",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": false,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "camelize": ["../types/camelize"],
+      "dasherize": ["../types/dasherize"]
+    }
   },
-  "include": [
-    "../types/**.d.ts"
-  ],
   "exclude": [
     "node_modules"
+  ],
+  "include": [
+    "../types"
   ]
 }

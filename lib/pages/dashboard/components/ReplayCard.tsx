@@ -1,5 +1,5 @@
 import React, { useContext, FunctionComponent } from "react"
-import { formatDistanceToNow } from 'date-fns'
+import { formatDistanceToNow } from "date-fns"
 
 import { Button, Card } from "gamejitsu/components"
 import styled from "styled-components"
@@ -23,9 +23,7 @@ const UserImageContent = styled.img`
 `
 
 const UserImage: FunctionComponent<UserImageProps> = ({ userPlayer }) => {
-  return (
-    <UserImageContent src={userPlayer.heroPortraitUrl} />
-  )
+  return <UserImageContent src={userPlayer.heroPortraitUrl} />
 }
 
 const RecentMatchesCard: FunctionComponent<Props> = ({ replay }) => {
@@ -46,8 +44,10 @@ const RecentMatchesCard: FunctionComponent<Props> = ({ replay }) => {
           <Flex justifyContent="center" alignItems="center" flexDirection="column">
             <Box>
               <UserImage userPlayer={currentPlayer} />
-               You played as {currentPlayer.heroName}
-              <Text p={2}>{formatDistanceToNow(new Date(replay.playedAt), { addSuffix: true })}</Text>
+              You played as {currentPlayer.heroName}
+              <Text p={2}>
+                {formatDistanceToNow(new Date(replay.playedAt), { addSuffix: true })}
+              </Text>
             </Box>
           </Flex>
         </Box>

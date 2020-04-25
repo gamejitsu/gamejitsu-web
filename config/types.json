@@ -15,7 +15,7 @@
     "type": "object",
     "attributes": {
       "text": { "type": "string" },
-      "timestamp": { "type": "timestamp" }
+      "timestamp": { "type": "number" }
     }
   }
 }

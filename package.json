@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "test": "npm run prettier -- --check && jest",
-    "generate-resources": "ts-node-script ./scripts/generate-resources.ts"
+    "generate-resources": "ts-node-script ./scripts/generate-resources.ts && prettier --write \"lib/api/{resources,types}/**/*.ts\""
   },
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.7.5",
@@ -20,13 +20,13 @@
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.19.0",
     "babel-plugin-styled-components": "^1.10.6",
+    "camelcase": "^6.0.0",
     "dasherize": "^2.0.0",
     "date-fns": "^2.12.0",
     "formik": "^2.0.6",
     "fp-ts": "^2.3.1",
     "humanize-string": "^2.1.0",
     "io-ts": "^2.0.1",
-    "io-ts-types": "^0.5.3",
     "jwt-decode": "^2.2.0",
     "monocle-ts": "^2.0.0",
     "next": "^9.3.4",
@@ -62,6 +62,7 @@
     "enzyme-adapter-react-16": "^1.15.1",
     "enzyme-to-json": "^3.4.3",
     "husky": "^3.1.0",
+    "io-ts-types": "^0.5.6",
     "jest": "^24.9.0",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",

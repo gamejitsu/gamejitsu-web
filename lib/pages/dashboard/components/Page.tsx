@@ -41,8 +41,8 @@ const Dashboard: FunctionComponent<Props> = (props) => {
     const currentSocket = socket
       ? socket
       : new Socket(process.env.SOCKET_ENDPOINT + "/socket", {
-        params: { token: authToken }
-      })
+          params: { token: authToken }
+        })
     setSocket(currentSocket)
     currentSocket.connect()
     const channel = currentSocket.channel("users:" + user.id)
