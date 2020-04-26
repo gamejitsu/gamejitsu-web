@@ -1,16 +1,17 @@
-import React, { FunctionComponent, useContext } from "react"
-import titleize from 'titleize'
 import humanize from 'humanize-string'
+import React, { FunctionComponent, useContext } from "react"
+import styled from "styled-components"
+import titleize from 'titleize'
 
 import { Box } from "rebass"
 import { createModel } from "gamejitsu/api"
-import { object, string } from "yup"
-import { UserContext } from "gamejitsu/contexts"
 import { Form, FormGroup, InputGroup } from "gamejitsu/components"
-import { Slider } from "@blueprintjs/core"
-import { SkillLevel as SkillLevelSchema } from "gamejitsu/schemas/skillLevel"
+import { object, string } from "yup"
 import { SkillLevel } from "gamejitsu/models"
-import styled from "styled-components"
+import { SkillLevel as SkillLevelSchema } from "gamejitsu/schemas/skillLevel"
+import { Slider } from "@blueprintjs/core"
+import { UserContext } from "gamejitsu/contexts"
+import Router from 'next/router'
 
 const initialValues = {
   firstName: "",
@@ -44,6 +45,7 @@ const onSubmitCoach = async (values: Values): Promise<void> => {
     photoUrl,
     skillLevel
   })
+  Router.push("/coach-dashboard")
 }
 
 const getUser = () => {
@@ -76,19 +78,19 @@ const CoachSignUpForm: FunctionComponent = () => {
   return (
     <Box width="700px" mx="auto" p={3}>
         <Form title="Sign up as a coach" initialValues={initialValues} schema={schema} onSubmit={onSubmitCoach} buttonText="Register">
-          {({ setFieldValue, values }) => (
+          {(formik) => (
             <div>
               <FormGroup label="First Name" labelFor="text-input">
-                <InputGroup id="text-input" />
+                <InputGroup onChange={formik.handleChange('firstName')} id="text-input" />
               </FormGroup>
               <FormGroup label="Last Name" labelFor="text-input">
-                <InputGroup id="text-input" />
+                <InputGroup onChange={formik.handleChange('lastName')} id="text-input" />
               </FormGroup>
               <FormGroup label="Email" labelFor="text-input">
-                <InputGroup id="text-input" />
+                <InputGroup onChange={formik.handleChange('email')} id="text-input" />
               </FormGroup>
               <FormGroup label="Photo URL" labelFor="text-input" labelInfo="(optional)">
-                <InputGroup id="text-input" placeholder="Placeholder text" />
+                <InputGroup onChange={formik.handleChange('photoUrl')} id="text-input" placeholder="Placeholder text" />
               </FormGroup>
               <FormGroup label="Skill Level" labelFor="text-input">
                 <Box width="250px">
@@ -97,10 +99,10 @@ const CoachSignUpForm: FunctionComponent = () => {
                     max={3}
                     stepSize={1}
                     labelStepSize={1}
-                    onChange={(value: number) => setFieldValue("skillLevel", skillLevels[value])}
+                    onChange={(value: number) => formik.setFieldValue("skillLevel", skillLevels[value])}
                     labelRenderer={renderLabel}
                     showTrackFill={true}
-                    value={skillLevels.indexOf(values.skillLevel as SkillLevel)}
+                    value={skillLevels.indexOf(formik.values.skillLevel as SkillLevel)}
                     vertical={false}
                     intent="success"
                   />

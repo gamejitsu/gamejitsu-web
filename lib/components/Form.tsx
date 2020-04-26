@@ -1,11 +1,12 @@
+import styled from "styled-components"
+
 import { Box, Flex } from "rebass"
-import { Formik, Form as FormikForm, FormikProps } from "formik"
+import { Button } from "gamejitsu/components"
+import { darken } from "polished"
+import { Divider, Card, Elevation } from "@blueprintjs/core"
+import { FormikProps, useFormik } from "formik"
 import { ObjectSchema } from "yup"
 import { Title } from "."
-import { Button } from "gamejitsu/components"
-import { Divider, Card, Elevation } from "@blueprintjs/core"
-import styled from "styled-components"
-import { darken } from "polished"
 
 interface Props<T> {
   initialValues: T
@@ -33,40 +34,43 @@ const FormCard = styled(Card)`
 type FormComponent = <T>(props: Props<T>) =>
   React.ReactElement
 
-const Form: FormComponent = ({ children, initialValues, title, schema, onSubmit, buttonText = "Submit" }) =>
-  <FormCard elevation={Elevation.THREE}>
+const Form: FormComponent = ({ children, initialValues, title, schema, onSubmit, buttonText = "Submit" }) => {
+
+  const formik = useFormik({
+    initialValues,
+    onSubmit:
+      async (
+        values,
+        { setSubmitting }
+      ) => {
+        setSubmitting(true)
+        console.log("values: ", values)
+        await onSubmit(values)
+        setSubmitting(false)
+      },
+  })
+
+  return <FormCard elevation={Elevation.THREE}>
     <Flex alignItems="center">
       <Header px={3} py={25} flex={1}>
         <Title text={title} />
       </Header>
     </Flex>
-      <Divider />
+    <Divider />
     <Box px={4} pt={4}>
-      <Formik validationSchema={schema}
-        initialValues={initialValues}
-        onSubmit={async (
-          values,
-          { setSubmitting }
-        ) => {
-          setSubmitting(true)
-          await onSubmit(values)
-          setSubmitting(false)
-        }}>
-        {(formikHelpers) => (
-          <FormikForm noValidate onSubmit={formikHelpers.handleSubmit}>
-            {children(formikHelpers)}
-          </FormikForm>
-        )}
-      </Formik>
+      <form onSubmit={formik.handleSubmit}>
+        {children(formik)}
+      </form>
     </Box>
     <Box>
       <Divider />
     </Box>
     <Box py={3} px={3}>
       <Flex justifyContent="flex-end">
-        <Button text={buttonText} />
+        <Button onClick={formik.handleSubmit} text={buttonText} />
       </Flex>
     </Box>
   </FormCard>
+}
 
 export default Form
