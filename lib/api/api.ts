@@ -24,7 +24,7 @@ export function findModel<T, U>(
 
 export function createModel<T, U>(
   { encoder, decodeOne, name }: Resource<T, U>,
-  model: T,
+  model: Partial<T>,
   ctx?: NextPageContext
 ) {
   return makeRequest(201, "POST", `/${pluralize(name)}`, {
@@ -99,6 +99,5 @@ export async function makeRequest<T, U>(
     throw error
   }
 
-  const { data } = response
-  return decode ? decode(data) : data
+  return decode ? decode(response.data) : response.data
 }

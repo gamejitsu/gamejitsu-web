@@ -4,19 +4,20 @@ import { listModels, createModel } from "gamejitsu/api"
 import { Flex, Box, Text } from "rebass"
 import { Layout, Card, Button, Title } from "gamejitsu/components"
 import { NextPageContext, NextPage } from "next"
-import { ReviewRequest } from "gamejitsu/models"
+import ReviewRequestResource, { ReviewRequest } from "gamejitsu/api/resources/review-request"
+import ReviewResource from "gamejitsu/api/resources/review"
 
 interface Props {
   reviewRequests: ReviewRequest[]
 }
 
 const getReviewRequests = async (ctx: NextPageContext) => {
-  const response = await listModels("review-request", ctx)
+  const response = await listModels(ReviewRequestResource, ctx)
   return response.data
 }
 
 const acceptReviewRequest = async (reviewRequestId: string) => {
-  const response = await createModel("review", { request: reviewRequestId })
+  const response = await createModel(ReviewResource, { requestId: reviewRequestId })
   // TODO Maybe add confirm?
   // redirect to perform review page
 }

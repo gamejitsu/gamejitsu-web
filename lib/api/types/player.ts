@@ -1,14 +1,14 @@
 import { either } from "fp-ts/lib/Either"
-import t from "io-ts"
+import * as t from "io-ts"
 
 export interface Player {
-  steamId: string
+  steamId: string | null
   heroName: string
   heroPortraitUrl: string
 }
 
 const decoder = t.type({
-  "steam-id": t.string,
+  "steam-id": t.union([t.string, t.null]),
   "hero-name": t.string,
   "hero-portrait-url": t.string
 })

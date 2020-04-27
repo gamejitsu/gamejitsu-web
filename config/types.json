@@ -6,7 +6,7 @@
   "player": {
     "type": "object",
     "attributes": {
-      "steamId": { "type": "string" },
+      "steamId": { "type": "string", "optional": true },
       "heroName": { "type": "string" },
       "heroPortraitUrl": { "type": "string" }
     }

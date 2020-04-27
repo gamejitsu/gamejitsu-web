@@ -50,7 +50,7 @@ const NavLinkContent = styled(Link)<NavLinkContentProps>`
 
 const NavLink: FunctionComponent<NavLinkProps> = ({ children, href }) => {
   const router = useRouter()
-  const isActive = router.pathname === href
+  const isActive = router && router.pathname === href
   return (
     <Box m={2}>
       <NavLinkContent isActive={isActive} href={href}>

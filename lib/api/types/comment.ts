@@ -1,5 +1,5 @@
 import { either } from "fp-ts/lib/Either"
-import t from "io-ts"
+import * as t from "io-ts"
 
 export interface Comment {
   text: string

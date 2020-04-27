@@ -1,4 +1,4 @@
-import t from "io-ts"
+import * as t from "io-ts"
 import { buildResource, extractValue } from "../resource"
 import { Model } from "gamejitsu/interfaces"
 
@@ -15,8 +15,7 @@ export const decoder = t.type({
     "steam-id": t.string,
     "is-syncing-replays": t.boolean,
     username: t.string
-  }),
-  relationships: t.type({})
+  })
 })
 
 export const transformer = (value: t.TypeOf<typeof decoder>): User => ({
@@ -30,13 +29,14 @@ export default buildResource({
   name: "user",
   decode: {
     data: (value: unknown) => extractValue(decoder.decode(value)),
-    response: (value: unknown) => extractValue(t.type({}).decode(value))
+    response: (value: unknown) => extractValue(t.strict({}).decode(value))
   },
   transform: {
     data: transformer,
     response: (value) => value
   },
   encode: (value) => ({
+    type: "user",
     attributes: {
       "steam-id": value.steamId,
       "is-syncing-replays": value.isSyncingReplays,

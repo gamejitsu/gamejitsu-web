@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 
-import { AuthenticatedComponent } from "gamejitsu/interfaces/authenticated-component"
+import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { Layout } from "gamejitsu/components"
 import { Flex } from "rebass"
 

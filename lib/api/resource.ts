@@ -16,14 +16,14 @@ interface BuildResourceOptions<D, R, TD, TR> {
   name: string
   decode: DecodeOptions<D, R>
   transform: TransformOptions<D, R, TD, TR>
-  encode: Encode<TD>
+  encode: Encode<Partial<TD>>
 }
 
 export default interface Resource<D, R> {
   name: string
   decodeOne: Decode<{ data: D } & R>
   decodeMany: Decode<{ data: D[] } & R>
-  encoder: Encode<D>
+  encoder: Encode<Partial<D>>
 }
 
 export class DecodingError extends Error {

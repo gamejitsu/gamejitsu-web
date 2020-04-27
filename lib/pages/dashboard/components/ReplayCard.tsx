@@ -4,13 +4,14 @@ import { formatDistanceToNow } from "date-fns"
 import { Button, Card } from "gamejitsu/components"
 import styled from "styled-components"
 
-import { Player, DeserializedReplay } from "gamejitsu/models/replay"
+import { DecoratedReplay } from "gamejitsu/models/replay"
+import { Player } from "gamejitsu/api/types/player"
 import { Flex, Box, Text } from "rebass"
 import { HeroImage } from "."
 import { UserContext } from "gamejitsu/contexts"
 
 interface Props {
-  replay: DeserializedReplay
+  replay: DecoratedReplay
 }
 
 interface UserImageProps {

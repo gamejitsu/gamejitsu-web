@@ -4,14 +4,14 @@ import { CoachReviewCard } from "."
 import { Layout, Title } from "gamejitsu/components"
 import { listModels } from "gamejitsu/api"
 import { NextPageContext, NextPage } from "next"
-import { Review } from "gamejitsu/models"
+import ReviewResource, { Review } from "gamejitsu/api/resources/review"
 
 interface Props {
   reviews: Review[]
 }
 
 const getReviews = async (ctx: NextPageContext) => {
-  const response = await listModels("review", ctx)
+  const response = await listModels(ReviewResource, ctx)
   return response.data
 }
 

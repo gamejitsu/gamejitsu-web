@@ -8,9 +8,9 @@ import { object, string } from "yup"
 import { UserContext } from "gamejitsu/contexts"
 import { Form, FormGroup, InputGroup } from "gamejitsu/components"
 import { Slider } from "@blueprintjs/core"
-import { SkillLevel as SkillLevelSchema } from "gamejitsu/schemas/skillLevel"
-import { SkillLevel } from "gamejitsu/models"
+import { SkillLevel } from "gamejitsu/api/types/skill-level"
 import styled from "styled-components"
+import CoachResource from "gamejitsu/api/resources/coach"
 
 const initialValues = {
   firstName: "",
@@ -22,7 +22,7 @@ const initialValues = {
 
 type Values = typeof initialValues
 
-const skillLevels = SkillLevelSchema.types.map((t) => t.value)
+const skillLevels = SkillLevel.types.map((t) => t.value)
 
 const isSkillLevelValid = (value: string): value is SkillLevel =>
   (skillLevels as string[]).includes(value)
@@ -32,7 +32,7 @@ const onSubmitCoach = async (values: Values): Promise<void> => {
   if (!isSkillLevelValid(skillLevel)) {
     throw new Error(`Invalid skill level value in coach signup: ${skillLevel}`)
   }
-  await createModel("coach", {
+  await createModel(CoachResource, {
     email,
     firstName,
     lastName,

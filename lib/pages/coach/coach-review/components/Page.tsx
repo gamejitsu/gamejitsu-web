@@ -1,12 +1,12 @@
 import React, { SyntheticEvent, useRef, useState, useEffect } from "react"
 
-import { Comment } from "gamejitsu/models/review"
+import { Comment } from "gamejitsu/api/types/comment"
 import { CommentBar, CommentForm, CommentList } from "."
 import { findModel, updateModel } from "gamejitsu/api"
 import { Flex, Box, Text } from "rebass"
 import { Layout, Card, Button } from "gamejitsu/components"
 import { NextPageContext, NextPage } from "next"
-import { Review } from "gamejitsu/models"
+import ReviewResource, { Review } from "gamejitsu/api/resources/review"
 import { Position, Toaster, Intent } from "@blueprintjs/core"
 
 interface Props {
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const getReview = async (ctx: NextPageContext, id: string) => {
-  const response = await findModel("review", id, ctx)
+  const response = await findModel(ReviewResource, id, ctx)
   return response.data
 }
 
@@ -79,7 +79,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
       position: Position.TOP
     })
     try {
-      const { data: serverReview } = await updateModel(review)
+      const { data: serverReview } = await updateModel(ReviewResource, review)
       AppToaster.show({
         intent: Intent.SUCCESS,
         icon: "tick",

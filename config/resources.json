@@ -41,7 +41,8 @@
   },
   "session": {
     "attributes": {
-      "accessToken": { "type": "string" }
+      "accessToken": { "type": "string" },
+      "openidParams": { "type": "string", "optional": true }
     },
     "relationships": {}
   },

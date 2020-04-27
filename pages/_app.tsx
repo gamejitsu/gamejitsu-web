@@ -7,13 +7,13 @@ import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 
 import "../lib/styles.scss"
 
-import { AuthenticatedComponent } from "gamejitsu/interfaces/authenticated-component"
+import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { findModel } from "gamejitsu/api"
 import { NextPageContext } from "next"
 import { parseCookies, destroyCookie } from "nookies"
 import { Reset } from "styled-reset"
 import { theme } from "gamejitsu"
-import { User } from "gamejitsu/models"
+import UserResource, { User } from "gamejitsu/api/resources/user"
 import { UserContext } from "gamejitsu/contexts"
 
 interface Props {
@@ -112,7 +112,7 @@ export default class App extends NextApp<Props> {
 }
 
 const getCurrentUser = async (ctx: NextPageContext) => {
-  const { data } = await findModel("user", "current", ctx)
+  const { data } = await findModel(UserResource, "current", ctx)
   return data
 }
 

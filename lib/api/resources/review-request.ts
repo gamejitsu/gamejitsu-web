@@ -1,4 +1,4 @@
-import t from "io-ts"
+import * as t from "io-ts"
 import { SkillLevel, encoder as skillLevelEncoder } from "gamejitsu/api/types/skill-level"
 import { buildResource, extractValue } from "../resource"
 import { Model } from "gamejitsu/interfaces"
@@ -34,13 +34,14 @@ export default buildResource({
   name: "review-request",
   decode: {
     data: (value: unknown) => extractValue(decoder.decode(value)),
-    response: (value: unknown) => extractValue(t.type({}).decode(value))
+    response: (value: unknown) => extractValue(t.strict({}).decode(value))
   },
   transform: {
     data: transformer,
     response: (value) => value
   },
   encode: (value) => ({
+    type: "review-request",
     attributes: {
       "skill-level": skillLevelEncoder(value.skillLevel)
     },

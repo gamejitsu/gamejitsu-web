@@ -39,7 +39,8 @@ class InvalidJsonError extends Error {
   }
 }
 
-const GenericAttribute = t.type({ type: t.string })
+const Optional = t.partial({ optional: t.boolean })
+const GenericAttribute = t.intersection([t.type({ type: t.string }), Optional])
 const NonGenericAttribute = t.union([
   t.type({
     type: t.literal("object"),
@@ -55,7 +56,7 @@ const NonGenericAttribute = t.union([
   })
 ])
 
-const Attribute = t.union([GenericAttribute, NonGenericAttribute])
+const Attribute = t.intersection([t.union([GenericAttribute, NonGenericAttribute]), Optional])
 
 const Relationship = t.type({
   cardinality: t.union([t.literal("one"), t.literal("many")]),
@@ -139,7 +140,7 @@ function resourceFileContents(
         .map((n) => `${n}: ${jsTypeForAttribute(resource.attributes[n], types)}`)
         .concat(
           keys(resource.relationships).map((n) =>
-            jsTypeForRelationship(n, resource.relationships[n], resources)
+            jsTypeForRelationship(n, resource.relationships[n])
           )
         )
         .join(",\n")}
@@ -153,14 +154,13 @@ function resourceFileContents(
           .map((n) => `"${dasherize(n)}": ${varNameForAttribute(types, resource.attributes[n])}`)
           .join(",\n")}
       }),
-      relationships: t.type({
-        ${keys(resource.relationships)
-          .map(
-            (n) =>
-              `"${dasherize(n)}": ${decoderForRelationship(resource.relationships[n], resources)}`
-          )
-          .join(",\n")}
-      })
+      ${
+        keys(resource.relationships).length > 0
+          ? `relationships: t.type({ ${keys(resource.relationships)
+              .map((n) => `"${dasherize(n)}": ${decoderForRelationship(resource.relationships[n])}`)
+              .join(",\n")}})`
+          : ""
+      }
     })
 
     export const transformer = (value: t.TypeOf<typeof decoder>): ${varName} => ({
@@ -169,7 +169,7 @@ function resourceFileContents(
         .map((n) => `${n}: value.attributes["${dasherize(n)}"]`)
         .concat(
           keys(resource.relationships).map((n) =>
-            transformerForRelationship(n, resource.relationships[n], resources)
+            transformerForRelationship(n, resource.relationships[n])
           )
         )
         .join(",\n")}
@@ -180,7 +180,7 @@ function resourceFileContents(
       decode: {
         data: (value: unknown) => extractValue(decoder.decode(value)),
         response: (value: unknown) => extractValue(
-          t.type({
+          t.strict({
             ${includedDecoderForResource(resource)}
           })
           .decode(value)
@@ -195,6 +195,7 @@ function resourceFileContents(
         }
       },
       encode: (value) => ({
+        "type": "${name}",
         "attributes": {
           ${keys(resource.attributes)
             .map(
@@ -229,7 +230,7 @@ function encoderForAttribute(types: Types, name: string, attribute: Attribute) {
     return encoderForTypeName(types, `value.${name}`, attribute.type)
   }
 
-  return `value.${name}.map((v) => ${encoderForTypeName(types, "v", attribute.value)})`
+  return `(value.${name} || []).map((v) => ${encoderForTypeName(types, "v", attribute.value)})`
 }
 
 function includedTransformersForResource(resource: Resources[keyof Resources]) {
@@ -343,24 +344,26 @@ function importsForTypeName(types: Types, name: string): ImportMeta[] {
   return [ioTsImport]
 }
 
-function varNameForTypeName(types: Types, name: string) {
+function varNameForTypeName(types: Types, name: string, optional?: boolean) {
   const [meta] = importsForTypeName(types, name)
-  return meta.name === "default" ? `${meta.as}.${name}` : meta.name
+  const varName = meta.name === "default" ? `${meta.as}.${name}` : meta.name
+  return optional ? `t.union([${varName}, t.null])` : varName
 }
 
 function varNameForAttribute(types: Types, attribute: Attribute) {
   if (!isNonGenericAttribute(attribute)) {
-    return varNameForTypeName(types, attribute.type)
+    return varNameForTypeName(types, attribute.type, attribute.optional)
   }
 
   if (attribute.type === "array") {
-    return `t.array(${varNameForTypeName(types, attribute.value)})`
+    const varName = `t.array(${varNameForTypeName(types, attribute.value)})`
+    return attribute.optional ? `t.union([${varName}, t.null])` : varName
   }
 
   throw new Error(`Unsupported resource attribute type: ${attribute.type}`)
 }
 
-function decoderForRelationship(relationship: Relationship, resources: Resources) {
+function decoderForRelationship(relationship: Relationship) {
   const dataDecoder = `
     t.type({
       type: t.literal("${relationship.type}"),
@@ -383,11 +386,7 @@ function decoderForRelationship(relationship: Relationship, resources: Resources
   `
 }
 
-function transformerForRelationship(
-  name: string,
-  relationship: Relationship,
-  resources: Resources
-) {
+function transformerForRelationship(name: string, relationship: Relationship) {
   const attrName = camelcase(name)
   const relationshipDataKey = `value.relationships["${dasherize(name)}"].data`
   const key = relationship.cardinality === "one" ? `${attrName}Id` : `${attrName}Ids`
@@ -406,17 +405,17 @@ function jsTypeForTypeName(name: string, types: Types) {
 
 function jsTypeForAttribute(attribute: Attribute, types: Types) {
   if (!isNonGenericAttribute(attribute)) {
-    return jsTypeForTypeName(attribute.type, types)
+    return `${jsTypeForTypeName(attribute.type, types)}${attribute.optional ? " | null" : ""}`
   }
 
   if (attribute.type === "array") {
-    return `${jsTypeForTypeName(attribute.value, types)}[]`
+    return `${jsTypeForTypeName(attribute.value, types)}[]${attribute.optional ? " | null" : ""}`
   }
 
-  return attribute.type
+  return `${attribute.type}${attribute.optional ? " | null" : ""}`
 }
 
-function jsTypeForRelationship(name: string, relationship: Relationship, resources: Resources) {
+function jsTypeForRelationship(name: string, relationship: Relationship) {
   if (relationship.cardinality === "one") {
     return `${name}Id: string`
   }
@@ -438,14 +437,16 @@ function stringifyImports(imports: ImportMeta[]) {
       const imports = importsByModule[moduleName]
       const defaultImport = imports.find((i) => i.name === "default")
 
+      if (defaultImport && defaultImport.as) {
+        return `import * as ${defaultImport.as} from "${moduleName}"`
+      }
+
       const names = imports
         .filter((i) => i.name !== "default")
         .map((i) => `${i.name}${i.as ? ` as ${i.as}` : ""}`)
         .join(", ")
 
-      return `import ${
-        defaultImport ? `${defaultImport.as}, ` : ""
-      }{ ${names} } from "${moduleName}"`
+      return `import { ${names} } from "${moduleName}"`
     })
     .join("\n")
 }
@@ -460,7 +461,7 @@ function typeFileContents(types: Types, name: keyof Types) {
 
   if (attribute.type === "union") {
     return `
-      import t from "io-ts"
+      import * as t from "io-ts"
 
       export const ${varName} = t.union([
         ${attribute.values.map((v) => `t.literal(${JSON.stringify(v)})`).join(",\n")}
@@ -491,7 +492,14 @@ function typeFileContents(types: Types, name: keyof Types) {
 
     const decoder = t.type({
       ${keys(attribute.attributes)
-        .map((n) => `"${dasherize(n)}": ${varNameForTypeName(types, attribute.attributes[n].type)}`)
+        .map(
+          (n) =>
+            `"${dasherize(n)}": ${varNameForTypeName(
+              types,
+              attribute.attributes[n].type,
+              attribute.attributes[n].optional
+            )}`
+        )
         .join(",\n")}
     })
 

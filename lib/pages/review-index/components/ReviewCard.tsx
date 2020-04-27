@@ -2,7 +2,7 @@ import { Flex, Box, Text } from "rebass"
 import React, { FunctionComponent } from "react"
 import Router from "next/router"
 import { Button, Card } from "gamejitsu/components"
-import { Review } from "gamejitsu/models"
+import { Review } from "gamejitsu/api/resources/review"
 
 interface Props {
   review: Review

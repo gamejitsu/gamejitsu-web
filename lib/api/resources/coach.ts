@@ -1,4 +1,4 @@
-import t from "io-ts"
+import * as t from "io-ts"
 import { SkillLevel, encoder as skillLevelEncoder } from "gamejitsu/api/types/skill-level"
 import { buildResource, extractValue } from "../resource"
 import { Model } from "gamejitsu/interfaces"
@@ -20,8 +20,7 @@ export const decoder = t.type({
     "last-name": t.string,
     "photo-url": t.string,
     "skill-level": SkillLevel
-  }),
-  relationships: t.type({})
+  })
 })
 
 export const transformer = (value: t.TypeOf<typeof decoder>): Coach => ({
@@ -37,13 +36,14 @@ export default buildResource({
   name: "coach",
   decode: {
     data: (value: unknown) => extractValue(decoder.decode(value)),
-    response: (value: unknown) => extractValue(t.type({}).decode(value))
+    response: (value: unknown) => extractValue(t.strict({}).decode(value))
   },
   transform: {
     data: transformer,
     response: (value) => value
   },
   encode: (value) => ({
+    type: "coach",
     attributes: {
       email: value.email,
       "first-name": value.firstName,

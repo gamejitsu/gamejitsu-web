@@ -1,4 +1,4 @@
-import t from "io-ts"
+import * as t from "io-ts"
 import { DateFromISOString } from "io-ts-types/lib/DateFromISOString"
 import { Player, encoder as playerEncoder } from "gamejitsu/api/types/player"
 import { buildResource, extractValue } from "../resource"
@@ -17,8 +17,7 @@ export const decoder = t.type({
     "match-id": t.string,
     "played-at": DateFromISOString,
     players: t.array(Player)
-  }),
-  relationships: t.type({})
+  })
 })
 
 export const transformer = (value: t.TypeOf<typeof decoder>): Replay => ({
@@ -32,17 +31,18 @@ export default buildResource({
   name: "replay",
   decode: {
     data: (value: unknown) => extractValue(decoder.decode(value)),
-    response: (value: unknown) => extractValue(t.type({}).decode(value))
+    response: (value: unknown) => extractValue(t.strict({}).decode(value))
   },
   transform: {
     data: transformer,
     response: (value) => value
   },
   encode: (value) => ({
+    type: "replay",
     attributes: {
       "match-id": value.matchId,
       "played-at": value.playedAt,
-      players: value.players.map((v) => playerEncoder(v))
+      players: (value.players || []).map((v) => playerEncoder(v))
     },
     relationships: {}
   })

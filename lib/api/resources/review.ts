@@ -1,4 +1,4 @@
-import t from "io-ts"
+import * as t from "io-ts"
 import { Comment, encoder as commentEncoder } from "gamejitsu/api/types/comment"
 import { buildResource, extractValue } from "../resource"
 import { Model } from "gamejitsu/interfaces"
@@ -45,15 +45,16 @@ export default buildResource({
   name: "review",
   decode: {
     data: (value: unknown) => extractValue(decoder.decode(value)),
-    response: (value: unknown) => extractValue(t.type({}).decode(value))
+    response: (value: unknown) => extractValue(t.strict({}).decode(value))
   },
   transform: {
     data: transformer,
     response: (value) => value
   },
   encode: (value) => ({
+    type: "review",
     attributes: {
-      comments: value.comments.map((v) => commentEncoder(v)),
+      comments: (value.comments || []).map((v) => commentEncoder(v)),
       "is-published": value.isPublished
     },
     relationships: {
