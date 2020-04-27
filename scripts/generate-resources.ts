@@ -126,10 +126,9 @@ function resourceFileContents(
           (acc, a) => [...acc, ...importsForAttribute(types, a)],
           [] as ImportMeta[]
         ),
-        ...values(resource.relationships).reduce(
-          (acc, r) => [...acc, ...importsForRelationship(resources, r)],
-          [] as ImportMeta[]
-        )
+        ...values(resource.relationships)
+          .filter((r) => r.include)
+          .reduce((acc, r) => [...acc, ...importsForRelationship(resources, r)], [] as ImportMeta[])
       )
     )}
     import { buildResource, extractValue } from "../resource"

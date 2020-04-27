@@ -1,6 +1,5 @@
 import t from "io-ts"
 import { SkillLevel, encoder as skillLevelEncoder } from "gamejitsu/api/types/skill-level"
-import { decoder as replayDecoder } from "gamejitsu/api/resources/replay"
 import { buildResource, extractValue } from "../resource"
 import { Model } from "gamejitsu/interfaces"
 

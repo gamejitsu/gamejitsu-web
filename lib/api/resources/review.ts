@@ -1,7 +1,5 @@
 import t from "io-ts"
 import { Comment, encoder as commentEncoder } from "gamejitsu/api/types/comment"
-import { decoder as reviewRequestDecoder } from "gamejitsu/api/resources/review-request"
-import { decoder as coachDecoder } from "gamejitsu/api/resources/coach"
 import { buildResource, extractValue } from "../resource"
 import { Model } from "gamejitsu/interfaces"
 

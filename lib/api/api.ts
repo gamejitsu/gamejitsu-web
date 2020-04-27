@@ -1,11 +1,10 @@
 import pluralize from "pluralize"
 import { NextPageContext } from "next"
-import axios, { Method, AxiosResponse } from "axios"
+import axios, { Method } from "axios"
 import { parseCookies } from "nookies"
 import Resource, { Encode, Decode } from "./resource"
+import { ServerErrors } from "./errors"
 import { Model } from "gamejitsu/interfaces"
-
-type ResponseStatus = 200 | 201 | 204
 
 interface RequestOptions<T, U> {
   params?: Record<string, string>
@@ -13,18 +12,6 @@ interface RequestOptions<T, U> {
   payload?: T
   encode?: Encode<T>
   decode?: Decode<U>
-}
-
-export class StatusError extends Error {
-  response: AxiosResponse
-  expectedStatus: ResponseStatus
-
-  constructor(response: AxiosResponse, expectedStatus: ResponseStatus) {
-    super(`Unexpected status: ${status}`)
-    this.response = response
-    this.expectedStatus = expectedStatus
-    Object.setPrototypeOf(this, new.target.prototype)
-  }
 }
 
 export function findModel<T, U>(
@@ -74,31 +61,44 @@ export function listModels<T, U>({ decodeMany, name }: Resource<T, U>, ctx?: Nex
 }
 
 export async function makeRequest<T, U>(
-  expectedStatus: ResponseStatus,
+  expectedStatus: number,
   method: Method,
   path: string,
   { params, payload, decode, encode, ctx }: RequestOptions<T, U>
 ): Promise<U> {
   const url = `${process.env.API_ENDPOINT}${path}`
   const { authToken } = parseCookies(ctx)
+  let response
 
-  const response = await axios.request({
-    method,
-    url,
-    params,
-    headers: {
-      ...(authToken ? { Authorization: "Bearer " + authToken } : undefined),
-      "Content-Type": "application/vnd.api+json",
-      Accept: "application/vnd.api+json"
-    },
-    data: encode && payload ? encode(payload) : undefined
-  })
+  try {
+    response = await axios.request({
+      method,
+      url,
+      params,
+      headers: {
+        ...(authToken ? { Authorization: "Bearer " + authToken } : undefined),
+        "Content-Type": "application/vnd.api+json",
+        Accept: "application/vnd.api+json"
+      },
+      data: encode && payload ? encode(payload) : undefined,
+      validateStatus: (status) => status === expectedStatus
+    })
+  } catch (error) {
+    if (error.response) {
+      if (error.response.status >= 200 && error.response.status < 300) {
+        throw new Error(`Unexpected status: ${error.response.status}`)
+      }
 
-  const { status, data } = response
+      throw new ServerErrors(error.response)
+    }
 
-  if (status !== expectedStatus) {
-    throw new StatusError(response, expectedStatus)
+    if (error.request) {
+      throw new Error(`No response for request: ${url}`)
+    }
+
+    throw error
   }
 
+  const { data } = response
   return decode ? decode(data) : data
 }
