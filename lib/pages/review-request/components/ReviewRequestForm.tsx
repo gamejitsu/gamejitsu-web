@@ -1,13 +1,20 @@
-import React, { FunctionComponent } from "react"
+import humanize from 'humanize-string'
+import React, { FunctionComponent, useContext } from "react"
 import Router from "next/router"
+import styled from "styled-components"
+import titleize from 'titleize'
 
-import { Box, Flex, Text } from "rebass"
-import { Button, Layout } from "gamejitsu/components"
+import { Box } from "rebass"
 import { createModel } from "gamejitsu/api"
 import { DeserializedReplay } from "gamejitsu/models/replay"
-import { Formik, Form, Field } from "formik"
+import { Form, FormGroup, InputGroup } from "gamejitsu/components"
 import { HeroImage } from "gamejitsu/components"
+import { Layout } from "gamejitsu/components"
+import { object, string } from "yup"
 import { SkillLevel } from "gamejitsu/models"
+import { SkillLevel as SkillLevelSchema } from "gamejitsu/schemas/skillLevel"
+import { Slider } from "@blueprintjs/core"
+import { UserContext } from "gamejitsu/contexts"
 
 const redirectToCheckout = async () => {
   const stripe = Stripe("pk_test_gO4hZHVOjk7E3GjH0etoiBAO00c0qpfX0m")
@@ -21,67 +28,111 @@ interface Props {
   replay: DeserializedReplay
 }
 
+const initialValues = {
+  skillLevel: "medium",
+  replay: null
+}
+
+type Values = typeof initialValues
+
+const skillLevels = SkillLevelSchema.types.map((t) => t.value)
+
+const isSkillLevelValid = (value: string): value is SkillLevel => (skillLevels as string[]).includes(value)
+
+const schema = object({
+  skillLevel: string().required()
+})
+
+const getUser = () => {
+  const user = useContext(UserContext)
+  if (user) return user
+  else throw new Error("user null")
+}
+
+const LabelContent = styled.span`
+  white-space: nowrap;
+`
+
+const price: any = {
+  0: "4$",
+  1: "5$",
+  2: "7$",
+  3: "10$"
+}
+
 const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
+  const user = getUser()
+
+  const onSubmitReviewRequest = async (values: Values): Promise<void> => {
+    const {
+      skillLevel
+    } = values
+    if (!isSkillLevelValid(skillLevel)) {
+      throw new Error(`Invalid skill level value in coach signup: ${skillLevel}`)
+    }
+    if (replay === undefined) {
+      throw new Error(`Invalid replay`)
+    }
+    await createModel("review-request", {
+      replay: replay.id,
+      skillLevel
+    })
+    Router.push("/coach-dashboard")
+  }
+
+  const renderLabel = (val: number) => {
+    return <LabelContent>
+      {titleize(humanize(skillLevels[val]))}
+    </LabelContent>
+  }
+
   return (
     <Layout title="Dashboard">
-      <div>
-        <Formik
-          initialValues={{ skill: "medium" } as { skill: SkillLevel }}
-          onSubmit={async (values, { setSubmitting }) => {
-            setSubmitting(true)
-            // TODO re add redirect to checkout
-            //redirectToCheckout()
-            await createModel("review-request", { replay: replay.id, skillLevel: values.skill })
-            setSubmitting(false)
-            Router.push("/dashboard")
-          }}
-        >
-          {({ isSubmitting }) => (
-            <Form>
-              <Flex flexDirection="column" alignItems="center">
-                <Box p={3} mr="auto">
-                  <Text p={2}>MatchId: {replay.matchId}</Text>
-                  <Text p={2}>playedAt: {new Date(replay.playedAt).toUTCString()}</Text>
-                </Box>
-                <Box p={3} mr="auto">
-                  <div>
-                    {replay.playersDire.map((player, index) => {
-                      const key = player.steamId ? player.steamId : index.toString()
-                      return <HeroImage key={key} player={player} />
-                    })}
-                  </div>
-                  <div>
-                    {replay.playersRadiant.map((player, index) => {
-                      const key = player.steamId ? player.steamId : index.toString()
-                      return <HeroImage key={key} player={player} />
-                    })}
-                  </div>
-                </Box>
-                <Box m={2} p={2} bg="primary" width={[1, 1, 1]}>
-                  <Field type="radio" name="skill" value="pro" />
-                  <label htmlFor="skill">Pro</label>
-                </Box>
-                <Box m={2} p={2} width={[1, 1, 1]}>
-                  <Field type="radio" name="skill" value="very_high" />
-                  <label htmlFor="skill">Very High</label>
-                </Box>
-                <Box m={2} p={2} width={[1, 1, 1]}>
-                  <Field type="radio" name="skill" value="high" />
-                  <label htmlFor="skill">High</label>
-                </Box>
-                <Box m={2} p={2} width={[1, 1, 1]}>
-                  <Field type="radio" name="skill" value="medium" />
-                  <label htmlFor="skill">Medium</label>
-                </Box>
-                <Text p={2}>Price: 4£</Text>
-              </Flex>
-              <Box>
-                <Button text="Request Replay" type="submit" disabled={isSubmitting} />
+      <Box width="700px" mx="auto" p={3}>
+        <Form title="Request review" initialValues={initialValues} schema={schema} onSubmit={onSubmitReviewRequest} buttonText="Test">
+          {(formik) => (
+            <div>
+              {user.username}
+              <Box p={3} mr="auto">
+                <div>
+                  {replay.playersDire.map((player, index) => {
+                    const key = player.steamId ? player.steamId : index.toString()
+                    return <HeroImage key={key} player={player} />
+                  })}
+                </div>
+                <div>
+                  {replay.playersRadiant.map((player, index) => {
+                    const key = player.steamId ? player.steamId : index.toString()
+                    return <HeroImage key={key} player={player} />
+                  })}
+                </div>
               </Box>
-            </Form>
+              <FormGroup label="Skill Level" labelFor="text-input">
+                <Box width="250px">
+                  <Slider
+                    min={0}
+                    max={3}
+                    stepSize={1}
+                    labelStepSize={1}
+                    onChange={(value: number) => formik.setFieldValue("skillLevel", skillLevels[value])}
+                    labelRenderer={renderLabel}
+                    showTrackFill={true}
+                    value={skillLevels.indexOf(formik.values.skillLevel as SkillLevel)}
+                    vertical={false}
+                    intent="success"
+                  />
+                </Box>
+              </FormGroup>
+              <FormGroup label="Comments" labelFor="text-input">
+                <InputGroup id="text-input" />
+              </FormGroup>
+              <FormGroup label="Price" labelFor="text-input">
+                {price[skillLevels.indexOf(formik.values.skillLevel as SkillLevel)]}
+              </FormGroup>
+            </div>
           )}
-        </Formik>
-      </div>
+        </Form>
+      </Box>
     </Layout>
   )
 }
