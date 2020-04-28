@@ -13,12 +13,13 @@ interface Props {
 
 const Container = styled(Box)`
   max-width: 1024px;
+  height: 100%;
 `
 
 const Layout: FunctionComponent<Props> = ({ title, children }) => (
   <>
     <Navbar />
-    <Container mx="auto">
+    <Container mx="auto" p={4} pt={92}>
       <Head>
         <title>{title === undefined ? companyName : `${companyName} - ${title}`}</title>
       </Head>

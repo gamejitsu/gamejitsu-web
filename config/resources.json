@@ -1,0 +1,57 @@
+{
+  "checkout": {
+    "attributes": {},
+    "relationships": {}
+  },
+  "coach": {
+    "attributes": {
+      "email": { "type": "string" },
+      "firstName": { "type": "string" },
+      "lastName": { "type": "string" },
+      "photoUrl": { "type": "string" },
+      "skillLevel": { "type": "skill-level" }
+    },
+    "relationships": {}
+  },
+  "replay": {
+    "attributes": {
+      "matchId": { "type": "string" },
+      "playedAt": { "type": "date" },
+      "players": { "type": "array", "value": "player" }
+    },
+    "relationships": {}
+  },
+  "review-request": {
+    "attributes": {
+      "skillLevel": { "type": "skill-level" }
+    },
+    "relationships": {
+      "replay": { "cardinality": "one", "type": "replay" }
+    }
+  },
+  "review": {
+    "attributes": {
+      "comments": { "type": "array", "value": "comment" },
+      "isPublished": { "type": "boolean" }
+    },
+    "relationships": {
+      "request": { "cardinality": "one", "type": "review-request" },
+      "coach": { "cardinality": "one", "type": "coach" }
+    }
+  },
+  "session": {
+    "attributes": {
+      "accessToken": { "type": "string" },
+      "openidParams": { "type": "string", "optional": true }
+    },
+    "relationships": {}
+  },
+  "user": {
+    "attributes": {
+      "steamId": { "type": "string" },
+      "isSyncingReplays": { "type": "boolean" },
+      "username": { "type": "string" }
+    },
+    "relationships": {}
+  }
+}

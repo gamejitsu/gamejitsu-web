@@ -5,16 +5,20 @@ import { FunctionComponent } from "react"
 
 interface Props {
   href: string
+  className?: string
 }
 
 const Content = styled.a`
   color: ${(props) => props.theme.linkColor};
   cursor: pointer;
+  &:hover {
+    text-decoration: none;
+  }
 `
 
-const Link: FunctionComponent<Props> = ({ children, href }) => (
+const Link: FunctionComponent<Props> = ({ children, className, href }) => (
   <NextLink href={href}>
-    <Content>{children}</Content>
+    <Content className={className}>{children}</Content>
   </NextLink>
 )
 

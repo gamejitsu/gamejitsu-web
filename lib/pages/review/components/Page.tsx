@@ -2,7 +2,7 @@ import React, { RefObject, SyntheticEvent } from "react"
 import { Flex, Box, Text } from "rebass"
 import { NextPageContext } from "next"
 import { Layout, Card } from "gamejitsu/components"
-import { Review } from "gamejitsu/models"
+import ReviewResource, { Review } from "gamejitsu/api/resources/review"
 import { findModel } from "gamejitsu/api"
 import { CommentBar, commentDuration } from "."
 
@@ -40,7 +40,7 @@ class ReviewPage extends React.Component<Props, State> {
 
   static getInitialProps = async (ctx: NextPageContext) => {
     const urlId = ctx.query.id
-    const { data: review } = await findModel("review", urlId.toString(), ctx)
+    const { data: review } = await findModel(ReviewResource, urlId.toString(), ctx)
     return { review }
   }
 

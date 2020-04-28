@@ -1,5 +1,6 @@
 const path = require('path')
 const withCSS = require('@zeit/next-css')
+const withSASS = require('@zeit/next-sass')
 const webpackMerge = require('webpack-merge')
 
 const defaultEnv = {
@@ -8,7 +9,7 @@ const defaultEnv = {
   STRIPE_PUBLIC_KEY: "pk_test_gO4hZHVOjk7E3GjH0etoiBAO00c0qpfX0m"
 }
 
-module.exports = withCSS({
+module.exports = withCSS(withSASS({
   cssLoaderOptions: { url: false },
   env: {
     API_ENDPOINT: process.env.API_ENDPOINT || defaultEnv.API_ENDPOINT,
@@ -25,4 +26,4 @@ module.exports = withCSS({
       }
     })
   }
-})
+}))

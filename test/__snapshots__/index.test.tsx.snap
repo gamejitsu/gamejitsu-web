@@ -4,14 +4,16 @@ exports[`Index page should match snapshot 1`] = `
 <ThemeProvider
   theme={
     Object {
-      "activeColor": "#ffD74f",
-      "backgroundColor": "#111",
-      "errorColor": "#ff665a",
-      "lightBackgroundColor": "#252526",
-      "linkColor": "#fff",
-      "primaryColor": "#05F26C",
-      "secondaryColor": "#3518E5",
-      "textColor": "#F1F2E9",
+      "activeColor": "#6d6577",
+      "backgroundColor": "#00030c",
+      "borderRadius": "4px",
+      "buttonTextColor": "#182026",
+      "errorColor": "#ff1705",
+      "lightBackgroundColor": "#4d425e",
+      "linkColor": "#ffffff",
+      "primaryColor": "#08ff07",
+      "secondaryColor": "#ac9fbf",
+      "textColor": "#bdbdc5",
       "textFont": "'Exo 2',sans-serif",
     }
   }
@@ -22,7 +24,7 @@ exports[`Index page should match snapshot 1`] = `
         <Navbar__Container
           alignItems="center"
           color="white"
-          px={2}
+          px={3}
           py={2}
         >
           <StyledComponent
@@ -75,19 +77,19 @@ exports[`Index page should match snapshot 1`] = `
                 ],
                 "attrs": Array [],
                 "componentStyle": ComponentStyle {
-                  "componentId": "Navbar__Container-sc-1qe3s5x-0",
+                  "componentId": "Navbar__Container-sc-1qe3s5x-1",
                   "isStatic": false,
-                  "lastClassName": "iNtICZ",
+                  "lastClassName": "kaXoOJ",
                   "rules": Array [
                     "background-color:",
                     [Function],
-                    ";",
+                    ";position:fixed;top:0;left:0;right 0;",
                   ],
                 },
                 "displayName": "Navbar__Container",
                 "foldedComponentIds": Array [],
                 "render": [Function],
-                "styledComponentId": "Navbar__Container-sc-1qe3s5x-0",
+                "styledComponentId": "Navbar__Container-sc-1qe3s5x-1",
                 "target": Object {
                   "$$typeof": Symbol(react.forward_ref),
                   "__emotion_base": "div",
@@ -119,458 +121,768 @@ exports[`Index page should match snapshot 1`] = `
               }
             }
             forwardedRef={null}
-            px={2}
+            px={3}
             py={2}
           >
             <Styled(div)
               alignItems="center"
-              className="Navbar__Container-sc-1qe3s5x-0 iNtICZ"
+              className="Navbar__Container-sc-1qe3s5x-1 kaXoOJ"
               color="white"
-              px={2}
+              px={3}
               py={2}
             >
               <div
-                className="Navbar__Container-sc-1qe3s5x-0 iNtICZ css-p1imuz"
+                className="Navbar__Container-sc-1qe3s5x-1 kaXoOJ css-1l5bsj0"
               >
-                <NavLink
-                  href="/"
-                >
-                  <Styled(div)
-                    m={1}
-                  >
-                    <div
-                      className="css-1ee7t57"
-                    >
-                      <Link
-                        href="/"
-                      >
-                        <Link
-                          href="/"
-                        >
-                          <Link__Content
-                            onClick={[Function]}
-                            onMouseEnter={[Function]}
-                          >
-                            <StyledComponent
-                              forwardedComponent={
-                                Object {
-                                  "$$typeof": Symbol(react.forward_ref),
-                                  "attrs": Array [],
-                                  "componentStyle": ComponentStyle {
-                                    "componentId": "Link__Content-j0sqir-0",
-                                    "isStatic": false,
-                                    "lastClassName": "jgHxZN",
-                                    "rules": Array [
-                                      "color:",
-                                      [Function],
-                                      ";cursor:pointer;",
-                                    ],
-                                  },
-                                  "displayName": "Link__Content",
-                                  "foldedComponentIds": Array [],
-                                  "render": [Function],
-                                  "styledComponentId": "Link__Content-j0sqir-0",
-                                  "target": "a",
-                                  "toString": [Function],
-                                  "warnTooManyClasses": [Function],
-                                  "withComponent": [Function],
-                                }
-                              }
-                              forwardedRef={[Function]}
-                              onClick={[Function]}
-                              onMouseEnter={[Function]}
-                            >
-                              <a
-                                className="Link__Content-j0sqir-0 jgHxZN"
-                                onClick={[Function]}
-                                onMouseEnter={[Function]}
-                              >
-                                Gamejitsu
-                              </a>
-                            </StyledComponent>
-                          </Link__Content>
-                        </Link>
-                      </Link>
-                    </div>
-                  </Styled(div)>
-                </NavLink>
-                <NavLink
-                  href="/dashboard"
-                >
-                  <Styled(div)
-                    m={1}
-                  >
-                    <div
-                      className="css-1ee7t57"
-                    >
-                      <Link
-                        href="/dashboard"
-                      >
-                        <Link
-                          href="/dashboard"
-                        >
-                          <Link__Content
-                            onClick={[Function]}
-                            onMouseEnter={[Function]}
-                          >
-                            <StyledComponent
-                              forwardedComponent={
-                                Object {
-                                  "$$typeof": Symbol(react.forward_ref),
-                                  "attrs": Array [],
-                                  "componentStyle": ComponentStyle {
-                                    "componentId": "Link__Content-j0sqir-0",
-                                    "isStatic": false,
-                                    "lastClassName": "jgHxZN",
-                                    "rules": Array [
-                                      "color:",
-                                      [Function],
-                                      ";cursor:pointer;",
-                                    ],
-                                  },
-                                  "displayName": "Link__Content",
-                                  "foldedComponentIds": Array [],
-                                  "render": [Function],
-                                  "styledComponentId": "Link__Content-j0sqir-0",
-                                  "target": "a",
-                                  "toString": [Function],
-                                  "warnTooManyClasses": [Function],
-                                  "withComponent": [Function],
-                                }
-                              }
-                              forwardedRef={[Function]}
-                              onClick={[Function]}
-                              onMouseEnter={[Function]}
-                            >
-                              <a
-                                className="Link__Content-j0sqir-0 jgHxZN"
-                                onClick={[Function]}
-                                onMouseEnter={[Function]}
-                              >
-                                Dashboard
-                              </a>
-                            </StyledComponent>
-                          </Link__Content>
-                        </Link>
-                      </Link>
-                    </div>
-                  </Styled(div)>
-                </NavLink>
-                <NavLink
-                  href="/reviews"
-                >
-                  <Styled(div)
-                    m={1}
-                  >
-                    <div
-                      className="css-1ee7t57"
-                    >
-                      <Link
-                        href="/reviews"
-                      >
-                        <Link
-                          href="/reviews"
-                        >
-                          <Link__Content
-                            onClick={[Function]}
-                            onMouseEnter={[Function]}
-                          >
-                            <StyledComponent
-                              forwardedComponent={
-                                Object {
-                                  "$$typeof": Symbol(react.forward_ref),
-                                  "attrs": Array [],
-                                  "componentStyle": ComponentStyle {
-                                    "componentId": "Link__Content-j0sqir-0",
-                                    "isStatic": false,
-                                    "lastClassName": "jgHxZN",
-                                    "rules": Array [
-                                      "color:",
-                                      [Function],
-                                      ";cursor:pointer;",
-                                    ],
-                                  },
-                                  "displayName": "Link__Content",
-                                  "foldedComponentIds": Array [],
-                                  "render": [Function],
-                                  "styledComponentId": "Link__Content-j0sqir-0",
-                                  "target": "a",
-                                  "toString": [Function],
-                                  "warnTooManyClasses": [Function],
-                                  "withComponent": [Function],
-                                }
-                              }
-                              forwardedRef={[Function]}
-                              onClick={[Function]}
-                              onMouseEnter={[Function]}
-                            >
-                              <a
-                                className="Link__Content-j0sqir-0 jgHxZN"
-                                onClick={[Function]}
-                                onMouseEnter={[Function]}
-                              >
-                                Reviews
-                              </a>
-                            </StyledComponent>
-                          </Link__Content>
-                        </Link>
-                      </Link>
-                    </div>
-                  </Styled(div)>
-                </NavLink>
-                <NavLink
-                  href="/coach-reviews"
-                >
-                  <Styled(div)
-                    m={1}
-                  >
-                    <div
-                      className="css-1ee7t57"
-                    >
-                      <Link
-                        href="/coach-reviews"
-                      >
-                        <Link
-                          href="/coach-reviews"
-                        >
-                          <Link__Content
-                            onClick={[Function]}
-                            onMouseEnter={[Function]}
-                          >
-                            <StyledComponent
-                              forwardedComponent={
-                                Object {
-                                  "$$typeof": Symbol(react.forward_ref),
-                                  "attrs": Array [],
-                                  "componentStyle": ComponentStyle {
-                                    "componentId": "Link__Content-j0sqir-0",
-                                    "isStatic": false,
-                                    "lastClassName": "jgHxZN",
-                                    "rules": Array [
-                                      "color:",
-                                      [Function],
-                                      ";cursor:pointer;",
-                                    ],
-                                  },
-                                  "displayName": "Link__Content",
-                                  "foldedComponentIds": Array [],
-                                  "render": [Function],
-                                  "styledComponentId": "Link__Content-j0sqir-0",
-                                  "target": "a",
-                                  "toString": [Function],
-                                  "warnTooManyClasses": [Function],
-                                  "withComponent": [Function],
-                                }
-                              }
-                              forwardedRef={[Function]}
-                              onClick={[Function]}
-                              onMouseEnter={[Function]}
-                            >
-                              <a
-                                className="Link__Content-j0sqir-0 jgHxZN"
-                                onClick={[Function]}
-                                onMouseEnter={[Function]}
-                              >
-                                Coach Reviews
-                              </a>
-                            </StyledComponent>
-                          </Link__Content>
-                        </Link>
-                      </Link>
-                    </div>
-                  </Styled(div)>
-                </NavLink>
-                <NavLink
-                  href="/coach-signup"
-                >
-                  <Styled(div)
-                    m={1}
-                  >
-                    <div
-                      className="css-1ee7t57"
-                    >
-                      <Link
-                        href="/coach-signup"
-                      >
-                        <Link
-                          href="/coach-signup"
-                        >
-                          <Link__Content
-                            onClick={[Function]}
-                            onMouseEnter={[Function]}
-                          >
-                            <StyledComponent
-                              forwardedComponent={
-                                Object {
-                                  "$$typeof": Symbol(react.forward_ref),
-                                  "attrs": Array [],
-                                  "componentStyle": ComponentStyle {
-                                    "componentId": "Link__Content-j0sqir-0",
-                                    "isStatic": false,
-                                    "lastClassName": "jgHxZN",
-                                    "rules": Array [
-                                      "color:",
-                                      [Function],
-                                      ";cursor:pointer;",
-                                    ],
-                                  },
-                                  "displayName": "Link__Content",
-                                  "foldedComponentIds": Array [],
-                                  "render": [Function],
-                                  "styledComponentId": "Link__Content-j0sqir-0",
-                                  "target": "a",
-                                  "toString": [Function],
-                                  "warnTooManyClasses": [Function],
-                                  "withComponent": [Function],
-                                }
-                              }
-                              forwardedRef={[Function]}
-                              onClick={[Function]}
-                              onMouseEnter={[Function]}
-                            >
-                              <a
-                                className="Link__Content-j0sqir-0 jgHxZN"
-                                onClick={[Function]}
-                                onMouseEnter={[Function]}
-                              >
-                                Coach SignUp
-                              </a>
-                            </StyledComponent>
-                          </Link__Content>
-                        </Link>
-                      </Link>
-                    </div>
-                  </Styled(div)>
-                </NavLink>
-                <NavLink
-                  href="/coach-dashboard"
-                >
-                  <Styled(div)
-                    m={1}
-                  >
-                    <div
-                      className="css-1ee7t57"
-                    >
-                      <Link
-                        href="/coach-dashboard"
-                      >
-                        <Link
-                          href="/coach-dashboard"
-                        >
-                          <Link__Content
-                            onClick={[Function]}
-                            onMouseEnter={[Function]}
-                          >
-                            <StyledComponent
-                              forwardedComponent={
-                                Object {
-                                  "$$typeof": Symbol(react.forward_ref),
-                                  "attrs": Array [],
-                                  "componentStyle": ComponentStyle {
-                                    "componentId": "Link__Content-j0sqir-0",
-                                    "isStatic": false,
-                                    "lastClassName": "jgHxZN",
-                                    "rules": Array [
-                                      "color:",
-                                      [Function],
-                                      ";cursor:pointer;",
-                                    ],
-                                  },
-                                  "displayName": "Link__Content",
-                                  "foldedComponentIds": Array [],
-                                  "render": [Function],
-                                  "styledComponentId": "Link__Content-j0sqir-0",
-                                  "target": "a",
-                                  "toString": [Function],
-                                  "warnTooManyClasses": [Function],
-                                  "withComponent": [Function],
-                                }
-                              }
-                              forwardedRef={[Function]}
-                              onClick={[Function]}
-                              onMouseEnter={[Function]}
-                            >
-                              <a
-                                className="Link__Content-j0sqir-0 jgHxZN"
-                                onClick={[Function]}
-                                onMouseEnter={[Function]}
-                              >
-                                Coach Dashboard
-                              </a>
-                            </StyledComponent>
-                          </Link__Content>
-                        </Link>
-                      </Link>
-                    </div>
-                  </Styled(div)>
-                </NavLink>
                 <Styled(div)
-                  mx="auto"
+                  mr="auto"
                 >
                   <div
-                    className="css-1ntkiwo"
-                  />
+                    className="css-1vt9iih"
+                  >
+                    <Styled(div)
+                      alignItems="center"
+                    >
+                      <div
+                        className="css-zkfaav"
+                      >
+                        <Styled(div)
+                          mr={3}
+                          width="175px"
+                        >
+                          <div
+                            className="css-1xu7xp0"
+                          >
+                            <Navbar__Logo>
+                              <StyledComponent
+                                forwardedComponent={
+                                  Object {
+                                    "$$typeof": Symbol(react.forward_ref),
+                                    "attrs": Array [],
+                                    "componentStyle": ComponentStyle {
+                                      "componentId": "Navbar__Logo-sc-1qe3s5x-2",
+                                      "isStatic": false,
+                                      "lastClassName": "hAdfFg",
+                                      "rules": Array [
+                                        "filter:grayscale(1);transition:0.25s filter ease-in-out;&:hover{filter:grayscale(0);}",
+                                      ],
+                                    },
+                                    "displayName": "Navbar__Logo",
+                                    "foldedComponentIds": Array [],
+                                    "render": [Function],
+                                    "styledComponentId": "Navbar__Logo-sc-1qe3s5x-2",
+                                    "target": "div",
+                                    "toString": [Function],
+                                    "warnTooManyClasses": [Function],
+                                    "withComponent": [Function],
+                                  }
+                                }
+                                forwardedRef={null}
+                              >
+                                <div
+                                  className="Navbar__Logo-sc-1qe3s5x-2 hAdfFg"
+                                >
+                                  <ImageButton
+                                    href="/"
+                                    imageSrc="/images/gamejitsu-writing.svg"
+                                  >
+                                    <ImageButton__Link
+                                      href="/"
+                                    >
+                                      <StyledComponent
+                                        forwardedComponent={
+                                          Object {
+                                            "$$typeof": Symbol(react.forward_ref),
+                                            "attrs": Array [],
+                                            "componentStyle": ComponentStyle {
+                                              "componentId": "ImageButton__Link-ijww0w-1",
+                                              "isStatic": false,
+                                              "lastClassName": "bhGqMS",
+                                              "rules": Array [
+                                                [Function],
+                                              ],
+                                            },
+                                            "displayName": "ImageButton__Link",
+                                            "foldedComponentIds": Array [],
+                                            "render": [Function],
+                                            "styledComponentId": "ImageButton__Link-ijww0w-1",
+                                            "target": "a",
+                                            "toString": [Function],
+                                            "warnTooManyClasses": [Function],
+                                            "withComponent": [Function],
+                                          }
+                                        }
+                                        forwardedRef={null}
+                                        href="/"
+                                      >
+                                        <a
+                                          className="ImageButton__Link-ijww0w-1 bhGqMS"
+                                          href="/"
+                                        >
+                                          <ImageButton__Image
+                                            src="/images/gamejitsu-writing.svg"
+                                          >
+                                            <StyledComponent
+                                              forwardedComponent={
+                                                Object {
+                                                  "$$typeof": Symbol(react.forward_ref),
+                                                  "attrs": Array [],
+                                                  "componentStyle": ComponentStyle {
+                                                    "componentId": "ImageButton__Image-ijww0w-2",
+                                                    "isStatic": false,
+                                                    "lastClassName": "hEKrRQ",
+                                                    "rules": Array [
+                                                      "width:100%;",
+                                                    ],
+                                                  },
+                                                  "displayName": "ImageButton__Image",
+                                                  "foldedComponentIds": Array [],
+                                                  "render": [Function],
+                                                  "styledComponentId": "ImageButton__Image-ijww0w-2",
+                                                  "target": "img",
+                                                  "toString": [Function],
+                                                  "warnTooManyClasses": [Function],
+                                                  "withComponent": [Function],
+                                                }
+                                              }
+                                              forwardedRef={null}
+                                              src="/images/gamejitsu-writing.svg"
+                                            >
+                                              <img
+                                                className="ImageButton__Image-ijww0w-2 hEKrRQ"
+                                                src="/images/gamejitsu-writing.svg"
+                                              />
+                                            </StyledComponent>
+                                          </ImageButton__Image>
+                                        </a>
+                                      </StyledComponent>
+                                    </ImageButton__Link>
+                                  </ImageButton>
+                                </div>
+                              </StyledComponent>
+                            </Navbar__Logo>
+                          </div>
+                        </Styled(div)>
+                        <NavLink
+                          href="/dashboard"
+                        >
+                          <Styled(div)
+                            m={2}
+                          >
+                            <div
+                              className="css-1eo79v7"
+                            >
+                              <Navbar__NavLinkContent
+                                href="/dashboard"
+                                isActive={null}
+                              >
+                                <StyledComponent
+                                  forwardedComponent={
+                                    Object {
+                                      "$$typeof": Symbol(react.forward_ref),
+                                      "attrs": Array [],
+                                      "componentStyle": ComponentStyle {
+                                        "componentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
+                                        "isStatic": false,
+                                        "lastClassName": "jFufCh",
+                                        "rules": Array [
+                                          "font-weight:bold;transition:all 0.15s ease-in-out;position:relative;&::before{background-color:",
+                                          [Function],
+                                          ";content:\\"\\";height:5px;margin-top:3px;left:0;opacity:",
+                                          [Function],
+                                          ";pointer-events:none;position:absolute;right:0;top:100%;transition:opacity 0.2s;width:100%;}&:hover::before{opacity:1;}",
+                                        ],
+                                      },
+                                      "displayName": "Navbar__NavLinkContent",
+                                      "foldedComponentIds": Array [],
+                                      "render": [Function],
+                                      "styledComponentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
+                                      "target": [Function],
+                                      "toString": [Function],
+                                      "warnTooManyClasses": [Function],
+                                      "withComponent": [Function],
+                                    }
+                                  }
+                                  forwardedRef={null}
+                                  href="/dashboard"
+                                  isActive={null}
+                                >
+                                  <Link
+                                    className="Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                    href="/dashboard"
+                                    isActive={null}
+                                  >
+                                    <Link
+                                      href="/dashboard"
+                                    >
+                                      <Link__Content
+                                        className="Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                        onClick={[Function]}
+                                        onMouseEnter={[Function]}
+                                      >
+                                        <StyledComponent
+                                          className="Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                          forwardedComponent={
+                                            Object {
+                                              "$$typeof": Symbol(react.forward_ref),
+                                              "attrs": Array [],
+                                              "componentStyle": ComponentStyle {
+                                                "componentId": "Link__Content-j0sqir-0",
+                                                "isStatic": false,
+                                                "lastClassName": "kuoXkD",
+                                                "rules": Array [
+                                                  "color:",
+                                                  [Function],
+                                                  ";cursor:pointer;&:hover{text-decoration:none;}",
+                                                ],
+                                              },
+                                              "displayName": "Link__Content",
+                                              "foldedComponentIds": Array [],
+                                              "render": [Function],
+                                              "styledComponentId": "Link__Content-j0sqir-0",
+                                              "target": "a",
+                                              "toString": [Function],
+                                              "warnTooManyClasses": [Function],
+                                              "withComponent": [Function],
+                                            }
+                                          }
+                                          forwardedRef={[Function]}
+                                          onClick={[Function]}
+                                          onMouseEnter={[Function]}
+                                        >
+                                          <a
+                                            className="Link__Content-j0sqir-0 kuoXkD Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                            onClick={[Function]}
+                                            onMouseEnter={[Function]}
+                                          >
+                                            Dashboard
+                                          </a>
+                                        </StyledComponent>
+                                      </Link__Content>
+                                    </Link>
+                                  </Link>
+                                </StyledComponent>
+                              </Navbar__NavLinkContent>
+                            </div>
+                          </Styled(div)>
+                        </NavLink>
+                        <NavLink
+                          href="/reviews"
+                        >
+                          <Styled(div)
+                            m={2}
+                          >
+                            <div
+                              className="css-1eo79v7"
+                            >
+                              <Navbar__NavLinkContent
+                                href="/reviews"
+                                isActive={null}
+                              >
+                                <StyledComponent
+                                  forwardedComponent={
+                                    Object {
+                                      "$$typeof": Symbol(react.forward_ref),
+                                      "attrs": Array [],
+                                      "componentStyle": ComponentStyle {
+                                        "componentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
+                                        "isStatic": false,
+                                        "lastClassName": "jFufCh",
+                                        "rules": Array [
+                                          "font-weight:bold;transition:all 0.15s ease-in-out;position:relative;&::before{background-color:",
+                                          [Function],
+                                          ";content:\\"\\";height:5px;margin-top:3px;left:0;opacity:",
+                                          [Function],
+                                          ";pointer-events:none;position:absolute;right:0;top:100%;transition:opacity 0.2s;width:100%;}&:hover::before{opacity:1;}",
+                                        ],
+                                      },
+                                      "displayName": "Navbar__NavLinkContent",
+                                      "foldedComponentIds": Array [],
+                                      "render": [Function],
+                                      "styledComponentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
+                                      "target": [Function],
+                                      "toString": [Function],
+                                      "warnTooManyClasses": [Function],
+                                      "withComponent": [Function],
+                                    }
+                                  }
+                                  forwardedRef={null}
+                                  href="/reviews"
+                                  isActive={null}
+                                >
+                                  <Link
+                                    className="Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                    href="/reviews"
+                                    isActive={null}
+                                  >
+                                    <Link
+                                      href="/reviews"
+                                    >
+                                      <Link__Content
+                                        className="Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                        onClick={[Function]}
+                                        onMouseEnter={[Function]}
+                                      >
+                                        <StyledComponent
+                                          className="Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                          forwardedComponent={
+                                            Object {
+                                              "$$typeof": Symbol(react.forward_ref),
+                                              "attrs": Array [],
+                                              "componentStyle": ComponentStyle {
+                                                "componentId": "Link__Content-j0sqir-0",
+                                                "isStatic": false,
+                                                "lastClassName": "kuoXkD",
+                                                "rules": Array [
+                                                  "color:",
+                                                  [Function],
+                                                  ";cursor:pointer;&:hover{text-decoration:none;}",
+                                                ],
+                                              },
+                                              "displayName": "Link__Content",
+                                              "foldedComponentIds": Array [],
+                                              "render": [Function],
+                                              "styledComponentId": "Link__Content-j0sqir-0",
+                                              "target": "a",
+                                              "toString": [Function],
+                                              "warnTooManyClasses": [Function],
+                                              "withComponent": [Function],
+                                            }
+                                          }
+                                          forwardedRef={[Function]}
+                                          onClick={[Function]}
+                                          onMouseEnter={[Function]}
+                                        >
+                                          <a
+                                            className="Link__Content-j0sqir-0 kuoXkD Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                            onClick={[Function]}
+                                            onMouseEnter={[Function]}
+                                          >
+                                            Reviews
+                                          </a>
+                                        </StyledComponent>
+                                      </Link__Content>
+                                    </Link>
+                                  </Link>
+                                </StyledComponent>
+                              </Navbar__NavLinkContent>
+                            </div>
+                          </Styled(div)>
+                        </NavLink>
+                        <NavLink
+                          href="/coach-reviews"
+                        >
+                          <Styled(div)
+                            m={2}
+                          >
+                            <div
+                              className="css-1eo79v7"
+                            >
+                              <Navbar__NavLinkContent
+                                href="/coach-reviews"
+                                isActive={null}
+                              >
+                                <StyledComponent
+                                  forwardedComponent={
+                                    Object {
+                                      "$$typeof": Symbol(react.forward_ref),
+                                      "attrs": Array [],
+                                      "componentStyle": ComponentStyle {
+                                        "componentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
+                                        "isStatic": false,
+                                        "lastClassName": "jFufCh",
+                                        "rules": Array [
+                                          "font-weight:bold;transition:all 0.15s ease-in-out;position:relative;&::before{background-color:",
+                                          [Function],
+                                          ";content:\\"\\";height:5px;margin-top:3px;left:0;opacity:",
+                                          [Function],
+                                          ";pointer-events:none;position:absolute;right:0;top:100%;transition:opacity 0.2s;width:100%;}&:hover::before{opacity:1;}",
+                                        ],
+                                      },
+                                      "displayName": "Navbar__NavLinkContent",
+                                      "foldedComponentIds": Array [],
+                                      "render": [Function],
+                                      "styledComponentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
+                                      "target": [Function],
+                                      "toString": [Function],
+                                      "warnTooManyClasses": [Function],
+                                      "withComponent": [Function],
+                                    }
+                                  }
+                                  forwardedRef={null}
+                                  href="/coach-reviews"
+                                  isActive={null}
+                                >
+                                  <Link
+                                    className="Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                    href="/coach-reviews"
+                                    isActive={null}
+                                  >
+                                    <Link
+                                      href="/coach-reviews"
+                                    >
+                                      <Link__Content
+                                        className="Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                        onClick={[Function]}
+                                        onMouseEnter={[Function]}
+                                      >
+                                        <StyledComponent
+                                          className="Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                          forwardedComponent={
+                                            Object {
+                                              "$$typeof": Symbol(react.forward_ref),
+                                              "attrs": Array [],
+                                              "componentStyle": ComponentStyle {
+                                                "componentId": "Link__Content-j0sqir-0",
+                                                "isStatic": false,
+                                                "lastClassName": "kuoXkD",
+                                                "rules": Array [
+                                                  "color:",
+                                                  [Function],
+                                                  ";cursor:pointer;&:hover{text-decoration:none;}",
+                                                ],
+                                              },
+                                              "displayName": "Link__Content",
+                                              "foldedComponentIds": Array [],
+                                              "render": [Function],
+                                              "styledComponentId": "Link__Content-j0sqir-0",
+                                              "target": "a",
+                                              "toString": [Function],
+                                              "warnTooManyClasses": [Function],
+                                              "withComponent": [Function],
+                                            }
+                                          }
+                                          forwardedRef={[Function]}
+                                          onClick={[Function]}
+                                          onMouseEnter={[Function]}
+                                        >
+                                          <a
+                                            className="Link__Content-j0sqir-0 kuoXkD Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                            onClick={[Function]}
+                                            onMouseEnter={[Function]}
+                                          >
+                                            Coach Reviews
+                                          </a>
+                                        </StyledComponent>
+                                      </Link__Content>
+                                    </Link>
+                                  </Link>
+                                </StyledComponent>
+                              </Navbar__NavLinkContent>
+                            </div>
+                          </Styled(div)>
+                        </NavLink>
+                        <NavLink
+                          href="/coach-signup"
+                        >
+                          <Styled(div)
+                            m={2}
+                          >
+                            <div
+                              className="css-1eo79v7"
+                            >
+                              <Navbar__NavLinkContent
+                                href="/coach-signup"
+                                isActive={null}
+                              >
+                                <StyledComponent
+                                  forwardedComponent={
+                                    Object {
+                                      "$$typeof": Symbol(react.forward_ref),
+                                      "attrs": Array [],
+                                      "componentStyle": ComponentStyle {
+                                        "componentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
+                                        "isStatic": false,
+                                        "lastClassName": "jFufCh",
+                                        "rules": Array [
+                                          "font-weight:bold;transition:all 0.15s ease-in-out;position:relative;&::before{background-color:",
+                                          [Function],
+                                          ";content:\\"\\";height:5px;margin-top:3px;left:0;opacity:",
+                                          [Function],
+                                          ";pointer-events:none;position:absolute;right:0;top:100%;transition:opacity 0.2s;width:100%;}&:hover::before{opacity:1;}",
+                                        ],
+                                      },
+                                      "displayName": "Navbar__NavLinkContent",
+                                      "foldedComponentIds": Array [],
+                                      "render": [Function],
+                                      "styledComponentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
+                                      "target": [Function],
+                                      "toString": [Function],
+                                      "warnTooManyClasses": [Function],
+                                      "withComponent": [Function],
+                                    }
+                                  }
+                                  forwardedRef={null}
+                                  href="/coach-signup"
+                                  isActive={null}
+                                >
+                                  <Link
+                                    className="Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                    href="/coach-signup"
+                                    isActive={null}
+                                  >
+                                    <Link
+                                      href="/coach-signup"
+                                    >
+                                      <Link__Content
+                                        className="Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                        onClick={[Function]}
+                                        onMouseEnter={[Function]}
+                                      >
+                                        <StyledComponent
+                                          className="Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                          forwardedComponent={
+                                            Object {
+                                              "$$typeof": Symbol(react.forward_ref),
+                                              "attrs": Array [],
+                                              "componentStyle": ComponentStyle {
+                                                "componentId": "Link__Content-j0sqir-0",
+                                                "isStatic": false,
+                                                "lastClassName": "kuoXkD",
+                                                "rules": Array [
+                                                  "color:",
+                                                  [Function],
+                                                  ";cursor:pointer;&:hover{text-decoration:none;}",
+                                                ],
+                                              },
+                                              "displayName": "Link__Content",
+                                              "foldedComponentIds": Array [],
+                                              "render": [Function],
+                                              "styledComponentId": "Link__Content-j0sqir-0",
+                                              "target": "a",
+                                              "toString": [Function],
+                                              "warnTooManyClasses": [Function],
+                                              "withComponent": [Function],
+                                            }
+                                          }
+                                          forwardedRef={[Function]}
+                                          onClick={[Function]}
+                                          onMouseEnter={[Function]}
+                                        >
+                                          <a
+                                            className="Link__Content-j0sqir-0 kuoXkD Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                            onClick={[Function]}
+                                            onMouseEnter={[Function]}
+                                          >
+                                            Coach SignUp
+                                          </a>
+                                        </StyledComponent>
+                                      </Link__Content>
+                                    </Link>
+                                  </Link>
+                                </StyledComponent>
+                              </Navbar__NavLinkContent>
+                            </div>
+                          </Styled(div)>
+                        </NavLink>
+                        <NavLink
+                          href="/coach-dashboard"
+                        >
+                          <Styled(div)
+                            m={2}
+                          >
+                            <div
+                              className="css-1eo79v7"
+                            >
+                              <Navbar__NavLinkContent
+                                href="/coach-dashboard"
+                                isActive={null}
+                              >
+                                <StyledComponent
+                                  forwardedComponent={
+                                    Object {
+                                      "$$typeof": Symbol(react.forward_ref),
+                                      "attrs": Array [],
+                                      "componentStyle": ComponentStyle {
+                                        "componentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
+                                        "isStatic": false,
+                                        "lastClassName": "jFufCh",
+                                        "rules": Array [
+                                          "font-weight:bold;transition:all 0.15s ease-in-out;position:relative;&::before{background-color:",
+                                          [Function],
+                                          ";content:\\"\\";height:5px;margin-top:3px;left:0;opacity:",
+                                          [Function],
+                                          ";pointer-events:none;position:absolute;right:0;top:100%;transition:opacity 0.2s;width:100%;}&:hover::before{opacity:1;}",
+                                        ],
+                                      },
+                                      "displayName": "Navbar__NavLinkContent",
+                                      "foldedComponentIds": Array [],
+                                      "render": [Function],
+                                      "styledComponentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
+                                      "target": [Function],
+                                      "toString": [Function],
+                                      "warnTooManyClasses": [Function],
+                                      "withComponent": [Function],
+                                    }
+                                  }
+                                  forwardedRef={null}
+                                  href="/coach-dashboard"
+                                  isActive={null}
+                                >
+                                  <Link
+                                    className="Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                    href="/coach-dashboard"
+                                    isActive={null}
+                                  >
+                                    <Link
+                                      href="/coach-dashboard"
+                                    >
+                                      <Link__Content
+                                        className="Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                        onClick={[Function]}
+                                        onMouseEnter={[Function]}
+                                      >
+                                        <StyledComponent
+                                          className="Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                          forwardedComponent={
+                                            Object {
+                                              "$$typeof": Symbol(react.forward_ref),
+                                              "attrs": Array [],
+                                              "componentStyle": ComponentStyle {
+                                                "componentId": "Link__Content-j0sqir-0",
+                                                "isStatic": false,
+                                                "lastClassName": "kuoXkD",
+                                                "rules": Array [
+                                                  "color:",
+                                                  [Function],
+                                                  ";cursor:pointer;&:hover{text-decoration:none;}",
+                                                ],
+                                              },
+                                              "displayName": "Link__Content",
+                                              "foldedComponentIds": Array [],
+                                              "render": [Function],
+                                              "styledComponentId": "Link__Content-j0sqir-0",
+                                              "target": "a",
+                                              "toString": [Function],
+                                              "warnTooManyClasses": [Function],
+                                              "withComponent": [Function],
+                                            }
+                                          }
+                                          forwardedRef={[Function]}
+                                          onClick={[Function]}
+                                          onMouseEnter={[Function]}
+                                        >
+                                          <a
+                                            className="Link__Content-j0sqir-0 kuoXkD Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                            onClick={[Function]}
+                                            onMouseEnter={[Function]}
+                                          >
+                                            Coach Dashboard
+                                          </a>
+                                        </StyledComponent>
+                                      </Link__Content>
+                                    </Link>
+                                  </Link>
+                                </StyledComponent>
+                              </Navbar__NavLinkContent>
+                            </div>
+                          </Styled(div)>
+                        </NavLink>
+                      </div>
+                    </Styled(div)>
+                  </div>
                 </Styled(div)>
                 <NavLink
                   href="/"
                   key="username"
                 >
                   <Styled(div)
-                    m={1}
+                    m={2}
                   >
                     <div
-                      className="css-1ee7t57"
+                      className="css-1eo79v7"
                     >
-                      <Link
+                      <Navbar__NavLinkContent
                         href="/"
+                        isActive={null}
                       >
-                        <Link
+                        <StyledComponent
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
+                                "isStatic": false,
+                                "lastClassName": "jFufCh",
+                                "rules": Array [
+                                  "font-weight:bold;transition:all 0.15s ease-in-out;position:relative;&::before{background-color:",
+                                  [Function],
+                                  ";content:\\"\\";height:5px;margin-top:3px;left:0;opacity:",
+                                  [Function],
+                                  ";pointer-events:none;position:absolute;right:0;top:100%;transition:opacity 0.2s;width:100%;}&:hover::before{opacity:1;}",
+                                ],
+                              },
+                              "displayName": "Navbar__NavLinkContent",
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
+                              "target": [Function],
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
                           href="/"
+                          isActive={null}
                         >
-                          <Link__Content
-                            onClick={[Function]}
-                            onMouseEnter={[Function]}
+                          <Link
+                            className="Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                            href="/"
+                            isActive={null}
                           >
-                            <StyledComponent
-                              forwardedComponent={
-                                Object {
-                                  "$$typeof": Symbol(react.forward_ref),
-                                  "attrs": Array [],
-                                  "componentStyle": ComponentStyle {
-                                    "componentId": "Link__Content-j0sqir-0",
-                                    "isStatic": false,
-                                    "lastClassName": "jgHxZN",
-                                    "rules": Array [
-                                      "color:",
-                                      [Function],
-                                      ";cursor:pointer;",
-                                    ],
-                                  },
-                                  "displayName": "Link__Content",
-                                  "foldedComponentIds": Array [],
-                                  "render": [Function],
-                                  "styledComponentId": "Link__Content-j0sqir-0",
-                                  "target": "a",
-                                  "toString": [Function],
-                                  "warnTooManyClasses": [Function],
-                                  "withComponent": [Function],
-                                }
-                              }
-                              forwardedRef={[Function]}
-                              onClick={[Function]}
-                              onMouseEnter={[Function]}
+                            <Link
+                              href="/"
                             >
-                              <a
-                                className="Link__Content-j0sqir-0 jgHxZN"
+                              <Link__Content
+                                className="Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
                                 onClick={[Function]}
                                 onMouseEnter={[Function]}
                               >
-                                userTest
-                              </a>
-                            </StyledComponent>
-                          </Link__Content>
-                        </Link>
-                      </Link>
+                                <StyledComponent
+                                  className="Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                  forwardedComponent={
+                                    Object {
+                                      "$$typeof": Symbol(react.forward_ref),
+                                      "attrs": Array [],
+                                      "componentStyle": ComponentStyle {
+                                        "componentId": "Link__Content-j0sqir-0",
+                                        "isStatic": false,
+                                        "lastClassName": "kuoXkD",
+                                        "rules": Array [
+                                          "color:",
+                                          [Function],
+                                          ";cursor:pointer;&:hover{text-decoration:none;}",
+                                        ],
+                                      },
+                                      "displayName": "Link__Content",
+                                      "foldedComponentIds": Array [],
+                                      "render": [Function],
+                                      "styledComponentId": "Link__Content-j0sqir-0",
+                                      "target": "a",
+                                      "toString": [Function],
+                                      "warnTooManyClasses": [Function],
+                                      "withComponent": [Function],
+                                    }
+                                  }
+                                  forwardedRef={[Function]}
+                                  onClick={[Function]}
+                                  onMouseEnter={[Function]}
+                                >
+                                  <a
+                                    className="Link__Content-j0sqir-0 kuoXkD Navbar__NavLinkContent-sc-1qe3s5x-0 jFufCh"
+                                    onClick={[Function]}
+                                    onMouseEnter={[Function]}
+                                  >
+                                    userTest
+                                  </a>
+                                </StyledComponent>
+                              </Link__Content>
+                            </Link>
+                          </Link>
+                        </StyledComponent>
+                      </Navbar__NavLinkContent>
                     </div>
                   </Styled(div)>
                 </NavLink>
@@ -594,20 +906,40 @@ exports[`Index page should match snapshot 1`] = `
                             "componentStyle": ComponentStyle {
                               "componentId": "Button__Content-sc-1qhaj03-0",
                               "isStatic": false,
-                              "lastClassName": "iUEPVJ",
+                              "lastClassName": "mgUsw",
                               "rules": Array [
-                                "background:linear-gradient( to bottom,",
+                                "&.",
+                                [Function],
+                                "{border-radius:",
+                                [Function],
+                                ";border:0;box-shadow:inset 0px -3px 0px 0px ",
+                                [Function],
+                                ";background:linear-gradient( to bottom,",
                                 [Function],
                                 ",",
                                 [Function],
-                                " );padding:12px 30px;font-size:15px;outline:0;border:0;cursor:pointer;",
+                                " );padding:12px 30px 14px 30px;font-family:",
+                                [Function],
+                                ";font-size:15px;outline:none;cursor:pointer;font-weight:bold;&:hover{background-image:linear-gradient( to bottom,",
+                                [Function],
+                                ",",
+                                [Function],
+                                " );box-shadow:inset 0px -3px 0px 0px ",
+                                [Function],
+                                ";}&:active{background-image:linear-gradient( to bottom,",
+                                [Function],
+                                ",",
+                                [Function],
+                                " );outline:none;box-shadow:inset 0px 3px 0px 0px ",
+                                [Function],
+                                ";padding-bottom:12px;margin-top:2px;}}",
                               ],
                             },
                             "displayName": "Button__Content",
                             "foldedComponentIds": Array [],
                             "render": [Function],
                             "styledComponentId": "Button__Content-sc-1qhaj03-0",
-                            "target": "button",
+                            "target": [Function],
                             "toString": [Function],
                             "warnTooManyClasses": [Function],
                             "withComponent": [Function],
@@ -617,14 +949,33 @@ exports[`Index page should match snapshot 1`] = `
                         onClick={[Function]}
                         type="button"
                       >
-                        <button
-                          className="Button__Content-sc-1qhaj03-0 iUEPVJ"
+                        <Blueprint3.Button
+                          className="Button__Content-sc-1qhaj03-0 mgUsw"
                           disabled={false}
                           onClick={[Function]}
                           type="button"
                         >
-                          Logout
-                        </button>
+                          <button
+                            className="bp3-button Button__Content-sc-1qhaj03-0 mgUsw"
+                            onClick={[Function]}
+                            onKeyDown={[Function]}
+                            onKeyUp={[Function]}
+                            type="button"
+                          >
+                            <Blueprint3.Icon
+                              key="leftIcon"
+                            />
+                            <span
+                              className="bp3-button-text"
+                              key="text"
+                            >
+                              Logout
+                            </span>
+                            <Blueprint3.Icon
+                              key="rightIcon"
+                            />
+                          </button>
+                        </Blueprint3.Button>
                       </StyledComponent>
                     </Button__Content>
                   </div>
@@ -636,6 +987,8 @@ exports[`Index page should match snapshot 1`] = `
       </Navbar>
       <Layout__Container
         mx="auto"
+        p={4}
+        pt={92}
       >
         <StyledComponent
           forwardedComponent={
@@ -681,9 +1034,9 @@ exports[`Index page should match snapshot 1`] = `
               "componentStyle": ComponentStyle {
                 "componentId": "Layout__Container-sc-1iu1ypv-0",
                 "isStatic": false,
-                "lastClassName": "kXwVwM",
+                "lastClassName": "fdaunp",
                 "rules": Array [
-                  "max-width:1024px;",
+                  "max-width:1024px;height:100%;",
                 ],
               },
               "displayName": "Layout__Container",
@@ -719,13 +1072,17 @@ exports[`Index page should match snapshot 1`] = `
           }
           forwardedRef={null}
           mx="auto"
+          p={4}
+          pt={92}
         >
           <Styled(div)
-            className="Layout__Container-sc-1iu1ypv-0 kXwVwM"
+            className="Layout__Container-sc-1iu1ypv-0 fdaunp"
             mx="auto"
+            p={4}
+            pt={92}
           >
             <div
-              className="Layout__Container-sc-1iu1ypv-0 kXwVwM css-1ntkiwo"
+              className="Layout__Container-sc-1iu1ypv-0 fdaunp css-1apx8v2"
             >
               <Head>
                 <Component
@@ -734,6 +1091,52 @@ exports[`Index page should match snapshot 1`] = `
                   reduceComponentsToState={[Function]}
                 />
               </Head>
+              <Styled(div)
+                alignItems="center"
+                height="100%"
+                justifyContent="center"
+                marginTop="100px"
+              >
+                <div
+                  className="css-1j918vq"
+                >
+                  <Page__Image
+                    src="/images/gamejitsu-main-logo.svg"
+                  >
+                    <StyledComponent
+                      forwardedComponent={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": Array [],
+                          "componentStyle": ComponentStyle {
+                            "componentId": "Page__Image-sc-1ix2o3i-0",
+                            "isStatic": false,
+                            "lastClassName": "jKByaH",
+                            "rules": Array [
+                              "width:510px;",
+                            ],
+                          },
+                          "displayName": "Page__Image",
+                          "foldedComponentIds": Array [],
+                          "render": [Function],
+                          "styledComponentId": "Page__Image-sc-1ix2o3i-0",
+                          "target": "img",
+                          "toString": [Function],
+                          "warnTooManyClasses": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      forwardedRef={null}
+                      src="/images/gamejitsu-main-logo.svg"
+                    >
+                      <img
+                        className="Page__Image-sc-1ix2o3i-0 jKByaH"
+                        src="/images/gamejitsu-main-logo.svg"
+                      />
+                    </StyledComponent>
+                  </Page__Image>
+                </div>
+              </Styled(div)>
             </div>
           </Styled(div)>
         </StyledComponent>

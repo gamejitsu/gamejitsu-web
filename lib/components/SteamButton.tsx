@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 
-const imageSrc = "/images/sits_01.png"
+const imageSrc = "/images/steam-button.png"
 
 interface Props {
   onClick: () => void

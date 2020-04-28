@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["esnext"],
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "baseUrl": ".",
+    "paths": {
+      "camelize": ["../types/camelize"],
+      "dasherize": ["../types/dasherize"]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "../types"
+  ]
+}

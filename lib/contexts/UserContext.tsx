@@ -1,5 +1,5 @@
 import { createContext } from "react"
-import { User } from "../models"
+import { User } from "gamejitsu/api/resources/user"
 
 const UserContext = createContext<User | null>(null)
 

@@ -2,7 +2,7 @@ import { Flex, Box, Text } from "rebass"
 import React, { FunctionComponent } from "react"
 import Router from "next/router"
 import { Button, Card } from "gamejitsu/components"
-import { Review } from "gamejitsu/models"
+import { Review } from "gamejitsu/api/resources/review"
 
 interface Props {
   review: Review
@@ -13,7 +13,7 @@ const goToReviewPage = (id?: string) => {
 }
 
 const ReviewCard: FunctionComponent<Props> = ({ review }) => (
-  <Card>
+  <Card title="Completed reviews">
     <Flex>
       <Box p={3} mr="auto">
         <Text p={2}>Review</Text>

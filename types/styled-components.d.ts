@@ -4,6 +4,7 @@ declare module "styled-components" {
   export interface DefaultTheme {
     activeColor: string
     backgroundColor: string
+    buttonTextColor: string
     lightBackgroundColor: string
     errorColor: string
     linkColor: string
@@ -11,5 +12,6 @@ declare module "styled-components" {
     secondaryColor: string
     textColor: string
     textFont: string
+    borderRadius: string
   }
 }

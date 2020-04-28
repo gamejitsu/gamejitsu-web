@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 import { FunctionComponent, useContext } from "react"
-import { Player } from "gamejitsu/models/replay"
+import { Player } from "gamejitsu/api/types/player"
 import { UserContext } from "gamejitsu/contexts"
 import { Position, Tooltip } from "@blueprintjs/core"
 

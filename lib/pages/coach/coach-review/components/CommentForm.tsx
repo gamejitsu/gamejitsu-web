@@ -2,9 +2,9 @@ import React, { FunctionComponent, Fragment } from "react"
 
 import { Box, Flex } from "rebass"
 import { Button } from "gamejitsu/components"
-import { Comment } from "gamejitsu/models/review"
+import { Comment } from "gamejitsu/api/types/comment"
 import { Formik, Form, Field } from "formik"
-import { Review } from "gamejitsu/models"
+import { Review } from "gamejitsu/api/resources/review"
 
 interface Props {
   comment: Comment | null

@@ -1,16 +1,45 @@
 import React, { FunctionComponent, useContext } from "react"
-import Router from "next/router"
+import titleize from "titleize"
+import humanize from "humanize-string"
 
-import { Box, Flex } from "rebass"
-import { Button } from "gamejitsu/components"
+import { Box } from "rebass"
 import { createModel } from "gamejitsu/api"
-import { Form, Col } from "react-bootstrap"
-import { Formik } from "formik"
 import { object, string } from "yup"
 import { UserContext } from "gamejitsu/contexts"
-import { SelectSkillLevel } from "gamejitsu/components"
+import { Form, FormGroup, InputGroup } from "gamejitsu/components"
+import { Slider } from "@blueprintjs/core"
+import { SkillLevel } from "gamejitsu/api/types/skill-level"
+import styled from "styled-components"
+import CoachResource from "gamejitsu/api/resources/coach"
 
-//TODO if coach signed up, can't access to the signup page
+const initialValues = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  photoUrl: "",
+  skillLevel: "medium"
+}
+
+type Values = typeof initialValues
+
+const skillLevels = SkillLevel.types.map((t) => t.value)
+
+const isSkillLevelValid = (value: string): value is SkillLevel =>
+  (skillLevels as string[]).includes(value)
+
+const onSubmitCoach = async (values: Values): Promise<void> => {
+  const { email, firstName, lastName, photoUrl, skillLevel } = values
+  if (!isSkillLevelValid(skillLevel)) {
+    throw new Error(`Invalid skill level value in coach signup: ${skillLevel}`)
+  }
+  await createModel(CoachResource, {
+    email,
+    firstName,
+    lastName,
+    photoUrl,
+    skillLevel
+  })
+}
 
 const getUser = () => {
   const user = useContext(UserContext)
@@ -24,103 +53,64 @@ const schema = object({
   email: string()
     .email()
     .required(),
+  photoUrl: string(),
   skillLevel: string().required()
 })
+
+const LabelContent = styled.span`
+  white-space: nowrap;
+`
 
 const CoachSignUpForm: FunctionComponent = () => {
   const user = getUser()
 
+  const renderLabel = (val: number) => {
+    return <LabelContent>{titleize(humanize(skillLevels[val]))}</LabelContent>
+  }
+
   return (
-    <div>
-      <Formik
-        validationSchema={schema}
-        initialValues={{
-          email: "",
-          firstName: "",
-          lastName: "",
-          photoUrl: "",
-          skillLevel: "medium"
-        }}
-        onSubmit={async (
-          { email, firstName, lastName, photoUrl, skillLevel },
-          { setSubmitting }
-        ) => {
-          setSubmitting(true)
-          if (
-            skillLevel !== "medium" &&
-            skillLevel !== "high" &&
-            skillLevel !== "very_high" &&
-            skillLevel !== "pro"
-          ) {
-            throw new Error(`Invalid skill level value in coach signup: ${skillLevel}`)
-          }
-          await createModel("coach", {
-            user: user.id,
-            email,
-            firstName,
-            lastName,
-            photoUrl,
-            skillLevel
-          })
-          // TODO go to landing page or send alert on dashboard explaining
-          Router.push(`/dashboard`)
-          setSubmitting(false)
-          //TODO onFinish()
-        }}
+    <Box width="700px" mx="auto" p={3}>
+      <Form
+        title="Sign up as a coach"
+        initialValues={initialValues}
+        schema={schema}
+        onSubmit={onSubmitCoach}
+        buttonText="Register"
       >
-        {({ isSubmitting, values, errors, touched, handleChange, handleSubmit }) => (
-          <Flex justifyContent="center">
-            <Box width="60%">
-              <Form noValidate onSubmit={handleSubmit}>
-                <Form.Row>
-                  <Form.Group as={Col} controlId="validationFormik01">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control
-                      type="email"
-                      name="email"
-                      value={values.email}
-                      onChange={handleChange}
-                      isValid={touched.email && !errors.email}
-                    />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                  </Form.Group>
-                </Form.Row>
-                <Form.Row>
-                  <Form.Group as={Col} controlId="validationFormik02">
-                    <Form.Label>First name</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="firstName"
-                      value={values.firstName}
-                      onChange={handleChange}
-                      isValid={touched.firstName && !errors.firstName}
-                    />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                  </Form.Group>
-                </Form.Row>
-                <Form.Row>
-                  <Form.Group as={Col} controlId="validationFormik03">
-                    <Form.Label>Last name</Form.Label>
-                    <Form.Control
-                      type="text"
-                      name="lastName"
-                      value={values.lastName}
-                      onChange={handleChange}
-                      isValid={touched.lastName && !errors.lastName}
-                    />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                  </Form.Group>
-                </Form.Row>
-                <SelectSkillLevel />
-                <Form.Row>
-                  <Button text="Sign Up as Coach" type="submit" disabled={isSubmitting} />
-                </Form.Row>
-              </Form>
-            </Box>
-          </Flex>
+        {({ setFieldValue, values }) => (
+          <div>
+            <FormGroup label="First Name" labelFor="text-input">
+              <InputGroup id="text-input" />
+            </FormGroup>
+            <FormGroup label="Last Name" labelFor="text-input">
+              <InputGroup id="text-input" />
+            </FormGroup>
+            <FormGroup label="Email" labelFor="text-input">
+              <InputGroup id="text-input" />
+            </FormGroup>
+            <FormGroup label="Photo URL" labelFor="text-input" labelInfo="(optional)">
+              <InputGroup id="text-input" placeholder="Placeholder text" />
+            </FormGroup>
+            <FormGroup label="Skill Level" labelFor="text-input">
+              <Box width="250px">
+                <Slider
+                  min={0}
+                  max={3}
+                  stepSize={1}
+                  labelStepSize={1}
+                  onChange={(value: number) => setFieldValue("skillLevel", skillLevels[value])}
+                  labelRenderer={renderLabel}
+                  showTrackFill={true}
+                  value={skillLevels.indexOf(values.skillLevel as SkillLevel)}
+                  vertical={false}
+                  intent="success"
+                />
+              </Box>
+            </FormGroup>
+          </div>
         )}
-      </Formik>
-    </div>
+      </Form>
+    </Box>
   )
 }
 

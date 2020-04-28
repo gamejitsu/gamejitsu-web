@@ -1,12 +1,15 @@
-import * as t from "io-ts"
+import { Player } from "gamejitsu/api/types/player"
+import { Replay } from "gamejitsu/api/resources/replay"
 
-import { Player } from "../schemas/replay"
-import { Replay } from "."
+export interface DecoratedReplay {
+  id: string
+  matchId: string
+  playedAt: Date
+  playersDire: Player[]
+  playersRadiant: Player[]
+}
 
-export type Player = t.TypeOf<typeof Player>
-export type DeserializedReplay = ReturnType<typeof deserializeReplays>[number]
-
-export const deserializeReplays = (replays: Replay[]) => {
+export const decorateReplays = (replays: Replay[]) => {
   return replays.map((replay) => {
     const playersDire = replay.players.slice(0, 5)
     const playersRadiant = replay.players.slice(5, 10)

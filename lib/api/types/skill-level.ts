@@ -6,3 +6,7 @@ export const SkillLevel = t.union([
   t.literal("very_high"),
   t.literal("pro")
 ])
+
+export const encoder = t.identity
+
+export type SkillLevel = t.TypeOf<typeof SkillLevel>

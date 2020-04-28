@@ -5,21 +5,16 @@ import React from "react"
 import Router from "next/router"
 import styled, { ThemeProvider, createGlobalStyle } from "styled-components"
 
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
-import "../node_modules/normalize.css/normalize.css"
-import "../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css"
-import "../node_modules/@blueprintjs/core/lib/css/blueprint.css"
-import "react-toastify/dist/ReactToastify.css"
+import "../lib/styles.scss"
 
-import { AuthenticatedComponent } from "gamejitsu/interfaces/authenticated-component"
+import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { findModel } from "gamejitsu/api"
 import { NextPageContext } from "next"
 import { parseCookies, destroyCookie } from "nookies"
 import { Reset } from "styled-reset"
 import { theme } from "gamejitsu"
-import { User } from "gamejitsu/models"
+import UserResource, { User } from "gamejitsu/api/resources/user"
 import { UserContext } from "gamejitsu/contexts"
-import { ToastContainer } from "react-toastify"
 
 interface Props {
   user: User
@@ -28,14 +23,26 @@ interface Props {
 const Content = styled.div`
   background-color: ${(props) => props.theme.backgroundColor};
   min-height: 100vh;
-  color: ${(props) => props.theme.textColor};
-  font-family: ${(props) => props.theme.textFont};
 `
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Exo+2');
   body {
     background-color: ${(props) => props.theme.backgroundColor};
+    font-family: ${(props) => props.theme.textFont};
+    color: ${(props) => props.theme.textColor};
+  }
+  input {
+    font-family: ${(props) => props.theme.textFont};
+  }
+  @font-face {
+    font-family: 'Japanese 3017';
+    src: url('/fonts/Japanese-3017.eot');
+    src: url('/fonts/Japanese-3017.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/Japanese-3017.woff2') format('woff2'),
+         url('/fonts/Japanese-3017.woff') format('woff'),
+         url('/fonts/Japanese-3017.ttf')  format('truetype'),
+         url('/fonts/Japanese-3017.svg#Japanese 3017') format('svg');
   }
 `
 
@@ -94,16 +101,6 @@ export default class App extends NextApp<Props> {
         <ThemeProvider theme={theme}>
           <GlobalStyle />
           <Content>
-            <ToastContainer
-              position="top-center"
-              autoClose={5000}
-              hideProgressBar
-              newestOnTop
-              closeOnClick
-              rtl={false}
-              draggable
-              pauseOnHover
-            />
             <UserContext.Provider value={user}>
               <Component {...pageProps} />
             </UserContext.Provider>
@@ -115,7 +112,7 @@ export default class App extends NextApp<Props> {
 }
 
 const getCurrentUser = async (ctx: NextPageContext) => {
-  const { data } = await findModel("user", "current", ctx)
+  const { data } = await findModel(UserResource, "current", ctx)
   return data
 }
 

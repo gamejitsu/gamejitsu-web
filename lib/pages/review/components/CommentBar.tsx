@@ -2,7 +2,7 @@ import React, { RefObject } from "react"
 import styled from "styled-components"
 
 import { Box } from "rebass"
-import { Comment } from "gamejitsu/models/review"
+import { Comment } from "gamejitsu/api/types/comment"
 import { commentDuration } from "."
 
 interface Props {
