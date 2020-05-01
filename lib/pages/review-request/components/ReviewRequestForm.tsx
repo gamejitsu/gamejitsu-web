@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 import humanize from "humanize-string"
 import React, { FunctionComponent, useContext } from "react"
 import Router from "next/router"
@@ -8,33 +7,15 @@ import titleize from "titleize"
 import { Box } from "rebass"
 import { createModel } from "gamejitsu/api"
 import { DecoratedReplay } from "gamejitsu/models/replay"
-=======
-import humanize from 'humanize-string'
-import React, { FunctionComponent, useContext } from "react"
-import Router from "next/router"
-import styled from "styled-components"
-import titleize from 'titleize'
-
-import { Box } from "rebass"
-import { createModel } from "gamejitsu/api"
-import { DeserializedReplay } from "gamejitsu/models/replay"
->>>>>>> Stashed changes
 import { Form, FormGroup, InputGroup } from "gamejitsu/components"
 import { HeroImage } from "gamejitsu/components"
 import { Layout } from "gamejitsu/components"
 import { object, string } from "yup"
-<<<<<<< Updated upstream
 import { SkillLevel } from "gamejitsu/api/types/skill-level"
 import { Slider } from "@blueprintjs/core"
 import { UserContext } from "gamejitsu/contexts"
 import CheckoutResource from "gamejitsu/api/resources/checkout"
 import ReviewRequestResource from "gamejitsu/api/resources/review-request"
-=======
-import { SkillLevel } from "gamejitsu/models"
-import { SkillLevel as SkillLevelSchema } from "gamejitsu/schemas/skillLevel"
-import { Slider } from "@blueprintjs/core"
-import { UserContext } from "gamejitsu/contexts"
->>>>>>> Stashed changes
 
 const redirectToCheckout = async () => {
   const stripe = Stripe("pk_test_gO4hZHVOjk7E3GjH0etoiBAO00c0qpfX0m")
@@ -50,7 +31,8 @@ interface Props {
 
 const initialValues = {
   skillLevel: "medium",
-  replay: null
+  replay: null,
+  comment: ""
 }
 
 type Values = typeof initialValues
@@ -80,81 +62,32 @@ const price: any = {
   3: "10$"
 }
 
-const initialValues = {
-  skillLevel: "medium",
-  replay: null
-}
-
-type Values = typeof initialValues
-
-const skillLevels = SkillLevelSchema.types.map((t) => t.value)
-
-const isSkillLevelValid = (value: string): value is SkillLevel => (skillLevels as string[]).includes(value)
-
-const schema = object({
-  skillLevel: string().required()
-})
-
-const getUser = () => {
-  const user = useContext(UserContext)
-  if (user) return user
-  else throw new Error("user null")
-}
-
-const LabelContent = styled.span`
-  white-space: nowrap;
-`
-
-const price: any = {
-  0: "4$",
-  1: "5$",
-  2: "7$",
-  3: "10$"
-}
-
 const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
   const user = getUser()
 
   const onSubmitReviewRequest = async (values: Values): Promise<void> => {
-<<<<<<< Updated upstream
-    const { skillLevel } = values
-=======
-    const {
-      skillLevel
-    } = values
->>>>>>> Stashed changes
+    const { skillLevel, comment } = values
     if (!isSkillLevelValid(skillLevel)) {
       throw new Error(`Invalid skill level value in coach signup: ${skillLevel}`)
     }
     if (replay === undefined) {
       throw new Error(`Invalid replay`)
     }
-<<<<<<< Updated upstream
     await createModel(ReviewRequestResource, {
       replayId: replay.id,
-=======
-    await createModel("review-request", {
-      replay: replay.id,
->>>>>>> Stashed changes
-      skillLevel
+      skillLevel,
+      comment
     })
     Router.push("/coach-dashboard")
   }
 
   const renderLabel = (val: number) => {
-<<<<<<< Updated upstream
     return <LabelContent>{titleize(humanize(skillLevels[val]))}</LabelContent>
-=======
-    return <LabelContent>
-      {titleize(humanize(skillLevels[val]))}
-    </LabelContent>
->>>>>>> Stashed changes
   }
 
   return (
     <Layout title="Dashboard">
       <Box width="700px" mx="auto" p={3}>
-<<<<<<< Updated upstream
         <Form
           title="Request review"
           initialValues={initialValues}
@@ -162,9 +95,6 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
           onSubmit={onSubmitReviewRequest}
           buttonText="Test"
         >
-=======
-        <Form title="Request review" initialValues={initialValues} schema={schema} onSubmit={onSubmitReviewRequest} buttonText="Test">
->>>>>>> Stashed changes
           {(formik) => (
             <div>
               {user.username}
@@ -189,13 +119,9 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
                     max={3}
                     stepSize={1}
                     labelStepSize={1}
-<<<<<<< Updated upstream
                     onChange={(value: number) =>
                       formik.setFieldValue("skillLevel", skillLevels[value])
                     }
-=======
-                    onChange={(value: number) => formik.setFieldValue("skillLevel", skillLevels[value])}
->>>>>>> Stashed changes
                     labelRenderer={renderLabel}
                     showTrackFill={true}
                     value={skillLevels.indexOf(formik.values.skillLevel as SkillLevel)}
@@ -204,7 +130,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
                   />
                 </Box>
               </FormGroup>
-              <FormGroup label="Comments" labelFor="text-input">
+              <FormGroup label="Comment" labelFor="text-input">
                 <InputGroup id="text-input" />
               </FormGroup>
               <FormGroup label="Price" labelFor="text-input">

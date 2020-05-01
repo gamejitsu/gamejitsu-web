@@ -2,30 +2,17 @@ import humanize from 'humanize-string'
 import React, { FunctionComponent, useContext } from "react"
 import styled from "styled-components"
 import titleize from 'titleize'
-<<<<<<< Updated upstream
 import CoachResource from "gamejitsu/api/resources/coach"
 import Router from 'next/router'
 
 import { Box } from "rebass"
 import { createModel } from "gamejitsu/api"
-=======
 
-import { Box } from "rebass"
-import { createModel } from "gamejitsu/api"
-import { Form, FormGroup, InputGroup } from "gamejitsu/components"
->>>>>>> Stashed changes
 import { object, string } from "yup"
-import { SkillLevel } from "gamejitsu/models"
-import { SkillLevel as SkillLevelSchema } from "gamejitsu/schemas/skillLevel"
 import { Slider } from "@blueprintjs/core"
 import { UserContext } from "gamejitsu/contexts"
-<<<<<<< Updated upstream
 import { Form, FormGroup, InputGroup } from "gamejitsu/components"
-import { Slider } from "@blueprintjs/core"
 import { SkillLevel } from "gamejitsu/api/types/skill-level"
-=======
-import Router from 'next/router'
->>>>>>> Stashed changes
 
 const initialValues = {
   firstName: "",
@@ -37,11 +24,7 @@ const initialValues = {
 
 type Values = typeof initialValues
 
-<<<<<<< Updated upstream
 const skillLevels = SkillLevel.types.map((t) => t.value)
-=======
-const skillLevels = SkillLevelSchema.types.map((t) => t.value)
->>>>>>> Stashed changes
 
 const isSkillLevelValid = (value: string): value is SkillLevel => (skillLevels as string[]).includes(value)
 
@@ -56,11 +39,7 @@ const onSubmitCoach = async (values: Values): Promise<void> => {
   if (!isSkillLevelValid(skillLevel)) {
     throw new Error(`Invalid skill level value in coach signup: ${skillLevel}`)
   }
-<<<<<<< Updated upstream
   await createModel(CoachResource, {
-=======
-  await createModel("coach", {
->>>>>>> Stashed changes
     email,
     firstName,
     lastName,

@@ -23,7 +23,8 @@
   },
   "review-request": {
     "attributes": {
-      "skillLevel": { "type": "skill-level" }
+      "skillLevel": { "type": "skill-level" },
+      "comment": { "type": "string"}
     },
     "relationships": {
       "replay": { "cardinality": "one", "type": "replay" }

@@ -1,21 +1,15 @@
 import React, { useState, useEffect, FunctionComponent } from "react"
+import ReplayResource from "gamejitsu/api/resources/replay"
+import UserResource, { User } from "gamejitsu/api/resources/user"
+import ReviewRequestResource, { ReviewRequest } from "gamejitsu/api/resources/review-request"
 
-<<<<<<< Updated upstream
 import { DecoratedReplay, decorateReplays } from "gamejitsu/models/replay"
 import { Layout, Spinner, Card } from "gamejitsu/components"
 import { listModels, findModel } from "gamejitsu/api"
-=======
-import { DeserializedReplay, deserializeReplays } from "gamejitsu/models/replay"
-import { Layout, Spinner, Title, Card } from "gamejitsu/components"
-import { listModels, findModel, deserializeResponse } from "gamejitsu/api"
->>>>>>> Stashed changes
 import { NextPageContext, NextPage } from "next"
 import { parseCookies } from "nookies"
 import { ReviewRequestCard, ReplayCard } from "."
 import { Socket } from "phoenix"
-import ReplayResource from "gamejitsu/api/resources/replay"
-import UserResource, { User } from "gamejitsu/api/resources/user"
-import ReviewRequestResource, { ReviewRequest } from "gamejitsu/api/resources/review-request"
 import { UserContext } from "gamejitsu/contexts"
 import { Box } from "rebass"
 
