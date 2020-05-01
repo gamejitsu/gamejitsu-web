@@ -12,8 +12,7 @@ const Content = styled.a`
   color: ${(props) => props.theme.linkColor};
   cursor: pointer;
   &:hover {
-    <<<<<<<updatedupstreamtext-decoration: none;
-    =======text-decoration: none >>>>>>> Stashed changes;
+    text-decoration: none;
   }
 `
 
