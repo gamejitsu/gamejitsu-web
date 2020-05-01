@@ -81,7 +81,7 @@ const Button: FunctionComponent<Props> = ({ text, href, type = "button", ...prop
       <LinkContent {...props}>{text}</LinkContent>
     </Link>
   ) : (
-    <ButtonContent {...props}>{text}</ButtonContent>
+    <ButtonContent type={type} {...props}>{text}</ButtonContent>
   )
 
 export default Button

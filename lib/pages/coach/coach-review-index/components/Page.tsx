@@ -21,7 +21,11 @@ const CoachReviewIndex: NextPage<Props> = ({ reviews }) => {
       {reviews.map((review) => {
         return <CoachReviewCard key={review.id} review={review} />
       })}
+<<<<<<< Updated upstream
       <Title text="Completed Reviews" />
+=======
+      <Title text="Completed Reviews"/>
+>>>>>>> Stashed changes
     </Layout>
   )
 }

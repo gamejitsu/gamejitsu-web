@@ -17,23 +17,18 @@ const Label = styled.div`
   color: ${(props) => props.theme.linkColor};
 `
 
-const FormGroup: FunctionComponent<Props> = ({ children, label, labelInfo, labelFor }) => (
+const FormGroup: FunctionComponent<Props> = ({ children, label, labelInfo, labelFor }) =>
   <Box mb={4}>
-    <BPFormGroup
-      inline
-      label={
-        <Label>
-          {label}
-          <Box>
-            <span className={Classes.TEXT_MUTED}>{labelInfo}</span>
-          </Box>
-        </Label>
-      }
-      labelFor={labelFor}
-    >
+    <BPFormGroup inline label={<Label>
+      {label}
+      <Box>
+      <span className={Classes.TEXT_MUTED}>
+        {labelInfo}
+      </span>
+      </Box>
+    </Label>} labelFor={labelFor}>
       {children}
     </BPFormGroup>
   </Box>
-)
 
 export default FormGroup

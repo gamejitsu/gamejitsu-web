@@ -13,6 +13,10 @@ const Content = styled.h1`
   color: ${(props) => props.theme.linkColor};
 `
 
-const Title: FunctionComponent<Props> = ({ text }) => <Content>{text}</Content>
+const Title: FunctionComponent<Props> = ({ text }) =>
+  <Content>
+    {text}
+  </Content>
+
 
 export default Title

@@ -1,8 +1,14 @@
 import React, { useState, useEffect, FunctionComponent } from "react"
 
+<<<<<<< Updated upstream
 import { DecoratedReplay, decorateReplays } from "gamejitsu/models/replay"
-import { Layout, Spinner, Title, Card } from "gamejitsu/components"
+import { Layout, Spinner, Card } from "gamejitsu/components"
 import { listModels, findModel } from "gamejitsu/api"
+=======
+import { DeserializedReplay, deserializeReplays } from "gamejitsu/models/replay"
+import { Layout, Spinner, Title, Card } from "gamejitsu/components"
+import { listModels, findModel, deserializeResponse } from "gamejitsu/api"
+>>>>>>> Stashed changes
 import { NextPageContext, NextPage } from "next"
 import { parseCookies } from "nookies"
 import { ReviewRequestCard, ReplayCard } from "."
@@ -43,8 +49,8 @@ const Dashboard: FunctionComponent<Props> = (props) => {
     const currentSocket = socket
       ? socket
       : new Socket(process.env.SOCKET_ENDPOINT + "/socket", {
-          params: { token: authToken }
-        })
+        params: { token: authToken }
+      })
     setSocket(currentSocket)
     currentSocket.connect()
     const channel = currentSocket.channel("users:" + user.id)

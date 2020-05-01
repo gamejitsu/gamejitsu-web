@@ -8,7 +8,11 @@ import { UserContext } from "../contexts"
 import { Button, ImageButton } from "."
 import { useContext, FunctionComponent } from "react"
 import { transparentize } from "polished"
+<<<<<<< Updated upstream
 import { useRouter } from "next/router"
+=======
+import { useRouter } from 'next/router'
+>>>>>>> Stashed changes
 
 const urlBase = "https://steamcommunity.com/openid/login"
 
@@ -30,16 +34,28 @@ const NavLinkContent = styled(Link)<NavLinkContentProps>`
 
   &::before {
     background-color: ${(props) => transparentize(0.5, props.theme.textColor)};
+<<<<<<< Updated upstream
     content: "";
     height: 5px;
     margin-top: 3px;
     left: 0;
     opacity: ${(props) => (props.isActive ? "1" : "0")};
+=======
+    content: '';
+    height: 5px;
+    margin-top: 3px;  
+    left: 0;
+    opacity: ${(props) => (props.isActive ? "1" : "0" )};
+>>>>>>> Stashed changes
     pointer-events: none;
     position: absolute;
     right: 0;
     top: 100%;
+<<<<<<< Updated upstream
     transition: opacity 0.2s;
+=======
+    transition: opacity .2s;
+>>>>>>> Stashed changes
     width: 100%;
   }
 
@@ -48,6 +64,7 @@ const NavLinkContent = styled(Link)<NavLinkContentProps>`
   }
 `
 
+<<<<<<< Updated upstream
 const NavLink: FunctionComponent<NavLinkProps> = ({ children, href }) => {
   const router = useRouter()
   const isActive = router && router.pathname === href
@@ -58,6 +75,14 @@ const NavLink: FunctionComponent<NavLinkProps> = ({ children, href }) => {
       </NavLinkContent>
     </Box>
   )
+=======
+const NavLink: FunctionComponent<NavLinkProps> = ({ children, href}) => {
+  const router = useRouter()
+  const isActive = router.pathname === href 
+  return <Box m={2}>
+    <NavLinkContent isActive={isActive} href={href}>{children}</NavLinkContent>
+  </Box>
+>>>>>>> Stashed changes
 }
 
 const Container = styled(Flex)`
@@ -111,7 +136,11 @@ const Navbar: FunctionComponent = () => {
           <NavLink href="/coach-reviews">Coach Reviews</NavLink>
           <NavLink href="/coach-signup">Coach SignUp</NavLink>
           <NavLink href="/coach-dashboard">Coach Dashboard</NavLink>
+<<<<<<< Updated upstream
         </Flex>
+=======
+        </Flex >
+>>>>>>> Stashed changes
       </Box>
       {user ? (
         [
@@ -121,10 +150,17 @@ const Navbar: FunctionComponent = () => {
           <Button key="logout" text="Logout" onClick={logout} />
         ]
       ) : (
+<<<<<<< Updated upstream
         <Box width="150px">
           <ImageButton onClick={login} imageSrc={steamImageSrc} />
         </Box>
       )}
+=======
+          <Box width="150px">
+            <ImageButton onClick={login} imageSrc={steamImageSrc} />
+          </Box>
+        )}
+>>>>>>> Stashed changes
     </Container>
   )
 }
