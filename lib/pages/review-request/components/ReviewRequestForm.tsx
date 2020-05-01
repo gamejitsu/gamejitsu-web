@@ -39,7 +39,8 @@ type Values = typeof initialValues
 
 const skillLevels = SkillLevel.types.map((t) => t.value)
 
-const isSkillLevelValid = (value: string): value is SkillLevel => (skillLevels as string[]).includes(value)
+const isSkillLevelValid = (value: string): value is SkillLevel =>
+  (skillLevels as string[]).includes(value)
 
 const schema = object({
   skillLevel: string().required()

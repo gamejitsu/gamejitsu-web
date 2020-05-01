@@ -31,46 +31,47 @@ const FormCard = styled(Card)`
   padding: 0;
 `
 
-type FormComponent = <T>(props: Props<T>) =>
-  React.ReactElement
+type FormComponent = <T>(props: Props<T>) => React.ReactElement
 
-const Form: FormComponent = ({ children, initialValues, title, schema, onSubmit, buttonText = "Submit" }) => {
-
+const Form: FormComponent = ({
+  children,
+  initialValues,
+  title,
+  schema,
+  onSubmit,
+  buttonText = "Submit"
+}) => {
   const formik = useFormik({
     initialValues,
-    onSubmit:
-      async (
-        values,
-        { setSubmitting }
-      ) => {
-        setSubmitting(true)
-        console.log("values: ", values)
-        await onSubmit(values)
-        setSubmitting(false)
-      },
+    onSubmit: async (values, { setSubmitting }) => {
+      setSubmitting(true)
+      console.log("values: ", values)
+      await onSubmit(values)
+      setSubmitting(false)
+    }
   })
 
-  return <FormCard elevation={Elevation.THREE}>
-    <Flex alignItems="center">
-      <Header px={3} py={25} flex={1}>
-        <Title text={title} />
-      </Header>
-    </Flex>
-    <Divider />
-    <Box px={4} pt={4}>
-      <form onSubmit={formik.handleSubmit}>
-        {children(formik)}
-      </form>
-    </Box>
-    <Box>
-      <Divider />
-    </Box>
-    <Box py={3} px={3}>
-      <Flex justifyContent="flex-end">
-        <Button onClick={formik.handleSubmit} text={buttonText} />
+  return (
+    <FormCard elevation={Elevation.THREE}>
+      <Flex alignItems="center">
+        <Header px={3} py={25} flex={1}>
+          <Title text={title} />
+        </Header>
       </Flex>
-    </Box>
-  </FormCard>
+      <Divider />
+      <Box px={4} pt={4}>
+        <form onSubmit={formik.handleSubmit}>{children(formik)}</form>
+      </Box>
+      <Box>
+        <Divider />
+      </Box>
+      <Box py={3} px={3}>
+        <Flex justifyContent="flex-end">
+          <Button onClick={formik.handleSubmit} text={buttonText} />
+        </Flex>
+      </Box>
+    </FormCard>
+  )
 }
 
 export default Form

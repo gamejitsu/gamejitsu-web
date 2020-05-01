@@ -23,16 +23,15 @@ const Link = styled.a(styles)
 const Image = styled.img`
   width: 100%;
 `
-const ImageButton: FunctionComponent<Props> = ({ onClick, imageSrc, type = "button", href = "" }) => (
+const ImageButton: FunctionComponent<Props> = ({ onClick, imageSrc, type = "button", href = "" }) =>
   href != "" ? (
     <Link href={href}>
       <Image src={imageSrc} />
     </Link>
   ) : (
-      <Button onClick={onClick} type={type}>
-        <Image src={imageSrc} />
-      </Button>
-    )
-)
+    <Button onClick={onClick} type={type}>
+      <Image src={imageSrc} />
+    </Button>
+  )
 
 export default ImageButton

@@ -6,13 +6,8 @@ import { findModel, updateModel } from "gamejitsu/api"
 import { Flex, Box, Text } from "rebass"
 import { Layout, Card, Button } from "gamejitsu/components"
 import { NextPageContext, NextPage } from "next"
-<<<<<<< Updated upstream
 import ReviewResource, { Review } from "gamejitsu/api/resources/review"
 import { Position, Toaster, Intent } from "@blueprintjs/core"
-=======
-import { Review } from "gamejitsu/models"
-import { Position, Toaster, Intent } from "@blueprintjs/core";
->>>>>>> Stashed changes
 
 interface Props {
   review: Review
@@ -81,7 +76,6 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   const onSaveReview = async () => {
     const AppToaster = Toaster.create({
       className: "recipe-toaster",
-<<<<<<< Updated upstream
       position: Position.TOP
     })
     try {
@@ -89,14 +83,6 @@ const CoachReviewPage: NextPage<Props> = (props) => {
       AppToaster.show({
         intent: Intent.SUCCESS,
         icon: "tick",
-=======
-      position: Position.TOP,
-    })
-    try {
-      const { data: serverReview } = await updateModel(review)
-      AppToaster.show({
-        intent: Intent.SUCCESS, icon: "tick",
->>>>>>> Stashed changes
         message: "Review saved!"
       })
       setReview(serverReview)
@@ -105,12 +91,8 @@ const CoachReviewPage: NextPage<Props> = (props) => {
       }
     } catch (error) {
       AppToaster.show({
-<<<<<<< Updated upstream
         intent: Intent.DANGER,
         icon: "warning-sign",
-=======
-        intent: Intent.DANGER, icon: "warning-sign",
->>>>>>> Stashed changes
         message: "Error saving review. \
         Please try later or contact our support."
       })
