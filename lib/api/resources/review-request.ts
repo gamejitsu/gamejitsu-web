@@ -5,7 +5,7 @@ import { Model } from "gamejitsu/interfaces"
 
 export interface ReviewRequest extends Model {
   skillLevel: SkillLevel
-  comment: string
+  comment: string | null
   replayId: string
 }
 
@@ -14,7 +14,7 @@ export const decoder = t.type({
   type: t.literal("review-request"),
   attributes: t.type({
     "skill-level": SkillLevel,
-    comment: t.string
+    comment: t.union([t.string, t.null])
   }),
   relationships: t.type({
     replay: t.type({
