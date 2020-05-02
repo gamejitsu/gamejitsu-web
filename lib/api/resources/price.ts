@@ -3,34 +3,28 @@ import { SkillLevel, encoder as skillLevelEncoder } from "gamejitsu/api/types/sk
 import { buildResource, extractValue } from "../resource"
 import { Model } from "gamejitsu/interfaces"
 
-export interface Checkout extends Model {
+export interface Price extends Model {
   skillLevel: SkillLevel
-  comment: string
-  replayId: string
-  redirectUrl: string
+  amount: number
 }
 
 export const decoder = t.type({
   id: t.string,
-  type: t.literal("checkout"),
+  type: t.literal("price"),
   attributes: t.type({
     "skill-level": SkillLevel,
-    comment: t.string,
-    "replay-id": t.string,
-    "redirect-url": t.string
+    amount: t.number
   })
 })
 
-export const transformer = (value: t.TypeOf<typeof decoder>): Checkout => ({
+export const transformer = (value: t.TypeOf<typeof decoder>): Price => ({
   id: value.id,
   skillLevel: value.attributes["skill-level"],
-  comment: value.attributes["comment"],
-  replayId: value.attributes["replay-id"],
-  redirectUrl: value.attributes["redirect-url"]
+  amount: value.attributes["amount"]
 })
 
 export default buildResource({
-  name: "checkout",
+  name: "price",
   decode: {
     data: (value: unknown) => extractValue(decoder.decode(value)),
     response: (value: unknown) => extractValue(t.strict({}).decode(value))
@@ -40,12 +34,10 @@ export default buildResource({
     response: (value) => value
   },
   encode: (value) => ({
-    type: "checkout",
+    type: "price",
     attributes: {
       "skill-level": skillLevelEncoder(value.skillLevel),
-      comment: value.comment,
-      "replay-id": value.replayId,
-      "redirect-url": value.redirectUrl
+      amount: value.amount
     },
     relationships: {}
   })

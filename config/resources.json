@@ -1,6 +1,11 @@
 {
   "checkout": {
-    "attributes": {},
+    "attributes": {
+      "skillLevel": { "type": "skill-level"},
+      "comment": {"type": "string"},
+      "replayId": {"type": "string"},
+      "redirectUrl": {"type": "string"}
+    },
     "relationships": {}
   },
   "coach": {
@@ -10,6 +15,13 @@
       "lastName": { "type": "string" },
       "photoUrl": { "type": "string" },
       "skillLevel": { "type": "skill-level" }
+    },
+    "relationships": {}
+  },
+  "price": {
+    "attributes": {
+      "skillLevel": { "type": "skill-level"},
+      "amount": {"type": "number"}
     },
     "relationships": {}
   },
