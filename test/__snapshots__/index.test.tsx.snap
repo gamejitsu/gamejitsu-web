@@ -891,94 +891,93 @@ exports[`Index page should match snapshot 1`] = `
                   onClick={[Function]}
                   text="Logout"
                 >
-                  <div>
-                    <Button__Content
-                      disabled={false}
+                  <Button__ButtonContent
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    <StyledComponent
+                      forwardedComponent={
+                        Object {
+                          "$$typeof": Symbol(react.forward_ref),
+                          "attrs": Array [],
+                          "componentStyle": ComponentStyle {
+                            "componentId": "Button__ButtonContent-sc-1qhaj03-0",
+                            "isStatic": false,
+                            "lastClassName": "kakmln",
+                            "rules": Array [
+                              "&.",
+                              "bp3-button",
+                              "{",
+                              "display:inline-flex;border-radius:",
+                              [Function],
+                              ";box-shadow:inset 0px -3px 0px 0px ",
+                              [Function],
+                              ";color:",
+                              [Function],
+                              ";transition:all 0.05s ease-in-out;background:linear-gradient( to bottom,",
+                              [Function],
+                              ",",
+                              [Function],
+                              " );padding:12px 30px 14px 30px;font-size:15px;font-weight:bold;&:hover{background-image:linear-gradient( to bottom,",
+                              [Function],
+                              ",",
+                              [Function],
+                              " );box-shadow:inset 0px -3px 0px 0px ",
+                              [Function],
+                              ";}&:active{background-image:linear-gradient( to bottom,",
+                              [Function],
+                              ",",
+                              [Function],
+                              " );box-shadow:inset 0px 3px 0px 0px ",
+                              [Function],
+                              ";padding-bottom:12px;margin-top:2px;}",
+                              " border:0;outline:none;font-family:",
+                              [Function],
+                              ";&:active{outline:none;}}",
+                            ],
+                          },
+                          "displayName": "Button__ButtonContent",
+                          "foldedComponentIds": Array [],
+                          "render": [Function],
+                          "styledComponentId": "Button__ButtonContent-sc-1qhaj03-0",
+                          "target": [Function],
+                          "toString": [Function],
+                          "warnTooManyClasses": [Function],
+                          "withComponent": [Function],
+                        }
+                      }
+                      forwardedRef={null}
                       onClick={[Function]}
                       type="button"
                     >
-                      <StyledComponent
-                        disabled={false}
-                        forwardedComponent={
-                          Object {
-                            "$$typeof": Symbol(react.forward_ref),
-                            "attrs": Array [],
-                            "componentStyle": ComponentStyle {
-                              "componentId": "Button__Content-sc-1qhaj03-0",
-                              "isStatic": false,
-                              "lastClassName": "mgUsw",
-                              "rules": Array [
-                                "&.",
-                                [Function],
-                                "{border-radius:",
-                                [Function],
-                                ";border:0;box-shadow:inset 0px -3px 0px 0px ",
-                                [Function],
-                                ";background:linear-gradient( to bottom,",
-                                [Function],
-                                ",",
-                                [Function],
-                                " );padding:12px 30px 14px 30px;font-family:",
-                                [Function],
-                                ";font-size:15px;outline:none;cursor:pointer;font-weight:bold;&:hover{background-image:linear-gradient( to bottom,",
-                                [Function],
-                                ",",
-                                [Function],
-                                " );box-shadow:inset 0px -3px 0px 0px ",
-                                [Function],
-                                ";}&:active{background-image:linear-gradient( to bottom,",
-                                [Function],
-                                ",",
-                                [Function],
-                                " );outline:none;box-shadow:inset 0px 3px 0px 0px ",
-                                [Function],
-                                ";padding-bottom:12px;margin-top:2px;}}",
-                              ],
-                            },
-                            "displayName": "Button__Content",
-                            "foldedComponentIds": Array [],
-                            "render": [Function],
-                            "styledComponentId": "Button__Content-sc-1qhaj03-0",
-                            "target": [Function],
-                            "toString": [Function],
-                            "warnTooManyClasses": [Function],
-                            "withComponent": [Function],
-                          }
-                        }
-                        forwardedRef={null}
+                      <Blueprint3.Button
+                        className="Button__ButtonContent-sc-1qhaj03-0 kakmln"
                         onClick={[Function]}
                         type="button"
                       >
-                        <Blueprint3.Button
-                          className="Button__Content-sc-1qhaj03-0 mgUsw"
-                          disabled={false}
+                        <button
+                          className="bp3-button Button__ButtonContent-sc-1qhaj03-0 kakmln"
                           onClick={[Function]}
+                          onKeyDown={[Function]}
+                          onKeyUp={[Function]}
                           type="button"
                         >
-                          <button
-                            className="bp3-button Button__Content-sc-1qhaj03-0 mgUsw"
-                            onClick={[Function]}
-                            onKeyDown={[Function]}
-                            onKeyUp={[Function]}
-                            type="button"
+                          <Blueprint3.Icon
+                            key="leftIcon"
+                          />
+                          <span
+                            className="bp3-button-text"
+                            key="text"
                           >
-                            <Blueprint3.Icon
-                              key="leftIcon"
-                            />
-                            <span
-                              className="bp3-button-text"
-                              key="text"
-                            >
-                              Logout
-                            </span>
-                            <Blueprint3.Icon
-                              key="rightIcon"
-                            />
-                          </button>
-                        </Blueprint3.Button>
-                      </StyledComponent>
-                    </Button__Content>
-                  </div>
+                            Logout
+                          </span>
+                          <Blueprint3.Icon
+                            key="rightIcon"
+                          />
+                        </button>
+                      </Blueprint3.Button>
+                    </StyledComponent>
+                  </Button__ButtonContent>
                 </Button>
               </div>
             </Styled(div)>
