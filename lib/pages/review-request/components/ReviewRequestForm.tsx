@@ -17,11 +17,16 @@ import { SkillLevel } from "gamejitsu/api/types/skill-level"
 import { Slider } from "@blueprintjs/core"
 import { UserContext } from "gamejitsu/contexts"
 
-const redirectToCheckout = async ({comment, skillLevel, replayId}: Partial<Checkout>) => {
+const redirectToCheckout = async ({ comment, skillLevel, replayId }: Partial<Checkout>) => {
   const stripe = Stripe("pk_test_gO4hZHVOjk7E3GjH0etoiBAO00c0qpfX0m")
   const {
     data: { id }
-  } = await createModel(CheckoutResource, {comment, skillLevel, replayId, redirectUrl: window.location.origin})
+  } = await createModel(CheckoutResource, {
+    comment,
+    skillLevel,
+    replayId,
+    redirectUrl: window.location.origin
+  })
   return await stripe.redirectToCheckout({ sessionId: id })
 }
 
@@ -32,7 +37,7 @@ interface Props {
 const initialValues = {
   skillLevel: "medium",
   replay: null,
-  comment: "",
+  comment: ""
 }
 
 type Values = typeof initialValues
@@ -79,7 +84,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
       skillLevel,
       comment
     })*/
-    redirectToCheckout({comment, skillLevel, replayId: replay.id})
+    redirectToCheckout({ comment, skillLevel, replayId: replay.id })
     //Router.push("/coach-dashboard")
   }
 

@@ -5,13 +5,14 @@ import { listModels } from "gamejitsu/api"
 import { NextPage } from "next"
 import { Layout, Title } from "gamejitsu/components"
 
-interface Props {
-}
+interface Props {}
 
-const Page: NextPage<Props> = () => <Layout title="Review Request Checkout">
-  <Title text="Checkout"/>
+const Page: NextPage<Props> = () => (
+  <Layout title="Review Request Checkout">
+    <Title text="Checkout" />
     Thanks for the payment
-</Layout>
+  </Layout>
+)
 
 Page.getInitialProps = async (ctx) => {
   const { data } = await listModels(ReviewRequest, ctx)
