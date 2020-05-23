@@ -2,11 +2,13 @@
   "checkout": {
     "attributes": {
       "skillLevel": { "type": "skill-level"},
-      "comment": {"type": "string"},
-      "replayId": {"type": "string"},
-      "redirectUrl": {"type": "string"}
+      "comment": {"type": "string", "optional": true},
+      "redirectUrl": {"type": "string", "optional":true},
+      "stripeId": {"type": "string"}
     },
-    "relationships": {}
+    "relationships": {
+      "replay": { "cardinality": "one", "type": "replay" }
+    }
   },
   "coach": {
     "attributes": {

@@ -20,14 +20,14 @@ import { UserContext } from "gamejitsu/contexts"
 const redirectToCheckout = async ({ comment, skillLevel, replayId }: Partial<Checkout>) => {
   const stripe = Stripe("pk_test_gO4hZHVOjk7E3GjH0etoiBAO00c0qpfX0m")
   const {
-    data: { id }
+    data: { stripeId }
   } = await createModel(CheckoutResource, {
     comment,
     skillLevel,
     replayId,
     redirectUrl: window.location.origin
   })
-  return await stripe.redirectToCheckout({ sessionId: id })
+  return await stripe.redirectToCheckout({ sessionId: stripeId })
 }
 
 interface Props {
@@ -79,12 +79,13 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
     if (replay === undefined) {
       throw new Error(`Invalid replay`)
     }
+
+    redirectToCheckout({ comment, skillLevel, replayId: replay.id })
     /*await createModel(ReviewRequestResource, {
       replayId: replay.id,
       skillLevel,
       comment
     })*/
-    redirectToCheckout({ comment, skillLevel, replayId: replay.id })
     //Router.push("/coach-dashboard")
   }
 
@@ -138,7 +139,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
                 </Box>
               </FormGroup>
               <FormGroup label="Comment" labelFor="text-input">
-                <InputGroup id="text-input" />
+                <InputGroup onChange={formik.handleChange("comment")} id="text-input" />
               </FormGroup>
               <FormGroup label="Price" labelFor="text-input">
                 {price[skillLevels.indexOf(formik.values.skillLevel as SkillLevel)]}

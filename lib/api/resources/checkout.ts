@@ -5,9 +5,10 @@ import { Model } from "gamejitsu/interfaces"
 
 export interface Checkout extends Model {
   skillLevel: SkillLevel
-  comment: string
+  comment: string | null
+  redirectUrl: string | null
+  stripeId: string
   replayId: string
-  redirectUrl: string
 }
 
 export const decoder = t.type({
@@ -15,9 +16,17 @@ export const decoder = t.type({
   type: t.literal("checkout"),
   attributes: t.type({
     "skill-level": SkillLevel,
-    comment: t.string,
-    "replay-id": t.string,
-    "redirect-url": t.string
+    comment: t.union([t.string, t.null]),
+    "redirect-url": t.union([t.string, t.null]),
+    "stripe-id": t.string
+  }),
+  relationships: t.type({
+    replay: t.type({
+      data: t.type({
+        type: t.literal("replay"),
+        id: t.string
+      })
+    })
   })
 })
 
@@ -25,8 +34,9 @@ export const transformer = (value: t.TypeOf<typeof decoder>): Checkout => ({
   id: value.id,
   skillLevel: value.attributes["skill-level"],
   comment: value.attributes["comment"],
-  replayId: value.attributes["replay-id"],
-  redirectUrl: value.attributes["redirect-url"]
+  redirectUrl: value.attributes["redirect-url"],
+  stripeId: value.attributes["stripe-id"],
+  replayId: value.relationships["replay"].data.id
 })
 
 export default buildResource({
@@ -44,9 +54,16 @@ export default buildResource({
     attributes: {
       "skill-level": skillLevelEncoder(value.skillLevel),
       comment: value.comment,
-      "replay-id": value.replayId,
-      "redirect-url": value.redirectUrl
+      "redirect-url": value.redirectUrl,
+      "stripe-id": value.stripeId
     },
-    relationships: {}
+    relationships: {
+      replay: {
+        data: {
+          id: value.replayId,
+          type: "replay"
+        }
+      }
+    }
   })
 })
