@@ -1,4 +1,5 @@
 import Button from "./Button"
+import ButtonNew from "./ButtonNew"
 import Card from "./Card"
 import Form from "./Form"
 import FormGroup from "./FormGroup"
@@ -15,6 +16,7 @@ import Title from "./Title"
 
 export {
   Button,
+  ButtonNew,
   Card,
   Form,
   FormGroup,

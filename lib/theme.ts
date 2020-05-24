@@ -10,8 +10,8 @@ const theme: DefaultTheme = {
   primaryColor: "#08ff07",
   secondaryColor: "#ac9fbf",
   textColor: "#bdbdc5",
-  textFont: "'Exo 2',sans-serif",
-  borderRadius: "4px"
+  textFont: "'Montserrat',sans-serif",
+  borderRadius: "50px"
 }
 
 export default theme

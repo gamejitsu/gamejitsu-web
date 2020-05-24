@@ -14,7 +14,7 @@ exports[`Index page should match snapshot 1`] = `
       "primaryColor": "#08ff07",
       "secondaryColor": "#ac9fbf",
       "textColor": "#bdbdc5",
-      "textFont": "'Exo 2',sans-serif",
+      "textFont": "'Montserrat',sans-serif",
     }
   }
 >

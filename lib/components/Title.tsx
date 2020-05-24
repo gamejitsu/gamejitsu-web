@@ -7,10 +7,11 @@ interface Props {
 }
 
 const Content = styled.h1`
-  font-family: "Exo 2";
-  font-weight: bold;
+  font-family: "Japanese 3017";
+  font-weight: normal;
+  letter-spacing: 3px;
   font-size: 22px;
-  color: ${(props) => props.theme.linkColor};
+  color: ${(props) => props.theme.primaryColor};
 `
 
 const Title: FunctionComponent<Props> = ({ text }) => <Content>{text}</Content>

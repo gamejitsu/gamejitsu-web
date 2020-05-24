@@ -5,7 +5,7 @@ import Link from "./Link"
 import { Box, Flex } from "rebass"
 import { destroyCookie } from "nookies"
 import { UserContext } from "../contexts"
-import { Button, ImageButton } from "."
+import { Button, ButtonNew, ImageButton } from "."
 import { useContext, FunctionComponent } from "react"
 import { transparentize } from "polished"
 import { useRouter } from "next/router"
@@ -27,6 +27,8 @@ const NavLinkContent = styled(Link)<NavLinkContentProps>`
   font-weight: bold;
   transition: all 0.15s ease-in-out;
   position: relative;
+  font-size: 9px;
+  letter-spacing: 1px;
 
   &::before {
     background-color: ${(props) => transparentize(0.5, props.theme.textColor)};
@@ -61,8 +63,9 @@ const NavLink: FunctionComponent<NavLinkProps> = ({ children, href }) => {
 }
 
 const Container = styled(Flex)`
-  background-color: ${(props) => transparentize(0.1, props.theme.lightBackgroundColor)};
+  background-color: transparent;
   position: fixed;
+  z-index: 2;
   top: 0;
   left: 0;
   right 0;
@@ -106,19 +109,19 @@ const Navbar: FunctionComponent = () => {
               <ImageButton href="/" imageSrc={gamejitsuWritingImageSrc} />
             </Logo>
           </Box>
-          <NavLink href="/dashboard">Dashboard</NavLink>
-          <NavLink href="/reviews">Reviews</NavLink>
-          <NavLink href="/coach-reviews">Coach Reviews</NavLink>
-          <NavLink href="/coach-signup">Coach SignUp</NavLink>
-          <NavLink href="/coach-dashboard">Coach Dashboard</NavLink>
         </Flex>
       </Box>
+      <NavLink href="/dashboard">DASHBOARD</NavLink>
+      <NavLink href="/reviews">REVIEWS</NavLink>
+      <NavLink href="/coach-reviews">COACH REVIEWS</NavLink>
+      <NavLink href="/coach-signup">COACH SIGNUP</NavLink>
+      <NavLink href="/coach-dashboard">COACH DASHBOARD</NavLink>
       {user ? (
         [
           <NavLink key="username" href="/">
             {user.username}
           </NavLink>,
-          <Button key="logout" text="Logout" onClick={logout} />
+          <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
         ]
       ) : (
         <Box width="150px">
