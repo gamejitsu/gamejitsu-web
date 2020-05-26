@@ -1,11 +1,21 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
+import GameContainerSVG from '../../../../svgs/game-container-red.svg'
+import ExternalCircleSVG from '../../../../svgs/steps-external-circle.svg'
+import InternalCircleSVG from '../../../../svgs/steps-circle.svg'
+
 import styled from "styled-components"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import { Navbar } from "gamejitsu/components"
+import { Navbar, ButtonIcon } from "gamejitsu/components"
 import { Flex, Box, Text } from "rebass"
 
 const mainLogo = "/images/gamejitsu-mascotte.svg"
+const dota2Logo = "/images/dota2-logo.png"
+const csgoLogo = "/images/csgo-logo.png"
+const lolLogo = "/images/lol-logo.png"
+const overwatchLogo = "/images/overwatch-logo.png"
+const fortniteLogo = "/images/fortnite-logo.png"
+
 
 const Container = styled(Flex)`
   background-color: transparent;
@@ -27,8 +37,8 @@ const MainTitle = styled.h1`
   color: white;
   font-size: 35px;
   font-weight: bold;
-  margin-top: 13px;
-  margin-bottom: 13px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `
 
 const ParagraphText = styled.p`
@@ -67,33 +77,102 @@ const HeroUnit = styled(Flex)`
 `
 
 const GamesBar = styled(Flex)`
-  background-color: #343030;
+  background-color: ${(props) => props.theme.lightBackgroundColor};
   top: 0;
   left: 0;
   right 0;
+  height: 85px;
 `
 
 const GamesCard = styled(Flex)`
   background-image: url('/images/background-hero-unit.jpg');
   background-size: cover;
+  top: 0;
+  left: 0;
+  right 0;
+  height: 800px;
+  width: 100%;
+  position: relative;
 `
 
-const Image = styled.img`
+const MainFlow = styled(Flex)`
+  top: 0;
+  left: 0;
+  right 0;
+  height: 800px;
+  width: 100%;
+  position: relative;
+`
+
+const MainImage = styled.img`
   width: 510px;
   position: absolute;
   bottom: -65px;
   right: 0px;
 `
 
-const TextCard = styled.div`
-top: 0;
-bottom: 0;
-left: 0;
-right: 0;
-flex-grow: 1;
-height: 600px;
-z-index: 1;
+const GamesBarImage = styled.img`
+  width: 190px;
+  margin-right: 40px;
+  margin-left: 40px;
+  position: absolute;
 `
+
+const TextCard = styled.div`
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  flex-grow: 1;
+  height: 464px;
+  z-index: 1;
+`
+
+const OutsideCircle = styled.div`
+    position: relative;
+    background: transparent;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    padding: 2px;
+    height: 50px;
+    width: 50px;
+    box-sizing: content-box;
+`
+
+const InsideCircle = styled.div`
+    background: #ccc;
+    border-radius: 50%;
+    line-height: 50px;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+`
+
+const NumberCircle = styled.div`
+    background: #ccc;
+    border-radius: 50%;
+    line-height: 50px;
+    width: 50px;
+    vertical-align: middle;
+    text-align: center;
+    margin-bottom: 100px;
+`
+
+const Line = styled.div`
+  background: #ccc;
+  width: 1px;
+  height: 500px;
+  position: absolute;
+  left: 50%;
+  margin-left: -1px;
+`
+
+const IconCircle: FunctionComponent = ({ children }) =>
+  <OutsideCircle>
+    <InsideCircle>
+      {children}
+    </InsideCircle>
+  </OutsideCircle>
 
 const Page: AuthenticatedComponent = () => (
   <div>
@@ -110,14 +189,25 @@ const Page: AuthenticatedComponent = () => (
                 <ParagraphText>who will help you improve your skills</ParagraphText>
               </Box>
             </Flex>
-            <Image src={mainLogo} />
+            <MainImage src={mainLogo} />
           </Box>
         </HeroUnit>
         <Background />
       </HeroUnitParent>
 
-      <GamesBar py={3} px={4} width={1}>
-        test
+      <GamesBar width={1} justifyContent="center" style={{ position: "relative" }}>
+        <Box ml={200} width={1 / 4}>
+          <GamesBarImage style={{ bottom: "-52px" }} src={fortniteLogo} />
+        </Box>
+        <Box width={1 / 4}>
+          <GamesBarImage style={{ bottom: "27px" }} src={overwatchLogo} />
+        </Box>
+        <Box width={1 / 4}>
+          <GamesBarImage style={{ bottom: "-30px" }} src={dota2Logo} />
+        </Box>
+        <Box width={1 / 4}>
+          <GamesBarImage style={{ bottom: "-16px" }} src={lolLogo} />
+        </Box>
       </GamesBar>
 
       <TextCard>
@@ -135,12 +225,77 @@ const Page: AuthenticatedComponent = () => (
         </Box>
       </TextCard>
 
-      <GamesCard width={1} my={2} height="600px">
-        <Box width={1} px={4} py={4}>
-          <SecondaryTitle>Games We Support</SecondaryTitle>
-          <MainTitle>Become a Legend</MainTitle>
+      <GamesCard>
+        <Box width="900px" mx="auto" style={{ position: "relative" }}>
+          <Box mt={5} width="375px">
+            <SecondaryTitle>Games We Support</SecondaryTitle>
+            <MainTitle>Become a Legend</MainTitle>
+          </Box>
+          <Flex justifyContent="center">
+            <Box width={1 / 4} ml={-400} mt={100}>
+              <GameContainerSVG width="480" height="330" />
+            </Box>
+            <Box width={1 / 4} ml="auto" mt={50}>
+              <GameContainerSVG width="480" height="330" />
+            </Box>
+            <Box width={1 / 4} ml="auto" mt={100}>
+              <GameContainerSVG width="480" height="330" />
+            </Box>
+            <Box width={1 / 4} ml="auto" mt={50}>
+              <GameContainerSVG width="480" height="330" />
+            </Box>
+          </Flex>
         </Box>
       </GamesCard>
+
+      <TextCard>
+        <Box width="900px" mx="auto" my={6} style={{ position: "relative" }}>
+          <Flex alignItems="center" justifyContent="center">
+            <Box width="375px">
+              <SecondaryTitle>The Process</SecondaryTitle>
+              <MainTitle>Steps of the user flow of Gamejitsu</MainTitle>
+            </Box>
+            <Box width="600px">
+              <ParagraphText>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</ParagraphText>
+            </Box>
+          </Flex>
+        </Box>
+      </TextCard>
+      <IconCircle>1</IconCircle>
+
+      <MainFlow>
+        <Box width="900px" mx="auto" my={6}>
+          <Flex justifyContent="center">
+            <Box flex="1 1 0">
+              <SecondaryTitle>Step 01</SecondaryTitle>
+              <IconCircle>1</IconCircle>
+              <Box>image</Box>
+              <SecondaryTitle>Step 03</SecondaryTitle>
+              <Box>image</Box>
+              <IconCircle>1</IconCircle>
+            </Box>
+            <Flex>
+              <Box style={{ position: "relative" }}>
+                <Line />
+                <Box style={{ position: "absolute", left: "-25px" }}>
+                  <NumberCircle>1</NumberCircle>
+                  <NumberCircle>2</NumberCircle>
+                  <NumberCircle>3</NumberCircle>
+                  <NumberCircle>4</NumberCircle>
+                </Box>
+              </Box>
+            </Flex>
+            <Box flex="1 1 0" ml={90}>
+              <SecondaryTitle>Step 02</SecondaryTitle>
+              <IconCircle>1</IconCircle>
+              <Box>image</Box>
+              <SecondaryTitle>Step 04</SecondaryTitle>
+              <Box>image</Box>
+              <IconCircle>1</IconCircle>
+            </Box>
+          </Flex>
+        </Box>
+      </MainFlow>
     </Container>
   </div>
 )

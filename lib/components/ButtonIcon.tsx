@@ -3,6 +3,8 @@ import { FunctionComponent } from "react"
 import { lighten, darken } from "polished"
 import Link from "next/link"
 import { Button as BPButton, Classes } from "@blueprintjs/core"
+import { Box } from 'rebass'
+import React from 'react'
 
 interface Props {
   text: string
@@ -10,7 +12,10 @@ interface Props {
   type?: "submit" | "reset" | "button"
   disabled?: boolean
   href?: string
+  icon?: any
 }
+
+import SteamSVG from './steam.svg'
 
 const baseStyles = css`
   display: inline-flex;
@@ -21,7 +26,7 @@ const baseStyles = css`
 
   background: black;
 
-  padding: 10px 25px 10px 25px;
+  padding: 8px 25px 8px 25px;
   font-size: 15px;
   font-weight: bold;
 
@@ -32,7 +37,7 @@ const baseStyles = css`
       ${(props) => props.theme.primaryColor}
     );
     color: ${(props) => props.theme.lightBackgroundColor};
-
+    
     box-shadow: inset 0px -3px 0px 0px ${(props) => darken(0.1, props.theme.primaryColor)};
   }
 
@@ -59,6 +64,10 @@ const ButtonContent = styled(BPButton)`
     &:active {
       outline: none;
     }
+    &:hover svg path {
+      stroke: black;
+      fill: black;
+    }
   }
 `
 
@@ -71,15 +80,18 @@ const LinkContent = styled.a`
   }
 `
 
-const ButtonNew: FunctionComponent<Props> = ({ text, href, type = "button", ...props }) =>
+const ButtonIcon: FunctionComponent<Props> = ({ text, href, icon, type = "button", ...props }) =>
   href ? (
     <Link href={href}>
-      <LinkContent {...props}>{text}</LinkContent>
+      <LinkContent {...props}>
+        {text}
+      </LinkContent>
     </Link>
   ) : (
-    <ButtonContent type={type} {...props}>
-      {text}
-    </ButtonContent>
-  )
+      <ButtonContent type={type} {...props}>
+        {icon && <Box verticalAlign="middle" mr={2} display="inline-block"><SteamSVG width="40" height="30" /> </Box>}
+        {text}
+      </ButtonContent>
+    )
 
-export default ButtonNew
+export default ButtonIcon

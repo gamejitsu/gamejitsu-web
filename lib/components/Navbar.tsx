@@ -29,6 +29,8 @@ const NavLinkContent = styled(Link)<NavLinkContentProps>`
   position: relative;
   font-size: 9px;
   letter-spacing: 1px;
+  margin-left: 2px;
+  margin-right: 2px;
 
   &::before {
     background-color: ${(props) => transparentize(0.5, props.theme.textColor)};
@@ -104,7 +106,7 @@ const Navbar: FunctionComponent = () => {
     <Container py={2} px={3} color="white" alignItems="center">
       <Box mr="auto">
         <Flex alignItems="center">
-          <Box width="175px" mr={3}>
+          <Box width="175px" mr={3} ml={80}>
             <Logo>
               <ImageButton href="/" imageSrc={gamejitsuWritingImageSrc} />
             </Logo>
