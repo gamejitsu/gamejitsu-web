@@ -1,27 +1,20 @@
 import React, { FunctionComponent } from "react"
 import GameContainerSVG from '../../../../svgs/game-container-red.svg'
-import ExternalCircleSVG from '../../../../svgs/steps-external-circle.svg'
-import InternalCircleSVG from '../../../../svgs/steps-circle.svg'
 
 import styled from "styled-components"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import { Navbar, ButtonIcon, ButtonNew, ButtonAlternative } from "gamejitsu/components"
-import { Flex, Box, Text } from "rebass"
+import { Navbar, ButtonNew, ButtonAlternative } from "gamejitsu/components"
+import { Flex, Box } from "rebass"
 
 const mainLogo = "/images/gamejitsu-mascotte.svg"
 const dota2Logo = "/images/dota2-logo.png"
-const csgoLogo = "/images/csgo-logo.png"
 const lolLogo = "/images/lol-logo.png"
 const overwatchLogo = "/images/overwatch-logo.png"
 const fortniteLogo = "/images/fortnite-logo.png"
 
-
 const Container = styled(Flex)`
   background-color: transparent;
-  top: 0;
-  left: 0;
-  right 0;
   padding: 0;
 `
 
@@ -127,13 +120,13 @@ const GamesBarImage = styled.img`
   position: absolute;
 `
 
-const TextCard = styled.div`
+const TextCard = styled(Box)`
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   flex-grow: 1;
-  height: 464px;
+  height: 700px;
   z-index: 1;
 `
 
@@ -208,6 +201,13 @@ const FlowImageTitle = styled(Box)`
   padding: 14px;
 `
 
+const PriceCard = styled(Flex)`
+  top: 0;
+  left: 0;
+  right 0;
+  width: 100%;
+`
+
 const IconCircle: FunctionComponent = ({ children }) =>
   <OutsideCircle>
     <InsideCircle>
@@ -219,6 +219,7 @@ const Page: AuthenticatedComponent = () => (
   <div>
     <Navbar />
     <Container alignItems="center" flexWrap='wrap'>
+
       <HeroUnitParent>
         <HeroUnit>
           <Box width="900px" mx="auto" style={{ position: "relative" }}>
@@ -303,97 +304,90 @@ const Page: AuthenticatedComponent = () => (
         </Box>
       </TextCard>
 
-      <MainFlow>
-        <Box width="900px" mx="auto" my={6}>
-          <Flex justifyContent="center">
-            <Box flex="1 1 0" mr={90}>
-
-              <FlowBox>
-                <SecondaryTitle>Step 03</SecondaryTitle>
-                <IconCircle>3</IconCircle>
-                <Box>
-                  <FlowText>The coach submits the video reviewed with text feedbacks in the form of comments</FlowText>
-                </Box>
-              </FlowBox>
-
-              <FlowBox>
-                <FlowImage url="/images/despa.png">
-                  <FlowImageTitle>Video Analyzing</FlowImageTitle>
-                </FlowImage>
-              </FlowBox>
-
-              <FlowBox>
-                <SecondaryTitle>Step 03</SecondaryTitle>
-                <IconCircle>3</IconCircle>
-                <Box>
-                  <FlowText>The coach submits the video reviewed with text feedbacks in the form of comments</FlowText>
-                </Box>
-              </FlowBox>
-
-              <FlowBox>
-                <FlowImage url="/images/despa.png">
-                  <FlowImageTitle>User Notified</FlowImageTitle>
-                </FlowImage>
-              </FlowBox>
-            </Box>
-
-            <Flex ml={25} mr={25}>
-              <Box style={{ position: "relative" }}>
-                <Line />
-                <Box style={{ position: "absolute", left: "-25px" }}>
-                  <NumberCircle>1</NumberCircle>
-                  <NumberCircle>2</NumberCircle>
-                  <NumberCircle>3</NumberCircle>
-                  <NumberCircle>4</NumberCircle>
-                </Box>
+        <MainFlow flex="1 1 0" alignItems="center">
+          <Box width="900px" mx="auto" my={6} display="block">
+            <Flex >
+              <Box flex="1 1 0" mr={90}>
+                <FlowBox>
+                  <SecondaryTitle>Step 01</SecondaryTitle>
+                  <IconCircle>3</IconCircle>
+                  <Box>
+                    <FlowText>The coach submits the video reviewed with text feedbacks in the form of comments</FlowText>
+                  </Box>
+                </FlowBox>
+                <FlowBox>
+                  <FlowImage url="/images/despa.png">
+                    <FlowImageTitle>Video Analyzing</FlowImageTitle>
+                  </FlowImage>
+                </FlowBox>
+                <FlowBox>
+                  <SecondaryTitle>Step 03</SecondaryTitle>
+                  <IconCircle>3</IconCircle>
+                  <Box>
+                    <FlowText>The coach submits the video reviewed with text feedbacks in the form of comments</FlowText>
+                  </Box>
+                </FlowBox>
+                <FlowBox>
+                  <FlowImage url="/images/despa.png">
+                    <FlowImageTitle>User Notified</FlowImageTitle>
+                  </FlowImage>
+                </FlowBox>
               </Box>
-            </Flex>
-
-            <Box flex="1 1 0" ml={90}>
-              <FlowBox>
-                <FlowImage url="/images/despa.png">
-                  <FlowImageTitle>Replay Video</FlowImageTitle>
-                </FlowImage>
-              </FlowBox>
-
-              <FlowBox>
-                <SecondaryTitle>Step 02</SecondaryTitle>
-                <IconCircle>2</IconCircle>
-                <Box>
-                  <FlowText>A human coach grabs the replay and starts analysing the video</FlowText>
-                </Box>
-              </FlowBox>
-
-              <FlowBox>
-                <FlowImage url="/images/despa.png">
-                  <FlowImageTitle>Feedback</FlowImageTitle>
-                </FlowImage>
-              </FlowBox>
-
-              <FlowBox>
-                <SecondaryTitle>Step 04</SecondaryTitle>
-                <IconCircle>4</IconCircle>
-                <Box>
-                  <FlowText>The user is notified of the available review and can watch in his/her dashboard</FlowText>
-                </Box>
-              </FlowBox>
-
-            </Box>
-          </Flex>
-          <Flex justifyContent="center">
-            <Box mt={100}>
-              <Flex>
-                <Box mr={10}>
-                  <ButtonNew text="GET STARTED" />
-                </Box>
-                <Box ml={10}>
-                  <ButtonAlternative text="SEE PRICING" />
+              <Flex ml={25} mr={25}>
+                <Box style={{ position: "relative" }}>
+                  <Line />
+                  <Box style={{ position: "absolute", left: "-25px" }}>
+                    <NumberCircle>1</NumberCircle>
+                    <NumberCircle>2</NumberCircle>
+                    <NumberCircle>3</NumberCircle>
+                    <NumberCircle>4</NumberCircle>
+                  </Box>
                 </Box>
               </Flex>
-            </Box>
-          </Flex>
-          <TextCard>
-        <Box width="900px" mx="auto" my={6}>
+              <Box flex="1 1 0" ml={90}>
+                <FlowBox>
+                  <FlowImage url="/images/despa.png">
+                    <FlowImageTitle>Replay Video</FlowImageTitle>
+                  </FlowImage>
+                </FlowBox>
+                <FlowBox>
+                  <SecondaryTitle>Step 02</SecondaryTitle>
+                  <IconCircle>2</IconCircle>
+                  <Box>
+                    <FlowText>A human coach grabs the replay and starts analysing the video</FlowText>
+                  </Box>
+                </FlowBox>
+                <FlowBox>
+                  <FlowImage url="/images/despa.png">
+                    <FlowImageTitle>Feedback</FlowImageTitle>
+                  </FlowImage>
+                </FlowBox>
+                <FlowBox>
+                  <SecondaryTitle>Step 04</SecondaryTitle>
+                  <IconCircle>4</IconCircle>
+                  <Box>
+                    <FlowText>The user is notified of the available review and can watch in his/her dashboard</FlowText>
+                  </Box>
+                </FlowBox>
+              </Box>
+            </Flex>
+            <Flex justifyContent="center">
+              <Box mt={100}>
+                <Flex>
+                  <Box mr={10}>
+                    <ButtonNew text="GET STARTED" />
+                  </Box>
+                  <Box ml={10}>
+                    <ButtonAlternative text="SEE PRICING" />
+                  </Box>
+                </Flex>
+              </Box>
+            </Flex>
+          </Box>
+        </MainFlow>
+
+      <TextCard>
+        <Box width="900px" mx="auto" my={4} style={{ position: "relative" }}>
           <Flex alignItems="center">
             <Box width="375px">
               <SecondaryTitle>Pricing</SecondaryTitle>
@@ -405,11 +399,25 @@ const Page: AuthenticatedComponent = () => (
           </Flex>
         </Box>
       </TextCard>
+
+      <PriceCard>
+        <Box width="900px" mx="auto" my={6} style={{ position: "relative" }}>
+          <Flex justifyContent="center">
+            <Box width={1 / 4} ml={-400}>
+              <Box width="480" height="200" />
+            </Box>
+            <Box width={1 / 4} ml="auto">
+              <Box width="480" height="200" />
+            </Box>
+            <Box width={1 / 4} ml="auto">
+              <Box width="480" height="200" />
+            </Box>
+            <Box width={1 / 4} ml="auto">
+              <Box width="480" height="200" />
+            </Box>
+          </Flex>
         </Box>
-        
-
-      </MainFlow>
-
+      </PriceCard>
 
     </Container>
   </div>
