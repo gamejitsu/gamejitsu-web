@@ -1,8 +1,6 @@
 import React, { FunctionComponent } from "react"
 import GameContainerSVG from '../../../../svgs/game-container-red.svg'
-
 import styled from "styled-components"
-
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { Navbar, ButtonNew, ButtonAlternative } from "gamejitsu/components"
 import { Flex, Box } from "rebass"
@@ -15,7 +13,6 @@ const fortniteLogo = "/images/fortnite-logo.png"
 
 const Container = styled(Flex)`
   background-color: transparent;
-  padding: 0;
 `
 
 const SecondaryTitle = styled.h2`
@@ -39,7 +36,6 @@ const ParagraphText = styled.p`
   margin-bottom: 5px;
   line-height: 20px;
 `
-
 
 const FlowText = styled.p`
   font-size: 20px;
@@ -72,35 +68,26 @@ const HeroUnit = styled(Flex)`
   left: 0;
   right: 0;
   flex-grow: 1;
-  position: absolute;  
+  position: absolute;
   height: 600px;
   z-index: 1;
 `
 
 const GamesBar = styled(Flex)`
   background-color: ${(props) => props.theme.lightBackgroundColor};
-  top: 0;
-  left: 0;
-  right 0;
   height: 85px;
+  width: 100%;
+  position: relative;
 `
 
 const GamesCard = styled(Flex)`
   background-image: url('/images/background-hero-unit.jpg');
   background-size: cover;
-  top: 0;
-  left: 0;
-  right 0;
   height: 800px;
   width: 100%;
-  position: relative;
 `
 
 const MainFlow = styled(Flex)`
-  top: 0;
-  left: 0;
-  right 0;
-  height: 800px;
   width: 100%;
   position: relative;
 
@@ -126,9 +113,12 @@ const TextCard = styled(Box)`
   left: 0;
   right: 0;
   flex-grow: 1;
-  height: 700px;
   z-index: 1;
 `
+
+TextCard.defaultProps = {
+  my: 4
+}
 
 const OutsideCircle = styled.div`
     position: relative;
@@ -195,18 +185,20 @@ FlowBox.defaultProps = { mt: 50 }
 const FlowImageTitle = styled(Box)`
   text-align: center;
   height: 44px;
-  width: 176px; 
+  width: 176px;
   background-color: ${(props) => props.theme.primaryColor};
   color: black;
   padding: 14px;
 `
 
-const PriceCard = styled(Flex)`
-  top: 0;
-  left: 0;
-  right 0;
+const PriceCards = styled(Flex)`
   width: 100%;
 `
+
+const PriceCard: FunctionComponent = ({ children }) =>
+  <Box flex="1">
+    <StreamlineIcon icon="browser-gauge-1" fill="#fff" />
+  </Box>
 
 const IconCircle: FunctionComponent = ({ children }) =>
   <OutsideCircle>
@@ -218,7 +210,7 @@ const IconCircle: FunctionComponent = ({ children }) =>
 const Page: AuthenticatedComponent = () => (
   <div>
     <Navbar />
-    <Container alignItems="center" flexWrap='wrap'>
+    <Container alignItems="center" flexDirection="column">
 
       <HeroUnitParent>
         <HeroUnit>
@@ -237,7 +229,7 @@ const Page: AuthenticatedComponent = () => (
         <Background />
       </HeroUnitParent>
 
-      <GamesBar width={1} justifyContent="center" style={{ position: "relative" }}>
+      <GamesBar justifyContent="center">
         <Box ml={200} width={1 / 4}>
           <GamesBarImage style={{ bottom: "-52px" }} src={fortniteLogo} />
         </Box>
@@ -305,7 +297,7 @@ const Page: AuthenticatedComponent = () => (
       </TextCard>
 
         <MainFlow flex="1 1 0" alignItems="center">
-          <Box width="900px" mx="auto" my={6} display="block">
+          <Box width="900px" mx="auto" mb={4} display="block">
             <Flex >
               <Box flex="1 1 0" mr={90}>
                 <FlowBox>
@@ -400,24 +392,13 @@ const Page: AuthenticatedComponent = () => (
         </Box>
       </TextCard>
 
-      <PriceCard>
-        <Box width="900px" mx="auto" my={6} style={{ position: "relative" }}>
+      <PriceCards>
+        <Box width="900px" mx="auto" style={{ position: "relative" }}>
           <Flex justifyContent="center">
-            <Box width={1 / 4} ml={-400}>
-              <Box width="480" height="200" />
-            </Box>
-            <Box width={1 / 4} ml="auto">
-              <Box width="480" height="200" />
-            </Box>
-            <Box width={1 / 4} ml="auto">
-              <Box width="480" height="200" />
-            </Box>
-            <Box width={1 / 4} ml="auto">
-              <Box width="480" height="200" />
-            </Box>
+            <PriceCard />
           </Flex>
         </Box>
-      </PriceCard>
+      </PriceCards>
 
     </Container>
   </div>
