@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react"
 import GameContainerSVG from '../../../../svgs/game-container-red.svg'
 import styled from "styled-components"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import { Navbar, ButtonNew, ButtonAlternative } from "gamejitsu/components"
+import { Navbar, ButtonNew, ButtonAlternative, ButtonDark } from "gamejitsu/components"
 import { Flex, Box } from "rebass"
 
 const mainLogo = "/images/gamejitsu-mascotte.svg"
@@ -15,12 +15,16 @@ const Container = styled(Flex)`
   background-color: transparent;
 `
 
-const SecondaryTitle = styled.h2`
+interface SecondaryTitleProps {
+  color?: string
+}
+
+const SecondaryTitle = styled.h2<SecondaryTitleProps>`
   font-family: "Japanese 3017";
   font-weight: normal;
   letter-spacing: 3px;
   font-size: 21px;
-  color: ${(props) => props.theme.primaryColor};
+  color: ${(props) => props.color || props.theme.primaryColor};
 `
 
 const MainTitle = styled.h1`
@@ -195,10 +199,72 @@ const PriceCards = styled(Flex)`
   width: 100%;
 `
 
-const PriceCard: FunctionComponent = ({ children }) =>
-  <Box flex="1">
-    <StreamlineIcon icon="browser-gauge-1" fill="#fff" />
-  </Box>
+PriceCards.defaultProps = {
+  mb: 6
+}
+
+interface PriceCardProps {
+  icon: string
+  title: string
+  price: string
+}
+
+const Price = styled.div`
+  background-color: ${(props) => props.theme.backgroundColor};
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+  margin-left: -20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  padding: 16px 25px;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+
+  span {
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+    padding-right: 5px;
+  }
+
+  span:last-child {
+    display: block;
+    font-size: 12px;
+  }
+`
+
+const PriceCardContent = styled(Box)`
+  background-color: ${(props) => props.theme.lightBackgroundColor};
+`
+
+const PriceCard: FunctionComponent<PriceCardProps> = ({ children, icon, title, price }) =>
+  <PriceCardContent flex="1" p="20px" mr={3}>
+    <Box pb={3}>
+      <img src={`/images/icon-${icon}.png`} width="40" />
+    </Box>
+    <SecondaryTitle color="white">{title}</SecondaryTitle>
+    <Price><span>{price}</span> <span>Per Replay</span></Price>
+    <div>
+      {children}
+    </div>
+    <ButtonDark text="Get Started" />
+  </PriceCardContent>
+
+const PriceFeatureContent = styled.span`
+  display: inline-flex;
+  align-items: center;
+  color: ${(props) => props.theme.textColor};
+  font-size: 14px;
+  margin-bottom: 25px;
+
+  img {
+    margin-right: 10px;
+  }
+`
+
+const PriceFeature: FunctionComponent = ({ children }) =>
+  <PriceFeatureContent><img src="/images/icon-check-circle-1.png" width="20" /> {children}</PriceFeatureContent>
 
 const IconCircle: FunctionComponent = ({ children }) =>
   <OutsideCircle>
@@ -395,7 +461,21 @@ const Page: AuthenticatedComponent = () => (
       <PriceCards>
         <Box width="900px" mx="auto" style={{ position: "relative" }}>
           <Flex justifyContent="center">
-            <PriceCard />
+            <PriceCard title="Medium" price="$4.0" icon="award-badge-1">
+              <PriceFeature>4-5k MMR</PriceFeature>
+            </PriceCard>
+
+            <PriceCard title="High" price="$6.0" icon="award-badge">
+              <PriceFeature>4-5k MMR</PriceFeature>
+            </PriceCard>
+
+            <PriceCard title="Very High" price="$8.0" icon="award-badge-3">
+              <PriceFeature>4-5k MMR</PriceFeature>
+            </PriceCard>
+
+            <PriceCard title="Pro" price="$10.0" icon="vip">
+              <PriceFeature>4-5k MMR</PriceFeature>
+            </PriceCard>
           </Flex>
         </Box>
       </PriceCards>

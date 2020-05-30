@@ -2,6 +2,7 @@ import Button from "./Button"
 import ButtonNew from "./ButtonNew"
 import ButtonIcon from "./ButtonIcon"
 import ButtonAlternative from "./ButtonAlternative"
+import ButtonDark from "./ButtonDark"
 import Card from "./Card"
 import Form from "./Form"
 import FormGroup from "./FormGroup"
@@ -21,6 +22,7 @@ export {
   ButtonNew,
   ButtonIcon,
   ButtonAlternative,
+  ButtonDark,
   Card,
   Form,
   FormGroup,

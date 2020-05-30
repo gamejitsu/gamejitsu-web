@@ -18,7 +18,7 @@ const baseStyles = css`
   color: white;
   transition: all 0.05s ease-in-out;
 
-  background: ${(props) => props.theme.backgroundColor || props.theme.lightBackgroundColor};
+  background: ${(props) => props.theme.backgroundColor};
 
   padding: 10px 25px 10px 25px;
   font-size: 15px;
