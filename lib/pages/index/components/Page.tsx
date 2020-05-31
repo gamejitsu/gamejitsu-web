@@ -1,15 +1,17 @@
 import React, { FunctionComponent } from "react"
-import GameContainerSVG from '../../../../svgs/game-container-red.svg'
+import GameContainerSVG from '../../../../svgs/dota2-bs-crop-cut.svg'
 import styled from "styled-components"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { Navbar, ButtonNew, ButtonAlternative, ButtonDark } from "gamejitsu/components"
 import { Flex, Box } from "rebass"
+import Head from "next/head"
 
 const mainLogo = "/images/gamejitsu-mascotte.svg"
 const dota2Logo = "/images/dota2-logo.png"
 const lolLogo = "/images/lol-logo.png"
 const overwatchLogo = "/images/overwatch-logo.png"
 const fortniteLogo = "/images/fortnite-logo.png"
+
 
 const Container = styled(Flex)`
   background-color: transparent;
@@ -18,6 +20,20 @@ const Container = styled(Flex)`
 interface SecondaryTitleProps {
   color?: string
 }
+
+const FooterTitle = styled.h3`
+  color: white;
+  font-weight: bold;
+  letter-spacing: 2px;
+`
+
+const FooterLink = styled(Box)`
+  align-items: center;
+  color: ${(props) => props.theme.textColor};
+  font-size: 14px;
+  margin-bottom: 25px;
+  height: 35px;
+`
 
 const SecondaryTitle = styled.h2<SecondaryTitleProps>`
   font-family: "Japanese 3017";
@@ -127,7 +143,7 @@ TextCard.defaultProps = {
 const OutsideCircle = styled.div`
     position: relative;
     background: transparent;
-    border: 2px solid ${(props) => props.theme.lightBackgroundColor};
+    border: 1.5px solid ${(props) => props.theme.lightBackgroundColor};
     border-radius: 50%;
     padding: 2px;
     height: 50px;
@@ -139,6 +155,7 @@ const OutsideCircle = styled.div`
 
 const InsideCircle = styled.div`
     background: ${(props) => props.theme.lightBackgroundColor};
+    position: relative;
     border-radius: 50%;
     line-height: 50px;
     width: 100%;
@@ -168,6 +185,13 @@ const Line = styled.div`
   margin-left: -1px;
 `
 
+const LineHorizontal = styled.div`
+  width: 100%;
+  height 1px;
+  position: absolute;
+  background: ${(props) => props.theme.lightBackgroundColor};
+`
+
 interface FlowImageType {
   url: string
 }
@@ -193,6 +217,7 @@ const FlowImageTitle = styled(Box)`
   background-color: ${(props) => props.theme.primaryColor};
   color: black;
   padding: 14px;
+  font-weight: 550;
 `
 
 const PriceCards = styled(Flex)`
@@ -263,6 +288,13 @@ const PriceFeatureContent = styled.span`
   }
 `
 
+const FlowStepIcon = styled.img`
+  height: auto;
+  width: 50%; 
+  vertical-align: middle;
+  text-align: center;
+`
+
 const PriceFeature: FunctionComponent = ({ children }) =>
   <PriceFeatureContent><img src="/images/icon-check-circle-1.png" width="20" /> {children}</PriceFeatureContent>
 
@@ -277,7 +309,10 @@ const Page: AuthenticatedComponent = () => (
   <div>
     <Navbar />
     <Container alignItems="center" flexDirection="column">
-
+      <Head>
+        <link rel="shortcut icon" href="/favicon.png" />
+        <title>Gamejitsu - Home</title>
+      </Head>
       <HeroUnitParent>
         <HeroUnit>
           <Box width="900px" mx="auto" style={{ position: "relative" }}>
@@ -326,23 +361,23 @@ const Page: AuthenticatedComponent = () => (
       </TextCard>
 
       <GamesCard>
-        <Box width="900px" mx="auto" style={{ position: "relative" }}>
-          <Box mt={5} width="375px">
+        <Box width="100%" style={{ position: "relative" }}>
+          <Box mx="auto" width="900px" mt={5}>
             <SecondaryTitle>Games We Support</SecondaryTitle>
             <MainTitle>Become a Legend</MainTitle>
           </Box>
-          <Flex justifyContent="center">
-            <Box width={1 / 4} ml={-400} mt={100}>
-              <GameContainerSVG width="480" height="330" />
+          <Flex p={4} justifyContent="center">
+            <Box width={1 / 4} >
+              <GameContainerSVG width="100%" height="auto" />
             </Box>
-            <Box width={1 / 4} ml="auto" mt={50}>
-              <GameContainerSVG width="480" height="330" />
+            <Box width={1 / 4} ml={-125}>
+              <GameContainerSVG width="100%" height="auto" />
             </Box>
-            <Box width={1 / 4} ml="auto" mt={100}>
-              <GameContainerSVG width="480" height="330" />
+            <Box width={1 / 4} ml={-125}>
+              <GameContainerSVG width="100%" height="auto" />
             </Box>
-            <Box width={1 / 4} ml="auto" mt={50}>
-              <GameContainerSVG width="480" height="330" />
+            <Box width={1 / 4} ml={-125}>
+              <GameContainerSVG width="100%" height="auto" />
             </Box>
           </Flex>
         </Box>
@@ -362,87 +397,95 @@ const Page: AuthenticatedComponent = () => (
         </Box>
       </TextCard>
 
-        <MainFlow flex="1 1 0" alignItems="center">
-          <Box width="900px" mx="auto" mb={4} display="block">
-            <Flex >
-              <Box flex="1 1 0" mr={90}>
-                <FlowBox>
-                  <SecondaryTitle>Step 01</SecondaryTitle>
-                  <IconCircle>3</IconCircle>
-                  <Box>
-                    <FlowText>The coach submits the video reviewed with text feedbacks in the form of comments</FlowText>
-                  </Box>
-                </FlowBox>
-                <FlowBox>
-                  <FlowImage url="/images/despa.png">
-                    <FlowImageTitle>Video Analyzing</FlowImageTitle>
-                  </FlowImage>
-                </FlowBox>
-                <FlowBox>
-                  <SecondaryTitle>Step 03</SecondaryTitle>
-                  <IconCircle>3</IconCircle>
-                  <Box>
-                    <FlowText>The coach submits the video reviewed with text feedbacks in the form of comments</FlowText>
-                  </Box>
-                </FlowBox>
-                <FlowBox>
-                  <FlowImage url="/images/despa.png">
-                    <FlowImageTitle>User Notified</FlowImageTitle>
-                  </FlowImage>
-                </FlowBox>
+      <MainFlow flex="1 1 0" alignItems="center">
+        <Box width="900px" mx="auto" mb={4} display="block">
+          <Flex >
+            <Box flex="1 1 0" mr={90}>
+              <FlowBox>
+                <SecondaryTitle>Step 01</SecondaryTitle>
+                <IconCircle>
+                  <img height="auto" width="70%" style={{ verticalAlign: "middle", textAlign: "center" }} src="/images/step1.png" />
+                </IconCircle>
+                <Box>
+                  <FlowText>The coach submits the video reviewed with text feedbacks in the form of comments</FlowText>
+                </Box>
+              </FlowBox>
+              <FlowBox>
+                <FlowImage url="/images/despa.png">
+                  <FlowImageTitle>Video Analyzing</FlowImageTitle>
+                </FlowImage>
+              </FlowBox>
+              <FlowBox>
+                <SecondaryTitle>Step 03</SecondaryTitle>
+                <IconCircle>
+                  <FlowStepIcon src="/images/step3.png" />
+                </IconCircle>
+                <Box>
+                  <FlowText>The coach submits the video reviewed with text feedbacks in the form of comments</FlowText>
+                </Box>
+              </FlowBox>
+              <FlowBox>
+                <FlowImage url="/images/despa.png">
+                  <FlowImageTitle>User Notified</FlowImageTitle>
+                </FlowImage>
+              </FlowBox>
+            </Box>
+            <Flex ml={25} mr={25}>
+              <Box style={{ position: "relative" }}>
+                <Line />
+                <Box style={{ position: "absolute", left: "-25px" }}>
+                  <NumberCircle>1</NumberCircle>
+                  <NumberCircle>2</NumberCircle>
+                  <NumberCircle>3</NumberCircle>
+                  <NumberCircle>4</NumberCircle>
+                </Box>
               </Box>
-              <Flex ml={25} mr={25}>
-                <Box style={{ position: "relative" }}>
-                  <Line />
-                  <Box style={{ position: "absolute", left: "-25px" }}>
-                    <NumberCircle>1</NumberCircle>
-                    <NumberCircle>2</NumberCircle>
-                    <NumberCircle>3</NumberCircle>
-                    <NumberCircle>4</NumberCircle>
-                  </Box>
+            </Flex>
+            <Box flex="1 1 0" ml={90}>
+              <FlowBox>
+                <FlowImage url="/images/despa.png">
+                  <FlowImageTitle>Replay Video</FlowImageTitle>
+                </FlowImage>
+              </FlowBox>
+              <FlowBox>
+                <SecondaryTitle>Step 02</SecondaryTitle>
+                <IconCircle>
+                  <FlowStepIcon src="/images/step2.png" />
+                </IconCircle>
+                <Box>
+                  <FlowText>A human coach grabs the replay and starts analysing the video</FlowText>
+                </Box>
+              </FlowBox>
+              <FlowBox>
+                <FlowImage url="/images/despa.png">
+                  <FlowImageTitle>Feedback</FlowImageTitle>
+                </FlowImage>
+              </FlowBox>
+              <FlowBox>
+                <SecondaryTitle>Step 04</SecondaryTitle>
+                <IconCircle>
+                  <FlowStepIcon src="/images/step4.png" />
+                </IconCircle>
+                <Box>
+                  <FlowText>The user is notified of the available review and can watch in his/her dashboard</FlowText>
+                </Box>
+              </FlowBox>
+            </Box>
+          </Flex>
+          <Flex justifyContent="center">
+            <Box mt={100}>
+              <Flex>
+                <Box mr={10}>
+                  <ButtonNew text="GET STARTED" />
+                </Box>
+                <Box ml={10}>
+                  <ButtonAlternative text="SEE PRICING" />
                 </Box>
               </Flex>
-              <Box flex="1 1 0" ml={90}>
-                <FlowBox>
-                  <FlowImage url="/images/despa.png">
-                    <FlowImageTitle>Replay Video</FlowImageTitle>
-                  </FlowImage>
-                </FlowBox>
-                <FlowBox>
-                  <SecondaryTitle>Step 02</SecondaryTitle>
-                  <IconCircle>2</IconCircle>
-                  <Box>
-                    <FlowText>A human coach grabs the replay and starts analysing the video</FlowText>
-                  </Box>
-                </FlowBox>
-                <FlowBox>
-                  <FlowImage url="/images/despa.png">
-                    <FlowImageTitle>Feedback</FlowImageTitle>
-                  </FlowImage>
-                </FlowBox>
-                <FlowBox>
-                  <SecondaryTitle>Step 04</SecondaryTitle>
-                  <IconCircle>4</IconCircle>
-                  <Box>
-                    <FlowText>The user is notified of the available review and can watch in his/her dashboard</FlowText>
-                  </Box>
-                </FlowBox>
-              </Box>
-            </Flex>
-            <Flex justifyContent="center">
-              <Box mt={100}>
-                <Flex>
-                  <Box mr={10}>
-                    <ButtonNew text="GET STARTED" />
-                  </Box>
-                  <Box ml={10}>
-                    <ButtonAlternative text="SEE PRICING" />
-                  </Box>
-                </Flex>
-              </Box>
-            </Flex>
-          </Box>
-        </MainFlow>
+            </Box>
+          </Flex>
+        </Box>
+      </MainFlow>
 
       <TextCard>
         <Box width="900px" mx="auto" my={4} style={{ position: "relative" }}>
@@ -462,23 +505,61 @@ const Page: AuthenticatedComponent = () => (
         <Box width="900px" mx="auto" style={{ position: "relative" }}>
           <Flex justifyContent="center">
             <PriceCard title="Medium" price="$4.0" icon="award-badge-1">
-              <PriceFeature>4-5k MMR</PriceFeature>
+              <PriceFeature>4k MMR or above</PriceFeature>
             </PriceCard>
 
             <PriceCard title="High" price="$6.0" icon="award-badge">
-              <PriceFeature>4-5k MMR</PriceFeature>
+              <PriceFeature>Above 5k MMR</PriceFeature>
             </PriceCard>
 
             <PriceCard title="Very High" price="$8.0" icon="award-badge-3">
-              <PriceFeature>4-5k MMR</PriceFeature>
+              <PriceFeature>Above 6k MMR</PriceFeature>
             </PriceCard>
 
             <PriceCard title="Pro" price="$10.0" icon="vip">
-              <PriceFeature>4-5k MMR</PriceFeature>
+              <PriceFeature>Above 7k MMR</PriceFeature>
             </PriceCard>
           </Flex>
         </Box>
       </PriceCards>
+
+      <Flex>
+        <Box width="900px" mx="auto" mt={200} style={{ position: "relative" }}>
+          <LineHorizontal />
+          <Flex>
+            <Box flex="1 1 0" mr={90}>
+              <FooterTitle>COMPANY</FooterTitle>
+            </Box>
+            <Box flex="1 1 0" >
+              <FooterTitle>COMPANY</FooterTitle>
+              <FooterLink mt={4}>test</FooterLink>
+              <FooterLink>test</FooterLink>
+              <FooterLink>test</FooterLink>
+              <FooterLink>test</FooterLink>
+            </Box>
+            <Box flex="1 1 0" >
+              <FooterTitle>SUPPORT</FooterTitle>
+              <FooterLink mt={4}>test</FooterLink>
+              <FooterLink>test</FooterLink>
+              <FooterLink>test</FooterLink>
+              <FooterLink>test</FooterLink>
+            </Box>
+            <Box flex="1 1 0" >
+              <FooterTitle>RESOURCES</FooterTitle>
+              <FooterLink mt={4}>test</FooterLink>
+              <FooterLink>test</FooterLink>
+              <FooterLink>test</FooterLink>
+              <FooterLink>test</FooterLink>
+            </Box>
+            <Box flex="1 1 0" ml={90}>
+              <FooterTitle>CONTACT US</FooterTitle>
+
+            </Box>
+          </Flex>
+          <LineHorizontal />
+          2020 - Copyright Gamejitsu 
+        </Box>
+      </Flex>
 
     </Container>
   </div>

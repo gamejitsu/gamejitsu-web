@@ -19,7 +19,7 @@ const baseStyles = css`
   color: ${(props) => props.theme.primaryColor};
   transition: all 0.05s ease-in-out;
 
-  background: black;
+  background: transparent;
 
   padding: 10px 25px 10px 25px;
   font-size: 15px;
