@@ -404,14 +404,14 @@ const Page: AuthenticatedComponent = () => (
               <FlowBox>
                 <SecondaryTitle>Step 01</SecondaryTitle>
                 <IconCircle>
-                  <img height="auto" width="70%" style={{ verticalAlign: "middle", textAlign: "center" }} src="/images/step1.png" />
+                  <FlowStepIcon src="/images/step1.png" />
                 </IconCircle>
                 <Box>
                   <FlowText>The coach submits the video reviewed with text feedbacks in the form of comments</FlowText>
                 </Box>
               </FlowBox>
               <FlowBox>
-                <FlowImage url="/images/despa.png">
+                <FlowImage url="/images/step2-image.png">
                   <FlowImageTitle>Video Analyzing</FlowImageTitle>
                 </FlowImage>
               </FlowBox>
@@ -425,7 +425,7 @@ const Page: AuthenticatedComponent = () => (
                 </Box>
               </FlowBox>
               <FlowBox>
-                <FlowImage url="/images/despa.png">
+                <FlowImage url="/images/step4-image.png">
                   <FlowImageTitle>User Notified</FlowImageTitle>
                 </FlowImage>
               </FlowBox>
@@ -443,7 +443,7 @@ const Page: AuthenticatedComponent = () => (
             </Flex>
             <Box flex="1 1 0" ml={90}>
               <FlowBox>
-                <FlowImage url="/images/despa.png">
+                <FlowImage url="/images/step1-image.png">
                   <FlowImageTitle>Replay Video</FlowImageTitle>
                 </FlowImage>
               </FlowBox>
@@ -457,7 +457,7 @@ const Page: AuthenticatedComponent = () => (
                 </Box>
               </FlowBox>
               <FlowBox>
-                <FlowImage url="/images/despa.png">
+                <FlowImage url="/images/step3-image.jpeg">
                   <FlowImageTitle>Feedback</FlowImageTitle>
                 </FlowImage>
               </FlowBox>
@@ -557,7 +557,7 @@ const Page: AuthenticatedComponent = () => (
             </Box>
           </Flex>
           <LineHorizontal />
-          2020 - Copyright Gamejitsu 
+          © Copyright 2020 Gamejitsu. All Rights Reserved. 
         </Box>
       </Flex>
 
