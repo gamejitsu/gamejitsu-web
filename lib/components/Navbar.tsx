@@ -127,7 +127,7 @@ const Navbar: FunctionComponent = () => {
         ]
       ) : (
         <Box>
-          <ButtonIcon key="login" text="SIGN IN" icon={user} onClick={login}/>
+          <ButtonIcon key="login" text="SIGN IN" icon={user} onClick={login} />
         </Box>
       )}
     </Container>

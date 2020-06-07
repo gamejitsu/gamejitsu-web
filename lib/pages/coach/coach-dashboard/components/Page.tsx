@@ -7,7 +7,6 @@ import { Flex, Box, Text } from "rebass"
 import { Layout, Card, Button, Title } from "gamejitsu/components"
 import { NextPageContext, NextPage } from "next"
 
-
 interface Props {
   reviewRequests: ReviewRequest[]
 }

@@ -9,7 +9,7 @@ interface Props {
   checkout: Checkout
 }
 
-const Page: NextPage<Props> = ({checkout}) => (
+const Page: NextPage<Props> = ({ checkout }) => (
   <Layout title="Review Request Checkout">
     <Title text="Checkout" />
     Thanks for the payment
@@ -22,7 +22,7 @@ const Page: NextPage<Props> = ({checkout}) => (
 Page.getInitialProps = async (ctx) => {
   const { data } = await findModel(CheckoutResource, ctx.query.id.toString(), ctx)
   console.log(data)
-  return { checkout: data} 
+  return { checkout: data }
 }
 
 export default Page
