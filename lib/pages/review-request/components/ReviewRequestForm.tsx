@@ -1,5 +1,7 @@
+import CheckoutResource, { Checkout } from "gamejitsu/api/resources/checkout"
 import humanize from "humanize-string"
 import React, { FunctionComponent, useContext } from "react"
+import ReviewRequestResource from "gamejitsu/api/resources/review-request"
 import Router from "next/router"
 import styled from "styled-components"
 import titleize from "titleize"
@@ -14,15 +16,18 @@ import { object, string } from "yup"
 import { SkillLevel } from "gamejitsu/api/types/skill-level"
 import { Slider } from "@blueprintjs/core"
 import { UserContext } from "gamejitsu/contexts"
-import CheckoutResource from "gamejitsu/api/resources/checkout"
-import ReviewRequestResource from "gamejitsu/api/resources/review-request"
 
-const redirectToCheckout = async () => {
+const redirectToCheckout = async ({ comment, skillLevel, replayId }: Partial<Checkout>) => {
   const stripe = Stripe("pk_test_gO4hZHVOjk7E3GjH0etoiBAO00c0qpfX0m")
   const {
-    data: { id }
-  } = await createModel(CheckoutResource, {})
-  return await stripe.redirectToCheckout({ sessionId: id })
+    data: { stripeId }
+  } = await createModel(CheckoutResource, {
+    comment,
+    skillLevel,
+    replayId,
+    redirectUrl: window.location.origin
+  })
+  return await stripe.redirectToCheckout({ sessionId: stripeId })
 }
 
 interface Props {
@@ -31,7 +36,8 @@ interface Props {
 
 const initialValues = {
   skillLevel: "medium",
-  replay: null
+  replay: null,
+  comment: ""
 }
 
 type Values = typeof initialValues
@@ -66,18 +72,21 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
   const user = getUser()
 
   const onSubmitReviewRequest = async (values: Values): Promise<void> => {
-    const { skillLevel } = values
+    const { skillLevel, comment } = values
     if (!isSkillLevelValid(skillLevel)) {
       throw new Error(`Invalid skill level value in coach signup: ${skillLevel}`)
     }
     if (replay === undefined) {
       throw new Error(`Invalid replay`)
     }
-    await createModel(ReviewRequestResource, {
+
+    redirectToCheckout({ comment, skillLevel, replayId: replay.id })
+    /*await createModel(ReviewRequestResource, {
       replayId: replay.id,
-      skillLevel
-    })
-    Router.push("/coach-dashboard")
+      skillLevel,
+      comment
+    })*/
+    //Router.push("/coach-dashboard")
   }
 
   const renderLabel = (val: number) => {
@@ -129,8 +138,8 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
                   />
                 </Box>
               </FormGroup>
-              <FormGroup label="Comments" labelFor="text-input">
-                <InputGroup id="text-input" />
+              <FormGroup label="Comment" labelFor="text-input">
+                <InputGroup onChange={formik.handleChange("comment")} id="text-input" />
               </FormGroup>
               <FormGroup label="Price" labelFor="text-input">
                 {price[skillLevels.indexOf(formik.values.skillLevel as SkillLevel)]}

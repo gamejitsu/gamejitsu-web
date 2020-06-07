@@ -5,6 +5,7 @@ import { Model } from "gamejitsu/interfaces"
 
 export interface ReviewRequest extends Model {
   skillLevel: SkillLevel
+  comment: string | null
   replayId: string
 }
 
@@ -12,7 +13,8 @@ export const decoder = t.type({
   id: t.string,
   type: t.literal("review-request"),
   attributes: t.type({
-    "skill-level": SkillLevel
+    "skill-level": SkillLevel,
+    comment: t.union([t.string, t.null])
   }),
   relationships: t.type({
     replay: t.type({
@@ -27,6 +29,7 @@ export const decoder = t.type({
 export const transformer = (value: t.TypeOf<typeof decoder>): ReviewRequest => ({
   id: value.id,
   skillLevel: value.attributes["skill-level"],
+  comment: value.attributes["comment"],
   replayId: value.relationships["replay"].data.id
 })
 
@@ -43,7 +46,8 @@ export default buildResource({
   encode: (value) => ({
     type: "review-request",
     attributes: {
-      "skill-level": skillLevelEncoder(value.skillLevel)
+      "skill-level": skillLevelEncoder(value.skillLevel),
+      comment: value.comment
     },
     relationships: {
       replay: {

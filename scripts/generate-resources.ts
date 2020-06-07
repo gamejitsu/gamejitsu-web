@@ -58,11 +58,14 @@ const NonGenericAttribute = t.union([
 
 const Attribute = t.intersection([t.union([GenericAttribute, NonGenericAttribute]), Optional])
 
-const Relationship = t.type({
-  cardinality: t.union([t.literal("one"), t.literal("many")]),
-  type: t.string,
-  include: t.union([t.boolean, t.undefined])
-})
+const Relationship = t.intersection([
+  t.type({
+    cardinality: t.union([t.literal("one"), t.literal("many")]),
+    type: t.string,
+    include: t.union([t.boolean, t.undefined])
+  }),
+  Optional
+])
 
 const Resources = t.record(
   t.string,
@@ -284,7 +287,7 @@ function encoderForRelationship(name: string, relationship: Relationship) {
     return `"${encodedName}": ${encoder(`value.${attrName}Id`)}`
   }
 
-  return `"${encodedName}": value.${attrName}Ids.map((id) => (${encoder()}))`
+  return `"${encodedName}": (value.${attrName}Ids || []).map((id) => (${encoder()}))`
 }
 
 function encoderForTypeName(types: Types, attributeName: string, name: string) {
@@ -374,14 +377,18 @@ function decoderForRelationship(relationship: Relationship) {
   if (relationship.cardinality === "one") {
     return `
       t.type({
-        data: ${dataDecoder}
+        data: ${relationship.optional ? `t.union([${dataDecoder}, t.null])` : dataDecoder}
       })
     `
   }
 
   return `
     t.type({
-      data: t.array(${dataDecoder})
+      data: ${
+        relationship.optional
+          ? `t.union([t.array(${dataDecoder}), t.null])`
+          : `t.array(${dataDecoder})`
+      }
     })
   `
 }
@@ -393,7 +400,11 @@ function transformerForRelationship(name: string, relationship: Relationship) {
 
   const value =
     relationship.cardinality === "one"
-      ? `${relationshipDataKey}.id`
+      ? relationship.optional
+        ? `${relationshipDataKey} ? ${relationshipDataKey}.id : null`
+        : `${relationshipDataKey}.id`
+      : relationship.optional
+      ? `${relationshipDataKey} ? ${relationshipDataKey}.map((r) => r.id) : null`
       : `${relationshipDataKey}.map((r) => r.id)`
 
   return `${key}: ${value}`
@@ -417,10 +428,10 @@ function jsTypeForAttribute(attribute: Attribute, types: Types) {
 
 function jsTypeForRelationship(name: string, relationship: Relationship) {
   if (relationship.cardinality === "one") {
-    return `${name}Id: string`
+    return `${name}Id: string${relationship.optional ? " | null" : ""}`
   }
 
-  return `${name}Ids: string[]`
+  return `${name}Ids: string[]${relationship.optional ? " | null" : ""}`
 }
 
 function stringifyImports(imports: ImportMeta[]) {

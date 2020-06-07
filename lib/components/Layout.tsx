@@ -21,6 +21,7 @@ const Layout: FunctionComponent<Props> = ({ title, children }) => (
     <Navbar />
     <Container mx="auto" p={4} pt={92}>
       <Head>
+        <link rel="shortcut icon" href="/favicon.png" />
         <title>{title === undefined ? companyName : `${companyName} - ${title}`}</title>
       </Head>
       {children}

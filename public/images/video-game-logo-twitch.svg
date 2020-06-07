@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4f, 2020-05-01)"
+   sodipodi:docname="video-game-logo-twitch.svg"
+   xml:space="preserve"
+   style="enable-background:new 0 0 24 24;"
+   viewBox="0 0 24 24"
+   y="0px"
+   x="0px"
+   id="Layer_1"
+   version="1.1"><metadata
+   id="metadata850"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+   id="defs848" /><sodipodi:namedview
+   inkscape:current-layer="g843"
+   inkscape:window-maximized="0"
+   inkscape:window-y="23"
+   inkscape:window-x="0"
+   inkscape:cy="12"
+   inkscape:cx="12"
+   inkscape:zoom="27.833333"
+   showgrid="false"
+   id="namedview846"
+   inkscape:window-height="1035"
+   inkscape:window-width="1713"
+   inkscape:pageshadow="2"
+   inkscape:pageopacity="0"
+   guidetolerance="10"
+   gridtolerance="10"
+   objecttolerance="10"
+   borderopacity="1"
+   bordercolor="#666666"
+   pagecolor="#ffffff" />
+<title
+   id="title833">video-game-logo-twitch</title>
+<g
+   id="g843">
+	<path
+   style="fill:#08ff07;fill-opacity:1"
+   id="path835"
+   d="M6.13,24.002c-0.319,0-0.623-0.121-0.854-0.342c-0.245-0.233-0.385-0.56-0.384-0.898v-3.263H1.239   C0.556,19.498,0,18.942,0,18.259V5.912c0.001-0.313,0.086-0.619,0.245-0.885l2.653-4.426C3.123,0.23,3.531,0,3.962,0h18.8   c0.683,0,1.239,0.556,1.239,1.239v12.7c0,0.462-0.18,0.896-0.507,1.222l-3.829,3.829c-0.326,0.326-0.76,0.506-1.221,0.506h-7   c-0.064,0-0.124,0.025-0.167,0.07l-4.276,4.077c-0.203,0.215-0.515,0.35-0.842,0.358C6.157,24.001,6.133,24.002,6.13,24.002z    M5.152,17.998C5.837,18,6.393,18.557,6.391,19.24v2.914l3.828-3.651c0.304-0.318,0.742-0.502,1.222-0.507h7.003   c0.062,0,0.117-0.023,0.161-0.066l3.829-3.829c0.044-0.044,0.067-0.1,0.067-0.162V1.5H4.109L1.533,5.798   C1.512,5.833,1.5,5.873,1.5,5.914v12.084H5.152z" />
+	<path
+   style="fill:#08ff07;fill-opacity:1"
+   id="path837"
+   d="M7.5,18c-0.088,0-0.174-0.015-0.257-0.046C6.948,17.846,6.75,17.563,6.75,17.25V15H6.489c-0.683,0-1.239-0.556-1.239-1.239   V4.239C5.25,3.556,5.806,3,6.489,3h13.272C20.444,3,21,3.556,21,4.239v6.669c0,0.462-0.18,0.896-0.507,1.223l-2.361,2.363   C17.811,14.815,17.365,15,16.91,15h-6.52l-2.318,2.735C7.93,17.903,7.721,18,7.5,18z M7.5,13.5c0.414,0,0.75,0.336,0.75,0.75v0.955   l1.221-1.44c0.143-0.168,0.351-0.265,0.572-0.265h6.867c0.059,0,0.119-0.025,0.161-0.067l2.361-2.363   c0.044-0.044,0.068-0.1,0.068-0.162V4.5H6.75v9H7.5z" />
+	<path
+   style="fill:#08ff07;fill-opacity:1"
+   id="path839"
+   d="M11.25,11.25c-0.414,0-0.75-0.336-0.75-0.75V6.75C10.5,6.336,10.837,6,11.25,6S12,6.336,12,6.75v3.75   C12,10.914,11.664,11.25,11.25,11.25z" />
+	<path
+   style="fill:#08ff07;fill-opacity:1"
+   id="path841"
+   d="M15.75,11.25c-0.414,0-0.75-0.336-0.75-0.75V6.75C15,6.336,15.336,6,15.75,6s0.75,0.336,0.75,0.75v3.75   C16.5,10.914,16.164,11.25,15.75,11.25z" />
+</g>
+</svg>

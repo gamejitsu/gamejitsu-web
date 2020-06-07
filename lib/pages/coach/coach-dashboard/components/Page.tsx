@@ -1,11 +1,11 @@
 import React from "react"
+import ReviewRequestResource, { ReviewRequest } from "gamejitsu/api/resources/review-request"
+import ReviewResource from "gamejitsu/api/resources/review"
 
 import { listModels, createModel } from "gamejitsu/api"
 import { Flex, Box, Text } from "rebass"
 import { Layout, Card, Button, Title } from "gamejitsu/components"
 import { NextPageContext, NextPage } from "next"
-import ReviewRequestResource, { ReviewRequest } from "gamejitsu/api/resources/review-request"
-import ReviewResource from "gamejitsu/api/resources/review"
 
 interface Props {
   reviewRequests: ReviewRequest[]
