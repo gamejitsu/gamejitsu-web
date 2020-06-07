@@ -5,7 +5,7 @@ import Link from "./Link"
 import { Box, Flex } from "rebass"
 import { destroyCookie } from "nookies"
 import { UserContext } from "../contexts"
-import { Button, ButtonNew, ImageButton } from "."
+import { ButtonIcon, ButtonNew, ImageButton } from "."
 import { useContext, FunctionComponent } from "react"
 import { transparentize } from "polished"
 import { useRouter } from "next/router"
@@ -126,12 +126,13 @@ const Navbar: FunctionComponent = () => {
           <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
         ]
       ) : (
-        <Box width="150px">
-          <ImageButton onClick={login} imageSrc={steamImageSrc} />
+        <Box>
+          <ButtonIcon key="login" text="SIGN IN" icon={user} onClick={login}/>
         </Box>
       )}
     </Container>
   )
 }
 
+//          <ImageButton onClick={login} imageSrc={steamImageSrc} />
 export default Navbar

@@ -15,7 +15,7 @@ interface Props {
   icon?: any
 }
 
-import SteamSVG from './steam.svg'
+import SteamSVG from '../../svgs/steam-icon-new-3.svg'
 
 const baseStyles = css`
   display: inline-flex;
@@ -24,12 +24,12 @@ const baseStyles = css`
   color: ${(props) => props.theme.primaryColor};
   transition: all 0.05s ease-in-out;
 
-  background: black;
+  background: transparent;
 
-  padding: 8px 25px 8px 25px;
+  padding: 10px 25px 10px 25px;
   font-size: 15px;
   font-weight: bold;
-
+ 
   &:hover {
     background-image: linear-gradient(
       to bottom,
@@ -64,7 +64,7 @@ const ButtonContent = styled(BPButton)`
     &:active {
       outline: none;
     }
-    &:hover svg path {
+    &:hover svg * {
       stroke: black;
       fill: black;
     }
@@ -89,7 +89,9 @@ const ButtonIcon: FunctionComponent<Props> = ({ text, href, icon, type = "button
     </Link>
   ) : (
       <ButtonContent type={type} {...props}>
-        {icon && <Box verticalAlign="middle" mr={2} display="inline-block"><SteamSVG width="40" height="30" /> </Box>}
+        <Box alignSelf="center" verticalAlign="middle" mr={3} display="inline-block">
+          <SteamSVG width="40" height="25" /> 
+        </Box>
         {text}
       </ButtonContent>
     )
