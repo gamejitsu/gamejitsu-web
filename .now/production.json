@@ -1,11 +1,11 @@
 {
   "name": "gamejitsu-web",
   "version": 2,
-  "alias": "gamejitsu.io",
+  "alias": "gamejitsu.gg",
   "build": {
     "env": {
-      "API_ENDPOINT": "https://api.gamejitsu.io",
-      "SOCKET_ENDPOINT": "wss://api.gamejitsu.io"
+      "API_ENDPOINT": "https://api.gamejitsu.gg",
+      "SOCKET_ENDPOINT": "wss://api.gamejitsu.gg"
     }
   }
 }
