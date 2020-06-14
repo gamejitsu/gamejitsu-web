@@ -14,9 +14,9 @@ interface ContentProps {
 }
 
 const Content = styled.img<ContentProps>`
-  width: 40px;
-  border: ${(props) => (props.isYourHero ? "1px" : "0px")} solid
-    ${(props) => props.theme.primaryColor};
+  width: 80px;
+  border: ${(props) => (props.isYourHero ? `2px solid  ${props.theme.primaryColor}` : `1px solid ${props.theme.textColor}`)};
+  border-radius: 3px;
 `
 
 const HeroImage: FunctionComponent<Props> = ({ player }) => {
@@ -25,9 +25,9 @@ const HeroImage: FunctionComponent<Props> = ({ player }) => {
   const heroName = isYourHero ? player.heroName + " (you)" : player.heroName
 
   return (
-    <Tooltip content={heroName} position={Position.RIGHT}>
-      <Content src={player.heroPortraitUrl} isYourHero={isYourHero} />
-    </Tooltip>
+      <Tooltip content={heroName} position={Position.RIGHT}>
+        <Content src={player.heroPortraitUrl} isYourHero={isYourHero} />
+      </Tooltip>
   )
 }
 

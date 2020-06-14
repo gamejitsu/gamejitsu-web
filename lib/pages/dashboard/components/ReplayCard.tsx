@@ -39,7 +39,6 @@ const RecentMatchesCard: FunctionComponent<Props> = ({ replay }) => {
   }
 
   return (
-    <Card>
       <Flex flexDirection="row">
         <Box mr="auto">
           <Flex justifyContent="center" alignItems="center" flexDirection="column">
@@ -72,7 +71,6 @@ const RecentMatchesCard: FunctionComponent<Props> = ({ replay }) => {
           </Flex>
         </Box>
       </Flex>
-    </Card>
   )
 }
 

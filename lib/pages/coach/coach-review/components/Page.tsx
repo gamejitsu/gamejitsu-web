@@ -1,13 +1,14 @@
 import React, { SyntheticEvent, useRef, useState, useEffect } from "react"
 
 import { Comment } from "gamejitsu/api/types/comment"
-import { CommentBar, CommentForm, CommentList } from "."
+import { CommentBar, CommentForm, CommentList, CommentFormNew } from "."
 import { findModel, updateModel } from "gamejitsu/api"
 import { Flex, Box, Text } from "rebass"
-import { Layout, Card, Button } from "gamejitsu/components"
+import { Layout, Card, Button, LayoutWithMenu } from "gamejitsu/components"
 import { NextPageContext, NextPage } from "next"
 import ReviewResource, { Review } from "gamejitsu/api/resources/review"
 import { Position, Toaster, Intent } from "@blueprintjs/core"
+import styled from "styled-components"
 
 interface Props {
   review: Review
@@ -17,6 +18,17 @@ const getReview = async (ctx: NextPageContext, id: string) => {
   const response = await findModel(ReviewResource, id, ctx)
   return response.data
 }
+
+const VideoContainer = styled(Box)`
+  width: 100%;
+  border: 1px solid ${(props) => props.theme.secondaryColor};
+`
+
+const Title = styled.h1`
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+`
 
 const CoachReviewPage: NextPage<Props> = (props) => {
   const [review, setReview] = useState(props.review)
@@ -100,51 +112,52 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   }
 
   return (
-    <Layout title="Coach Review">
-      <Box m="20px">
-        <Card>
-          <Flex flexDirection="column">
-            <Box p={3}>
-              <Text p={2}>Review</Text>
-              <Text p={2}>Review Id: {review.id}</Text>
-              <Button text="Save review" type="button" onClick={onSaveReview} />
-              <Flex>
-                <Box p={0} flex="1">
-                  <video
-                    ref={videoRef}
-                    onDurationChange={onSetVideoDuration}
-                    onTimeUpdate={onSetVideoTimestamp}
-                    width="100%"
-                    controls
-                  >
-                    <source src="/video/sample.mp4" type="video/mp4" />
-                  </video>
-                </Box>
-                <Box>
-                  <CommentList
-                    comments={review.comments}
-                    selectedComment={selectedComment}
-                    onSelect={onSelectComment}
-                  />
-                  <CommentForm
-                    comment={selectedComment}
-                    onSave={onSaveComment}
-                    onDelete={onDeleteComment}
-                    timestamp={videoTimestamp}
-                  />
-                </Box>
-              </Flex>
+    <LayoutWithMenu title="Coach Review">
+      <Box>
+        <Flex justifyContent="center">
+          <Box>
+            <VideoContainer>
+              <video
+                ref={videoRef}
+                onDurationChange={onSetVideoDuration}
+                onTimeUpdate={onSetVideoTimestamp}
+                width="100%"
+                controls
+              >
+                <source src="/video/sample.mp4" type="video/mp4" />
+              </video>
+            </VideoContainer>
+            <Box>
+              <Box py={3}>
+              <Title>MATCH NAVIGATION</Title>
+              </Box>
+              <CommentBar
+                comments={review.comments}
+                videoDuration={videoDuration}
+                onVideoTimestampChange={setVideoTimestamp}
+                videoTimestamp={videoTimestamp}
+              />
             </Box>
-          </Flex>
-        </Card>
-        <CommentBar
-          comments={review.comments}
-          videoDuration={videoDuration}
-          onVideoTimestampChange={setVideoTimestamp}
-          videoTimestamp={videoTimestamp}
-        />
+            <Box py={3}>
+              <Title>INSERT COMMENT BY COACH</Title>
+              <CommentFormNew
+                comment={selectedComment}
+                onSave={onSaveComment}
+                onDelete={onDeleteComment}
+                timestamp={videoTimestamp}
+              />
+            </Box>
+          </Box>
+          <CommentList
+            comments={review.comments}
+            selectedComment={selectedComment}
+            onSelect={onSelectComment}
+          />
+        </Flex>
+
       </Box>
-    </Layout>
+      <Button text="Save review" type="button" onClick={onSaveReview} />
+    </LayoutWithMenu>
   )
 }
 

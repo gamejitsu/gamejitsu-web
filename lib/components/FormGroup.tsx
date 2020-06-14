@@ -18,7 +18,7 @@ const Label = styled.div`
 `
 
 const FormGroup: FunctionComponent<Props> = ({ children, label, labelInfo, labelFor }) => (
-  <Box mb={4}>
+  <Box mb={4} mt={3}>
     <BPFormGroup
       inline
       label={

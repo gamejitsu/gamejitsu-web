@@ -65,15 +65,15 @@ const FlowText = styled.p`
 `
 
 const Background = styled.div`
-top: 0;
-left: 0;
-right 0;
-bottom: 0;
-position: absolute;
-background-image: url('/images/background-hero-unit.jpg');
-background-position: center;
-background-size: cover;
-opacity: 0.3;
+  top: 0;
+  left: 0;
+  right 0;
+  bottom: 0;
+  position: absolute;
+  background-image: url('/images/background-hero-unit.jpg');
+  background-position: center;
+  background-size: cover;
+  opacity: 0.3;
 `
 
 const FooterTitle = styled.h3`
@@ -638,8 +638,7 @@ const Page: AuthenticatedComponent = () => (
                     Need help? Email us at <FooterLink>support@gamejitsu.gg</FooterLink>
                   </FooterText>
                   <FooterText>
-                    Are you a Streamer/You Tuber/High Ranked?{" "}
-                    <FooterLink>Apply for Partnership</FooterLink>
+                    Are you a Streamer/You Tuber/High Ranked? <FooterLink>Apply for Partnership</FooterLink>
                   </FooterText>
                 </Box>
               </Flex>

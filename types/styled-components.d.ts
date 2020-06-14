@@ -11,6 +11,7 @@ declare module "styled-components" {
     primaryColor: string
     secondaryColor: string
     textColor: string
+    textColorDark: string
     textFont: string
     borderRadius: string
   }

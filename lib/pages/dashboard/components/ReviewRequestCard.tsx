@@ -9,7 +9,6 @@ interface Props {
 }
 
 const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => (
-  <Card>
     <Flex>
       <Box p={3} mr="auto">
         <Text p={2}>Review Request</Text>
@@ -21,7 +20,6 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => (
         <Button onClick={() => {}} text="Cancel" />
       </Box>
     </Flex>
-  </Card>
 )
 
 export default ReviewRequestCard

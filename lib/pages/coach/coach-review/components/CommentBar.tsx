@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useState, useRef, useEffect } from "react"
 import styled from "styled-components"
 
-import { Box } from "rebass"
+import { Box, Flex } from "rebass"
 import { Comment } from "gamejitsu/api/types/comment"
 import { commentDuration } from "."
-import { darken } from "polished"
+import { formatTimestamp } from "gamejitsu/utils/duration"
 
 interface Props {
   comments: Comment[]
@@ -13,7 +13,7 @@ interface Props {
   onVideoTimestampChange: (timestamp: number) => void
 }
 
-interface SquareProps {
+interface ElementCommentProps {
   duration: number
   containerWidth: number
   comment: Comment
@@ -25,12 +25,12 @@ interface CursorOverlayProps {
   containerWidth: number
 }
 
-const getWidth = (props: SquareProps) => {
+const getWidth = (props: ElementCommentProps) => {
   const totalDuration = props.duration
   return (commentDuration / totalDuration) * props.containerWidth
 }
 
-const getX = (props: SquareProps) => {
+const getX = (props: ElementCommentProps) => {
   const commentTimestamp = props.comment.timestamp
   const totalDuration = props.duration
   const ratio = (commentTimestamp - commentDuration / 2) / totalDuration
@@ -44,32 +44,50 @@ const getCursorLeft = (props: CursorOverlayProps) => {
 }
 
 const Container = styled(Box)`
-  background-color: ${(props) => props.theme.secondaryColor};
+  background-color: ${(props) => props.theme.backgroundColor};
   position: relative;
-  height: 40px;
-  background: linear-gradient(
-    to bottom,
-    ${(props) => darken(0.3, props.theme.primaryColor)},
-    ${(props) => props.theme.primaryColor}
-  );
-`
-const Square = styled(Box)<SquareProps>`
-  background-color: ${(props) => props.theme.secondaryColor};
-  left: ${(props) => `${getX(props)}px`};
-  width: ${(props) => `${getWidth(props)}px`};
-  height: 100%;
-  position: absolute;
-  border: 1px solid ${(props) => props.theme.lightBackgroundColor};
+  height: 120px;
+  background: ${(props) => props.theme.lightBackgroundColor};
+  border: 1px solid ${(props) => props.theme.activeColor};
 `
 
-const CursorOverlay = styled(Box)<CursorOverlayProps>`
-  background-color: black;
-  opacity: 0.4;
-  right: 0;
-  left: ${(props) => `${getCursorLeft(props)}px`};
-  position: absolute;
-  height: 100%;
+const T = styled(Box)`
+  height: 80%;
+  width: 2px;
+  background-color: white;
 `
+
+const ElementComment = styled(Box) <ElementCommentProps>`
+  height: 85%;
+  width: 2px;
+  background-color: ${(props) => props.theme.primaryColor};
+  margin: auto;
+`
+
+const Bar = styled(Box)`
+  background-color: ${(props) => props.theme.lightBackgroundColor};
+  width: 85%;
+`
+
+const BarText = styled.h3`
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+`
+
+const TimeTag = styled(Box)`
+  background-color: ${(props) => props.theme.primaryColor};
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 5px;
+`
+
+const getPercentage = (comment: Comment, totalDuration: number) => {
+  const commentTimestamp = comment.timestamp
+  const percentage = commentTimestamp * 100 / totalDuration
+  return Math.round(percentage)
+}
 
 const CommentBar: FunctionComponent<Props> = ({
   comments,
@@ -91,23 +109,63 @@ const CommentBar: FunctionComponent<Props> = ({
     setContainerWidth(containerRef.current ? containerRef.current.offsetWidth : 0)
   })
 
+  const array1 = [...Array(100).keys()]
+
   return (
     <Container onClick={onBarClick} ref={containerRef}>
-      {comments.map((comment, index) => {
-        return (
-          <Square
-            key={index.toString()}
-            comment={comment}
-            containerWidth={containerWidth}
-            duration={videoDuration}
-          />
-        )
-      })}
-      <CursorOverlay
-        timestamp={videoTimestamp}
-        containerWidth={containerWidth}
-        duration={videoDuration}
-      />
+
+      <Flex height="100%" width="100%" justifyContent="center">
+        <Box mb={1} mr={3}>
+          <Flex height="100%" alignItems="flex-end">
+            <Box>
+              <BarText>START</BarText>
+            </Box>
+          </Flex>
+        </Box>
+        <Bar>
+          <Flex height="100%" alignItems="flex-end" justifyContent="space-between">
+            {array1.map(key => {
+              let isComment = false
+              comments.map((comment, index) => {
+                const percentage = getPercentage(comment, videoDuration)
+                if (percentage === key) {
+                  console.log("FOUNDDDDDDD!!!!!!")
+                  isComment = true
+                }
+              })
+              if (isComment) {
+                return comments.map((comment, index) => {
+                  if (getPercentage(comment, videoDuration) === key) {
+                    console.log("in return element")
+                    console.log(index)
+                    console.log(key)
+                    return <Box height="100%">
+                      <TimeTag>{formatTimestamp(comment.timestamp)}</TimeTag>
+                      <ElementComment
+                        key={index.toString()}
+                        comment={comment}
+                        containerWidth={containerWidth}
+                        duration={videoDuration}
+                      />
+                    </Box>
+                  }
+                })
+              }
+              else {
+                return <T key={key.toString()} />
+              }
+            })
+            }
+          </Flex>
+        </Bar>
+        <Box mb={2} ml={3}>
+          <Flex height="100%" alignItems="flex-end">
+            <Box>
+              <BarText>FINISH</BarText>
+            </Box>
+          </Flex>
+        </Box>
+      </Flex>
     </Container>
   )
 }

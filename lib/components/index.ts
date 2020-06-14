@@ -4,12 +4,14 @@ import ButtonIcon from "./ButtonIcon"
 import ButtonAlternative from "./ButtonAlternative"
 import ButtonDark from "./ButtonDark"
 import Card from "./Card"
+import CardNew from "./CardNew"
 import Form from "./Form"
 import FormGroup from "./FormGroup"
 import HeroImage from "./HeroImage"
 import ImageButton from "./ImageButton"
 import InputGroup from "./InputGroup"
 import Layout from "./Layout"
+import LayoutWithMenu from "./LayoutWithMenu"
 import Link from "./Link"
 import Navbar from "./Navbar"
 import SkillLevelSelect from "./SkillLevelSelect"
@@ -24,12 +26,14 @@ export {
   ButtonAlternative,
   ButtonDark,
   Card,
+  CardNew,
   Form,
   FormGroup,
   HeroImage,
   ImageButton,
   InputGroup,
   Layout,
+  LayoutWithMenu,
   Link,
   Navbar,
   SkillLevelSelect,

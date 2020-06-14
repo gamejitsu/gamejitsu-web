@@ -134,5 +134,4 @@ const Navbar: FunctionComponent = () => {
   )
 }
 
-//          <ImageButton onClick={login} imageSrc={steamImageSrc} />
 export default Navbar
