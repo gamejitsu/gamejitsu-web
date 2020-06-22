@@ -122,6 +122,7 @@ function resourceFileContents(
   resources: Resources
 ) {
   const varName = classify(name)
+  const includedRelationships = includedRelationshipsForResource(resource, resources)
 
   return `
     ${stringifyImports(
@@ -130,9 +131,10 @@ function resourceFileContents(
           (acc, a) => [...acc, ...importsForAttribute(types, a)],
           [] as ImportMeta[]
         ),
-        ...values(resource.relationships)
-          .filter((r) => r.include)
-          .reduce((acc, r) => [...acc, ...importsForRelationship(resources, r)], [] as ImportMeta[])
+        ...includedRelationships.reduce(
+          (acc, r) => [...acc, ...importsForRelationship(resources, r)],
+          [] as ImportMeta[]
+        )
       )
     )}
     import { buildResource, extractValue } from "../resource"
@@ -184,7 +186,7 @@ function resourceFileContents(
         data: (value: unknown) => extractValue(decoder.decode(value)),
         response: (value: unknown) => extractValue(
           t.strict({
-            ${includedDecoderForResource(resource)}
+            ${includedDecoderForResource(includedRelationships)}
           })
           .decode(value)
         )
@@ -193,7 +195,7 @@ function resourceFileContents(
         data: transformer,
         response: (value) => ${
           values(resource.relationships).some((r) => r.include)
-            ? `({ ${includedTransformersForResource(resource)} })`
+            ? `({ ${includedTransformersForResource(includedRelationships)} })`
             : "value"
         }
       },
@@ -236,9 +238,27 @@ function encoderForAttribute(types: Types, name: string, attribute: Attribute) {
   return `(value.${name} || []).map((v) => ${encoderForTypeName(types, "v", attribute.value)})`
 }
 
-function includedTransformersForResource(resource: Resources[keyof Resources]) {
-  const includedRelationships = values(resource.relationships).filter((r) => r.include)
+function includedRelationshipsForResource(
+  resource: Resources[keyof Resources],
+  resources: Resources,
+  traversedTypes: (keyof Resources)[] = []
+): Relationship[] {
+  return values(resource.relationships)
+    .filter((r) => !traversedTypes.includes(r.type) && r.include)
+    .reduce(
+      (acc, relationship) => [
+        ...acc,
+        relationship,
+        ...includedRelationshipsForResource(resources[relationship.type], resources, [
+          ...traversedTypes,
+          relationship.type
+        ])
+      ],
+      [] as Relationship[]
+    )
+}
 
+function includedTransformersForResource(includedRelationships: Relationship[]) {
   if (includedRelationships.length === 0) {
     return ""
   }
@@ -252,9 +272,7 @@ function includedTransformersForResource(resource: Resources[keyof Resources]) {
   `
 }
 
-function includedDecoderForResource(resource: Resources[keyof Resources]) {
-  const includedRelationships = values(resource.relationships).filter((r) => r.include)
-
+function includedDecoderForResource(includedRelationships: Relationship[]) {
   if (includedRelationships.length === 0) {
     return ""
   }
