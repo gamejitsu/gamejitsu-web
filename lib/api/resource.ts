@@ -89,7 +89,10 @@ function buildDecode<D, R, TD, TR>(
     )
 
     const { data } = decodedValue
+    console.log("value:", value)
+    console.log("data:", data)
     const decodedResponse = decoder.response(value)
+    console.log("decoded:", decodedResponse)
     const decodedData = decoder.data(data)
     return { data: transformer.data(decodedData), ...transformer.response(decodedResponse) }
   }

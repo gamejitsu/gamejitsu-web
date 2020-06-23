@@ -29,7 +29,7 @@ export default buildResource({
   name: "user",
   decode: {
     data: (value: unknown) => extractValue(decoder.decode(value)),
-    response: (value: unknown) => extractValue(t.strict({}).decode(value))
+    response: (value: unknown) => extractValue(t.type({}).decode(value))
   },
   transform: {
     data: transformer,

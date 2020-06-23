@@ -1,6 +1,10 @@
 import * as t from "io-ts"
 import { SkillLevel, encoder as skillLevelEncoder } from "gamejitsu/api/types/skill-level"
-import { decoder as replayDecoder } from "gamejitsu/api/resources/replay"
+import {
+  decoder as replayDecoder,
+  transformer as replayTransformer,
+  Replay
+} from "gamejitsu/api/resources/replay"
 import { buildResource, extractValue } from "../resource"
 import { Model } from "gamejitsu/interfaces"
 
@@ -51,7 +55,10 @@ export default buildResource({
     data: transformer,
     response: (value) => ({
       included: {
-        replay: value.included.filter((r) => r.type === "replay")
+        replay: value.included.reduce(
+          (a, r) => (r.type === "replay" ? [...a, replayTransformer(r)] : a),
+          [] as Replay[]
+        )
       }
     })
   },
