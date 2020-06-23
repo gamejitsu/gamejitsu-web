@@ -266,7 +266,14 @@ function includedTransformersForResource(includedRelationships: Relationship[]) 
   return `
     included: {
       ${includedRelationships
-        .map((r) => `"${r.type}": value.included.filter((r) => r.type === "${r.type}")`)
+        .map(
+          (r) => `
+          "${r.type}": value.included.reduce((a, r) =>
+            r.type === "${r.type}" ? [...a, ${camelcase(
+            r.type
+          )}Transformer(r)] : a, [] as ${classify(r.type)}[]
+          )`
+        )
         .join(",\n")}
     }
   `
@@ -286,6 +293,12 @@ function includedDecoderForResource(includedRelationships: Relationship[]) {
       includedRelationships.length === 1 ? includedDecoders : `t.union([ ${includedDecoders} ])`
     })
   `
+}
+
+function encoderForTypeName(types: Types, attributeName: string, name: string) {
+  return keys(types).includes(name)
+    ? `${camelcase(name)}Encoder(${attributeName})`
+    : `${attributeName}`
 }
 
 function encoderForRelationship(name: string, relationship: Relationship) {
@@ -308,23 +321,32 @@ function encoderForRelationship(name: string, relationship: Relationship) {
   return `"${encodedName}": (value.${attrName}Ids || []).map((id) => (${encoder()}))`
 }
 
-function encoderForTypeName(types: Types, attributeName: string, name: string) {
-  return keys(types).includes(name)
-    ? `${camelcase(name)}Encoder(${attributeName})`
-    : `${attributeName}`
-}
-
 function importsForRelationship(resources: Resources, relationship: Relationship) {
   if (!keys(resources).includes(relationship.type)) {
     throw new Error(`Non-existent relationship type: ${relationship.type}`)
   }
 
+  const module = `gamejitsu/api/resources/${dasherize(relationship.type)}`
+
   return [
     {
       name: "decoder",
       as: `${camelcase(relationship.type)}Decoder`,
-      module: `gamejitsu/api/resources/${dasherize(relationship.type)}`
-    }
+      module
+    },
+    ...(relationship.include
+      ? [
+          {
+            name: "transformer",
+            as: `${camelcase(relationship.type)}Transformer`,
+            module
+          },
+          {
+            name: classify(relationship.type),
+            module
+          },
+        ]
+      : [])
   ]
 }
 
