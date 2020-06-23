@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react"
-import Head from "next/head"
 import styled from "styled-components"
 import { Flex, Box } from "rebass"
+import Head from "next/head"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import GameContainerSVG from "../../../../svgs/dota2-bs-crop-cut.svg"
@@ -599,6 +599,7 @@ const Page: AuthenticatedComponent = () => (
             <PriceCard title="Pro" price="$10.0" icon="vip">
               <PriceFeature>Above 7k MMR</PriceFeature>
             </PriceCard>
+
           </Flex>
         </Box>
       </PriceCards>
