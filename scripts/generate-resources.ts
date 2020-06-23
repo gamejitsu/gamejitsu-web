@@ -344,7 +344,7 @@ function importsForRelationship(resources: Resources, relationship: Relationship
           {
             name: classify(relationship.type),
             module
-          },
+          }
         ]
       : [])
   ]
