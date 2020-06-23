@@ -15,7 +15,7 @@
       "email": { "type": "string" },
       "firstName": { "type": "string" },
       "lastName": { "type": "string" },
-      "photoUrl": { "type": "string" },
+      "photoUrl": { "type": "string", "optional": true },
       "skillLevel": { "type": "skill-level" }
     },
     "relationships": {}
@@ -51,7 +51,7 @@
     },
     "relationships": {
       "request": { "cardinality": "one", "type": "review-request", "include": true },
-      "coach": { "cardinality": "one", "type": "coach" }
+      "coach": { "cardinality": "one", "type": "coach", "include": true }
     }
   },
   "session": {

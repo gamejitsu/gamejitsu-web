@@ -57,7 +57,7 @@ const T = styled(Box)`
   background-color: white;
 `
 
-const ElementComment = styled(Box) <ElementCommentProps>`
+const ElementComment = styled(Box)<ElementCommentProps>`
   height: 85%;
   width: 2px;
   background-color: ${(props) => props.theme.primaryColor};
@@ -85,7 +85,7 @@ const TimeTag = styled(Box)`
 
 const getPercentage = (comment: Comment, totalDuration: number) => {
   const commentTimestamp = comment.timestamp
-  const percentage = commentTimestamp * 100 / totalDuration
+  const percentage = (commentTimestamp * 100) / totalDuration
   return Math.round(percentage)
 }
 
@@ -113,7 +113,6 @@ const CommentBar: FunctionComponent<Props> = ({
 
   return (
     <Container onClick={onBarClick} ref={containerRef}>
-
       <Flex height="100%" width="100%" justifyContent="center">
         <Box mb={1} mr={3}>
           <Flex height="100%" alignItems="flex-end">
@@ -124,7 +123,7 @@ const CommentBar: FunctionComponent<Props> = ({
         </Box>
         <Bar>
           <Flex height="100%" alignItems="flex-end" justifyContent="space-between">
-            {array1.map(key => {
+            {array1.map((key) => {
               let isComment = false
               comments.map((comment, index) => {
                 const percentage = getPercentage(comment, videoDuration)
@@ -139,23 +138,23 @@ const CommentBar: FunctionComponent<Props> = ({
                     console.log("in return element")
                     console.log(index)
                     console.log(key)
-                    return <Box height="100%">
-                      <TimeTag>{formatTimestamp(comment.timestamp)}</TimeTag>
-                      <ElementComment
-                        key={index.toString()}
-                        comment={comment}
-                        containerWidth={containerWidth}
-                        duration={videoDuration}
-                      />
-                    </Box>
+                    return (
+                      <Box height="100%">
+                        <TimeTag>{formatTimestamp(comment.timestamp)}</TimeTag>
+                        <ElementComment
+                          key={index.toString()}
+                          comment={comment}
+                          containerWidth={containerWidth}
+                          duration={videoDuration}
+                        />
+                      </Box>
+                    )
                   }
                 })
-              }
-              else {
+              } else {
                 return <T key={key.toString()} />
               }
-            })
-            }
+            })}
           </Flex>
         </Bar>
         <Box mb={2} ml={3}>

@@ -599,7 +599,6 @@ const Page: AuthenticatedComponent = () => (
             <PriceCard title="Pro" price="$10.0" icon="vip">
               <PriceFeature>Above 7k MMR</PriceFeature>
             </PriceCard>
-
           </Flex>
         </Box>
       </PriceCards>
@@ -639,7 +638,8 @@ const Page: AuthenticatedComponent = () => (
                     Need help? Email us at <FooterLink>support@gamejitsu.gg</FooterLink>
                   </FooterText>
                   <FooterText>
-                    Are you a Streamer/You Tuber/High Ranked? <FooterLink>Apply for Partnership</FooterLink>
+                    Are you a Streamer/You Tuber/High Ranked?{" "}
+                    <FooterLink>Apply for Partnership</FooterLink>
                   </FooterText>
                 </Box>
               </Flex>

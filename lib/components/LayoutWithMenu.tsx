@@ -15,7 +15,6 @@ import ImageButton from "./ImageButton"
 const companyName = "Gamejitsu"
 const gamejitsuWritingImageSrc = "/images/gamejitsu-writing.svg"
 
-
 interface Props {
   title?: string
 }
@@ -47,12 +46,12 @@ const LeftMenu = styled(Box)`
 const Container = styled(Box)`
   height: 100vh;
   flex-grow: 1;
-  padding: 50px;  
-  background-image: url('/images/background-hero-unit.jpg');
+  padding: 50px;
+  background-image: url("/images/background-hero-unit.jpg");
   background-position: center;
 `
 
-const LeftMenuLinkContent = styled(LinkLeftMenu) <LeftMenuLinkContentProps>`
+const LeftMenuLinkContent = styled(LinkLeftMenu)<LeftMenuLinkContentProps>`
   font-weight: bold;
   transition: all 0.15s ease-in-out;
   position: relative;
@@ -65,10 +64,10 @@ const LeftMenuLinkContent = styled(LinkLeftMenu) <LeftMenuLinkContentProps>`
 `
 
 const MenuTitle = styled(Box)`
-   height: 60px;
-   font-size: 15px;
-   color: white;
-   font-weight: bold;
+  height: 60px;
+  font-size: 15px;
+  color: white;
+  font-weight: bold;
 `
 
 const LinksContainer = styled(Flex)`
@@ -120,25 +119,23 @@ const LayoutWithMenu: FunctionComponent<Props> = ({ title, children }) => (
           </Flex>
           <LeftMenuLink href="/coach-dashboard">
             <CoachDashboardSVG width="60" height="35" />
-                Coach Dashboard
-              </LeftMenuLink>
+            Coach Dashboard
+          </LeftMenuLink>
           <LeftMenuLink href="/coach-reviews">
             <AnalysisCompletedSVG width="60" height="35" />
-                Analysis Completed
-              </LeftMenuLink>
+            Analysis Completed
+          </LeftMenuLink>
           <LeftMenuLink href="/coach-settings">
             <SettingsSVG width="60" height="35" />
-                Settings
-              </LeftMenuLink>
+            Settings
+          </LeftMenuLink>
           <MenuFooterParent>
             <MenuFooter justifyContent="center" pb={4}>
               © 2020 - Gamejitsu Copyright.
             </MenuFooter>
           </MenuFooterParent>
         </LeftMenu>
-        <Container pt={92}>
-          {children}
-        </Container>
+        <Container pt={92}>{children}</Container>
       </Flex>
     </Wrapper>
   </>

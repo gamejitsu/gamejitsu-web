@@ -25,7 +25,6 @@ const Container = styled(Box)`
     scrollbar-color: red yellow;
   }
   scrollbar-color: red yellow;
-
 `
 
 const ListItemContainer = styled(Box)`
@@ -34,7 +33,6 @@ const ListItemContainer = styled(Box)`
   background-color: #212121;
   border: 2px solid ${(props) => props.theme.secondaryColor};
   border-top: 0;
-
 `
 
 const ListItem = styled.li<ListItemProps>`
@@ -88,9 +86,7 @@ const CommentList: FunctionComponent<Props> = ({ comments, selectedComment, onSe
     <Container ml={4}>
       <Header>
         <Box ml={3}>
-          <CommentListTitle>
-            COMMENTS ADDED BY COACH
-          </CommentListTitle>
+          <CommentListTitle>COMMENTS ADDED BY COACH</CommentListTitle>
         </Box>
       </Header>
       <Box>
@@ -98,14 +94,16 @@ const CommentList: FunctionComponent<Props> = ({ comments, selectedComment, onSe
           <Flex>
             <ListItemContainer>
               <Flex alignItems="center">
-                <TimeTag ml={4} mt={3}>4.44</TimeTag>
-                <LessExpandTag ml="auto" mr={4} mt={3}>EXPAND</LessExpandTag>
+                <TimeTag ml={4} mt={3}>
+                  4.44
+                </TimeTag>
+                <LessExpandTag ml="auto" mr={4} mt={3}>
+                  EXPAND
+                </LessExpandTag>
               </Flex>
-              <Box ml={3} >
+              <Box ml={3}>
                 <ListItem key={10000} comment={fakeComment} selectedComment={selectedComment}>
-                  <a onClick={onSelectListItem.bind(null, fakeComment)}>
-                    {fakeComment.text}
-                  </a>
+                  <a onClick={onSelectListItem.bind(null, fakeComment)}>{fakeComment.text}</a>
                 </ListItem>
               </Box>
             </ListItemContainer>
@@ -114,14 +112,20 @@ const CommentList: FunctionComponent<Props> = ({ comments, selectedComment, onSe
             <Flex>
               <ListItemContainer>
                 <Flex alignItems="center">
-                  <TimeTag ml={4} mt={3}>{formatTimestamp(comment.timestamp)}</TimeTag>
-                  <LessExpandTag ml="auto" mr={4} mt={3}>EXPAND</LessExpandTag>
+                  <TimeTag ml={4} mt={3}>
+                    {formatTimestamp(comment.timestamp)}
+                  </TimeTag>
+                  <LessExpandTag ml="auto" mr={4} mt={3}>
+                    EXPAND
+                  </LessExpandTag>
                 </Flex>
                 <Box ml={3}>
-                  <ListItem key={index.toString()} comment={comment} selectedComment={selectedComment}>
-                    <a onClick={onSelectListItem.bind(null, comment)}>
-                      {comment.text}
-                    </a>
+                  <ListItem
+                    key={index.toString()}
+                    comment={comment}
+                    selectedComment={selectedComment}
+                  >
+                    <a onClick={onSelectListItem.bind(null, comment)}>{comment.text}</a>
                   </ListItem>
                 </Box>
               </ListItemContainer>

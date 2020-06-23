@@ -7,7 +7,7 @@ export interface Coach extends Model {
   email: string
   firstName: string
   lastName: string
-  photoUrl: string
+  photoUrl: string | null
   skillLevel: SkillLevel
 }
 
@@ -18,7 +18,7 @@ export const decoder = t.type({
     email: t.string,
     "first-name": t.string,
     "last-name": t.string,
-    "photo-url": t.string,
+    "photo-url": t.union([t.string, t.null]),
     "skill-level": SkillLevel
   })
 })

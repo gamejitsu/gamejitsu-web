@@ -25,10 +25,10 @@ const Container = styled(Box)`
 `
 
 const HorizontalLine = styled.div`
-   width: 95%;
-   height: 1px;
-   background-color: ${(props) => props.theme.textColorDark};
-   margin: 0 auto;
+  width: 95%;
+  height: 1px;
+  background-color: ${(props) => props.theme.textColorDark};
+  margin: 0 auto;
 `
 
 const Header = styled(Flex)`
@@ -68,7 +68,7 @@ const RecentMatchesCardNew: FunctionComponent<Props> = ({ replay }) => {
           </Box>
           <Box mt={3} ml="auto" mr={3} height="30px">
             <GameInfo>Game won</GameInfo>
-        </Box>
+          </Box>
         </Header>
         <HorizontalLine />
         <Box px={3} pb={1} mt={4} mb={3}>
@@ -77,17 +77,21 @@ const RecentMatchesCardNew: FunctionComponent<Props> = ({ replay }) => {
               <Flex>
                 {replay.playersDire.map((player, index) => {
                   const key = player.steamId ? player.steamId : index.toString()
-                  return <Box mr={3}>
-                    <HeroImage key={key} player={player} />
-                  </Box>
+                  return (
+                    <Box mr={3}>
+                      <HeroImage key={key} player={player} />
+                    </Box>
+                  )
                 })}
               </Flex>
               <Flex>
                 {replay.playersRadiant.map((player, index) => {
                   const key = player.steamId ? player.steamId : index.toString()
-                  return <Box mt={2} mr={3}>
-                    <HeroImage key={key} player={player} />
-                  </Box>
+                  return (
+                    <Box mt={2} mr={3}>
+                      <HeroImage key={key} player={player} />
+                    </Box>
+                  )
                 })}
               </Flex>
               <Flex alignItems="center">

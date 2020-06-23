@@ -129,7 +129,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
             </VideoContainer>
             <Box>
               <Box py={3}>
-              <Title>MATCH NAVIGATION</Title>
+                <Title>MATCH NAVIGATION</Title>
               </Box>
               <CommentBar
                 comments={review.comments}
@@ -154,7 +154,6 @@ const CoachReviewPage: NextPage<Props> = (props) => {
             onSelect={onSelectComment}
           />
         </Flex>
-
       </Box>
       <Button text="Save review" type="button" onClick={onSaveReview} />
     </LayoutWithMenu>

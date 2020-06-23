@@ -39,38 +39,36 @@ const RecentMatchesCard: FunctionComponent<Props> = ({ replay }) => {
   }
 
   return (
-      <Flex flexDirection="row">
-        <Box mr="auto">
-          <Flex justifyContent="center" alignItems="center" flexDirection="column">
-            <Box>
-              <UserImage userPlayer={currentPlayer} />
-              You played as {currentPlayer.heroName}
-              <Text p={2}>
-                {formatDistanceToNow(new Date(replay.playedAt), { addSuffix: true })}
-              </Text>
-            </Box>
-          </Flex>
-        </Box>
-        <Box p={3}>
-          <Flex justifyContent="center" alignItems="center">
-            <Box>
-              <div>
-                {replay.playersDire.map((player, index) => {
-                  const key = player.steamId ? player.steamId : index.toString()
-                  return <HeroImage key={key} player={player} />
-                })}
-              </div>
-              <div>
-                {replay.playersRadiant.map((player, index) => {
-                  const key = player.steamId ? player.steamId : index.toString()
-                  return <HeroImage key={key} player={player} />
-                })}
-              </div>
-              <Button href={`/review-requests/${replay.id}`} text="Request Review" />
-            </Box>
-          </Flex>
-        </Box>
-      </Flex>
+    <Flex flexDirection="row">
+      <Box mr="auto">
+        <Flex justifyContent="center" alignItems="center" flexDirection="column">
+          <Box>
+            <UserImage userPlayer={currentPlayer} />
+            You played as {currentPlayer.heroName}
+            <Text p={2}>{formatDistanceToNow(new Date(replay.playedAt), { addSuffix: true })}</Text>
+          </Box>
+        </Flex>
+      </Box>
+      <Box p={3}>
+        <Flex justifyContent="center" alignItems="center">
+          <Box>
+            <div>
+              {replay.playersDire.map((player, index) => {
+                const key = player.steamId ? player.steamId : index.toString()
+                return <HeroImage key={key} player={player} />
+              })}
+            </div>
+            <div>
+              {replay.playersRadiant.map((player, index) => {
+                const key = player.steamId ? player.steamId : index.toString()
+                return <HeroImage key={key} player={player} />
+              })}
+            </div>
+            <Button href={`/review-requests/${replay.id}`} text="Request Review" />
+          </Box>
+        </Flex>
+      </Box>
+    </Flex>
   )
 }
 

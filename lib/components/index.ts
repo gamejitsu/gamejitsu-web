@@ -8,6 +8,7 @@ import CardNew from "./CardNew"
 import Form from "./Form"
 import FormGroup from "./FormGroup"
 import HeroImage from "./HeroImage"
+import HeroImageSmall from "./HeroImageSmall"
 import ImageButton from "./ImageButton"
 import InputGroup from "./InputGroup"
 import Layout from "./Layout"
@@ -32,6 +33,7 @@ export {
   Form,
   FormGroup,
   HeroImage,
+  HeroImageSmall,
   ImageButton,
   InputGroup,
   Layout,

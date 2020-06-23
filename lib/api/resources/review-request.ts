@@ -46,7 +46,7 @@ export default buildResource({
       extractValue(
         t
           .strict({
-            included: t.array(replayDecoder)
+            included: t.union([t.array(replayDecoder), t.undefined])
           })
           .decode(value)
       )
@@ -55,7 +55,7 @@ export default buildResource({
     data: transformer,
     response: (value) => ({
       included: {
-        replay: value.included.reduce(
+        replay: (value.included || []).reduce(
           (a, r) => (r.type === "replay" ? [...a, replayTransformer(r)] : a),
           [] as Replay[]
         )

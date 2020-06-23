@@ -5,7 +5,7 @@ import { Button } from "gamejitsu/components"
 import { Comment } from "gamejitsu/api/types/comment"
 import { Formik, Form, Field } from "formik"
 import { Review } from "gamejitsu/api/resources/review"
-import styled from 'styled-components'
+import styled from "styled-components"
 
 interface Props {
   comment: Comment | null

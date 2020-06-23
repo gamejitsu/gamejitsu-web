@@ -1,25 +1,33 @@
 import React, { FunctionComponent } from "react"
 
-import { Button, Card, HeroImage } from "gamejitsu/components"
+import { Button, Card, HeroImageSmall } from "gamejitsu/components"
 import { Flex, Box, Text } from "rebass"
-import { Review } from "gamejitsu/api/resources/review"
-import { ReviewRequest } from "gamejitsu/api/resources/review-request"
-import { Replay } from "gamejitsu/api/resources/replay"
+import { DecoratedReview } from "gamejitsu/models/review"
 
 interface Props {
-  review: Review
-  reviewRequest?: ReviewRequest
-  replay?: Replay
+  review: DecoratedReview
 }
 
-const CoachReviewCard: FunctionComponent<Props> = ({ review, reviewRequest, replay }) => (
+const CoachReviewCard: FunctionComponent<Props> = ({ review }) => (
   <Card>
     <Flex>
       <Box p={3} mr="auto">
-        <Text p={2}>Skill Level:</Text>
-        <Text p={2}>Comment: </Text>
+        <Text p={2}>Skill Level: {review.reviewRequest.skillLevel}</Text>
+        <Text p={2}>Comment: {review.reviewRequest.comment}</Text>
       </Box>
       <Box p={3} mr="auto">
+        <div>
+          {review.replay.playersDire.map((player, index) => {
+            const key = player.steamId ? player.steamId : index.toString()
+            return <HeroImageSmall key={key} player={player} />
+          })}
+        </div>
+        <div>
+          {review.replay.playersRadiant.map((player, index) => {
+            const key = player.steamId ? player.steamId : index.toString()
+            return <HeroImageSmall key={key} player={player} />
+          })}
+        </div>
       </Box>
       <Box alignSelf="center" pr={3}>
         <Button href={"/coach-reviews/" + review.id} text="Complete review" />

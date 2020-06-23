@@ -20,8 +20,7 @@ const CoachReviewIndex: NextPage<Props> = ({ reviews }) => {
     <LayoutWithMenu title="Completed Reviews">
       <Title text="Completed Reviews" />
       {reviews.map((review) => {
-        if (review.isPublished)
-          return <CoachReviewCard key={review.id} review={review} />
+        if (review.isPublished) return <CoachReviewCard key={review.id} review={review} />
       })}
     </LayoutWithMenu>
   )
