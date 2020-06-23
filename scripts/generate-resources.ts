@@ -268,7 +268,7 @@ function includedTransformersForResource(includedRelationships: Relationship[]) 
       ${includedRelationships
         .map(
           (r) => `
-          "${r.type}": value.included.reduce((a, r) =>
+          "${r.type}": (value.included || []).reduce((a, r) =>
             r.type === "${r.type}" ? [...a, ${camelcase(
             r.type
           )}Transformer(r)] : a, [] as ${classify(r.type)}[]
@@ -289,9 +289,9 @@ function includedDecoderForResource(includedRelationships: Relationship[]) {
     .join(", ")
 
   return `
-    included: t.array(${
+    included: t.union([t.array(${
       includedRelationships.length === 1 ? includedDecoders : `t.union([ ${includedDecoders} ])`
-    })
+    }), t.undefined])
   `
 }
 
