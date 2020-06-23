@@ -1,18 +1,26 @@
 import React from "react"
 import ReviewRequestResource, { ReviewRequest } from "gamejitsu/api/resources/review-request"
-import ReviewResource from "gamejitsu/api/resources/review"
+import ReviewResource, { Review } from "gamejitsu/api/resources/review"
+import ReplayResource, { Replay } from "gamejitsu/api/resources/replay"
 
-import { listModels, createModel } from "gamejitsu/api"
+import { listModels, createModel, findModel } from "gamejitsu/api"
 import { Flex, Box, Text } from "rebass"
-import { Layout, Card, Button, Title } from "gamejitsu/components"
+import { LayoutWithMenu, Card, Button, Title } from "gamejitsu/components"
 import { NextPageContext, NextPage } from "next"
+import CoachReviewCard from "./CoachReviewCard"
 
 interface Props {
   reviewRequests: ReviewRequest[]
+  reviews: Review[]
 }
 
 const getReviewRequests = async (ctx: NextPageContext) => {
   const response = await listModels(ReviewRequestResource, ctx)
+  return response.data
+}
+
+const getReviews = async (ctx: NextPageContext) => {
+  const response = await listModels(ReviewResource, ctx)
   return response.data
 }
 
@@ -22,10 +30,19 @@ const acceptReviewRequest = async (reviewRequestId: string) => {
   // redirect to perform review page
 }
 
-//TODO maybe add ReviewRequestCard?
-const CoachDashboardPage: NextPage<Props> = ({ reviewRequests }) => {
+const CoachDashboardPage: NextPage<Props> = ({ reviewRequests, reviews }) => {
   return (
-    <Layout title="Coach Dashboard">
+    <LayoutWithMenu title="Coach Dashboard">
+      <Title text="Accepted Reviews" />
+      {reviews.map( (review) => {
+        //const { data: replay } = await findModel(ReplayResource, reviewRequest.replayId)
+        //console.log(review.requestId)
+        //findModel(ReviewRequestResource, review.requestId).then((res) => {
+        //  console.log(res)
+       // }).catch(e =>console.log("ERR IS:",e))
+        return <CoachReviewCard key={review.id} review={review} />
+      })}
+
       <Title text="Available review requests" />
       <Box m="20px">
         <Card>
@@ -47,13 +64,19 @@ const CoachDashboardPage: NextPage<Props> = ({ reviewRequests }) => {
           </Flex>
         </Card>
       </Box>
-    </Layout>
+    </LayoutWithMenu>
   )
 }
 
 CoachDashboardPage.getInitialProps = async (ctx: NextPageContext) => {
+  console.log("")
   const reviewRequests = await getReviewRequests(ctx)
-  return { reviewRequests }
+  const reviews = await getReviews(ctx)
+  reviews.map(async (review) => {
+    const review1 = await findModel(ReviewResource, review.id, ctx)
+    console.log(review1)
+  })
+  return { reviewRequests, reviews }
 }
 
 export default CoachDashboardPage

@@ -13,7 +13,9 @@ import InputGroup from "./InputGroup"
 import Layout from "./Layout"
 import LayoutWithMenu from "./LayoutWithMenu"
 import Link from "./Link"
+import LinkLeftMenu from "./LinkLeftMenu"
 import Navbar from "./Navbar"
+import NavbarLeftMenu from "./NavbarLeftMenu"
 import SkillLevelSelect from "./SkillLevelSelect"
 import Spinner from "./Spinner"
 import SteamButton from "./SteamButton"
@@ -35,7 +37,9 @@ export {
   Layout,
   LayoutWithMenu,
   Link,
+  LinkLeftMenu,
   Navbar,
+  NavbarLeftMenu,
   SkillLevelSelect,
   Spinner,
   SteamButton,

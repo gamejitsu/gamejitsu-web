@@ -1,5 +1,7 @@
 import * as t from "io-ts"
 import { Comment, encoder as commentEncoder } from "gamejitsu/api/types/comment"
+import { decoder as reviewRequestDecoder } from "gamejitsu/api/resources/review-request"
+import { decoder as replayDecoder } from "gamejitsu/api/resources/replay"
 import { buildResource, extractValue } from "../resource"
 import { Model } from "gamejitsu/interfaces"
 
@@ -45,11 +47,23 @@ export default buildResource({
   name: "review",
   decode: {
     data: (value: unknown) => extractValue(decoder.decode(value)),
-    response: (value: unknown) => extractValue(t.strict({}).decode(value))
+    response: (value: unknown) =>
+      extractValue(
+        t
+          .strict({
+            included: t.array(t.union([reviewRequestDecoder, replayDecoder]))
+          })
+          .decode(value)
+      )
   },
   transform: {
     data: transformer,
-    response: (value) => value
+    response: (value) => ({
+      included: {
+        "review-request": value.included.filter((r) => r.type === "review-request"),
+        replay: value.included.filter((r) => r.type === "replay")
+      }
+    })
   },
   encode: (value) => ({
     type: "review",

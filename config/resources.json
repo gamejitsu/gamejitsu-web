@@ -41,7 +41,7 @@
       "comment": { "type": "string", "optional": true}
     },
     "relationships": {
-      "replay": { "cardinality": "one", "type": "replay" }
+      "replay": { "cardinality": "one", "type": "replay", "include": true }
     }
   },
   "review": {
@@ -50,7 +50,7 @@
       "isPublished": { "type": "boolean" }
     },
     "relationships": {
-      "request": { "cardinality": "one", "type": "review-request" },
+      "request": { "cardinality": "one", "type": "review-request", "include": true },
       "coach": { "cardinality": "one", "type": "coach" }
     }
   },

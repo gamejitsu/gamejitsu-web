@@ -1,7 +1,7 @@
 import React from "react"
 
 import { CoachReviewCard } from "."
-import { Layout, Title } from "gamejitsu/components"
+import { LayoutWithMenu, Title } from "gamejitsu/components"
 import { listModels } from "gamejitsu/api"
 import { NextPageContext, NextPage } from "next"
 import ReviewResource, { Review } from "gamejitsu/api/resources/review"
@@ -17,12 +17,13 @@ const getReviews = async (ctx: NextPageContext) => {
 
 const CoachReviewIndex: NextPage<Props> = ({ reviews }) => {
   return (
-    <Layout title="Reviews">
-      {reviews.map((review) => {
-        return <CoachReviewCard key={review.id} review={review} />
-      })}
+    <LayoutWithMenu title="Completed Reviews">
       <Title text="Completed Reviews" />
-    </Layout>
+      {reviews.map((review) => {
+        if (review.isPublished)
+          return <CoachReviewCard key={review.id} review={review} />
+      })}
+    </LayoutWithMenu>
   )
 }
 
