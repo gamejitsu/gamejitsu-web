@@ -1,5 +1,20 @@
 import * as t from "io-ts"
 import { Comment, encoder as commentEncoder } from "gamejitsu/api/types/comment"
+import {
+  decoder as reviewRequestDecoder,
+  transformer as reviewRequestTransformer,
+  ReviewRequest
+} from "gamejitsu/api/resources/review-request"
+import {
+  decoder as replayDecoder,
+  transformer as replayTransformer,
+  Replay
+} from "gamejitsu/api/resources/replay"
+import {
+  decoder as coachDecoder,
+  transformer as coachTransformer,
+  Coach
+} from "gamejitsu/api/resources/coach"
 import { buildResource, extractValue } from "../resource"
 import { Model } from "gamejitsu/interfaces"
 
@@ -45,11 +60,38 @@ export default buildResource({
   name: "review",
   decode: {
     data: (value: unknown) => extractValue(decoder.decode(value)),
-    response: (value: unknown) => extractValue(t.strict({}).decode(value))
+    response: (value: unknown) =>
+      extractValue(
+        t
+          .strict({
+            included: t.union([
+              t.array(t.union([reviewRequestDecoder, replayDecoder, coachDecoder])),
+              t.undefined
+            ])
+          })
+          .decode(value)
+      )
   },
   transform: {
     data: transformer,
-    response: (value) => value
+    response: (value) => ({
+      included: {
+        "review-request": (value.included || []).reduce(
+          (a, r) => (r.type === "review-request" ? [...a, reviewRequestTransformer(r)] : a),
+          [] as ReviewRequest[]
+        ),
+
+        replay: (value.included || []).reduce(
+          (a, r) => (r.type === "replay" ? [...a, replayTransformer(r)] : a),
+          [] as Replay[]
+        ),
+
+        coach: (value.included || []).reduce(
+          (a, r) => (r.type === "coach" ? [...a, coachTransformer(r)] : a),
+          [] as Coach[]
+        )
+      }
+    })
   },
   encode: (value) => ({
     type: "review",

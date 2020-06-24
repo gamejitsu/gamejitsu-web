@@ -4,20 +4,28 @@ import UserResource, { User } from "gamejitsu/api/resources/user"
 import ReviewRequestResource, { ReviewRequest } from "gamejitsu/api/resources/review-request"
 
 import { DecoratedReplay, decorateReplays } from "gamejitsu/models/replay"
-import { Layout, Spinner, Card } from "gamejitsu/components"
+import { Layout, Spinner, Card, LayoutWithMenu } from "gamejitsu/components"
 import { listModels, findModel } from "gamejitsu/api"
 import { NextPageContext, NextPage } from "next"
 import { parseCookies } from "nookies"
-import { ReviewRequestCard, ReplayCard } from "."
+import { ReviewRequestCard, ReplayCard, ReplayCardNew } from "."
 import { Socket } from "phoenix"
 import { UserContext } from "gamejitsu/contexts"
-import { Box } from "rebass"
+import { Flex, Box } from "rebass"
+import styled from "styled-components"
 
 interface Props {
   user: User
   replays: DecoratedReplay[]
   reviewRequests: ReviewRequest[]
 }
+
+const Title = styled.h1`
+  font-weight: bold;
+  color: white;
+  font-size: 24px;
+  margin-bottom: 20px;
+`
 
 const getReplays = async (ctx?: NextPageContext) => {
   const { data } = await listModels(ReplayResource, ctx)
@@ -69,22 +77,21 @@ const Dashboard: FunctionComponent<Props> = (props) => {
   }, [])
 
   return (
-    <Layout title="Dashboard">
-      {user.isSyncingReplays ? <Spinner /> : <div></div>}
-
-      <Card title="Review Requested">
+    <LayoutWithMenu title="Dashboard">
+      <Box width="1300px">
+        {user.isSyncingReplays ? <Spinner /> : <div></div>}
+        <Title>REQUESTED REVIEWS</Title>
         {props.reviewRequests.map((reviewRequest) => {
           return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
         })}
-      </Card>
-      <Box mt={4}>
-        <Card title="Replays">
-          {replays.map((replay) => {
-            return <ReplayCard key={replay.id} replay={replay} />
+        <Title>REPLAYS</Title>
+        <Flex flexWrap="wrap">
+          {props.replays.map((replay) => {
+            return <ReplayCardNew key={replay.id} replay={replay} />
           })}
-        </Card>
+        </Flex>
       </Box>
-    </Layout>
+    </LayoutWithMenu>
   )
 }
 

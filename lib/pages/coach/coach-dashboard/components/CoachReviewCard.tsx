@@ -31,7 +31,8 @@ const CoachReviewCard: FunctionComponent<Props> = ({ review }) => (
           </div>
         </Box>
         <Box alignSelf="center" pr={3}>
-          <Button href={"/coach-reviews/" + review.id} text="Edit review" />
+          <Button href={"/coach-reviews/" + review.id} text="Complete review" />
+          <Button href={"/coach-reviews/" + review.id} text="Cancel review" />
         </Box>
       </Flex>
     </Card>

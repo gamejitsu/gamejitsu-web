@@ -99,14 +99,14 @@ const logout = () => {
   window.location.href = "/"
 }
 
-const Navbar: FunctionComponent = () => {
+const NavbarLeftMenu: FunctionComponent = () => {
   const user = useContext(UserContext)
 
   return (
     <Container py={2} px={3} color="white" alignItems="center">
       <Box mr="auto">
         <Flex alignItems="center">
-          <Box width="175px" mr={3} ml={80}>
+          <Box width="175px" mr={3} ml={50}>
             <Logo>
               <ImageButton href="/" imageSrc={gamejitsuWritingImageSrc} />
             </Logo>
@@ -134,4 +134,4 @@ const Navbar: FunctionComponent = () => {
   )
 }
 
-export default Navbar
+export default NavbarLeftMenu

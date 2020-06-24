@@ -15,7 +15,7 @@
       "email": { "type": "string" },
       "firstName": { "type": "string" },
       "lastName": { "type": "string" },
-      "photoUrl": { "type": "string" },
+      "photoUrl": { "type": "string", "optional": true },
       "skillLevel": { "type": "skill-level" }
     },
     "relationships": {}
@@ -41,7 +41,7 @@
       "comment": { "type": "string", "optional": true}
     },
     "relationships": {
-      "replay": { "cardinality": "one", "type": "replay" }
+      "replay": { "cardinality": "one", "type": "replay", "include": true }
     }
   },
   "review": {
@@ -50,8 +50,8 @@
       "isPublished": { "type": "boolean" }
     },
     "relationships": {
-      "request": { "cardinality": "one", "type": "review-request" },
-      "coach": { "cardinality": "one", "type": "coach" }
+      "request": { "cardinality": "one", "type": "review-request", "include": true },
+      "coach": { "cardinality": "one", "type": "coach", "include": true }
     }
   },
   "session": {

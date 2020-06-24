@@ -14,15 +14,12 @@ interface ContentProps {
 }
 
 const Content = styled.img<ContentProps>`
-  width: 80px;
-  border: ${(props) =>
-    props.isYourHero
-      ? `2px solid  ${props.theme.primaryColor}`
-      : `1px solid ${props.theme.textColor}`};
-  border-radius: 3px;
+  width: 40px;
+  border: ${(props) => (props.isYourHero ? "1px" : "0px")} solid
+    ${(props) => props.theme.primaryColor};
 `
 
-const HeroImage: FunctionComponent<Props> = ({ player }) => {
+const HeroImageSmall: FunctionComponent<Props> = ({ player }) => {
   const user = useContext(UserContext)
   const isYourHero = player?.steamId === user?.steamId
   const heroName = isYourHero ? player.heroName + " (you)" : player.heroName
@@ -34,4 +31,4 @@ const HeroImage: FunctionComponent<Props> = ({ player }) => {
   )
 }
 
-export default HeroImage
+export default HeroImageSmall

@@ -6,7 +6,7 @@ import Router from "next/router"
 import styled from "styled-components"
 import titleize from "titleize"
 
-import { Box } from "rebass"
+import { Box, Flex } from "rebass"
 import { createModel } from "gamejitsu/api"
 import { DecoratedReplay } from "gamejitsu/models/replay"
 import { Form, FormGroup, InputGroup } from "gamejitsu/components"
@@ -81,12 +81,6 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
     }
 
     redirectToCheckout({ comment, skillLevel, replayId: replay.id })
-    /*await createModel(ReviewRequestResource, {
-      replayId: replay.id,
-      skillLevel,
-      comment
-    })*/
-    //Router.push("/coach-dashboard")
   }
 
   const renderLabel = (val: number) => {
@@ -97,28 +91,28 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
     <Layout title="Dashboard">
       <Box width="700px" mx="auto" p={3}>
         <Form
-          title="Request review"
+          title="REQUEST REVIEW"
           initialValues={initialValues}
           schema={schema}
           onSubmit={onSubmitReviewRequest}
-          buttonText="Test"
+          buttonText="Checkout"
         >
           {(formik) => (
             <div>
               {user.username}
               <Box p={3} mr="auto">
-                <div>
+                <Flex justifyContent="center">
                   {replay.playersDire.map((player, index) => {
                     const key = player.steamId ? player.steamId : index.toString()
                     return <HeroImage key={key} player={player} />
                   })}
-                </div>
-                <div>
+                </Flex>
+                <Flex justifyContent="center">
                   {replay.playersRadiant.map((player, index) => {
                     const key = player.steamId ? player.steamId : index.toString()
                     return <HeroImage key={key} player={player} />
                   })}
-                </div>
+                </Flex>
               </Box>
               <FormGroup label="Skill Level" labelFor="text-input">
                 <Box width="250px">

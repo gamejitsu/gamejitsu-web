@@ -9,19 +9,17 @@ interface Props {
 }
 
 const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => (
-  <Card>
-    <Flex>
-      <Box p={3} mr="auto">
-        <Text p={2}>Review Request</Text>
-        <Text p={2}>Match ID: {reviewRequest.replayId}</Text>
-        <Text p={2}>Skill Level: {reviewRequest.skillLevel}</Text>
-      </Box>
-      <Box alignSelf="center" pr={3}>
-        <Text>State todo</Text>
-        <Button onClick={() => {}} text="Cancel" />
-      </Box>
-    </Flex>
-  </Card>
+  <Flex>
+    <Box p={3} mr="auto">
+      <Text p={2}>Review Request</Text>
+      <Text p={2}>Match ID: {reviewRequest.replayId}</Text>
+      <Text p={2}>Skill Level: {reviewRequest.skillLevel}</Text>
+    </Box>
+    <Box alignSelf="center" pr={3}>
+      <Text>State todo</Text>
+      <Button onClick={() => {}} text="Cancel" />
+    </Box>
+  </Flex>
 )
 
 export default ReviewRequestCard

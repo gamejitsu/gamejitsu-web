@@ -1,5 +1,10 @@
 import * as t from "io-ts"
 import { SkillLevel, encoder as skillLevelEncoder } from "gamejitsu/api/types/skill-level"
+import {
+  decoder as replayDecoder,
+  transformer as replayTransformer,
+  Replay
+} from "gamejitsu/api/resources/replay"
 import { buildResource, extractValue } from "../resource"
 import { Model } from "gamejitsu/interfaces"
 
@@ -37,11 +42,25 @@ export default buildResource({
   name: "review-request",
   decode: {
     data: (value: unknown) => extractValue(decoder.decode(value)),
-    response: (value: unknown) => extractValue(t.strict({}).decode(value))
+    response: (value: unknown) =>
+      extractValue(
+        t
+          .strict({
+            included: t.union([t.array(replayDecoder), t.undefined])
+          })
+          .decode(value)
+      )
   },
   transform: {
     data: transformer,
-    response: (value) => value
+    response: (value) => ({
+      included: {
+        replay: (value.included || []).reduce(
+          (a, r) => (r.type === "replay" ? [...a, replayTransformer(r)] : a),
+          [] as Replay[]
+        )
+      }
+    })
   },
   encode: (value) => ({
     type: "review-request",

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react"
-import Head from "next/head"
 import styled from "styled-components"
 import { Flex, Box } from "rebass"
+import Head from "next/head"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import GameContainerSVG from "../../../../svgs/dota2-bs-crop-cut.svg"
@@ -65,15 +65,15 @@ const FlowText = styled.p`
 `
 
 const Background = styled.div`
-top: 0;
-left: 0;
-right 0;
-bottom: 0;
-position: absolute;
-background-image: url('/images/background-hero-unit.jpg');
-background-position: center;
-background-size: cover;
-opacity: 0.3;
+  top: 0;
+  left: 0;
+  right 0;
+  bottom: 0;
+  position: absolute;
+  background-image: url('/images/background-hero-unit.jpg');
+  background-position: center;
+  background-size: cover;
+  opacity: 0.3;
 `
 
 const FooterTitle = styled.h3`
