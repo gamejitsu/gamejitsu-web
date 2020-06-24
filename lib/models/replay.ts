@@ -22,3 +22,15 @@ export const decorateReplays = (replays: Replay[]) => {
     }
   })
 }
+
+export const decorateReplay = (replay: Replay) => {
+  const playersDire = replay.players.slice(0, 5)
+  const playersRadiant = replay.players.slice(5, 10)
+  return {
+    id: replay.id,
+    matchId: replay.matchId,
+    playedAt: replay.playedAt,
+    playersDire,
+    playersRadiant
+  }
+}
