@@ -4,20 +4,22 @@ import UserResource, { User } from "gamejitsu/api/resources/user"
 import ReviewRequestResource, { ReviewRequest } from "gamejitsu/api/resources/review-request"
 
 import { DecoratedReplay, decorateReplays } from "gamejitsu/models/replay"
-import { Layout, Spinner, Card, LayoutWithMenu } from "gamejitsu/components"
+import { Spinner, LayoutWithMenuUser } from "gamejitsu/components"
 import { listModels, findModel } from "gamejitsu/api"
 import { NextPageContext, NextPage } from "next"
 import { parseCookies } from "nookies"
-import { ReviewRequestCard, ReplayCard, ReplayCardNew } from "."
+import { ReviewRequestCard, ReplayCardNew } from "."
 import { Socket } from "phoenix"
 import { UserContext } from "gamejitsu/contexts"
 import { Flex, Box } from "rebass"
 import styled from "styled-components"
+import SettingsSVG from "../../../../svgs/settings.svg"
+import { decorateReviewRequests, DecoratedReviewRequest } from "gamejitsu/models/review-request"
 
 interface Props {
   user: User
   replays: DecoratedReplay[]
-  reviewRequests: ReviewRequest[]
+  reviewRequests: (DecoratedReviewRequest | undefined)[]
 }
 
 const Title = styled.h1`
@@ -38,9 +40,25 @@ const getCurrentUser = async () => {
 }
 
 const getReviewRequests = async (ctx: NextPageContext) => {
-  const { data } = await listModels(ReviewRequestResource, ctx)
-  return data
+  return await listModels(ReviewRequestResource, ctx)
 }
+
+const EmptyReplays = styled(Flex)`
+  witdh: 100%;
+  background-color: ${(props) => props.theme.lightBackgroundColor};
+  font-weight: 40px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`
+const EmptyRequestedReviews = styled(Flex)`
+  witdh: 100%;
+  background-color: ${(props) => props.theme.lightBackgroundColor};
+  font-weight: 40px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`
 
 const Dashboard: FunctionComponent<Props> = (props) => {
   const [user, setUser] = useState(props.user)
@@ -77,21 +95,40 @@ const Dashboard: FunctionComponent<Props> = (props) => {
   }, [])
 
   return (
-    <LayoutWithMenu title="Dashboard">
+    <LayoutWithMenuUser title="Dashboard">
       <Box width="1300px">
         {user.isSyncingReplays ? <Spinner /> : <div></div>}
         <Title>REQUESTED REVIEWS</Title>
-        {props.reviewRequests.map((reviewRequest) => {
-          return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
-        })}
+        {props.reviewRequests.length === 0 ? (
+          <EmptyRequestedReviews height="30%">
+            <Box>
+              <SettingsSVG width="200" height="100" />
+            </Box>
+            <Box mt={4}>No reviews accepted to show</Box>
+          </EmptyRequestedReviews>
+        ) : (
+          props.reviewRequests.map((reviewRequest) => {
+            if (reviewRequest)
+              return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
+          })
+        )}
         <Title>REPLAYS</Title>
         <Flex flexWrap="wrap">
-          {props.replays.map((replay) => {
-            return <ReplayCardNew key={replay.id} replay={replay} />
-          })}
+          {props.replays.length === 0 ? (
+            <EmptyReplays height="30%">
+              <Box>
+                <SettingsSVG width="200" height="100" />
+              </Box>
+              <Box mt={4}>No reviews accepted to show</Box>
+            </EmptyReplays>
+          ) : (
+            props.replays.map((replay) => {
+              return <ReplayCardNew key={replay.id} replay={replay} />
+            })
+          )}
         </Flex>
       </Box>
-    </LayoutWithMenu>
+    </LayoutWithMenuUser>
   )
 }
 
@@ -105,7 +142,12 @@ const Page: NextPage<Omit<Props, "user">> = ({ replays, reviewRequests }) => (
 
 Page.getInitialProps = async (ctx) => {
   const replays = await getReplays(ctx)
-  const reviewRequests = await getReviewRequests(ctx)
+  const reviewRequestResponse = await getReviewRequests(ctx)
+  const reviewRequests: (DecoratedReviewRequest | undefined)[] = decorateReviewRequests(
+    reviewRequestResponse.data,
+    reviewRequestResponse.included
+  )
+
   return { replays, reviewRequests }
 }
 

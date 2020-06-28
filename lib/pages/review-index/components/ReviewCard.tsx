@@ -1,11 +1,12 @@
 import { Flex, Box, Text } from "rebass"
 import React, { FunctionComponent } from "react"
 import Router from "next/router"
-import { Button, Card } from "gamejitsu/components"
+import { Button, Card, HeroImageSmall } from "gamejitsu/components"
 import { Review } from "gamejitsu/api/resources/review"
+import { DecoratedReview } from "gamejitsu/models/review"
 
 interface Props {
-  review: Review
+  review: DecoratedReview | undefined
 }
 
 const goToReviewPage = (id?: string) => {
@@ -13,8 +14,41 @@ const goToReviewPage = (id?: string) => {
 }
 
 const ReviewCard: FunctionComponent<Props> = ({ review }) => (
-  <Card title="Completed reviews">
-    <Flex>
+  <Box width="1200px">
+    <Card>
+      <Flex>
+        <Box p={3} mr="auto">
+          <Text p={2}>Skill Level: {review?.reviewRequest.skillLevel}</Text>
+          <Text p={2}>Comment: {review?.reviewRequest.comment}</Text>
+        </Box>
+        <Box p={3} mr="auto">
+          <div>
+            {review?.replay.playersDire.map((player, index) => {
+              const key = player.steamId ? player.steamId : index.toString()
+              return <HeroImageSmall key={key} player={player} />
+            })}
+          </div>
+          <div>
+            {review?.replay.playersRadiant.map((player, index) => {
+              const key = player.steamId ? player.steamId : index.toString()
+              return <HeroImageSmall key={key} player={player} />
+            })}
+          </div>
+        </Box>
+        <Box alignSelf="center" pr={3}>
+          <Button
+            onClick={() => {
+              goToReviewPage(review?.id)
+            }}
+            text="See completed review"
+          />
+        </Box>
+      </Flex>
+    </Card>
+  </Box>
+)
+
+/**    <Flex>
       <Box p={3} mr="auto">
         <Text p={2}>Review</Text>
         <Text p={2}>Review Id: {review.id}</Text>
@@ -27,8 +61,6 @@ const ReviewCard: FunctionComponent<Props> = ({ review }) => (
           text="See completed review"
         />
       </Box>
-    </Flex>
-  </Card>
-)
+    </Flex> */
 
 export default ReviewCard

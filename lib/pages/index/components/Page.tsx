@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 import { Flex, Box } from "rebass"
 import Head from "next/head"
+import CookieConsent from "react-cookie-consent"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import GameContainerSVG from "../../../../svgs/dota2-bs-crop-cut.svg"
@@ -337,6 +338,10 @@ const SocialNetworkBarIcon = styled.img`
   position: absolute;
 `
 
+const StyledCookieConsent = styled(CookieConsent)`
+  background: ${(props) => props.theme.textColor};
+`
+
 const PriceCard: FunctionComponent<PriceCardProps> = ({ children, icon, title, price }) => (
   <PriceCardContent flex="1" p="20px" mr={3}>
     <Box pb={3}>
@@ -371,6 +376,30 @@ const Page: AuthenticatedComponent = () => (
         <link rel="shortcut icon" href="/favicon.png" />
         <title>Gamejitsu - Home</title>
       </Head>
+      <StyledCookieConsent
+        location="bottom"
+        buttonText="ACCEPT"
+        cookieName="CookiePolicy"
+        buttonStyle={{
+          fontSize: "13px",
+          display: "inline-flex",
+          "border-radius": "50px",
+          border: "2px solid #08ff07",
+          color: "#08ff07",
+          transition: "all 0.05s ease-in-out",
+          background: "transparent",
+          padding: "10px 25px 10px 25px",
+          "font-size": "15px",
+          "font-weight": "bold"
+        }}
+        expires={150}
+      >
+        We use necessary cookies to make our site work. We won't set optional cookies unless you
+        enable them. Using this tool will set a cookie on your device to remember your preferences.{" "}
+        <span style={{ fontSize: "10px" }}>
+          For more detailed information about the cookies we use, see our cookies page.
+        </span>
+      </StyledCookieConsent>
       <HeroUnitParent>
         <HeroUnit>
           <Box width="900px" mx="auto" style={{ position: "relative" }}>

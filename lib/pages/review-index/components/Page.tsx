@@ -1,26 +1,50 @@
 import React from "react"
 
-import { Layout, Title } from "gamejitsu/components"
+import { LayoutWithMenuUser, Title } from "gamejitsu/components"
 import { listModels } from "gamejitsu/api"
 import { NextPage } from "next"
 import ReviewResource, { Review } from "gamejitsu/api/resources/review"
 import { ReviewCard } from "."
+import { Box, Flex } from "rebass"
+import SettingsSVG from "../../../../svgs/settings.svg"
+import styled from "styled-components"
+import { decorateReviews, DecoratedReview } from "gamejitsu/models/review"
 
 interface Props {
-  reviews: Review[]
+  reviews: (DecoratedReview | undefined)[]
 }
 
+const EmptyReviews = styled(Flex)`
+  witdh: 100%;
+  background-color: ${(props) => props.theme.lightBackgroundColor};
+  font-weight: 40px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`
+
 const Page: NextPage<Props> = ({ reviews }) => (
-  <Layout title="Reviews">
-    {reviews.map((review) => (
-      <ReviewCard key={review.id} review={review} />
-    ))}
-  </Layout>
+  <LayoutWithMenuUser title="Reviews">
+    <Title text="COMPLETED REVIEWS" />
+    {reviews.length === 0 ? (
+      <EmptyReviews height="30%">
+        <Box>
+          <SettingsSVG width="200" height="100" />
+        </Box>
+        <Box mt={4}>No reviews available</Box>
+      </EmptyReviews>
+    ) : (
+      reviews.map((review) => {
+        if (review !== undefined) return <ReviewCard key={review.id} review={review} />
+      })
+    )}
+  </LayoutWithMenuUser>
 )
 
 Page.getInitialProps = async (ctx) => {
-  const { data } = await listModels(ReviewResource, ctx)
-  return { reviews: data }
+  const response = await listModels(ReviewResource, ctx)
+  const reviews: (DecoratedReview | undefined)[] = decorateReviews(response.data, response.included)
+  return { reviews }
 }
 
 export default Page

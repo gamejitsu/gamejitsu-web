@@ -13,6 +13,7 @@ import ImageButton from "./ImageButton"
 import InputGroup from "./InputGroup"
 import Layout from "./Layout"
 import LayoutWithMenu from "./LayoutWithMenu"
+import LayoutWithMenuUser from "./LayoutWithMenuUser"
 import Link from "./Link"
 import LinkLeftMenu from "./LinkLeftMenu"
 import Navbar from "./Navbar"
@@ -38,6 +39,7 @@ export {
   InputGroup,
   Layout,
   LayoutWithMenu,
+  LayoutWithMenuUser,
   Link,
   LinkLeftMenu,
   Navbar,
