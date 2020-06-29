@@ -1094,6 +1094,222 @@ exports[`Index page should match snapshot 1`] = `
                   reduceComponentsToState={[Function]}
                 />
               </Head>
+              <Page__StyledCookieConsent
+                buttonStyle={
+                  Object {
+                    "background": "transparent",
+                    "border": "2px solid #08ff07",
+                    "border-radius": "50px",
+                    "color": "#08ff07",
+                    "display": "inline-flex",
+                    "font-size": "15px",
+                    "font-weight": "bold",
+                    "fontSize": "13px",
+                    "padding": "10px 25px 10px 25px",
+                    "transition": "all 0.05s ease-in-out",
+                  }
+                }
+                buttonText="ACCEPT"
+                cookieName="CookiePolicy"
+                expires={150}
+                location="bottom"
+              >
+                <StyledComponent
+                  buttonStyle={
+                    Object {
+                      "background": "transparent",
+                      "border": "2px solid #08ff07",
+                      "border-radius": "50px",
+                      "color": "#08ff07",
+                      "display": "inline-flex",
+                      "font-size": "15px",
+                      "font-weight": "bold",
+                      "fontSize": "13px",
+                      "padding": "10px 25px 10px 25px",
+                      "transition": "all 0.05s ease-in-out",
+                    }
+                  }
+                  buttonText="ACCEPT"
+                  cookieName="CookiePolicy"
+                  expires={150}
+                  forwardedComponent={
+                    Object {
+                      "$$typeof": Symbol(react.forward_ref),
+                      "attrs": Array [],
+                      "componentStyle": ComponentStyle {
+                        "componentId": "Page__StyledCookieConsent-sc-1ix2o3i-36",
+                        "isStatic": false,
+                        "lastClassName": "ihxXBL",
+                        "rules": Array [
+                          "background:",
+                          [Function],
+                          ";",
+                        ],
+                      },
+                      "displayName": "Page__StyledCookieConsent",
+                      "foldedComponentIds": Array [],
+                      "render": [Function],
+                      "styledComponentId": "Page__StyledCookieConsent-sc-1ix2o3i-36",
+                      "target": [Function],
+                      "toString": [Function],
+                      "warnTooManyClasses": [Function],
+                      "withComponent": [Function],
+                    }
+                  }
+                  forwardedRef={null}
+                  location="bottom"
+                >
+                  <CookieConsent
+                    ButtonComponent={[Function]}
+                    acceptOnScroll={false}
+                    acceptOnScrollPercentage={25}
+                    buttonClasses=""
+                    buttonId="rcc-confirm-button"
+                    buttonStyle={
+                      Object {
+                        "background": "transparent",
+                        "border": "2px solid #08ff07",
+                        "border-radius": "50px",
+                        "color": "#08ff07",
+                        "display": "inline-flex",
+                        "font-size": "15px",
+                        "font-weight": "bold",
+                        "fontSize": "13px",
+                        "padding": "10px 25px 10px 25px",
+                        "transition": "all 0.05s ease-in-out",
+                      }
+                    }
+                    buttonText="ACCEPT"
+                    buttonWrapperClasses=""
+                    className="Page__StyledCookieConsent-sc-1ix2o3i-36 ihxXBL"
+                    containerClasses="CookieConsent"
+                    contentClasses=""
+                    cookieName="CookiePolicy"
+                    cookieValue={true}
+                    debug={false}
+                    declineButtonClasses=""
+                    declineButtonId="rcc-decline-button"
+                    declineButtonText="I decline"
+                    declineCookieValue={false}
+                    disableButtonStyles={false}
+                    disableStyles={false}
+                    enableDeclineButton={false}
+                    expires={150}
+                    extraCookieOptions={Object {}}
+                    flipButtons={false}
+                    hideOnAccept={true}
+                    hideOnDecline={true}
+                    location="bottom"
+                    onAccept={[Function]}
+                    onDecline={[Function]}
+                    overlay={false}
+                    overlayClasses=""
+                    sameSite="none"
+                    setDeclineCookie={true}
+                  >
+                    <Component>
+                      <div>
+                        <div
+                          className="CookieConsent"
+                          style={
+                            Object {
+                              "alignItems": "baseline",
+                              "background": "#353535",
+                              "bottom": "0",
+                              "color": "white",
+                              "display": "flex",
+                              "flexWrap": "wrap",
+                              "justifyContent": "space-between",
+                              "left": "0",
+                              "position": "fixed",
+                              "width": "100%",
+                              "zIndex": "999",
+                            }
+                          }
+                        >
+                          <div
+                            className=""
+                            style={
+                              Object {
+                                "flex": "1 0 300px",
+                                "margin": "15px",
+                              }
+                            }
+                          >
+                            We use necessary cookies to make our site work. We won't set optional cookies unless you enable them. Using this tool will set a cookie on your device to remember your preferences.
+                             
+                            <span
+                              style={
+                                Object {
+                                  "fontSize": "10px",
+                                }
+                              }
+                            >
+                              For more detailed information about the cookies we use, see our cookies page.
+                            </span>
+                          </div>
+                          <div
+                            className=""
+                          >
+                            <ButtonComponent
+                              className=""
+                              id="rcc-confirm-button"
+                              key="acceptButton"
+                              onClick={[Function]}
+                              style={
+                                Object {
+                                  "background": "transparent",
+                                  "border": "2px solid #08ff07",
+                                  "border-radius": "50px",
+                                  "borderRadius": "0px",
+                                  "boxShadow": "none",
+                                  "color": "#08ff07",
+                                  "cursor": "pointer",
+                                  "display": "inline-flex",
+                                  "flex": "0 0 auto",
+                                  "font-size": "15px",
+                                  "font-weight": "bold",
+                                  "fontSize": "13px",
+                                  "margin": "15px",
+                                  "padding": "10px 25px 10px 25px",
+                                  "transition": "all 0.05s ease-in-out",
+                                }
+                              }
+                            >
+                              <button
+                                className=""
+                                id="rcc-confirm-button"
+                                onClick={[Function]}
+                                style={
+                                  Object {
+                                    "background": "transparent",
+                                    "border": "2px solid #08ff07",
+                                    "border-radius": "50px",
+                                    "borderRadius": "0px",
+                                    "boxShadow": "none",
+                                    "color": "#08ff07",
+                                    "cursor": "pointer",
+                                    "display": "inline-flex",
+                                    "flex": "0 0 auto",
+                                    "font-size": "15px",
+                                    "font-weight": "bold",
+                                    "fontSize": "13px",
+                                    "margin": "15px",
+                                    "padding": "10px 25px 10px 25px",
+                                    "transition": "all 0.05s ease-in-out",
+                                  }
+                                }
+                              >
+                                ACCEPT
+                              </button>
+                            </ButtonComponent>
+                          </div>
+                        </div>
+                      </div>
+                    </Component>
+                  </CookieConsent>
+                </StyledComponent>
+              </Page__StyledCookieConsent>
               <Page__HeroUnitParent>
                 <StyledComponent
                   forwardedComponent={

@@ -10,6 +10,8 @@ import CoachReviewCard from "./CoachReviewCard"
 import ReviewRequestCard from "./ReviewRequestCard"
 import { DecoratedReview, decorateReviews } from "gamejitsu/models/review"
 import { DecoratedReviewRequest, decorateReviewRequests } from "gamejitsu/models/review-request"
+import styled from "styled-components"
+import SettingsSVG from "../../../../../svgs/settings.svg"
 
 interface Props {
   reviewRequests: (DecoratedReviewRequest | undefined)[]
@@ -26,28 +28,58 @@ const getReviews = async (ctx: NextPageContext) => {
   return response
 }
 
+const EmptyAcceptedReviews = styled(Flex)`
+  witdh: 100%;
+  background-color: ${(props) => props.theme.lightBackgroundColor};
+  font-weight: 40px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`
+
+const EmptyReviewRequests = styled(Flex)`
+  witdh: 100%;
+  background-color: ${(props) => props.theme.lightBackgroundColor};
+  font-weight: 40px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`
+
 const CoachDashboardPage: NextPage<Props> = ({ reviewRequests, reviews }) => {
   return (
     <LayoutWithMenu title="Coach Dashboard">
-      <Box width="1300px">
-        <Title text="ACCEPTED REVIEWS" />
-        <Flex alignItems="center">
-          {reviews.map((review) => {
-            if (review) {
-              return <CoachReviewCard key={review.id} review={review} />
-            }
-          })}
-        </Flex>
+      <Title text="ACCEPTED REVIEWS" />
+      {reviews.length === 0 ? (
+        <EmptyAcceptedReviews height="30%">
+          <Box>
+            <SettingsSVG width="200" height="100" />
+          </Box>
+          <Box mt={4}>No reviews accepted to show</Box>
+        </EmptyAcceptedReviews>
+      ) : (
+        reviews.map((review) => {
+          if (review) {
+            return <CoachReviewCard key={review.id} review={review} />
+          }
+        })
+      )}
 
-        <Title text="AVAILABLE REVIEW REQUESTS" />
-        <Flex alignItems="center" flexWrap="wrap">
-          {reviewRequests.map((reviewRequest) => {
-            if (reviewRequest) {
-              return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
-            }
-          })}
-        </Flex>
-      </Box>
+      <Title text="AVAILABLE REVIEW REQUESTS" />
+      {reviewRequests.length === 0 ? (
+        <EmptyReviewRequests height="50%">
+          <Box>
+            <SettingsSVG width="200" height="100" />
+          </Box>
+          <Box mt={4}>No review requests available</Box>
+        </EmptyReviewRequests>
+      ) : (
+        reviewRequests.map((reviewRequest) => {
+          if (reviewRequest) {
+            return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
+          }
+        })
+      )}
     </LayoutWithMenu>
   )
 }
