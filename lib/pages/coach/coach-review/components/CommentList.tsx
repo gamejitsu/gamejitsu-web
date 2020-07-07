@@ -5,11 +5,13 @@ import { Box, Flex } from "rebass"
 import { Comment } from "gamejitsu/api/types/comment"
 import { lighten } from "polished"
 import { formatTimestamp } from "gamejitsu/utils/duration"
+import { Button } from "gamejitsu/components"
 
 interface Props {
   comments: Comment[]
   selectedComment: Comment | null
   onSelect: (comment: Comment | null) => void
+  onSaveReview: () => void
 }
 
 interface ListItemProps {
@@ -46,6 +48,7 @@ const CommentListTitle = styled.h1`
   color: white;
   font-size: 18px;
   font-weight: bold;
+  flex-grow: 1;
 `
 
 const Header = styled(Flex)`
@@ -69,7 +72,7 @@ const LessExpandTag = styled(Box)`
   font-size: 14px;
 `
 
-const CommentList: FunctionComponent<Props> = ({ comments, selectedComment, onSelect }) => {
+const CommentList: FunctionComponent<Props> = ({ comments, selectedComment, onSelect, onSaveReview }) => {
   const onSelectListItem = (comment: Comment) =>
     comment === selectedComment ? onSelect(null) : onSelect(comment)
 
@@ -77,39 +80,18 @@ const CommentList: FunctionComponent<Props> = ({ comments, selectedComment, onSe
 
   const sortedComments = comments.sort(compareTimestamp)
 
-  const fakeComment = {
-    text: "Lorem ipsum dolor sit amet, go mid and pick the regeneration rune instead",
-    timestamp: 12343244
-  }
-
   return (
     <Container ml={4}>
       <Header>
-        <Box ml={3}>
-          <CommentListTitle>COMMENTS ADDED BY COACH</CommentListTitle>
-        </Box>
+          <Flex ml={3} width="100%">
+            <CommentListTitle>COMMENTS ADDED BY COACH</CommentListTitle>
+            <Button text="Save review" type="button" onClick={onSaveReview} />
+          </Flex>
       </Header>
       <Box>
         <ul>
-          <Flex>
-            <ListItemContainer>
-              <Flex alignItems="center">
-                <TimeTag ml={4} mt={3}>
-                  4.44
-                </TimeTag>
-                <LessExpandTag ml="auto" mr={4} mt={3}>
-                  EXPAND
-                </LessExpandTag>
-              </Flex>
-              <Box ml={3}>
-                <ListItem key={10000} comment={fakeComment} selectedComment={selectedComment}>
-                  <a onClick={onSelectListItem.bind(null, fakeComment)}>{fakeComment.text}</a>
-                </ListItem>
-              </Box>
-            </ListItemContainer>
-          </Flex>
           {sortedComments.map((comment, index) => (
-            <Flex>
+            <Flex key={index.toString()}>
               <ListItemContainer>
                 <Flex alignItems="center">
                   <TimeTag ml={4} mt={3}>
@@ -121,7 +103,6 @@ const CommentList: FunctionComponent<Props> = ({ comments, selectedComment, onSe
                 </Flex>
                 <Box ml={3}>
                   <ListItem
-                    key={index.toString()}
                     comment={comment}
                     selectedComment={selectedComment}
                   >

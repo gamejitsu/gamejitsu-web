@@ -45,7 +45,6 @@ const Form: FormComponent = ({
     initialValues,
     onSubmit: async (values, { setSubmitting }) => {
       setSubmitting(true)
-      console.log("values: ", values)
       await onSubmit(values)
       setSubmitting(false)
     }

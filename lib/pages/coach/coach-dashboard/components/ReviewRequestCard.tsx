@@ -8,6 +8,7 @@ import { createModel } from "gamejitsu/api"
 import { DecoratedReviewRequest } from "gamejitsu/models/review-request"
 import { UserContext } from "gamejitsu/contexts"
 import ReviewResource from "gamejitsu/api/resources/review"
+import ReCAPTCHA from "react-google-recaptcha";
 
 interface Props {
   reviewRequest: DecoratedReviewRequest
@@ -50,6 +51,10 @@ const acceptReviewRequest = async (reviewRequestId: string) => {
   const response = await createModel(ReviewResource, { requestId: reviewRequestId })
   // TODO Maybe add confirm?
   // redirect to perform review page
+}
+
+function onChange(value: any) {
+  console.log("Captcha value:", value);
 }
 
 const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
@@ -107,6 +112,10 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
                   Played with {currentPlayer.heroName}
                 </Box>
                 <Box mt={4}>
+                <ReCAPTCHA
+                   sitekey="6LcDpKoZAAAAAPtaap_WCAoNKouwFRp-p_oXR9rp"
+                   onChange={onChange}
+                />,
                   <Button
                     onClick={() => {
                       acceptReviewRequest(reviewRequest.id)

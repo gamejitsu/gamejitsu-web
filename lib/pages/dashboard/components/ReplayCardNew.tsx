@@ -41,8 +41,12 @@ const Title = styled.h1`
   color: white;
 `
 
-const GameInfo = styled.h3`
+const GameInfoWinner = styled.h3`
   color: ${(props) => props.theme.primaryColor};
+`
+
+const GameInfoLoser = styled.h3`
+  color: red;
 `
 
 const RecentMatchesCardNew: FunctionComponent<Props> = ({ replay }) => {
@@ -55,6 +59,8 @@ const RecentMatchesCardNew: FunctionComponent<Props> = ({ replay }) => {
   if (!currentPlayer) {
     throw new Error("player hero not found")
   }
+  const isPlayerRadiant = replay.playersDire.includes(currentPlayer)
+  const currentPlayerWon = isPlayerRadiant ? replay.radiantWin : !replay.radiantWin
 
   return (
     <Box width="50%" mb={50} px={30}>
@@ -67,7 +73,8 @@ const RecentMatchesCardNew: FunctionComponent<Props> = ({ replay }) => {
             Played {formatDistanceToNow(new Date(replay.playedAt), { addSuffix: true })}
           </Box>
           <Box mt={3} ml="auto" mr={3} height="30px">
-            <GameInfo>Game won</GameInfo>
+            { currentPlayerWon  ? <GameInfoWinner>Game won</GameInfoWinner> :  <GameInfoLoser>Game lost</GameInfoLoser>}
+           
           </Box>
         </Header>
         <HorizontalLine />
@@ -96,7 +103,8 @@ const RecentMatchesCardNew: FunctionComponent<Props> = ({ replay }) => {
               </Flex>
               <Flex alignItems="center">
                 <Box mr="auto" mt={4}>
-                  Played with {currentPlayer.heroName}
+                  <div>Played with {currentPlayer.heroName}</div>
+                  <div>Duration: {Math.floor(replay.duration / 60)} min</div>
                 </Box>
                 <Box mt={4}>
                   <Button href={`/review-requests/${replay.id}`} text="REQUEST REVIEW" />

@@ -31,7 +31,9 @@
     "attributes": {
       "matchId": { "type": "string" },
       "playedAt": { "type": "date" },
-      "players": { "type": "array", "value": "player" }
+      "players": { "type": "array", "value": "player" },
+      "duration": { "type": "number" },
+      "radiantWin": { "type": "boolean" }
     },
     "relationships": {}
   },

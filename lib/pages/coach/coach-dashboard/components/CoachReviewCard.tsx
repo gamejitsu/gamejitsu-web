@@ -3,9 +3,15 @@ import React, { FunctionComponent } from "react"
 import { Button, Card, HeroImageSmall } from "gamejitsu/components"
 import { Flex, Box, Text } from "rebass"
 import { DecoratedReview } from "gamejitsu/models/review"
+import { deleteModel } from "gamejitsu/api"
+import ReviewResource from "gamejitsu/api/resources/review"
 
 interface Props {
   review: DecoratedReview
+}
+
+const onDelete = (review: DecoratedReview) => {
+   deleteModel(ReviewResource, review)
 }
 
 const CoachReviewCard: FunctionComponent<Props> = ({ review }) => (
@@ -32,7 +38,7 @@ const CoachReviewCard: FunctionComponent<Props> = ({ review }) => (
         </Box>
         <Box alignSelf="center" pr={3}>
           <Button href={"/coach-reviews/" + review.id} text="Complete review" />
-          <Button href={"/coach-reviews/" + review.id} text="Cancel review" />
+          <Button onClick={onDelete.bind(null, review)} text="Cancel review" />
         </Box>
       </Flex>
     </Card>
