@@ -1,3 +1,5 @@
+![CI](https://github.com/gamejitsu/gamejitsu-web/workflows/CI/badge.svg)
+
 ## :space_invader: Gamejitsu Web
 
 The **Gamejitsu** React.js frontend.
