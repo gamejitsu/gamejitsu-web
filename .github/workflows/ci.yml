@@ -1,0 +1,33 @@
+name: CI
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+env:
+  GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12'
+    - run: npm install
+    - run: npm test
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo npm install -g vercel@^19.1.2 execa@^4.0.0 @octokit/rest@^17.1.0
+      - run: npm link vercel
+      - run: npm link execa
+      - run: npm link @octokit/rest
+      - name: Deploy to Vercel
+        run: ./.github/bin/deploy
