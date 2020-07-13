@@ -5,8 +5,9 @@ on:
   pull_request:
     branches: [ master ]
 env:
+  DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+  GITHUB_HEAD_REF: ${{ github.head_ref }}
   GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
   VERCEL_TEAM: ${{ secrets.VERCEL_TEAM }}
 jobs:

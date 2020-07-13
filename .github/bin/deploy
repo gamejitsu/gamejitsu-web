@@ -8,22 +8,23 @@ const { bin: { vercel: VERCEL_BIN_PATH } } = require('vercel/package.json')
 const VERCEL_BIN = require.resolve(`vercel/${VERCEL_BIN_PATH}`)
 
 const {
-  GITHUB_PR_NUMBER,
+  DEPLOY_TOKEN,
+  GITHUB_HEAD_REF,
   GITHUB_REF,
+  GITHUB_PR_NUMBER,
   GITHUB_REPOSITORY,
-  GITHUB_TOKEN,
   VERCEL_TOKEN,
   VERCEL_TEAM
 } = process.env
 
-const octokit = new Octokit({ auth: GITHUB_TOKEN })
+const octokit = new Octokit({ auth: DEPLOY_TOKEN })
 const isMaster = GITHUB_REF === 'refs/heads/master'
 const vercelConfigPath = `${__dirname}/../../.vercel/${isMaster ? 'production' : 'staging'}.json`
 const vercelConfig = require(vercelConfigPath)
 
 const vercel = async (args = []) => {
   const vercelArgs = [
-    '--force', '--confirm',
+    '--force', '--confirm', '--prod',
     '--token', VERCEL_TOKEN,
     '--scope', VERCEL_TEAM,
     '--local-config', vercelConfigPath,
@@ -36,28 +37,26 @@ const vercel = async (args = []) => {
 
 const deploy = async () => {
   const slug = isMaster ? 'production' : `${vercelConfig.name}-pr-${GITHUB_PR_NUMBER}`
+  const aliasedUrl = `https://${isMaster ? vercelConfig.name : slug}.vercel.app`
   const [owner, repo] = GITHUB_REPOSITORY.split('/')
 
   const { data: { id: deploymentId } } = await octokit.repos.createDeployment({
     owner,
     repo,
-    ref: GITHUB_REF,
+    ref: GITHUB_HEAD_REF || GITHUB_REF,
     environment: slug,
     required_contexts: []
   })
 
-  const deploymentUrl = await vercel(isMaster ?
-    ['--prod'] :
-    ['--target', 'staging', '--name', slug]
-  )
+  await vercel(isMaster ? [] : ['--name', slug])
 
   await octokit.repos.createDeploymentStatus({
     owner,
     repo,
     deployment_id: deploymentId,
     state: 'success',
-    environment_url: deploymentUrl,
-    target_url: deploymentUrl
+    environment_url: aliasedUrl,
+    target_url: aliasedUrl
   })
 }
 
