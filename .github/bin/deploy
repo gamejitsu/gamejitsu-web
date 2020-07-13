@@ -17,7 +17,7 @@ const {
 } = process.env
 
 const octokit = new Octokit({ auth: GITHUB_TOKEN })
-const isMaster = GITHUB_REF === 'master'
+const isMaster = GITHUB_REF === 'refs/heads/master'
 const vercelConfigPath = `${__dirname}/../../.vercel/${isMaster ? 'production' : 'staging'}.json`
 const vercelConfig = require(vercelConfigPath)
 
