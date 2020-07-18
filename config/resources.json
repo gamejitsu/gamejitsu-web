@@ -7,7 +7,8 @@
       "stripeId": {"type": "string"}
     },
     "relationships": {
-      "replay": { "cardinality": "one", "type": "replay" }
+      "replay": { "cardinality": "one", "type": "replay", "optional": true },
+      "reviewRequest": { "cardinality": "one", "type": "review-request", "optional": true }
     }
   },
   "coach": {

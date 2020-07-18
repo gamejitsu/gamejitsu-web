@@ -25,6 +25,7 @@ const redirectToCheckout = async ({ comment, skillLevel, replayId }: Partial<Che
     comment,
     skillLevel,
     replayId,
+    reviewRequestId: null,
     redirectUrl: window.location.origin
   })
   return await stripe.redirectToCheckout({ sessionId: stripeId })

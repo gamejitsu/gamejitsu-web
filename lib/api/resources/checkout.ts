@@ -8,7 +8,8 @@ export interface Checkout extends Model {
   comment: string | null
   redirectUrl: string | null
   stripeId: string
-  replayId: string
+  replayId: string | null
+  reviewRequestId: string | null
 }
 
 export const decoder = t.type({
@@ -22,10 +23,22 @@ export const decoder = t.type({
   }),
   relationships: t.type({
     replay: t.type({
-      data: t.type({
-        type: t.literal("replay"),
-        id: t.string
-      })
+      data: t.union([
+        t.type({
+          type: t.literal("replay"),
+          id: t.string
+        }),
+        t.null
+      ])
+    }),
+    "review-request": t.type({
+      data: t.union([
+        t.type({
+          type: t.literal("review-request"),
+          id: t.string
+        }),
+        t.null
+      ])
     })
   })
 })
@@ -36,7 +49,10 @@ export const transformer = (value: t.TypeOf<typeof decoder>): Checkout => ({
   comment: value.attributes["comment"],
   redirectUrl: value.attributes["redirect-url"],
   stripeId: value.attributes["stripe-id"],
-  replayId: value.relationships["replay"].data.id
+  replayId: value.relationships["replay"].data ? value.relationships["replay"].data.id : null,
+  reviewRequestId: value.relationships["review-request"].data
+    ? value.relationships["review-request"].data.id
+    : null
 })
 
 export default buildResource({
@@ -62,6 +78,12 @@ export default buildResource({
         data: {
           id: value.replayId,
           type: "replay"
+        }
+      },
+      "review-request": {
+        data: {
+          id: value.reviewRequestId,
+          type: "review-request"
         }
       }
     }

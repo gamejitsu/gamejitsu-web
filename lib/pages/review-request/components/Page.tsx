@@ -1,5 +1,4 @@
 import React from "react"
-import Router from "next/router"
 
 import { DecoratedReplay, decorateReplays } from "gamejitsu/models/replay"
 import ReplayResource from "gamejitsu/api/resources/replay"
