@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { Flex, Box } from "rebass"
 import Head from "next/head"
 import CookieConsent from "react-cookie-consent"
+import queryString from "query-string"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import GameContainerSVG from "../../../../svgs/dota2-bs-crop-cut.svg"
@@ -278,7 +279,7 @@ const PriceCard: FunctionComponent<PriceCardProps> = ({ children, icon, title, p
       <span>{price}</span> <span>Per Replay</span>
     </Price>
     <div>{children}</div>
-    <ButtonDark text="Get Started" />
+    <ButtonDark key="login" type="button" onClick={login} text="Get Started" />
   </PriceCardContent>
 )
 
@@ -293,6 +294,20 @@ const IconCircle: FunctionComponent = ({ children }) => (
     <InsideCircle>{children}</InsideCircle>
   </OutsideCircle>
 )
+const urlBase = "https://steamcommunity.com/openid/login"
+
+const login = () => {
+  const urlQuery = {
+    "openid.claimed_id": "http://specs.openid.net/auth/2.0/identifier_select",
+    "openid.identity": "http://specs.openid.net/auth/2.0/identifier_select",
+    "openid.mode": "checkid_setup",
+    "openid.ns": "http://specs.openid.net/auth/2.0",
+    "openid.realm": window.origin + "/auth",
+    "openid.return_to": window.origin + "/auth"
+  }
+  const stringified = queryString.stringify(urlQuery)
+  window.location.href = urlBase + "?" + stringified
+}
 
 const Page: AuthenticatedComponent = () => (
   <div>
@@ -433,7 +448,7 @@ const Page: AuthenticatedComponent = () => (
                 </IconCircle>
                 <Box>
                   <FlowText>
-                    The coach submits the video reviewed with text feedbacks in the form of comments
+                    The user submits a request for a replay to be analyzed
                   </FlowText>
                 </Box>
               </FlowBox>
@@ -507,7 +522,7 @@ const Page: AuthenticatedComponent = () => (
             <Box mt={100}>
               <Flex>
                 <Box mr={10}>
-                  <ButtonNew text="GET STARTED" />
+                  <ButtonNew key="login" type="button" onClick={login} text="GET STARTED" />
                 </Box>
                 <Box ml={10}>
                   <ButtonAlternative text="SEE PRICING" />
