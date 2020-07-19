@@ -12,7 +12,6 @@ interface Props {
 const Content = styled.a`
   color: white;
   font-weight: bold;
-  display: inline;
   cursor: pointer;
   &:hover {
     text-decoration: none;
@@ -21,9 +20,7 @@ const Content = styled.a`
 `
 
 const LinkMailBold: FunctionComponent<Props> = ({ children, className, href, mt }) => (
-  <Box className={className} mt={mt}>
     <Content href={href}>{children}</Content>
-  </Box>
 )
 
 export default LinkMailBold

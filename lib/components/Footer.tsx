@@ -91,10 +91,10 @@ const Footer: FunctionComponent<Props> = () => (
                         </Box>
                         <Box flex="1 1 0">
                             <FooterTitle>SUPPORT</FooterTitle>
-                            <LinkDark href="/" mt={4}>Privacy Policy</LinkDark>
-                            <LinkDark href="/">Terms of Use</LinkDark>
+                            <LinkDark href="/privacy-policy" mt={4}>Privacy Policy</LinkDark>
+                            <LinkDark href="/terms-of-use">Terms of Use</LinkDark>
                             <LinkDark href="/">FAQ</LinkDark>
-                            <LinkDark href="/">Security</LinkDark>
+                            <LinkDark href="/security">Security</LinkDark>
                         </Box>
                         <Box flex="1 1 0">
                             <FooterTitle>RESOURCES</FooterTitle>
