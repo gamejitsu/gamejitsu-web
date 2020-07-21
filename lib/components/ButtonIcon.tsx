@@ -26,7 +26,7 @@ const baseStyles = css`
 
   background: transparent;
 
-  padding: 10px 25px 10px 25px;
+  padding: 7px 18px 7px 18px;
   font-size: 15px;
   font-weight: bold;
 

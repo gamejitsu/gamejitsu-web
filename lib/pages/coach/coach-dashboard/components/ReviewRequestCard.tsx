@@ -1,6 +1,8 @@
 import { Flex, Box } from "rebass"
 import { formatDistanceToNow } from "date-fns"
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import React, { useContext, FunctionComponent } from "react"
+import Router from "next/router"
 import styled from "styled-components"
 
 import { Button, HeroImage } from "gamejitsu/components"
@@ -8,7 +10,6 @@ import { createModel } from "gamejitsu/api"
 import { DecoratedReviewRequest } from "gamejitsu/models/review-request"
 import { UserContext } from "gamejitsu/contexts"
 import ReviewResource from "gamejitsu/api/resources/review"
-import ReCAPTCHA from "react-google-recaptcha";
 
 interface Props {
   reviewRequest: DecoratedReviewRequest
@@ -47,17 +48,26 @@ const GameInfo = styled.h3`
   color: ${(props) => props.theme.primaryColor};
 `
 
-const acceptReviewRequest = async (reviewRequestId: string) => {
-  const response = await createModel(ReviewResource, { requestId: reviewRequestId })
+const acceptReviewRequest = async (reviewRequestId: string, token: Promise<string>) => {
+  const response = await createModel(ReviewResource, 
+    { requestId: reviewRequestId, coachId: "" }, 
+    undefined, 
+    { params: { "g-recaptcha-response": await token } })
   // TODO Maybe add confirm?
-  // redirect to perform review page
+  Router.push('/coach-dashboard')
 }
 
-function onChange(value: any) {
-  console.log("Captcha value:", value);
+const GoogleRecaptchaReviewRequestCard: FunctionComponent<Props> = (props) => {
+  return <GoogleReCaptchaProvider reCaptchaKey="6LeNzrMZAAAAAF7hJMBI15osND7_DX0v7WxW6Vs6">
+    <ReviewRequestCard {...props} />
+  </GoogleReCaptchaProvider>
 }
 
 const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  let token: Promise<string>
+  if (executeRecaptcha)
+    token = executeRecaptcha("review_request_page");
   const user = useContext(UserContext)
   const players = reviewRequest.replay.playersDire.concat(reviewRequest.replay.playersRadiant)
   const currentPlayer = players.find((player) => {
@@ -112,13 +122,9 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
                   Played with {currentPlayer.heroName}
                 </Box>
                 <Box mt={4}>
-                <ReCAPTCHA
-                   sitekey="6LcDpKoZAAAAAPtaap_WCAoNKouwFRp-p_oXR9rp"
-                   onChange={onChange}
-                />,
                   <Button
                     onClick={() => {
-                      acceptReviewRequest(reviewRequest.id)
+                      acceptReviewRequest(reviewRequest.id, token)
                     }}
                     text="ACCEPT REVIEW"
                   />
@@ -132,4 +138,4 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
   )
 }
 
-export default ReviewRequestCard
+export default GoogleRecaptchaReviewRequestCard

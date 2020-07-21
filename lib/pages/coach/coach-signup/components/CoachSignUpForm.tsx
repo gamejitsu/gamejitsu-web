@@ -1,18 +1,18 @@
-import humanize from "humanize-string"
-import React, { FunctionComponent, useContext } from "react"
-import styled from "styled-components"
-import titleize from "titleize"
-import CoachResource from "gamejitsu/api/resources/coach"
-import Router from "next/router"
-
 import { Box } from "rebass"
-import { createModel } from "gamejitsu/api"
-
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import { object, string } from "yup"
 import { Slider } from "@blueprintjs/core"
-import { UserContext } from "gamejitsu/contexts"
+import humanize from "humanize-string"
+import React, { FunctionComponent, useContext } from "react"
+import Router from "next/router"
+import styled from "styled-components"
+import titleize from "titleize"
+
+import { createModel } from "gamejitsu/api"
 import { Form, FormGroup, InputGroup } from "gamejitsu/components"
 import { SkillLevel } from "gamejitsu/api/types/skill-level"
+import { UserContext } from "gamejitsu/contexts"
+import CoachResource from "gamejitsu/api/resources/coach"
 
 const initialValues = {
   firstName: "",
@@ -29,18 +29,15 @@ const skillLevels = SkillLevel.types.map((t) => t.value)
 const isSkillLevelValid = (value: string): value is SkillLevel =>
   (skillLevels as string[]).includes(value)
 
-const onSubmitCoach = async (values: Values): Promise<void> => {
+const onSubmitCoach = async (values: Values, token: Promise<string>): Promise<void> => {
   const { email, firstName, lastName, photoUrl, skillLevel } = values
   if (!isSkillLevelValid(skillLevel)) {
     throw new Error(`Invalid skill level value in coach signup: ${skillLevel}`)
   }
-  await createModel(CoachResource, {
-    email,
-    firstName,
-    lastName,
-    photoUrl,
-    skillLevel
-  })
+  await createModel(CoachResource,
+    { email, firstName, lastName, photoUrl, skillLevel },
+    undefined,
+    { params: { "g-recaptcha-response": await token } })
   Router.push("/coach-dashboard")
 }
 
@@ -64,7 +61,18 @@ const LabelContent = styled.span`
   white-space: nowrap;
 `
 
+const GoogleRecaptchaCoachSignUpForm: FunctionComponent = () => {
+  return <GoogleReCaptchaProvider reCaptchaKey="6LeNzrMZAAAAAF7hJMBI15osND7_DX0v7WxW6Vs6">
+    <CoachSignUpForm />
+  </GoogleReCaptchaProvider>
+}
+
 const CoachSignUpForm: FunctionComponent = () => {
+  const { executeRecaptcha } = useGoogleReCaptcha();
+  let token: Promise<string>
+  if (executeRecaptcha)
+    token = executeRecaptcha("coach_signup_page");
+
   const user = getUser()
 
   const renderLabel = (val: number) => {
@@ -77,7 +85,8 @@ const CoachSignUpForm: FunctionComponent = () => {
         title="Sign up as a coach"
         initialValues={initialValues}
         schema={schema}
-        onSubmit={onSubmitCoach}
+        onSubmit={values => onSubmitCoach(values, token)}
+        
         buttonText="Register"
       >
         {(formik) => (
@@ -123,4 +132,4 @@ const CoachSignUpForm: FunctionComponent = () => {
   )
 }
 
-export default CoachSignUpForm
+export default GoogleRecaptchaCoachSignUpForm

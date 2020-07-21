@@ -48,19 +48,4 @@ const ReviewCard: FunctionComponent<Props> = ({ review }) => (
   </Box>
 )
 
-/**    <Flex>
-      <Box p={3} mr="auto">
-        <Text p={2}>Review</Text>
-        <Text p={2}>Review Id: {review.id}</Text>
-      </Box>
-      <Box alignSelf="center" pr={3}>
-        <Button
-          onClick={() => {
-            goToReviewPage(review.id)
-          }}
-          text="See completed review"
-        />
-      </Box>
-    </Flex> */
-
 export default ReviewCard
