@@ -23,7 +23,9 @@ const Content = styled(Box)`
 
 const LinkBold: FunctionComponent<Props> = ({ children, className, href, mt }) => (
   <NextLink href={href}>
-    <Content className={className} mt={mt}>{children}</Content>
+    <Content className={className} mt={mt}>
+      {children}
+    </Content>
   </NextLink>
 )
 

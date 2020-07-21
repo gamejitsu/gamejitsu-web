@@ -57,7 +57,7 @@ const T = styled(Box)`
   background-color: white;
 `
 
-const ElementComment = styled(Box) <ElementCommentProps>`
+const ElementComment = styled(Box)<ElementCommentProps>`
   height: 85%;
   width: 2px;
   background-color: ${(props) => props.theme.primaryColor};
@@ -92,7 +92,10 @@ const getPercentage = (comment: Comment, totalDuration: number) => {
 const reduceComments = (comments: Comment[]) => {
   const reducer = (accumulator: Record<number, Comment[]>, currentValue: Comment) => {
     return accumulator[currentValue.timestamp]
-      ? { ...accumulator, [currentValue.timestamp]: [...accumulator[currentValue.timestamp], currentValue] }
+      ? {
+          ...accumulator,
+          [currentValue.timestamp]: [...accumulator[currentValue.timestamp], currentValue]
+        }
       : { ...accumulator, [currentValue.timestamp]: [currentValue] }
   }
   return comments.reduce(reducer, {} as Record<number, Comment[]>)
@@ -146,7 +149,10 @@ const CommentBar: FunctionComponent<Props> = ({
                 const comments = reducedComments[commentTimestamp]
                 return (
                   <Box height="100%" key={commentTimestamp}>
-                    <TimeTag>{formatTimestamp(commentTimestamp)} {comments.length > 1 ? `(${comments.length})` : ""}</TimeTag>
+                    <TimeTag>
+                      {formatTimestamp(commentTimestamp)}{" "}
+                      {comments.length > 1 ? `(${comments.length})` : ""}
+                    </TimeTag>
                     <ElementComment
                       comment={comments[0]}
                       containerWidth={containerWidth}

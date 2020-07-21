@@ -33,7 +33,6 @@ const onError = () => {
 }
 
 const CommentFormNew: CommentFormComponent = ({ onSave, onDelete, comment, timestamp }) => {
-
   const formik = useFormik({
     initialValues: { text: comment ? comment.text : "" },
     enableReinitialize: true,
@@ -59,11 +58,17 @@ const CommentFormNew: CommentFormComponent = ({ onSave, onDelete, comment, times
               fill={true}
               value={formik.values.text}
             />
-            {formik.errors.text ?
+            {formik.errors.text ? (
               <Toaster position={Position.TOP}>
-                <Toast intent={Intent.DANGER} icon="warning-sign" message={"Error inserting comment. \ Comment empty."} />
+                <Toast
+                  intent={Intent.DANGER}
+                  icon="warning-sign"
+                  message={"Error inserting comment.  Comment empty."}
+                />
               </Toaster>
-              : <div />}
+            ) : (
+              <div />
+            )}
             <Box>
               {comment !== null ? (
                 <Fragment>
@@ -75,8 +80,8 @@ const CommentFormNew: CommentFormComponent = ({ onSave, onDelete, comment, times
                   </Box>
                 </Fragment>
               ) : (
-                  <Button text="Insert comment" type="submit" />
-                )}
+                <Button text="Insert comment" type="submit" />
+              )}
             </Box>
           </form>
         </Box>

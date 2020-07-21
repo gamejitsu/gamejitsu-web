@@ -11,7 +11,7 @@ interface Props {
 }
 
 const onDelete = (review: DecoratedReview) => {
-   deleteModel(ReviewResource, review)
+  deleteModel(ReviewResource, review)
 }
 
 const CoachReviewCard: FunctionComponent<Props> = ({ review }) => (

@@ -32,7 +32,7 @@ const SocialNetworkBarIcon = styled.img`
 
 const LinkSocialIcon: FunctionComponent<Props> = ({ href, src }) => (
   <a href={href}>
-      <SocialNetworkBarIcon src={src} />
+    <SocialNetworkBarIcon src={src} />
   </a>
 )
 

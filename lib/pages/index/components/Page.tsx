@@ -447,9 +447,7 @@ const Page: AuthenticatedComponent = () => (
                   <FlowStepIcon src="/images/step1.png" />
                 </IconCircle>
                 <Box>
-                  <FlowText>
-                    The user submits a request for a replay to be analyzed
-                  </FlowText>
+                  <FlowText>The user submits a request for a replay to be analyzed</FlowText>
                 </Box>
               </FlowBox>
               <FlowBox>
@@ -573,7 +571,7 @@ const Page: AuthenticatedComponent = () => (
         </Box>
       </PriceCards>
 
-      <Footer/>
+      <Footer />
     </Container>
   </div>
 )

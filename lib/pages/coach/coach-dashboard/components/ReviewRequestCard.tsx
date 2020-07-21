@@ -1,6 +1,6 @@
 import { Flex, Box } from "rebass"
 import { formatDistanceToNow } from "date-fns"
-import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import React, { useContext, FunctionComponent } from "react"
 import Router from "next/router"
 import styled from "styled-components"
@@ -49,25 +49,28 @@ const GameInfo = styled.h3`
 `
 
 const acceptReviewRequest = async (reviewRequestId: string, token: Promise<string>) => {
-  const response = await createModel(ReviewResource, 
-    { requestId: reviewRequestId, coachId: "" }, 
-    undefined, 
-    { params: { "g-recaptcha-response": await token } })
+  const response = await createModel(
+    ReviewResource,
+    { requestId: reviewRequestId, coachId: "" },
+    undefined,
+    { params: { "g-recaptcha-response": await token } }
+  )
   // TODO Maybe add confirm?
-  Router.push('/coach-dashboard')
+  Router.push("/coach-dashboard")
 }
 
 const GoogleRecaptchaReviewRequestCard: FunctionComponent<Props> = (props) => {
-  return <GoogleReCaptchaProvider reCaptchaKey="6LeNzrMZAAAAAF7hJMBI15osND7_DX0v7WxW6Vs6">
-    <ReviewRequestCard {...props} />
-  </GoogleReCaptchaProvider>
+  return (
+    <GoogleReCaptchaProvider reCaptchaKey="6LeNzrMZAAAAAF7hJMBI15osND7_DX0v7WxW6Vs6">
+      <ReviewRequestCard {...props} />
+    </GoogleReCaptchaProvider>
+  )
 }
 
 const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
-  const { executeRecaptcha } = useGoogleReCaptcha();
+  const { executeRecaptcha } = useGoogleReCaptcha()
   let token: Promise<string>
-  if (executeRecaptcha)
-    token = executeRecaptcha("review_request_page");
+  if (executeRecaptcha) token = executeRecaptcha("review_request_page")
   const user = useContext(UserContext)
   const players = reviewRequest.replay.playersDire.concat(reviewRequest.replay.playersRadiant)
   const currentPlayer = players.find((player) => {

@@ -20,7 +20,7 @@ const Content = styled.a`
 `
 
 const LinkMailBold: FunctionComponent<Props> = ({ children, className, href, mt }) => (
-    <Content href={href}>{children}</Content>
+  <Content href={href}>{children}</Content>
 )
 
 export default LinkMailBold

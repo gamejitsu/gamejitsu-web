@@ -72,7 +72,12 @@ const LessExpandTag = styled(Box)`
   font-size: 14px;
 `
 
-const CommentList: FunctionComponent<Props> = ({ comments, selectedComment, onSelect, onSaveReview }) => {
+const CommentList: FunctionComponent<Props> = ({
+  comments,
+  selectedComment,
+  onSelect,
+  onSaveReview
+}) => {
   const onSelectListItem = (comment: Comment) =>
     comment === selectedComment ? onSelect(null) : onSelect(comment)
 
@@ -83,10 +88,10 @@ const CommentList: FunctionComponent<Props> = ({ comments, selectedComment, onSe
   return (
     <Container ml={4}>
       <Header>
-          <Flex ml={3} width="100%">
-            <CommentListTitle>COMMENTS ADDED BY COACH</CommentListTitle>
-            <Button text="Save review" type="button" onClick={onSaveReview} />
-          </Flex>
+        <Flex ml={3} width="100%">
+          <CommentListTitle>COMMENTS ADDED BY COACH</CommentListTitle>
+          <Button text="Save review" type="button" onClick={onSaveReview} />
+        </Flex>
       </Header>
       <Box>
         <ul>
@@ -102,10 +107,7 @@ const CommentList: FunctionComponent<Props> = ({ comments, selectedComment, onSe
                   </LessExpandTag>
                 </Flex>
                 <Box ml={3}>
-                  <ListItem
-                    comment={comment}
-                    selectedComment={selectedComment}
-                  >
+                  <ListItem comment={comment} selectedComment={selectedComment}>
                     <a onClick={onSelectListItem.bind(null, comment)}>{comment.text}</a>
                   </ListItem>
                 </Box>

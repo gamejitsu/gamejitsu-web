@@ -34,10 +34,12 @@ const onSubmitCoach = async (values: Values, token: Promise<string>): Promise<vo
   if (!isSkillLevelValid(skillLevel)) {
     throw new Error(`Invalid skill level value in coach signup: ${skillLevel}`)
   }
-  await createModel(CoachResource,
+  await createModel(
+    CoachResource,
     { email, firstName, lastName, photoUrl, skillLevel },
     undefined,
-    { params: { "g-recaptcha-response": await token } })
+    { params: { "g-recaptcha-response": await token } }
+  )
   Router.push("/coach-dashboard")
 }
 
@@ -62,16 +64,17 @@ const LabelContent = styled.span`
 `
 
 const GoogleRecaptchaCoachSignUpForm: FunctionComponent = () => {
-  return <GoogleReCaptchaProvider reCaptchaKey="6LeNzrMZAAAAAF7hJMBI15osND7_DX0v7WxW6Vs6">
-    <CoachSignUpForm />
-  </GoogleReCaptchaProvider>
+  return (
+    <GoogleReCaptchaProvider reCaptchaKey="6LeNzrMZAAAAAF7hJMBI15osND7_DX0v7WxW6Vs6">
+      <CoachSignUpForm />
+    </GoogleReCaptchaProvider>
+  )
 }
 
 const CoachSignUpForm: FunctionComponent = () => {
-  const { executeRecaptcha } = useGoogleReCaptcha();
+  const { executeRecaptcha } = useGoogleReCaptcha()
   let token: Promise<string>
-  if (executeRecaptcha)
-    token = executeRecaptcha("coach_signup_page");
+  if (executeRecaptcha) token = executeRecaptcha("coach_signup_page")
 
   const user = getUser()
 
@@ -85,8 +88,7 @@ const CoachSignUpForm: FunctionComponent = () => {
         title="Sign up as a coach"
         initialValues={initialValues}
         schema={schema}
-        onSubmit={values => onSubmitCoach(values, token)}
-        
+        onSubmit={(values) => onSubmitCoach(values, token)}
         buttonText="Register"
       >
         {(formik) => (

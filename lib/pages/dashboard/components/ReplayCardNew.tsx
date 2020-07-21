@@ -73,8 +73,11 @@ const RecentMatchesCardNew: FunctionComponent<Props> = ({ replay }) => {
             Played {formatDistanceToNow(new Date(replay.playedAt), { addSuffix: true })}
           </Box>
           <Box mt={3} ml="auto" mr={3} height="30px">
-            { currentPlayerWon  ? <GameInfoWinner>Game won</GameInfoWinner> :  <GameInfoLoser>Game lost</GameInfoLoser>}
-           
+            {currentPlayerWon ? (
+              <GameInfoWinner>Game won</GameInfoWinner>
+            ) : (
+              <GameInfoLoser>Game lost</GameInfoLoser>
+            )}
           </Box>
         </Header>
         <HorizontalLine />
