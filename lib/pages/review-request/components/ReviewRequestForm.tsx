@@ -16,7 +16,7 @@ import { Slider } from "@blueprintjs/core"
 import { UserContext } from "gamejitsu/contexts"
 
 const redirectToCheckout = async ({ comment, skillLevel, replayId }: Partial<Checkout>) => {
-  const stripe = Stripe("pk_test_gO4hZHVOjk7E3GjH0etoiBAO00c0qpfX0m")
+  const stripe = Stripe(process.env.STRIPE_PUBLIC_KEY)
   const {
     data: { stripeId }
   }: any = await createModel(CheckoutResource, {
