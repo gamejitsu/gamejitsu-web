@@ -18,7 +18,7 @@ Auth.getInitialProps = async (ctx) => {
   const { query } = ctx
   const {
     data: { accessToken }
-  } = await createModel(SessionResource, { openidParams: stringifyQueryString(query) })
+  }: any = await createModel(SessionResource, { openidParams: stringifyQueryString(query) })
   setCookie(ctx, "authToken", accessToken, {})
   return {}
 }

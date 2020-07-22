@@ -19,7 +19,7 @@ const redirectToCheckout = async ({ comment, skillLevel, replayId }: Partial<Che
   const stripe = Stripe("pk_test_gO4hZHVOjk7E3GjH0etoiBAO00c0qpfX0m")
   const {
     data: { stripeId }
-  } = await createModel(CheckoutResource, {
+  }: any = await createModel(CheckoutResource, {
     comment,
     skillLevel,
     replayId,
