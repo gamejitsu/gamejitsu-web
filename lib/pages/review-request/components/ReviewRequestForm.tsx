@@ -1,8 +1,6 @@
 import CheckoutResource, { Checkout } from "gamejitsu/api/resources/checkout"
 import humanize from "humanize-string"
 import React, { FunctionComponent, useContext } from "react"
-import ReviewRequestResource from "gamejitsu/api/resources/review-request"
-import Router from "next/router"
 import styled from "styled-components"
 import titleize from "titleize"
 
@@ -80,7 +78,6 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
     if (replay === undefined) {
       throw new Error(`Invalid replay`)
     }
-
     redirectToCheckout({ comment, skillLevel, replayId: replay.id })
   }
 

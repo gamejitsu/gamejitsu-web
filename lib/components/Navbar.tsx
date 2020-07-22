@@ -12,7 +12,6 @@ import { useRouter } from "next/router"
 
 const urlBase = "https://steamcommunity.com/openid/login"
 
-const steamImageSrc = "/images/steam-button.png"
 const gamejitsuWritingImageSrc = "/images/gamejitsu-writing.svg"
 
 interface NavLinkContentProps {
@@ -113,11 +112,18 @@ const Navbar: FunctionComponent = () => {
           </Box>
         </Flex>
       </Box>
-      <NavLink href="/dashboard">DASHBOARD</NavLink>
-      <NavLink href="/reviews">REVIEWS</NavLink>
-      <NavLink href="/coach-reviews">COACH REVIEWS</NavLink>
-      <NavLink href="/coach-signup">COACH SIGNUP</NavLink>
-      <NavLink href="/coach-dashboard">COACH DASHBOARD</NavLink>
+      {user?.coachId ? (
+        [
+          <NavLink href="/coach-reviews">COACH REVIEWS</NavLink>,
+          <NavLink href="/coach-signup">COACH SIGNUP</NavLink>,
+          <NavLink href="/coach-dashboard">COACH DASHBOARD</NavLink>
+        ]
+      ) : (
+       [
+        <NavLink href="/dashboard">DASHBOARD</NavLink>,
+        <NavLink href="/reviews">REVIEWS</NavLink>
+       ]
+      )}
       {user ? (
         [
           <NavLink key="username" href="/">

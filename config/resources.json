@@ -70,6 +70,8 @@
       "isSyncingReplays": { "type": "boolean" },
       "username": { "type": "string" }
     },
-    "relationships": {}
+    "relationships": {
+      "coach": { "cardinality": "one", "type": "coach", "include": false, "optional": true }
+    }
   }
 }

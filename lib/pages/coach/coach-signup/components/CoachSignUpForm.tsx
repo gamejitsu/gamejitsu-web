@@ -65,7 +65,7 @@ const LabelContent = styled.span`
 
 const GoogleRecaptchaCoachSignUpForm: FunctionComponent = () => {
   return (
-    <GoogleReCaptchaProvider reCaptchaKey="6LeNzrMZAAAAAF7hJMBI15osND7_DX0v7WxW6Vs6">
+    <GoogleReCaptchaProvider reCaptchaKey={process.env.GOOGLE_RECAPTCHA_PUBLIC_KEY}>
       <CoachSignUpForm />
     </GoogleReCaptchaProvider>
   )

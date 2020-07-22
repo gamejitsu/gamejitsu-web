@@ -61,7 +61,7 @@ const acceptReviewRequest = async (reviewRequestId: string, token: Promise<strin
 
 const GoogleRecaptchaReviewRequestCard: FunctionComponent<Props> = (props) => {
   return (
-    <GoogleReCaptchaProvider reCaptchaKey="6LeNzrMZAAAAAF7hJMBI15osND7_DX0v7WxW6Vs6">
+    <GoogleReCaptchaProvider reCaptchaKey={process.env.GOOGLE_RECAPTCHA_PUBLIC_KEY}>
       <ReviewRequestCard {...props} />
     </GoogleReCaptchaProvider>
   )
