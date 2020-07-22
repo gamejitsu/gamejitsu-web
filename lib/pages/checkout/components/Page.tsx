@@ -21,7 +21,6 @@ const Page: NextPage<Props> = ({ checkout }) => (
 
 Page.getInitialProps = async (ctx) => {
   const { data } = await findModel(CheckoutResource, ctx.query.id.toString(), ctx)
-  console.log(data)
   return { checkout: data }
 }
 

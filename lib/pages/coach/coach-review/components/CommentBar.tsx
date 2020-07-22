@@ -89,6 +89,18 @@ const getPercentage = (comment: Comment, totalDuration: number) => {
   return Math.round(percentage)
 }
 
+const reduceComments = (comments: Comment[]) => {
+  const reducer = (accumulator: Record<number, Comment[]>, currentValue: Comment) => {
+    return accumulator[currentValue.timestamp]
+      ? {
+          ...accumulator,
+          [currentValue.timestamp]: [...accumulator[currentValue.timestamp], currentValue]
+        }
+      : { ...accumulator, [currentValue.timestamp]: [currentValue] }
+  }
+  return comments.reduce(reducer, {} as Record<number, Comment[]>)
+}
+
 const CommentBar: FunctionComponent<Props> = ({
   comments,
   videoDuration,
@@ -109,7 +121,9 @@ const CommentBar: FunctionComponent<Props> = ({
     setContainerWidth(containerRef.current ? containerRef.current.offsetWidth : 0)
   })
 
-  const array1 = [...Array(100).keys()]
+  const emptyBarsArray = [...Array(100).keys()]
+
+  const reducedComments = reduceComments(comments)
 
   return (
     <Container onClick={onBarClick} ref={containerRef}>
@@ -123,36 +137,31 @@ const CommentBar: FunctionComponent<Props> = ({
         </Box>
         <Bar>
           <Flex height="100%" alignItems="flex-end" justifyContent="space-between">
-            {array1.map((key) => {
-              let isComment = false
-              comments.map((comment, index) => {
-                const percentage = getPercentage(comment, videoDuration)
+            {emptyBarsArray.map((key) => {
+              let commentTimestamp = null
+              Object.values(reducedComments).forEach((comments: Comment[]) => {
+                const percentage = getPercentage(comments[0], videoDuration)
                 if (percentage === key) {
-                  console.log("FOUNDDDDDDD!!!!!!")
-                  isComment = true
+                  commentTimestamp = comments[0].timestamp
                 }
               })
-              if (isComment) {
-                return comments.map((comment, index) => {
-                  if (getPercentage(comment, videoDuration) === key) {
-                    console.log("in return element")
-                    console.log(index)
-                    console.log(key)
-                    return (
-                      <Box height="100%">
-                        <TimeTag>{formatTimestamp(comment.timestamp)}</TimeTag>
-                        <ElementComment
-                          key={index.toString()}
-                          comment={comment}
-                          containerWidth={containerWidth}
-                          duration={videoDuration}
-                        />
-                      </Box>
-                    )
-                  }
-                })
+              if (commentTimestamp) {
+                const comments = reducedComments[commentTimestamp]
+                return (
+                  <Box height="100%" key={commentTimestamp}>
+                    <TimeTag>
+                      {formatTimestamp(commentTimestamp)}{" "}
+                      {comments.length > 1 ? `(${comments.length})` : ""}
+                    </TimeTag>
+                    <ElementComment
+                      comment={comments[0]}
+                      containerWidth={containerWidth}
+                      duration={videoDuration}
+                    />
+                  </Box>
+                )
               } else {
-                return <T key={key.toString()} />
+                return <T key={`${key.toString()}-bar`} />
               }
             })}
           </Flex>

@@ -6,6 +6,7 @@ export interface User extends Model {
   steamId: string
   isSyncingReplays: boolean
   username: string
+  coachId: string | null
 }
 
 export const decoder = t.type({
@@ -15,6 +16,17 @@ export const decoder = t.type({
     "steam-id": t.string,
     "is-syncing-replays": t.boolean,
     username: t.string
+  }),
+  relationships: t.type({
+    coach: t.type({
+      data: t.union([
+        t.type({
+          type: t.literal("coach"),
+          id: t.string
+        }),
+        t.null
+      ])
+    })
   })
 })
 
@@ -22,7 +34,8 @@ export const transformer = (value: t.TypeOf<typeof decoder>): User => ({
   id: value.id,
   steamId: value.attributes["steam-id"],
   isSyncingReplays: value.attributes["is-syncing-replays"],
-  username: value.attributes["username"]
+  username: value.attributes["username"],
+  coachId: value.relationships["coach"].data ? value.relationships["coach"].data.id : null
 })
 
 export default buildResource({
@@ -42,6 +55,13 @@ export default buildResource({
       "is-syncing-replays": value.isSyncingReplays,
       username: value.username
     },
-    relationships: {}
+    relationships: {
+      coach: {
+        data: {
+          id: value.coachId,
+          type: "coach"
+        }
+      }
+    }
   })
 })

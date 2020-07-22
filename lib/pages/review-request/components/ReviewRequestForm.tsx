@@ -1,8 +1,6 @@
 import CheckoutResource, { Checkout } from "gamejitsu/api/resources/checkout"
 import humanize from "humanize-string"
 import React, { FunctionComponent, useContext } from "react"
-import ReviewRequestResource from "gamejitsu/api/resources/review-request"
-import Router from "next/router"
 import styled from "styled-components"
 import titleize from "titleize"
 
@@ -18,13 +16,14 @@ import { Slider } from "@blueprintjs/core"
 import { UserContext } from "gamejitsu/contexts"
 
 const redirectToCheckout = async ({ comment, skillLevel, replayId }: Partial<Checkout>) => {
-  const stripe = Stripe("pk_test_gO4hZHVOjk7E3GjH0etoiBAO00c0qpfX0m")
+  const stripe = Stripe(process.env.STRIPE_PUBLIC_KEY)
   const {
     data: { stripeId }
-  } = await createModel(CheckoutResource, {
+  }: any = await createModel(CheckoutResource, {
     comment,
     skillLevel,
     replayId,
+    reviewRequestId: null,
     redirectUrl: window.location.origin
   })
   return await stripe.redirectToCheckout({ sessionId: stripeId })
@@ -79,7 +78,6 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
     if (replay === undefined) {
       throw new Error(`Invalid replay`)
     }
-
     redirectToCheckout({ comment, skillLevel, replayId: replay.id })
   }
 

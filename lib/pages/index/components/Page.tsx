@@ -3,20 +3,20 @@ import styled from "styled-components"
 import { Flex, Box } from "rebass"
 import Head from "next/head"
 import CookieConsent from "react-cookie-consent"
+import queryString from "query-string"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import GameContainerSVG from "../../../../svgs/dota2-bs-crop-cut.svg"
 import GameContainerCSGOSVG from "../../../../svgs/csgo-container-final-2.svg"
 import GameContainerLOLSVG from "../../../../svgs/lol-container-new-4.svg"
 import GameContainerOWSVG from "../../../../svgs/overwatch-container-1.svg"
-import { Navbar, ButtonNew, ButtonAlternative, ButtonDark } from "gamejitsu/components"
+import { Navbar, ButtonNew, ButtonAlternative, ButtonDark, Footer } from "gamejitsu/components"
 
 const mainLogo = "/images/gamejitsu-mascotte.svg"
 const dota2Logo = "/images/dota2-logo.png"
 const lolLogo = "/images/lol-logo.png"
 const overwatchLogo = "/images/overwatch-logo.png"
 const fortniteLogo = "/images/fortnite-logo.png"
-const gjLogo = "/images/gj-logo.png"
 
 interface PriceCardProps {
   icon: string
@@ -75,59 +75,6 @@ const Background = styled.div`
   background-position: center;
   background-size: cover;
   opacity: 0.3;
-`
-
-const FooterTitle = styled.h3`
-  color: white;
-  font-weight: bold;
-  letter-spacing: 2px;
-`
-
-const FooterText = styled(Box)`
-  align-items: center;
-  color: ${(props) => props.theme.textColor};
-  font-size: 14px;
-  margin-bottom: 25px;
-  height: 10px;
-`
-
-const Footer = styled(Flex)`
-  flex-grow: 1;
-  width: 100%;
-  position: absolute;
-  height: 200px;
-  z-index: 1;
-`
-
-const FooterBackground = styled.div`
-  top: 0;
-  left: 0;
-  right 0;
-  bottom: 0;
-  position: absolute;
-  background-image: url('/images/background-hero-unit.jpg');
-  background-position: center;
-  background-size: cover;
-  opacity: 0.1;
-`
-
-const FooterImage = styled.img`
-  width: 200px;
-  position: absolute;
-  bottom: -65px;
-  left: 100px;
-`
-
-const FooterParent = styled.div`
-  position: relative;
-  height: 300px;
-  width: 100%;
-`
-
-const FooterLink = styled.h3`
-  color: white;
-  font-weight: bold;
-  display: inline;
 `
 
 const HeroUnitParent = styled.div`
@@ -238,13 +185,6 @@ const Line = styled.div`
   margin-left: -1px;
 `
 
-const LineHorizontal = styled.div`
-  width: 100%;
-  height 1px;
-  position: absolute;
-  background: ${(props) => props.theme.lightBackgroundColor};
-`
-
 const FlowImage = styled(Box)<FlowImageType>`
   background-image: url(${(props) => props.url});
   background-size: contain;
@@ -325,19 +265,6 @@ const FlowStepIcon = styled.img`
   text-align: center;
 `
 
-const SocialNetworkBar = styled(Flex)`
-  width: 100%;
-  text-align: center;
-  vertical-align: middle;
-  position: relative;
-  height: 50px;
-`
-
-const SocialNetworkBarIcon = styled.img`
-  width: 20px;
-  position: absolute;
-`
-
 const StyledCookieConsent = styled(CookieConsent)`
   background: ${(props) => props.theme.textColor};
 `
@@ -352,7 +279,7 @@ const PriceCard: FunctionComponent<PriceCardProps> = ({ children, icon, title, p
       <span>{price}</span> <span>Per Replay</span>
     </Price>
     <div>{children}</div>
-    <ButtonDark text="Get Started" />
+    <ButtonDark key="login" type="button" onClick={login} text="Get Started" />
   </PriceCardContent>
 )
 
@@ -367,6 +294,20 @@ const IconCircle: FunctionComponent = ({ children }) => (
     <InsideCircle>{children}</InsideCircle>
   </OutsideCircle>
 )
+const urlBase = "https://steamcommunity.com/openid/login"
+
+const login = () => {
+  const urlQuery = {
+    "openid.claimed_id": "http://specs.openid.net/auth/2.0/identifier_select",
+    "openid.identity": "http://specs.openid.net/auth/2.0/identifier_select",
+    "openid.mode": "checkid_setup",
+    "openid.ns": "http://specs.openid.net/auth/2.0",
+    "openid.realm": window.origin + "/auth",
+    "openid.return_to": window.origin + "/auth"
+  }
+  const stringified = queryString.stringify(urlQuery)
+  window.location.href = urlBase + "?" + stringified
+}
 
 const Page: AuthenticatedComponent = () => (
   <div>
@@ -506,9 +447,7 @@ const Page: AuthenticatedComponent = () => (
                   <FlowStepIcon src="/images/step1.png" />
                 </IconCircle>
                 <Box>
-                  <FlowText>
-                    The coach submits the video reviewed with text feedbacks in the form of comments
-                  </FlowText>
+                  <FlowText>The user submits a request for a replay to be analyzed</FlowText>
                 </Box>
               </FlowBox>
               <FlowBox>
@@ -581,7 +520,7 @@ const Page: AuthenticatedComponent = () => (
             <Box mt={100}>
               <Flex>
                 <Box mr={10}>
-                  <ButtonNew text="GET STARTED" />
+                  <ButtonNew key="login" type="button" onClick={login} text="GET STARTED" />
                 </Box>
                 <Box ml={10}>
                   <ButtonAlternative text="SEE PRICING" />
@@ -632,73 +571,7 @@ const Page: AuthenticatedComponent = () => (
         </Box>
       </PriceCards>
 
-      <FooterParent>
-        <Footer justifyContent="center">
-          <Box mx="auto">
-            <Box>
-              <FooterImage src={gjLogo} />
-            </Box>
-            <Box width="900px" mx="auto" mt={4} style={{ position: "relative" }}>
-              <Flex justifyContent="center">
-                <Box flex="1 1 0">
-                  <FooterTitle>COMPANY</FooterTitle>
-                  <FooterText mt={4}>About us</FooterText>
-                  <FooterText>Jobs</FooterText>
-                  <FooterText>Site Term of use</FooterText>
-                  <FooterText>Press Inquiries</FooterText>
-                </Box>
-                <Box flex="1 1 0">
-                  <FooterTitle>SUPPORT</FooterTitle>
-                  <FooterText mt={4}>Privacy Policy</FooterText>
-                  <FooterText>Terms of Use</FooterText>
-                  <FooterText>FAQ</FooterText>
-                  <FooterText>Security</FooterText>
-                </Box>
-                <Box flex="1 1 0">
-                  <FooterTitle>RESOURCES</FooterTitle>
-                  <FooterText mt={4}>Customer revies</FooterText>
-                  <FooterText>Partnership</FooterText>
-                  <FooterText>Coach Login</FooterText>
-                </Box>
-                <Box ml={20}>
-                  <FooterTitle>CONTACT US</FooterTitle>
-                  <FooterText />
-                  <FooterText mt={4}>
-                    Need help? Email us at <FooterLink>support@gamejitsu.gg</FooterLink>
-                  </FooterText>
-                  <FooterText>
-                    Are you a Streamer/You Tuber/High Ranked?{" "}
-                    <FooterLink>Apply for Partnership</FooterLink>
-                  </FooterText>
-                </Box>
-              </Flex>
-              <LineHorizontal />
-              <SocialNetworkBar mt={4}>
-                <Box mr="auto">© Copyright 2020 Gamejitsu. All Rights Reserved.</Box>
-                <Box mr={4}>
-                  <SocialNetworkBarIcon src="/images/social-media-twitter.svg" />
-                </Box>
-                <Box mr={4}>
-                  <SocialNetworkBarIcon src="/images/social-media-facebook.svg" />
-                </Box>
-                <Box mr={4}>
-                  <SocialNetworkBarIcon src="/images/social-instagram.svg" />
-                </Box>
-                <Box mr={4}>
-                  <SocialNetworkBarIcon src="/images/social-video-youtube-clip.svg" />
-                </Box>
-                <Box mr={4}>
-                  <SocialNetworkBarIcon src="/images/video-game-logo-twitch.svg" />
-                </Box>
-                <Box mr={4}>
-                  <SocialNetworkBarIcon src="/images/professional-network-linkedin.svg" />
-                </Box>
-              </SocialNetworkBar>
-            </Box>
-          </Box>
-        </Footer>
-        <FooterBackground />
-      </FooterParent>
+      <Footer />
     </Container>
   </div>
 )

@@ -1,6 +1,8 @@
 import { Flex, Box } from "rebass"
 import { formatDistanceToNow } from "date-fns"
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import React, { useContext, FunctionComponent } from "react"
+import Router from "next/router"
 import styled from "styled-components"
 
 import { Button, HeroImage } from "gamejitsu/components"
@@ -46,13 +48,29 @@ const GameInfo = styled.h3`
   color: ${(props) => props.theme.primaryColor};
 `
 
-const acceptReviewRequest = async (reviewRequestId: string) => {
-  const response = await createModel(ReviewResource, { requestId: reviewRequestId })
+const acceptReviewRequest = async (reviewRequestId: string, token: Promise<string>) => {
+  const response = await createModel(
+    ReviewResource,
+    { requestId: reviewRequestId, coachId: "" },
+    undefined,
+    { params: { "g-recaptcha-response": await token } }
+  )
   // TODO Maybe add confirm?
-  // redirect to perform review page
+  Router.push("/coach-dashboard")
+}
+
+const GoogleRecaptchaReviewRequestCard: FunctionComponent<Props> = (props) => {
+  return (
+    <GoogleReCaptchaProvider reCaptchaKey={process.env.GOOGLE_RECAPTCHA_PUBLIC_KEY}>
+      <ReviewRequestCard {...props} />
+    </GoogleReCaptchaProvider>
+  )
 }
 
 const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
+  const { executeRecaptcha } = useGoogleReCaptcha()
+  let token: Promise<string>
+  if (executeRecaptcha) token = executeRecaptcha("review_request_page")
   const user = useContext(UserContext)
   const players = reviewRequest.replay.playersDire.concat(reviewRequest.replay.playersRadiant)
   const currentPlayer = players.find((player) => {
@@ -109,7 +127,7 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
                 <Box mt={4}>
                   <Button
                     onClick={() => {
-                      acceptReviewRequest(reviewRequest.id)
+                      acceptReviewRequest(reviewRequest.id, token)
                     }}
                     text="ACCEPT REVIEW"
                   />
@@ -123,4 +141,4 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
   )
 }
 
-export default ReviewRequestCard
+export default GoogleRecaptchaReviewRequestCard

@@ -1,16 +1,16 @@
-import React from "react"
-import ReviewRequestResource from "gamejitsu/api/resources/review-request"
-import ReviewResource from "gamejitsu/api/resources/review"
-
-import { listModels } from "gamejitsu/api"
 import { Flex, Box } from "rebass"
-import { LayoutWithMenu, Card, Title } from "gamejitsu/components"
 import { NextPageContext, NextPage } from "next"
-import CoachReviewCard from "./CoachReviewCard"
-import ReviewRequestCard from "./ReviewRequestCard"
+import React from "react"
+import styled from "styled-components"
+
 import { DecoratedReview, decorateReviews } from "gamejitsu/models/review"
 import { DecoratedReviewRequest, decorateReviewRequests } from "gamejitsu/models/review-request"
-import styled from "styled-components"
+import { LayoutWithMenu, Title } from "gamejitsu/components"
+import { listModels } from "gamejitsu/api"
+import CoachReviewCard from "./CoachReviewCard"
+import ReviewRequestCard from "./ReviewRequestCard"
+import ReviewRequestResource from "gamejitsu/api/resources/review-request"
+import ReviewResource from "gamejitsu/api/resources/review"
 import SettingsSVG from "../../../../../svgs/settings.svg"
 
 interface Props {

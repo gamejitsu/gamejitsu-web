@@ -2,7 +2,6 @@ import { Flex, Box, Text } from "rebass"
 import React, { FunctionComponent } from "react"
 import Router from "next/router"
 import { Button, Card, HeroImageSmall } from "gamejitsu/components"
-import { Review } from "gamejitsu/api/resources/review"
 import { DecoratedReview } from "gamejitsu/models/review"
 
 interface Props {
@@ -47,20 +46,5 @@ const ReviewCard: FunctionComponent<Props> = ({ review }) => (
     </Card>
   </Box>
 )
-
-/**    <Flex>
-      <Box p={3} mr="auto">
-        <Text p={2}>Review</Text>
-        <Text p={2}>Review Id: {review.id}</Text>
-      </Box>
-      <Box alignSelf="center" pr={3}>
-        <Button
-          onClick={() => {
-            goToReviewPage(review.id)
-          }}
-          text="See completed review"
-        />
-      </Box>
-    </Flex> */
 
 export default ReviewCard

@@ -8,6 +8,8 @@ export interface Replay extends Model {
   matchId: string
   playedAt: Date
   players: Player[]
+  duration: number
+  radiantWin: boolean
 }
 
 export const decoder = t.type({
@@ -16,7 +18,9 @@ export const decoder = t.type({
   attributes: t.type({
     "match-id": t.string,
     "played-at": DateFromISOString,
-    players: t.array(Player)
+    players: t.array(Player),
+    duration: t.number,
+    "radiant-win": t.boolean
   })
 })
 
@@ -24,7 +28,9 @@ export const transformer = (value: t.TypeOf<typeof decoder>): Replay => ({
   id: value.id,
   matchId: value.attributes["match-id"],
   playedAt: value.attributes["played-at"],
-  players: value.attributes["players"]
+  players: value.attributes["players"],
+  duration: value.attributes["duration"],
+  radiantWin: value.attributes["radiant-win"]
 })
 
 export default buildResource({
@@ -42,7 +48,9 @@ export default buildResource({
     attributes: {
       "match-id": value.matchId,
       "played-at": value.playedAt,
-      players: (value.players || []).map((v) => playerEncoder(v))
+      players: (value.players || []).map((v) => playerEncoder(v)),
+      duration: value.duration,
+      "radiant-win": value.radiantWin
     },
     relationships: {}
   })

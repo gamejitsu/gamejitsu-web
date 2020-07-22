@@ -5,7 +5,7 @@ import { Review } from "gamejitsu/api/resources/review"
 import { Coach } from "gamejitsu/api/resources/coach"
 import { DecoratedReplay, decorateReplay } from "gamejitsu/models/replay"
 
-export interface DecoratedReview {
+export interface DecoratedReview extends Review {
   reviewRequest: ReviewRequest
   replay: DecoratedReplay
   coachId: string

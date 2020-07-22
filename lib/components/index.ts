@@ -7,6 +7,7 @@ import Card from "./Card"
 import CardNew from "./CardNew"
 import Form from "./Form"
 import FormGroup from "./FormGroup"
+import Footer from "./Footer"
 import HeroImage from "./HeroImage"
 import HeroImageSmall from "./HeroImageSmall"
 import ImageButton from "./ImageButton"
@@ -15,6 +16,10 @@ import Layout from "./Layout"
 import LayoutWithMenu from "./LayoutWithMenu"
 import LayoutWithMenuUser from "./LayoutWithMenuUser"
 import Link from "./Link"
+import LinkSocialIcon from "./LinkSocialIcon"
+import LinkDark from "./LinkDark"
+import LinkBold from "./LinkBold"
+import LinkMailBold from "./LinkBold"
 import LinkLeftMenu from "./LinkLeftMenu"
 import Navbar from "./Navbar"
 import NavbarLeftMenu from "./NavbarLeftMenu"
@@ -33,6 +38,7 @@ export {
   CardNew,
   Form,
   FormGroup,
+  Footer,
   HeroImage,
   HeroImageSmall,
   ImageButton,
@@ -41,7 +47,11 @@ export {
   LayoutWithMenu,
   LayoutWithMenuUser,
   Link,
+  LinkDark,
+  LinkBold,
+  LinkMailBold,
   LinkLeftMenu,
+  LinkSocialIcon,
   Navbar,
   NavbarLeftMenu,
   SkillLevelSelect,

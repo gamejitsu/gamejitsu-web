@@ -25,13 +25,15 @@ export function findModel<T, U>(
 export function createModel<T, U>(
   { encoder, decodeOne, name }: Resource<T, U>,
   model: Partial<T>,
-  ctx?: NextPageContext
+  ctx?: NextPageContext,
+  options?: any
 ) {
   return makeRequest(201, "POST", `/${pluralize(name)}`, {
     encode: encoder,
     decode: decodeOne,
     payload: model,
-    ctx
+    ctx,
+    ...options
   })
 }
 

@@ -1,10 +1,10 @@
 import React, { SyntheticEvent, useRef, useState, useEffect } from "react"
 
 import { Comment } from "gamejitsu/api/types/comment"
-import { CommentBar, CommentForm, CommentList, CommentFormNew } from "."
+import { CommentBar, CommentList, CommentFormNew } from "."
 import { findModel, updateModel } from "gamejitsu/api"
-import { Flex, Box, Text } from "rebass"
-import { Layout, Card, Button, LayoutWithMenu } from "gamejitsu/components"
+import { Flex, Box } from "rebass"
+import { LayoutWithMenu } from "gamejitsu/components"
 import { NextPageContext, NextPage } from "next"
 import ReviewResource, { Review } from "gamejitsu/api/resources/review"
 import { Position, Toaster, Intent } from "@blueprintjs/core"
@@ -148,14 +148,16 @@ const CoachReviewPage: NextPage<Props> = (props) => {
               />
             </Box>
           </Box>
-          <CommentList
-            comments={review.comments}
-            selectedComment={selectedComment}
-            onSelect={onSelectComment}
-          />
+          <Box>
+            <CommentList
+              comments={review.comments}
+              selectedComment={selectedComment}
+              onSelect={onSelectComment}
+              onSaveReview={onSaveReview}
+            />
+          </Box>
         </Flex>
       </Box>
-      <Button text="Save review" type="button" onClick={onSaveReview} />
     </LayoutWithMenu>
   )
 }

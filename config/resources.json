@@ -7,7 +7,8 @@
       "stripeId": {"type": "string"}
     },
     "relationships": {
-      "replay": { "cardinality": "one", "type": "replay" }
+      "replay": { "cardinality": "one", "type": "replay", "optional": true },
+      "reviewRequest": { "cardinality": "one", "type": "review-request", "optional": true }
     }
   },
   "coach": {
@@ -31,7 +32,9 @@
     "attributes": {
       "matchId": { "type": "string" },
       "playedAt": { "type": "date" },
-      "players": { "type": "array", "value": "player" }
+      "players": { "type": "array", "value": "player" },
+      "duration": { "type": "number" },
+      "radiantWin": { "type": "boolean" }
     },
     "relationships": {}
   },
@@ -67,6 +70,8 @@
       "isSyncingReplays": { "type": "boolean" },
       "username": { "type": "string" }
     },
-    "relationships": {}
+    "relationships": {
+      "coach": { "cardinality": "one", "type": "coach", "include": false, "optional": true }
+    }
   }
 }
