@@ -113,18 +113,16 @@ const NavbarLeftMenu: FunctionComponent = () => {
           </Box>
         </Flex>
       </Box>
-      {user?.coachId ? (
-        [
-          <NavLink href="/coach-reviews">COACH REVIEWS</NavLink>,
-          <NavLink href="/coach-signup">COACH SIGNUP</NavLink>,
-          <NavLink href="/coach-dashboard">COACH DASHBOARD</NavLink>
-        ]
-      ) : (
-       [
-        <NavLink href="/dashboard">DASHBOARD</NavLink>,
-        <NavLink href="/reviews">REVIEWS</NavLink>
-       ]
-      )}
+      {user?.coachId
+        ? [
+            <NavLink href="/coach-reviews">COACH REVIEWS</NavLink>,
+            <NavLink href="/coach-signup">COACH SIGNUP</NavLink>,
+            <NavLink href="/coach-dashboard">COACH DASHBOARD</NavLink>
+          ]
+        : [
+            <NavLink href="/dashboard">DASHBOARD</NavLink>,
+            <NavLink href="/reviews">REVIEWS</NavLink>
+          ]}
       {user ? (
         [
           <NavLink key="username" href="/">
