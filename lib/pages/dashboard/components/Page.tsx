@@ -103,28 +103,31 @@ const Dashboard: FunctionComponent<Props> = (props) => {
           <div />
         ) : (
           <Box mb={4}>
-          <Callout title="Private Steam profile detected" intent="danger">
-            You need to enable the public profile on Steam to be able to correctly fetch your
-            replays.
-            <br />
-            <br />
-            If you are logged in to Steam, you can change your Privacy Settings by navigating to
-            your{" "}
-            <a href="https://steamcommunity.com/my/edit/settings">Profile Privacy Settings Page</a>.
-            <br />
-            <br />
-            Alternatively, you can navigate to the Profile Privacy Settings page manually:
-            <br />
-            <br />
-            1. From your Steam Profile, click the Edit Profile link under your displayed badge.
-            <br />
-            2. Click the My Privacy Settings tab
-            <br />
-            3. Select your privacy state
-            <br />
-            4. Click the Save button
-          </Callout>
-          </ Box>
+            <Callout title="Private Steam profile detected" intent="danger">
+              You need to enable the public profile on Steam to be able to correctly fetch your
+              replays.
+              <br />
+              <br />
+              If you are logged in to Steam, you can change your Privacy Settings by navigating to
+              your{" "}
+              <a href="https://steamcommunity.com/my/edit/settings">
+                Profile Privacy Settings Page
+              </a>
+              .
+              <br />
+              <br />
+              Alternatively, you can navigate to the Profile Privacy Settings page manually:
+              <br />
+              <br />
+              1. From your Steam Profile, click the Edit Profile link under your displayed badge.
+              <br />
+              2. Click the My Privacy Settings tab
+              <br />
+              3. Select your privacy state
+              <br />
+              4. Click the Save button
+            </Callout>
+          </Box>
         )}
         {user.isSyncingReplays ? <Spinner /> : <div></div>}
         <Title>REQUESTED REVIEWS</Title>
