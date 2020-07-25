@@ -84,6 +84,9 @@ const CoachReviewPage: NextPage<Props> = (props) => {
     setVideoTimestamp(comment !== null ? comment.timestamp : videoTimestamp)
     setSelectedComment(comment)
   }
+  const onDeselectComment = async (comment: Comment) => {
+    setSelectedComment(null)
+  }
 
   const onSaveReview = async () => {
     const AppToaster = Toaster.create({
@@ -144,6 +147,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
                 comment={selectedComment}
                 onSave={onSaveComment}
                 onDelete={onDeleteComment}
+                onDeselect={onDeselectComment}
                 timestamp={videoTimestamp}
               />
             </Box>

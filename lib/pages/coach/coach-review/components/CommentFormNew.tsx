@@ -12,6 +12,7 @@ interface Props {
   timestamp: number
   onSave: (comment: Comment) => void
   onDelete: () => void
+  onDeselect: () => void
 }
 
 const validationSchema = object({
@@ -32,7 +33,7 @@ const onError = () => {
   })
 }
 
-const CommentFormNew: CommentFormComponent = ({ onSave, onDelete, comment, timestamp }) => {
+const CommentFormNew: CommentFormComponent = ({ onSave, onDelete, onDeselect, comment, timestamp }) => {
   const formik = useFormik({
     initialValues: { text: comment ? comment.text : "" },
     enableReinitialize: true,
@@ -69,16 +70,19 @@ const CommentFormNew: CommentFormComponent = ({ onSave, onDelete, comment, times
             ) : (
               <div />
             )}
-            <Box>
+            <Box mt={3}>
               {comment !== null ? (
-                <Fragment>
-                  <Box p={0}>
+                  <Flex>
+                  <Box p={0} mr={2}>
                     <Button text="Update comment" type="submit" />
                   </Box>
-                  <Box>
+                  <Box mr={2}>
                     <Button text="Delete comment" type="button" onClick={onDelete} />
                   </Box>
-                </Fragment>
+                  <Box>
+                    <Button text="Unselect comment" type="button" onClick={onDeselect} />
+                  </Box>
+                  </Flex>
               ) : (
                 <Button text="Insert comment" type="submit" />
               )}
