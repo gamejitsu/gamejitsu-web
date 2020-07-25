@@ -102,6 +102,7 @@ const Dashboard: FunctionComponent<Props> = (props) => {
         {user.hasPublicProfile ? (
           <div />
         ) : (
+          <Box mb={4}>
           <Callout title="Private Steam profile detected" intent="danger">
             You need to enable the public profile on Steam to be able to correctly fetch your
             replays.
@@ -123,6 +124,7 @@ const Dashboard: FunctionComponent<Props> = (props) => {
             <br />
             4. Click the Save button
           </Callout>
+          </ Box>
         )}
         {user.isSyncingReplays ? <Spinner /> : <div></div>}
         <Title>REQUESTED REVIEWS</Title>
