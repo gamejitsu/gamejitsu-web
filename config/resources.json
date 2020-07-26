@@ -69,7 +69,7 @@
       "steamId": { "type": "string" },
       "isSyncingReplays": { "type": "boolean" },
       "username": { "type": "string" },
-      "hasPublicProfile": { "type": "boolean", "optional": true }
+      "hasPublicProfile": { "type": "boolean" }
     },
     "relationships": {
       "coach": { "cardinality": "one", "type": "coach", "include": false, "optional": true }

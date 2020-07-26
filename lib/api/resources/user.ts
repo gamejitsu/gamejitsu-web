@@ -6,7 +6,7 @@ export interface User extends Model {
   steamId: string
   isSyncingReplays: boolean
   username: string
-  hasPublicProfile: boolean | null
+  hasPublicProfile: boolean
   coachId: string | null
 }
 
@@ -17,7 +17,7 @@ export const decoder = t.type({
     "steam-id": t.string,
     "is-syncing-replays": t.boolean,
     username: t.string,
-    "has-public-profile": t.union([t.boolean, t.null])
+    "has-public-profile": t.boolean
   }),
   relationships: t.type({
     coach: t.type({
