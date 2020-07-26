@@ -1,10 +1,12 @@
 import React, { FunctionComponent, useState, useRef, useEffect } from "react"
 import styled from "styled-components"
+import { Button as BPButton, Classes } from "@blueprintjs/core"
 
 import { Box, Flex } from "rebass"
 import { Comment } from "gamejitsu/api/types/comment"
 import { commentDuration } from "."
 import { formatTimestamp } from "gamejitsu/utils/duration"
+import { lighten } from "polished"
 
 interface Props {
   comments: Comment[]
@@ -53,15 +55,30 @@ const Container = styled(Box)`
 
 const T = styled(Box)`
   height: 80%;
-  width: 2px;
+  width: 4px;
   background-color: white;
+  &:hover {
+    background-image: linear-gradient(
+      to bottom,
+      ${(props) => props.theme.highlightColor},
+      ${(props) => props.theme.highlightColor}
+    );
+  }
 `
 
 const ElementComment = styled(Box)<ElementCommentProps>`
-  height: 85%;
-  width: 2px;
+  height: 90%;
+  width: 4.5px;
+  bottom: 0;
+  position: absolute;
   background-color: ${(props) => props.theme.primaryColor};
-  margin: auto;
+  &:hover {
+    background-image: linear-gradient(
+      to bottom,
+      ${(props) => lighten(0.3, props.theme.primaryColor)},
+      ${(props) => lighten(0.3, props.theme.primaryColor)}
+    );
+  }
 `
 
 const Bar = styled(Box)`
@@ -101,6 +118,7 @@ const reduceComments = (comments: Comment[]) => {
   return comments.reduce(reducer, {} as Record<number, Comment[]>)
 }
 
+
 const CommentBar: FunctionComponent<Props> = ({
   comments,
   videoDuration,
@@ -124,6 +142,12 @@ const CommentBar: FunctionComponent<Props> = ({
   const emptyBarsArray = [...Array(100).keys()]
 
   const reducedComments = reduceComments(comments)
+
+  let selected = false
+
+  const showTimeTag = () => {
+    selected = true
+  }
 
   return (
     <Container onClick={onBarClick} ref={containerRef}>
@@ -149,19 +173,20 @@ const CommentBar: FunctionComponent<Props> = ({
                 const comments = reducedComments[commentTimestamp]
                 return (
                   <Box height="100%" key={commentTimestamp}>
-                    <TimeTag>
+                    {selected ? <TimeTag>
                       {formatTimestamp(commentTimestamp)}{" "}
                       {comments.length > 1 ? `(${comments.length})` : ""}
-                    </TimeTag>
+                    </TimeTag> : <div/>}
                     <ElementComment
                       comment={comments[0]}
                       containerWidth={containerWidth}
                       duration={videoDuration}
+                      onClick={showTimeTag}
                     />
                   </Box>
                 )
               } else {
-                return <T key={`${key.toString()}-bar`} />
+                return <T key={`${key.toString()}-bar`}/>
               }
             })}
           </Flex>

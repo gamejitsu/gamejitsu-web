@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, useState } from "react"
 import styled from "styled-components"
 
 import { Box, Flex } from "rebass"
@@ -6,6 +6,7 @@ import { Comment } from "gamejitsu/api/types/comment"
 import { lighten } from "polished"
 import { formatTimestamp } from "gamejitsu/utils/duration"
 import { Button } from "gamejitsu/components"
+import { Classes, Dialog, Tooltip } from "@blueprintjs/core"
 
 interface Props {
   comments: Comment[]
@@ -78,6 +79,9 @@ const CommentList: FunctionComponent<Props> = ({
   onSelect,
   onSaveReview
 }) => {
+
+  const [isSaveReviewOpen, setIsSaveReviewOpen] = useState(false)
+
   const onSelectListItem = (comment: Comment) =>
     comment === selectedComment ? onSelect(null) : onSelect(comment)
 
@@ -85,12 +89,50 @@ const CommentList: FunctionComponent<Props> = ({
 
   const sortedComments = comments.sort(compareTimestamp)
 
+  const handleCloseNoSaveReview = () => {
+    setIsSaveReviewOpen(false)
+  }
+  const handleSaveReviewClose = () => {
+    onSaveReview()
+    setIsSaveReviewOpen(false)
+  }
+  const handleSaveReviewOpen = () => {
+    setIsSaveReviewOpen(true)
+  }
   return (
     <Container ml={4}>
       <Header>
         <Flex ml={3} width="100%">
           <CommentListTitle>COMMENTS ADDED BY COACH</CommentListTitle>
-          <Button text="Save review" type="button" onClick={onSaveReview} />
+          <Button text="Save review" type="button" onClick={handleSaveReviewOpen} />
+          <Dialog
+            className={Classes.DIALOG}
+            icon="info-sign"
+            onClose={handleCloseNoSaveReview}
+            title="Save review confirmation"
+            autoFocus={true}
+            canEscapeKeyClose={true}
+            canOutsideClickClose={true}
+            enforceFocus={true}
+            isOpen={isSaveReviewOpen}
+            usePortal={true}
+          >
+            <div className={Classes.DIALOG_BODY}>
+              <p>
+                Are you sure you want to save the review? Please click SAVE to approve the saving.
+              </p>
+            </div>
+            <div className={Classes.DIALOG_FOOTER}>
+              <div className={Classes.DIALOG_FOOTER_ACTIONS}>
+                <Tooltip content="This button is hooked up to close the dialog.">
+                  <Button text="CLOSE" onClick={handleCloseNoSaveReview}/>
+                </Tooltip>
+                <Tooltip content="This button is hooked up to save the review and close the dialog.">
+                  <Button text="SAVE REVIEW" onClick={handleSaveReviewClose}/>
+                </Tooltip>
+              </div>
+            </div>
+          </Dialog>
         </Flex>
       </Header>
       <Box>
