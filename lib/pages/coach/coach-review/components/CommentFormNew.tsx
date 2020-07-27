@@ -60,13 +60,14 @@ const CommentFormNew: CommentFormComponent = ({ onSave, onDelete, onDeselect, co
   }
 
   const handleCloseNoUpdate = () => {
-    setIsDeleteOpen(false)
-  }
-  const handleUpdateClose = () => {
-    onDelete()
     setIsUpdateOpen(false)
   }
-  const handleUpdateOpen = () => {
+  const handleUpdateClose = async () => {
+    await formik.submitForm()
+    setIsUpdateOpen(false)
+  }
+  const handleUpdateOpen = (e: Event | undefined) => {
+    e?.preventDefault()
     setIsUpdateOpen(true)
   }
 

@@ -1,12 +1,10 @@
 import React, { FunctionComponent, useState, useRef, useEffect } from "react"
 import styled from "styled-components"
-import { Button as BPButton, Classes } from "@blueprintjs/core"
-
 import { Box, Flex } from "rebass"
-import { Comment } from "gamejitsu/api/types/comment"
-import { commentDuration } from "."
-import { formatTimestamp } from "gamejitsu/utils/duration"
 import { lighten } from "polished"
+
+import { Comment } from "gamejitsu/api/types/comment"
+import { formatTimestamp } from "gamejitsu/utils/duration"
 
 interface Props {
   comments: Comment[]
@@ -21,28 +19,8 @@ interface ElementCommentProps {
   comment: Comment
 }
 
-interface CursorOverlayProps {
-  duration: number
-  timestamp: number
-  containerWidth: number
-}
-
-const getWidth = (props: ElementCommentProps) => {
-  const totalDuration = props.duration
-  return (commentDuration / totalDuration) * props.containerWidth
-}
-
-const getX = (props: ElementCommentProps) => {
-  const commentTimestamp = props.comment.timestamp
-  const totalDuration = props.duration
-  const ratio = (commentTimestamp - commentDuration / 2) / totalDuration
-  return ratio * props.containerWidth
-}
-
-const getCursorLeft = (props: CursorOverlayProps) => {
-  const timestamp = props.timestamp
-  const totalDuration = props.duration
-  return (timestamp / totalDuration) * props.containerWidth
+interface TProps {
+  selected: boolean
 }
 
 const Container = styled(Box)`
@@ -53,12 +31,12 @@ const Container = styled(Box)`
   border: 1px solid ${(props) => props.theme.activeColor};
 `
 
-const T = styled(Box)`
+const T = styled(Box)<TProps>`
   height: 80%;
   width: 4px;
-  background-color: white;
+  background-color: ${(props) => props.selected ? props.theme.highlightColor : "white" };
   &:hover {
-    background-image: linear-gradient(
+    background-image:  linear-gradient(
       to bottom,
       ${(props) => props.theme.highlightColor},
       ${(props) => props.theme.highlightColor}
@@ -100,10 +78,9 @@ const TimeTag = styled(Box)`
   padding: 5px;
 `
 
-const getPercentage = (comment: Comment, totalDuration: number) => {
-  const commentTimestamp = comment.timestamp
-  const percentage = (commentTimestamp * 100) / totalDuration
-  return Math.round(percentage)
+const getPercentage = (timestamp: number, duration: number) => {
+  const percentage = (timestamp * 100) / duration
+  return Math.floor(percentage)
 }
 
 const reduceComments = (comments: Comment[]) => {
@@ -164,7 +141,7 @@ const CommentBar: FunctionComponent<Props> = ({
             {emptyBarsArray.map((key) => {
               let commentTimestamp = null
               Object.values(reducedComments).forEach((comments: Comment[]) => {
-                const percentage = getPercentage(comments[0], videoDuration)
+                const percentage = getPercentage(comments[0].timestamp, videoDuration)
                 if (percentage === key) {
                   commentTimestamp = comments[0].timestamp
                 }
@@ -186,7 +163,8 @@ const CommentBar: FunctionComponent<Props> = ({
                   </Box>
                 )
               } else {
-                return <T key={`${key.toString()}-bar`}/>
+                const selected = key === getPercentage(videoTimestamp, videoDuration)
+                return <T selected={selected} key={`${key.toString()}-bar`}/>
               }
             })}
           </Flex>

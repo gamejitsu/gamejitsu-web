@@ -6,7 +6,7 @@ import { Button as BPButton, Classes } from "@blueprintjs/core"
 
 interface Props {
   text: string
-  onClick?: () => void
+  onClick?: (event?: Event) => void
   type?: "submit" | "reset" | "button"
   disabled?: boolean
   href?: string
