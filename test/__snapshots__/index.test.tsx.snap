@@ -9,6 +9,7 @@ exports[`Index page should match snapshot 1`] = `
       "borderRadius": "50px",
       "buttonTextColor": "#182026",
       "errorColor": "#ff1705",
+      "highlightColor": "#3518e5",
       "lightBackgroundColor": "#14161C",
       "linkColor": "#ffffff",
       "primaryColor": "#08ff07",
