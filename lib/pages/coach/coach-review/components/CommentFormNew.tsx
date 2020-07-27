@@ -1,7 +1,16 @@
 import React, { useState } from "react"
 import { Box, Flex } from "rebass"
 import { useFormik } from "formik"
-import { TextArea, Intent, Toaster, Position, Toast, Dialog, Classes, Tooltip } from "@blueprintjs/core"
+import {
+  TextArea,
+  Intent,
+  Toaster,
+  Position,
+  Toast,
+  Dialog,
+  Classes,
+  Tooltip
+} from "@blueprintjs/core"
 import { object, string } from "yup"
 
 import { Button } from "gamejitsu/components"
@@ -33,7 +42,13 @@ const onError = () => {
   })
 }
 
-const CommentFormNew: CommentFormComponent = ({ onSave, onDelete, onDeselect, comment, timestamp }) => {
+const CommentFormNew: CommentFormComponent = ({
+  onSave,
+  onDelete,
+  onDeselect,
+  comment,
+  timestamp
+}) => {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false)
   const [isUpdateOpen, setIsUpdateOpen] = useState(false)
 
@@ -94,13 +109,13 @@ const CommentFormNew: CommentFormComponent = ({ onSave, onDelete, onDeselect, co
                 />
               </Toaster>
             ) : (
-                <div />
-              )}
+              <div />
+            )}
             <Box mt={3}>
               {comment !== null ? (
                 <Flex>
                   <Box p={0} mr={2}>
-                    <Button text="Update comment" type="submit" onClick={handleUpdateOpen}/>
+                    <Button text="Update comment" type="submit" onClick={handleUpdateOpen} />
                   </Box>
                   <Box mr={2}>
                     <Button text="Delete comment" type="button" onClick={handleDeleteOpen} />
@@ -110,8 +125,8 @@ const CommentFormNew: CommentFormComponent = ({ onSave, onDelete, onDeselect, co
                   </Box>
                 </Flex>
               ) : (
-                  <Button text="Insert comment" type="submit" />
-                )}
+                <Button text="Insert comment" type="submit" />
+              )}
             </Box>
           </form>
           <Dialog
@@ -134,10 +149,10 @@ const CommentFormNew: CommentFormComponent = ({ onSave, onDelete, onDeselect, co
             <div className={Classes.DIALOG_FOOTER}>
               <div className={Classes.DIALOG_FOOTER_ACTIONS}>
                 <Tooltip content="This button is hooked up to close the dialog.">
-                  <Button text="CLOSE" onClick={handleCloseNoDelete}/>
+                  <Button text="CLOSE" onClick={handleCloseNoDelete} />
                 </Tooltip>
                 <Tooltip content="This button is hooked up to delete the comment and close the dialog.">
-                  <Button text="DELETE COMMENT" onClick={handleDeleteClose}/>
+                  <Button text="DELETE COMMENT" onClick={handleDeleteClose} />
                 </Tooltip>
               </div>
             </div>
@@ -157,21 +172,21 @@ const CommentFormNew: CommentFormComponent = ({ onSave, onDelete, onDeselect, co
           >
             <div className={Classes.DIALOG_BODY}>
               <p>
-                Are you sure you want to UPDATE the comment? Press UPDATE to approve the comment update.
+                Are you sure you want to UPDATE the comment? Press UPDATE to approve the comment
+                update.
               </p>
             </div>
             <div className={Classes.DIALOG_FOOTER}>
               <div className={Classes.DIALOG_FOOTER_ACTIONS}>
                 <Tooltip content="This button is hooked up to close the dialog.">
-                  <Button text="CLOSE" onClick={handleCloseNoUpdate}/>
+                  <Button text="CLOSE" onClick={handleCloseNoUpdate} />
                 </Tooltip>
                 <Tooltip content="This button is hooked up to update the comment and close the dialog.">
-                  <Button text="UPDATE COMMENT" onClick={handleUpdateClose}/>
+                  <Button text="UPDATE COMMENT" onClick={handleUpdateClose} />
                 </Tooltip>
               </div>
             </div>
           </Dialog>
-          
         </Box>
       </Flex>
     </div>

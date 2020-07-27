@@ -34,9 +34,9 @@ const Container = styled(Box)`
 const T = styled(Box)<TProps>`
   height: 80%;
   width: 4px;
-  background-color: ${(props) => props.selected ? props.theme.highlightColor : "white" };
+  background-color: ${(props) => (props.selected ? props.theme.highlightColor : "white")};
   &:hover {
-    background-image:  linear-gradient(
+    background-image: linear-gradient(
       to bottom,
       ${(props) => props.theme.highlightColor},
       ${(props) => props.theme.highlightColor}
@@ -95,7 +95,6 @@ const reduceComments = (comments: Comment[]) => {
   return comments.reduce(reducer, {} as Record<number, Comment[]>)
 }
 
-
 const CommentBar: FunctionComponent<Props> = ({
   comments,
   videoDuration,
@@ -127,7 +126,7 @@ const CommentBar: FunctionComponent<Props> = ({
   }
 
   return (
-    <Container onClick={onBarClick} ref={containerRef}>
+    <Container>
       <Flex height="100%" width="100%" justifyContent="center">
         <Box mb={1} mr={3}>
           <Flex height="100%" alignItems="flex-end">
@@ -136,7 +135,7 @@ const CommentBar: FunctionComponent<Props> = ({
             </Box>
           </Flex>
         </Box>
-        <Bar>
+        <Bar onClick={onBarClick} ref={containerRef}>
           <Flex height="100%" alignItems="flex-end" justifyContent="space-between">
             {emptyBarsArray.map((key) => {
               let commentTimestamp = null
@@ -150,10 +149,14 @@ const CommentBar: FunctionComponent<Props> = ({
                 const comments = reducedComments[commentTimestamp]
                 return (
                   <Box height="100%" key={commentTimestamp}>
-                    {selected ? <TimeTag>
-                      {formatTimestamp(commentTimestamp)}{" "}
-                      {comments.length > 1 ? `(${comments.length})` : ""}
-                    </TimeTag> : <div/>}
+                    {selected ? (
+                      <TimeTag>
+                        {formatTimestamp(commentTimestamp)}{" "}
+                        {comments.length > 1 ? `(${comments.length})` : ""}
+                      </TimeTag>
+                    ) : (
+                      <div />
+                    )}
                     <ElementComment
                       comment={comments[0]}
                       containerWidth={containerWidth}
@@ -164,7 +167,7 @@ const CommentBar: FunctionComponent<Props> = ({
                 )
               } else {
                 const selected = key === getPercentage(videoTimestamp, videoDuration)
-                return <T selected={selected} key={`${key.toString()}-bar`}/>
+                return <T selected={selected} key={`${key.toString()}-bar`} />
               }
             })}
           </Flex>

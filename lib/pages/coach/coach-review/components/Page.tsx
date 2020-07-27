@@ -120,7 +120,6 @@ const CoachReviewPage: NextPage<Props> = (props) => {
 
   return (
     <LayoutWithMenu title="Coach Review">
-
       <Box>
         <Flex justifyContent="center">
           <Box>

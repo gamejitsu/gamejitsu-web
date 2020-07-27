@@ -79,7 +79,6 @@ const CommentList: FunctionComponent<Props> = ({
   onSelect,
   onSaveReview
 }) => {
-
   const [isSaveReviewOpen, setIsSaveReviewOpen] = useState(false)
 
   const onSelectListItem = (comment: Comment) =>
@@ -125,10 +124,10 @@ const CommentList: FunctionComponent<Props> = ({
             <div className={Classes.DIALOG_FOOTER}>
               <div className={Classes.DIALOG_FOOTER_ACTIONS}>
                 <Tooltip content="This button is hooked up to close the dialog.">
-                  <Button text="CLOSE" onClick={handleCloseNoSaveReview}/>
+                  <Button text="CLOSE" onClick={handleCloseNoSaveReview} />
                 </Tooltip>
                 <Tooltip content="This button is hooked up to save the review and close the dialog.">
-                  <Button text="SAVE REVIEW" onClick={handleSaveReviewClose}/>
+                  <Button text="SAVE REVIEW" onClick={handleSaveReviewClose} />
                 </Tooltip>
               </div>
             </div>
