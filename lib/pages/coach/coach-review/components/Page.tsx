@@ -1,14 +1,15 @@
+import { Flex, Box } from "rebass"
+import { NextPageContext, NextPage } from "next"
+import { Position, Toaster, Intent } from "@blueprintjs/core"
 import React, { SyntheticEvent, useRef, useState, useEffect } from "react"
+import styled from "styled-components"
 
 import { Comment } from "gamejitsu/api/types/comment"
 import { CommentBar, CommentList, CommentFormNew } from "."
 import { findModel, updateModel } from "gamejitsu/api"
-import { Flex, Box } from "rebass"
 import { LayoutWithMenu } from "gamejitsu/components"
-import { NextPageContext, NextPage } from "next"
 import ReviewResource, { Review } from "gamejitsu/api/resources/review"
-import { Position, Toaster, Intent } from "@blueprintjs/core"
-import styled from "styled-components"
+import { useWarnIfUnsavedChanges } from "./RefreshPageWarner"
 
 interface Props {
   review: Review
@@ -31,6 +32,8 @@ const Title = styled.h1`
 `
 
 const CoachReviewPage: NextPage<Props> = (props) => {
+  useWarnIfUnsavedChanges(true)
+
   const [review, setReview] = useState(props.review)
   const [videoDuration, setVideoDuration] = useState(0)
   const [videoTimestamp, setVideoTimestamp] = useState(0)
@@ -71,18 +74,13 @@ const CoachReviewPage: NextPage<Props> = (props) => {
     setVideoTimestamp(Math.floor(timestamp))
   }
 
-  useEffect(() => {
-    if (videoRef.current) {
-      setVideoDuration(videoRef.current.duration)
-      videoRef.current.currentTime = videoTimestamp
-    } else {
-      setVideoDuration(0)
-    }
-  })
-
   const onSelectComment = (comment: Comment | null) => {
     setVideoTimestamp(comment !== null ? comment.timestamp : videoTimestamp)
     setSelectedComment(comment)
+  }
+
+  const onDeselectComment = () => {
+    setSelectedComment(null)
   }
 
   const onSaveReview = async () => {
@@ -110,6 +108,15 @@ const CoachReviewPage: NextPage<Props> = (props) => {
       })
     }
   }
+
+  useEffect(() => {
+    if (videoRef.current) {
+      setVideoDuration(videoRef.current.duration)
+      videoRef.current.currentTime = videoTimestamp
+    } else {
+      setVideoDuration(0)
+    }
+  })
 
   return (
     <LayoutWithMenu title="Coach Review">
@@ -144,6 +151,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
                 comment={selectedComment}
                 onSave={onSaveComment}
                 onDelete={onDeleteComment}
+                onDeselect={onDeselectComment}
                 timestamp={videoTimestamp}
               />
             </Box>

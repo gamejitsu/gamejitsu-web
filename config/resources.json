@@ -34,7 +34,7 @@
       "playedAt": { "type": "date" },
       "players": { "type": "array", "value": "player" },
       "duration": { "type": "number" },
-      "radiantWin": { "type": "boolean" }
+      "isRadiantWinner": { "type": "boolean" }
     },
     "relationships": {}
   },
@@ -68,7 +68,8 @@
     "attributes": {
       "steamId": { "type": "string" },
       "isSyncingReplays": { "type": "boolean" },
-      "username": { "type": "string" }
+      "username": { "type": "string" },
+      "hasPublicProfile": { "type": "boolean" }
     },
     "relationships": {
       "coach": { "cardinality": "one", "type": "coach", "include": false, "optional": true }

@@ -15,7 +15,6 @@
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.7.5",
     "@blueprintjs/core": "^3.25.0",
-    "@types/yup": "^0.26.27",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.19.0",
@@ -61,6 +60,7 @@
     "@types/react": "^16.9.16",
     "@types/rebass": "^4.0.3",
     "@types/styled-components": "^4.4.1",
+    "@types/yup": "^0.26.27",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "enzyme-to-json": "^3.4.3",
@@ -70,6 +70,6 @@
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
     "ts-node": "^8.9.0",
-    "typescript": "^3.9.5"
+    "typescript": "^3.9.7"
   }
 }

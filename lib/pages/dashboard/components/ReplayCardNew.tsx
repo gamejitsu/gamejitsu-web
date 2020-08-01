@@ -60,7 +60,7 @@ const RecentMatchesCardNew: FunctionComponent<Props> = ({ replay }) => {
     throw new Error("player hero not found")
   }
   const isPlayerRadiant = replay.playersDire.includes(currentPlayer)
-  const currentPlayerWon = isPlayerRadiant ? replay.radiantWin : !replay.radiantWin
+  const currentPlayerWon = isPlayerRadiant ? replay.isRadiantWinner : !replay.isRadiantWinner
 
   return (
     <Box width="50%" mb={50} px={30}>

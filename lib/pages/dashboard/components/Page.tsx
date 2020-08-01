@@ -1,20 +1,21 @@
 import React, { useState, useEffect, FunctionComponent } from "react"
+import { Callout } from "@blueprintjs/core"
+import { NextPageContext, NextPage } from "next"
+import { parseCookies } from "nookies"
+import { Flex, Box } from "rebass"
+import styled from "styled-components"
+import { Socket } from "phoenix"
+
 import ReplayResource from "gamejitsu/api/resources/replay"
 import UserResource, { User } from "gamejitsu/api/resources/user"
-import ReviewRequestResource, { ReviewRequest } from "gamejitsu/api/resources/review-request"
-
+import ReviewRequestResource from "gamejitsu/api/resources/review-request"
 import { DecoratedReplay, decorateReplays } from "gamejitsu/models/replay"
 import { Spinner, LayoutWithMenuUser } from "gamejitsu/components"
 import { listModels, findModel } from "gamejitsu/api"
-import { NextPageContext, NextPage } from "next"
-import { parseCookies } from "nookies"
-import { ReviewRequestCard, ReplayCardNew } from "."
-import { Socket } from "phoenix"
-import { UserContext } from "gamejitsu/contexts"
-import { Flex, Box } from "rebass"
-import styled from "styled-components"
-import SettingsSVG from "../../../../svgs/settings.svg"
 import { decorateReviewRequests, DecoratedReviewRequest } from "gamejitsu/models/review-request"
+import { UserContext } from "gamejitsu/contexts"
+import { ReviewRequestCard, ReplayCardNew } from "."
+import SettingsSVG from "../../../../svgs/settings.svg"
 
 interface Props {
   user: User
@@ -51,6 +52,7 @@ const EmptyReplays = styled(Flex)`
   justify-content: center;
   flex-direction: column;
 `
+
 const EmptyRequestedReviews = styled(Flex)`
   witdh: 100%;
   background-color: ${(props) => props.theme.lightBackgroundColor};
@@ -97,6 +99,36 @@ const Dashboard: FunctionComponent<Props> = (props) => {
   return (
     <LayoutWithMenuUser title="Dashboard">
       <Box width="1300px">
+        {user.hasPublicProfile ? (
+          <div />
+        ) : (
+          <Box mb={4}>
+            <Callout title="Private Steam profile detected" intent="danger">
+              You need to enable the public profile on Steam to be able to correctly fetch your
+              replays.
+              <br />
+              <br />
+              If you are logged in to Steam, you can change your Privacy Settings by navigating to
+              your{" "}
+              <a href="https://steamcommunity.com/my/edit/settings">
+                Profile Privacy Settings Page
+              </a>
+              .
+              <br />
+              <br />
+              Alternatively, you can navigate to the Profile Privacy Settings page manually:
+              <br />
+              <br />
+              1. From your Steam Profile, click the Edit Profile link under your displayed badge.
+              <br />
+              2. Click the My Privacy Settings tab
+              <br />
+              3. Select your privacy state
+              <br />
+              4. Click the Save button
+            </Callout>
+          </Box>
+        )}
         {user.isSyncingReplays ? <Spinner /> : <div></div>}
         <Title>REQUESTED REVIEWS</Title>
         {props.reviewRequests.length === 0 ? (
