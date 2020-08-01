@@ -81,7 +81,13 @@ const Button: FunctionComponent<Props> = ({ text, href, type = "button", onClick
       <LinkContent {...props}>{text}</LinkContent>
     </Link>
   ) : (
-    <ButtonContent type={type} onClick={(event: React.MouseEvent<HTMLElement, MouseEvent>) => { if(onClick) onClick(event)}} {...props}>
+    <ButtonContent
+      type={type}
+      onClick={(event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+        if (onClick) onClick(event)
+      }}
+      {...props}
+    >
       {text}
     </ButtonContent>
   )
