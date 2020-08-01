@@ -20,6 +20,10 @@ interface ListItemProps {
   selectedComment: Comment | null
 }
 
+interface ListItemContainerProps {
+  isCollapsed: boolean
+}
+
 const Container = styled(Box)`
   width: 800px;
   max-height: 660px;
@@ -30,9 +34,13 @@ const Container = styled(Box)`
   scrollbar-color: red yellow;
 `
 
-const ListItemContainer = styled(Box)`
-  height: 120px;
+const ListItemContainer = styled(Box)<ListItemContainerProps>`
+  height: ${(props) => (props.isCollapsed ? "120px;" : "auto;")}
   flex: 1;
+  ${(props) =>
+    props.isCollapsed
+      ? "white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
+      : "overflow-wrap: break-word;"}
   background-color: #212121;
   border: 2px solid ${(props) => props.theme.secondaryColor};
   border-top: 0;
@@ -80,6 +88,7 @@ const CommentList: FunctionComponent<Props> = ({
   onSaveReview
 }) => {
   const [isSaveReviewOpen, setIsSaveReviewOpen] = useState(false)
+  const [commentsExpanded, setCommentsExpanded] = useState<Comment[]>([])
 
   const onSelectListItem = (comment: Comment) =>
     comment === selectedComment ? onSelect(null) : onSelect(comment)
@@ -97,6 +106,16 @@ const CommentList: FunctionComponent<Props> = ({
   }
   const handleSaveReviewOpen = () => {
     setIsSaveReviewOpen(true)
+  }
+  const onCollapseComment = (selectedComment: Comment) => {
+    const newCommentsExpanded: Comment[] = commentsExpanded
+      ? commentsExpanded.filter((comment: Comment) => comment !== selectedComment)
+      : commentsExpanded
+    setCommentsExpanded(newCommentsExpanded)
+  }
+  const onExpandComment = (selectedComment: Comment) => {
+    const newCommentsExpanded: Comment[] = [...commentsExpanded, selectedComment]
+    setCommentsExpanded(newCommentsExpanded)
   }
   return (
     <Container ml={4}>
@@ -136,25 +155,35 @@ const CommentList: FunctionComponent<Props> = ({
       </Header>
       <Box>
         <ul>
-          {sortedComments.map((comment, index) => (
-            <Flex key={index.toString()}>
-              <ListItemContainer>
-                <Flex alignItems="center">
-                  <TimeTag ml={4} mt={3}>
-                    {formatTimestamp(comment.timestamp)}
-                  </TimeTag>
-                  <LessExpandTag ml="auto" mr={4} mt={3}>
-                    EXPAND
-                  </LessExpandTag>
-                </Flex>
-                <Box ml={3}>
-                  <ListItem comment={comment} selectedComment={selectedComment}>
-                    <a onClick={onSelectListItem.bind(null, comment)}>{comment.text}</a>
-                  </ListItem>
-                </Box>
-              </ListItemContainer>
-            </Flex>
-          ))}
+          {sortedComments.map((comment, index) => {
+            let isCollapsed: boolean = true
+            commentsExpanded.forEach((commentExpanded) => {
+              commentExpanded == comment ? (isCollapsed = false) : ""
+            })
+            return (
+              <Flex key={index.toString()}>
+                <ListItemContainer isCollapsed={isCollapsed}>
+                  <Flex alignItems="center">
+                    <TimeTag ml={4} mt={3}>
+                      {formatTimestamp(comment.timestamp)}
+                    </TimeTag>
+                    <LessExpandTag ml="auto" mr={4} mt={3}>
+                      {isCollapsed ? (
+                        <a onClick={onExpandComment.bind(null, comment)}>Expand</a>
+                      ) : (
+                        <a onClick={onCollapseComment.bind(null, comment)}>Collapse</a>
+                      )}
+                    </LessExpandTag>
+                  </Flex>
+                  <Box ml={3}>
+                    <ListItem comment={comment} selectedComment={selectedComment}>
+                      <a onClick={onSelectListItem.bind(null, comment)}>{comment.text}</a>
+                    </ListItem>
+                  </Box>
+                </ListItemContainer>
+              </Flex>
+            )
+          })}
         </ul>
       </Box>
     </Container>
