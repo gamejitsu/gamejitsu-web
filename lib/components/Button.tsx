@@ -6,7 +6,7 @@ import { Button as BPButton, Classes } from "@blueprintjs/core"
 
 interface Props {
   text: string
-  onClick?: (event?: Event) => void
+  onClick?: (event?: React.MouseEvent<HTMLElement, MouseEvent>) => void
   type?: "submit" | "reset" | "button"
   disabled?: boolean
   href?: string
@@ -75,13 +75,13 @@ const LinkContent = styled.a`
   }
 `
 
-const Button: FunctionComponent<Props> = ({ text, href, type = "button", ...props }) =>
+const Button: FunctionComponent<Props> = ({ text, href, type = "button", onClick, ...props }) =>
   href ? (
     <Link href={href}>
       <LinkContent {...props}>{text}</LinkContent>
     </Link>
   ) : (
-    <ButtonContent type={type} {...props}>
+    <ButtonContent type={type} onClick={(event: React.MouseEvent<HTMLElement, MouseEvent>) => { if(onClick) onClick(event)}} {...props}>
       {text}
     </ButtonContent>
   )

@@ -81,7 +81,7 @@ const CommentFormNew: CommentFormComponent = ({
     await formik.submitForm()
     setIsUpdateOpen(false)
   }
-  const handleUpdateOpen = (e: Event | undefined) => {
+  const handleUpdateOpen = (e?: React.MouseEvent<HTMLElement, MouseEvent>) => {
     e?.preventDefault()
     setIsUpdateOpen(true)
   }
