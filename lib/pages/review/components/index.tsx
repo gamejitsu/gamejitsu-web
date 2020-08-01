@@ -1,6 +1,5 @@
 import Page from "./Page"
-import CommentBar from "./CommentBar"
+import CommentList from "../../review/components/CommentList"
+import CommentBar from "../../review/components/CommentBar"
 
-const commentDuration = 10
-
-export { Page, CommentBar, commentDuration }
+export { Page, CommentBar, CommentList }

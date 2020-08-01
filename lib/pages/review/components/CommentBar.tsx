@@ -1,119 +1,187 @@
-import React, { RefObject } from "react"
+import React, { FunctionComponent, useState, useRef, useEffect } from "react"
 import styled from "styled-components"
+import { Box, Flex } from "rebass"
+import { lighten } from "polished"
 
-import { Box } from "rebass"
 import { Comment } from "gamejitsu/api/types/comment"
-import { commentDuration } from "."
+import { formatTimestamp } from "gamejitsu/utils/duration"
 
 interface Props {
   comments: Comment[]
   videoDuration: number
   videoTimestamp: number
-  onMoveVideoCursor: (timestamp: number) => void
+  onVideoTimestampChange: (timestamp: number) => void
 }
 
-interface State {
-  containerWidth: number
-}
-
-interface SquareProps {
+interface ElementCommentProps {
   duration: number
   containerWidth: number
   comment: Comment
 }
 
-interface CursorOverlayProps {
-  duration: number
-  timestamp: number
-  containerWidth: number
-}
-
-const getWidth = (props: SquareProps) => {
-  const totalDuration = props.duration
-  return (commentDuration / totalDuration) * props.containerWidth
-}
-
-const getX = (props: SquareProps) => {
-  const commentTimestamp = props.comment.timestamp
-  const totalDuration = props.duration
-  const ratio = (commentTimestamp - commentDuration / 2) / totalDuration
-  return Math.floor(ratio * props.containerWidth)
-}
-
-const getCursorLeft = (props: CursorOverlayProps) => {
-  const timestamp = props.timestamp
-  const totalDuration = props.duration
-  return (timestamp / totalDuration) * props.containerWidth
-}
-
-function clickBarEvent(this: CommentBar, e: React.MouseEvent) {
-  const rect = this.containerRef.current && this.containerRef.current.getBoundingClientRect()
-  const x = e.clientX - (rect ? rect.left : 0)
-  const timestamp = Math.floor((x / this.state.containerWidth) * this.props.videoDuration)
-  this.props.onMoveVideoCursor(timestamp)
+interface TProps {
+  selected: boolean
 }
 
 const Container = styled(Box)`
-  background-color: ${(props) => props.theme.secondaryColor};
+  background-color: ${(props) => props.theme.backgroundColor};
   position: relative;
-  height: 80px;
+  height: 120px;
+  background: ${(props) => props.theme.lightBackgroundColor};
+  border: 1px solid ${(props) => props.theme.activeColor};
 `
-const Square = styled(Box)<SquareProps>`
+
+const T = styled(Box)<TProps>`
+  height: 80%;
+  width: 4px;
+  background-color: ${(props) => (props.selected ? props.theme.highlightColor : "white")};
+  &:hover {
+    background-image: linear-gradient(
+      to bottom,
+      ${(props) => props.theme.highlightColor},
+      ${(props) => props.theme.highlightColor}
+    );
+  }
+`
+
+const ElementComment = styled(Box)<ElementCommentProps>`
+  height: 90%;
+  width: 4.5px;
+  bottom: 0;
+  position: absolute;
   background-color: ${(props) => props.theme.primaryColor};
-  left: ${(props) => `${getX(props)}px`};
-  width: ${(props) => `${getWidth(props)}px`};
-  height: 100%;
-  position: absolute;
-  border: 1px solid ${(props) => props.theme.secondaryColor};
+  &:hover {
+    background-image: linear-gradient(
+      to bottom,
+      ${(props) => lighten(0.3, props.theme.primaryColor)},
+      ${(props) => lighten(0.3, props.theme.primaryColor)}
+    );
+  }
 `
 
-const CursorOverlay = styled(Box)<CursorOverlayProps>`
-  background-color: black;
-  opacity: 0.4;
-  right: 0;
-  left: ${(props) => `${getCursorLeft(props)}px`};
-  position: absolute;
-  height: 100%;
+const Bar = styled(Box)`
+  background-color: ${(props) => props.theme.lightBackgroundColor};
+  width: 85%;
 `
 
-class CommentBar extends React.Component<Props, State> {
-  containerRef: RefObject<HTMLElement>
+const BarText = styled.h3`
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+`
 
-  constructor(props: Props) {
-    super(props)
-    this.containerRef = React.createRef()
-    this.state = {
-      containerWidth: 0
-    }
+const TimeTag = styled(Box)`
+  background-color: ${(props) => props.theme.primaryColor};
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 5px;
+`
+
+const getPercentage = (timestamp: number, duration: number) => {
+  const percentage = (timestamp * 100) / duration
+  return Math.floor(percentage)
+}
+
+const reduceComments = (comments: Comment[]) => {
+  const reducer = (accumulator: Record<number, Comment[]>, currentValue: Comment) => {
+    return accumulator[currentValue.timestamp]
+      ? {
+          ...accumulator,
+          [currentValue.timestamp]: [...accumulator[currentValue.timestamp], currentValue]
+        }
+      : { ...accumulator, [currentValue.timestamp]: [currentValue] }
+  }
+  return comments.reduce(reducer, {} as Record<number, Comment[]>)
+}
+
+const CommentBar: FunctionComponent<Props> = ({
+  comments,
+  videoDuration,
+  videoTimestamp,
+  onVideoTimestampChange
+}) => {
+  let [containerWidth, setContainerWidth] = useState(0)
+  let containerRef = useRef<HTMLElement>(null)
+
+  const onBarClick = (e: React.MouseEvent) => {
+    const rect = containerRef.current && containerRef.current.getBoundingClientRect()
+    const x = e.clientX - (rect ? rect.left : 0)
+    const timestamp = Math.floor((x / containerWidth) * videoDuration)
+    onVideoTimestampChange(timestamp)
   }
 
-  componentDidMount() {
-    this.setState({
-      containerWidth: this.containerRef.current ? this.containerRef.current.offsetWidth : 0
-    })
+  useEffect(() => {
+    setContainerWidth(containerRef.current ? containerRef.current.offsetWidth : 0)
+  })
+
+  const emptyBarsArray = [...Array(100).keys()]
+
+  const reducedComments = reduceComments(comments)
+
+  let selected = false
+
+  const showTimeTag = () => {
+    selected = true
   }
 
-  render() {
-    return (
-      <Container onClick={clickBarEvent.bind(this)} ref={this.containerRef}>
-        {this.props.comments.map((comment) => {
-          return (
-            <Square
-              key={comment.timestamp}
-              comment={comment}
-              containerWidth={this.state.containerWidth}
-              duration={this.props.videoDuration}
-            />
-          )
-        })}
-        <CursorOverlay
-          timestamp={this.props.videoTimestamp}
-          containerWidth={this.state.containerWidth}
-          duration={this.props.videoDuration}
-        />
-      </Container>
-    )
-  }
+  return (
+    <Container>
+      <Flex height="100%" width="100%" justifyContent="center">
+        <Box mb={1} mr={3}>
+          <Flex height="100%" alignItems="flex-end">
+            <Box>
+              <BarText>START</BarText>
+            </Box>
+          </Flex>
+        </Box>
+        <Bar onClick={onBarClick} ref={containerRef}>
+          <Flex height="100%" alignItems="flex-end" justifyContent="space-between">
+            {emptyBarsArray.map((key) => {
+              let commentTimestamp = null
+              Object.values(reducedComments).forEach((comments: Comment[]) => {
+                const percentage = getPercentage(comments[0].timestamp, videoDuration)
+                if (percentage === key) {
+                  commentTimestamp = comments[0].timestamp
+                }
+              })
+              if (commentTimestamp) {
+                const comments = reducedComments[commentTimestamp]
+                return (
+                  <Box height="100%" key={commentTimestamp}>
+                    {selected ? (
+                      <TimeTag>
+                        {formatTimestamp(commentTimestamp)}{" "}
+                        {comments.length > 1 ? `(${comments.length})` : ""}
+                      </TimeTag>
+                    ) : (
+                      <div />
+                    )}
+                    <ElementComment
+                      comment={comments[0]}
+                      containerWidth={containerWidth}
+                      duration={videoDuration}
+                      onClick={showTimeTag}
+                    />
+                  </Box>
+                )
+              } else {
+                const selected = key === getPercentage(videoTimestamp, videoDuration)
+                return <T selected={selected} key={`${key.toString()}-bar`} />
+              }
+            })}
+          </Flex>
+        </Bar>
+        <Box mb={2} ml={3}>
+          <Flex height="100%" alignItems="flex-end">
+            <Box>
+              <BarText>FINISH</BarText>
+            </Box>
+          </Flex>
+        </Box>
+      </Flex>
+    </Container>
+  )
 }
 
 export default CommentBar
