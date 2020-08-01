@@ -66,7 +66,12 @@ const Form: FormComponent = ({
       </Box>
       <Box py={3} px={3}>
         <Flex justifyContent="flex-end">
-          <Button onClick={formik.handleSubmit} text={buttonText} />
+          <Button
+            onClick={() => {
+              formik.handleSubmit()
+            }}
+            text={buttonText}
+          />
         </Flex>
       </Box>
     </FormCard>

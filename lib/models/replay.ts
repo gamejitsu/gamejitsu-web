@@ -8,7 +8,7 @@ export interface DecoratedReplay {
   playersDire: Player[]
   playersRadiant: Player[]
   duration: number
-  radiantWin: boolean
+  isRadiantWinner: boolean
 }
 
 export const decorateReplays = (replays: Replay[]) => {
@@ -20,7 +20,7 @@ export const decorateReplays = (replays: Replay[]) => {
       matchId: replay.matchId,
       playedAt: replay.playedAt,
       duration: replay.duration,
-      radiantWin: replay.radiantWin,
+      isRadiantWinner: replay.isRadiantWinner,
       playersDire,
       playersRadiant
     }
@@ -35,7 +35,7 @@ export const decorateReplay = (replay: Replay) => {
     matchId: replay.matchId,
     playedAt: replay.playedAt,
     duration: replay.duration,
-    radiantWin: replay.radiantWin,
+    isRadiantWinner: replay.isRadiantWinner,
     playersDire,
     playersRadiant
   }
