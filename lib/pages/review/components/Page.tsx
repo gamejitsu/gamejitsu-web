@@ -24,7 +24,6 @@ const Title = styled.h1`
 `
 
 const ReviewPage: NextPage<Props> = (props) => {
-
   const videoRef = useRef<HTMLVideoElement>(null)
   const [review] = useState(props.review)
   const [videoDuration, setVideoDuration] = useState(0)
@@ -55,9 +54,9 @@ const ReviewPage: NextPage<Props> = (props) => {
     }
   })
 
-    return (
-      <LayoutWithMenuUser title="Review">
-            <Box>
+  return (
+    <LayoutWithMenuUser title="Review">
+      <Box>
         <Flex justifyContent="center">
           <Box>
             <VideoContainer>
@@ -92,8 +91,8 @@ const ReviewPage: NextPage<Props> = (props) => {
           </Box>
         </Flex>
       </Box>
-      </LayoutWithMenuUser>
-    )
+    </LayoutWithMenuUser>
+  )
 }
 
 const getReview = async (ctx: NextPageContext, id: string) => {

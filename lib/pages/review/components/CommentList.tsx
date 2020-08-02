@@ -78,10 +78,7 @@ const LessExpandTag = styled(Box)`
   font-size: 14px;
 `
 
-const CommentList: FunctionComponent<Props> = ({
-  comments,
-  selectedComment,
-  onSelect}) => {
+const CommentList: FunctionComponent<Props> = ({ comments, selectedComment, onSelect }) => {
   const [commentsExpanded, setCommentsExpanded] = useState<Comment[]>([])
 
   const onSelectListItem = (comment: Comment) =>
