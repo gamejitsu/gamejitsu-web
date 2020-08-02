@@ -1,118 +1,109 @@
-import React, { RefObject, SyntheticEvent } from "react"
-import { Flex, Box, Text } from "rebass"
-import { NextPageContext } from "next"
-import { Layout, Card } from "gamejitsu/components"
+import React, { useRef, useState, SyntheticEvent, useEffect } from "react"
+import { Flex, Box } from "rebass"
+import { NextPageContext, NextPage } from "next"
+import { LayoutWithMenuUser } from "gamejitsu/components"
 import ReviewResource, { Review } from "gamejitsu/api/resources/review"
 import { findModel } from "gamejitsu/api"
-import { CommentBar, commentDuration } from "."
+import { CommentBar, CommentList } from "."
+import styled from "styled-components"
+import { Comment } from "gamejitsu/api/types/comment"
 
 interface Props {
   review: Review
 }
 
-interface State {
-  videoTimestamp: number
-  videoDuration: number
-}
+const VideoContainer = styled(Box)`
+  width: 100%;
+  border: 1px solid ${(props) => props.theme.secondaryColor};
+`
 
-function setVideoDuration(this: ReviewPage, event: SyntheticEvent<HTMLVideoElement, Event>) {
-  const duration = event.currentTarget.duration
-  this.setState({
-    videoDuration: Math.floor(duration)
-  })
-}
+const Title = styled.h1`
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+`
 
-function setVideoTimestamp(this: ReviewPage, event: SyntheticEvent<HTMLVideoElement, Event>) {
-  const timestamp = event.currentTarget.currentTime
-  this.setState({
-    videoTimestamp: Math.floor(timestamp)
-  })
-}
+const ReviewPage: NextPage<Props> = (props) => {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [review] = useState(props.review)
+  const [videoDuration, setVideoDuration] = useState(0)
+  const [videoTimestamp, setVideoTimestamp] = useState(0)
+  const [selectedComment, setSelectedComment] = useState<Comment | null>(null)
 
-function updateVideoTimestamp(this: ReviewPage, timestamp: number) {
-  this.setState({
-    videoTimestamp: timestamp
-  })
-}
-
-class ReviewPage extends React.Component<Props, State> {
-  videoRef: RefObject<HTMLVideoElement>
-
-  static getInitialProps = async (ctx: NextPageContext) => {
-    const urlId = ctx.query.id
-    const { data: review } = await findModel(ReviewResource, urlId.toString(), ctx)
-    return { review }
+  const onSetVideoDuration = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
+    const duration = event.currentTarget.duration
+    setVideoDuration(Math.floor(duration))
   }
 
-  constructor(props: Props) {
-    super(props)
-    this.videoRef = React.createRef()
-    this.state = {
-      videoTimestamp: 0,
-      videoDuration: 0
+  const onSetVideoTimestamp = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
+    const timestamp = event.currentTarget.currentTime
+    setVideoTimestamp(Math.floor(timestamp))
+  }
+
+  const onSelectComment = (comment: Comment | null) => {
+    setVideoTimestamp(comment !== null ? comment.timestamp : videoTimestamp)
+    setSelectedComment(comment)
+  }
+
+  useEffect(() => {
+    if (videoRef.current) {
+      setVideoDuration(videoRef.current.duration)
+      videoRef.current.currentTime = videoTimestamp
+    } else {
+      setVideoDuration(0)
     }
-  }
+  })
 
-  componentDidMount() {
-    this.setState({
-      videoDuration: this.videoRef.current ? this.videoRef.current.duration : 0
-    })
-  }
-
-  componentDidUpdate(_: Props, prevState: State) {
-    if (this.state.videoTimestamp !== prevState.videoTimestamp) {
-      this.videoRef.current && (this.videoRef.current.currentTime = this.state.videoTimestamp)
-    }
-  }
-
-  render() {
-    const comments = this.props.review.comments
-    const shownComments = comments.filter((comment) => {
-      const timeRange = commentDuration / 2
-      const videoTimestamp = this.state.videoTimestamp
-      const commentTimestamp = comment.timestamp
-      const beginTimestamp = commentTimestamp - timeRange
-      const endTimestamp = commentTimestamp + timeRange
-      return videoTimestamp > beginTimestamp && videoTimestamp < endTimestamp
-    })
-    return (
-      <Layout title="Review">
-        <Card>
-          <Flex flexDirection="column">
-            <Box p={3}>
-              <Text p={2}>Review</Text>
-              <Text p={2}>Review Id: {this.props.review.id}</Text>
-              <Flex>
-                <Box p={0} mx="auto">
-                  <video
-                    ref={this.videoRef}
-                    onDurationChange={setVideoDuration.bind(this)}
-                    onTimeUpdate={setVideoTimestamp.bind(this)}
-                    width="800"
-                    controls
-                  >
-                    <source src="/video/sample.mp4" type="video/mp4" />
-                  </video>
-                </Box>
-                <Box>
-                  {shownComments.map((comment) => {
-                    //return <Comment key={comment.timestamp} comment={comment} />
-                    return <div key={comment.timestamp}>{comment.text}</div>
-                  })}
-                </Box>
-              </Flex>
+  return (
+    <LayoutWithMenuUser title="Review">
+      <Box>
+        <Flex justifyContent="center">
+          <Box>
+            <VideoContainer>
+              <video
+                ref={videoRef}
+                onDurationChange={onSetVideoDuration}
+                onTimeUpdate={onSetVideoTimestamp}
+                width="100%"
+                controls
+              >
+                <source src="/video/sample.mp4" type="video/mp4" />
+              </video>
+            </VideoContainer>
+            <Box>
+              <Box py={3}>
+                <Title>MATCH NAVIGATION</Title>
+              </Box>
+              <CommentBar
+                comments={review.comments}
+                videoDuration={videoDuration}
+                onVideoTimestampChange={setVideoTimestamp}
+                videoTimestamp={videoTimestamp}
+              />
             </Box>
-          </Flex>
-        </Card>
-        <CommentBar
-          comments={comments}
-          videoDuration={this.state.videoDuration}
-          onMoveVideoCursor={updateVideoTimestamp.bind(this)}
-          videoTimestamp={this.state.videoTimestamp}
-        />
-      </Layout>
-    )
-  }
+          </Box>
+          <Box>
+            <CommentList
+              comments={review.comments}
+              selectedComment={selectedComment}
+              onSelect={onSelectComment}
+            />
+          </Box>
+        </Flex>
+      </Box>
+    </LayoutWithMenuUser>
+  )
+}
+
+const getReview = async (ctx: NextPageContext, id: string) => {
+  const response = await findModel(ReviewResource, id, ctx)
+  return response.data
+}
+
+ReviewPage.getInitialProps = async (ctx: NextPageContext) => {
+  const urlId = ctx.query.id
+  const review = await getReview(ctx, urlId.toString())
+  return { review }
 }
 
 export default ReviewPage
