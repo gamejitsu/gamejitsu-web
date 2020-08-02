@@ -7,7 +7,7 @@ const defaultEnv = {
   API_ENDPOINT: "https://staging-api.gamejitsu.gg",
   SOCKET_ENDPOINT: "wss://staging-api.gamejitsu.gg",
   STRIPE_PUBLIC_KEY: "pk_test_gO4hZHVOjk7E3GjH0etoiBAO00c0qpfX0m",
-  GOOGLE_RECAPTCHA_PUBLIC_KEY: "6LeNzrMZAAAAAF7hJMBI15osND7_DX0v7WxW6Vs6"
+  GOOGLE_RECAPTCHA_PUBLIC_KEY: "6LclgLkZAAAAAKwkD9aCAi3QivbwAwHm6HvRoJDv"
 }
 
 module.exports = withCSS(withSASS({

@@ -5,7 +5,9 @@
   "build": {
     "env": {
       "API_ENDPOINT": "https://api.gamejitsu.gg",
-      "SOCKET_ENDPOINT": "wss://api.gamejitsu.gg"
+      "SOCKET_ENDPOINT": "wss://api.gamejitsu.gg",
+      "STRIPE_PUBLIC_KEY": "pk_live_1gvylPn6TWo8koM1ddCZ3niU00TC9FJkgG",
+      "GOOGLE_RECAPTCHA_PUBLIC_KEY": "6Lc2o6oZAAAAAHwOSDYwnbEPzN1MUl9IPMO_rhF6"
     }
   }
 }
