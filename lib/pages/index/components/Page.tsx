@@ -185,7 +185,7 @@ const Line = styled.div`
   margin-left: -1px;
 `
 
-const FlowImage = styled(Box) <FlowImageType>`
+const FlowImage = styled(Box)<FlowImageType>`
   background-image: url(${(props) => props.url});
   background-size: contain;
   width: 380px;

@@ -58,12 +58,12 @@ const CoachDashboardPage: NextPage<Props> = ({ reviewRequests, reviews }) => {
           <Box mt={4}>No reviews accepted to show</Box>
         </EmptyAcceptedReviews>
       ) : (
-          reviews.map((review) => {
-            if (review) {
-              return <CoachReviewCard key={review.id} review={review} />
-            }
-          })
-        )}
+        reviews.map((review) => {
+          if (review) {
+            return <CoachReviewCard key={review.id} review={review} />
+          }
+        })
+      )}
 
       <Title text="AVAILABLE REVIEW REQUESTS" />
       {reviewRequests.length === 0 ? (
@@ -74,10 +74,12 @@ const CoachDashboardPage: NextPage<Props> = ({ reviewRequests, reviews }) => {
           <Box mt={4}>No review requests available</Box>
         </EmptyReviewRequests>
       ) : (
-          reviewRequests.map((reviewRequest) => {
-            return <ReviewRequestCard key={reviewRequest.id.toString()} reviewRequest={reviewRequest} />
-          })
-        )}
+        reviewRequests.map((reviewRequest) => {
+          return (
+            <ReviewRequestCard key={reviewRequest.id.toString()} reviewRequest={reviewRequest} />
+          )
+        })
+      )}
     </LayoutWithMenu>
   )
 }

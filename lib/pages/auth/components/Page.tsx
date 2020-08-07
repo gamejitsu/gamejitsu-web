@@ -12,9 +12,7 @@ const Auth: NextPage = () => {
   const user = useContext(UserContext)
   console.log("user auth:", user)
   useEffect(() => {
-    user?.coachId
-      ? Router.push("/coach-dashboard")
-      : Router.push("/dashboard")
+    user?.coachId ? Router.push("/coach-dashboard") : Router.push("/dashboard")
   })
   return null
 }

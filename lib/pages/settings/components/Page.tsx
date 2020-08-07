@@ -22,10 +22,10 @@ const UserSettings: NextPage = () => {
   return (
     <LayoutWithMenu title="Settings">
       <Title text="SETTINGS" />
-        <EmptyReviews height="100%">
+      <EmptyReviews height="100%">
         <Box>Username: {user?.username}</Box>
         <Box>Public Profile: {user?.hasPublicProfile.toString()}</Box>
-        </EmptyReviews>
+      </EmptyReviews>
     </LayoutWithMenu>
   )
 }

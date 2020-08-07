@@ -107,7 +107,7 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
                   const key = player.steamId ? player.steamId : index.toString()
                   return (
                     <Box mt={2} mr={3} key={key}>
-                      <HeroImage  player={player} />
+                      <HeroImage player={player} />
                     </Box>
                   )
                 })}

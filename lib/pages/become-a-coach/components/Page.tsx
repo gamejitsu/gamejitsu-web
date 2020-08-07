@@ -77,23 +77,22 @@ const Page: AuthenticatedComponent = () => (
           <Box width="900px">
             <ParagraphText>
               <ParagraphTitle>Required MMR</ParagraphTitle>
-              If you have an MMR greater or equal than 4k, you are entitle to become a Gamejitsu Coach.
-
+              If you have an MMR greater or equal than 4k, you are entitle to become a Gamejitsu
+              Coach.
               <ParagraphTitle>Skill level</ParagraphTitle>
               You will be able to pickup reviews based on you skill level:
-              <br/>
-              <br/>
+              <br />
+              <br />
               4k MMR: medium
-              <br/>
+              <br />
               5k MMR: high, medium
-              <br/>
+              <br />
               6k MMR: very high, high, medium
-              <br/>
+              <br />
               7k MMR: pro, very high, high, medium
-
-
               <ParagraphTitle>Sign Up</ParagraphTitle>
-              If you match the required MMR, and you are not already a coach you can sign up to become one at the Gamejitsu
+              If you match the required MMR, and you are not already a coach you can sign up to
+              become one at the Gamejitsu
               <LinkBold href="/coach-signup"> coach sign-up page</LinkBold>.
             </ParagraphText>
           </Box>

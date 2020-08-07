@@ -107,11 +107,6 @@ export default buildResource({
         coach: (value.included || []).reduce(
           (a, r) => (r.type === "coach" ? [...a, coachTransformer(r)] : a),
           [] as Coach[]
-        ),
-
-        coach: (value.included || []).reduce(
-          (a, r) => (r.type === "coach" ? [...a, coachTransformer(r)] : a),
-          [] as Coach[]
         )
       }
     })

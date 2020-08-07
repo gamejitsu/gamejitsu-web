@@ -18,11 +18,11 @@ const EmptyReviews = styled(Flex)`
 const getCurrentUser = () => useContext(UserContext)
 
 const CoachSettings: NextPage = () => {
-  const user = getCurrentUser()
+  const user: any = getCurrentUser()
   return (
     <LayoutWithMenu title="Settings">
       <Title text="SETTINGS" />
-        <EmptyReviews height="100%">
+      <EmptyReviews height="100%">
         <Box>Coach: {user?.username}</Box>
         <Box>Public Profile: {user?.hasPublicProfile.toString()}</Box>
         <Box>First name: {user?.coach.firstName}</Box>
@@ -30,7 +30,7 @@ const CoachSettings: NextPage = () => {
         <Box>Skill Level: {user?.coach.skillLevel}</Box>
         <Box>Email: {user?.coach.email}</Box>
         <Box>Photo Url: {user?.coach.photoUrl}</Box>
-        </EmptyReviews>
+      </EmptyReviews>
     </LayoutWithMenu>
   )
 }

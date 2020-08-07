@@ -18,13 +18,13 @@ import { Coach } from "gamejitsu/api/resources/coach"
 import { UserContext } from "gamejitsu/contexts"
 
 interface DecoratedUser {
-  coach: Coach | undefined;
-  steamId: string;
-  isSyncingReplays: boolean;
-  username: string;
-  hasPublicProfile: boolean;
-  coachId: string | null;
-  id: string;
+  coach: Coach | undefined
+  steamId: string
+  isSyncingReplays: boolean
+  username: string
+  hasPublicProfile: boolean
+  coachId: string | null
+  id: string
 }
 
 interface Props {
