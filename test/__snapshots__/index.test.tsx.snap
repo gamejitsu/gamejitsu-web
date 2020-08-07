@@ -478,7 +478,7 @@ exports[`Index page should match snapshot 1`] = `
                   </Styled(div)>
                 </NavLink>
                 <NavLink
-                  href="/"
+                  href="/settings"
                   key="username"
                 >
                   <Styled(div)
@@ -488,7 +488,7 @@ exports[`Index page should match snapshot 1`] = `
                       className="css-1eo79v7"
                     >
                       <Navbar__NavLinkContent
-                        href="/"
+                        href="/settings"
                         isActive={null}
                       >
                         <StyledComponent
@@ -519,16 +519,16 @@ exports[`Index page should match snapshot 1`] = `
                             }
                           }
                           forwardedRef={null}
-                          href="/"
+                          href="/settings"
                           isActive={null}
                         >
                           <Link
                             className="Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
-                            href="/"
+                            href="/settings"
                             isActive={null}
                           >
                             <Link
-                              href="/"
+                              href="/settings"
                             >
                               <Link__Content
                                 className="Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
