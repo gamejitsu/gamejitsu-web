@@ -81,7 +81,7 @@ const Page: AuthenticatedComponent = () => {
               </Box>
             </Flex>
             <Box width="900px">
-              {!user?.hasPublicProfile ? (
+              {user?.hasPublicProfile ? (
                 <div />
               ) : (
                 <Box mb={4}>

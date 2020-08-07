@@ -98,12 +98,11 @@ const Footer: FunctionComponent<Props> = () => (
               <LinkDark href="/security">Security</LinkDark>
             </Box>
             <Box flex="1 1 0">
-              <FooterTitle>RESOURCES</FooterTitle>
+              <FooterTitle>COACHES</FooterTitle>
               <LinkDark href="/" mt={4}>
                 Customer Reviews
               </LinkDark>
-              <LinkDark href="/">Partnership</LinkDark>
-              <LinkDark href="/">Coach Login</LinkDark>
+              <LinkDark href="/become-a-coach">Become a Coach</LinkDark>
             </Box>
             <Box ml={20}>
               <FooterTitle>CONTACT US</FooterTitle>
