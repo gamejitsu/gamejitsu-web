@@ -8730,7 +8730,7 @@ exports[`Index page should match snapshot 1`] = `
                                                   <h3
                                                     className="Footer__FooterTitle-sc-10r6lyl-1 gvJPXA"
                                                   >
-                                                    RESOURCES
+                                                    COACHES
                                                   </h3>
                                                 </StyledComponent>
                                               </Footer__FooterTitle>
@@ -8852,10 +8852,10 @@ exports[`Index page should match snapshot 1`] = `
                                                 </Link>
                                               </LinkDark>
                                               <LinkDark
-                                                href="/"
+                                                href="/become-a-coach"
                                               >
                                                 <Link
-                                                  href="/"
+                                                  href="/become-a-coach"
                                                 >
                                                   <LinkDark__Content
                                                     onClick={[Function]}
@@ -8957,120 +8957,7 @@ exports[`Index page should match snapshot 1`] = `
                                                           onClick={[Function]}
                                                           onMouseEnter={[Function]}
                                                         >
-                                                          Partnership
-                                                        </div>
-                                                      </Styled(div)>
-                                                    </StyledComponent>
-                                                  </LinkDark__Content>
-                                                </Link>
-                                              </LinkDark>
-                                              <LinkDark
-                                                href="/"
-                                              >
-                                                <Link
-                                                  href="/"
-                                                >
-                                                  <LinkDark__Content
-                                                    onClick={[Function]}
-                                                    onMouseEnter={[Function]}
-                                                  >
-                                                    <StyledComponent
-                                                      forwardedComponent={
-                                                        Object {
-                                                          "$$typeof": Symbol(react.forward_ref),
-                                                          "__emotion_base": "div",
-                                                          "__emotion_forwardProp": [Function],
-                                                          "__emotion_real": Object {
-                                                            "$$typeof": Symbol(react.forward_ref),
-                                                            "__emotion_base": "div",
-                                                            "__emotion_forwardProp": [Function],
-                                                            "__emotion_real": [Circular],
-                                                            "__emotion_styles": Array [
-                                                              Object {
-                                                                "boxSizing": "border-box",
-                                                                "margin": 0,
-                                                                "minWidth": 0,
-                                                              },
-                                                              [Function],
-                                                              [Function],
-                                                              [Function],
-                                                              [Function],
-                                                              [Function],
-                                                            ],
-                                                            "defaultProps": undefined,
-                                                            "displayName": "Styled(div)",
-                                                            "render": [Function],
-                                                            "withComponent": [Function],
-                                                          },
-                                                          "__emotion_styles": Array [
-                                                            Object {
-                                                              "boxSizing": "border-box",
-                                                              "margin": 0,
-                                                              "minWidth": 0,
-                                                            },
-                                                            [Function],
-                                                            [Function],
-                                                            [Function],
-                                                            [Function],
-                                                            [Function],
-                                                          ],
-                                                          "attrs": Array [],
-                                                          "componentStyle": ComponentStyle {
-                                                            "componentId": "LinkDark__Content-sc-1vsz6ud-0",
-                                                            "isStatic": false,
-                                                            "lastClassName": "bBIhpH",
-                                                            "rules": Array [
-                                                              "align-items:center;color:",
-                                                              [Function],
-                                                              ";font-size:14px;margin-bottom:25px;height:10px;cursor:pointer;&:hover{text-decoration:none;color:white;}",
-                                                            ],
-                                                          },
-                                                          "displayName": "LinkDark__Content",
-                                                          "foldedComponentIds": Array [],
-                                                          "render": [Function],
-                                                          "styledComponentId": "LinkDark__Content-sc-1vsz6ud-0",
-                                                          "target": Object {
-                                                            "$$typeof": Symbol(react.forward_ref),
-                                                            "__emotion_base": "div",
-                                                            "__emotion_forwardProp": [Function],
-                                                            "__emotion_real": [Circular],
-                                                            "__emotion_styles": Array [
-                                                              Object {
-                                                                "boxSizing": "border-box",
-                                                                "margin": 0,
-                                                                "minWidth": 0,
-                                                              },
-                                                              [Function],
-                                                              [Function],
-                                                              [Function],
-                                                              [Function],
-                                                              [Function],
-                                                            ],
-                                                            "defaultProps": undefined,
-                                                            "displayName": "Styled(div)",
-                                                            "render": [Function],
-                                                            "withComponent": [Function],
-                                                          },
-                                                          "toString": [Function],
-                                                          "warnTooManyClasses": [Function],
-                                                          "withComponent": [Function],
-                                                        }
-                                                      }
-                                                      forwardedRef={[Function]}
-                                                      onClick={[Function]}
-                                                      onMouseEnter={[Function]}
-                                                    >
-                                                      <Styled(div)
-                                                        className="LinkDark__Content-sc-1vsz6ud-0 bBIhpH"
-                                                        onClick={[Function]}
-                                                        onMouseEnter={[Function]}
-                                                      >
-                                                        <div
-                                                          className="LinkDark__Content-sc-1vsz6ud-0 bBIhpH css-vurnku"
-                                                          onClick={[Function]}
-                                                          onMouseEnter={[Function]}
-                                                        >
-                                                          Coach Login
+                                                          Become a Coach
                                                         </div>
                                                       </Styled(div)>
                                                     </StyledComponent>
