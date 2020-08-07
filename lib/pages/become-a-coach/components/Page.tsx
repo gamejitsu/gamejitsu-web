@@ -62,81 +62,86 @@ TextCard.defaultProps = {
 
 const getCurrentUser = () => useContext(UserContext)
 
-
 const Page: AuthenticatedComponent = () => {
   const user = getCurrentUser()
-  return <Box mt={4}>
-    <Navbar />
-    <Container alignItems="center" flexDirection="column">
-      <Head>
-        <link rel="shortcut icon" href="/favicon.png" />
-        <title>Gamejitsu - Become a Coach</title>
-      </Head>
-      {!user?.hasPublicProfile ? (
-          <div />
-        ) : (
-          <Box mb={4}>
-            <Callout title="Private Steam profile detected" intent="danger">
-              You need to enable the public profile on Steam to be able to sign up as coach.
-              <br />
-              <br />
-              If you are logged in to Steam, you can change your Privacy Settings by navigating to
-              your{" "}
-              <a href="https://steamcommunity.com/my/edit/settings">
-                Profile Privacy Settings Page
-              </a>
-              .
-              <br />
-              <br />
-              Alternatively, you can navigate to the Profile Privacy Settings page manually:
-              <br />
-              <br />
-              1. From your Steam Profile, click the Edit Profile link under your displayed badge.
-              <br />
-              2. Click the My Privacy Settings tab
-              <br />
-              3. Select your privacy state
-              <br />
-              4. Click the Save button
-            </Callout>
-          </Box>
-        )}
-      <TextCard>
-        <Box width="900px" mx="auto" my={4} style={{ position: "relative" }}>
-          <Flex alignItems="center">
-            <Box width="375px">
-              <SecondaryTitle>Gamejitsu</SecondaryTitle>
-              <MainTitle>Become a Coach</MainTitle>
+  return (
+    <Box mt={4}>
+      <Navbar />
+      <Container alignItems="center" flexDirection="column">
+        <Head>
+          <link rel="shortcut icon" href="/favicon.png" />
+          <title>Gamejitsu - Become a Coach</title>
+        </Head>
+        <TextCard>
+          <Box width="900px" mx="auto" my={4} style={{ position: "relative" }}>
+            <Flex alignItems="center">
+              <Box width="375px">
+                <SecondaryTitle>Gamejitsu</SecondaryTitle>
+                <MainTitle>Become a Coach</MainTitle>
+              </Box>
+            </Flex>
+            <Box width="900px">
+              {!user?.hasPublicProfile ? (
+                <div />
+              ) : (
+                <Box mb={4}>
+                  <Callout title="Private Steam profile detected" intent="danger">
+                    You need to enable the public profile on Steam to be able to sign up as coach.
+                    <br />
+                    <br />
+                    If you are logged in to Steam, you can change your Privacy Settings by
+                    navigating to your{" "}
+                    <a href="https://steamcommunity.com/my/edit/settings">
+                      Profile Privacy Settings Page
+                    </a>
+                    .
+                    <br />
+                    <br />
+                    Alternatively, you can navigate to the Profile Privacy Settings page manually:
+                    <br />
+                    <br />
+                    1. From your Steam Profile, click the Edit Profile link under your displayed
+                    badge.
+                    <br />
+                    2. Click the My Privacy Settings tab
+                    <br />
+                    3. Select your privacy state
+                    <br />
+                    4. Click the Save button
+                  </Callout>
+                </Box>
+              )}
+              <ParagraphText>
+                <ParagraphTitle>Public Profile</ParagraphTitle>
+                Steam public profile is needed to signup as a coach. If there is no "Private Steam
+                profile detected" warning alert on this page, it means your profile is public.
+                <ParagraphTitle>Required MMR</ParagraphTitle>
+                If you have an MMR greater or equal than 4k, you are entitle to become a Gamejitsu
+                Coach.
+                <ParagraphTitle>Skill level</ParagraphTitle>
+                You will be able to pickup reviews based on you skill level:
+                <br />
+                <br />
+                4k MMR: medium
+                <br />
+                5k MMR: high, medium
+                <br />
+                6k MMR: very high, high, medium
+                <br />
+                7k MMR: pro, very high, high, medium
+                <ParagraphTitle>Sign Up</ParagraphTitle>
+                If you match the required MMR, and you are not already a coach you can sign up to
+                become one at the Gamejitsu
+                <LinkBold href="/coach-signup"> coach sign-up page</LinkBold>.
+              </ParagraphText>
             </Box>
-          </Flex>
-          <Box width="900px">
-            <ParagraphText>
-              <ParagraphTitle>Required MMR</ParagraphTitle>
-              If you have an MMR greater or equal than 4k, you are entitle to become a Gamejitsu
-              Coach.
-              <ParagraphTitle>Skill level</ParagraphTitle>
-              You will be able to pickup reviews based on you skill level:
-              <br />
-              <br />
-              4k MMR: medium
-              <br />
-              5k MMR: high, medium
-              <br />
-              6k MMR: very high, high, medium
-              <br />
-              7k MMR: pro, very high, high, medium
-              <ParagraphTitle>Sign Up</ParagraphTitle>
-              If you match the required MMR, and you are not already a coach you can sign up to
-              become one at the Gamejitsu
-              <LinkBold href="/coach-signup"> coach sign-up page</LinkBold>.
-            </ParagraphText>
           </Box>
-        </Box>
-      </TextCard>
+        </TextCard>
 
-      <Footer />
-    </Container>
-  </Box>
+        <Footer />
+      </Container>
+    </Box>
+  )
 }
 
 Page.skipAuthentication = true
