@@ -1,11 +1,13 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
 import { Flex, Box } from "rebass"
 import Head from "next/head"
+import { UserContext } from "gamejitsu/contexts"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 
 import { Footer, Navbar, LinkDark, LinkBold } from "gamejitsu/components"
+import { Callout } from "@blueprintjs/core"
 
 interface SecondaryTitleProps {
   color?: string
@@ -58,14 +60,47 @@ TextCard.defaultProps = {
   my: 4
 }
 
-const Page: AuthenticatedComponent = () => (
-  <Box mt={4}>
+const getCurrentUser = () => useContext(UserContext)
+
+
+const Page: AuthenticatedComponent = () => {
+  const user = getCurrentUser()
+  return <Box mt={4}>
     <Navbar />
     <Container alignItems="center" flexDirection="column">
       <Head>
         <link rel="shortcut icon" href="/favicon.png" />
         <title>Gamejitsu - Become a Coach</title>
       </Head>
+      {!user?.hasPublicProfile ? (
+          <div />
+        ) : (
+          <Box mb={4}>
+            <Callout title="Private Steam profile detected" intent="danger">
+              You need to enable the public profile on Steam to be able to sign up as coach.
+              <br />
+              <br />
+              If you are logged in to Steam, you can change your Privacy Settings by navigating to
+              your{" "}
+              <a href="https://steamcommunity.com/my/edit/settings">
+                Profile Privacy Settings Page
+              </a>
+              .
+              <br />
+              <br />
+              Alternatively, you can navigate to the Profile Privacy Settings page manually:
+              <br />
+              <br />
+              1. From your Steam Profile, click the Edit Profile link under your displayed badge.
+              <br />
+              2. Click the My Privacy Settings tab
+              <br />
+              3. Select your privacy state
+              <br />
+              4. Click the Save button
+            </Callout>
+          </Box>
+        )}
       <TextCard>
         <Box width="900px" mx="auto" my={4} style={{ position: "relative" }}>
           <Flex alignItems="center">
@@ -102,7 +137,7 @@ const Page: AuthenticatedComponent = () => (
       <Footer />
     </Container>
   </Box>
-)
+}
 
 Page.skipAuthentication = true
 
