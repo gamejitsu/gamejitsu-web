@@ -37,7 +37,7 @@ const Content = styled.div`
 `
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Exo+2');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap');
   body {
     background-color: ${(props) => props.theme.backgroundColor};
     font-family: ${(props) => props.theme.textFont};
