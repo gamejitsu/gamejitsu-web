@@ -4,12 +4,17 @@ import { createModel } from "gamejitsu/api"
 import { NextPage } from "next"
 import { setCookie } from "nookies"
 import { stringify as stringifyQueryString } from "querystring"
-import { useEffect } from "react"
+import { useEffect, useContext } from "react"
 import SessionResource from "gamejitsu/api/resources/session"
+import { UserContext } from "gamejitsu/contexts"
 
 const Auth: NextPage = () => {
+  const user = useContext(UserContext)
+  console.log("user auth:", user)
   useEffect(() => {
-    Router.push("/dashboard")
+    user?.coachId
+      ? Router.push("/coach-dashboard")
+      : Router.push("/dashboard")
   })
   return null
 }

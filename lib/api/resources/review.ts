@@ -11,6 +11,11 @@ import {
   Replay
 } from "gamejitsu/api/resources/replay"
 import {
+  decoder as userDecoder,
+  transformer as userTransformer,
+  User
+} from "gamejitsu/api/resources/user"
+import {
   decoder as coachDecoder,
   transformer as coachTransformer,
   Coach
@@ -65,7 +70,15 @@ export default buildResource({
         t
           .strict({
             included: t.union([
-              t.array(t.union([reviewRequestDecoder, replayDecoder, coachDecoder])),
+              t.array(
+                t.union([
+                  reviewRequestDecoder,
+                  replayDecoder,
+                  userDecoder,
+                  coachDecoder,
+                  coachDecoder
+                ])
+              ),
               t.undefined
             ])
           })
@@ -84,6 +97,16 @@ export default buildResource({
         replay: (value.included || []).reduce(
           (a, r) => (r.type === "replay" ? [...a, replayTransformer(r)] : a),
           [] as Replay[]
+        ),
+
+        user: (value.included || []).reduce(
+          (a, r) => (r.type === "user" ? [...a, userTransformer(r)] : a),
+          [] as User[]
+        ),
+
+        coach: (value.included || []).reduce(
+          (a, r) => (r.type === "coach" ? [...a, coachTransformer(r)] : a),
+          [] as Coach[]
         ),
 
         coach: (value.included || []).reduce(

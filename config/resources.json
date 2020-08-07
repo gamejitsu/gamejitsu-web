@@ -44,7 +44,8 @@
       "comment": { "type": "string", "optional": true}
     },
     "relationships": {
-      "replay": { "cardinality": "one", "type": "replay", "include": true }
+      "replay": { "cardinality": "one", "type": "replay", "include": true },
+      "user": { "cardinality": "one", "type": "user", "include": true }
     }
   },
   "review": {
@@ -72,7 +73,7 @@
       "hasPublicProfile": { "type": "boolean" }
     },
     "relationships": {
-      "coach": { "cardinality": "one", "type": "coach", "include": false, "optional": true }
+      "coach": { "cardinality": "one", "type": "coach", "include": true, "optional": true }
     }
   }
 }

@@ -100,27 +100,26 @@ const logout = () => {
 
 const Navbar: FunctionComponent = () => {
   const user = useContext(UserContext)
-
   return (
     <Container py={2} px={3} color="white" alignItems="center">
       <Box mr="auto">
         <Flex alignItems="center">
           <Box width="175px" mr={3} ml={80}>
             <Logo>
-              <ImageButton href="/" imageSrc={gamejitsuWritingImageSrc} />
+              <ImageButton key="home" href="/" imageSrc={gamejitsuWritingImageSrc} />
             </Logo>
           </Box>
         </Flex>
       </Box>
       {user?.coachId
         ? [
-            <NavLink href="/coach-reviews">COACH REVIEWS</NavLink>,
-            <NavLink href="/coach-signup">COACH SIGNUP</NavLink>,
-            <NavLink href="/coach-dashboard">COACH DASHBOARD</NavLink>
+            <NavLink key="coach-reviews" href="/coach-reviews">COACH REVIEWS</NavLink>,
+            <NavLink key="coach-signup" href="/coach-signup">COACH SIGNUP</NavLink>,
+            <NavLink key="coach-dashboard" href="/coach-dashboard">COACH DASHBOARD</NavLink>
           ]
         : [
-            <NavLink href="/dashboard">DASHBOARD</NavLink>,
-            <NavLink href="/reviews">REVIEWS</NavLink>
+            <NavLink key="dashboard" href="/dashboard">DASHBOARD</NavLink>,
+            <NavLink key="reviews" href="/reviews">REVIEWS</NavLink>
           ]}
       {user ? (
         [

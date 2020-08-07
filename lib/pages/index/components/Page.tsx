@@ -185,7 +185,7 @@ const Line = styled.div`
   margin-left: -1px;
 `
 
-const FlowImage = styled(Box)<FlowImageType>`
+const FlowImage = styled(Box) <FlowImageType>`
   background-image: url(${(props) => props.url});
   background-size: contain;
   width: 380px;
@@ -404,16 +404,16 @@ const Page: AuthenticatedComponent = () => (
           </Box>
           <Flex p={4} justifyContent="center">
             <Box width={1 / 4}>
-              <GameContainerSVG width="100%" height="auto" />
+              <GameContainerSVG width="100%" height="100%" />
             </Box>
             <Box width={1 / 4} ml={-125}>
-              <GameContainerCSGOSVG width="101%" height="auto" />
+              <GameContainerCSGOSVG width="101%" height="100%" />
             </Box>
             <Box width={1 / 4} ml={-125}>
-              <GameContainerLOLSVG width="100%" height="auto" />
+              <GameContainerLOLSVG width="100%" height="100%" />
             </Box>
             <Box width={1 / 4} ml={-125}>
-              <GameContainerOWSVG width="100%" height="auto" />
+              <GameContainerOWSVG width="100%" height="100%" />
             </Box>
           </Flex>
         </Box>
