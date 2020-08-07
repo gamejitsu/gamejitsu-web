@@ -22,7 +22,7 @@ interface NavLinkProps {
   href: string
 }
 
-const NavLinkContent = styled(Link)<NavLinkContentProps>`
+const NavLinkContent = styled(Link) <NavLinkContentProps>`
   font-weight: bold;
   transition: all 0.15s ease-in-out;
   position: relative;
@@ -113,36 +113,42 @@ const Navbar: FunctionComponent = () => {
       </Box>
       {user?.coachId
         ? [
-            <NavLink key="coach-reviews" href="/coach-reviews">
-              COACH REVIEWS
+          <NavLink key="coach-reviews" href="/coach-reviews">
+            COACH REVIEWS
             </NavLink>,
-            <NavLink key="coach-signup" href="/coach-signup">
-              COACH SIGNUP
-            </NavLink>,
-            <NavLink key="coach-dashboard" href="/coach-dashboard">
-              COACH DASHBOARD
+          <NavLink key="coach-dashboard" href="/coach-dashboard">
+            COACH DASHBOARD
             </NavLink>
-          ]
-        : [
-            <NavLink key="dashboard" href="/dashboard">
-              DASHBOARD
-            </NavLink>,
-            <NavLink key="reviews" href="/reviews">
-              REVIEWS
-            </NavLink>
-          ]}
-      {user ? (
-        [
-          <NavLink key="username" href="/">
-            {user.username}
-          </NavLink>,
-          <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
         ]
-      ) : (
-        <Box>
-          <ButtonIcon key="login" text="SIGN IN" icon={user} onClick={login} />
-        </Box>
-      )}
+        : [
+          <NavLink key="dashboard" href="/dashboard">
+            DASHBOARD
+            </NavLink>,
+          <NavLink key="reviews" href="/reviews">
+            REVIEWS
+            </NavLink>
+        ]}
+      {user ?
+        user?.coachId ? (
+          [
+            <NavLink key="username" href="/coach-settings">
+              Coach {user?.username}
+            </NavLink>,
+            <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
+          ])
+          :
+          (
+            [
+              <NavLink key="username" href="/settings">
+                {user.username}
+              </NavLink>,
+              <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
+            ]
+          ) : (
+          <Box>
+            <ButtonIcon key="login" text="SIGN IN" icon={user} onClick={login} />
+          </Box>
+        )}
     </Container>
   )
 }
