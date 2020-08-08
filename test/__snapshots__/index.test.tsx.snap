@@ -1014,9 +1014,9 @@ exports[`Index page should match snapshot 1`] = `
                       "componentStyle": ComponentStyle {
                         "componentId": "Page__HeroUnitParent-sc-1ix2o3i-6",
                         "isStatic": false,
-                        "lastClassName": "bdzNN",
+                        "lastClassName": "hAVFtc",
                         "rules": Array [
-                          "position:relative;height:600px;width:100%;",
+                          "height:600px;position:relative;width:100%;",
                         ],
                       },
                       "displayName": "Page__HeroUnitParent",
@@ -1032,7 +1032,7 @@ exports[`Index page should match snapshot 1`] = `
                   forwardedRef={null}
                 >
                   <div
-                    className="Page__HeroUnitParent-sc-1ix2o3i-6 bdzNN"
+                    className="Page__HeroUnitParent-sc-1ix2o3i-6 hAVFtc"
                   >
                     <Page__HeroUnit>
                       <StyledComponent
@@ -1085,9 +1085,9 @@ exports[`Index page should match snapshot 1`] = `
                             "componentStyle": ComponentStyle {
                               "componentId": "Page__HeroUnit-sc-1ix2o3i-7",
                               "isStatic": false,
-                              "lastClassName": "caEdis",
+                              "lastClassName": "bqesyC",
                               "rules": Array [
-                                "top:0;bottom:0;left:0;right:0;flex-grow:1;position:absolute;height:600px;z-index:1;",
+                                "bottom:0;flex-grow:1;height:600px;left:0;position:absolute;right:0;top:0;z-index:1;",
                               ],
                             },
                             "displayName": "Page__HeroUnit",
@@ -1127,10 +1127,10 @@ exports[`Index page should match snapshot 1`] = `
                         forwardedRef={null}
                       >
                         <Styled(div)
-                          className="Page__HeroUnit-sc-1ix2o3i-7 caEdis"
+                          className="Page__HeroUnit-sc-1ix2o3i-7 bqesyC"
                         >
                           <div
-                            className="Page__HeroUnit-sc-1ix2o3i-7 caEdis css-4cffwv"
+                            className="Page__HeroUnit-sc-1ix2o3i-7 bqesyC css-4cffwv"
                           >
                             <Styled(div)
                               mx="auto"
@@ -1171,11 +1171,11 @@ exports[`Index page should match snapshot 1`] = `
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "Page__SecondaryTitle-sc-1ix2o3i-1",
                                                   "isStatic": false,
-                                                  "lastClassName": "cWjFTx",
+                                                  "lastClassName": "fdgcUO",
                                                   "rules": Array [
-                                                    "font-family:\\"Japanese 3017\\";font-weight:normal;letter-spacing:3px;font-size:21px;color:",
+                                                    "color:",
                                                     [Function],
-                                                    ";",
+                                                    ";font-family:\\"Japanese 3017\\";font-size:21px;font-weight:normal;letter-spacing:3px;",
                                                   ],
                                                 },
                                                 "displayName": "Page__SecondaryTitle",
@@ -1191,7 +1191,7 @@ exports[`Index page should match snapshot 1`] = `
                                             forwardedRef={null}
                                           >
                                             <h2
-                                              className="Page__SecondaryTitle-sc-1ix2o3i-1 ebPtmU"
+                                              className="Page__SecondaryTitle-sc-1ix2o3i-1 lazgWO"
                                             >
                                               A coaching Platform
                                             </h2>
@@ -1206,9 +1206,9 @@ exports[`Index page should match snapshot 1`] = `
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "Page__MainTitle-sc-1ix2o3i-2",
                                                   "isStatic": false,
-                                                  "lastClassName": "UiTGC",
+                                                  "lastClassName": "dxgBDO",
                                                   "rules": Array [
-                                                    "color:white;font-size:35px;font-weight:bold;margin-top:20px;margin-bottom:20px;",
+                                                    "color:white;font-size:35px;font-weight:bold;margin-bottom:20px;margin-top:20px;",
                                                   ],
                                                 },
                                                 "displayName": "Page__MainTitle",
@@ -1224,9 +1224,9 @@ exports[`Index page should match snapshot 1`] = `
                                             forwardedRef={null}
                                           >
                                             <h1
-                                              className="Page__MainTitle-sc-1ix2o3i-2 UiTGC"
+                                              className="Page__MainTitle-sc-1ix2o3i-2 dxgBDO"
                                             >
-                                              Hire a Pro Gaming Coach From 10$
+                                              Hire a Pro Gaming Coach From 4$
                                             </h1>
                                           </StyledComponent>
                                         </Page__MainTitle>
@@ -1239,9 +1239,9 @@ exports[`Index page should match snapshot 1`] = `
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "Page__ParagraphText-sc-1ix2o3i-3",
                                                   "isStatic": false,
-                                                  "lastClassName": "jQEIWt",
+                                                  "lastClassName": "cyzhZC",
                                                   "rules": Array [
-                                                    "font-size:15px;margin-bottom:5px;line-height:20px;",
+                                                    "font-size:15px;line-height:20px;margin-bottom:5px;",
                                                   ],
                                                 },
                                                 "displayName": "Page__ParagraphText",
@@ -1257,9 +1257,9 @@ exports[`Index page should match snapshot 1`] = `
                                             forwardedRef={null}
                                           >
                                             <p
-                                              className="Page__ParagraphText-sc-1ix2o3i-3 jQEIWt"
+                                              className="Page__ParagraphText-sc-1ix2o3i-3 cyzhZC"
                                             >
-                                              Browse through hundreds of gaming coaches
+                                              Get your game analyzed by a ranked coach
                                             </p>
                                           </StyledComponent>
                                         </Page__ParagraphText>
@@ -1272,9 +1272,9 @@ exports[`Index page should match snapshot 1`] = `
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "Page__ParagraphText-sc-1ix2o3i-3",
                                                   "isStatic": false,
-                                                  "lastClassName": "jQEIWt",
+                                                  "lastClassName": "cyzhZC",
                                                   "rules": Array [
-                                                    "font-size:15px;margin-bottom:5px;line-height:20px;",
+                                                    "font-size:15px;line-height:20px;margin-bottom:5px;",
                                                   ],
                                                 },
                                                 "displayName": "Page__ParagraphText",
@@ -1290,7 +1290,7 @@ exports[`Index page should match snapshot 1`] = `
                                             forwardedRef={null}
                                           >
                                             <p
-                                              className="Page__ParagraphText-sc-1ix2o3i-3 jQEIWt"
+                                              className="Page__ParagraphText-sc-1ix2o3i-3 cyzhZC"
                                             >
                                               who will help you improve your skills
                                             </p>
@@ -1311,9 +1311,9 @@ exports[`Index page should match snapshot 1`] = `
                                         "componentStyle": ComponentStyle {
                                           "componentId": "Page__MainImage-sc-1ix2o3i-12",
                                           "isStatic": false,
-                                          "lastClassName": "kxFgwl",
+                                          "lastClassName": "cOZrXY",
                                           "rules": Array [
-                                            "width:510px;position:absolute;bottom:-65px;right:0px;",
+                                            "bottom:-65px;position:absolute;right:0px;width:510px;",
                                           ],
                                         },
                                         "displayName": "Page__MainImage",
@@ -1330,7 +1330,7 @@ exports[`Index page should match snapshot 1`] = `
                                     src="/images/gamejitsu-mascotte.svg"
                                   >
                                     <img
-                                      className="Page__MainImage-sc-1ix2o3i-12 kxFgwl"
+                                      className="Page__MainImage-sc-1ix2o3i-12 cOZrXY"
                                       src="/images/gamejitsu-mascotte.svg"
                                     />
                                   </StyledComponent>
@@ -1350,9 +1350,9 @@ exports[`Index page should match snapshot 1`] = `
                             "componentStyle": ComponentStyle {
                               "componentId": "Page__Background-sc-1ix2o3i-5",
                               "isStatic": false,
-                              "lastClassName": "fjHRTl",
+                              "lastClassName": "kNPNKE",
                               "rules": Array [
-                                "top:0;left:0;right 0;bottom:0;position:absolute;background-image:url('/images/background-hero-unit.jpg');background-position:center;background-size:cover;opacity:0.3;",
+                                "background-image:url('/images/background-hero-unit.jpg');background-position:center;background-size:cover;bottom:0;left:0;opacity:0.3;position:absolute;right 0;top:0;",
                               ],
                             },
                             "displayName": "Page__Background",
@@ -1368,7 +1368,7 @@ exports[`Index page should match snapshot 1`] = `
                         forwardedRef={null}
                       >
                         <div
-                          className="Page__Background-sc-1ix2o3i-5 fjHRTl"
+                          className="Page__Background-sc-1ix2o3i-5 kNPNKE"
                         />
                       </StyledComponent>
                     </Page__Background>
@@ -1428,11 +1428,11 @@ exports[`Index page should match snapshot 1`] = `
                       "componentStyle": ComponentStyle {
                         "componentId": "Page__GamesBar-sc-1ix2o3i-8",
                         "isStatic": false,
-                        "lastClassName": "iVWWYT",
+                        "lastClassName": "dHLgvU",
                         "rules": Array [
                           "background-color:",
                           [Function],
-                          ";height:85px;width:100%;position:relative;",
+                          ";height:85px;position:relative;width:100%;",
                         ],
                       },
                       "displayName": "Page__GamesBar",
@@ -1473,11 +1473,11 @@ exports[`Index page should match snapshot 1`] = `
                   justifyContent="center"
                 >
                   <Styled(div)
-                    className="Page__GamesBar-sc-1ix2o3i-8 iVWWYT"
+                    className="Page__GamesBar-sc-1ix2o3i-8 dHLgvU"
                     justifyContent="center"
                   >
                     <div
-                      className="Page__GamesBar-sc-1ix2o3i-8 iVWWYT css-1b2tw1j"
+                      className="Page__GamesBar-sc-1ix2o3i-8 dHLgvU css-1b2tw1j"
                     >
                       <Styled(div)
                         ml={200}
@@ -1502,9 +1502,9 @@ exports[`Index page should match snapshot 1`] = `
                                   "componentStyle": ComponentStyle {
                                     "componentId": "Page__GamesBarImage-sc-1ix2o3i-9",
                                     "isStatic": false,
-                                    "lastClassName": "hYqkuE",
+                                    "lastClassName": "gXNFIr",
                                     "rules": Array [
-                                      "width:190px;margin-right:40px;margin-left:40px;position:absolute;",
+                                      "margin-left:40px;margin-right:40px;position:absolute;width:190px;",
                                     ],
                                   },
                                   "displayName": "Page__GamesBarImage",
@@ -1526,7 +1526,7 @@ exports[`Index page should match snapshot 1`] = `
                               }
                             >
                               <img
-                                className="Page__GamesBarImage-sc-1ix2o3i-9 hYqkuE"
+                                className="Page__GamesBarImage-sc-1ix2o3i-9 gXNFIr"
                                 src="/images/fortnite-logo.png"
                                 style={
                                   Object {
@@ -1560,9 +1560,9 @@ exports[`Index page should match snapshot 1`] = `
                                   "componentStyle": ComponentStyle {
                                     "componentId": "Page__GamesBarImage-sc-1ix2o3i-9",
                                     "isStatic": false,
-                                    "lastClassName": "hYqkuE",
+                                    "lastClassName": "gXNFIr",
                                     "rules": Array [
-                                      "width:190px;margin-right:40px;margin-left:40px;position:absolute;",
+                                      "margin-left:40px;margin-right:40px;position:absolute;width:190px;",
                                     ],
                                   },
                                   "displayName": "Page__GamesBarImage",
@@ -1584,7 +1584,7 @@ exports[`Index page should match snapshot 1`] = `
                               }
                             >
                               <img
-                                className="Page__GamesBarImage-sc-1ix2o3i-9 hYqkuE"
+                                className="Page__GamesBarImage-sc-1ix2o3i-9 gXNFIr"
                                 src="/images/overwatch-logo.png"
                                 style={
                                   Object {
@@ -1618,9 +1618,9 @@ exports[`Index page should match snapshot 1`] = `
                                   "componentStyle": ComponentStyle {
                                     "componentId": "Page__GamesBarImage-sc-1ix2o3i-9",
                                     "isStatic": false,
-                                    "lastClassName": "hYqkuE",
+                                    "lastClassName": "gXNFIr",
                                     "rules": Array [
-                                      "width:190px;margin-right:40px;margin-left:40px;position:absolute;",
+                                      "margin-left:40px;margin-right:40px;position:absolute;width:190px;",
                                     ],
                                   },
                                   "displayName": "Page__GamesBarImage",
@@ -1642,7 +1642,7 @@ exports[`Index page should match snapshot 1`] = `
                               }
                             >
                               <img
-                                className="Page__GamesBarImage-sc-1ix2o3i-9 hYqkuE"
+                                className="Page__GamesBarImage-sc-1ix2o3i-9 gXNFIr"
                                 src="/images/dota2-logo.png"
                                 style={
                                   Object {
@@ -1676,9 +1676,9 @@ exports[`Index page should match snapshot 1`] = `
                                   "componentStyle": ComponentStyle {
                                     "componentId": "Page__GamesBarImage-sc-1ix2o3i-9",
                                     "isStatic": false,
-                                    "lastClassName": "hYqkuE",
+                                    "lastClassName": "gXNFIr",
                                     "rules": Array [
-                                      "width:190px;margin-right:40px;margin-left:40px;position:absolute;",
+                                      "margin-left:40px;margin-right:40px;position:absolute;width:190px;",
                                     ],
                                   },
                                   "displayName": "Page__GamesBarImage",
@@ -1700,7 +1700,7 @@ exports[`Index page should match snapshot 1`] = `
                               }
                             >
                               <img
-                                className="Page__GamesBarImage-sc-1ix2o3i-9 hYqkuE"
+                                className="Page__GamesBarImage-sc-1ix2o3i-9 gXNFIr"
                                 src="/images/lol-logo.png"
                                 style={
                                   Object {
@@ -1766,9 +1766,9 @@ exports[`Index page should match snapshot 1`] = `
                       "componentStyle": ComponentStyle {
                         "componentId": "Page__TextCard-sc-1ix2o3i-13",
                         "isStatic": false,
-                        "lastClassName": "dFwqvI",
+                        "lastClassName": "hjWDii",
                         "rules": Array [
-                          "top:0;bottom:0;left:0;right:0;flex-grow:1;z-index:1;",
+                          "bottom:0;flex-grow:1;left:0;right:0;top:0;z-index:1;",
                         ],
                       },
                       "displayName": "Page__TextCard",
@@ -1806,11 +1806,11 @@ exports[`Index page should match snapshot 1`] = `
                   my={4}
                 >
                   <Styled(div)
-                    className="Page__TextCard-sc-1ix2o3i-13 dFwqvI"
+                    className="Page__TextCard-sc-1ix2o3i-13 hjWDii"
                     my={4}
                   >
                     <div
-                      className="Page__TextCard-sc-1ix2o3i-13 dFwqvI css-hi5zbn"
+                      className="Page__TextCard-sc-1ix2o3i-13 hjWDii css-hi5zbn"
                     >
                       <Styled(div)
                         mx="auto"
@@ -1851,11 +1851,11 @@ exports[`Index page should match snapshot 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "Page__SecondaryTitle-sc-1ix2o3i-1",
                                             "isStatic": false,
-                                            "lastClassName": "cWjFTx",
+                                            "lastClassName": "fdgcUO",
                                             "rules": Array [
-                                              "font-family:\\"Japanese 3017\\";font-weight:normal;letter-spacing:3px;font-size:21px;color:",
+                                              "color:",
                                               [Function],
-                                              ";",
+                                              ";font-family:\\"Japanese 3017\\";font-size:21px;font-weight:normal;letter-spacing:3px;",
                                             ],
                                           },
                                           "displayName": "Page__SecondaryTitle",
@@ -1871,7 +1871,7 @@ exports[`Index page should match snapshot 1`] = `
                                       forwardedRef={null}
                                     >
                                       <h2
-                                        className="Page__SecondaryTitle-sc-1ix2o3i-1 ebPtmU"
+                                        className="Page__SecondaryTitle-sc-1ix2o3i-1 lazgWO"
                                       >
                                         Top Notch Platform
                                       </h2>
@@ -1886,9 +1886,9 @@ exports[`Index page should match snapshot 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "Page__MainTitle-sc-1ix2o3i-2",
                                             "isStatic": false,
-                                            "lastClassName": "UiTGC",
+                                            "lastClassName": "dxgBDO",
                                             "rules": Array [
-                                              "color:white;font-size:35px;font-weight:bold;margin-top:20px;margin-bottom:20px;",
+                                              "color:white;font-size:35px;font-weight:bold;margin-bottom:20px;margin-top:20px;",
                                             ],
                                           },
                                           "displayName": "Page__MainTitle",
@@ -1904,9 +1904,9 @@ exports[`Index page should match snapshot 1`] = `
                                       forwardedRef={null}
                                     >
                                       <h1
-                                        className="Page__MainTitle-sc-1ix2o3i-2 UiTGC"
+                                        className="Page__MainTitle-sc-1ix2o3i-2 dxgBDO"
                                       >
-                                        Welcome to the GameJitsu
+                                        Welcome to GameJitsu
                                       </h1>
                                     </StyledComponent>
                                   </Page__MainTitle>
@@ -1927,9 +1927,9 @@ exports[`Index page should match snapshot 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "Page__ParagraphText-sc-1ix2o3i-3",
                                             "isStatic": false,
-                                            "lastClassName": "jQEIWt",
+                                            "lastClassName": "cyzhZC",
                                             "rules": Array [
-                                              "font-size:15px;margin-bottom:5px;line-height:20px;",
+                                              "font-size:15px;line-height:20px;margin-bottom:5px;",
                                             ],
                                           },
                                           "displayName": "Page__ParagraphText",
@@ -1945,9 +1945,9 @@ exports[`Index page should match snapshot 1`] = `
                                       forwardedRef={null}
                                     >
                                       <p
-                                        className="Page__ParagraphText-sc-1ix2o3i-3 jQEIWt"
+                                        className="Page__ParagraphText-sc-1ix2o3i-3 cyzhZC"
                                       >
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                                        Gamejitsu uses state-of-the-art technologies to allow you and other palyers to get their game reviewed without the need of recording their own game. Gamejitsu will fetch autonously the game you selected to be reviewed and provides it to a coach based on the selected MMR.
                                       </p>
                                     </StyledComponent>
                                   </Page__ParagraphText>
@@ -1960,9 +1960,9 @@ exports[`Index page should match snapshot 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "Page__ParagraphText-sc-1ix2o3i-3",
                                             "isStatic": false,
-                                            "lastClassName": "jQEIWt",
+                                            "lastClassName": "cyzhZC",
                                             "rules": Array [
-                                              "font-size:15px;margin-bottom:5px;line-height:20px;",
+                                              "font-size:15px;line-height:20px;margin-bottom:5px;",
                                             ],
                                           },
                                           "displayName": "Page__ParagraphText",
@@ -1978,9 +1978,9 @@ exports[`Index page should match snapshot 1`] = `
                                       forwardedRef={null}
                                     >
                                       <p
-                                        className="Page__ParagraphText-sc-1ix2o3i-3 jQEIWt"
+                                        className="Page__ParagraphText-sc-1ix2o3i-3 cyzhZC"
                                       >
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                                        Login in the platform is only available via Steam. Your profile has to be public in order to see your recent games played.
                                       </p>
                                     </StyledComponent>
                                   </Page__ParagraphText>
@@ -2125,11 +2125,11 @@ exports[`Index page should match snapshot 1`] = `
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Page__SecondaryTitle-sc-1ix2o3i-1",
                                         "isStatic": false,
-                                        "lastClassName": "cWjFTx",
+                                        "lastClassName": "fdgcUO",
                                         "rules": Array [
-                                          "font-family:\\"Japanese 3017\\";font-weight:normal;letter-spacing:3px;font-size:21px;color:",
+                                          "color:",
                                           [Function],
-                                          ";",
+                                          ";font-family:\\"Japanese 3017\\";font-size:21px;font-weight:normal;letter-spacing:3px;",
                                         ],
                                       },
                                       "displayName": "Page__SecondaryTitle",
@@ -2145,7 +2145,7 @@ exports[`Index page should match snapshot 1`] = `
                                   forwardedRef={null}
                                 >
                                   <h2
-                                    className="Page__SecondaryTitle-sc-1ix2o3i-1 ebPtmU"
+                                    className="Page__SecondaryTitle-sc-1ix2o3i-1 lazgWO"
                                   >
                                     Games We Support
                                   </h2>
@@ -2160,9 +2160,9 @@ exports[`Index page should match snapshot 1`] = `
                                       "componentStyle": ComponentStyle {
                                         "componentId": "Page__MainTitle-sc-1ix2o3i-2",
                                         "isStatic": false,
-                                        "lastClassName": "UiTGC",
+                                        "lastClassName": "dxgBDO",
                                         "rules": Array [
-                                          "color:white;font-size:35px;font-weight:bold;margin-top:20px;margin-bottom:20px;",
+                                          "color:white;font-size:35px;font-weight:bold;margin-bottom:20px;margin-top:20px;",
                                         ],
                                       },
                                       "displayName": "Page__MainTitle",
@@ -2178,7 +2178,7 @@ exports[`Index page should match snapshot 1`] = `
                                   forwardedRef={null}
                                 >
                                   <h1
-                                    className="Page__MainTitle-sc-1ix2o3i-2 UiTGC"
+                                    className="Page__MainTitle-sc-1ix2o3i-2 dxgBDO"
                                   >
                                     Become a Legend
                                   </h1>
@@ -2702,9 +2702,9 @@ exports[`Index page should match snapshot 1`] = `
                       "componentStyle": ComponentStyle {
                         "componentId": "Page__TextCard-sc-1ix2o3i-13",
                         "isStatic": false,
-                        "lastClassName": "dFwqvI",
+                        "lastClassName": "hjWDii",
                         "rules": Array [
-                          "top:0;bottom:0;left:0;right:0;flex-grow:1;z-index:1;",
+                          "bottom:0;flex-grow:1;left:0;right:0;top:0;z-index:1;",
                         ],
                       },
                       "displayName": "Page__TextCard",
@@ -2742,11 +2742,11 @@ exports[`Index page should match snapshot 1`] = `
                   my={4}
                 >
                   <Styled(div)
-                    className="Page__TextCard-sc-1ix2o3i-13 dFwqvI"
+                    className="Page__TextCard-sc-1ix2o3i-13 hjWDii"
                     my={4}
                   >
                     <div
-                      className="Page__TextCard-sc-1ix2o3i-13 dFwqvI css-hi5zbn"
+                      className="Page__TextCard-sc-1ix2o3i-13 hjWDii css-hi5zbn"
                     >
                       <Styled(div)
                         mx="auto"
@@ -2788,11 +2788,11 @@ exports[`Index page should match snapshot 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "Page__SecondaryTitle-sc-1ix2o3i-1",
                                             "isStatic": false,
-                                            "lastClassName": "cWjFTx",
+                                            "lastClassName": "fdgcUO",
                                             "rules": Array [
-                                              "font-family:\\"Japanese 3017\\";font-weight:normal;letter-spacing:3px;font-size:21px;color:",
+                                              "color:",
                                               [Function],
-                                              ";",
+                                              ";font-family:\\"Japanese 3017\\";font-size:21px;font-weight:normal;letter-spacing:3px;",
                                             ],
                                           },
                                           "displayName": "Page__SecondaryTitle",
@@ -2808,7 +2808,7 @@ exports[`Index page should match snapshot 1`] = `
                                       forwardedRef={null}
                                     >
                                       <h2
-                                        className="Page__SecondaryTitle-sc-1ix2o3i-1 ebPtmU"
+                                        className="Page__SecondaryTitle-sc-1ix2o3i-1 lazgWO"
                                       >
                                         The Process
                                       </h2>
@@ -2823,9 +2823,9 @@ exports[`Index page should match snapshot 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "Page__MainTitle-sc-1ix2o3i-2",
                                             "isStatic": false,
-                                            "lastClassName": "UiTGC",
+                                            "lastClassName": "dxgBDO",
                                             "rules": Array [
-                                              "color:white;font-size:35px;font-weight:bold;margin-top:20px;margin-bottom:20px;",
+                                              "color:white;font-size:35px;font-weight:bold;margin-bottom:20px;margin-top:20px;",
                                             ],
                                           },
                                           "displayName": "Page__MainTitle",
@@ -2841,7 +2841,7 @@ exports[`Index page should match snapshot 1`] = `
                                       forwardedRef={null}
                                     >
                                       <h1
-                                        className="Page__MainTitle-sc-1ix2o3i-2 UiTGC"
+                                        className="Page__MainTitle-sc-1ix2o3i-2 dxgBDO"
                                       >
                                         Steps of the user flow of Gamejitsu
                                       </h1>
@@ -2864,9 +2864,9 @@ exports[`Index page should match snapshot 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "Page__ParagraphText-sc-1ix2o3i-3",
                                             "isStatic": false,
-                                            "lastClassName": "jQEIWt",
+                                            "lastClassName": "cyzhZC",
                                             "rules": Array [
-                                              "font-size:15px;margin-bottom:5px;line-height:20px;",
+                                              "font-size:15px;line-height:20px;margin-bottom:5px;",
                                             ],
                                           },
                                           "displayName": "Page__ParagraphText",
@@ -2882,9 +2882,9 @@ exports[`Index page should match snapshot 1`] = `
                                       forwardedRef={null}
                                     >
                                       <p
-                                        className="Page__ParagraphText-sc-1ix2o3i-3 jQEIWt"
+                                        className="Page__ParagraphText-sc-1ix2o3i-3 cyzhZC"
                                       >
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                                        The Gamejitsu flow is composed by 4 simple steps. You don't need to record your own game, Gamejitsu will take of it. Gamejitsu will also select the best coach for your needs based on the required MMR.
                                       </p>
                                     </StyledComponent>
                                   </Page__ParagraphText>
@@ -2954,9 +2954,9 @@ exports[`Index page should match snapshot 1`] = `
                       "componentStyle": ComponentStyle {
                         "componentId": "Page__MainFlow-sc-1ix2o3i-11",
                         "isStatic": false,
-                        "lastClassName": "ewjSoz",
+                        "lastClassName": "fkXFtJ",
                         "rules": Array [
-                          "width:100%;position:relative;",
+                          "position:relative;width:100%;",
                         ],
                       },
                       "displayName": "Page__MainFlow",
@@ -2997,11 +2997,11 @@ exports[`Index page should match snapshot 1`] = `
                 >
                   <Styled(div)
                     alignItems="center"
-                    className="Page__MainFlow-sc-1ix2o3i-11 ewjSoz"
+                    className="Page__MainFlow-sc-1ix2o3i-11 fkXFtJ"
                     flex="1 1 0"
                   >
                     <div
-                      className="Page__MainFlow-sc-1ix2o3i-11 ewjSoz css-csf3u5"
+                      className="Page__MainFlow-sc-1ix2o3i-11 fkXFtJ css-csf3u5"
                     >
                       <Styled(div)
                         display="block"
@@ -3128,11 +3128,11 @@ exports[`Index page should match snapshot 1`] = `
                                                   "componentStyle": ComponentStyle {
                                                     "componentId": "Page__SecondaryTitle-sc-1ix2o3i-1",
                                                     "isStatic": false,
-                                                    "lastClassName": "cWjFTx",
+                                                    "lastClassName": "fdgcUO",
                                                     "rules": Array [
-                                                      "font-family:\\"Japanese 3017\\";font-weight:normal;letter-spacing:3px;font-size:21px;color:",
+                                                      "color:",
                                                       [Function],
-                                                      ";",
+                                                      ";font-family:\\"Japanese 3017\\";font-size:21px;font-weight:normal;letter-spacing:3px;",
                                                     ],
                                                   },
                                                   "displayName": "Page__SecondaryTitle",
@@ -3148,7 +3148,7 @@ exports[`Index page should match snapshot 1`] = `
                                               forwardedRef={null}
                                             >
                                               <h2
-                                                className="Page__SecondaryTitle-sc-1ix2o3i-1 ebPtmU"
+                                                className="Page__SecondaryTitle-sc-1ix2o3i-1 lazgWO"
                                               >
                                                 Step 01
                                               </h2>
@@ -3164,11 +3164,11 @@ exports[`Index page should match snapshot 1`] = `
                                                     "componentStyle": ComponentStyle {
                                                       "componentId": "Page__OutsideCircle-sc-1ix2o3i-14",
                                                       "isStatic": false,
-                                                      "lastClassName": "fjcmiV",
+                                                      "lastClassName": "kBcQMm",
                                                       "rules": Array [
-                                                        "position:relative;background:transparent;border:1.5px solid ",
+                                                        "background:transparent;border-radius:50%;border:1.5px solid ",
                                                         [Function],
-                                                        ";border-radius:50%;padding:2px;height:50px;width:50px;box-sizing:content-box;margin-top:20px;margin-bottom:20px;",
+                                                        ";box-sizing:content-box;height:50px;margin-bottom:20px;margin-top:20px;padding:2px;position:relative;width:50px;",
                                                       ],
                                                     },
                                                     "displayName": "Page__OutsideCircle",
@@ -3184,7 +3184,7 @@ exports[`Index page should match snapshot 1`] = `
                                                 forwardedRef={null}
                                               >
                                                 <div
-                                                  className="Page__OutsideCircle-sc-1ix2o3i-14 fjcmiV"
+                                                  className="Page__OutsideCircle-sc-1ix2o3i-14 kBcQMm"
                                                 >
                                                   <Page__InsideCircle>
                                                     <StyledComponent
@@ -3195,11 +3195,11 @@ exports[`Index page should match snapshot 1`] = `
                                                           "componentStyle": ComponentStyle {
                                                             "componentId": "Page__InsideCircle-sc-1ix2o3i-15",
                                                             "isStatic": false,
-                                                            "lastClassName": "ckEgmv",
+                                                            "lastClassName": "gLnEDW",
                                                             "rules": Array [
                                                               "background:",
                                                               [Function],
-                                                              ";position:relative;border-radius:50%;line-height:50px;width:100%;vertical-align:middle;text-align:center;color:white;",
+                                                              ";border-radius:50%;color:white;line-height:50px;position:relative;text-align:center;vertical-align:middle;width:100%;",
                                                             ],
                                                           },
                                                           "displayName": "Page__InsideCircle",
@@ -3215,7 +3215,7 @@ exports[`Index page should match snapshot 1`] = `
                                                       forwardedRef={null}
                                                     >
                                                       <div
-                                                        className="Page__InsideCircle-sc-1ix2o3i-15 ckEgmv"
+                                                        className="Page__InsideCircle-sc-1ix2o3i-15 gLnEDW"
                                                       >
                                                         <Page__FlowStepIcon
                                                           src="/images/step1.png"
@@ -3228,9 +3228,9 @@ exports[`Index page should match snapshot 1`] = `
                                                                 "componentStyle": ComponentStyle {
                                                                   "componentId": "Page__FlowStepIcon-sc-1ix2o3i-25",
                                                                   "isStatic": false,
-                                                                  "lastClassName": "eRhYRW",
+                                                                  "lastClassName": "bLkAbE",
                                                                   "rules": Array [
-                                                                    "height:auto;width:50%;vertical-align:middle;text-align:center;",
+                                                                    "height:auto;text-align:center;vertical-align:middle;width:50%;",
                                                                   ],
                                                                 },
                                                                 "displayName": "Page__FlowStepIcon",
@@ -3247,7 +3247,7 @@ exports[`Index page should match snapshot 1`] = `
                                                             src="/images/step1.png"
                                                           >
                                                             <img
-                                                              className="Page__FlowStepIcon-sc-1ix2o3i-25 eRhYRW"
+                                                              className="Page__FlowStepIcon-sc-1ix2o3i-25 bLkAbE"
                                                               src="/images/step1.png"
                                                             />
                                                           </StyledComponent>
@@ -3272,9 +3272,9 @@ exports[`Index page should match snapshot 1`] = `
                                                       "componentStyle": ComponentStyle {
                                                         "componentId": "Page__FlowText-sc-1ix2o3i-4",
                                                         "isStatic": false,
-                                                        "lastClassName": "jPvBGX",
+                                                        "lastClassName": "eiQfss",
                                                         "rules": Array [
-                                                          "font-size:20px;margin-bottom:220px;line-height:20px;color:white;",
+                                                          "color:white;font-size:20px;line-height:20px;margin-bottom:220px;",
                                                         ],
                                                       },
                                                       "displayName": "Page__FlowText",
@@ -3290,9 +3290,9 @@ exports[`Index page should match snapshot 1`] = `
                                                   forwardedRef={null}
                                                 >
                                                   <p
-                                                    className="Page__FlowText-sc-1ix2o3i-4 jPvBGX"
+                                                    className="Page__FlowText-sc-1ix2o3i-4 eiQfss"
                                                   >
-                                                    The user submits a request for a replay to be analyzed
+                                                    You submit a request for a replay to be analyzed by a coach based on MMR
                                                   </p>
                                                 </StyledComponent>
                                               </Page__FlowText>
@@ -3445,11 +3445,11 @@ exports[`Index page should match snapshot 1`] = `
                                                   "componentStyle": ComponentStyle {
                                                     "componentId": "Page__FlowImage-sc-1ix2o3i-18",
                                                     "isStatic": false,
-                                                    "lastClassName": "pMOVW",
+                                                    "lastClassName": "kcPHGe",
                                                     "rules": Array [
                                                       "background-image:url(",
                                                       [Function],
-                                                      ");background-size:contain;width:380px;height:240px;margin-bottom:150px;",
+                                                      ");background-size:contain;height:240px;margin-bottom:150px;width:380px;",
                                                     ],
                                                   },
                                                   "displayName": "Page__FlowImage",
@@ -3487,11 +3487,11 @@ exports[`Index page should match snapshot 1`] = `
                                               url="/images/step2-image.png"
                                             >
                                               <Styled(div)
-                                                className="Page__FlowImage-sc-1ix2o3i-18 kMauqc"
+                                                className="Page__FlowImage-sc-1ix2o3i-18 iBgjw"
                                                 url="/images/step2-image.png"
                                               >
                                                 <div
-                                                  className="Page__FlowImage-sc-1ix2o3i-18 kMauqc css-vurnku"
+                                                  className="Page__FlowImage-sc-1ix2o3i-18 iBgjw css-vurnku"
                                                 >
                                                   <Page__FlowImageTitle>
                                                     <StyledComponent
@@ -3538,11 +3538,11 @@ exports[`Index page should match snapshot 1`] = `
                                                           "componentStyle": ComponentStyle {
                                                             "componentId": "Page__FlowImageTitle-sc-1ix2o3i-20",
                                                             "isStatic": false,
-                                                            "lastClassName": "fIVPxj",
+                                                            "lastClassName": "cUeQkc",
                                                             "rules": Array [
-                                                              "text-align:center;height:44px;width:176px;background-color:",
+                                                              "background-color:",
                                                               [Function],
-                                                              ";color:black;padding:14px;font-weight:550;",
+                                                              ";color:black;font-weight:550;height:44px;padding:14px;text-align:center;width:176px;",
                                                             ],
                                                           },
                                                           "displayName": "Page__FlowImageTitle",
@@ -3579,10 +3579,10 @@ exports[`Index page should match snapshot 1`] = `
                                                       forwardedRef={null}
                                                     >
                                                       <Styled(div)
-                                                        className="Page__FlowImageTitle-sc-1ix2o3i-20 fIVPxj"
+                                                        className="Page__FlowImageTitle-sc-1ix2o3i-20 cUeQkc"
                                                       >
                                                         <div
-                                                          className="Page__FlowImageTitle-sc-1ix2o3i-20 fIVPxj css-vurnku"
+                                                          className="Page__FlowImageTitle-sc-1ix2o3i-20 cUeQkc css-vurnku"
                                                         >
                                                           Video Analyzing
                                                         </div>
@@ -3702,11 +3702,11 @@ exports[`Index page should match snapshot 1`] = `
                                                   "componentStyle": ComponentStyle {
                                                     "componentId": "Page__SecondaryTitle-sc-1ix2o3i-1",
                                                     "isStatic": false,
-                                                    "lastClassName": "cWjFTx",
+                                                    "lastClassName": "fdgcUO",
                                                     "rules": Array [
-                                                      "font-family:\\"Japanese 3017\\";font-weight:normal;letter-spacing:3px;font-size:21px;color:",
+                                                      "color:",
                                                       [Function],
-                                                      ";",
+                                                      ";font-family:\\"Japanese 3017\\";font-size:21px;font-weight:normal;letter-spacing:3px;",
                                                     ],
                                                   },
                                                   "displayName": "Page__SecondaryTitle",
@@ -3722,7 +3722,7 @@ exports[`Index page should match snapshot 1`] = `
                                               forwardedRef={null}
                                             >
                                               <h2
-                                                className="Page__SecondaryTitle-sc-1ix2o3i-1 ebPtmU"
+                                                className="Page__SecondaryTitle-sc-1ix2o3i-1 lazgWO"
                                               >
                                                 Step 03
                                               </h2>
@@ -3738,11 +3738,11 @@ exports[`Index page should match snapshot 1`] = `
                                                     "componentStyle": ComponentStyle {
                                                       "componentId": "Page__OutsideCircle-sc-1ix2o3i-14",
                                                       "isStatic": false,
-                                                      "lastClassName": "fjcmiV",
+                                                      "lastClassName": "kBcQMm",
                                                       "rules": Array [
-                                                        "position:relative;background:transparent;border:1.5px solid ",
+                                                        "background:transparent;border-radius:50%;border:1.5px solid ",
                                                         [Function],
-                                                        ";border-radius:50%;padding:2px;height:50px;width:50px;box-sizing:content-box;margin-top:20px;margin-bottom:20px;",
+                                                        ";box-sizing:content-box;height:50px;margin-bottom:20px;margin-top:20px;padding:2px;position:relative;width:50px;",
                                                       ],
                                                     },
                                                     "displayName": "Page__OutsideCircle",
@@ -3758,7 +3758,7 @@ exports[`Index page should match snapshot 1`] = `
                                                 forwardedRef={null}
                                               >
                                                 <div
-                                                  className="Page__OutsideCircle-sc-1ix2o3i-14 fjcmiV"
+                                                  className="Page__OutsideCircle-sc-1ix2o3i-14 kBcQMm"
                                                 >
                                                   <Page__InsideCircle>
                                                     <StyledComponent
@@ -3769,11 +3769,11 @@ exports[`Index page should match snapshot 1`] = `
                                                           "componentStyle": ComponentStyle {
                                                             "componentId": "Page__InsideCircle-sc-1ix2o3i-15",
                                                             "isStatic": false,
-                                                            "lastClassName": "ckEgmv",
+                                                            "lastClassName": "gLnEDW",
                                                             "rules": Array [
                                                               "background:",
                                                               [Function],
-                                                              ";position:relative;border-radius:50%;line-height:50px;width:100%;vertical-align:middle;text-align:center;color:white;",
+                                                              ";border-radius:50%;color:white;line-height:50px;position:relative;text-align:center;vertical-align:middle;width:100%;",
                                                             ],
                                                           },
                                                           "displayName": "Page__InsideCircle",
@@ -3789,7 +3789,7 @@ exports[`Index page should match snapshot 1`] = `
                                                       forwardedRef={null}
                                                     >
                                                       <div
-                                                        className="Page__InsideCircle-sc-1ix2o3i-15 ckEgmv"
+                                                        className="Page__InsideCircle-sc-1ix2o3i-15 gLnEDW"
                                                       >
                                                         <Page__FlowStepIcon
                                                           src="/images/step3.png"
@@ -3802,9 +3802,9 @@ exports[`Index page should match snapshot 1`] = `
                                                                 "componentStyle": ComponentStyle {
                                                                   "componentId": "Page__FlowStepIcon-sc-1ix2o3i-25",
                                                                   "isStatic": false,
-                                                                  "lastClassName": "eRhYRW",
+                                                                  "lastClassName": "bLkAbE",
                                                                   "rules": Array [
-                                                                    "height:auto;width:50%;vertical-align:middle;text-align:center;",
+                                                                    "height:auto;text-align:center;vertical-align:middle;width:50%;",
                                                                   ],
                                                                 },
                                                                 "displayName": "Page__FlowStepIcon",
@@ -3821,7 +3821,7 @@ exports[`Index page should match snapshot 1`] = `
                                                             src="/images/step3.png"
                                                           >
                                                             <img
-                                                              className="Page__FlowStepIcon-sc-1ix2o3i-25 eRhYRW"
+                                                              className="Page__FlowStepIcon-sc-1ix2o3i-25 bLkAbE"
                                                               src="/images/step3.png"
                                                             />
                                                           </StyledComponent>
@@ -3846,9 +3846,9 @@ exports[`Index page should match snapshot 1`] = `
                                                       "componentStyle": ComponentStyle {
                                                         "componentId": "Page__FlowText-sc-1ix2o3i-4",
                                                         "isStatic": false,
-                                                        "lastClassName": "jPvBGX",
+                                                        "lastClassName": "eiQfss",
                                                         "rules": Array [
-                                                          "font-size:20px;margin-bottom:220px;line-height:20px;color:white;",
+                                                          "color:white;font-size:20px;line-height:20px;margin-bottom:220px;",
                                                         ],
                                                       },
                                                       "displayName": "Page__FlowText",
@@ -3864,9 +3864,9 @@ exports[`Index page should match snapshot 1`] = `
                                                   forwardedRef={null}
                                                 >
                                                   <p
-                                                    className="Page__FlowText-sc-1ix2o3i-4 jPvBGX"
+                                                    className="Page__FlowText-sc-1ix2o3i-4 eiQfss"
                                                   >
-                                                    The coach submits the video reviewed with text feedbacks in the form of comments
+                                                    The coach delivers to you the video reviewed with text feedbacks in the form of comments
                                                   </p>
                                                 </StyledComponent>
                                               </Page__FlowText>
@@ -4019,11 +4019,11 @@ exports[`Index page should match snapshot 1`] = `
                                                   "componentStyle": ComponentStyle {
                                                     "componentId": "Page__FlowImage-sc-1ix2o3i-18",
                                                     "isStatic": false,
-                                                    "lastClassName": "pMOVW",
+                                                    "lastClassName": "kcPHGe",
                                                     "rules": Array [
                                                       "background-image:url(",
                                                       [Function],
-                                                      ");background-size:contain;width:380px;height:240px;margin-bottom:150px;",
+                                                      ");background-size:contain;height:240px;margin-bottom:150px;width:380px;",
                                                     ],
                                                   },
                                                   "displayName": "Page__FlowImage",
@@ -4061,11 +4061,11 @@ exports[`Index page should match snapshot 1`] = `
                                               url="/images/step4-image.png"
                                             >
                                               <Styled(div)
-                                                className="Page__FlowImage-sc-1ix2o3i-18 gHdGRB"
+                                                className="Page__FlowImage-sc-1ix2o3i-18 kCcQsj"
                                                 url="/images/step4-image.png"
                                               >
                                                 <div
-                                                  className="Page__FlowImage-sc-1ix2o3i-18 gHdGRB css-vurnku"
+                                                  className="Page__FlowImage-sc-1ix2o3i-18 kCcQsj css-vurnku"
                                                 >
                                                   <Page__FlowImageTitle>
                                                     <StyledComponent
@@ -4112,11 +4112,11 @@ exports[`Index page should match snapshot 1`] = `
                                                           "componentStyle": ComponentStyle {
                                                             "componentId": "Page__FlowImageTitle-sc-1ix2o3i-20",
                                                             "isStatic": false,
-                                                            "lastClassName": "fIVPxj",
+                                                            "lastClassName": "cUeQkc",
                                                             "rules": Array [
-                                                              "text-align:center;height:44px;width:176px;background-color:",
+                                                              "background-color:",
                                                               [Function],
-                                                              ";color:black;padding:14px;font-weight:550;",
+                                                              ";color:black;font-weight:550;height:44px;padding:14px;text-align:center;width:176px;",
                                                             ],
                                                           },
                                                           "displayName": "Page__FlowImageTitle",
@@ -4153,10 +4153,10 @@ exports[`Index page should match snapshot 1`] = `
                                                       forwardedRef={null}
                                                     >
                                                       <Styled(div)
-                                                        className="Page__FlowImageTitle-sc-1ix2o3i-20 fIVPxj"
+                                                        className="Page__FlowImageTitle-sc-1ix2o3i-20 cUeQkc"
                                                       >
                                                         <div
-                                                          className="Page__FlowImageTitle-sc-1ix2o3i-20 fIVPxj css-vurnku"
+                                                          className="Page__FlowImageTitle-sc-1ix2o3i-20 cUeQkc css-vurnku"
                                                         >
                                                           User Notified
                                                         </div>
@@ -4204,11 +4204,11 @@ exports[`Index page should match snapshot 1`] = `
                                               "componentStyle": ComponentStyle {
                                                 "componentId": "Page__Line-sc-1ix2o3i-17",
                                                 "isStatic": false,
-                                                "lastClassName": "qzAnr",
+                                                "lastClassName": "doQFrq",
                                                 "rules": Array [
                                                   "background:",
                                                   [Function],
-                                                  ";width:1px;height:1250px;position:absolute;left:50%;margin-left:-1px;",
+                                                  ";height:1250px;left:50%;margin-left:-1px;position:absolute;width:1px;",
                                                 ],
                                               },
                                               "displayName": "Page__Line",
@@ -4224,7 +4224,7 @@ exports[`Index page should match snapshot 1`] = `
                                           forwardedRef={null}
                                         >
                                           <div
-                                            className="Page__Line-sc-1ix2o3i-17 qzAnr"
+                                            className="Page__Line-sc-1ix2o3i-17 doQFrq"
                                           />
                                         </StyledComponent>
                                       </Page__Line>
@@ -4254,11 +4254,11 @@ exports[`Index page should match snapshot 1`] = `
                                                   "componentStyle": ComponentStyle {
                                                     "componentId": "Page__NumberCircle-sc-1ix2o3i-16",
                                                     "isStatic": false,
-                                                    "lastClassName": "xwIxF",
+                                                    "lastClassName": "oOaWO",
                                                     "rules": Array [
                                                       "background:",
                                                       [Function],
-                                                      ";border-radius:50%;line-height:50px;width:50px;vertical-align:middle;text-align:center;margin-bottom:250px;color:white;font-weight:bold;",
+                                                      ";border-radius:50%;color:white;font-weight:bold;line-height:50px;margin-bottom:250px;text-align:center;vertical-align:middle;width:50px;",
                                                     ],
                                                   },
                                                   "displayName": "Page__NumberCircle",
@@ -4274,7 +4274,7 @@ exports[`Index page should match snapshot 1`] = `
                                               forwardedRef={null}
                                             >
                                               <div
-                                                className="Page__NumberCircle-sc-1ix2o3i-16 xwIxF"
+                                                className="Page__NumberCircle-sc-1ix2o3i-16 oOaWO"
                                               >
                                                 1
                                               </div>
@@ -4289,11 +4289,11 @@ exports[`Index page should match snapshot 1`] = `
                                                   "componentStyle": ComponentStyle {
                                                     "componentId": "Page__NumberCircle-sc-1ix2o3i-16",
                                                     "isStatic": false,
-                                                    "lastClassName": "xwIxF",
+                                                    "lastClassName": "oOaWO",
                                                     "rules": Array [
                                                       "background:",
                                                       [Function],
-                                                      ";border-radius:50%;line-height:50px;width:50px;vertical-align:middle;text-align:center;margin-bottom:250px;color:white;font-weight:bold;",
+                                                      ";border-radius:50%;color:white;font-weight:bold;line-height:50px;margin-bottom:250px;text-align:center;vertical-align:middle;width:50px;",
                                                     ],
                                                   },
                                                   "displayName": "Page__NumberCircle",
@@ -4309,7 +4309,7 @@ exports[`Index page should match snapshot 1`] = `
                                               forwardedRef={null}
                                             >
                                               <div
-                                                className="Page__NumberCircle-sc-1ix2o3i-16 xwIxF"
+                                                className="Page__NumberCircle-sc-1ix2o3i-16 oOaWO"
                                               >
                                                 2
                                               </div>
@@ -4324,11 +4324,11 @@ exports[`Index page should match snapshot 1`] = `
                                                   "componentStyle": ComponentStyle {
                                                     "componentId": "Page__NumberCircle-sc-1ix2o3i-16",
                                                     "isStatic": false,
-                                                    "lastClassName": "xwIxF",
+                                                    "lastClassName": "oOaWO",
                                                     "rules": Array [
                                                       "background:",
                                                       [Function],
-                                                      ";border-radius:50%;line-height:50px;width:50px;vertical-align:middle;text-align:center;margin-bottom:250px;color:white;font-weight:bold;",
+                                                      ";border-radius:50%;color:white;font-weight:bold;line-height:50px;margin-bottom:250px;text-align:center;vertical-align:middle;width:50px;",
                                                     ],
                                                   },
                                                   "displayName": "Page__NumberCircle",
@@ -4344,7 +4344,7 @@ exports[`Index page should match snapshot 1`] = `
                                               forwardedRef={null}
                                             >
                                               <div
-                                                className="Page__NumberCircle-sc-1ix2o3i-16 xwIxF"
+                                                className="Page__NumberCircle-sc-1ix2o3i-16 oOaWO"
                                               >
                                                 3
                                               </div>
@@ -4359,11 +4359,11 @@ exports[`Index page should match snapshot 1`] = `
                                                   "componentStyle": ComponentStyle {
                                                     "componentId": "Page__NumberCircle-sc-1ix2o3i-16",
                                                     "isStatic": false,
-                                                    "lastClassName": "xwIxF",
+                                                    "lastClassName": "oOaWO",
                                                     "rules": Array [
                                                       "background:",
                                                       [Function],
-                                                      ";border-radius:50%;line-height:50px;width:50px;vertical-align:middle;text-align:center;margin-bottom:250px;color:white;font-weight:bold;",
+                                                      ";border-radius:50%;color:white;font-weight:bold;line-height:50px;margin-bottom:250px;text-align:center;vertical-align:middle;width:50px;",
                                                     ],
                                                   },
                                                   "displayName": "Page__NumberCircle",
@@ -4379,7 +4379,7 @@ exports[`Index page should match snapshot 1`] = `
                                               forwardedRef={null}
                                             >
                                               <div
-                                                className="Page__NumberCircle-sc-1ix2o3i-16 xwIxF"
+                                                className="Page__NumberCircle-sc-1ix2o3i-16 oOaWO"
                                               >
                                                 4
                                               </div>
@@ -4541,11 +4541,11 @@ exports[`Index page should match snapshot 1`] = `
                                                   "componentStyle": ComponentStyle {
                                                     "componentId": "Page__FlowImage-sc-1ix2o3i-18",
                                                     "isStatic": false,
-                                                    "lastClassName": "pMOVW",
+                                                    "lastClassName": "kcPHGe",
                                                     "rules": Array [
                                                       "background-image:url(",
                                                       [Function],
-                                                      ");background-size:contain;width:380px;height:240px;margin-bottom:150px;",
+                                                      ");background-size:contain;height:240px;margin-bottom:150px;width:380px;",
                                                     ],
                                                   },
                                                   "displayName": "Page__FlowImage",
@@ -4583,11 +4583,11 @@ exports[`Index page should match snapshot 1`] = `
                                               url="/images/step1-image.png"
                                             >
                                               <Styled(div)
-                                                className="Page__FlowImage-sc-1ix2o3i-18 foETyl"
+                                                className="Page__FlowImage-sc-1ix2o3i-18 iFtJqI"
                                                 url="/images/step1-image.png"
                                               >
                                                 <div
-                                                  className="Page__FlowImage-sc-1ix2o3i-18 foETyl css-vurnku"
+                                                  className="Page__FlowImage-sc-1ix2o3i-18 iFtJqI css-vurnku"
                                                 >
                                                   <Page__FlowImageTitle>
                                                     <StyledComponent
@@ -4634,11 +4634,11 @@ exports[`Index page should match snapshot 1`] = `
                                                           "componentStyle": ComponentStyle {
                                                             "componentId": "Page__FlowImageTitle-sc-1ix2o3i-20",
                                                             "isStatic": false,
-                                                            "lastClassName": "fIVPxj",
+                                                            "lastClassName": "cUeQkc",
                                                             "rules": Array [
-                                                              "text-align:center;height:44px;width:176px;background-color:",
+                                                              "background-color:",
                                                               [Function],
-                                                              ";color:black;padding:14px;font-weight:550;",
+                                                              ";color:black;font-weight:550;height:44px;padding:14px;text-align:center;width:176px;",
                                                             ],
                                                           },
                                                           "displayName": "Page__FlowImageTitle",
@@ -4675,10 +4675,10 @@ exports[`Index page should match snapshot 1`] = `
                                                       forwardedRef={null}
                                                     >
                                                       <Styled(div)
-                                                        className="Page__FlowImageTitle-sc-1ix2o3i-20 fIVPxj"
+                                                        className="Page__FlowImageTitle-sc-1ix2o3i-20 cUeQkc"
                                                       >
                                                         <div
-                                                          className="Page__FlowImageTitle-sc-1ix2o3i-20 fIVPxj css-vurnku"
+                                                          className="Page__FlowImageTitle-sc-1ix2o3i-20 cUeQkc css-vurnku"
                                                         >
                                                           Replay Video
                                                         </div>
@@ -4798,11 +4798,11 @@ exports[`Index page should match snapshot 1`] = `
                                                   "componentStyle": ComponentStyle {
                                                     "componentId": "Page__SecondaryTitle-sc-1ix2o3i-1",
                                                     "isStatic": false,
-                                                    "lastClassName": "cWjFTx",
+                                                    "lastClassName": "fdgcUO",
                                                     "rules": Array [
-                                                      "font-family:\\"Japanese 3017\\";font-weight:normal;letter-spacing:3px;font-size:21px;color:",
+                                                      "color:",
                                                       [Function],
-                                                      ";",
+                                                      ";font-family:\\"Japanese 3017\\";font-size:21px;font-weight:normal;letter-spacing:3px;",
                                                     ],
                                                   },
                                                   "displayName": "Page__SecondaryTitle",
@@ -4818,7 +4818,7 @@ exports[`Index page should match snapshot 1`] = `
                                               forwardedRef={null}
                                             >
                                               <h2
-                                                className="Page__SecondaryTitle-sc-1ix2o3i-1 ebPtmU"
+                                                className="Page__SecondaryTitle-sc-1ix2o3i-1 lazgWO"
                                               >
                                                 Step 02
                                               </h2>
@@ -4834,11 +4834,11 @@ exports[`Index page should match snapshot 1`] = `
                                                     "componentStyle": ComponentStyle {
                                                       "componentId": "Page__OutsideCircle-sc-1ix2o3i-14",
                                                       "isStatic": false,
-                                                      "lastClassName": "fjcmiV",
+                                                      "lastClassName": "kBcQMm",
                                                       "rules": Array [
-                                                        "position:relative;background:transparent;border:1.5px solid ",
+                                                        "background:transparent;border-radius:50%;border:1.5px solid ",
                                                         [Function],
-                                                        ";border-radius:50%;padding:2px;height:50px;width:50px;box-sizing:content-box;margin-top:20px;margin-bottom:20px;",
+                                                        ";box-sizing:content-box;height:50px;margin-bottom:20px;margin-top:20px;padding:2px;position:relative;width:50px;",
                                                       ],
                                                     },
                                                     "displayName": "Page__OutsideCircle",
@@ -4854,7 +4854,7 @@ exports[`Index page should match snapshot 1`] = `
                                                 forwardedRef={null}
                                               >
                                                 <div
-                                                  className="Page__OutsideCircle-sc-1ix2o3i-14 fjcmiV"
+                                                  className="Page__OutsideCircle-sc-1ix2o3i-14 kBcQMm"
                                                 >
                                                   <Page__InsideCircle>
                                                     <StyledComponent
@@ -4865,11 +4865,11 @@ exports[`Index page should match snapshot 1`] = `
                                                           "componentStyle": ComponentStyle {
                                                             "componentId": "Page__InsideCircle-sc-1ix2o3i-15",
                                                             "isStatic": false,
-                                                            "lastClassName": "ckEgmv",
+                                                            "lastClassName": "gLnEDW",
                                                             "rules": Array [
                                                               "background:",
                                                               [Function],
-                                                              ";position:relative;border-radius:50%;line-height:50px;width:100%;vertical-align:middle;text-align:center;color:white;",
+                                                              ";border-radius:50%;color:white;line-height:50px;position:relative;text-align:center;vertical-align:middle;width:100%;",
                                                             ],
                                                           },
                                                           "displayName": "Page__InsideCircle",
@@ -4885,7 +4885,7 @@ exports[`Index page should match snapshot 1`] = `
                                                       forwardedRef={null}
                                                     >
                                                       <div
-                                                        className="Page__InsideCircle-sc-1ix2o3i-15 ckEgmv"
+                                                        className="Page__InsideCircle-sc-1ix2o3i-15 gLnEDW"
                                                       >
                                                         <Page__FlowStepIcon
                                                           src="/images/step2.png"
@@ -4898,9 +4898,9 @@ exports[`Index page should match snapshot 1`] = `
                                                                 "componentStyle": ComponentStyle {
                                                                   "componentId": "Page__FlowStepIcon-sc-1ix2o3i-25",
                                                                   "isStatic": false,
-                                                                  "lastClassName": "eRhYRW",
+                                                                  "lastClassName": "bLkAbE",
                                                                   "rules": Array [
-                                                                    "height:auto;width:50%;vertical-align:middle;text-align:center;",
+                                                                    "height:auto;text-align:center;vertical-align:middle;width:50%;",
                                                                   ],
                                                                 },
                                                                 "displayName": "Page__FlowStepIcon",
@@ -4917,7 +4917,7 @@ exports[`Index page should match snapshot 1`] = `
                                                             src="/images/step2.png"
                                                           >
                                                             <img
-                                                              className="Page__FlowStepIcon-sc-1ix2o3i-25 eRhYRW"
+                                                              className="Page__FlowStepIcon-sc-1ix2o3i-25 bLkAbE"
                                                               src="/images/step2.png"
                                                             />
                                                           </StyledComponent>
@@ -4942,9 +4942,9 @@ exports[`Index page should match snapshot 1`] = `
                                                       "componentStyle": ComponentStyle {
                                                         "componentId": "Page__FlowText-sc-1ix2o3i-4",
                                                         "isStatic": false,
-                                                        "lastClassName": "jPvBGX",
+                                                        "lastClassName": "eiQfss",
                                                         "rules": Array [
-                                                          "font-size:20px;margin-bottom:220px;line-height:20px;color:white;",
+                                                          "color:white;font-size:20px;line-height:20px;margin-bottom:220px;",
                                                         ],
                                                       },
                                                       "displayName": "Page__FlowText",
@@ -4960,9 +4960,9 @@ exports[`Index page should match snapshot 1`] = `
                                                   forwardedRef={null}
                                                 >
                                                   <p
-                                                    className="Page__FlowText-sc-1ix2o3i-4 jPvBGX"
+                                                    className="Page__FlowText-sc-1ix2o3i-4 eiQfss"
                                                   >
-                                                    A human coach grabs the replay and starts analysing the video
+                                                    A human coach grabs your replay and starts the analysis
                                                   </p>
                                                 </StyledComponent>
                                               </Page__FlowText>
@@ -5115,11 +5115,11 @@ exports[`Index page should match snapshot 1`] = `
                                                   "componentStyle": ComponentStyle {
                                                     "componentId": "Page__FlowImage-sc-1ix2o3i-18",
                                                     "isStatic": false,
-                                                    "lastClassName": "pMOVW",
+                                                    "lastClassName": "kcPHGe",
                                                     "rules": Array [
                                                       "background-image:url(",
                                                       [Function],
-                                                      ");background-size:contain;width:380px;height:240px;margin-bottom:150px;",
+                                                      ");background-size:contain;height:240px;margin-bottom:150px;width:380px;",
                                                     ],
                                                   },
                                                   "displayName": "Page__FlowImage",
@@ -5157,11 +5157,11 @@ exports[`Index page should match snapshot 1`] = `
                                               url="/images/step3-image.jpeg"
                                             >
                                               <Styled(div)
-                                                className="Page__FlowImage-sc-1ix2o3i-18 pMOVW"
+                                                className="Page__FlowImage-sc-1ix2o3i-18 kcPHGe"
                                                 url="/images/step3-image.jpeg"
                                               >
                                                 <div
-                                                  className="Page__FlowImage-sc-1ix2o3i-18 pMOVW css-vurnku"
+                                                  className="Page__FlowImage-sc-1ix2o3i-18 kcPHGe css-vurnku"
                                                 >
                                                   <Page__FlowImageTitle>
                                                     <StyledComponent
@@ -5208,11 +5208,11 @@ exports[`Index page should match snapshot 1`] = `
                                                           "componentStyle": ComponentStyle {
                                                             "componentId": "Page__FlowImageTitle-sc-1ix2o3i-20",
                                                             "isStatic": false,
-                                                            "lastClassName": "fIVPxj",
+                                                            "lastClassName": "cUeQkc",
                                                             "rules": Array [
-                                                              "text-align:center;height:44px;width:176px;background-color:",
+                                                              "background-color:",
                                                               [Function],
-                                                              ";color:black;padding:14px;font-weight:550;",
+                                                              ";color:black;font-weight:550;height:44px;padding:14px;text-align:center;width:176px;",
                                                             ],
                                                           },
                                                           "displayName": "Page__FlowImageTitle",
@@ -5249,10 +5249,10 @@ exports[`Index page should match snapshot 1`] = `
                                                       forwardedRef={null}
                                                     >
                                                       <Styled(div)
-                                                        className="Page__FlowImageTitle-sc-1ix2o3i-20 fIVPxj"
+                                                        className="Page__FlowImageTitle-sc-1ix2o3i-20 cUeQkc"
                                                       >
                                                         <div
-                                                          className="Page__FlowImageTitle-sc-1ix2o3i-20 fIVPxj css-vurnku"
+                                                          className="Page__FlowImageTitle-sc-1ix2o3i-20 cUeQkc css-vurnku"
                                                         >
                                                           Feedback
                                                         </div>
@@ -5372,11 +5372,11 @@ exports[`Index page should match snapshot 1`] = `
                                                   "componentStyle": ComponentStyle {
                                                     "componentId": "Page__SecondaryTitle-sc-1ix2o3i-1",
                                                     "isStatic": false,
-                                                    "lastClassName": "cWjFTx",
+                                                    "lastClassName": "fdgcUO",
                                                     "rules": Array [
-                                                      "font-family:\\"Japanese 3017\\";font-weight:normal;letter-spacing:3px;font-size:21px;color:",
+                                                      "color:",
                                                       [Function],
-                                                      ";",
+                                                      ";font-family:\\"Japanese 3017\\";font-size:21px;font-weight:normal;letter-spacing:3px;",
                                                     ],
                                                   },
                                                   "displayName": "Page__SecondaryTitle",
@@ -5392,7 +5392,7 @@ exports[`Index page should match snapshot 1`] = `
                                               forwardedRef={null}
                                             >
                                               <h2
-                                                className="Page__SecondaryTitle-sc-1ix2o3i-1 ebPtmU"
+                                                className="Page__SecondaryTitle-sc-1ix2o3i-1 lazgWO"
                                               >
                                                 Step 04
                                               </h2>
@@ -5408,11 +5408,11 @@ exports[`Index page should match snapshot 1`] = `
                                                     "componentStyle": ComponentStyle {
                                                       "componentId": "Page__OutsideCircle-sc-1ix2o3i-14",
                                                       "isStatic": false,
-                                                      "lastClassName": "fjcmiV",
+                                                      "lastClassName": "kBcQMm",
                                                       "rules": Array [
-                                                        "position:relative;background:transparent;border:1.5px solid ",
+                                                        "background:transparent;border-radius:50%;border:1.5px solid ",
                                                         [Function],
-                                                        ";border-radius:50%;padding:2px;height:50px;width:50px;box-sizing:content-box;margin-top:20px;margin-bottom:20px;",
+                                                        ";box-sizing:content-box;height:50px;margin-bottom:20px;margin-top:20px;padding:2px;position:relative;width:50px;",
                                                       ],
                                                     },
                                                     "displayName": "Page__OutsideCircle",
@@ -5428,7 +5428,7 @@ exports[`Index page should match snapshot 1`] = `
                                                 forwardedRef={null}
                                               >
                                                 <div
-                                                  className="Page__OutsideCircle-sc-1ix2o3i-14 fjcmiV"
+                                                  className="Page__OutsideCircle-sc-1ix2o3i-14 kBcQMm"
                                                 >
                                                   <Page__InsideCircle>
                                                     <StyledComponent
@@ -5439,11 +5439,11 @@ exports[`Index page should match snapshot 1`] = `
                                                           "componentStyle": ComponentStyle {
                                                             "componentId": "Page__InsideCircle-sc-1ix2o3i-15",
                                                             "isStatic": false,
-                                                            "lastClassName": "ckEgmv",
+                                                            "lastClassName": "gLnEDW",
                                                             "rules": Array [
                                                               "background:",
                                                               [Function],
-                                                              ";position:relative;border-radius:50%;line-height:50px;width:100%;vertical-align:middle;text-align:center;color:white;",
+                                                              ";border-radius:50%;color:white;line-height:50px;position:relative;text-align:center;vertical-align:middle;width:100%;",
                                                             ],
                                                           },
                                                           "displayName": "Page__InsideCircle",
@@ -5459,7 +5459,7 @@ exports[`Index page should match snapshot 1`] = `
                                                       forwardedRef={null}
                                                     >
                                                       <div
-                                                        className="Page__InsideCircle-sc-1ix2o3i-15 ckEgmv"
+                                                        className="Page__InsideCircle-sc-1ix2o3i-15 gLnEDW"
                                                       >
                                                         <Page__FlowStepIcon
                                                           src="/images/step4.png"
@@ -5472,9 +5472,9 @@ exports[`Index page should match snapshot 1`] = `
                                                                 "componentStyle": ComponentStyle {
                                                                   "componentId": "Page__FlowStepIcon-sc-1ix2o3i-25",
                                                                   "isStatic": false,
-                                                                  "lastClassName": "eRhYRW",
+                                                                  "lastClassName": "bLkAbE",
                                                                   "rules": Array [
-                                                                    "height:auto;width:50%;vertical-align:middle;text-align:center;",
+                                                                    "height:auto;text-align:center;vertical-align:middle;width:50%;",
                                                                   ],
                                                                 },
                                                                 "displayName": "Page__FlowStepIcon",
@@ -5491,7 +5491,7 @@ exports[`Index page should match snapshot 1`] = `
                                                             src="/images/step4.png"
                                                           >
                                                             <img
-                                                              className="Page__FlowStepIcon-sc-1ix2o3i-25 eRhYRW"
+                                                              className="Page__FlowStepIcon-sc-1ix2o3i-25 bLkAbE"
                                                               src="/images/step4.png"
                                                             />
                                                           </StyledComponent>
@@ -5516,9 +5516,9 @@ exports[`Index page should match snapshot 1`] = `
                                                       "componentStyle": ComponentStyle {
                                                         "componentId": "Page__FlowText-sc-1ix2o3i-4",
                                                         "isStatic": false,
-                                                        "lastClassName": "jPvBGX",
+                                                        "lastClassName": "eiQfss",
                                                         "rules": Array [
-                                                          "font-size:20px;margin-bottom:220px;line-height:20px;color:white;",
+                                                          "color:white;font-size:20px;line-height:20px;margin-bottom:220px;",
                                                         ],
                                                       },
                                                       "displayName": "Page__FlowText",
@@ -5534,9 +5534,9 @@ exports[`Index page should match snapshot 1`] = `
                                                   forwardedRef={null}
                                                 >
                                                   <p
-                                                    className="Page__FlowText-sc-1ix2o3i-4 jPvBGX"
+                                                    className="Page__FlowText-sc-1ix2o3i-4 eiQfss"
                                                   >
-                                                    The user is notified of the available review and can watch in his/her dashboard
+                                                    You are notified via mail of the available review and you can watch it in your dashboard
                                                   </p>
                                                 </StyledComponent>
                                               </Page__FlowText>
@@ -5673,87 +5673,74 @@ exports[`Index page should match snapshot 1`] = `
                                           className="css-fhe8qo"
                                         >
                                           <ButtonAlternative
+                                            href="#pricing"
                                             text="SEE PRICING"
                                           >
-                                            <ButtonAlternative__ButtonContent
-                                              type="button"
+                                            <Link
+                                              href="#pricing"
                                             >
-                                              <StyledComponent
-                                                forwardedComponent={
-                                                  Object {
-                                                    "$$typeof": Symbol(react.forward_ref),
-                                                    "attrs": Array [],
-                                                    "componentStyle": ComponentStyle {
-                                                      "componentId": "ButtonAlternative__ButtonContent-sc-4kmbfx-0",
-                                                      "isStatic": false,
-                                                      "lastClassName": "hsBMsh",
-                                                      "rules": Array [
-                                                        "&.",
-                                                        "bp3-button",
-                                                        "{",
-                                                        "display:inline-flex;border-radius:",
-                                                        [Function],
-                                                        ";color:white;transition:all 0.05s ease-in-out;background:",
-                                                        [Function],
-                                                        ";padding:10px 25px 10px 25px;font-size:15px;font-weight:bold;text-transform:uppercase;&:hover{background-image:linear-gradient( to bottom,",
-                                                        [Function],
-                                                        ",",
-                                                        [Function],
-                                                        " );color:",
-                                                        [Function],
-                                                        ";box-shadow:inset 0px -3px 0px 0px ",
-                                                        [Function],
-                                                        ";}&:active{background-image:linear-gradient( to bottom,",
-                                                        [Function],
-                                                        ",",
-                                                        [Function],
-                                                        " );box-shadow:inset 0px 3px 0px 0px ",
-                                                        [Function],
-                                                        ";padding-bottom:12px;margin-top:2px;}",
-                                                        " outline:none;font-family:",
-                                                        [Function],
-                                                        ";&:active{outline:none;}}",
-                                                      ],
-                                                    },
-                                                    "displayName": "ButtonAlternative__ButtonContent",
-                                                    "foldedComponentIds": Array [],
-                                                    "render": [Function],
-                                                    "styledComponentId": "ButtonAlternative__ButtonContent-sc-4kmbfx-0",
-                                                    "target": [Function],
-                                                    "toString": [Function],
-                                                    "warnTooManyClasses": [Function],
-                                                    "withComponent": [Function],
-                                                  }
-                                                }
-                                                forwardedRef={null}
-                                                type="button"
+                                              <ButtonAlternative__LinkContent
+                                                onClick={[Function]}
+                                                onMouseEnter={[Function]}
                                               >
-                                                <Blueprint3.Button
-                                                  className="ButtonAlternative__ButtonContent-sc-4kmbfx-0 hsBMsh"
-                                                  type="button"
+                                                <StyledComponent
+                                                  forwardedComponent={
+                                                    Object {
+                                                      "$$typeof": Symbol(react.forward_ref),
+                                                      "attrs": Array [],
+                                                      "componentStyle": ComponentStyle {
+                                                        "componentId": "ButtonAlternative__LinkContent-sc-4kmbfx-1",
+                                                        "isStatic": false,
+                                                        "lastClassName": "bufteu",
+                                                        "rules": Array [
+                                                          "display:inline-flex;border-radius:",
+                                                          [Function],
+                                                          ";color:white;transition:all 0.05s ease-in-out;background:",
+                                                          [Function],
+                                                          ";padding:10px 25px 10px 25px;font-size:15px;font-weight:bold;text-transform:uppercase;&:hover{background-image:linear-gradient( to bottom,",
+                                                          [Function],
+                                                          ",",
+                                                          [Function],
+                                                          " );color:",
+                                                          [Function],
+                                                          ";box-shadow:inset 0px -3px 0px 0px ",
+                                                          [Function],
+                                                          ";}&:active{background-image:linear-gradient( to bottom,",
+                                                          [Function],
+                                                          ",",
+                                                          [Function],
+                                                          " );box-shadow:inset 0px 3px 0px 0px ",
+                                                          [Function],
+                                                          ";padding-bottom:12px;margin-top:2px;}",
+                                                          " &:hover{text-decoration:none;color:",
+                                                          [Function],
+                                                          ";}",
+                                                        ],
+                                                      },
+                                                      "displayName": "ButtonAlternative__LinkContent",
+                                                      "foldedComponentIds": Array [],
+                                                      "render": [Function],
+                                                      "styledComponentId": "ButtonAlternative__LinkContent-sc-4kmbfx-1",
+                                                      "target": "a",
+                                                      "toString": [Function],
+                                                      "warnTooManyClasses": [Function],
+                                                      "withComponent": [Function],
+                                                    }
+                                                  }
+                                                  forwardedRef={[Function]}
+                                                  onClick={[Function]}
+                                                  onMouseEnter={[Function]}
                                                 >
-                                                  <button
-                                                    className="bp3-button ButtonAlternative__ButtonContent-sc-4kmbfx-0 hsBMsh"
-                                                    onKeyDown={[Function]}
-                                                    onKeyUp={[Function]}
-                                                    type="button"
+                                                  <a
+                                                    className="ButtonAlternative__LinkContent-sc-4kmbfx-1 bufteu"
+                                                    onClick={[Function]}
+                                                    onMouseEnter={[Function]}
                                                   >
-                                                    <Blueprint3.Icon
-                                                      key="leftIcon"
-                                                    />
-                                                    <span
-                                                      className="bp3-button-text"
-                                                      key="text"
-                                                    >
-                                                      SEE PRICING
-                                                    </span>
-                                                    <Blueprint3.Icon
-                                                      key="rightIcon"
-                                                    />
-                                                  </button>
-                                                </Blueprint3.Button>
-                                              </StyledComponent>
-                                            </ButtonAlternative__ButtonContent>
+                                                    SEE PRICING
+                                                  </a>
+                                                </StyledComponent>
+                                              </ButtonAlternative__LinkContent>
+                                            </Link>
                                           </ButtonAlternative>
                                         </div>
                                       </Styled(div)>
@@ -5819,9 +5806,9 @@ exports[`Index page should match snapshot 1`] = `
                       "componentStyle": ComponentStyle {
                         "componentId": "Page__TextCard-sc-1ix2o3i-13",
                         "isStatic": false,
-                        "lastClassName": "dFwqvI",
+                        "lastClassName": "hjWDii",
                         "rules": Array [
-                          "top:0;bottom:0;left:0;right:0;flex-grow:1;z-index:1;",
+                          "bottom:0;flex-grow:1;left:0;right:0;top:0;z-index:1;",
                         ],
                       },
                       "displayName": "Page__TextCard",
@@ -5859,13 +5846,14 @@ exports[`Index page should match snapshot 1`] = `
                   my={4}
                 >
                   <Styled(div)
-                    className="Page__TextCard-sc-1ix2o3i-13 dFwqvI"
+                    className="Page__TextCard-sc-1ix2o3i-13 hjWDii"
                     my={4}
                   >
                     <div
-                      className="Page__TextCard-sc-1ix2o3i-13 dFwqvI css-hi5zbn"
+                      className="Page__TextCard-sc-1ix2o3i-13 hjWDii css-hi5zbn"
                     >
                       <Styled(div)
+                        id="pricing"
                         mx="auto"
                         my={4}
                         style={
@@ -5877,6 +5865,7 @@ exports[`Index page should match snapshot 1`] = `
                       >
                         <div
                           className="css-1807qsz"
+                          id="pricing"
                           style={
                             Object {
                               "position": "relative",
@@ -5904,11 +5893,11 @@ exports[`Index page should match snapshot 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "Page__SecondaryTitle-sc-1ix2o3i-1",
                                             "isStatic": false,
-                                            "lastClassName": "cWjFTx",
+                                            "lastClassName": "fdgcUO",
                                             "rules": Array [
-                                              "font-family:\\"Japanese 3017\\";font-weight:normal;letter-spacing:3px;font-size:21px;color:",
+                                              "color:",
                                               [Function],
-                                              ";",
+                                              ";font-family:\\"Japanese 3017\\";font-size:21px;font-weight:normal;letter-spacing:3px;",
                                             ],
                                           },
                                           "displayName": "Page__SecondaryTitle",
@@ -5924,7 +5913,7 @@ exports[`Index page should match snapshot 1`] = `
                                       forwardedRef={null}
                                     >
                                       <h2
-                                        className="Page__SecondaryTitle-sc-1ix2o3i-1 ebPtmU"
+                                        className="Page__SecondaryTitle-sc-1ix2o3i-1 lazgWO"
                                       >
                                         Pricing
                                       </h2>
@@ -5939,9 +5928,9 @@ exports[`Index page should match snapshot 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "Page__MainTitle-sc-1ix2o3i-2",
                                             "isStatic": false,
-                                            "lastClassName": "UiTGC",
+                                            "lastClassName": "dxgBDO",
                                             "rules": Array [
-                                              "color:white;font-size:35px;font-weight:bold;margin-top:20px;margin-bottom:20px;",
+                                              "color:white;font-size:35px;font-weight:bold;margin-bottom:20px;margin-top:20px;",
                                             ],
                                           },
                                           "displayName": "Page__MainTitle",
@@ -5957,7 +5946,7 @@ exports[`Index page should match snapshot 1`] = `
                                       forwardedRef={null}
                                     >
                                       <h1
-                                        className="Page__MainTitle-sc-1ix2o3i-2 UiTGC"
+                                        className="Page__MainTitle-sc-1ix2o3i-2 dxgBDO"
                                       >
                                         We have a least Pricing Module
                                       </h1>
@@ -5980,9 +5969,9 @@ exports[`Index page should match snapshot 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "Page__ParagraphText-sc-1ix2o3i-3",
                                             "isStatic": false,
-                                            "lastClassName": "jQEIWt",
+                                            "lastClassName": "cyzhZC",
                                             "rules": Array [
-                                              "font-size:15px;margin-bottom:5px;line-height:20px;",
+                                              "font-size:15px;line-height:20px;margin-bottom:5px;",
                                             ],
                                           },
                                           "displayName": "Page__ParagraphText",
@@ -5998,9 +5987,9 @@ exports[`Index page should match snapshot 1`] = `
                                       forwardedRef={null}
                                     >
                                       <p
-                                        className="Page__ParagraphText-sc-1ix2o3i-3 jQEIWt"
+                                        className="Page__ParagraphText-sc-1ix2o3i-3 cyzhZC"
                                       >
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                                        Find above our pricing offer. Pro pricing may be subject to variations based on custom requests and top level coaches.
                                       </p>
                                     </StyledComponent>
                                   </Page__ParagraphText>
@@ -6272,11 +6261,11 @@ exports[`Index page should match snapshot 1`] = `
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "Page__SecondaryTitle-sc-1ix2o3i-1",
                                                   "isStatic": false,
-                                                  "lastClassName": "cWjFTx",
+                                                  "lastClassName": "fdgcUO",
                                                   "rules": Array [
-                                                    "font-family:\\"Japanese 3017\\";font-weight:normal;letter-spacing:3px;font-size:21px;color:",
+                                                    "color:",
                                                     [Function],
-                                                    ";",
+                                                    ";font-family:\\"Japanese 3017\\";font-size:21px;font-weight:normal;letter-spacing:3px;",
                                                   ],
                                                 },
                                                 "displayName": "Page__SecondaryTitle",
@@ -6292,7 +6281,7 @@ exports[`Index page should match snapshot 1`] = `
                                             forwardedRef={null}
                                           >
                                             <h2
-                                              className="Page__SecondaryTitle-sc-1ix2o3i-1 cWjFTx"
+                                              className="Page__SecondaryTitle-sc-1ix2o3i-1 fdgcUO"
                                               color="white"
                                             >
                                               Medium
@@ -6308,11 +6297,11 @@ exports[`Index page should match snapshot 1`] = `
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "Page__Price-sc-1ix2o3i-22",
                                                   "isStatic": false,
-                                                  "lastClassName": "kSkLuf",
+                                                  "lastClassName": "gruNOy",
                                                   "rules": Array [
-                                                    "background-color:",
+                                                    "align-items:center;background-color:",
                                                     [Function],
-                                                    ";border-top-right-radius:50px;border-bottom-right-radius:50px;margin-left:-20px;margin-top:30px;margin-bottom:20px;padding:16px 25px;color:white;display:inline-flex;align-items:center;span{display:block;font-weight:bold;font-size:20px;padding-right:5px;}span:last-child{display:block;font-size:12px;}",
+                                                    ";border-bottom-right-radius:50px;border-top-right-radius:50px;color:white;display:inline-flex;margin-bottom:20px;margin-left:-20px;margin-top:30px;padding:16px 25px;span{display:block;font-size:20px;font-weight:bold;padding-right:5px;}span:last-child{display:block;font-size:12px;}",
                                                   ],
                                                 },
                                                 "displayName": "Page__Price",
@@ -6328,7 +6317,7 @@ exports[`Index page should match snapshot 1`] = `
                                             forwardedRef={null}
                                           >
                                             <div
-                                              className="Page__Price-sc-1ix2o3i-22 kSkLuf"
+                                              className="Page__Price-sc-1ix2o3i-22 gruNOy"
                                             >
                                               <span>
                                                 $4.0
@@ -6351,11 +6340,11 @@ exports[`Index page should match snapshot 1`] = `
                                                     "componentStyle": ComponentStyle {
                                                       "componentId": "Page__PriceFeatureContent-sc-1ix2o3i-24",
                                                       "isStatic": false,
-                                                      "lastClassName": "jfPWEr",
+                                                      "lastClassName": "jwYIce",
                                                       "rules": Array [
-                                                        "display:inline-flex;align-items:center;color:",
+                                                        "align-items:center;color:",
                                                         [Function],
-                                                        ";font-size:14px;margin-bottom:25px;img{margin-right:10px;}",
+                                                        ";display:inline-flex;font-size:14px;margin-bottom:25px;img{margin-right:10px;}",
                                                       ],
                                                     },
                                                     "displayName": "Page__PriceFeatureContent",
@@ -6371,7 +6360,7 @@ exports[`Index page should match snapshot 1`] = `
                                                 forwardedRef={null}
                                               >
                                                 <span
-                                                  className="Page__PriceFeatureContent-sc-1ix2o3i-24 jfPWEr"
+                                                  className="Page__PriceFeatureContent-sc-1ix2o3i-24 jwYIce"
                                                 >
                                                   <img
                                                     src="/images/icon-check-circle-1.png"
@@ -6609,11 +6598,11 @@ exports[`Index page should match snapshot 1`] = `
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "Page__SecondaryTitle-sc-1ix2o3i-1",
                                                   "isStatic": false,
-                                                  "lastClassName": "cWjFTx",
+                                                  "lastClassName": "fdgcUO",
                                                   "rules": Array [
-                                                    "font-family:\\"Japanese 3017\\";font-weight:normal;letter-spacing:3px;font-size:21px;color:",
+                                                    "color:",
                                                     [Function],
-                                                    ";",
+                                                    ";font-family:\\"Japanese 3017\\";font-size:21px;font-weight:normal;letter-spacing:3px;",
                                                   ],
                                                 },
                                                 "displayName": "Page__SecondaryTitle",
@@ -6629,7 +6618,7 @@ exports[`Index page should match snapshot 1`] = `
                                             forwardedRef={null}
                                           >
                                             <h2
-                                              className="Page__SecondaryTitle-sc-1ix2o3i-1 cWjFTx"
+                                              className="Page__SecondaryTitle-sc-1ix2o3i-1 fdgcUO"
                                               color="white"
                                             >
                                               High
@@ -6645,11 +6634,11 @@ exports[`Index page should match snapshot 1`] = `
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "Page__Price-sc-1ix2o3i-22",
                                                   "isStatic": false,
-                                                  "lastClassName": "kSkLuf",
+                                                  "lastClassName": "gruNOy",
                                                   "rules": Array [
-                                                    "background-color:",
+                                                    "align-items:center;background-color:",
                                                     [Function],
-                                                    ";border-top-right-radius:50px;border-bottom-right-radius:50px;margin-left:-20px;margin-top:30px;margin-bottom:20px;padding:16px 25px;color:white;display:inline-flex;align-items:center;span{display:block;font-weight:bold;font-size:20px;padding-right:5px;}span:last-child{display:block;font-size:12px;}",
+                                                    ";border-bottom-right-radius:50px;border-top-right-radius:50px;color:white;display:inline-flex;margin-bottom:20px;margin-left:-20px;margin-top:30px;padding:16px 25px;span{display:block;font-size:20px;font-weight:bold;padding-right:5px;}span:last-child{display:block;font-size:12px;}",
                                                   ],
                                                 },
                                                 "displayName": "Page__Price",
@@ -6665,7 +6654,7 @@ exports[`Index page should match snapshot 1`] = `
                                             forwardedRef={null}
                                           >
                                             <div
-                                              className="Page__Price-sc-1ix2o3i-22 kSkLuf"
+                                              className="Page__Price-sc-1ix2o3i-22 gruNOy"
                                             >
                                               <span>
                                                 $6.0
@@ -6688,11 +6677,11 @@ exports[`Index page should match snapshot 1`] = `
                                                     "componentStyle": ComponentStyle {
                                                       "componentId": "Page__PriceFeatureContent-sc-1ix2o3i-24",
                                                       "isStatic": false,
-                                                      "lastClassName": "jfPWEr",
+                                                      "lastClassName": "jwYIce",
                                                       "rules": Array [
-                                                        "display:inline-flex;align-items:center;color:",
+                                                        "align-items:center;color:",
                                                         [Function],
-                                                        ";font-size:14px;margin-bottom:25px;img{margin-right:10px;}",
+                                                        ";display:inline-flex;font-size:14px;margin-bottom:25px;img{margin-right:10px;}",
                                                       ],
                                                     },
                                                     "displayName": "Page__PriceFeatureContent",
@@ -6708,14 +6697,14 @@ exports[`Index page should match snapshot 1`] = `
                                                 forwardedRef={null}
                                               >
                                                 <span
-                                                  className="Page__PriceFeatureContent-sc-1ix2o3i-24 jfPWEr"
+                                                  className="Page__PriceFeatureContent-sc-1ix2o3i-24 jwYIce"
                                                 >
                                                   <img
                                                     src="/images/icon-check-circle-1.png"
                                                     width="20"
                                                   />
                                                    
-                                                  Above 5k MMR
+                                                  5k MMR or above
                                                 </span>
                                               </StyledComponent>
                                             </Page__PriceFeatureContent>
@@ -6946,11 +6935,11 @@ exports[`Index page should match snapshot 1`] = `
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "Page__SecondaryTitle-sc-1ix2o3i-1",
                                                   "isStatic": false,
-                                                  "lastClassName": "cWjFTx",
+                                                  "lastClassName": "fdgcUO",
                                                   "rules": Array [
-                                                    "font-family:\\"Japanese 3017\\";font-weight:normal;letter-spacing:3px;font-size:21px;color:",
+                                                    "color:",
                                                     [Function],
-                                                    ";",
+                                                    ";font-family:\\"Japanese 3017\\";font-size:21px;font-weight:normal;letter-spacing:3px;",
                                                   ],
                                                 },
                                                 "displayName": "Page__SecondaryTitle",
@@ -6966,7 +6955,7 @@ exports[`Index page should match snapshot 1`] = `
                                             forwardedRef={null}
                                           >
                                             <h2
-                                              className="Page__SecondaryTitle-sc-1ix2o3i-1 cWjFTx"
+                                              className="Page__SecondaryTitle-sc-1ix2o3i-1 fdgcUO"
                                               color="white"
                                             >
                                               Very High
@@ -6982,11 +6971,11 @@ exports[`Index page should match snapshot 1`] = `
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "Page__Price-sc-1ix2o3i-22",
                                                   "isStatic": false,
-                                                  "lastClassName": "kSkLuf",
+                                                  "lastClassName": "gruNOy",
                                                   "rules": Array [
-                                                    "background-color:",
+                                                    "align-items:center;background-color:",
                                                     [Function],
-                                                    ";border-top-right-radius:50px;border-bottom-right-radius:50px;margin-left:-20px;margin-top:30px;margin-bottom:20px;padding:16px 25px;color:white;display:inline-flex;align-items:center;span{display:block;font-weight:bold;font-size:20px;padding-right:5px;}span:last-child{display:block;font-size:12px;}",
+                                                    ";border-bottom-right-radius:50px;border-top-right-radius:50px;color:white;display:inline-flex;margin-bottom:20px;margin-left:-20px;margin-top:30px;padding:16px 25px;span{display:block;font-size:20px;font-weight:bold;padding-right:5px;}span:last-child{display:block;font-size:12px;}",
                                                   ],
                                                 },
                                                 "displayName": "Page__Price",
@@ -7002,7 +6991,7 @@ exports[`Index page should match snapshot 1`] = `
                                             forwardedRef={null}
                                           >
                                             <div
-                                              className="Page__Price-sc-1ix2o3i-22 kSkLuf"
+                                              className="Page__Price-sc-1ix2o3i-22 gruNOy"
                                             >
                                               <span>
                                                 $8.0
@@ -7025,11 +7014,11 @@ exports[`Index page should match snapshot 1`] = `
                                                     "componentStyle": ComponentStyle {
                                                       "componentId": "Page__PriceFeatureContent-sc-1ix2o3i-24",
                                                       "isStatic": false,
-                                                      "lastClassName": "jfPWEr",
+                                                      "lastClassName": "jwYIce",
                                                       "rules": Array [
-                                                        "display:inline-flex;align-items:center;color:",
+                                                        "align-items:center;color:",
                                                         [Function],
-                                                        ";font-size:14px;margin-bottom:25px;img{margin-right:10px;}",
+                                                        ";display:inline-flex;font-size:14px;margin-bottom:25px;img{margin-right:10px;}",
                                                       ],
                                                     },
                                                     "displayName": "Page__PriceFeatureContent",
@@ -7045,14 +7034,14 @@ exports[`Index page should match snapshot 1`] = `
                                                 forwardedRef={null}
                                               >
                                                 <span
-                                                  className="Page__PriceFeatureContent-sc-1ix2o3i-24 jfPWEr"
+                                                  className="Page__PriceFeatureContent-sc-1ix2o3i-24 jwYIce"
                                                 >
                                                   <img
                                                     src="/images/icon-check-circle-1.png"
                                                     width="20"
                                                   />
                                                    
-                                                  Above 6k MMR
+                                                  6k MMR or above
                                                 </span>
                                               </StyledComponent>
                                             </Page__PriceFeatureContent>
@@ -7283,11 +7272,11 @@ exports[`Index page should match snapshot 1`] = `
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "Page__SecondaryTitle-sc-1ix2o3i-1",
                                                   "isStatic": false,
-                                                  "lastClassName": "cWjFTx",
+                                                  "lastClassName": "fdgcUO",
                                                   "rules": Array [
-                                                    "font-family:\\"Japanese 3017\\";font-weight:normal;letter-spacing:3px;font-size:21px;color:",
+                                                    "color:",
                                                     [Function],
-                                                    ";",
+                                                    ";font-family:\\"Japanese 3017\\";font-size:21px;font-weight:normal;letter-spacing:3px;",
                                                   ],
                                                 },
                                                 "displayName": "Page__SecondaryTitle",
@@ -7303,7 +7292,7 @@ exports[`Index page should match snapshot 1`] = `
                                             forwardedRef={null}
                                           >
                                             <h2
-                                              className="Page__SecondaryTitle-sc-1ix2o3i-1 cWjFTx"
+                                              className="Page__SecondaryTitle-sc-1ix2o3i-1 fdgcUO"
                                               color="white"
                                             >
                                               Pro
@@ -7319,11 +7308,11 @@ exports[`Index page should match snapshot 1`] = `
                                                 "componentStyle": ComponentStyle {
                                                   "componentId": "Page__Price-sc-1ix2o3i-22",
                                                   "isStatic": false,
-                                                  "lastClassName": "kSkLuf",
+                                                  "lastClassName": "gruNOy",
                                                   "rules": Array [
-                                                    "background-color:",
+                                                    "align-items:center;background-color:",
                                                     [Function],
-                                                    ";border-top-right-radius:50px;border-bottom-right-radius:50px;margin-left:-20px;margin-top:30px;margin-bottom:20px;padding:16px 25px;color:white;display:inline-flex;align-items:center;span{display:block;font-weight:bold;font-size:20px;padding-right:5px;}span:last-child{display:block;font-size:12px;}",
+                                                    ";border-bottom-right-radius:50px;border-top-right-radius:50px;color:white;display:inline-flex;margin-bottom:20px;margin-left:-20px;margin-top:30px;padding:16px 25px;span{display:block;font-size:20px;font-weight:bold;padding-right:5px;}span:last-child{display:block;font-size:12px;}",
                                                   ],
                                                 },
                                                 "displayName": "Page__Price",
@@ -7339,7 +7328,7 @@ exports[`Index page should match snapshot 1`] = `
                                             forwardedRef={null}
                                           >
                                             <div
-                                              className="Page__Price-sc-1ix2o3i-22 kSkLuf"
+                                              className="Page__Price-sc-1ix2o3i-22 gruNOy"
                                             >
                                               <span>
                                                 $10.0
@@ -7362,11 +7351,11 @@ exports[`Index page should match snapshot 1`] = `
                                                     "componentStyle": ComponentStyle {
                                                       "componentId": "Page__PriceFeatureContent-sc-1ix2o3i-24",
                                                       "isStatic": false,
-                                                      "lastClassName": "jfPWEr",
+                                                      "lastClassName": "jwYIce",
                                                       "rules": Array [
-                                                        "display:inline-flex;align-items:center;color:",
+                                                        "align-items:center;color:",
                                                         [Function],
-                                                        ";font-size:14px;margin-bottom:25px;img{margin-right:10px;}",
+                                                        ";display:inline-flex;font-size:14px;margin-bottom:25px;img{margin-right:10px;}",
                                                       ],
                                                     },
                                                     "displayName": "Page__PriceFeatureContent",
@@ -7382,14 +7371,14 @@ exports[`Index page should match snapshot 1`] = `
                                                 forwardedRef={null}
                                               >
                                                 <span
-                                                  className="Page__PriceFeatureContent-sc-1ix2o3i-24 jfPWEr"
+                                                  className="Page__PriceFeatureContent-sc-1ix2o3i-24 jwYIce"
                                                 >
                                                   <img
                                                     src="/images/icon-check-circle-1.png"
                                                     width="20"
                                                   />
                                                    
-                                                  Above 7k MMR
+                                                  7k MMR or above
                                                 </span>
                                               </StyledComponent>
                                             </Page__PriceFeatureContent>
@@ -7741,11 +7730,11 @@ exports[`Index page should match snapshot 1`] = `
                                                 </StyledComponent>
                                               </Footer__FooterTitle>
                                               <LinkDark
-                                                href="/"
+                                                href="/about-us"
                                                 mt={4}
                                               >
                                                 <Link
-                                                  href="/"
+                                                  href="/about-us"
                                                 >
                                                   <LinkDark__Content
                                                     mt={4}
@@ -7858,10 +7847,10 @@ exports[`Index page should match snapshot 1`] = `
                                                 </Link>
                                               </LinkDark>
                                               <LinkDark
-                                                href="/"
+                                                href="/careers"
                                               >
                                                 <Link
-                                                  href="/"
+                                                  href="/careers"
                                                 >
                                                   <LinkDark__Content
                                                     onClick={[Function]}
@@ -7963,7 +7952,7 @@ exports[`Index page should match snapshot 1`] = `
                                                           onClick={[Function]}
                                                           onMouseEnter={[Function]}
                                                         >
-                                                          Jobs
+                                                          Careers
                                                         </div>
                                                       </Styled(div)>
                                                     </StyledComponent>
@@ -8084,10 +8073,10 @@ exports[`Index page should match snapshot 1`] = `
                                                 </Link>
                                               </LinkDark>
                                               <LinkDark
-                                                href="/"
+                                                href="/press-inquiries"
                                               >
                                                 <Link
-                                                  href="/"
+                                                  href="/press-inquiries"
                                                 >
                                                   <LinkDark__Content
                                                     onClick={[Function]}
@@ -8468,10 +8457,10 @@ exports[`Index page should match snapshot 1`] = `
                                                 </Link>
                                               </LinkDark>
                                               <LinkDark
-                                                href="/"
+                                                href="/faq"
                                               >
                                                 <Link
-                                                  href="/"
+                                                  href="/faq"
                                                 >
                                                   <LinkDark__Content
                                                     onClick={[Function]}
@@ -8735,11 +8724,11 @@ exports[`Index page should match snapshot 1`] = `
                                                 </StyledComponent>
                                               </Footer__FooterTitle>
                                               <LinkDark
-                                                href="/"
+                                                href="/become-a-coach"
                                                 mt={4}
                                               >
                                                 <Link
-                                                  href="/"
+                                                  href="/become-a-coach"
                                                 >
                                                   <LinkDark__Content
                                                     mt={4}
@@ -8844,7 +8833,7 @@ exports[`Index page should match snapshot 1`] = `
                                                           onClick={[Function]}
                                                           onMouseEnter={[Function]}
                                                         >
-                                                          Customer Reviews
+                                                          Become a Coach
                                                         </div>
                                                       </Styled(div)>
                                                     </StyledComponent>
@@ -8852,10 +8841,10 @@ exports[`Index page should match snapshot 1`] = `
                                                 </Link>
                                               </LinkDark>
                                               <LinkDark
-                                                href="/become-a-coach"
+                                                href="/customer-reviews"
                                               >
                                                 <Link
-                                                  href="/become-a-coach"
+                                                  href="/customer-reviews"
                                                 >
                                                   <LinkDark__Content
                                                     onClick={[Function]}
@@ -8957,7 +8946,7 @@ exports[`Index page should match snapshot 1`] = `
                                                           onClick={[Function]}
                                                           onMouseEnter={[Function]}
                                                         >
-                                                          Become a Coach
+                                                          Customer Reviews
                                                         </div>
                                                       </Styled(div)>
                                                     </StyledComponent>
@@ -9196,119 +9185,49 @@ exports[`Index page should match snapshot 1`] = `
                                                     >
                                                       Need help? Email us at
                                                        
-                                                      <LinkBold
+                                                      <LinkMailBold
                                                         href="mailto:support@gamejitsu.gg"
                                                       >
-                                                        <Link
+                                                        <LinkMailBold__Content
                                                           href="mailto:support@gamejitsu.gg"
                                                         >
-                                                          <LinkBold__Content
-                                                            onClick={[Function]}
-                                                            onMouseEnter={[Function]}
-                                                          >
-                                                            <StyledComponent
-                                                              forwardedComponent={
-                                                                Object {
-                                                                  "$$typeof": Symbol(react.forward_ref),
-                                                                  "__emotion_base": "div",
-                                                                  "__emotion_forwardProp": [Function],
-                                                                  "__emotion_real": Object {
-                                                                    "$$typeof": Symbol(react.forward_ref),
-                                                                    "__emotion_base": "div",
-                                                                    "__emotion_forwardProp": [Function],
-                                                                    "__emotion_real": [Circular],
-                                                                    "__emotion_styles": Array [
-                                                                      Object {
-                                                                        "boxSizing": "border-box",
-                                                                        "margin": 0,
-                                                                        "minWidth": 0,
-                                                                      },
-                                                                      [Function],
-                                                                      [Function],
-                                                                      [Function],
-                                                                      [Function],
-                                                                      [Function],
-                                                                    ],
-                                                                    "defaultProps": undefined,
-                                                                    "displayName": "Styled(div)",
-                                                                    "render": [Function],
-                                                                    "withComponent": [Function],
-                                                                  },
-                                                                  "__emotion_styles": Array [
-                                                                    Object {
-                                                                      "boxSizing": "border-box",
-                                                                      "margin": 0,
-                                                                      "minWidth": 0,
-                                                                    },
+                                                          <StyledComponent
+                                                            forwardedComponent={
+                                                              Object {
+                                                                "$$typeof": Symbol(react.forward_ref),
+                                                                "attrs": Array [],
+                                                                "componentStyle": ComponentStyle {
+                                                                  "componentId": "LinkMailBold__Content-sc-1iiohhx-0",
+                                                                  "isStatic": false,
+                                                                  "lastClassName": "jrlVRp",
+                                                                  "rules": Array [
+                                                                    "color:white;font-weight:bold;cursor:pointer;&:hover{text-decoration:none;color:",
                                                                     [Function],
-                                                                    [Function],
-                                                                    [Function],
-                                                                    [Function],
-                                                                    [Function],
+                                                                    ";}",
                                                                   ],
-                                                                  "attrs": Array [],
-                                                                  "componentStyle": ComponentStyle {
-                                                                    "componentId": "LinkBold__Content-sc-1mrnjt4-0",
-                                                                    "isStatic": false,
-                                                                    "lastClassName": "csHleS",
-                                                                    "rules": Array [
-                                                                      "color:white;font-weight:bold;display:inline;cursor:pointer;&:hover{text-decoration:none;color:",
-                                                                      [Function],
-                                                                      ";}",
-                                                                    ],
-                                                                  },
-                                                                  "displayName": "LinkBold__Content",
-                                                                  "foldedComponentIds": Array [],
-                                                                  "render": [Function],
-                                                                  "styledComponentId": "LinkBold__Content-sc-1mrnjt4-0",
-                                                                  "target": Object {
-                                                                    "$$typeof": Symbol(react.forward_ref),
-                                                                    "__emotion_base": "div",
-                                                                    "__emotion_forwardProp": [Function],
-                                                                    "__emotion_real": [Circular],
-                                                                    "__emotion_styles": Array [
-                                                                      Object {
-                                                                        "boxSizing": "border-box",
-                                                                        "margin": 0,
-                                                                        "minWidth": 0,
-                                                                      },
-                                                                      [Function],
-                                                                      [Function],
-                                                                      [Function],
-                                                                      [Function],
-                                                                      [Function],
-                                                                    ],
-                                                                    "defaultProps": undefined,
-                                                                    "displayName": "Styled(div)",
-                                                                    "render": [Function],
-                                                                    "withComponent": [Function],
-                                                                  },
-                                                                  "toString": [Function],
-                                                                  "warnTooManyClasses": [Function],
-                                                                  "withComponent": [Function],
-                                                                }
+                                                                },
+                                                                "displayName": "LinkMailBold__Content",
+                                                                "foldedComponentIds": Array [],
+                                                                "render": [Function],
+                                                                "styledComponentId": "LinkMailBold__Content-sc-1iiohhx-0",
+                                                                "target": "a",
+                                                                "toString": [Function],
+                                                                "warnTooManyClasses": [Function],
+                                                                "withComponent": [Function],
                                                               }
-                                                              forwardedRef={[Function]}
-                                                              onClick={[Function]}
-                                                              onMouseEnter={[Function]}
+                                                            }
+                                                            forwardedRef={null}
+                                                            href="mailto:support@gamejitsu.gg"
+                                                          >
+                                                            <a
+                                                              className="LinkMailBold__Content-sc-1iiohhx-0 jrlVRp"
+                                                              href="mailto:support@gamejitsu.gg"
                                                             >
-                                                              <Styled(div)
-                                                                className="LinkBold__Content-sc-1mrnjt4-0 csHleS"
-                                                                onClick={[Function]}
-                                                                onMouseEnter={[Function]}
-                                                              >
-                                                                <div
-                                                                  className="LinkBold__Content-sc-1mrnjt4-0 csHleS css-vurnku"
-                                                                  onClick={[Function]}
-                                                                  onMouseEnter={[Function]}
-                                                                >
-                                                                  support@gamejitsu.gg
-                                                                </div>
-                                                              </Styled(div)>
-                                                            </StyledComponent>
-                                                          </LinkBold__Content>
-                                                        </Link>
-                                                      </LinkBold>
+                                                              support@gamejitsu.gg
+                                                            </a>
+                                                          </StyledComponent>
+                                                        </LinkMailBold__Content>
+                                                      </LinkMailBold>
                                                     </div>
                                                   </Styled(div)>
                                                 </StyledComponent>
@@ -9406,119 +9325,49 @@ exports[`Index page should match snapshot 1`] = `
                                                     >
                                                       Are you a Streamer/You Tuber/High Ranked?
                                                        
-                                                      <LinkBold
-                                                        href="/"
+                                                      <LinkMailBold
+                                                        href="mailto:support@gamejitsu.gg"
                                                       >
-                                                        <Link
-                                                          href="/"
+                                                        <LinkMailBold__Content
+                                                          href="mailto:support@gamejitsu.gg"
                                                         >
-                                                          <LinkBold__Content
-                                                            onClick={[Function]}
-                                                            onMouseEnter={[Function]}
-                                                          >
-                                                            <StyledComponent
-                                                              forwardedComponent={
-                                                                Object {
-                                                                  "$$typeof": Symbol(react.forward_ref),
-                                                                  "__emotion_base": "div",
-                                                                  "__emotion_forwardProp": [Function],
-                                                                  "__emotion_real": Object {
-                                                                    "$$typeof": Symbol(react.forward_ref),
-                                                                    "__emotion_base": "div",
-                                                                    "__emotion_forwardProp": [Function],
-                                                                    "__emotion_real": [Circular],
-                                                                    "__emotion_styles": Array [
-                                                                      Object {
-                                                                        "boxSizing": "border-box",
-                                                                        "margin": 0,
-                                                                        "minWidth": 0,
-                                                                      },
-                                                                      [Function],
-                                                                      [Function],
-                                                                      [Function],
-                                                                      [Function],
-                                                                      [Function],
-                                                                    ],
-                                                                    "defaultProps": undefined,
-                                                                    "displayName": "Styled(div)",
-                                                                    "render": [Function],
-                                                                    "withComponent": [Function],
-                                                                  },
-                                                                  "__emotion_styles": Array [
-                                                                    Object {
-                                                                      "boxSizing": "border-box",
-                                                                      "margin": 0,
-                                                                      "minWidth": 0,
-                                                                    },
+                                                          <StyledComponent
+                                                            forwardedComponent={
+                                                              Object {
+                                                                "$$typeof": Symbol(react.forward_ref),
+                                                                "attrs": Array [],
+                                                                "componentStyle": ComponentStyle {
+                                                                  "componentId": "LinkMailBold__Content-sc-1iiohhx-0",
+                                                                  "isStatic": false,
+                                                                  "lastClassName": "jrlVRp",
+                                                                  "rules": Array [
+                                                                    "color:white;font-weight:bold;cursor:pointer;&:hover{text-decoration:none;color:",
                                                                     [Function],
-                                                                    [Function],
-                                                                    [Function],
-                                                                    [Function],
-                                                                    [Function],
+                                                                    ";}",
                                                                   ],
-                                                                  "attrs": Array [],
-                                                                  "componentStyle": ComponentStyle {
-                                                                    "componentId": "LinkBold__Content-sc-1mrnjt4-0",
-                                                                    "isStatic": false,
-                                                                    "lastClassName": "csHleS",
-                                                                    "rules": Array [
-                                                                      "color:white;font-weight:bold;display:inline;cursor:pointer;&:hover{text-decoration:none;color:",
-                                                                      [Function],
-                                                                      ";}",
-                                                                    ],
-                                                                  },
-                                                                  "displayName": "LinkBold__Content",
-                                                                  "foldedComponentIds": Array [],
-                                                                  "render": [Function],
-                                                                  "styledComponentId": "LinkBold__Content-sc-1mrnjt4-0",
-                                                                  "target": Object {
-                                                                    "$$typeof": Symbol(react.forward_ref),
-                                                                    "__emotion_base": "div",
-                                                                    "__emotion_forwardProp": [Function],
-                                                                    "__emotion_real": [Circular],
-                                                                    "__emotion_styles": Array [
-                                                                      Object {
-                                                                        "boxSizing": "border-box",
-                                                                        "margin": 0,
-                                                                        "minWidth": 0,
-                                                                      },
-                                                                      [Function],
-                                                                      [Function],
-                                                                      [Function],
-                                                                      [Function],
-                                                                      [Function],
-                                                                    ],
-                                                                    "defaultProps": undefined,
-                                                                    "displayName": "Styled(div)",
-                                                                    "render": [Function],
-                                                                    "withComponent": [Function],
-                                                                  },
-                                                                  "toString": [Function],
-                                                                  "warnTooManyClasses": [Function],
-                                                                  "withComponent": [Function],
-                                                                }
+                                                                },
+                                                                "displayName": "LinkMailBold__Content",
+                                                                "foldedComponentIds": Array [],
+                                                                "render": [Function],
+                                                                "styledComponentId": "LinkMailBold__Content-sc-1iiohhx-0",
+                                                                "target": "a",
+                                                                "toString": [Function],
+                                                                "warnTooManyClasses": [Function],
+                                                                "withComponent": [Function],
                                                               }
-                                                              forwardedRef={[Function]}
-                                                              onClick={[Function]}
-                                                              onMouseEnter={[Function]}
+                                                            }
+                                                            forwardedRef={null}
+                                                            href="mailto:support@gamejitsu.gg"
+                                                          >
+                                                            <a
+                                                              className="LinkMailBold__Content-sc-1iiohhx-0 jrlVRp"
+                                                              href="mailto:support@gamejitsu.gg"
                                                             >
-                                                              <Styled(div)
-                                                                className="LinkBold__Content-sc-1mrnjt4-0 csHleS"
-                                                                onClick={[Function]}
-                                                                onMouseEnter={[Function]}
-                                                              >
-                                                                <div
-                                                                  className="LinkBold__Content-sc-1mrnjt4-0 csHleS css-vurnku"
-                                                                  onClick={[Function]}
-                                                                  onMouseEnter={[Function]}
-                                                                >
-                                                                  Apply for Partnership
-                                                                </div>
-                                                              </Styled(div)>
-                                                            </StyledComponent>
-                                                          </LinkBold__Content>
-                                                        </Link>
-                                                      </LinkBold>
+                                                              Apply for Partnership
+                                                            </a>
+                                                          </StyledComponent>
+                                                        </LinkMailBold__Content>
+                                                      </LinkMailBold>
                                                     </div>
                                                   </Styled(div)>
                                                 </StyledComponent>
@@ -9678,11 +9527,11 @@ exports[`Index page should match snapshot 1`] = `
                                                   className="css-12zjy6j"
                                                 >
                                                   <LinkSocialIcon
-                                                    href="/"
+                                                    href="https://twitter.com/gamejitsu"
                                                     src="/images/social-media-twitter.svg"
                                                   >
                                                     <a
-                                                      href="/"
+                                                      href="https://twitter.com/gamejitsu"
                                                     >
                                                       <LinkSocialIcon__SocialNetworkBarIcon
                                                         src="/images/social-media-twitter.svg"
@@ -9840,11 +9689,11 @@ exports[`Index page should match snapshot 1`] = `
                                                   className="css-12zjy6j"
                                                 >
                                                   <LinkSocialIcon
-                                                    href="/"
+                                                    href="https://www.youtube.com/channel/UCcq2lVhkuGt1J7v3xh_Nkng"
                                                     src="/images/social-video-youtube-clip.svg"
                                                   >
                                                     <a
-                                                      href="/"
+                                                      href="https://www.youtube.com/channel/UCcq2lVhkuGt1J7v3xh_Nkng"
                                                     >
                                                       <LinkSocialIcon__SocialNetworkBarIcon
                                                         src="/images/social-video-youtube-clip.svg"

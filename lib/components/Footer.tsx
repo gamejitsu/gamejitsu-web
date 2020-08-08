@@ -2,7 +2,8 @@ import styled from "styled-components"
 
 import { FunctionComponent } from "react"
 import { Box, Flex } from "rebass"
-import { LinkDark, LinkMailBold, LinkBold, LinkSocialIcon } from "."
+import { LinkDark, LinkSocialIcon } from "."
+import LinkMailBold from "gamejitsu/components/LinkMailBold"
 
 interface Props {}
 
@@ -81,12 +82,12 @@ const Footer: FunctionComponent<Props> = () => (
           <Flex justifyContent="center">
             <Box flex="1 1 0">
               <FooterTitle>COMPANY</FooterTitle>
-              <LinkDark href="/" mt={4}>
+              <LinkDark href="/about-us" mt={4}>
                 About us
               </LinkDark>
-              <LinkDark href="/">Jobs</LinkDark>
+              <LinkDark href="/careers">Careers</LinkDark>
               <LinkDark href="/terms-of-use">Site Term of Use</LinkDark>
-              <LinkDark href="/">Press Inquiries</LinkDark>
+              <LinkDark href="/press-inquiries">Press Inquiries</LinkDark>
             </Box>
             <Box flex="1 1 0">
               <FooterTitle>SUPPORT</FooterTitle>
@@ -94,15 +95,15 @@ const Footer: FunctionComponent<Props> = () => (
                 Privacy Policy
               </LinkDark>
               <LinkDark href="/terms-of-use">Terms of Use</LinkDark>
-              <LinkDark href="/">FAQ</LinkDark>
+              <LinkDark href="/faq">FAQ</LinkDark>
               <LinkDark href="/security">Security</LinkDark>
             </Box>
             <Box flex="1 1 0">
               <FooterTitle>COACHES</FooterTitle>
-              <LinkDark href="/" mt={4}>
-                Customer Reviews
+              <LinkDark href="/become-a-coach" mt={4}>
+                Become a Coach
               </LinkDark>
-              <LinkDark href="/become-a-coach">Become a Coach</LinkDark>
+              <LinkDark href="/customer-reviews">Customer Reviews</LinkDark>
             </Box>
             <Box ml={20}>
               <FooterTitle>CONTACT US</FooterTitle>
@@ -113,7 +114,9 @@ const Footer: FunctionComponent<Props> = () => (
               </FooterText>
               <FooterText>
                 Are you a Streamer/You Tuber/High Ranked?{" "}
-                <LinkBold href="/">Apply for Partnership</LinkBold>
+                <LinkMailBold href="mailto:support@gamejitsu.gg">
+                  Apply for Partnership
+                </LinkMailBold>
               </FooterText>
             </Box>
           </Flex>
@@ -121,7 +124,10 @@ const Footer: FunctionComponent<Props> = () => (
           <SocialNetworkBar mt={4}>
             <Box mr="auto">© Copyright 2020 Gamejitsu. All Rights Reserved.</Box>
             <Box mr={4}>
-              <LinkSocialIcon href="/" src="/images/social-media-twitter.svg" />
+              <LinkSocialIcon
+                href="https://twitter.com/gamejitsu"
+                src="/images/social-media-twitter.svg"
+              />
             </Box>
             <Box mr={4}>
               <LinkSocialIcon
@@ -136,7 +142,10 @@ const Footer: FunctionComponent<Props> = () => (
               />
             </Box>
             <Box mr={4}>
-              <LinkSocialIcon href="/" src="/images/social-video-youtube-clip.svg" />
+              <LinkSocialIcon
+                href="https://www.youtube.com/channel/UCcq2lVhkuGt1J7v3xh_Nkng"
+                src="/images/social-video-youtube-clip.svg"
+              />
             </Box>
             <Box mr={4}>
               <LinkSocialIcon
