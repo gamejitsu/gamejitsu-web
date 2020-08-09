@@ -20,7 +20,7 @@ const baseStyles = css`
 
   background: ${(props) => props.theme.lightBackgroundColor};
 
-  padding: 10px 25px 10px 25px;
+  padding: 15px 30px 15px 30px;
   font-size: 15px;
   font-weight: bold;
   text-transform: uppercase;

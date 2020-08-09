@@ -10,10 +10,8 @@ import LinkLeftMenu from "./LinkLeftMenu"
 import CoachDashboardSVG from "../../svgs/coach-dashboard.svg"
 import AnalysisCompletedSVG from "../../svgs/analysis-completed.svg"
 import SettingsSVG from "../../svgs/settings.svg"
-import ImageButton from "./ImageButton"
 
 const companyName = "Gamejitsu"
-const gamejitsuWritingImageSrc = "/images/gamejitsu-writing.svg"
 
 interface Props {
   title?: string
@@ -68,12 +66,6 @@ const MenuTitle = styled(Box)`
   font-size: 15px;
   color: white;
   font-weight: bold;
-`
-
-const LinksContainer = styled(Flex)`
-  flex-direction: column;
-  display: flex;
-  margin: 0;
 `
 
 const Wrapper = styled(Flex)`
