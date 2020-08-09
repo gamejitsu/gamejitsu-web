@@ -30,6 +30,7 @@ const CoachSettings: NextPage = () => {
         <Box>Skill Level: {user?.coach.skillLevel}</Box>
         <Box>Email: {user?.coach.email}</Box>
         <Box>Photo Url: {user?.coach.photoUrl}</Box>
+        <Box>Approved: {user?.coach.isApproved.toString()}</Box>
       </EmptyReviews>
     </LayoutWithMenu>
   )

@@ -10,7 +10,6 @@ import { UserContext } from "gamejitsu/contexts"
 
 const Auth: NextPage = () => {
   const user = useContext(UserContext)
-  console.log("user auth:", user)
   useEffect(() => {
     user?.coachId ? Router.push("/coach-dashboard") : Router.push("/dashboard")
   })

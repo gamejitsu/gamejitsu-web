@@ -5675,6 +5675,7 @@ exports[`Index page should match snapshot 1`] = `
                                           <ButtonAlternative
                                             href="#pricing"
                                             text="SEE PRICING"
+                                            type="button"
                                           >
                                             <Link
                                               href="#pricing"
@@ -5691,13 +5692,13 @@ exports[`Index page should match snapshot 1`] = `
                                                       "componentStyle": ComponentStyle {
                                                         "componentId": "ButtonAlternative__LinkContent-sc-4kmbfx-1",
                                                         "isStatic": false,
-                                                        "lastClassName": "bufteu",
+                                                        "lastClassName": "dtIfBH",
                                                         "rules": Array [
                                                           "display:inline-flex;border-radius:",
                                                           [Function],
                                                           ";color:white;transition:all 0.05s ease-in-out;background:",
                                                           [Function],
-                                                          ";padding:10px 25px 10px 25px;font-size:15px;font-weight:bold;text-transform:uppercase;&:hover{background-image:linear-gradient( to bottom,",
+                                                          ";padding:15px 30px 15px 30px;font-size:15px;font-weight:bold;text-transform:uppercase;&:hover{background-image:linear-gradient( to bottom,",
                                                           [Function],
                                                           ",",
                                                           [Function],
@@ -5732,7 +5733,7 @@ exports[`Index page should match snapshot 1`] = `
                                                   onMouseEnter={[Function]}
                                                 >
                                                   <a
-                                                    className="ButtonAlternative__LinkContent-sc-4kmbfx-1 bufteu"
+                                                    className="ButtonAlternative__LinkContent-sc-4kmbfx-1 dtIfBH"
                                                     onClick={[Function]}
                                                     onMouseEnter={[Function]}
                                                   >

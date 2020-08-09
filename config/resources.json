@@ -17,7 +17,8 @@
       "firstName": { "type": "string" },
       "lastName": { "type": "string" },
       "photoUrl": { "type": "string", "optional": true },
-      "skillLevel": { "type": "skill-level" }
+      "skillLevel": { "type": "skill-level" },
+      "isApproved": { "type": "boolean" }
     },
     "relationships": {}
   },
