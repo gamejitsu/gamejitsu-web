@@ -3,6 +3,7 @@ import { DecoratedReplay, decorateReplay } from "gamejitsu/models/replay"
 import { Replay } from "gamejitsu/api/resources/replay"
 import { ReviewRequest } from "gamejitsu/api/resources/review-request"
 import { SkillLevel } from "gamejitsu/api/types/skill-level"
+import { User } from "gamejitsu/api/resources/user"
 
 export interface DecoratedReviewRequest {
   skillLevel: SkillLevel
@@ -10,10 +11,12 @@ export interface DecoratedReviewRequest {
   replayId: string
   id: string
   replay: DecoratedReplay
+  user: User
 }
 
 interface IncludedReviewRequest {
   replay: Replay[]
+  user: User[]
 }
 
 export const decorateReviewRequests = (
@@ -22,14 +25,18 @@ export const decorateReviewRequests = (
 ) => {
   return reviewRequests.map((reviewRequest) => {
     const replay = included.replay.find((r) => r.id === reviewRequest.replayId)
-    if (replay) {
+    const user = included.user.find((u) => u.id === reviewRequest.userId)
+    if (replay && user) {
       return {
         skillLevel: reviewRequest.skillLevel,
         comment: reviewRequest.comment,
         replayId: reviewRequest.replayId,
         id: reviewRequest.id,
-        replay: decorateReplay(replay)
+        replay: decorateReplay(replay),
+        user
       }
+    } else {
+      throw new Error("Replay not found.")
     }
   })
 }

@@ -1,7 +1,6 @@
 import styled from "styled-components"
 
 import { FunctionComponent } from "react"
-import { Box } from "rebass"
 
 interface Props {
   href: string

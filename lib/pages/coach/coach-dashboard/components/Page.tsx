@@ -14,8 +14,8 @@ import ReviewResource from "gamejitsu/api/resources/review"
 import SettingsSVG from "../../../../../svgs/settings.svg"
 
 interface Props {
-  reviewRequests: (DecoratedReviewRequest | undefined)[]
-  reviews: (DecoratedReview | undefined)[]
+  reviewRequests: DecoratedReviewRequest[]
+  reviews: DecoratedReview[]
 }
 
 const getReviewRequests = async (ctx: NextPageContext) => {
@@ -75,9 +75,9 @@ const CoachDashboardPage: NextPage<Props> = ({ reviewRequests, reviews }) => {
         </EmptyReviewRequests>
       ) : (
         reviewRequests.map((reviewRequest) => {
-          if (reviewRequest) {
-            return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
-          }
+          return (
+            <ReviewRequestCard key={reviewRequest.id.toString()} reviewRequest={reviewRequest} />
+          )
         })
       )}
     </LayoutWithMenu>
@@ -87,8 +87,8 @@ const CoachDashboardPage: NextPage<Props> = ({ reviewRequests, reviews }) => {
 CoachDashboardPage.getInitialProps = async (ctx: NextPageContext) => {
   const reviewRequestsResponse = await getReviewRequests(ctx)
   const response = await getReviews(ctx)
-  const reviews: (DecoratedReview | undefined)[] = decorateReviews(response.data, response.included)
-  const reviewRequests: (DecoratedReviewRequest | undefined)[] = decorateReviewRequests(
+  const reviews: DecoratedReview[] = decorateReviews(response.data, response.included)
+  const reviewRequests: DecoratedReviewRequest[] = decorateReviewRequests(
     reviewRequestsResponse.data,
     reviewRequestsResponse.included
   )

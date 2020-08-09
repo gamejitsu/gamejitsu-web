@@ -14,10 +14,21 @@ import { parseCookies, destroyCookie } from "nookies"
 import { Reset } from "styled-reset"
 import { theme } from "gamejitsu"
 import UserResource, { User } from "gamejitsu/api/resources/user"
+import { Coach } from "gamejitsu/api/resources/coach"
 import { UserContext } from "gamejitsu/contexts"
 
+interface DecoratedUser {
+  coach: Coach | undefined
+  steamId: string
+  isSyncingReplays: boolean
+  username: string
+  hasPublicProfile: boolean
+  coachId: string | null
+  id: string
+}
+
 interface Props {
-  user: User
+  user: User | DecoratedUser
 }
 
 const Content = styled.div`
@@ -26,7 +37,7 @@ const Content = styled.div`
 `
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Exo+2');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap');
   body {
     background-color: ${(props) => props.theme.backgroundColor};
     font-family: ${(props) => props.theme.textFont};
@@ -112,8 +123,14 @@ export default class App extends NextApp<Props> {
 }
 
 const getCurrentUser = async (ctx: NextPageContext) => {
-  const { data } = await findModel(UserResource, "current", ctx)
-  return data
+  const response = await findModel(UserResource, "current", ctx)
+  if (response.data?.coachId) {
+    const user = response.data
+    const coach = response.included.coach.find((c) => c.id === user.coachId)
+    return { ...user, coach }
+  } else {
+    return response.data
+  }
 }
 
 const isAuthTokenValid = (authToken?: string) => {

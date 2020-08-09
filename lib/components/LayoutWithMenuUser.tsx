@@ -1,18 +1,16 @@
-import Head from "next/head"
-import styled from "styled-components"
 import { Box, Flex } from "rebass"
 import { FunctionComponent } from "react"
 import { useRouter } from "next/router"
+import Head from "next/head"
+import styled from "styled-components"
 
-import NavbarLeftMenu from "./NavbarLeftMenu"
-import LinkLeftMenu from "./LinkLeftMenu"
-
-import CoachDashboardSVG from "../../svgs/coach-dashboard.svg"
 import AnalysisCompletedSVG from "../../svgs/analysis-completed.svg"
+import CoachDashboardSVG from "../../svgs/coach-dashboard.svg"
+import LinkLeftMenu from "./LinkLeftMenu"
+import NavbarLeftMenu from "./NavbarLeftMenu"
 import SettingsSVG from "../../svgs/settings.svg"
 
 const companyName = "Gamejitsu"
-const gamejitsuWritingImageSrc = "/images/gamejitsu-writing.svg"
 
 interface Props {
   title?: string
@@ -69,12 +67,6 @@ const MenuTitle = styled(Box)`
   font-weight: bold;
 `
 
-const LinksContainer = styled(Flex)`
-  flex-direction: column;
-  display: flex;
-  margin: 0;
-`
-
 const Wrapper = styled(Flex)`
   min-height: 100vh;
   flex-direction: column;
@@ -114,7 +106,7 @@ const LayoutWithMenuUser: FunctionComponent<Props> = ({ title, children }) => (
       <Flex height="100%">
         <LeftMenu>
           <Flex justifyContent="center" mt={4}>
-            <MenuTitle>USER MENU</MenuTitle>
+            <MenuTitle>MENU</MenuTitle>
           </Flex>
           <LeftMenuLink href="/dashboard">
             <CoachDashboardSVG width="60" height="35" />

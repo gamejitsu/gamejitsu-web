@@ -9,6 +9,7 @@ export interface Coach extends Model {
   lastName: string
   photoUrl: string | null
   skillLevel: SkillLevel
+  isApproved: boolean
 }
 
 export const decoder = t.type({
@@ -19,7 +20,8 @@ export const decoder = t.type({
     "first-name": t.string,
     "last-name": t.string,
     "photo-url": t.union([t.string, t.null]),
-    "skill-level": SkillLevel
+    "skill-level": SkillLevel,
+    "is-approved": t.boolean
   })
 })
 
@@ -29,7 +31,8 @@ export const transformer = (value: t.TypeOf<typeof decoder>): Coach => ({
   firstName: value.attributes["first-name"],
   lastName: value.attributes["last-name"],
   photoUrl: value.attributes["photo-url"],
-  skillLevel: value.attributes["skill-level"]
+  skillLevel: value.attributes["skill-level"],
+  isApproved: value.attributes["is-approved"]
 })
 
 export default buildResource({
@@ -49,7 +52,8 @@ export default buildResource({
       "first-name": value.firstName,
       "last-name": value.lastName,
       "photo-url": value.photoUrl,
-      "skill-level": skillLevelEncoder(value.skillLevel)
+      "skill-level": skillLevelEncoder(value.skillLevel),
+      "is-approved": value.isApproved
     },
     relationships: {}
   })

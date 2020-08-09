@@ -35,6 +35,8 @@ export const decorateReviews = (reviews: Review[], included: IncludedReview) => 
         isPublished: review.isPublished,
         requestId: review.requestId
       }
+    } else {
+      throw new Error("Review request or replay not found!")
     }
   })
 }

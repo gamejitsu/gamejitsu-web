@@ -1,27 +1,27 @@
+import { Flex, Box } from "rebass"
+import CookieConsent from "react-cookie-consent"
+import Head from "next/head"
+import queryString from "query-string"
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
-import { Flex, Box } from "rebass"
-import Head from "next/head"
-import CookieConsent from "react-cookie-consent"
-import queryString from "query-string"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import GameContainerSVG from "../../../../svgs/dota2-bs-crop-cut.svg"
+import { Navbar, ButtonNew, ButtonAlternative, ButtonDark, Footer } from "gamejitsu/components"
 import GameContainerCSGOSVG from "../../../../svgs/csgo-container-final-2.svg"
 import GameContainerLOLSVG from "../../../../svgs/lol-container-new-4.svg"
 import GameContainerOWSVG from "../../../../svgs/overwatch-container-1.svg"
-import { Navbar, ButtonNew, ButtonAlternative, ButtonDark, Footer } from "gamejitsu/components"
+import GameContainerSVG from "../../../../svgs/dota2-bs-crop-cut.svg"
 
-const mainLogo = "/images/gamejitsu-mascotte.svg"
 const dota2Logo = "/images/dota2-logo.png"
-const lolLogo = "/images/lol-logo.png"
-const overwatchLogo = "/images/overwatch-logo.png"
 const fortniteLogo = "/images/fortnite-logo.png"
+const lolLogo = "/images/lol-logo.png"
+const mainLogo = "/images/gamejitsu-mascotte.svg"
+const overwatchLogo = "/images/overwatch-logo.png"
 
 interface PriceCardProps {
   icon: string
-  title: string
   price: string
+  title: string
 }
 
 interface SecondaryTitleProps {
@@ -37,75 +37,75 @@ const Container = styled(Flex)`
 `
 
 const SecondaryTitle = styled.h2<SecondaryTitleProps>`
+  color: ${(props) => props.color || props.theme.primaryColor};
   font-family: "Japanese 3017";
+  font-size: 21px;
   font-weight: normal;
   letter-spacing: 3px;
-  font-size: 21px;
-  color: ${(props) => props.color || props.theme.primaryColor};
 `
 
 const MainTitle = styled.h1`
   color: white;
   font-size: 35px;
   font-weight: bold;
-  margin-top: 20px;
   margin-bottom: 20px;
+  margin-top: 20px;
 `
 
 const ParagraphText = styled.p`
   font-size: 15px;
-  margin-bottom: 5px;
   line-height: 20px;
+  margin-bottom: 5px;
 `
 
 const FlowText = styled.p`
-  font-size: 20px;
-  margin-bottom: 220px;
-  line-height: 20px;
   color: white;
+  font-size: 20px;
+  line-height: 20px;
+  margin-bottom: 220px;
 `
 
 const Background = styled.div`
-  top: 0;
-  left: 0;
-  right 0;
-  bottom: 0;
-  position: absolute;
   background-image: url('/images/background-hero-unit.jpg');
   background-position: center;
   background-size: cover;
+  bottom: 0;
+  left: 0;
   opacity: 0.3;
+  position: absolute;
+  right 0;
+  top: 0;
 `
 
 const HeroUnitParent = styled.div`
-  position: relative;
   height: 600px;
+  position: relative;
   width: 100%;
 `
 
 const HeroUnit = styled(Flex)`
-  top: 0;
   bottom: 0;
-  left: 0;
-  right: 0;
   flex-grow: 1;
-  position: absolute;
   height: 600px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
   z-index: 1;
 `
 
 const GamesBar = styled(Flex)`
   background-color: ${(props) => props.theme.lightBackgroundColor};
   height: 85px;
-  width: 100%;
   position: relative;
+  width: 100%;
 `
 
 const GamesBarImage = styled.img`
-  width: 190px;
-  margin-right: 40px;
   margin-left: 40px;
+  margin-right: 40px;
   position: absolute;
+  width: 190px;
 `
 
 const GamesCard = styled(Flex)`
@@ -116,23 +116,23 @@ const GamesCard = styled(Flex)`
 `
 
 const MainFlow = styled(Flex)`
-  width: 100%;
   position: relative;
+  width: 100%;
 `
 
 const MainImage = styled.img`
-  width: 510px;
-  position: absolute;
   bottom: -65px;
+  position: absolute;
   right: 0px;
+  width: 510px;
 `
 
 const TextCard = styled(Box)`
-  top: 0;
   bottom: 0;
+  flex-grow: 1;
   left: 0;
   right: 0;
-  flex-grow: 1;
+  top: 0;
   z-index: 1;
 `
 
@@ -141,56 +141,56 @@ TextCard.defaultProps = {
 }
 
 const OutsideCircle = styled.div`
-  position: relative;
   background: transparent;
-  border: 1.5px solid ${(props) => props.theme.lightBackgroundColor};
   border-radius: 50%;
-  padding: 2px;
-  height: 50px;
-  width: 50px;
+  border: 1.5px solid ${(props) => props.theme.lightBackgroundColor};
   box-sizing: content-box;
-  margin-top: 20px;
+  height: 50px;
   margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 2px;
+  position: relative;
+  width: 50px;
 `
 
 const InsideCircle = styled.div`
   background: ${(props) => props.theme.lightBackgroundColor};
-  position: relative;
   border-radius: 50%;
-  line-height: 50px;
-  width: 100%;
-  vertical-align: middle;
-  text-align: center;
   color: white;
+  line-height: 50px;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
 `
 
 const NumberCircle = styled.div`
   background: ${(props) => props.theme.lightBackgroundColor};
   border-radius: 50%;
-  line-height: 50px;
-  width: 50px;
-  vertical-align: middle;
-  text-align: center;
-  margin-bottom: 250px;
   color: white;
   font-weight: bold;
+  line-height: 50px;
+  margin-bottom: 250px;
+  text-align: center;
+  vertical-align: middle;
+  width: 50px;
 `
 
 const Line = styled.div`
   background: ${(props) => props.theme.lightBackgroundColor};
-  width: 1px;
   height: 1250px;
-  position: absolute;
   left: 50%;
   margin-left: -1px;
+  position: absolute;
+  width: 1px;
 `
 
 const FlowImage = styled(Box)<FlowImageType>`
   background-image: url(${(props) => props.url});
   background-size: contain;
-  width: 380px;
   height: 240px;
   margin-bottom: 150px;
+  width: 380px;
 `
 
 const FlowBox = styled(Box)`
@@ -200,13 +200,13 @@ const FlowBox = styled(Box)`
 FlowBox.defaultProps = { mt: 50 }
 
 const FlowImageTitle = styled(Box)`
-  text-align: center;
-  height: 44px;
-  width: 176px;
   background-color: ${(props) => props.theme.primaryColor};
   color: black;
-  padding: 14px;
   font-weight: 550;
+  height: 44px;
+  padding: 14px;
+  text-align: center;
+  width: 176px;
 `
 
 const PriceCards = styled(Flex)`
@@ -218,21 +218,21 @@ PriceCards.defaultProps = {
 }
 
 const Price = styled.div`
+  align-items: center;
   background-color: ${(props) => props.theme.backgroundColor};
-  border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
-  margin-left: -20px;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  padding: 16px 25px;
+  border-top-right-radius: 50px;
   color: white;
   display: inline-flex;
-  align-items: center;
+  margin-bottom: 20px;
+  margin-left: -20px;
+  margin-top: 30px;
+  padding: 16px 25px;
 
   span {
     display: block;
-    font-weight: bold;
     font-size: 20px;
+    font-weight: bold;
     padding-right: 5px;
   }
 
@@ -247,9 +247,9 @@ const PriceCardContent = styled(Box)`
 `
 
 const PriceFeatureContent = styled.span`
-  display: inline-flex;
   align-items: center;
   color: ${(props) => props.theme.textColor};
+  display: inline-flex;
   font-size: 14px;
   margin-bottom: 25px;
 
@@ -260,9 +260,9 @@ const PriceFeatureContent = styled.span`
 
 const FlowStepIcon = styled.img`
   height: auto;
-  width: 50%;
-  vertical-align: middle;
   text-align: center;
+  vertical-align: middle;
+  width: 50%;
 `
 
 const StyledCookieConsent = styled(CookieConsent)`
@@ -347,8 +347,8 @@ const Page: AuthenticatedComponent = () => (
             <Flex alignItems="center" height="100%">
               <Box width="375px">
                 <SecondaryTitle>A coaching Platform</SecondaryTitle>
-                <MainTitle>Hire a Pro Gaming Coach From 10$</MainTitle>
-                <ParagraphText>Browse through hundreds of gaming coaches</ParagraphText>
+                <MainTitle>Hire a Pro Gaming Coach From 4$</MainTitle>
+                <ParagraphText>Get your game analyzed by a ranked coach</ParagraphText>
                 <ParagraphText>who will help you improve your skills</ParagraphText>
               </Box>
             </Flex>
@@ -378,18 +378,18 @@ const Page: AuthenticatedComponent = () => (
           <Flex alignItems="center">
             <Box width="375px">
               <SecondaryTitle>Top Notch Platform</SecondaryTitle>
-              <MainTitle>Welcome to the GameJitsu</MainTitle>
+              <MainTitle>Welcome to GameJitsu</MainTitle>
             </Box>
             <Box width="600px">
               <ParagraphText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                Gamejitsu uses state-of-the-art technologies to allow you and other palyers to get
+                their game reviewed without the need of recording their own game. Gamejitsu will
+                fetch autonously the game you selected to be reviewed and provides it to a coach
+                based on the selected MMR.
               </ParagraphText>
               <ParagraphText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                Login in the platform is only available via Steam. Your profile has to be public in
+                order to see your recent games played.
               </ParagraphText>
             </Box>
           </Flex>
@@ -404,16 +404,16 @@ const Page: AuthenticatedComponent = () => (
           </Box>
           <Flex p={4} justifyContent="center">
             <Box width={1 / 4}>
-              <GameContainerSVG width="100%" height="auto" />
+              <GameContainerSVG width="100%" height="100%" />
             </Box>
             <Box width={1 / 4} ml={-125}>
-              <GameContainerCSGOSVG width="101%" height="auto" />
+              <GameContainerCSGOSVG width="101%" height="100%" />
             </Box>
             <Box width={1 / 4} ml={-125}>
-              <GameContainerLOLSVG width="100%" height="auto" />
+              <GameContainerLOLSVG width="100%" height="100%" />
             </Box>
             <Box width={1 / 4} ml={-125}>
-              <GameContainerOWSVG width="100%" height="auto" />
+              <GameContainerOWSVG width="100%" height="100%" />
             </Box>
           </Flex>
         </Box>
@@ -428,9 +428,9 @@ const Page: AuthenticatedComponent = () => (
             </Box>
             <Box width="600px">
               <ParagraphText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                The Gamejitsu flow is composed by 4 simple steps. You don't need to record your own
+                game, Gamejitsu will take of it. Gamejitsu will also select the best coach for your
+                needs based on the required MMR.
               </ParagraphText>
             </Box>
           </Flex>
@@ -447,7 +447,9 @@ const Page: AuthenticatedComponent = () => (
                   <FlowStepIcon src="/images/step1.png" />
                 </IconCircle>
                 <Box>
-                  <FlowText>The user submits a request for a replay to be analyzed</FlowText>
+                  <FlowText>
+                    You submit a request for a replay to be analyzed by a coach based on MMR
+                  </FlowText>
                 </Box>
               </FlowBox>
               <FlowBox>
@@ -462,7 +464,8 @@ const Page: AuthenticatedComponent = () => (
                 </IconCircle>
                 <Box>
                   <FlowText>
-                    The coach submits the video reviewed with text feedbacks in the form of comments
+                    The coach delivers to you the video reviewed with text feedbacks in the form of
+                    comments
                   </FlowText>
                 </Box>
               </FlowBox>
@@ -495,7 +498,7 @@ const Page: AuthenticatedComponent = () => (
                   <FlowStepIcon src="/images/step2.png" />
                 </IconCircle>
                 <Box>
-                  <FlowText>A human coach grabs the replay and starts analysing the video</FlowText>
+                  <FlowText>A human coach grabs your replay and starts the analysis</FlowText>
                 </Box>
               </FlowBox>
               <FlowBox>
@@ -510,7 +513,8 @@ const Page: AuthenticatedComponent = () => (
                 </IconCircle>
                 <Box>
                   <FlowText>
-                    The user is notified of the available review and can watch in his/her dashboard
+                    You are notified via mail of the available review and you can watch it in your
+                    dashboard
                   </FlowText>
                 </Box>
               </FlowBox>
@@ -523,7 +527,7 @@ const Page: AuthenticatedComponent = () => (
                   <ButtonNew key="login" type="button" onClick={login} text="GET STARTED" />
                 </Box>
                 <Box ml={10}>
-                  <ButtonAlternative text="SEE PRICING" />
+                  <ButtonAlternative href="#pricing" type="button" text="SEE PRICING" />
                 </Box>
               </Flex>
             </Box>
@@ -532,7 +536,7 @@ const Page: AuthenticatedComponent = () => (
       </MainFlow>
 
       <TextCard>
-        <Box width="900px" mx="auto" my={4} style={{ position: "relative" }}>
+        <Box id="pricing" width="900px" mx="auto" my={4} style={{ position: "relative" }}>
           <Flex alignItems="center">
             <Box width="375px">
               <SecondaryTitle>Pricing</SecondaryTitle>
@@ -540,9 +544,8 @@ const Page: AuthenticatedComponent = () => (
             </Box>
             <Box width="600px">
               <ParagraphText>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                Find above our pricing offer. Pro pricing may be subject to variations based on
+                custom requests and top level coaches.
               </ParagraphText>
             </Box>
           </Flex>
@@ -557,15 +560,15 @@ const Page: AuthenticatedComponent = () => (
             </PriceCard>
 
             <PriceCard title="High" price="$6.0" icon="award-badge">
-              <PriceFeature>Above 5k MMR</PriceFeature>
+              <PriceFeature>5k MMR or above</PriceFeature>
             </PriceCard>
 
             <PriceCard title="Very High" price="$8.0" icon="award-badge-3">
-              <PriceFeature>Above 6k MMR</PriceFeature>
+              <PriceFeature>6k MMR or above</PriceFeature>
             </PriceCard>
 
             <PriceCard title="Pro" price="$10.0" icon="vip">
-              <PriceFeature>Above 7k MMR</PriceFeature>
+              <PriceFeature>7k MMR or above</PriceFeature>
             </PriceCard>
           </Flex>
         </Box>

@@ -59,22 +59,14 @@ const acceptReviewRequest = async (reviewRequestId: string, token: Promise<strin
   Router.push("/coach-dashboard")
 }
 
-const GoogleRecaptchaReviewRequestCard: FunctionComponent<Props> = (props) => {
-  return (
-    <GoogleReCaptchaProvider reCaptchaKey={process.env.GOOGLE_RECAPTCHA_PUBLIC_KEY}>
-      <ReviewRequestCard {...props} />
-    </GoogleReCaptchaProvider>
-  )
-}
-
 const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
   const { executeRecaptcha } = useGoogleReCaptcha()
   let token: Promise<string>
   if (executeRecaptcha) token = executeRecaptcha("review_request_page")
-  const user = useContext(UserContext)
   const players = reviewRequest.replay.playersDire.concat(reviewRequest.replay.playersRadiant)
+  const playedHeroUser = reviewRequest.user
   const currentPlayer = players.find((player) => {
-    const isYourHero = player?.steamId === user?.steamId
+    const isYourHero = player?.steamId === playedHeroUser.steamId
     return isYourHero
   })
   if (!currentPlayer) {
@@ -104,8 +96,8 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
                 {reviewRequest.replay.playersDire.map((player, index) => {
                   const key = player.steamId ? player.steamId : index.toString()
                   return (
-                    <Box mr={3}>
-                      <HeroImage key={key} player={player} />
+                    <Box mr={3} key={key}>
+                      <HeroImage player={player} />
                     </Box>
                   )
                 })}
@@ -114,8 +106,8 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
                 {reviewRequest.replay.playersRadiant.map((player, index) => {
                   const key = player.steamId ? player.steamId : index.toString()
                   return (
-                    <Box mt={2} mr={3}>
-                      <HeroImage key={key} player={player} />
+                    <Box mt={2} mr={3} key={key}>
+                      <HeroImage player={player} />
                     </Box>
                   )
                 })}
@@ -138,6 +130,14 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
         </Box>
       </Container>
     </Box>
+  )
+}
+
+const GoogleRecaptchaReviewRequestCard: FunctionComponent<Props> = (props) => {
+  return (
+    <GoogleReCaptchaProvider reCaptchaKey={process.env.GOOGLE_RECAPTCHA_PUBLIC_KEY}>
+      <ReviewRequestCard {...props} />
+    </GoogleReCaptchaProvider>
   )
 }
 
