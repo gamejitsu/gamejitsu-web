@@ -88,8 +88,8 @@ const RecentMatchesCardNew: FunctionComponent<Props> = ({ replay }) => {
                 {replay.playersDire.map((player, index) => {
                   const key = player.steamId ? player.steamId : index.toString()
                   return (
-                    <Box mr={3}>
-                      <HeroImage key={key} player={player} />
+                    <Box mr={3} key={key}>
+                      <HeroImage  player={player} />
                     </Box>
                   )
                 })}
@@ -98,8 +98,8 @@ const RecentMatchesCardNew: FunctionComponent<Props> = ({ replay }) => {
                 {replay.playersRadiant.map((player, index) => {
                   const key = player.steamId ? player.steamId : index.toString()
                   return (
-                    <Box mt={2} mr={3}>
-                      <HeroImage key={key} player={player} />
+                    <Box mt={2} mr={3} key={key} >
+                      <HeroImage player={player} />
                     </Box>
                   )
                 })}

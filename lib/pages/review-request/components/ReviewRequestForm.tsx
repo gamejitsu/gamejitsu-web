@@ -15,7 +15,7 @@ import { SkillLevel } from "gamejitsu/api/types/skill-level"
 import { UserContext } from "gamejitsu/contexts"
 import CheckoutResource, { Checkout } from "gamejitsu/api/resources/checkout"
 
-const redirectToCheckout = async ({ comment, skillLevel, replayId }: Partial<Checkout>) => {
+const redirectToCheckout = async ({ comment, skillLevel, replayId, email }: Partial<Checkout>) => {
   console.log("redirect")
   const stripe = Stripe(process.env.STRIPE_PUBLIC_KEY)
   const {
@@ -25,6 +25,7 @@ const redirectToCheckout = async ({ comment, skillLevel, replayId }: Partial<Che
     skillLevel,
     replayId,
     reviewRequestId: null,
+    email,
     redirectUrl: window.location.origin
   })
   return await stripe.redirectToCheckout({ sessionId: stripeId })
@@ -75,7 +76,6 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
 
   const onSubmitReviewRequest = async (values: Values): Promise<void> => {
     const { skillLevel, comment, email } = values
-    console.log("on submit")
     if (!isSkillLevelValid(skillLevel)) {
       throw new Error(`Invalid skill level value in coach signup: ${skillLevel}`)
     }
@@ -83,7 +83,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
     if (replay === undefined) {
       throw new Error(`Invalid replay`)
     }
-    redirectToCheckout({ comment, skillLevel, replayId: replay.id })
+    redirectToCheckout({ comment, skillLevel, replayId: replay.id, email})
   }
 
   const renderLabel = (val: number) => {
