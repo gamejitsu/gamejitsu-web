@@ -36,7 +36,8 @@ interface Props {
 const initialValues = {
   skillLevel: "medium",
   replay: null,
-  comment: ""
+  comment: "",
+  email: ""
 }
 
 type Values = typeof initialValues
@@ -47,7 +48,10 @@ const isSkillLevelValid = (value: string): value is SkillLevel =>
   (skillLevels as string[]).includes(value)
 
 const schema = object({
-  skillLevel: string().required()
+  skillLevel: string().required(),
+  email: string()
+    .email("Invalid email")
+    .required("Required")
 })
 
 const getUser = () => {
@@ -71,10 +75,12 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
   const user = getUser()
 
   const onSubmitReviewRequest = async (values: Values): Promise<void> => {
-    const { skillLevel, comment } = values
+    const { skillLevel, comment, email } = values
+
     if (!isSkillLevelValid(skillLevel)) {
       throw new Error(`Invalid skill level value in coach signup: ${skillLevel}`)
     }
+
     if (replay === undefined) {
       throw new Error(`Invalid replay`)
     }
@@ -85,6 +91,21 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
     return <LabelContent>{titleize(humanize(skillLevels[val]))}</LabelContent>
   }
 
+  const validate = (values: Values) => {
+    const errors: any = {}
+    if (!values.email) {
+      errors.email = "Email is required"
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+      errors.email = "Invalid email address"
+    }
+    if (!values.skillLevel) {
+      errors.skillLevel = "Skill level is required"
+    } else if ((skillLevels as string[]).includes(values.skillLevel)) {
+      errors.skillLevel = "Invalid skill level"
+    }
+    return errors
+  }
+
   return (
     <Layout title="Dashboard">
       <Box width="700px" mx="auto" p={3}>
@@ -92,6 +113,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
           title="REQUEST REVIEW"
           initialValues={initialValues}
           schema={schema}
+          validate={validate}
           onSubmit={onSubmitReviewRequest}
           buttonText="Checkout"
         >
@@ -130,9 +152,22 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
                   />
                 </Box>
               </FormGroup>
+
+              {formik.errors.email ? <div>{formik.errors.email}</div> : null}
+
+              <FormGroup label="Email" labelFor="email">
+                <InputGroup
+                  onChange={formik.handleChange("email")}
+                  id="email"
+                  type="email"
+                  name="email"
+                />
+              </FormGroup>
+
               <FormGroup label="Comment" labelFor="text-input">
                 <InputGroup onChange={formik.handleChange("comment")} id="text-input" />
               </FormGroup>
+
               <FormGroup label="Price" labelFor="text-input">
                 {price[skillLevels.indexOf(formik.values.skillLevel as SkillLevel)]}
               </FormGroup>
