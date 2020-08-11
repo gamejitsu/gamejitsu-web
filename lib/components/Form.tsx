@@ -45,12 +45,13 @@ const Form: FormComponent = ({
 }) => {
   const formik = useFormik({
     initialValues,
+    validate,
     onSubmit: async (values, { setSubmitting }) => {
+      console.log("on submit called")
       setSubmitting(true)
       await onSubmit(values)
       setSubmitting(false)
-    },
-    validate
+    }
   })
 
   return (

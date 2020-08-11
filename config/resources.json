@@ -4,7 +4,8 @@
       "skillLevel": { "type": "skill-level"},
       "comment": {"type": "string", "optional": true},
       "redirectUrl": {"type": "string", "optional":true},
-      "stripeId": {"type": "string"}
+      "stripeId": {"type": "string"},
+      "email": { "type": "string", "optional": true}
     },
     "relationships": {
       "replay": { "cardinality": "one", "type": "replay", "optional": true },
@@ -71,7 +72,8 @@
       "steamId": { "type": "string" },
       "isSyncingReplays": { "type": "boolean" },
       "username": { "type": "string" },
-      "hasPublicProfile": { "type": "boolean" }
+      "hasPublicProfile": { "type": "boolean" },
+      "email": { "type": "string", "optional": true}
     },
     "relationships": {
       "coach": { "cardinality": "one", "type": "coach", "include": true, "optional": true }

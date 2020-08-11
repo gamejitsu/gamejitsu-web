@@ -1,21 +1,22 @@
-import CheckoutResource, { Checkout } from "gamejitsu/api/resources/checkout"
 import humanize from "humanize-string"
 import React, { FunctionComponent, useContext } from "react"
 import styled from "styled-components"
 import titleize from "titleize"
-
+import { Slider } from "@blueprintjs/core"
 import { Box, Flex } from "rebass"
+import { object, string } from "yup"
+
 import { createModel } from "gamejitsu/api"
 import { DecoratedReplay } from "gamejitsu/models/replay"
 import { Form, FormGroup, InputGroup } from "gamejitsu/components"
 import { HeroImage } from "gamejitsu/components"
 import { Layout } from "gamejitsu/components"
-import { object, string } from "yup"
 import { SkillLevel } from "gamejitsu/api/types/skill-level"
-import { Slider } from "@blueprintjs/core"
 import { UserContext } from "gamejitsu/contexts"
+import CheckoutResource, { Checkout } from "gamejitsu/api/resources/checkout"
 
 const redirectToCheckout = async ({ comment, skillLevel, replayId }: Partial<Checkout>) => {
+  console.log("redirect")
   const stripe = Stripe(process.env.STRIPE_PUBLIC_KEY)
   const {
     data: { stripeId }
@@ -50,8 +51,6 @@ const isSkillLevelValid = (value: string): value is SkillLevel =>
 const schema = object({
   skillLevel: string().required(),
   email: string()
-    .email("Invalid email")
-    .required("Required")
 })
 
 const getUser = () => {
@@ -76,7 +75,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
 
   const onSubmitReviewRequest = async (values: Values): Promise<void> => {
     const { skillLevel, comment, email } = values
-
+    console.log("on submit")
     if (!isSkillLevelValid(skillLevel)) {
       throw new Error(`Invalid skill level value in coach signup: ${skillLevel}`)
     }
@@ -93,16 +92,17 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
 
   const validate = (values: Values) => {
     const errors: any = {}
+
     if (!values.email) {
-      errors.email = "Email is required"
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
       errors.email = "Invalid email address"
     }
     if (!values.skillLevel) {
       errors.skillLevel = "Skill level is required"
-    } else if ((skillLevels as string[]).includes(values.skillLevel)) {
+    } else if (!(skillLevels as string[]).includes(values.skillLevel)) {
       errors.skillLevel = "Invalid skill level"
     }
+    console.log(errors)
     return errors
   }
 
@@ -153,6 +153,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
                 </Box>
               </FormGroup>
 
+              Insert email if you want to receive status notifications
               {formik.errors.email ? <div>{formik.errors.email}</div> : null}
 
               <FormGroup label="Email" labelFor="email">
