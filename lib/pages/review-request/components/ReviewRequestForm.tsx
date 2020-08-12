@@ -83,7 +83,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
     if (replay === undefined) {
       throw new Error(`Invalid replay`)
     }
-    redirectToCheckout({ comment, skillLevel, replayId: replay.id, email})
+    redirectToCheckout({ comment, skillLevel, replayId: replay.id, email })
   }
 
   const renderLabel = (val: number) => {
@@ -152,10 +152,8 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
                   />
                 </Box>
               </FormGroup>
-
               Insert email if you want to receive status notifications
               {formik.errors.email ? <div>{formik.errors.email}</div> : null}
-
               <FormGroup label="Email" labelFor="email">
                 <InputGroup
                   onChange={formik.handleChange("email")}
@@ -164,11 +162,9 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
                   name="email"
                 />
               </FormGroup>
-
               <FormGroup label="Comment" labelFor="text-input">
                 <InputGroup onChange={formik.handleChange("comment")} id="text-input" />
               </FormGroup>
-
               <FormGroup label="Price" labelFor="text-input">
                 {price[skillLevels.indexOf(formik.values.skillLevel as SkillLevel)]}
               </FormGroup>

@@ -25,7 +25,11 @@ const UserSettings: NextPage = () => {
       <EmptyReviews height="100%">
         <Box>Username: {user?.username}</Box>
         <Box>Public Profile: {user?.hasPublicProfile.toString()}</Box>
-        <Box>{user?.email ? `Email: ${user.email}` : "Email not provided yet, insert it while requesting the review"}</Box>
+        <Box>
+          {user?.email
+            ? `Email: ${user.email}`
+            : "Email not provided yet, insert it while requesting the review"}
+        </Box>
       </EmptyReviews>
     </LayoutWithMenuUser>
   )
