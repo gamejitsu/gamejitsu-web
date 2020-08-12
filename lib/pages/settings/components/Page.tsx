@@ -3,7 +3,7 @@ import { NextPage } from "next"
 import React, { useContext } from "react"
 import styled from "styled-components"
 
-import { LayoutWithMenu, Title } from "gamejitsu/components"
+import { LayoutWithMenuUser, Title } from "gamejitsu/components"
 import { UserContext } from "gamejitsu/contexts"
 
 const EmptyReviews = styled(Flex)`
@@ -20,13 +20,14 @@ const getCurrentUser = () => useContext(UserContext)
 const UserSettings: NextPage = () => {
   const user = getCurrentUser()
   return (
-    <LayoutWithMenu title="Settings">
+    <LayoutWithMenuUser title="Settings">
       <Title text="SETTINGS" />
       <EmptyReviews height="100%">
         <Box>Username: {user?.username}</Box>
         <Box>Public Profile: {user?.hasPublicProfile.toString()}</Box>
+        <Box>{user?.email ? `Email: ${user.email}` : "Email not provided yet, insert it while requesting the review"}</Box>
       </EmptyReviews>
-    </LayoutWithMenu>
+    </LayoutWithMenuUser>
   )
 }
 
