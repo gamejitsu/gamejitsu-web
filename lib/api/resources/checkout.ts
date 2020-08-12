@@ -8,6 +8,7 @@ export interface Checkout extends Model {
   comment: string | null
   redirectUrl: string | null
   stripeId: string
+  email: string | null
   replayId: string | null
   reviewRequestId: string | null
 }
@@ -19,7 +20,8 @@ export const decoder = t.type({
     "skill-level": SkillLevel,
     comment: t.union([t.string, t.null]),
     "redirect-url": t.union([t.string, t.null]),
-    "stripe-id": t.string
+    "stripe-id": t.string,
+    email: t.union([t.string, t.null])
   }),
   relationships: t.type({
     replay: t.type({
@@ -49,6 +51,7 @@ export const transformer = (value: t.TypeOf<typeof decoder>): Checkout => ({
   comment: value.attributes["comment"],
   redirectUrl: value.attributes["redirect-url"],
   stripeId: value.attributes["stripe-id"],
+  email: value.attributes["email"],
   replayId: value.relationships["replay"].data ? value.relationships["replay"].data.id : null,
   reviewRequestId: value.relationships["review-request"].data
     ? value.relationships["review-request"].data.id
@@ -71,7 +74,8 @@ export default buildResource({
       "skill-level": skillLevelEncoder(value.skillLevel),
       comment: value.comment,
       "redirect-url": value.redirectUrl,
-      "stripe-id": value.stripeId
+      "stripe-id": value.stripeId,
+      email: value.email
     },
     relationships: {
       replay: {

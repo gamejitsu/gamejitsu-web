@@ -25,6 +25,7 @@ interface DecoratedUser {
   hasPublicProfile: boolean
   coachId: string | null
   id: string
+  email: string | null
 }
 
 interface Props {

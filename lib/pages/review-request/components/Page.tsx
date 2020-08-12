@@ -10,7 +10,7 @@ interface Props {
   replay: DecoratedReplay
 }
 
-const Page: NextPage<Props> = ({ replay }) => <ReviewRequestForm replay={replay} />
+const Page: NextPage<Props> = ({ replay }) => <ReviewRequestForm key={replay.id} replay={replay} />
 
 Page.getInitialProps = async (ctx) => {
   const urlId = ctx.query.id

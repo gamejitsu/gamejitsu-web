@@ -1,21 +1,22 @@
-import CheckoutResource, { Checkout } from "gamejitsu/api/resources/checkout"
 import humanize from "humanize-string"
 import React, { FunctionComponent, useContext } from "react"
 import styled from "styled-components"
 import titleize from "titleize"
-
+import { Slider } from "@blueprintjs/core"
 import { Box, Flex } from "rebass"
+import { object, string } from "yup"
+
 import { createModel } from "gamejitsu/api"
 import { DecoratedReplay } from "gamejitsu/models/replay"
 import { Form, FormGroup, InputGroup } from "gamejitsu/components"
 import { HeroImage } from "gamejitsu/components"
 import { Layout } from "gamejitsu/components"
-import { object, string } from "yup"
 import { SkillLevel } from "gamejitsu/api/types/skill-level"
-import { Slider } from "@blueprintjs/core"
 import { UserContext } from "gamejitsu/contexts"
+import CheckoutResource, { Checkout } from "gamejitsu/api/resources/checkout"
 
-const redirectToCheckout = async ({ comment, skillLevel, replayId }: Partial<Checkout>) => {
+const redirectToCheckout = async ({ comment, skillLevel, replayId, email }: Partial<Checkout>) => {
+  console.log("redirect")
   const stripe = Stripe(process.env.STRIPE_PUBLIC_KEY)
   const {
     data: { stripeId }
@@ -24,6 +25,7 @@ const redirectToCheckout = async ({ comment, skillLevel, replayId }: Partial<Che
     skillLevel,
     replayId,
     reviewRequestId: null,
+    email,
     redirectUrl: window.location.origin
   })
   return await stripe.redirectToCheckout({ sessionId: stripeId })
@@ -36,7 +38,8 @@ interface Props {
 const initialValues = {
   skillLevel: "medium",
   replay: null,
-  comment: ""
+  comment: "",
+  email: ""
 }
 
 type Values = typeof initialValues
@@ -47,7 +50,8 @@ const isSkillLevelValid = (value: string): value is SkillLevel =>
   (skillLevels as string[]).includes(value)
 
 const schema = object({
-  skillLevel: string().required()
+  skillLevel: string().required(),
+  email: string()
 })
 
 const getUser = () => {
@@ -71,18 +75,35 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
   const user = getUser()
 
   const onSubmitReviewRequest = async (values: Values): Promise<void> => {
-    const { skillLevel, comment } = values
+    const { skillLevel, comment, email } = values
     if (!isSkillLevelValid(skillLevel)) {
       throw new Error(`Invalid skill level value in coach signup: ${skillLevel}`)
     }
+
     if (replay === undefined) {
       throw new Error(`Invalid replay`)
     }
-    redirectToCheckout({ comment, skillLevel, replayId: replay.id })
+    redirectToCheckout({ comment, skillLevel, replayId: replay.id, email })
   }
 
   const renderLabel = (val: number) => {
     return <LabelContent>{titleize(humanize(skillLevels[val]))}</LabelContent>
+  }
+
+  const validate = (values: Values) => {
+    const errors: any = {}
+
+    if (!values.email) {
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+      errors.email = "Invalid email address"
+    }
+    if (!values.skillLevel) {
+      errors.skillLevel = "Skill level is required"
+    } else if (!(skillLevels as string[]).includes(values.skillLevel)) {
+      errors.skillLevel = "Invalid skill level"
+    }
+    console.log(errors)
+    return errors
   }
 
   return (
@@ -92,6 +113,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
           title="REQUEST REVIEW"
           initialValues={initialValues}
           schema={schema}
+          validate={validate}
           onSubmit={onSubmitReviewRequest}
           buttonText="Checkout"
         >
@@ -129,6 +151,16 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
                     intent="success"
                   />
                 </Box>
+              </FormGroup>
+              Insert email if you want to receive status notifications
+              {formik.errors.email ? <div>{formik.errors.email}</div> : null}
+              <FormGroup label="Email" labelFor="email">
+                <InputGroup
+                  onChange={formik.handleChange("email")}
+                  id="email"
+                  type="email"
+                  name="email"
+                />
               </FormGroup>
               <FormGroup label="Comment" labelFor="text-input">
                 <InputGroup onChange={formik.handleChange("comment")} id="text-input" />

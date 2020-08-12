@@ -15,6 +15,7 @@ interface Props<T> {
   onSubmit: (values: T) => Promise<void>
   children: (handlers: FormikProps<T>) => React.ReactNode
   buttonText: string
+  validate?: (values: T) => any
 }
 
 const Header = styled(Box)`
@@ -39,11 +40,14 @@ const Form: FormComponent = ({
   title,
   schema,
   onSubmit,
-  buttonText = "Submit"
+  buttonText = "Submit",
+  validate
 }) => {
   const formik = useFormik({
     initialValues,
+    validate,
     onSubmit: async (values, { setSubmitting }) => {
+      console.log("on submit called")
       setSubmitting(true)
       await onSubmit(values)
       setSubmitting(false)
