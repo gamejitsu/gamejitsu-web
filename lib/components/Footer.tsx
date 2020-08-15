@@ -4,7 +4,7 @@ import { Box, Flex } from "rebass"
 import { LinkDark, LinkSocialIcon } from "."
 import LinkMailBold from "gamejitsu/components/LinkMailBold"
 
-interface Props { }
+interface Props {}
 
 const gjLogo = "/images/gj-logo.png"
 
@@ -82,7 +82,9 @@ const Footer: FunctionComponent<Props> = () => (
             <Box flex="1 1 0">
               <FooterTitle>COMPANY</FooterTitle>
               <Box mt={4} mb={25}>
-                <LinkDark href="/about-us" mt={4}>About us</LinkDark>
+                <LinkDark href="/about-us" mt={4}>
+                  About us
+                </LinkDark>
               </Box>
               <Box mb={25}>
                 <LinkDark href="/careers">Careers</LinkDark>
@@ -118,14 +120,19 @@ const Footer: FunctionComponent<Props> = () => (
             <Box ml={20}>
               <FooterTitle>CONTACT US</FooterTitle>
               <Box mt={4} mb={25}>
-                <FooterText>Need help? Email us at{" "}<LinkMailBold href="mailto:support@gamejitsu.gg">support@gamejitsu.gg</LinkMailBold></FooterText>
+                <FooterText>
+                  Need help? Email us at{" "}
+                  <LinkMailBold href="mailto:support@gamejitsu.gg">
+                    support@gamejitsu.gg
+                  </LinkMailBold>
+                </FooterText>
               </Box>
               <Box mb={25}>
                 <FooterText>
                   Are you a Streamer/You Tuber/High Ranked?{" "}
                   <LinkMailBold href="mailto:support@gamejitsu.gg">
                     Apply for Partnership
-                </LinkMailBold>
+                  </LinkMailBold>
                 </FooterText>
               </Box>
             </Box>
