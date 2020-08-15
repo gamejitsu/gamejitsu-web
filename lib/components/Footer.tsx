@@ -1,5 +1,4 @@
 import styled from "styled-components"
-
 import { FunctionComponent } from "react"
 import { Box, Flex } from "rebass"
 import { LinkDark, LinkSocialIcon } from "."
@@ -82,42 +81,60 @@ const Footer: FunctionComponent<Props> = () => (
           <Flex justifyContent="center">
             <Box flex="1 1 0">
               <FooterTitle>COMPANY</FooterTitle>
-              <LinkDark href="/about-us" mt={4}>
-                About us
-              </LinkDark>
-              <LinkDark href="/careers">Careers</LinkDark>
-              <LinkDark href="/terms-of-use">Site Term of Use</LinkDark>
-              <LinkDark href="/press-inquiries">Press Inquiries</LinkDark>
+              <Box mt={4} mb={25}>
+                <LinkDark href="/about-us" mt={4}>
+                  About us
+                </LinkDark>
+              </Box>
+              <Box mb={25}>
+                <LinkDark href="/careers">Careers</LinkDark>
+              </Box>
+              <Box mb={25}>
+                <LinkDark href="/press-inquiries">Press Inquiries</LinkDark>
+              </Box>
             </Box>
             <Box flex="1 1 0">
               <FooterTitle>SUPPORT</FooterTitle>
-              <LinkDark href="/privacy-policy" mt={4}>
-                Privacy Policy
-              </LinkDark>
-              <LinkDark href="/terms-of-use">Terms of Use</LinkDark>
-              <LinkDark href="/faq">FAQ</LinkDark>
-              <LinkDark href="/security">Security</LinkDark>
+              <Box mt={4} mb={25}>
+                <LinkDark href="/privacy-policy">Privacy Policy</LinkDark>
+              </Box>
+              <Box mb={25}>
+                <LinkDark href="/terms-of-use">Terms of Use</LinkDark>
+              </Box>
+              <Box mb={25}>
+                <LinkDark href="/faq">FAQ</LinkDark>
+              </Box>
+              <Box mb={25}>
+                <LinkDark href="/security">Security</LinkDark>
+              </Box>
             </Box>
             <Box flex="1 1 0">
               <FooterTitle>COACHES</FooterTitle>
-              <LinkDark href="/become-a-coach" mt={4}>
-                Become a Coach
-              </LinkDark>
-              <LinkDark href="/customer-reviews">Customer Reviews</LinkDark>
+              <Box mt={4} mb={25}>
+                <LinkDark href="/become-a-coach">Become a Coach</LinkDark>
+              </Box>
+              <Box mb={25}>
+                <LinkDark href="/customer-reviews">Customer Reviews</LinkDark>
+              </Box>
             </Box>
             <Box ml={20}>
               <FooterTitle>CONTACT US</FooterTitle>
-              <FooterText />
-              <FooterText mt={4}>
-                Need help? Email us at{" "}
-                <LinkMailBold href="mailto:support@gamejitsu.gg">support@gamejitsu.gg</LinkMailBold>
-              </FooterText>
-              <FooterText>
-                Are you a Streamer/You Tuber/High Ranked?{" "}
-                <LinkMailBold href="mailto:support@gamejitsu.gg">
-                  Apply for Partnership
-                </LinkMailBold>
-              </FooterText>
+              <Box mt={4} mb={25}>
+                <FooterText>
+                  Need help? Email us at{" "}
+                  <LinkMailBold href="mailto:support@gamejitsu.gg">
+                    support@gamejitsu.gg
+                  </LinkMailBold>
+                </FooterText>
+              </Box>
+              <Box mb={25}>
+                <FooterText>
+                  Are you a Streamer/You Tuber/High Ranked?{" "}
+                  <LinkMailBold href="mailto:support@gamejitsu.gg">
+                    Apply for Partnership
+                  </LinkMailBold>
+                </FooterText>
+              </Box>
             </Box>
           </Flex>
           <LineHorizontal />

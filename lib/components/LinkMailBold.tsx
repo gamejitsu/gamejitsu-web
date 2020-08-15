@@ -18,7 +18,7 @@ const Content = styled.a`
   }
 `
 
-const LinkMailBold: FunctionComponent<Props> = ({ children, className, href, mt }) => (
+const LinkMailBold: FunctionComponent<Props> = ({ children, href }) => (
   <Content href={href}>{children}</Content>
 )
 
