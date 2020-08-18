@@ -7,7 +7,7 @@ import queryString from "query-string"
 
 import { UserContext } from "gamejitsu/contexts"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import { Footer, Navbar, LinkBold, ABold } from "gamejitsu/components"
+import { Footer, Navbar, LinkBold } from "gamejitsu/components"
 
 interface SecondaryTitleProps {
   color?: string
