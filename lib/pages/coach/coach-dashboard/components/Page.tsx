@@ -46,11 +46,21 @@ const EmptyReviewRequests = styled(Flex)`
   flex-direction: column;
 `
 
+const areAllReviewsPublished = (reviews: DecoratedReview[]) => {
+  let areAllPublished = true
+  reviews.map((review) => {
+    if (review && !review.isPublished) {
+      areAllPublished = false
+    }
+  })
+  return areAllPublished
+}
+
 const CoachDashboardPage: NextPage<Props> = ({ reviewRequests, reviews }) => {
   return (
     <LayoutWithMenu title="Coach Dashboard">
       <Title text="ACCEPTED REVIEWS" />
-      {reviews.length === 0 ? (
+      {reviews.length === 0 || areAllReviewsPublished(reviews) ? (
         <EmptyAcceptedReviews height="30%">
           <Box>
             <SettingsSVG width="200" height="100" />
@@ -59,7 +69,7 @@ const CoachDashboardPage: NextPage<Props> = ({ reviewRequests, reviews }) => {
         </EmptyAcceptedReviews>
       ) : (
         reviews.map((review) => {
-          if (review) {
+          if (review && !review.isPublished) {
             return <CoachReviewCard key={review.id} review={review} />
           }
         })

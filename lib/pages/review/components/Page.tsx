@@ -1,15 +1,19 @@
-import React, { useRef, useState, SyntheticEvent, useEffect } from "react"
 import { Flex, Box } from "rebass"
 import { NextPageContext, NextPage } from "next"
+import React, { useRef, useState, SyntheticEvent, useEffect } from "react"
+import styled from "styled-components"
+
+import { Comment } from "gamejitsu/api/types/comment"
+import { CommentBar, CommentList } from "."
+import { DecoratedReplay } from "gamejitsu/models/replay"
+import { DecoratedReview, decorateReview } from "gamejitsu/models/review"
+import { findModel } from "gamejitsu/api"
 import { LayoutWithMenuUser } from "gamejitsu/components"
 import ReviewResource, { Review } from "gamejitsu/api/resources/review"
-import { findModel } from "gamejitsu/api"
-import { CommentBar, CommentList } from "."
-import styled from "styled-components"
-import { Comment } from "gamejitsu/api/types/comment"
 
 interface Props {
   review: Review
+  replay: DecoratedReplay
 }
 
 const VideoContainer = styled(Box)`
@@ -67,7 +71,10 @@ const ReviewPage: NextPage<Props> = (props) => {
                 width="100%"
                 controls
               >
-                <source src="/video/sample.mp4" type="video/mp4" />
+                <source
+                  src={props.replay.videoUrl ? props.replay.videoUrl : "/video/sample.mp4"}
+                  type="video/mp4"
+                />
               </video>
             </VideoContainer>
             <Box>
@@ -97,13 +104,16 @@ const ReviewPage: NextPage<Props> = (props) => {
 
 const getReview = async (ctx: NextPageContext, id: string) => {
   const response = await findModel(ReviewResource, id, ctx)
-  return response.data
+  return response
 }
 
 ReviewPage.getInitialProps = async (ctx: NextPageContext) => {
   const urlId = ctx.query.id
-  const review = await getReview(ctx, urlId.toString())
-  return { review }
+  const response = await getReview(ctx, urlId.toString())
+  const reviewDecorated: DecoratedReview = decorateReview(response.data, response.included)
+  const replay: DecoratedReplay = reviewDecorated.replay
+  const review: Review = response.data
+  return { review, replay }
 }
 
 export default ReviewPage

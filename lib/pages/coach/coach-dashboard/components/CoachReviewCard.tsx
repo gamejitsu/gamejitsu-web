@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react"
+import { Flex, Box, Text } from "rebass"
 
 import { Button, Card, HeroImageSmall } from "gamejitsu/components"
-import { Flex, Box, Text } from "rebass"
 import { DecoratedReview } from "gamejitsu/models/review"
-import { deleteModel } from "gamejitsu/api"
+import { deleteModel, updateModel } from "gamejitsu/api"
 import ReviewResource from "gamejitsu/api/resources/review"
 
 interface Props {
@@ -12,6 +12,11 @@ interface Props {
 
 const onDelete = (review: DecoratedReview) => {
   deleteModel(ReviewResource, review)
+}
+
+const onPublish = async (review: DecoratedReview) => {
+  review.isPublished = true
+  await updateModel(ReviewResource, review)
 }
 
 const CoachReviewCard: FunctionComponent<Props> = ({ review }) => (
@@ -39,6 +44,7 @@ const CoachReviewCard: FunctionComponent<Props> = ({ review }) => (
         <Box alignSelf="center" pr={3}>
           <Button href={"/coach-reviews/" + review.id} text="Complete review" />
           <Button onClick={onDelete.bind(null, review)} text="Cancel review" />
+          <Button onClick={onPublish.bind(null, review)} text="Publish review" />
         </Box>
       </Flex>
     </Card>

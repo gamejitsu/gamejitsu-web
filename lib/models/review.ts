@@ -15,13 +15,31 @@ export interface DecoratedReview extends Review {
   requestId: string
 }
 
-interface IncludedReview {
+interface IncludedReviews {
   "review-request": ReviewRequest[]
   replay: Replay[]
   coach: Coach[]
 }
 
-export const decorateReviews = (reviews: Review[], included: IncludedReview) => {
+export const decorateReview = (review: Review, included: IncludedReviews) => {
+  const reviewRequest = included["review-request"].find((r) => r.id === review.requestId)
+  const replay = included.replay.find((r) => r.id === reviewRequest?.replayId)
+  if (reviewRequest && replay) {
+    return {
+      reviewRequest,
+      replay: decorateReplay(replay),
+      coachId: review.coachId,
+      comments: review.comments,
+      id: review.id,
+      isPublished: review.isPublished,
+      requestId: review.requestId
+    }
+  } else {
+    throw new Error("Review request or replay not found!")
+  }
+}
+
+export const decorateReviews = (reviews: Review[], included: IncludedReviews) => {
   return reviews.map((review) => {
     const reviewRequest = included["review-request"].find((r) => r.id === review.requestId)
     const replay = included.replay.find((r) => r.id === reviewRequest?.replayId)

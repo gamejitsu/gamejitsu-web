@@ -10,14 +10,17 @@ import { findModel, updateModel } from "gamejitsu/api"
 import { LayoutWithMenu } from "gamejitsu/components"
 import ReviewResource, { Review } from "gamejitsu/api/resources/review"
 import { useWarnIfUnsavedChanges } from "./RefreshPageWarner"
+import { DecoratedReview, decorateReview } from "gamejitsu/models/review"
+import { DecoratedReplay } from "gamejitsu/models/replay"
 
 interface Props {
   review: Review
+  replay: DecoratedReplay
 }
 
 const getReview = async (ctx: NextPageContext, id: string) => {
   const response = await findModel(ReviewResource, id, ctx)
-  return response.data
+  return response
 }
 
 const VideoContainer = styled(Box)`
@@ -131,7 +134,10 @@ const CoachReviewPage: NextPage<Props> = (props) => {
                 width="100%"
                 controls
               >
-                <source src="/video/sample.mp4" type="video/mp4" />
+                <source
+                  src={props.replay.videoUrl ? props.replay.videoUrl : "/video/sample.mp4"}
+                  type="video/mp4"
+                />
               </video>
             </VideoContainer>
             <Box>
@@ -172,8 +178,13 @@ const CoachReviewPage: NextPage<Props> = (props) => {
 
 CoachReviewPage.getInitialProps = async (ctx: NextPageContext) => {
   const urlId = ctx.query.id
-  const review = await getReview(ctx, urlId.toString())
-  return { review }
+  const response = await getReview(ctx, urlId.toString())
+  const reviewDecorated: DecoratedReview = decorateReview(response.data, response.included)
+  const replay: DecoratedReplay = reviewDecorated.replay
+  const review: Review = response.data
+  console.log("review:", review)
+  console.log("replay:", replay)
+  return { review, replay }
 }
 
 export default CoachReviewPage

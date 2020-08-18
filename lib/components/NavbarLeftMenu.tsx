@@ -1,14 +1,15 @@
-import queryString from "query-string"
-import styled from "styled-components"
-import Link from "./Link"
-
 import { Box, Flex } from "rebass"
 import { destroyCookie } from "nookies"
-import { UserContext } from "../contexts"
-import { ButtonIcon, ButtonNew, ImageButton } from "."
-import { useContext, FunctionComponent } from "react"
 import { transparentize } from "polished"
+import { useContext, FunctionComponent } from "react"
 import { useRouter } from "next/router"
+import queryString from "query-string"
+import styled from "styled-components"
+
+import { ButtonIcon, ButtonNew, ImageButton } from "."
+import { UserContext } from "../contexts"
+
+import Link from "./Link"
 
 const urlBase = "https://steamcommunity.com/openid/login"
 
@@ -114,12 +115,21 @@ const NavbarLeftMenu: FunctionComponent = () => {
         </Flex>
       </Box>
       {user ? (
-        [
-          <NavLink key="username" href="/">
-            {user.username}
-          </NavLink>,
-          <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
-        ]
+        user?.coachId ? (
+          [
+            <NavLink key="username" href="/coach-settings">
+              Coach {user?.username}
+            </NavLink>,
+            <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
+          ]
+        ) : (
+          [
+            <NavLink key="username" href="/settings">
+              {user.username}
+            </NavLink>,
+            <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
+          ]
+        )
       ) : (
         <Box>
           <ButtonIcon key="login" text="SIGN IN" icon={user} onClick={login} />

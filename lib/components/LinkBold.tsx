@@ -1,6 +1,5 @@
 import NextLink from "next/link"
 import styled from "styled-components"
-
 import { FunctionComponent } from "react"
 import { Box } from "rebass"
 
@@ -21,7 +20,7 @@ const Content = styled(Box)`
   }
 `
 
-const LinkBold: FunctionComponent<Props> = ({ children, className, href, mt }) => (
+const LinkBold: FunctionComponent<Props> = ({ children, className, href, mt, ...props }) => (
   <NextLink href={href}>
     <Content className={className} mt={mt}>
       {children}

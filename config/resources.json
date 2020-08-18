@@ -36,7 +36,8 @@
       "playedAt": { "type": "date" },
       "players": { "type": "array", "value": "player" },
       "duration": { "type": "number" },
-      "isRadiantWinner": { "type": "boolean" }
+      "isRadiantWinner": { "type": "boolean" },
+      "videoUrl": {"type": "string", "optional": true}
     },
     "relationships": {}
   },

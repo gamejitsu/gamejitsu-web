@@ -2,12 +2,12 @@ import React, { useContext } from "react"
 import styled from "styled-components"
 import { Flex, Box } from "rebass"
 import Head from "next/head"
-import { UserContext } from "gamejitsu/contexts"
-
-import { AuthenticatedComponent } from "gamejitsu/interfaces"
-
-import { Footer, Navbar, LinkDark, LinkBold } from "gamejitsu/components"
 import { Callout } from "@blueprintjs/core"
+import queryString from "query-string"
+
+import { UserContext } from "gamejitsu/contexts"
+import { AuthenticatedComponent } from "gamejitsu/interfaces"
+import { Footer, Navbar, LinkBold } from "gamejitsu/components"
 
 interface SecondaryTitleProps {
   color?: string
@@ -56,6 +56,17 @@ const ParagraphTitle = styled.h3`
   margin-bottom: 15px;
 `
 
+const Bold = styled.a`
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+    color: ${(props) => props.theme.primaryColor};
+  }
+`
+
 TextCard.defaultProps = {
   my: 4
 }
@@ -64,6 +75,19 @@ const getCurrentUser = () => useContext(UserContext)
 
 const Page: AuthenticatedComponent = () => {
   const user = getCurrentUser()
+  const urlBase = "https://steamcommunity.com/openid/login"
+
+  const urlQuery = {
+    "openid.claimed_id": "http://specs.openid.net/auth/2.0/identifier_select",
+    "openid.identity": "http://specs.openid.net/auth/2.0/identifier_select",
+    "openid.mode": "checkid_setup",
+    "openid.ns": "http://specs.openid.net/auth/2.0",
+    "openid.realm": window.origin + "/auth?redirect=/coach-signup",
+    "openid.return_to": window.origin + "/auth?redirect=/coach-signup"
+  }
+
+  const stringified = queryString.stringify(urlQuery)
+  console.log("window:", window.origin)
   return (
     <Box mt={4}>
       <Navbar />
@@ -81,7 +105,7 @@ const Page: AuthenticatedComponent = () => {
               </Box>
             </Flex>
             <Box width="900px">
-              {user?.hasPublicProfile ? (
+              {user?.hasPublicProfile || !user ? (
                 <div />
               ) : (
                 <Box mb={4}>
@@ -111,14 +135,18 @@ const Page: AuthenticatedComponent = () => {
                   </Callout>
                 </Box>
               )}
+              <ParagraphTitle>Public Profile</ParagraphTitle>
               <ParagraphText>
-                <ParagraphTitle>Public Profile</ParagraphTitle>
                 Steam public profile is needed to signup as a coach. If there is no "Private Steam
                 profile detected" warning alert on this page, it means your profile is public.
-                <ParagraphTitle>Required MMR</ParagraphTitle>
+              </ParagraphText>
+              <ParagraphTitle>Required MMR</ParagraphTitle>
+              <ParagraphText>
                 If you have an MMR greater or equal than 4k, you are entitle to become a Gamejitsu
                 Coach.
-                <ParagraphTitle>Skill level</ParagraphTitle>
+              </ParagraphText>
+              <ParagraphTitle>Skill level</ParagraphTitle>
+              <ParagraphText>
                 You will be able to pickup reviews based on you skill level:
                 <br />
                 <br />
@@ -129,11 +157,17 @@ const Page: AuthenticatedComponent = () => {
                 6k MMR: very high, high, medium
                 <br />
                 7k MMR: pro, very high, high, medium
-                <ParagraphTitle>Sign Up</ParagraphTitle>
+              </ParagraphText>
+              <ParagraphTitle>Sign Up</ParagraphTitle>
+              <ParagraphText>
                 If you match the required MMR, and you are not already a coach you can sign up to
                 become one at the Gamejitsu
-                <LinkBold href="/coach-signup"> coach sign-up page</LinkBold>.
               </ParagraphText>
+              {user ? (
+                <LinkBold href="/coach-signup"> coach sign-up page</LinkBold>
+              ) : (
+                <Bold href={urlBase + "?" + stringified}>coach sign-up page</Bold>
+              )}
             </Box>
           </Box>
         </TextCard>
