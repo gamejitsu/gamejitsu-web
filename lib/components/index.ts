@@ -1,3 +1,4 @@
+import ABold from "./ABold"
 import Button from "./Button"
 import ButtonNew from "./ButtonNew"
 import ButtonIcon from "./ButtonIcon"
@@ -29,6 +30,7 @@ import SteamButton from "./SteamButton"
 import Title from "./Title"
 
 export {
+  ABold,
   Button,
   ButtonNew,
   ButtonIcon,

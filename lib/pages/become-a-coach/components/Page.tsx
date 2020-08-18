@@ -7,25 +7,10 @@ import queryString from "query-string"
 
 import { UserContext } from "gamejitsu/contexts"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import { Footer, Navbar, LinkBold } from "gamejitsu/components"
+import { Footer, Navbar, LinkBold, ABold } from "gamejitsu/components"
 
 interface SecondaryTitleProps {
   color?: string
-}
-
-const urlBase = "https://steamcommunity.com/openid/login"
-
-const login = () => {
-  const urlQuery = {
-    "openid.claimed_id": "http://specs.openid.net/auth/2.0/identifier_select",
-    "openid.identity": "http://specs.openid.net/auth/2.0/identifier_select",
-    "openid.mode": "checkid_setup",
-    "openid.ns": "http://specs.openid.net/auth/2.0",
-    "openid.realm": window.origin + "/auth?redirect=/coach-signup",
-    "openid.return_to": window.origin + "/auth?redirect=/coach-signup"
-  }
-  const stringified = queryString.stringify(urlQuery)
-  window.location.href = urlBase + "?" + stringified
 }
 
 const Container = styled(Flex)`
@@ -71,6 +56,17 @@ const ParagraphTitle = styled.h3`
   margin-bottom: 15px;
 `
 
+const Bold = styled.a`
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+    color: ${(props) => props.theme.primaryColor};
+  }
+`
+
 TextCard.defaultProps = {
   my: 4
 }
@@ -79,6 +75,19 @@ const getCurrentUser = () => useContext(UserContext)
 
 const Page: AuthenticatedComponent = () => {
   const user = getCurrentUser()
+  const urlBase = "https://steamcommunity.com/openid/login"
+
+  const urlQuery = {
+    "openid.claimed_id": "http://specs.openid.net/auth/2.0/identifier_select",
+    "openid.identity": "http://specs.openid.net/auth/2.0/identifier_select",
+    "openid.mode": "checkid_setup",
+    "openid.ns": "http://specs.openid.net/auth/2.0",
+    "openid.realm": window.origin + "/auth?redirect=/coach-signup",
+    "openid.return_to": window.origin + "/auth?redirect=/coach-signup"
+  }
+
+  const stringified = queryString.stringify(urlQuery)
+  console.log("window:", window.origin)
   return (
     <Box mt={4}>
       <Navbar />
@@ -126,14 +135,18 @@ const Page: AuthenticatedComponent = () => {
                   </Callout>
                 </Box>
               )}
+              <ParagraphTitle>Public Profile</ParagraphTitle>
               <ParagraphText>
-                <ParagraphTitle>Public Profile</ParagraphTitle>
                 Steam public profile is needed to signup as a coach. If there is no "Private Steam
                 profile detected" warning alert on this page, it means your profile is public.
-                <ParagraphTitle>Required MMR</ParagraphTitle>
+              </ParagraphText>
+              <ParagraphTitle>Required MMR</ParagraphTitle>
+              <ParagraphText>
                 If you have an MMR greater or equal than 4k, you are entitle to become a Gamejitsu
                 Coach.
-                <ParagraphTitle>Skill level</ParagraphTitle>
+              </ParagraphText>
+              <ParagraphTitle>Skill level</ParagraphTitle>
+              <ParagraphText>
                 You will be able to pickup reviews based on you skill level:
                 <br />
                 <br />
@@ -144,18 +157,17 @@ const Page: AuthenticatedComponent = () => {
                 6k MMR: very high, high, medium
                 <br />
                 7k MMR: pro, very high, high, medium
-                <ParagraphTitle>Sign Up</ParagraphTitle>
+              </ParagraphText>
+              <ParagraphTitle>Sign Up</ParagraphTitle>
+              <ParagraphText>
                 If you match the required MMR, and you are not already a coach you can sign up to
                 become one at the Gamejitsu
-                {user ? (
-                  <LinkBold href="/coach-signup"> coach sign-up page</LinkBold>
-                ) : (
-                  <button key="login" onClick={login}>
-                    coach sign-up page
-                  </button>
-                )}
-                .
               </ParagraphText>
+              {user ? (
+                <LinkBold href="/coach-signup"> coach sign-up page</LinkBold>
+              ) : (
+                <Bold href={urlBase + "?" + stringified}>coach sign-up page</Bold>
+              )}
             </Box>
           </Box>
         </TextCard>

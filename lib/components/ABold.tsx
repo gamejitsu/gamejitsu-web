@@ -1,5 +1,6 @@
 import NextLink from "next/link"
 import styled from "styled-components"
+
 import { FunctionComponent } from "react"
 import { Box } from "rebass"
 
@@ -9,7 +10,7 @@ interface Props {
   mt?: number
 }
 
-const Content = styled(Box)`
+const Content = styled.a`
   color: white;
   font-weight: bold;
   display: inline;
@@ -20,12 +21,10 @@ const Content = styled(Box)`
   }
 `
 
-const LinkBold: FunctionComponent<Props> = ({ children, className, href, mt, ...props }) => (
+const ABold: FunctionComponent<Props> = ({ children, className, href, mt }) => (
   <NextLink href={href}>
-    <Content className={className} mt={mt}>
-      {children}
-    </Content>
+    <Content className={className}>{children}</Content>
   </NextLink>
 )
 
-export default LinkBold
+export default ABold
