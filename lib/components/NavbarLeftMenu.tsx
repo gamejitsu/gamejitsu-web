@@ -114,12 +114,21 @@ const NavbarLeftMenu: FunctionComponent = () => {
         </Flex>
       </Box>
       {user ? (
-        [
-          <NavLink key="username" href="/">
-            {user.username}
-          </NavLink>,
-          <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
-        ]
+        user?.coachId ? (
+          [
+            <NavLink key="username" href="/coach-settings">
+              Coach {user?.username}
+            </NavLink>,
+            <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
+          ]
+        ) : (
+          [
+            <NavLink key="username" href="/settings">
+              {user.username}
+            </NavLink>,
+            <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
+          ]
+        )
       ) : (
         <Box>
           <ButtonIcon key="login" text="SIGN IN" icon={user} onClick={login} />
