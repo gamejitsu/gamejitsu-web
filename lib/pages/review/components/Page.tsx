@@ -1,15 +1,15 @@
-import React, { useRef, useState, SyntheticEvent, useEffect } from "react"
 import { Flex, Box } from "rebass"
 import { NextPageContext, NextPage } from "next"
+import React, { useRef, useState, SyntheticEvent, useEffect } from "react"
 import styled from "styled-components"
 
-import { CommentBar, CommentList } from "."
 import { Comment } from "gamejitsu/api/types/comment"
-import { DecoratedReview, decorateReview } from "gamejitsu/models/review"
+import { CommentBar, CommentList } from "."
 import { DecoratedReplay } from "gamejitsu/models/replay"
+import { DecoratedReview, decorateReview } from "gamejitsu/models/review"
+import { findModel } from "gamejitsu/api"
 import { LayoutWithMenuUser } from "gamejitsu/components"
 import ReviewResource, { Review } from "gamejitsu/api/resources/review"
-import { findModel } from "gamejitsu/api"
 
 interface Props {
   review: Review

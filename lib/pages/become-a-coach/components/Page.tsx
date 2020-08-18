@@ -2,15 +2,30 @@ import React, { useContext } from "react"
 import styled from "styled-components"
 import { Flex, Box } from "rebass"
 import Head from "next/head"
-import { UserContext } from "gamejitsu/contexts"
-
-import { AuthenticatedComponent } from "gamejitsu/interfaces"
-
-import { Footer, Navbar, LinkDark, LinkBold } from "gamejitsu/components"
 import { Callout } from "@blueprintjs/core"
+import queryString from "query-string"
+
+import { UserContext } from "gamejitsu/contexts"
+import { AuthenticatedComponent } from "gamejitsu/interfaces"
+import { Footer, Navbar, LinkBold } from "gamejitsu/components"
 
 interface SecondaryTitleProps {
   color?: string
+}
+
+const urlBase = "https://steamcommunity.com/openid/login"
+
+const login = () => {
+  const urlQuery = {
+    "openid.claimed_id": "http://specs.openid.net/auth/2.0/identifier_select",
+    "openid.identity": "http://specs.openid.net/auth/2.0/identifier_select",
+    "openid.mode": "checkid_setup",
+    "openid.ns": "http://specs.openid.net/auth/2.0",
+    "openid.realm": window.origin + "/auth?redirect=/coach-signup",
+    "openid.return_to": window.origin + "/auth?redirect=/coach-signup"
+  }
+  const stringified = queryString.stringify(urlQuery)
+  window.location.href = urlBase + "?" + stringified
 }
 
 const Container = styled(Flex)`
@@ -81,7 +96,7 @@ const Page: AuthenticatedComponent = () => {
               </Box>
             </Flex>
             <Box width="900px">
-              {user?.hasPublicProfile ? (
+              {user?.hasPublicProfile || !user ? (
                 <div />
               ) : (
                 <Box mb={4}>
@@ -132,7 +147,14 @@ const Page: AuthenticatedComponent = () => {
                 <ParagraphTitle>Sign Up</ParagraphTitle>
                 If you match the required MMR, and you are not already a coach you can sign up to
                 become one at the Gamejitsu
-                <LinkBold href="/coach-signup"> coach sign-up page</LinkBold>.
+                {user ? (
+                  <LinkBold href="/coach-signup"> coach sign-up page</LinkBold>
+                ) : (
+                  <button key="login" onClick={login}>
+                    coach sign-up page
+                  </button>
+                )}
+                .
               </ParagraphText>
             </Box>
           </Box>

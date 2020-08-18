@@ -1,10 +1,11 @@
+import { Box, Flex } from "rebass"
+import { NextPage } from "next"
 import React, { useContext } from "react"
+import styled from "styled-components"
 
 import { LayoutWithMenu, Title } from "gamejitsu/components"
-import { NextPage } from "next"
-import { Box, Flex } from "rebass"
-import styled from "styled-components"
 import { UserContext } from "gamejitsu/contexts"
+import UserPhotoSVG from "../../../../../svgs/user-photo.svg"
 
 const EmptyReviews = styled(Flex)`
   witdh: 100%;
@@ -19,18 +20,25 @@ const getCurrentUser = () => useContext(UserContext)
 
 const CoachSettings: NextPage = () => {
   const user: any = getCurrentUser()
+  const coach = user?.coach
   return (
     <LayoutWithMenu title="Settings">
       <Title text="SETTINGS" />
       <EmptyReviews height="100%">
+        <Box>
+          {coach.photoUrl != null ? (
+            <img src={coach.photoUrl} />
+          ) : (
+            <UserPhotoSVG width="200" height="100" />
+          )}
+        </Box>
         <Box>Coach: {user?.username}</Box>
         <Box>Public Profile: {user?.hasPublicProfile.toString()}</Box>
-        <Box>First name: {user?.coach.firstName}</Box>
-        <Box>Last name: {user?.coach.lastName}</Box>
-        <Box>Skill Level: {user?.coach.skillLevel}</Box>
-        <Box>Email: {user?.coach.email}</Box>
-        <Box>Photo Url: {user?.coach.photoUrl}</Box>
-        <Box>Approved: {user?.coach.isApproved.toString()}</Box>
+        <Box>First name: {coach.firstName}</Box>
+        <Box>Last name: {coach.lastName}</Box>
+        <Box>Skill Level: {coach.skillLevel}</Box>
+        <Box>Email: {coach.email}</Box>
+        <Box>Approved: {coach.isApproved.toString()}</Box>
       </EmptyReviews>
     </LayoutWithMenu>
   )
