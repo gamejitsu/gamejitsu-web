@@ -1,21 +1,21 @@
-import React, { useState, useEffect, FunctionComponent } from "react"
 import { Callout } from "@blueprintjs/core"
+import { Flex, Box } from "rebass"
 import { NextPageContext, NextPage } from "next"
 import { parseCookies } from "nookies"
-import { Flex, Box } from "rebass"
-import styled from "styled-components"
 import { Socket } from "phoenix"
+import React, { useState, useEffect, FunctionComponent } from "react"
+import styled from "styled-components"
 
-import ReplayResource from "gamejitsu/api/resources/replay"
-import UserResource, { User } from "gamejitsu/api/resources/user"
-import ReviewRequestResource from "gamejitsu/api/resources/review-request"
 import { DecoratedReplay, decorateReplays } from "gamejitsu/models/replay"
-import { Spinner, LayoutWithMenuUser } from "gamejitsu/components"
-import { listModels, findModel } from "gamejitsu/api"
 import { decorateReviewRequests, DecoratedReviewRequest } from "gamejitsu/models/review-request"
-import { UserContext } from "gamejitsu/contexts"
+import { listModels, findModel } from "gamejitsu/api"
 import { ReviewRequestCard, ReplayCardNew } from "."
+import { Spinner, LayoutWithMenuUser } from "gamejitsu/components"
+import { UserContext } from "gamejitsu/contexts"
+import ReplayResource from "gamejitsu/api/resources/replay"
+import ReviewRequestResource from "gamejitsu/api/resources/review-request"
 import SettingsSVG from "../../../../svgs/settings.svg"
+import UserResource, { User } from "gamejitsu/api/resources/user"
 
 interface Props {
   user: User
@@ -140,6 +140,7 @@ const Dashboard: FunctionComponent<Props> = (props) => {
           </EmptyRequestedReviews>
         ) : (
           props.reviewRequests.map((reviewRequest) => {
+            console.log(reviewRequest?.status)
             if (reviewRequest)
               return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
           })

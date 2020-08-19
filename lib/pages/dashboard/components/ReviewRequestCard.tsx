@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react"
 
-import { Button, Card, HeroImageSmall } from "gamejitsu/components"
+import { Card, HeroImageSmall } from "gamejitsu/components"
 import { Flex, Box, Text } from "rebass"
 import { DecoratedReviewRequest } from "gamejitsu/models/review-request"
 
@@ -31,7 +31,6 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => (
           </div>
         </Box>
         <Box alignSelf="center" pr={3}>
-          <Button onClick={() => {}} text="Cancel" />
         </Box>
       </Flex>
     </Card>

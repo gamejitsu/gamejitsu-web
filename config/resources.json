@@ -48,6 +48,7 @@
     },
     "relationships": {
       "replay": { "cardinality": "one", "type": "replay", "include": true },
+      "reviews": { "cardinality": "many", "type": "review", "include": true},
       "user": { "cardinality": "one", "type": "user", "include": true }
     }
   },
