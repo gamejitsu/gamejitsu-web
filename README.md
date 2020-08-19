@@ -24,15 +24,19 @@ __`❍ API_ENDPOINT=http://localhost:4000`__
 
 __`❍ SOCKET_ENDPOINT=ws://localhost:4000`__
 
-**5)** Start the Next server!
+**5)** Load the environment variables:
+
+__`❍ cd .`__
+
+**6)** Start the Next server!
 
 __`❍ npm run dev`__
 
-**6)** Visit the **Gamejitsu** home page on your browser:
+**7)** Visit the **Gamejitsu** home page on your browser:
 
 __`❍`[`localhost:3000`](http://localhost:3000)__
 
-**7)** Start the tests:
+**8)** Start the tests:
 
 __`❍ npm run test`__
 
