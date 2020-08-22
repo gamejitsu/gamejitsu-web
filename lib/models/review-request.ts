@@ -32,9 +32,7 @@ export const decorateReviewRequests = (
     const user = included.user.find((u) => u.id === reviewRequest.userId)
     let status: ReviewRequestStatus = "waiting_for_coach"
     included.review.map((review) =>
-      review.isPublished 
-      ? status = "published"
-      : status = "accepted_by_coach"
+      review.isPublished ? (status = "published") : (status = "accepted_by_coach")
     )
     if (replay && user) {
       return {

@@ -30,8 +30,7 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => (
             })}
           </div>
         </Box>
-        <Box alignSelf="center" pr={3}>
-        </Box>
+        <Box alignSelf="center" pr={3}></Box>
       </Flex>
     </Card>
   </Box>
