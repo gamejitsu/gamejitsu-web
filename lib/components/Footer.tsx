@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { FunctionComponent } from "react"
 import { Box, Flex } from "rebass"
+
 import { LinkDark, LinkSocialIcon } from "."
 import LinkMailBold from "gamejitsu/components/LinkMailBold"
 

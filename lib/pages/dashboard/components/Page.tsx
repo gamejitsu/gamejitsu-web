@@ -141,7 +141,7 @@ const Dashboard: FunctionComponent<Props> = (props) => {
         ) : (
           props.reviewRequests.map((reviewRequest) => {
             console.log(reviewRequest?.status)
-            if (reviewRequest)
+            if (reviewRequest && reviewRequest.status !== "published")
               return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
           })
         )}

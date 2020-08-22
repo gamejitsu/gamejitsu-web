@@ -2,9 +2,10 @@ import { DecoratedReplay, decorateReplay } from "gamejitsu/models/replay"
 import { Replay } from "gamejitsu/api/resources/replay"
 import { ReviewRequest } from "gamejitsu/api/resources/review-request"
 import { SkillLevel } from "gamejitsu/api/types/skill-level"
-import { ReviewRequestStatus } from "gamejitsu/api/types/review-request-status"
 import { User } from "gamejitsu/api/resources/user"
 import { Review } from "gamejitsu/api/resources/review"
+
+type ReviewRequestStatus = "waiting_for_coach" | "published" | "accepted_by_coach"
 
 export interface DecoratedReviewRequest {
   skillLevel: SkillLevel
@@ -29,11 +30,11 @@ export const decorateReviewRequests = (
   return reviewRequests.map((reviewRequest) => {
     const replay = included.replay.find((r) => r.id === reviewRequest.replayId)
     const user = included.user.find((u) => u.id === reviewRequest.userId)
-    let status: ReviewRequestStatus = ("waiting_for_coach" as ReviewRequestStatus)
+    let status: ReviewRequestStatus = "waiting_for_coach"
     included.review.map((review) =>
       review.isPublished 
-      ? status = ("published" as ReviewRequestStatus) 
-      : status = ("accepted_by_coach" as ReviewRequestStatus)
+      ? status = "published"
+      : status = "accepted_by_coach"
     )
     if (replay && user) {
       return {
