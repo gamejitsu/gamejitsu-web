@@ -555,19 +555,16 @@ const Page: AuthenticatedComponent = () => (
       <PriceCards>
         <Box width="900px" mx="auto" style={{ position: "relative" }}>
           <Flex justifyContent="center">
-            <PriceCard title="Medium" price="$4.0" icon="award-badge-1">
-              <PriceFeature>4k MMR or above</PriceFeature>
-            </PriceCard>
 
-            <PriceCard title="High" price="$6.0" icon="award-badge">
+            <PriceCard title="High" price="$10.0" icon="award-badge">
               <PriceFeature>5k MMR or above</PriceFeature>
             </PriceCard>
 
-            <PriceCard title="Very High" price="$8.0" icon="award-badge-3">
+            <PriceCard title="Experienced" price="$20.0" icon="award-badge-3">
               <PriceFeature>6k MMR or above</PriceFeature>
             </PriceCard>
 
-            <PriceCard title="Pro" price="$10.0" icon="vip">
+            <PriceCard title="Pro" price="$30.0" icon="vip">
               <PriceFeature>7k MMR or above</PriceFeature>
             </PriceCard>
           </Flex>
