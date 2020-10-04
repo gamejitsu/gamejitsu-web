@@ -6,21 +6,12 @@ import styled from "styled-components"
 
 import { Comment } from "gamejitsu/api/types/comment"
 import { CommentBar, CommentList, CommentFormNew } from "."
-import { findModel, updateModel } from "gamejitsu/api"
 import { LayoutWithMenu } from "gamejitsu/components"
-import ReviewResource, { Review } from "gamejitsu/api/resources/review"
+import { Review } from "gamejitsu/api/resources/review"
 import { useWarnIfUnsavedChanges } from "./RefreshPageWarner"
-import { DecoratedReview, decorateReview } from "gamejitsu/models/review"
-import { DecoratedReplay } from "gamejitsu/models/replay"
 
 interface Props {
   review: Review
-  replay: DecoratedReplay
-}
-
-const getReview = async (ctx: NextPageContext, id: string) => {
-  const response = await findModel(ReviewResource, id, ctx)
-  return response
 }
 
 const VideoContainer = styled(Box)`
@@ -34,7 +25,7 @@ const Title = styled.h1`
   font-weight: bold;
 `
 
-const CoachReviewPage: NextPage<Props> = (props) => {
+const DemoPage: NextPage<Props> = (props) => {
   useWarnIfUnsavedChanges(true)
 
   const [review, setReview] = useState(props.review)
@@ -92,16 +83,11 @@ const CoachReviewPage: NextPage<Props> = (props) => {
       position: Position.TOP
     })
     try {
-      const { data: serverReview } = await updateModel(ReviewResource, review)
       AppToaster.show({
         intent: Intent.SUCCESS,
         icon: "tick",
         message: "Review saved!"
       })
-      setReview(serverReview)
-      if (selectedComment) {
-        setSelectedComment(serverReview.comments[review.comments.indexOf(selectedComment)])
-      }
     } catch (error) {
       AppToaster.show({
         intent: Intent.DANGER,
@@ -135,7 +121,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
                 controls
               >
                 <source
-                  src={props.replay.videoUrl ? props.replay.videoUrl : "/video/sample.mp4"}
+                  src={"https://gamejitsu-recorder.s3.eu-west-2.amazonaws.com/videos/d13ddb7d-25ea-4255-b9ce-d7f8742d95b8.mp4"}
                   type="video/mp4"
                 />
               </video>
@@ -176,15 +162,15 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   )
 }
 
-CoachReviewPage.getInitialProps = async (ctx: NextPageContext) => {
-  const urlId = ctx.query.id
-  const response = await getReview(ctx, urlId.toString())
-  const reviewDecorated: DecoratedReview = decorateReview(response.data, response.included)
-  const replay: DecoratedReplay = reviewDecorated.replay
-  const review: Review = response.data
-  console.log("review:", review)
-  console.log("replay:", replay)
-  return { review, replay }
+DemoPage.getInitialProps = async (ctx: NextPageContext) => {
+  const review: Review = {
+    id: "0",
+    comments: [{ text: "test", timestamp: 21 }],
+    isPublished: false,
+    requestId: "0",
+    coachId: "0"
+  }
+  return { review }
 }
 
-export default CoachReviewPage
+export default DemoPage
