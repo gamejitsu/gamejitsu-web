@@ -13,6 +13,7 @@ import HeroImageSmall from "./HeroImageSmall"
 import ImageButton from "./ImageButton"
 import InputGroup from "./InputGroup"
 import Layout from "./Layout"
+import LayoutDemo from "./LayoutDemo"
 import LayoutWithMenu from "./LayoutWithMenu"
 import LayoutWithMenuUser from "./LayoutWithMenuUser"
 import Link from "./Link"
@@ -45,6 +46,7 @@ export {
   InputGroup,
   Layout,
   LayoutWithMenu,
+  LayoutDemo,
   LayoutWithMenuUser,
   Link,
   LinkDark,

@@ -27,6 +27,7 @@ interface ListItemContainerProps {
 const Container = styled(Box)`
   width: 800px;
   max-height: 660px;
+  max-width: 500px;
   overflow: auto;
   &::scrollable-element {
     scrollbar-color: red yellow;
@@ -60,7 +61,7 @@ const CommentListTitle = styled.h1`
   flex-grow: 1;
 `
 
-const Header = styled(Flex)`
+const Header = styled(Box)`
   background-color: ${(props) => props.theme.backgroundColor};
   border: 2px solid ${(props) => props.theme.secondaryColor};
   height: 60px;
@@ -118,9 +119,9 @@ const CommentList: FunctionComponent<Props> = ({
     setCommentsExpanded(newCommentsExpanded)
   }
   return (
-    <Container ml={4}>
+    <Container ml={4}  width="100%">
       <Header>
-        <Flex ml={3} width="100%">
+        <Flex ml={3}>
           <CommentListTitle>COMMENTS ADDED BY COACH</CommentListTitle>
           <Button text="Save review" type="button" onClick={handleSaveReviewOpen} />
           <Dialog

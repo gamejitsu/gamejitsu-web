@@ -114,6 +114,9 @@ const Footer: FunctionComponent<Props> = () => (
                 <LinkDark href="/become-a-coach">Become a Coach</LinkDark>
               </Box>
               <Box mb={25}>
+                <LinkDark href="/demo">Coach Demo</LinkDark>
+              </Box>
+              <Box mb={25}>
                 <LinkDark href="/customer-reviews">Customer Reviews</LinkDark>
               </Box>
             </Box>

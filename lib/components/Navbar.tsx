@@ -1,6 +1,7 @@
 import queryString from "query-string"
 import styled from "styled-components"
 import Link from "./Link"
+import LinkDark from "./LinkDark"
 
 import { Box, Flex } from "rebass"
 import { destroyCookie } from "nookies"
@@ -111,6 +112,9 @@ const Navbar: FunctionComponent = () => {
           </Box>
         </Flex>
       </Box>
+      <NavLink key="demo" href="/demo">
+        COACH DEMO
+      </NavLink>
       {user?.coachId
         ? [
           <NavLink key="coach-reviews" href="/coach-reviews">
@@ -128,9 +132,6 @@ const Navbar: FunctionComponent = () => {
             REVIEWS
             </NavLink>
         ]}
-      <NavLink key="coach-dashboard" href="/demo">
-        DEMO
-      </NavLink>
       {user ? (
         user?.coachId ? (
           [

@@ -524,7 +524,7 @@ const Page: AuthenticatedComponent = () => (
             <Box mt={100}>
               <Flex>
                 <Box mr={10}>
-                  <ButtonNew key="login" type="button" onClick={login} text="GET STARTED" />
+                  <ButtonNew key="login" type="button" href="/demo" text="COACH DEMO" />
                 </Box>
                 <Box ml={10}>
                   <ButtonAlternative href="#pricing" type="button" text="SEE PRICING" />

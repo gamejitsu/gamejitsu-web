@@ -6,9 +6,10 @@ import styled from "styled-components"
 
 import { Comment } from "gamejitsu/api/types/comment"
 import { CommentBar, CommentList, CommentFormNew } from "."
-import { LayoutWithMenu } from "gamejitsu/components"
+import { LayoutDemo } from "gamejitsu/components"
 import { Review } from "gamejitsu/api/resources/review"
 import { useWarnIfUnsavedChanges } from "./RefreshPageWarner"
+import { AuthenticatedComponent } from "gamejitsu/interfaces"
 
 interface Props {
   review: Review
@@ -25,10 +26,22 @@ const Title = styled.h1`
   font-weight: bold;
 `
 
-const DemoPage: NextPage<Props> = (props) => {
+const DemoPage: AuthenticatedComponent = () => {
   useWarnIfUnsavedChanges(true)
 
-  const [review, setReview] = useState(props.review)
+  const reviewInitial: Review = {
+    id: "0",
+    comments: [
+      { text: "test", timestamp: 21 }, 
+      { text: "test 2", timestamp: 190 }, 
+      { text: "asdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfdasdfasfd", timestamp: 270 }
+    ],
+    isPublished: false,
+    requestId: "0",
+    coachId: "0"
+  }
+
+  const [review, setReview] = useState(reviewInitial)
   const [videoDuration, setVideoDuration] = useState(0)
   const [videoTimestamp, setVideoTimestamp] = useState(0)
   const [selectedComment, setSelectedComment] = useState<Comment | null>(null)
@@ -108,7 +121,7 @@ const DemoPage: NextPage<Props> = (props) => {
   })
 
   return (
-    <LayoutWithMenu title="Coach Review">
+    <LayoutDemo title="Coach Demo">
       <Box>
         <Flex justifyContent="center">
           <Box>
@@ -158,19 +171,10 @@ const DemoPage: NextPage<Props> = (props) => {
           </Box>
         </Flex>
       </Box>
-    </LayoutWithMenu>
+    </LayoutDemo>
   )
 }
 
-DemoPage.getInitialProps = async (ctx: NextPageContext) => {
-  const review: Review = {
-    id: "0",
-    comments: [{ text: "test", timestamp: 21 }],
-    isPublished: false,
-    requestId: "0",
-    coachId: "0"
-  }
-  return { review }
-}
+DemoPage.skipAuthentication = true
 
 export default DemoPage
