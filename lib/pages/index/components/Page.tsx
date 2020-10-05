@@ -185,7 +185,7 @@ const Line = styled.div`
   width: 1px;
 `
 
-const FlowImage = styled(Box)<FlowImageType>`
+const FlowImage = styled(Box) <FlowImageType>`
   background-image: url(${(props) => props.url});
   background-size: contain;
   height: 240px;
@@ -393,6 +393,18 @@ const Page: AuthenticatedComponent = () => (
               </ParagraphText>
             </Box>
           </Flex>
+          <Flex justifyContent="center">
+            <Box mt={100}>
+              <Flex>
+                <Box mr={10}>
+                  <ButtonNew key="demo" type="button" href="/demo" text="COACH DEMO" />
+                </Box>
+                <Box ml={10}>
+                  <ButtonAlternative key="howitworks" type="button" href="/howitworks" text="HOW IT WORKS" />
+                </Box>
+              </Flex>
+            </Box>
+          </Flex>
         </Box>
       </TextCard>
 
@@ -464,8 +476,7 @@ const Page: AuthenticatedComponent = () => (
                 </IconCircle>
                 <Box>
                   <FlowText>
-                    The coach delivers to you the video reviewed with text feedbacks in the form of
-                    comments
+                    Coach reviews your game with text comments bound to your replay
                   </FlowText>
                 </Box>
               </FlowBox>
@@ -498,7 +509,7 @@ const Page: AuthenticatedComponent = () => (
                   <FlowStepIcon src="/images/step2.png" />
                 </IconCircle>
                 <Box>
-                  <FlowText>A human coach grabs your replay and starts the analysis</FlowText>
+                  <FlowText>Our professional coach responds to your request and starts the analysis</FlowText>
                 </Box>
               </FlowBox>
               <FlowBox>
@@ -513,8 +524,7 @@ const Page: AuthenticatedComponent = () => (
                 </IconCircle>
                 <Box>
                   <FlowText>
-                    You are notified via mail of the available review and you can watch it in your
-                    dashboard
+                    You are notified via mail and you can watch the replay analyzed in your dashboard
                   </FlowText>
                 </Box>
               </FlowBox>
@@ -524,7 +534,7 @@ const Page: AuthenticatedComponent = () => (
             <Box mt={100}>
               <Flex>
                 <Box mr={10}>
-                  <ButtonNew key="login" type="button" href="/demo" text="COACH DEMO" />
+                  <ButtonNew key="login" type="button" onClick={login} text="GET STARTED" />
                 </Box>
                 <Box ml={10}>
                   <ButtonAlternative href="#pricing" type="button" text="SEE PRICING" />
