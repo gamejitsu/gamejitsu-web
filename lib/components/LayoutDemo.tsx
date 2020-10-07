@@ -37,26 +37,26 @@ const LeftMenuLink: FunctionComponent<LeftMenuLinkProps> = ({ children, href }) 
 }
 
 const LinkDemo = styled(Box)`
-color: ${(props) => props.theme.textColor};
-cursor: pointer;
-&:hover {
-  text-decoration: none;
-  background-color: ${(props) => transparentize(0.5, props.theme.textColor)};
-  border-right: 3px solid ${(props) => props.theme.primaryColor};
-}
-heigth: 170px;
-width: 100%;
-padding: 30px;
-background-color: transparent;
-font-weight: bold;
-transition: all 0.15s ease-in-out;
-position: relative;
-font-size: 12px;
-letter-spacing: 1px;
-margin-left: 2px;
-margin-right: 2px;
-display: flex;
-align-items: center;
+  color: ${(props) => props.theme.textColor};
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+    background-color: ${(props) => transparentize(0.5, props.theme.textColor)};
+    border-right: 3px solid ${(props) => props.theme.primaryColor};
+  }
+  heigth: 170px;
+  width: 100%;
+  padding: 30px;
+  background-color: transparent;
+  font-weight: bold;
+  transition: all 0.15s ease-in-out;
+  position: relative;
+  font-size: 12px;
+  letter-spacing: 1px;
+  margin-left: 2px;
+  margin-right: 2px;
+  display: flex;
+  align-items: center;
 `
 
 const LeftMenu = styled(Box)`
@@ -73,7 +73,7 @@ const Container = styled(Box)`
   background-position: center;
 `
 
-const LeftMenuLinkContent = styled(LinkLeftMenu) <LeftMenuLinkContentProps>`
+const LeftMenuLinkContent = styled(LinkLeftMenu)<LeftMenuLinkContentProps>`
   font-weight: bold;
   transition: all 0.15s ease-in-out;
   position: relative;
@@ -136,19 +136,19 @@ const LayoutWithMenu: FunctionComponent<Props> = ({ title, children }) => (
           <LinkDemo href="/coach-dashboard">
             <Flex alignItems="center">
               <CoachDashboardSVG width="60" height="35" />
-            Coach Dashboard
+              Coach Dashboard
             </Flex>
           </LinkDemo>
           <LinkDemo href="/placeholder">
             <Flex alignItems="center">
               <AnalysisCompletedSVG width="60" height="35" />
-            Analysis Completed
+              Analysis Completed
             </Flex>
           </LinkDemo>
           <LinkDemo href="/coach-settings">
             <Flex alignItems="center">
               <SettingsSVG width="60" height="35" />
-            Settings
+              Settings
             </Flex>
           </LinkDemo>
           <MenuFooterParent>

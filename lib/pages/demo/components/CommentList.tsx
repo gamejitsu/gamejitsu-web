@@ -119,7 +119,7 @@ const CommentList: FunctionComponent<Props> = ({
     setCommentsExpanded(newCommentsExpanded)
   }
   return (
-    <Container ml={4}  width="100%">
+    <Container ml={4} width="100%">
       <Header>
         <Flex ml={3}>
           <CommentListTitle>COMMENTS ADDED BY COACH</CommentListTitle>

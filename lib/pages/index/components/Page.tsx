@@ -185,7 +185,7 @@ const Line = styled.div`
   width: 1px;
 `
 
-const FlowImage = styled(Box) <FlowImageType>`
+const FlowImage = styled(Box)<FlowImageType>`
   background-image: url(${(props) => props.url});
   background-size: contain;
   height: 240px;
@@ -400,7 +400,12 @@ const Page: AuthenticatedComponent = () => (
                   <ButtonNew key="demo" type="button" href="/demo" text="COACH DEMO" />
                 </Box>
                 <Box ml={10}>
-                  <ButtonAlternative key="howitworks" type="button" href="/howitworks" text="HOW IT WORKS" />
+                  <ButtonAlternative
+                    key="howitworks"
+                    type="button"
+                    href="/howitworks"
+                    text="HOW IT WORKS"
+                  />
                 </Box>
               </Flex>
             </Box>
@@ -509,7 +514,9 @@ const Page: AuthenticatedComponent = () => (
                   <FlowStepIcon src="/images/step2.png" />
                 </IconCircle>
                 <Box>
-                  <FlowText>Our professional coach responds to your request and starts the analysis</FlowText>
+                  <FlowText>
+                    Our professional coach responds to your request and starts the analysis
+                  </FlowText>
                 </Box>
               </FlowBox>
               <FlowBox>
@@ -524,7 +531,8 @@ const Page: AuthenticatedComponent = () => (
                 </IconCircle>
                 <Box>
                   <FlowText>
-                    You are notified via mail and you can watch the replay analyzed in your dashboard
+                    You are notified via mail and you can watch the replay analyzed in your
+                    dashboard
                   </FlowText>
                 </Box>
               </FlowBox>
@@ -565,7 +573,6 @@ const Page: AuthenticatedComponent = () => (
       <PriceCards>
         <Box width="900px" mx="auto" style={{ position: "relative" }}>
           <Flex justifyContent="center">
-
             <PriceCard title="High" price="$10.0" icon="award-badge">
               <PriceFeature>5k MMR or above</PriceFeature>
             </PriceCard>

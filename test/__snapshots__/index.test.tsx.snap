@@ -270,6 +270,110 @@ exports[`Index page should match snapshot 1`] = `
                   </div>
                 </Styled(div)>
                 <NavLink
+                  href="/demo"
+                  key="demo"
+                >
+                  <Styled(div)
+                    m={2}
+                  >
+                    <div
+                      className="css-1eo79v7"
+                    >
+                      <Navbar__NavLinkContent
+                        href="/demo"
+                        isActive={null}
+                      >
+                        <StyledComponent
+                          forwardedComponent={
+                            Object {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": Array [],
+                              "componentStyle": ComponentStyle {
+                                "componentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
+                                "isStatic": false,
+                                "lastClassName": "ceFcFq",
+                                "rules": Array [
+                                  "font-weight:bold;transition:all 0.15s ease-in-out;position:relative;font-size:9px;letter-spacing:1px;margin-left:2px;margin-right:2px;&::before{background-color:",
+                                  [Function],
+                                  ";content:\\"\\";height:5px;margin-top:3px;left:0;opacity:",
+                                  [Function],
+                                  ";pointer-events:none;position:absolute;right:0;top:100%;transition:opacity 0.2s;width:100%;}&:hover::before{opacity:1;}",
+                                ],
+                              },
+                              "displayName": "Navbar__NavLinkContent",
+                              "foldedComponentIds": Array [],
+                              "render": [Function],
+                              "styledComponentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
+                              "target": [Function],
+                              "toString": [Function],
+                              "warnTooManyClasses": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          forwardedRef={null}
+                          href="/demo"
+                          isActive={null}
+                        >
+                          <Link
+                            className="Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
+                            href="/demo"
+                            isActive={null}
+                          >
+                            <Link
+                              href="/demo"
+                            >
+                              <Link__Content
+                                className="Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
+                                onClick={[Function]}
+                                onMouseEnter={[Function]}
+                              >
+                                <StyledComponent
+                                  className="Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
+                                  forwardedComponent={
+                                    Object {
+                                      "$$typeof": Symbol(react.forward_ref),
+                                      "attrs": Array [],
+                                      "componentStyle": ComponentStyle {
+                                        "componentId": "Link__Content-j0sqir-0",
+                                        "isStatic": false,
+                                        "lastClassName": "kuoXkD",
+                                        "rules": Array [
+                                          "color:",
+                                          [Function],
+                                          ";cursor:pointer;&:hover{text-decoration:none;}",
+                                        ],
+                                      },
+                                      "displayName": "Link__Content",
+                                      "foldedComponentIds": Array [],
+                                      "render": [Function],
+                                      "styledComponentId": "Link__Content-j0sqir-0",
+                                      "target": "a",
+                                      "toString": [Function],
+                                      "warnTooManyClasses": [Function],
+                                      "withComponent": [Function],
+                                    }
+                                  }
+                                  forwardedRef={[Function]}
+                                  onClick={[Function]}
+                                  onMouseEnter={[Function]}
+                                >
+                                  <a
+                                    className="Link__Content-j0sqir-0 kuoXkD Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
+                                    onClick={[Function]}
+                                    onMouseEnter={[Function]}
+                                  >
+                                    COACH DEMO
+                                  </a>
+                                </StyledComponent>
+                              </Link__Content>
+                            </Link>
+                          </Link>
+                        </StyledComponent>
+                      </Navbar__NavLinkContent>
+                    </div>
+                  </Styled(div)>
+                </NavLink>
+                <NavLink
                   href="/dashboard"
                   key="dashboard"
                 >
@@ -1984,6 +2088,190 @@ exports[`Index page should match snapshot 1`] = `
                                       </p>
                                     </StyledComponent>
                                   </Page__ParagraphText>
+                                </div>
+                              </Styled(div)>
+                            </div>
+                          </Styled(div)>
+                          <Styled(div)
+                            justifyContent="center"
+                          >
+                            <div
+                              className="css-1b2tw1j"
+                            >
+                              <Styled(div)
+                                mt={100}
+                              >
+                                <div
+                                  className="css-1onsus4"
+                                >
+                                  <Styled(div)>
+                                    <div
+                                      className="css-4cffwv"
+                                    >
+                                      <Styled(div)
+                                        mr={10}
+                                      >
+                                        <div
+                                          className="css-1codfpf"
+                                        >
+                                          <ButtonNew
+                                            href="/demo"
+                                            key="demo"
+                                            text="COACH DEMO"
+                                            type="button"
+                                          >
+                                            <Link
+                                              href="/demo"
+                                            >
+                                              <ButtonNew__LinkContent
+                                                onClick={[Function]}
+                                                onMouseEnter={[Function]}
+                                              >
+                                                <StyledComponent
+                                                  forwardedComponent={
+                                                    Object {
+                                                      "$$typeof": Symbol(react.forward_ref),
+                                                      "attrs": Array [],
+                                                      "componentStyle": ComponentStyle {
+                                                        "componentId": "ButtonNew__LinkContent-sj5i96-1",
+                                                        "isStatic": false,
+                                                        "lastClassName": "kjjWKm",
+                                                        "rules": Array [
+                                                          "display:inline-flex;border-radius:",
+                                                          [Function],
+                                                          ";border:2px solid ",
+                                                          [Function],
+                                                          ";color:",
+                                                          [Function],
+                                                          ";transition:all 0.05s ease-in-out;background:transparent;padding:10px 25px 10px 25px;font-size:15px;font-weight:bold;&:hover{background-image:linear-gradient( to bottom,",
+                                                          [Function],
+                                                          ",",
+                                                          [Function],
+                                                          " );color:",
+                                                          [Function],
+                                                          ";box-shadow:inset 0px -3px 0px 0px ",
+                                                          [Function],
+                                                          ";}&:active{background-image:linear-gradient( to bottom,",
+                                                          [Function],
+                                                          ",",
+                                                          [Function],
+                                                          " );box-shadow:inset 0px 3px 0px 0px ",
+                                                          [Function],
+                                                          ";padding-bottom:12px;margin-top:2px;}",
+                                                          " &:hover{text-decoration:none;color:",
+                                                          [Function],
+                                                          ";}",
+                                                        ],
+                                                      },
+                                                      "displayName": "ButtonNew__LinkContent",
+                                                      "foldedComponentIds": Array [],
+                                                      "render": [Function],
+                                                      "styledComponentId": "ButtonNew__LinkContent-sj5i96-1",
+                                                      "target": "a",
+                                                      "toString": [Function],
+                                                      "warnTooManyClasses": [Function],
+                                                      "withComponent": [Function],
+                                                    }
+                                                  }
+                                                  forwardedRef={[Function]}
+                                                  onClick={[Function]}
+                                                  onMouseEnter={[Function]}
+                                                >
+                                                  <a
+                                                    className="ButtonNew__LinkContent-sj5i96-1 kjjWKm"
+                                                    onClick={[Function]}
+                                                    onMouseEnter={[Function]}
+                                                  >
+                                                    COACH DEMO
+                                                  </a>
+                                                </StyledComponent>
+                                              </ButtonNew__LinkContent>
+                                            </Link>
+                                          </ButtonNew>
+                                        </div>
+                                      </Styled(div)>
+                                      <Styled(div)
+                                        ml={10}
+                                      >
+                                        <div
+                                          className="css-fhe8qo"
+                                        >
+                                          <ButtonAlternative
+                                            href="/howitworks"
+                                            key="howitworks"
+                                            text="HOW IT WORKS"
+                                            type="button"
+                                          >
+                                            <Link
+                                              href="/howitworks"
+                                            >
+                                              <ButtonAlternative__LinkContent
+                                                onClick={[Function]}
+                                                onMouseEnter={[Function]}
+                                              >
+                                                <StyledComponent
+                                                  forwardedComponent={
+                                                    Object {
+                                                      "$$typeof": Symbol(react.forward_ref),
+                                                      "attrs": Array [],
+                                                      "componentStyle": ComponentStyle {
+                                                        "componentId": "ButtonAlternative__LinkContent-sc-4kmbfx-1",
+                                                        "isStatic": false,
+                                                        "lastClassName": "dtIfBH",
+                                                        "rules": Array [
+                                                          "display:inline-flex;border-radius:",
+                                                          [Function],
+                                                          ";color:white;transition:all 0.05s ease-in-out;background:",
+                                                          [Function],
+                                                          ";padding:15px 30px 15px 30px;font-size:15px;font-weight:bold;text-transform:uppercase;&:hover{background-image:linear-gradient( to bottom,",
+                                                          [Function],
+                                                          ",",
+                                                          [Function],
+                                                          " );color:",
+                                                          [Function],
+                                                          ";box-shadow:inset 0px -3px 0px 0px ",
+                                                          [Function],
+                                                          ";}&:active{background-image:linear-gradient( to bottom,",
+                                                          [Function],
+                                                          ",",
+                                                          [Function],
+                                                          " );box-shadow:inset 0px 3px 0px 0px ",
+                                                          [Function],
+                                                          ";padding-bottom:12px;margin-top:2px;}",
+                                                          " &:hover{text-decoration:none;color:",
+                                                          [Function],
+                                                          ";}",
+                                                        ],
+                                                      },
+                                                      "displayName": "ButtonAlternative__LinkContent",
+                                                      "foldedComponentIds": Array [],
+                                                      "render": [Function],
+                                                      "styledComponentId": "ButtonAlternative__LinkContent-sc-4kmbfx-1",
+                                                      "target": "a",
+                                                      "toString": [Function],
+                                                      "warnTooManyClasses": [Function],
+                                                      "withComponent": [Function],
+                                                    }
+                                                  }
+                                                  forwardedRef={[Function]}
+                                                  onClick={[Function]}
+                                                  onMouseEnter={[Function]}
+                                                >
+                                                  <a
+                                                    className="ButtonAlternative__LinkContent-sc-4kmbfx-1 dtIfBH"
+                                                    onClick={[Function]}
+                                                    onMouseEnter={[Function]}
+                                                  >
+                                                    HOW IT WORKS
+                                                  </a>
+                                                </StyledComponent>
+                                              </ButtonAlternative__LinkContent>
+                                            </Link>
+                                          </ButtonAlternative>
+                                        </div>
+                                      </Styled(div)>
+                                    </div>
+                                  </Styled(div)>
                                 </div>
                               </Styled(div)>
                             </div>
@@ -3866,7 +4154,7 @@ exports[`Index page should match snapshot 1`] = `
                                                   <p
                                                     className="Page__FlowText-sc-1ix2o3i-4 eiQfss"
                                                   >
-                                                    The coach delivers to you the video reviewed with text feedbacks in the form of comments
+                                                    Coach reviews your game with text comments bound to your replay
                                                   </p>
                                                 </StyledComponent>
                                               </Page__FlowText>
@@ -4962,7 +5250,7 @@ exports[`Index page should match snapshot 1`] = `
                                                   <p
                                                     className="Page__FlowText-sc-1ix2o3i-4 eiQfss"
                                                   >
-                                                    A human coach grabs your replay and starts the analysis
+                                                    Our professional coach responds to your request and starts the analysis
                                                   </p>
                                                 </StyledComponent>
                                               </Page__FlowText>
@@ -5536,7 +5824,7 @@ exports[`Index page should match snapshot 1`] = `
                                                   <p
                                                     className="Page__FlowText-sc-1ix2o3i-4 eiQfss"
                                                   >
-                                                    You are notified via mail of the available review and you can watch it in your dashboard
+                                                    You are notified via mail and you can watch the replay analyzed in your dashboard
                                                   </p>
                                                 </StyledComponent>
                                               </Page__FlowText>
@@ -6133,345 +6421,8 @@ exports[`Index page should match snapshot 1`] = `
                               className="css-1b2tw1j"
                             >
                               <PriceCard
-                                icon="award-badge-1"
-                                price="$4.0"
-                                title="Medium"
-                              >
-                                <Page__PriceCardContent
-                                  flex="1"
-                                  mr={3}
-                                  p="20px"
-                                >
-                                  <StyledComponent
-                                    flex="1"
-                                    forwardedComponent={
-                                      Object {
-                                        "$$typeof": Symbol(react.forward_ref),
-                                        "__emotion_base": "div",
-                                        "__emotion_forwardProp": [Function],
-                                        "__emotion_real": Object {
-                                          "$$typeof": Symbol(react.forward_ref),
-                                          "__emotion_base": "div",
-                                          "__emotion_forwardProp": [Function],
-                                          "__emotion_real": [Circular],
-                                          "__emotion_styles": Array [
-                                            Object {
-                                              "boxSizing": "border-box",
-                                              "margin": 0,
-                                              "minWidth": 0,
-                                            },
-                                            [Function],
-                                            [Function],
-                                            [Function],
-                                            [Function],
-                                            [Function],
-                                          ],
-                                          "defaultProps": undefined,
-                                          "displayName": "Styled(div)",
-                                          "render": [Function],
-                                          "withComponent": [Function],
-                                        },
-                                        "__emotion_styles": Array [
-                                          Object {
-                                            "boxSizing": "border-box",
-                                            "margin": 0,
-                                            "minWidth": 0,
-                                          },
-                                          [Function],
-                                          [Function],
-                                          [Function],
-                                          [Function],
-                                          [Function],
-                                        ],
-                                        "attrs": Array [],
-                                        "componentStyle": ComponentStyle {
-                                          "componentId": "Page__PriceCardContent-sc-1ix2o3i-23",
-                                          "isStatic": false,
-                                          "lastClassName": "hxidOS",
-                                          "rules": Array [
-                                            "background-color:",
-                                            [Function],
-                                            ";",
-                                          ],
-                                        },
-                                        "displayName": "Page__PriceCardContent",
-                                        "foldedComponentIds": Array [],
-                                        "render": [Function],
-                                        "styledComponentId": "Page__PriceCardContent-sc-1ix2o3i-23",
-                                        "target": Object {
-                                          "$$typeof": Symbol(react.forward_ref),
-                                          "__emotion_base": "div",
-                                          "__emotion_forwardProp": [Function],
-                                          "__emotion_real": [Circular],
-                                          "__emotion_styles": Array [
-                                            Object {
-                                              "boxSizing": "border-box",
-                                              "margin": 0,
-                                              "minWidth": 0,
-                                            },
-                                            [Function],
-                                            [Function],
-                                            [Function],
-                                            [Function],
-                                            [Function],
-                                          ],
-                                          "defaultProps": undefined,
-                                          "displayName": "Styled(div)",
-                                          "render": [Function],
-                                          "withComponent": [Function],
-                                        },
-                                        "toString": [Function],
-                                        "warnTooManyClasses": [Function],
-                                        "withComponent": [Function],
-                                      }
-                                    }
-                                    forwardedRef={null}
-                                    mr={3}
-                                    p="20px"
-                                  >
-                                    <Styled(div)
-                                      className="Page__PriceCardContent-sc-1ix2o3i-23 hxidOS"
-                                      flex="1"
-                                      mr={3}
-                                      p="20px"
-                                    >
-                                      <div
-                                        className="Page__PriceCardContent-sc-1ix2o3i-23 hxidOS css-yxpzhu"
-                                      >
-                                        <Styled(div)
-                                          pb={3}
-                                        >
-                                          <div
-                                            className="css-lc3py3"
-                                          >
-                                            <img
-                                              src="/images/icon-award-badge-1.png"
-                                              width="40"
-                                            />
-                                          </div>
-                                        </Styled(div)>
-                                        <Page__SecondaryTitle
-                                          color="white"
-                                        >
-                                          <StyledComponent
-                                            color="white"
-                                            forwardedComponent={
-                                              Object {
-                                                "$$typeof": Symbol(react.forward_ref),
-                                                "attrs": Array [],
-                                                "componentStyle": ComponentStyle {
-                                                  "componentId": "Page__SecondaryTitle-sc-1ix2o3i-1",
-                                                  "isStatic": false,
-                                                  "lastClassName": "fdgcUO",
-                                                  "rules": Array [
-                                                    "color:",
-                                                    [Function],
-                                                    ";font-family:\\"Japanese 3017\\";font-size:21px;font-weight:normal;letter-spacing:3px;",
-                                                  ],
-                                                },
-                                                "displayName": "Page__SecondaryTitle",
-                                                "foldedComponentIds": Array [],
-                                                "render": [Function],
-                                                "styledComponentId": "Page__SecondaryTitle-sc-1ix2o3i-1",
-                                                "target": "h2",
-                                                "toString": [Function],
-                                                "warnTooManyClasses": [Function],
-                                                "withComponent": [Function],
-                                              }
-                                            }
-                                            forwardedRef={null}
-                                          >
-                                            <h2
-                                              className="Page__SecondaryTitle-sc-1ix2o3i-1 fdgcUO"
-                                              color="white"
-                                            >
-                                              Medium
-                                            </h2>
-                                          </StyledComponent>
-                                        </Page__SecondaryTitle>
-                                        <Page__Price>
-                                          <StyledComponent
-                                            forwardedComponent={
-                                              Object {
-                                                "$$typeof": Symbol(react.forward_ref),
-                                                "attrs": Array [],
-                                                "componentStyle": ComponentStyle {
-                                                  "componentId": "Page__Price-sc-1ix2o3i-22",
-                                                  "isStatic": false,
-                                                  "lastClassName": "gruNOy",
-                                                  "rules": Array [
-                                                    "align-items:center;background-color:",
-                                                    [Function],
-                                                    ";border-bottom-right-radius:50px;border-top-right-radius:50px;color:white;display:inline-flex;margin-bottom:20px;margin-left:-20px;margin-top:30px;padding:16px 25px;span{display:block;font-size:20px;font-weight:bold;padding-right:5px;}span:last-child{display:block;font-size:12px;}",
-                                                  ],
-                                                },
-                                                "displayName": "Page__Price",
-                                                "foldedComponentIds": Array [],
-                                                "render": [Function],
-                                                "styledComponentId": "Page__Price-sc-1ix2o3i-22",
-                                                "target": "div",
-                                                "toString": [Function],
-                                                "warnTooManyClasses": [Function],
-                                                "withComponent": [Function],
-                                              }
-                                            }
-                                            forwardedRef={null}
-                                          >
-                                            <div
-                                              className="Page__Price-sc-1ix2o3i-22 gruNOy"
-                                            >
-                                              <span>
-                                                $4.0
-                                              </span>
-                                               
-                                              <span>
-                                                Per Replay
-                                              </span>
-                                            </div>
-                                          </StyledComponent>
-                                        </Page__Price>
-                                        <div>
-                                          <PriceFeature>
-                                            <Page__PriceFeatureContent>
-                                              <StyledComponent
-                                                forwardedComponent={
-                                                  Object {
-                                                    "$$typeof": Symbol(react.forward_ref),
-                                                    "attrs": Array [],
-                                                    "componentStyle": ComponentStyle {
-                                                      "componentId": "Page__PriceFeatureContent-sc-1ix2o3i-24",
-                                                      "isStatic": false,
-                                                      "lastClassName": "jwYIce",
-                                                      "rules": Array [
-                                                        "align-items:center;color:",
-                                                        [Function],
-                                                        ";display:inline-flex;font-size:14px;margin-bottom:25px;img{margin-right:10px;}",
-                                                      ],
-                                                    },
-                                                    "displayName": "Page__PriceFeatureContent",
-                                                    "foldedComponentIds": Array [],
-                                                    "render": [Function],
-                                                    "styledComponentId": "Page__PriceFeatureContent-sc-1ix2o3i-24",
-                                                    "target": "span",
-                                                    "toString": [Function],
-                                                    "warnTooManyClasses": [Function],
-                                                    "withComponent": [Function],
-                                                  }
-                                                }
-                                                forwardedRef={null}
-                                              >
-                                                <span
-                                                  className="Page__PriceFeatureContent-sc-1ix2o3i-24 jwYIce"
-                                                >
-                                                  <img
-                                                    src="/images/icon-check-circle-1.png"
-                                                    width="20"
-                                                  />
-                                                   
-                                                  4k MMR or above
-                                                </span>
-                                              </StyledComponent>
-                                            </Page__PriceFeatureContent>
-                                          </PriceFeature>
-                                        </div>
-                                        <ButtonAlternative
-                                          key="login"
-                                          onClick={[Function]}
-                                          text="Get Started"
-                                          type="button"
-                                        >
-                                          <ButtonDark__ButtonContent
-                                            onClick={[Function]}
-                                            type="button"
-                                          >
-                                            <StyledComponent
-                                              forwardedComponent={
-                                                Object {
-                                                  "$$typeof": Symbol(react.forward_ref),
-                                                  "attrs": Array [],
-                                                  "componentStyle": ComponentStyle {
-                                                    "componentId": "ButtonDark__ButtonContent-le6ouf-0",
-                                                    "isStatic": false,
-                                                    "lastClassName": "haPAET",
-                                                    "rules": Array [
-                                                      "&.",
-                                                      "bp3-button",
-                                                      "{",
-                                                      "display:inline-flex;border-radius:",
-                                                      [Function],
-                                                      ";color:white;transition:all 0.05s ease-in-out;background:",
-                                                      [Function],
-                                                      ";padding:10px 25px 10px 25px;font-size:15px;font-weight:bold;text-transform:uppercase;&:hover{background-image:linear-gradient( to bottom,",
-                                                      [Function],
-                                                      ",",
-                                                      [Function],
-                                                      " );color:",
-                                                      [Function],
-                                                      ";box-shadow:inset 0px -3px 0px 0px ",
-                                                      [Function],
-                                                      ";}&:active{background-image:linear-gradient( to bottom,",
-                                                      [Function],
-                                                      ",",
-                                                      [Function],
-                                                      " );box-shadow:inset 0px 3px 0px 0px ",
-                                                      [Function],
-                                                      ";padding-bottom:12px;margin-top:2px;}",
-                                                      " outline:none;font-family:",
-                                                      [Function],
-                                                      ";&:active{outline:none;}}",
-                                                    ],
-                                                  },
-                                                  "displayName": "ButtonDark__ButtonContent",
-                                                  "foldedComponentIds": Array [],
-                                                  "render": [Function],
-                                                  "styledComponentId": "ButtonDark__ButtonContent-le6ouf-0",
-                                                  "target": [Function],
-                                                  "toString": [Function],
-                                                  "warnTooManyClasses": [Function],
-                                                  "withComponent": [Function],
-                                                }
-                                              }
-                                              forwardedRef={null}
-                                              onClick={[Function]}
-                                              type="button"
-                                            >
-                                              <Blueprint3.Button
-                                                className="ButtonDark__ButtonContent-le6ouf-0 haPAET"
-                                                onClick={[Function]}
-                                                type="button"
-                                              >
-                                                <button
-                                                  className="bp3-button ButtonDark__ButtonContent-le6ouf-0 haPAET"
-                                                  onClick={[Function]}
-                                                  onKeyDown={[Function]}
-                                                  onKeyUp={[Function]}
-                                                  type="button"
-                                                >
-                                                  <Blueprint3.Icon
-                                                    key="leftIcon"
-                                                  />
-                                                  <span
-                                                    className="bp3-button-text"
-                                                    key="text"
-                                                  >
-                                                    Get Started
-                                                  </span>
-                                                  <Blueprint3.Icon
-                                                    key="rightIcon"
-                                                  />
-                                                </button>
-                                              </Blueprint3.Button>
-                                            </StyledComponent>
-                                          </ButtonDark__ButtonContent>
-                                        </ButtonAlternative>
-                                      </div>
-                                    </Styled(div)>
-                                  </StyledComponent>
-                                </Page__PriceCardContent>
-                              </PriceCard>
-                              <PriceCard
                                 icon="award-badge"
-                                price="$6.0"
+                                price="$10.0"
                                 title="High"
                               >
                                 <Page__PriceCardContent
@@ -6658,7 +6609,7 @@ exports[`Index page should match snapshot 1`] = `
                                               className="Page__Price-sc-1ix2o3i-22 gruNOy"
                                             >
                                               <span>
-                                                $6.0
+                                                $10.0
                                               </span>
                                                
                                               <span>
@@ -6808,8 +6759,8 @@ exports[`Index page should match snapshot 1`] = `
                               </PriceCard>
                               <PriceCard
                                 icon="award-badge-3"
-                                price="$8.0"
-                                title="Very High"
+                                price="$20.0"
+                                title="Experienced"
                               >
                                 <Page__PriceCardContent
                                   flex="1"
@@ -6959,7 +6910,7 @@ exports[`Index page should match snapshot 1`] = `
                                               className="Page__SecondaryTitle-sc-1ix2o3i-1 fdgcUO"
                                               color="white"
                                             >
-                                              Very High
+                                              Experienced
                                             </h2>
                                           </StyledComponent>
                                         </Page__SecondaryTitle>
@@ -6995,7 +6946,7 @@ exports[`Index page should match snapshot 1`] = `
                                               className="Page__Price-sc-1ix2o3i-22 gruNOy"
                                             >
                                               <span>
-                                                $8.0
+                                                $20.0
                                               </span>
                                                
                                               <span>
@@ -7145,7 +7096,7 @@ exports[`Index page should match snapshot 1`] = `
                               </PriceCard>
                               <PriceCard
                                 icon="vip"
-                                price="$10.0"
+                                price="$30.0"
                                 title="Pro"
                               >
                                 <Page__PriceCardContent
@@ -7332,7 +7283,7 @@ exports[`Index page should match snapshot 1`] = `
                                               className="Page__Price-sc-1ix2o3i-22 gruNOy"
                                             >
                                               <span>
-                                                $10.0
+                                                $30.0
                                               </span>
                                                
                                               <span>
@@ -7848,6 +7799,127 @@ exports[`Index page should match snapshot 1`] = `
                                                               onMouseEnter={[Function]}
                                                             >
                                                               About us
+                                                            </div>
+                                                          </Styled(div)>
+                                                        </StyledComponent>
+                                                      </LinkDark__Content>
+                                                    </Link>
+                                                  </LinkDark>
+                                                </div>
+                                              </Styled(div)>
+                                              <Styled(div)
+                                                mb={25}
+                                              >
+                                                <div
+                                                  className="css-1uhetqq"
+                                                >
+                                                  <LinkDark
+                                                    href="/howitworks"
+                                                  >
+                                                    <Link
+                                                      href="/howitworks"
+                                                    >
+                                                      <LinkDark__Content
+                                                        onClick={[Function]}
+                                                        onMouseEnter={[Function]}
+                                                      >
+                                                        <StyledComponent
+                                                          forwardedComponent={
+                                                            Object {
+                                                              "$$typeof": Symbol(react.forward_ref),
+                                                              "__emotion_base": "div",
+                                                              "__emotion_forwardProp": [Function],
+                                                              "__emotion_real": Object {
+                                                                "$$typeof": Symbol(react.forward_ref),
+                                                                "__emotion_base": "div",
+                                                                "__emotion_forwardProp": [Function],
+                                                                "__emotion_real": [Circular],
+                                                                "__emotion_styles": Array [
+                                                                  Object {
+                                                                    "boxSizing": "border-box",
+                                                                    "margin": 0,
+                                                                    "minWidth": 0,
+                                                                  },
+                                                                  [Function],
+                                                                  [Function],
+                                                                  [Function],
+                                                                  [Function],
+                                                                  [Function],
+                                                                ],
+                                                                "defaultProps": undefined,
+                                                                "displayName": "Styled(div)",
+                                                                "render": [Function],
+                                                                "withComponent": [Function],
+                                                              },
+                                                              "__emotion_styles": Array [
+                                                                Object {
+                                                                  "boxSizing": "border-box",
+                                                                  "margin": 0,
+                                                                  "minWidth": 0,
+                                                                },
+                                                                [Function],
+                                                                [Function],
+                                                                [Function],
+                                                                [Function],
+                                                                [Function],
+                                                              ],
+                                                              "attrs": Array [],
+                                                              "componentStyle": ComponentStyle {
+                                                                "componentId": "LinkDark__Content-sc-1vsz6ud-0",
+                                                                "isStatic": false,
+                                                                "lastClassName": "idHxfX",
+                                                                "rules": Array [
+                                                                  "align-items:center;color:",
+                                                                  [Function],
+                                                                  ";font-size:14px;height:10px;cursor:pointer;&:hover{text-decoration:none;color:white;}",
+                                                                ],
+                                                              },
+                                                              "displayName": "LinkDark__Content",
+                                                              "foldedComponentIds": Array [],
+                                                              "render": [Function],
+                                                              "styledComponentId": "LinkDark__Content-sc-1vsz6ud-0",
+                                                              "target": Object {
+                                                                "$$typeof": Symbol(react.forward_ref),
+                                                                "__emotion_base": "div",
+                                                                "__emotion_forwardProp": [Function],
+                                                                "__emotion_real": [Circular],
+                                                                "__emotion_styles": Array [
+                                                                  Object {
+                                                                    "boxSizing": "border-box",
+                                                                    "margin": 0,
+                                                                    "minWidth": 0,
+                                                                  },
+                                                                  [Function],
+                                                                  [Function],
+                                                                  [Function],
+                                                                  [Function],
+                                                                  [Function],
+                                                                ],
+                                                                "defaultProps": undefined,
+                                                                "displayName": "Styled(div)",
+                                                                "render": [Function],
+                                                                "withComponent": [Function],
+                                                              },
+                                                              "toString": [Function],
+                                                              "warnTooManyClasses": [Function],
+                                                              "withComponent": [Function],
+                                                            }
+                                                          }
+                                                          forwardedRef={[Function]}
+                                                          onClick={[Function]}
+                                                          onMouseEnter={[Function]}
+                                                        >
+                                                          <Styled(div)
+                                                            className="LinkDark__Content-sc-1vsz6ud-0 idHxfX"
+                                                            onClick={[Function]}
+                                                            onMouseEnter={[Function]}
+                                                          >
+                                                            <div
+                                                              className="LinkDark__Content-sc-1vsz6ud-0 idHxfX css-vurnku"
+                                                              onClick={[Function]}
+                                                              onMouseEnter={[Function]}
+                                                            >
+                                                              How It Works
                                                             </div>
                                                           </Styled(div)>
                                                         </StyledComponent>
@@ -8794,6 +8866,248 @@ exports[`Index page should match snapshot 1`] = `
                                                   className="css-1uhetqq"
                                                 >
                                                   <LinkDark
+                                                    href="/our-coaches"
+                                                  >
+                                                    <Link
+                                                      href="/our-coaches"
+                                                    >
+                                                      <LinkDark__Content
+                                                        onClick={[Function]}
+                                                        onMouseEnter={[Function]}
+                                                      >
+                                                        <StyledComponent
+                                                          forwardedComponent={
+                                                            Object {
+                                                              "$$typeof": Symbol(react.forward_ref),
+                                                              "__emotion_base": "div",
+                                                              "__emotion_forwardProp": [Function],
+                                                              "__emotion_real": Object {
+                                                                "$$typeof": Symbol(react.forward_ref),
+                                                                "__emotion_base": "div",
+                                                                "__emotion_forwardProp": [Function],
+                                                                "__emotion_real": [Circular],
+                                                                "__emotion_styles": Array [
+                                                                  Object {
+                                                                    "boxSizing": "border-box",
+                                                                    "margin": 0,
+                                                                    "minWidth": 0,
+                                                                  },
+                                                                  [Function],
+                                                                  [Function],
+                                                                  [Function],
+                                                                  [Function],
+                                                                  [Function],
+                                                                ],
+                                                                "defaultProps": undefined,
+                                                                "displayName": "Styled(div)",
+                                                                "render": [Function],
+                                                                "withComponent": [Function],
+                                                              },
+                                                              "__emotion_styles": Array [
+                                                                Object {
+                                                                  "boxSizing": "border-box",
+                                                                  "margin": 0,
+                                                                  "minWidth": 0,
+                                                                },
+                                                                [Function],
+                                                                [Function],
+                                                                [Function],
+                                                                [Function],
+                                                                [Function],
+                                                              ],
+                                                              "attrs": Array [],
+                                                              "componentStyle": ComponentStyle {
+                                                                "componentId": "LinkDark__Content-sc-1vsz6ud-0",
+                                                                "isStatic": false,
+                                                                "lastClassName": "idHxfX",
+                                                                "rules": Array [
+                                                                  "align-items:center;color:",
+                                                                  [Function],
+                                                                  ";font-size:14px;height:10px;cursor:pointer;&:hover{text-decoration:none;color:white;}",
+                                                                ],
+                                                              },
+                                                              "displayName": "LinkDark__Content",
+                                                              "foldedComponentIds": Array [],
+                                                              "render": [Function],
+                                                              "styledComponentId": "LinkDark__Content-sc-1vsz6ud-0",
+                                                              "target": Object {
+                                                                "$$typeof": Symbol(react.forward_ref),
+                                                                "__emotion_base": "div",
+                                                                "__emotion_forwardProp": [Function],
+                                                                "__emotion_real": [Circular],
+                                                                "__emotion_styles": Array [
+                                                                  Object {
+                                                                    "boxSizing": "border-box",
+                                                                    "margin": 0,
+                                                                    "minWidth": 0,
+                                                                  },
+                                                                  [Function],
+                                                                  [Function],
+                                                                  [Function],
+                                                                  [Function],
+                                                                  [Function],
+                                                                ],
+                                                                "defaultProps": undefined,
+                                                                "displayName": "Styled(div)",
+                                                                "render": [Function],
+                                                                "withComponent": [Function],
+                                                              },
+                                                              "toString": [Function],
+                                                              "warnTooManyClasses": [Function],
+                                                              "withComponent": [Function],
+                                                            }
+                                                          }
+                                                          forwardedRef={[Function]}
+                                                          onClick={[Function]}
+                                                          onMouseEnter={[Function]}
+                                                        >
+                                                          <Styled(div)
+                                                            className="LinkDark__Content-sc-1vsz6ud-0 idHxfX"
+                                                            onClick={[Function]}
+                                                            onMouseEnter={[Function]}
+                                                          >
+                                                            <div
+                                                              className="LinkDark__Content-sc-1vsz6ud-0 idHxfX css-vurnku"
+                                                              onClick={[Function]}
+                                                              onMouseEnter={[Function]}
+                                                            >
+                                                              Our Coaches
+                                                            </div>
+                                                          </Styled(div)>
+                                                        </StyledComponent>
+                                                      </LinkDark__Content>
+                                                    </Link>
+                                                  </LinkDark>
+                                                </div>
+                                              </Styled(div)>
+                                              <Styled(div)
+                                                mb={25}
+                                              >
+                                                <div
+                                                  className="css-1uhetqq"
+                                                >
+                                                  <LinkDark
+                                                    href="/demo"
+                                                  >
+                                                    <Link
+                                                      href="/demo"
+                                                    >
+                                                      <LinkDark__Content
+                                                        onClick={[Function]}
+                                                        onMouseEnter={[Function]}
+                                                      >
+                                                        <StyledComponent
+                                                          forwardedComponent={
+                                                            Object {
+                                                              "$$typeof": Symbol(react.forward_ref),
+                                                              "__emotion_base": "div",
+                                                              "__emotion_forwardProp": [Function],
+                                                              "__emotion_real": Object {
+                                                                "$$typeof": Symbol(react.forward_ref),
+                                                                "__emotion_base": "div",
+                                                                "__emotion_forwardProp": [Function],
+                                                                "__emotion_real": [Circular],
+                                                                "__emotion_styles": Array [
+                                                                  Object {
+                                                                    "boxSizing": "border-box",
+                                                                    "margin": 0,
+                                                                    "minWidth": 0,
+                                                                  },
+                                                                  [Function],
+                                                                  [Function],
+                                                                  [Function],
+                                                                  [Function],
+                                                                  [Function],
+                                                                ],
+                                                                "defaultProps": undefined,
+                                                                "displayName": "Styled(div)",
+                                                                "render": [Function],
+                                                                "withComponent": [Function],
+                                                              },
+                                                              "__emotion_styles": Array [
+                                                                Object {
+                                                                  "boxSizing": "border-box",
+                                                                  "margin": 0,
+                                                                  "minWidth": 0,
+                                                                },
+                                                                [Function],
+                                                                [Function],
+                                                                [Function],
+                                                                [Function],
+                                                                [Function],
+                                                              ],
+                                                              "attrs": Array [],
+                                                              "componentStyle": ComponentStyle {
+                                                                "componentId": "LinkDark__Content-sc-1vsz6ud-0",
+                                                                "isStatic": false,
+                                                                "lastClassName": "idHxfX",
+                                                                "rules": Array [
+                                                                  "align-items:center;color:",
+                                                                  [Function],
+                                                                  ";font-size:14px;height:10px;cursor:pointer;&:hover{text-decoration:none;color:white;}",
+                                                                ],
+                                                              },
+                                                              "displayName": "LinkDark__Content",
+                                                              "foldedComponentIds": Array [],
+                                                              "render": [Function],
+                                                              "styledComponentId": "LinkDark__Content-sc-1vsz6ud-0",
+                                                              "target": Object {
+                                                                "$$typeof": Symbol(react.forward_ref),
+                                                                "__emotion_base": "div",
+                                                                "__emotion_forwardProp": [Function],
+                                                                "__emotion_real": [Circular],
+                                                                "__emotion_styles": Array [
+                                                                  Object {
+                                                                    "boxSizing": "border-box",
+                                                                    "margin": 0,
+                                                                    "minWidth": 0,
+                                                                  },
+                                                                  [Function],
+                                                                  [Function],
+                                                                  [Function],
+                                                                  [Function],
+                                                                  [Function],
+                                                                ],
+                                                                "defaultProps": undefined,
+                                                                "displayName": "Styled(div)",
+                                                                "render": [Function],
+                                                                "withComponent": [Function],
+                                                              },
+                                                              "toString": [Function],
+                                                              "warnTooManyClasses": [Function],
+                                                              "withComponent": [Function],
+                                                            }
+                                                          }
+                                                          forwardedRef={[Function]}
+                                                          onClick={[Function]}
+                                                          onMouseEnter={[Function]}
+                                                        >
+                                                          <Styled(div)
+                                                            className="LinkDark__Content-sc-1vsz6ud-0 idHxfX"
+                                                            onClick={[Function]}
+                                                            onMouseEnter={[Function]}
+                                                          >
+                                                            <div
+                                                              className="LinkDark__Content-sc-1vsz6ud-0 idHxfX css-vurnku"
+                                                              onClick={[Function]}
+                                                              onMouseEnter={[Function]}
+                                                            >
+                                                              Coach Demo
+                                                            </div>
+                                                          </Styled(div)>
+                                                        </StyledComponent>
+                                                      </LinkDark__Content>
+                                                    </Link>
+                                                  </LinkDark>
+                                                </div>
+                                              </Styled(div)>
+                                              <Styled(div)
+                                                mb={25}
+                                              >
+                                                <div
+                                                  className="css-1uhetqq"
+                                                >
+                                                  <LinkDark
                                                     href="/customer-reviews"
                                                   >
                                                     <Link
@@ -9455,11 +9769,11 @@ exports[`Index page should match snapshot 1`] = `
                                                   className="css-12zjy6j"
                                                 >
                                                   <LinkSocialIcon
-                                                    href="https://www.facebook.com/gamejitsu"
+                                                    href="https://www.facebook.com/GamejitsuCoaching"
                                                     src="/images/social-media-facebook.svg"
                                                   >
                                                     <a
-                                                      href="https://www.facebook.com/gamejitsu"
+                                                      href="https://www.facebook.com/GamejitsuCoaching"
                                                     >
                                                       <LinkSocialIcon__SocialNetworkBarIcon
                                                         src="/images/social-media-facebook.svg"
