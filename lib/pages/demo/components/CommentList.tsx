@@ -59,13 +59,15 @@ const CommentListTitle = styled.h1`
   font-size: 18px;
   font-weight: bold;
   flex-grow: 1;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `
 
 const Header = styled(Box)`
   background-color: ${(props) => props.theme.backgroundColor};
   border: 2px solid ${(props) => props.theme.secondaryColor};
-  height: 60px;
   align-items: center;
+  padding: 10px;
 `
 
 const TimeTag = styled(Box)`

@@ -13,7 +13,10 @@ const theme: DefaultTheme = {
   textColor: "#bdbdc5",
   textColorDark: "#5b5a5a",
   textFont: "'Montserrat',sans-serif",
-  borderRadius: "50px"
+  borderRadius: "50px",
+  lineColor: "#2d2d2d",
+  line2Color: "#3c3c3c",
+  headerColor: "#171717"
 }
 
 export default theme

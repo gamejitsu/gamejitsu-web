@@ -15,5 +15,8 @@ declare module "styled-components" {
     highlightColor: string
     textFont: string
     borderRadius: string
+    lineColor: string
+    line2Color: string
+    headerColor: string
   }
 }

@@ -6,7 +6,7 @@ import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import { Navbar, ButtonNew, ButtonAlternative, ButtonDark, Footer } from "gamejitsu/components"
+import { Navbar, ButtonNew, ButtonAlternative, ButtonDark, Footer, Table } from "gamejitsu/components"
 import GameContainerCSGOSVG from "../../../../svgs/csgo-container-final-2.svg"
 import GameContainerLOLSVG from "../../../../svgs/lol-container-new-4.svg"
 import GameContainerOWSVG from "../../../../svgs/overwatch-container-1.svg"
@@ -185,7 +185,7 @@ const Line = styled.div`
   width: 1px;
 `
 
-const FlowImage = styled(Box)<FlowImageType>`
+const FlowImage = styled(Box) <FlowImageType>`
   background-image: url(${(props) => props.url});
   background-size: contain;
   height: 240px;
@@ -552,6 +552,25 @@ const Page: AuthenticatedComponent = () => (
           </Flex>
         </Box>
       </MainFlow>
+
+      <TextCard>
+        <SecondaryTitle>Master Schema</SecondaryTitle>
+        <MainTitle>Master comparison between all form of coaches</MainTitle>
+      </TextCard>
+
+      <Box width="65%">
+        <Table />
+      </Box>
+
+      <Flex justifyContent="center">
+        <Box mt={100}>
+          <Flex>
+            <Box mr={10}>
+              <ButtonNew key="login" type="button" onClick={login} text="OUR COACHES" />
+            </Box>
+          </Flex>
+        </Box>
+      </Flex>
 
       <TextCard>
         <Box id="pricing" width="900px" mx="auto" my={4} style={{ position: "relative" }}>

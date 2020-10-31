@@ -27,6 +27,7 @@ import NavbarLeftMenu from "./NavbarLeftMenu"
 import SkillLevelSelect from "./SkillLevelSelect"
 import Spinner from "./Spinner"
 import SteamButton from "./SteamButton"
+import Table from "./Table"
 import Title from "./Title"
 
 export {
@@ -59,5 +60,6 @@ export {
   SkillLevelSelect,
   Spinner,
   SteamButton,
+  Table,
   Title
 }
