@@ -6,7 +6,14 @@ import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import { Navbar, ButtonNew, ButtonAlternative, ButtonDark, Footer, Table } from "gamejitsu/components"
+import {
+  Navbar,
+  ButtonNew,
+  ButtonAlternative,
+  ButtonDark,
+  Footer,
+  Table
+} from "gamejitsu/components"
 import GameContainerCSGOSVG from "../../../../svgs/csgo-container-final-2.svg"
 import GameContainerLOLSVG from "../../../../svgs/lol-container-new-4.svg"
 import GameContainerOWSVG from "../../../../svgs/overwatch-container-1.svg"
@@ -185,7 +192,7 @@ const Line = styled.div`
   width: 1px;
 `
 
-const FlowImage = styled(Box) <FlowImageType>`
+const FlowImage = styled(Box)<FlowImageType>`
   background-image: url(${(props) => props.url});
   background-size: contain;
   height: 240px;
