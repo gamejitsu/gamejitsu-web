@@ -603,11 +603,11 @@ const Page: AuthenticatedComponent = () => (
               <PriceFeature>5k MMR or above</PriceFeature>
             </PriceCard>
 
-            <PriceCard title="Experienced" price="$20.0" icon="award-badge-3">
+            <PriceCard title="Experienced" price="$17.5" icon="award-badge-3">
               <PriceFeature>6k MMR or above</PriceFeature>
             </PriceCard>
 
-            <PriceCard title="Pro" price="$30.0" icon="vip">
+            <PriceCard title="Pro" price="$25.0" icon="vip">
               <PriceFeature>7k MMR or above</PriceFeature>
             </PriceCard>
           </Flex>

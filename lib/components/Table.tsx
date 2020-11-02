@@ -18,14 +18,14 @@ const CategoryTitle = styled.td`
 
 const CategoryTd = styled.th`
   color: white;
-  height: 80px;
+  height: 50px;
   font-weight: bold;
-  padding: 20px;
+  padding: 10px;
 `
 
 const HeaderTh = styled.th`
-  height: 80px;
-  padding: 20px;
+  height: 50px;
+  padding: 10px;
 `
 
 const TableContent = styled.table`
@@ -45,10 +45,10 @@ const Element = styled.td<ElementProps>`
   text-align: left;
   color: ${(props) => (props.green ? props.theme.primaryColor : props.theme.textColor)};
   height: 50px;
-  background-color: ${(props) => props.theme.lineColor};
-  &:nth-child(even) {
-    background-color: ${(props) => props.theme.line2Color};
-  }
+`
+
+const TBody = styled.tbody`
+
 `
 
 const GamejitsuElement = styled.td`
@@ -60,15 +60,16 @@ const GamejitsuElement = styled.td`
   background-color: ${(props) => props.theme.primaryColor};
 `
 
-const Tr = styled.tr``
-
-interface Props {
-  numRows?: number
-  numColum?: number
+const Tr = styled.tr`
+&:nth-child(odd) {
+  background: ${(props) => props.theme.lineColor};;
 }
+&:nth-child(even) {
+  background: ${(props) => props.theme.line2Color};;
+}
+`
 
 interface RowProps {
-  key: number
   title: string
   guideWriting: string
   liveCoaching: string
@@ -80,7 +81,6 @@ interface RowProps {
 }
 
 const Row: FunctionComponent<RowProps> = ({
-  key,
   title,
   guideWriting,
   liveCoaching,
@@ -91,8 +91,8 @@ const Row: FunctionComponent<RowProps> = ({
   green
 }) => (
   <TableContent>
-    <tbody>
-      <Tr key={key}>
+    <TBody>
+      <Tr>
         <CategoryTitle>{title}</CategoryTitle>
         <Element green={green[0]}>{guideWriting}</Element>
         <Element green={green[1]}>{liveCoaching}</Element>
@@ -100,12 +100,12 @@ const Row: FunctionComponent<RowProps> = ({
         <Element green={green[3]}>{nonLiveVideoReplayAnalisys}</Element>
         <Element green={green[4]}>{writtenReplayAnalysis}</Element>
         <GamejitsuElement>{gamejitsuCoaching}</GamejitsuElement>
-      </Tr>
-    </tbody>
+        </Tr>
+    </TBody>
   </TableContent>
 )
 
-const Table2: FunctionComponent<Props> = ({}) => (
+const Table2: FunctionComponent = ({}) => (
   <Box>
     <TableContent>
       <tbody>
@@ -123,7 +123,6 @@ const Table2: FunctionComponent<Props> = ({}) => (
     {masterSchemaData.map((data, key) => (
       <Box mt={2} key={key}>
         <Row
-          key={key}
           title={data.title}
           guideWriting={data.guideWriting}
           liveCoaching={data.liveCoaching}

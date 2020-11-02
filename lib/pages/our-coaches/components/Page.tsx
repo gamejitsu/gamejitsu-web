@@ -1,4 +1,4 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 import { Flex, Box } from "rebass"
 import Head from "next/head"
@@ -6,6 +6,10 @@ import Head from "next/head"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 
 import { Footer, Navbar, LinkMailBold } from "gamejitsu/components"
+
+import { coachData } from "../../../../public/coachData"
+
+import CoachCard from "./CoachCard"
 
 interface SecondaryTitleProps {
   color?: string
@@ -54,8 +58,28 @@ const ParagraphTitle = styled.h3`
   margin-bottom: 15px;
 `
 
+const Title = styled.h1`
+  font-weight: bold;
+  color: white;
+  font-size: 24px;
+  margin-bottom: 20px;
+`
+
 TextCard.defaultProps = {
   my: 4
+}
+
+interface Coach {
+  id: number
+  name: string
+  username: string
+  reviewsStart: number
+  description: string
+  mmr: number
+  roles: string[]
+  achievements: string[]
+  image?: string
+  game: string
 }
 
 const Page: AuthenticatedComponent = () => (
@@ -67,18 +91,22 @@ const Page: AuthenticatedComponent = () => (
         <title>Gamejitsu - Our Coaches</title>
       </Head>
       <TextCard>
-        <Box width="900px" mx="auto" my={4} style={{ position: "relative" }}>
+        <Box width="1400px" mx="auto" my={4} style={{ position: "relative" }}>
           <Flex alignItems="center">
             <Box width="375px">
               <SecondaryTitle>Gamejitsu</SecondaryTitle>
               <MainTitle>Our Coaches</MainTitle>
             </Box>
           </Flex>
-          <Box width="900px">
-            <ParagraphText>
-              <ParagraphTitle>Who are they?</ParagraphTitle>
-            </ParagraphText>
-          </Box>
+          <Flex flexWrap="wrap">
+            {coachData.length === 0 ? (
+              <div />
+            ) : (
+                coachData.map((coach: Coach) => {
+                  return <CoachCard key={coach.id} coach={coach} />
+                })
+              )}
+          </Flex>
         </Box>
       </TextCard>
 
