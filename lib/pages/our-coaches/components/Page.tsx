@@ -1,11 +1,11 @@
-import React, { FunctionComponent } from "react"
+import React from "react"
 import styled from "styled-components"
 import { Flex, Box } from "rebass"
 import Head from "next/head"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 
-import { Footer, Navbar, LinkMailBold } from "gamejitsu/components"
+import { Footer, Navbar } from "gamejitsu/components"
 
 import { coachData } from "../../../../public/coachData"
 
@@ -73,7 +73,7 @@ interface Coach {
   id: number
   name: string
   username: string
-  reviewsStart: number
+  reviewsStars: number
   description: string
   mmr: number
   roles: string[]

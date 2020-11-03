@@ -194,7 +194,7 @@ const Line = styled.div`
 
 const FlowImage = styled(Box)<FlowImageType>`
   background-image: url(${(props) => props.url});
-  background-size: contain;
+  background-size: cover;
   height: 240px;
   margin-bottom: 150px;
   width: 380px;
@@ -493,7 +493,7 @@ const Page: AuthenticatedComponent = () => (
                 </Box>
               </FlowBox>
               <FlowBox>
-                <FlowImage url="/images/step4-image.png">
+                <FlowImage url="/images/step4-image1.png">
                   <FlowImageTitle>User Notified</FlowImageTitle>
                 </FlowImage>
               </FlowBox>
@@ -527,7 +527,7 @@ const Page: AuthenticatedComponent = () => (
                 </Box>
               </FlowBox>
               <FlowBox>
-                <FlowImage url="/images/step3-image.jpeg">
+                <FlowImage url="/images/step3-image.png">
                   <FlowImageTitle>Feedback</FlowImageTitle>
                 </FlowImage>
               </FlowBox>

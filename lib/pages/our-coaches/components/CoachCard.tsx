@@ -10,7 +10,7 @@ interface Coach {
   id: number
   name: string
   username: string
-  reviewsStart: number
+  reviewsStars: number
   description: string
   mmr: number
   roles: string[]

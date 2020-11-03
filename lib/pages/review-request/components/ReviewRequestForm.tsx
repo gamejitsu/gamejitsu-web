@@ -2,7 +2,7 @@ import humanize from "humanize-string"
 import React, { FunctionComponent, useContext } from "react"
 import styled from "styled-components"
 import titleize from "titleize"
-import { Slider } from "@blueprintjs/core"
+import { Slider, Tooltip } from "@blueprintjs/core"
 import { Box, Flex } from "rebass"
 import { object, string } from "yup"
 
@@ -13,10 +13,10 @@ import { HeroImage } from "gamejitsu/components"
 import { Layout } from "gamejitsu/components"
 import { SkillLevel } from "gamejitsu/api/types/skill-level"
 import { UserContext } from "gamejitsu/contexts"
+import { prices } from "../../../../public/prices"
 import CheckoutResource, { Checkout } from "gamejitsu/api/resources/checkout"
 
 const redirectToCheckout = async ({ comment, skillLevel, replayId, email }: Partial<Checkout>) => {
-  console.log("redirect")
   const stripe = Stripe(process.env.STRIPE_PUBLIC_KEY)
   const {
     data: { stripeId }
@@ -36,7 +36,7 @@ interface Props {
 }
 
 const initialValues = {
-  skillLevel: "medium",
+  skillLevel: "high",
   replay: null,
   comment: "",
   email: ""
@@ -63,13 +63,6 @@ const getUser = () => {
 const LabelContent = styled.span`
   white-space: nowrap;
 `
-
-const price: any = {
-  0: "4$",
-  1: "5$",
-  2: "7$",
-  3: "10$"
-}
 
 const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
   const user = getUser()
@@ -163,10 +156,12 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
                 />
               </FormGroup>
               <FormGroup label="Comment" labelFor="text-input">
-                <InputGroup onChange={formik.handleChange("comment")} id="text-input" />
+                <Tooltip content="Add any info you desire: language preferred, coach preference, role, focus, etc...">
+                  <InputGroup leftIcon="warning-sign" onChange={formik.handleChange("comment")} id="text-input" />
+                </Tooltip>
               </FormGroup>
               <FormGroup label="Price" labelFor="text-input">
-                {price[skillLevels.indexOf(formik.values.skillLevel as SkillLevel)]}
+                ${prices[skillLevels.indexOf(formik.values.skillLevel as SkillLevel)].priceUSD}
               </FormGroup>
             </div>
           )}
