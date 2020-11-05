@@ -62,10 +62,10 @@ const CoachDashboardPage: NextPage<Props> = ({ reviewRequests, reviews }) => {
       <Title text="ACCEPTED REVIEWS" />
       {reviews.length === 0 || areAllReviewsPublished(reviews) ? (
         <EmptyAcceptedReviews height="30%">
-          <Box>
+          <Box mt={4} pt={4}>
             <SettingsSVG width="200" height="100" />
           </Box>
-          <Box mt={4}>No reviews accepted to show</Box>
+          <Box mt={4} pb={4}>No reviews accepted to show</Box>
         </EmptyAcceptedReviews>
       ) : (
         reviews.map((review) => {
@@ -78,10 +78,10 @@ const CoachDashboardPage: NextPage<Props> = ({ reviewRequests, reviews }) => {
       <Title text="AVAILABLE REVIEW REQUESTS" />
       {reviewRequests.length === 0 ? (
         <EmptyReviewRequests height="50%">
-          <Box>
+          <Box mt={4} pt={4}>
             <SettingsSVG width="200" height="100" />
           </Box>
-          <Box mt={4}>No review requests available</Box>
+          <Box mt={4} pb={4}>No review requests available</Box>
         </EmptyReviewRequests>
       ) : (
         reviewRequests.map((reviewRequest) => {

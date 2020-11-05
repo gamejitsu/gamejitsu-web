@@ -192,7 +192,7 @@ const Line = styled.div`
   width: 1px;
 `
 
-const FlowImage = styled(Box)<FlowImageType>`
+const FlowImage = styled(Box) <FlowImageType>`
   background-image: url(${(props) => props.url});
   background-size: cover;
   height: 240px;
@@ -609,6 +609,10 @@ const Page: AuthenticatedComponent = () => (
 
             <PriceCard title="Pro" price="$25.0" icon="vip">
               <PriceFeature>7k MMR or above</PriceFeature>
+            </PriceCard>
+
+            <PriceCard title="Hero" price="$30.0" icon="king">
+              <PriceFeature>8k MMR or above</PriceFeature>
             </PriceCard>
           </Flex>
         </Box>

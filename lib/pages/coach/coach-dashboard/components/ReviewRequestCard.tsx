@@ -1,14 +1,13 @@
 import { Flex, Box } from "rebass"
 import { formatDistanceToNow } from "date-fns"
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3"
-import React, { useContext, FunctionComponent } from "react"
+import React, { FunctionComponent } from "react"
 import Router from "next/router"
 import styled from "styled-components"
 
 import { Button, HeroImage } from "gamejitsu/components"
 import { createModel } from "gamejitsu/api"
 import { DecoratedReviewRequest } from "gamejitsu/models/review-request"
-import { UserContext } from "gamejitsu/contexts"
 import ReviewResource from "gamejitsu/api/resources/review"
 
 interface Props {

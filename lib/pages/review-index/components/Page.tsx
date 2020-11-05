@@ -26,18 +26,20 @@ const EmptyReviews = styled(Flex)`
 const Page: NextPage<Props> = ({ reviews }) => (
   <LayoutWithMenuUser title="Reviews">
     <Title text="COMPLETED REVIEWS" />
+    <Box mt={3}>
     {reviews.length === 0 ? (
       <EmptyReviews height="30%">
-        <Box>
+        <Box mt={4} pt={4}>
           <SettingsSVG width="200" height="100" />
         </Box>
-        <Box mt={4}>No reviews available</Box>
+        <Box my={4} pb={4}>No reviews available</Box>
       </EmptyReviews>
     ) : (
       reviews.map((review) => {
         if (review !== undefined) return <ReviewCard key={review.id} review={review} />
       })
     )}
+    </Box>
   </LayoutWithMenuUser>
 )
 

@@ -18,9 +18,6 @@ import {
 import {
   decoder as coachDecoder,
   transformer as coachTransformer,
-  Coach,
-  decoder as coachDecoder,
-  transformer as coachTransformer,
   Coach
 } from "gamejitsu/api/resources/coach"
 import { buildResource, extractValue } from "../resource"
@@ -105,11 +102,6 @@ export default buildResource({
         user: (value.included || []).reduce(
           (a, r) => (r.type === "user" ? [...a, userTransformer(r)] : a),
           [] as User[]
-        ),
-
-        coach: (value.included || []).reduce(
-          (a, r) => (r.type === "coach" ? [...a, coachTransformer(r)] : a),
-          [] as Coach[]
         ),
 
         coach: (value.included || []).reduce(

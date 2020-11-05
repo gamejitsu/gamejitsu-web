@@ -44,7 +44,7 @@ export const coachData = [
     image: "https://www.w3schools.com/images/lamp.jpg",
     game: "Dota 2"
   }, {
-    id: 3,
+    id: 5,
     name: "Shoe",
     username: "Shoe",
     reviewsStars: 5,
@@ -55,7 +55,7 @@ export const coachData = [
     image: "https://www.w3schools.com/images/lamp.jpg",
     game: "Dota 2"
   }, {
-    id: 4,
+    id: 6,
     name: "Hoong",
     username: "Hoong",
     reviewsStars: 5,
@@ -66,7 +66,7 @@ export const coachData = [
     image: "https://www.w3schools.com/images/lamp.jpg",
     game: "Dota 2"
   }, {
-    id: 5,
+    id: 7,
     name: "Storm",
     username: "Storm",
     reviewsStars: 5,
