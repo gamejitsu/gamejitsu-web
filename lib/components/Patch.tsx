@@ -34,7 +34,8 @@ const LinkContent = styled.a`
   }
 `
 
-const Patch: FunctionComponent<Props> = ({ text, href, type = "button", ...props }) =>
-      <LinkContent {...props}>{text}</LinkContent>
+const Patch: FunctionComponent<Props> = ({ text, href, type = "button", ...props }) => (
+  <LinkContent {...props}>{text}</LinkContent>
+)
 
 export default Patch

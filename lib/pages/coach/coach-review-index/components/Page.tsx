@@ -37,7 +37,9 @@ const CoachReviewIndex: NextPage<Props> = ({ reviews }) => {
           <Box mt={4} pt={4}>
             <SettingsSVG width="200" height="100" />
           </Box>
-          <Box mt={4} pb={4}>No reviews completed to show</Box>
+          <Box mt={4} pb={4}>
+            No reviews completed to show
+          </Box>
         </EmptyReviews>
       ) : (
         reviews.map((review) => {

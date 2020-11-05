@@ -71,8 +71,8 @@ const Dashboard: FunctionComponent<Props> = (props) => {
     const currentSocket = socket
       ? socket
       : new Socket(process.env.SOCKET_ENDPOINT + "/socket", {
-        params: { token: authToken }
-      })
+          params: { token: authToken }
+        })
     setSocket(currentSocket)
     currentSocket.connect()
     const channel = currentSocket.channel("users:" + user.id)
@@ -102,23 +102,23 @@ const Dashboard: FunctionComponent<Props> = (props) => {
         {user.hasPublicProfile ? (
           <div />
         ) : (
-            <Box mb={4}>
-              <Callout title="Private Steam profile detected" intent="danger">
-                You need to enable the public profile on Steam to be able to correctly fetch your
-                replays.
+          <Box mb={4}>
+            <Callout title="Private Steam profile detected" intent="danger">
+              You need to enable the public profile on Steam to be able to correctly fetch your
+              replays.
               <br />
-                <br />
+              <br />
               If you are logged in to Steam, you can change your Privacy Settings by navigating to
               your{" "}
-                <a href="https://steamcommunity.com/my/edit/settings">
-                  Profile Privacy Settings Page
+              <a href="https://steamcommunity.com/my/edit/settings">
+                Profile Privacy Settings Page
               </a>
               .
               <br />
-                <br />
+              <br />
               Alternatively, you can navigate to the Profile Privacy Settings page manually:
               <br />
-                <br />
+              <br />
               1. From your Steam Profile, click the Edit Profile link under your displayed badge.
               <br />
               2. Click the My Privacy Settings tab
@@ -127,8 +127,8 @@ const Dashboard: FunctionComponent<Props> = (props) => {
               <br />
               4. Click the Save button
             </Callout>
-            </Box>
-          )}
+          </Box>
+        )}
         {user.isSyncingReplays ? <Spinner /> : <div></div>}
         <Box width="100%">
           <Title>REQUESTED REVIEWS</Title>
@@ -137,14 +137,16 @@ const Dashboard: FunctionComponent<Props> = (props) => {
               <Box mt={4} pt={4}>
                 <SettingsSVG width="200" height="100" />
               </Box>
-              <Box mt={4} pb={4}>No reviews accepted to show</Box>
+              <Box mt={4} pb={4}>
+                No reviews accepted to show
+              </Box>
             </EmptyRequestedReviews>
           ) : (
-              props.reviewRequests.map((reviewRequest) => {
-                if (reviewRequest)
-                  return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
-              })
-            )}
+            props.reviewRequests.map((reviewRequest) => {
+              if (reviewRequest)
+                return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
+            })
+          )}
         </Box>
         <Box mt={4}>
           <Title>REPLAYS</Title>
@@ -154,13 +156,15 @@ const Dashboard: FunctionComponent<Props> = (props) => {
                 <Box mt={4} pt={4}>
                   <SettingsSVG width="200" height="100" />
                 </Box>
-                <Box mt={4} pb={4}>No reviews accepted to show</Box>
+                <Box mt={4} pb={4}>
+                  No reviews accepted to show
+                </Box>
               </EmptyReplays>
             ) : (
-                props.replays.map((replay) => {
-                  return <ReplayCardNew key={replay.id} replay={replay} />
-                })
-              )}
+              props.replays.map((replay) => {
+                return <ReplayCardNew key={replay.id} replay={replay} />
+              })
+            )}
           </Flex>
         </Box>
       </Box>

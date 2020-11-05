@@ -47,9 +47,7 @@ const Element = styled.td<ElementProps>`
   height: 50px;
 `
 
-const TBody = styled.tbody`
-
-`
+const TBody = styled.tbody``
 
 const GamejitsuElement = styled.td`
   padding: 10px;
@@ -61,12 +59,12 @@ const GamejitsuElement = styled.td`
 `
 
 const Tr = styled.tr`
-&:nth-child(odd) {
-  background: ${(props) => props.theme.lineColor};;
-}
-&:nth-child(even) {
-  background: ${(props) => props.theme.line2Color};;
-}
+  &:nth-child(odd) {
+    background: ${(props) => props.theme.lineColor};
+  }
+  &:nth-child(even) {
+    background: ${(props) => props.theme.line2Color};
+  }
 `
 
 interface RowProps {
@@ -100,7 +98,7 @@ const Row: FunctionComponent<RowProps> = ({
         <Element green={green[3]}>{nonLiveVideoReplayAnalisys}</Element>
         <Element green={green[4]}>{writtenReplayAnalysis}</Element>
         <GamejitsuElement>{gamejitsuCoaching}</GamejitsuElement>
-        </Tr>
+      </Tr>
     </TBody>
   </TableContent>
 )

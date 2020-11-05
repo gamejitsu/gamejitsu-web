@@ -102,10 +102,10 @@ const Page: AuthenticatedComponent = () => (
             {coachData.length === 0 ? (
               <div />
             ) : (
-                coachData.map((coach: Coach) => {
-                  return <CoachCard key={coach.id} coach={coach} />
-                })
-              )}
+              coachData.map((coach: Coach) => {
+                return <CoachCard key={coach.id} coach={coach} />
+              })
+            )}
           </Flex>
         </Box>
       </TextCard>

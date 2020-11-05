@@ -79,8 +79,8 @@ const AchievementContent = styled.span`
 
 const ButtonBotton = styled.div`
   position: absolute;
-  left:    0;
-  bottom:   0;
+  left: 0;
+  bottom: 0;
   margin-left: 10px;
   margin-bottom: 20px;
 `
@@ -95,7 +95,7 @@ const CoachCard: FunctionComponent<Props> = ({ coach }) => {
   const user = useContext(UserContext)
 
   return (
-    <Box width="50%" mb={50} px={30} >
+    <Box width="50%" mb={50} px={30}>
       <Container width="100%" height="100%" mb={2}>
         <Box mb={1}>
           <Flex>
@@ -103,8 +103,8 @@ const CoachCard: FunctionComponent<Props> = ({ coach }) => {
               {coach.image != null ? (
                 <img src={coach.image} width="260px" height="190px" />
               ) : (
-                  <UserPhotoSVG width="200" height="100" />
-                )}
+                <UserPhotoSVG width="200" height="100" />
+              )}
               <Box ml={52} mt={-4}>
                 <PatchFull text={"MMR: ".concat(coach.mmr.toString())} />
               </Box>
@@ -115,7 +115,11 @@ const CoachCard: FunctionComponent<Props> = ({ coach }) => {
               <MainTitle>{coach.name}</MainTitle>
               150 reviews
               <Flex>
-                {coach.roles.map(role => <Box mt={3} mr={2}><Patch text={role} />  </Box>)}
+                {coach.roles.map((role) => (
+                  <Box mt={3} mr={2}>
+                    <Patch text={role} />{" "}
+                  </Box>
+                ))}
               </Flex>
             </Box>
           </Flex>
@@ -126,11 +130,11 @@ const CoachCard: FunctionComponent<Props> = ({ coach }) => {
         <HorizontalLine />
         <Box ml={3} mt={3} mb={4}>
           <SecondaryTitle>Top Achievements</SecondaryTitle>
-          {coach.achievements.map(achievement =>
+          {coach.achievements.map((achievement) => (
             <Box>
               <Achievement>{achievement}</Achievement>
             </Box>
-          )}
+          ))}
           <Box mx={3} mb={4} mt={50}>
             <ButtonBotton>
               <Box>

@@ -12,7 +12,6 @@ export const prices = [
     mmr: 6000,
     priceUSD: 17.5,
     priceDiscounted: 15.0
-
   },
   {
     id: 3,
@@ -20,7 +19,6 @@ export const prices = [
     mmr: 7000,
     priceUSD: 25,
     priceDiscounted: 20
-
   },
   {
     id: 4,

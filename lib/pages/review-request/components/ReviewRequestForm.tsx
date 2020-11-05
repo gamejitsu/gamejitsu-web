@@ -157,7 +157,11 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
               </FormGroup>
               <FormGroup label="Comment" labelFor="text-input">
                 <Tooltip content="Add any info you desire: language preferred, coach preference, role, focus, etc...">
-                  <InputGroup leftIcon="warning-sign" onChange={formik.handleChange("comment")} id="text-input" />
+                  <InputGroup
+                    leftIcon="warning-sign"
+                    onChange={formik.handleChange("comment")}
+                    id="text-input"
+                  />
                 </Tooltip>
               </FormGroup>
               <FormGroup label="Price" labelFor="text-input">
