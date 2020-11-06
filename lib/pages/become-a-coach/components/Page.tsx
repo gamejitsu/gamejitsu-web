@@ -87,7 +87,6 @@ const Page: AuthenticatedComponent = () => {
   }
 
   const stringified = queryString.stringify(urlQuery)
-  console.log("window:", window.origin)
   return (
     <Box mt={4}>
       <Navbar />
