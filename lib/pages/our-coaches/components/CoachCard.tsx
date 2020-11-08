@@ -85,6 +85,16 @@ const ButtonBotton = styled.div`
   margin-bottom: 20px;
 `
 
+interface ImgProps {
+  img: string
+}
+
+const CoachDiv = styled.div<ImgProps>`
+  width: 260px;
+  height: 190px;
+  background-image: ${(props) => props.img};
+`
+
 const Achievement: FunctionComponent = ({ children }) => (
   <AchievementContent>
     <img src="/images/icon-check-circle-1.png" width="20" color="red" /> {children}
@@ -101,7 +111,17 @@ const CoachCard: FunctionComponent<Props> = ({ coach }) => {
           <Flex>
             <Box ml={3} my={3}>
               {coach.image != null ? (
-                <img src={coach.image} width="260px" height="190px" />
+                (console.log(coach.image),
+                (
+                  <div
+                    style={{
+                      width: "260px",
+                      height: "190px",
+                      backgroundImage: "url('" + coach.image + "')",
+                      backgroundSize: "cover"
+                    }}
+                  />
+                ))
               ) : (
                 <UserPhotoSVG width="200" height="100" />
               )}
