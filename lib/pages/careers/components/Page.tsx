@@ -104,22 +104,35 @@ const Page: AuthenticatedComponent = () => {
               </Box>
             </Flex>
             <Box width="900px">
-            <ParagraphTitle>Coaches</ParagraphTitle>
-              <ParagraphText>We are actively looking for coaches for Dota 2, requirements is at least 5000 MMR. Please, check more details and register as a coach if interested via our 
-              {user ? (
-                <LinkBold href="/coach-signup"> coach sign-up page</LinkBold>
-              ) : (
-                <Bold href={urlBase + "?" + stringified}>coach sign-up page</Bold>
-              )}.
+              <ParagraphTitle>Coaches</ParagraphTitle>
+              <ParagraphText>
+                We are actively looking for coaches for Dota 2, requirements is at least 5000 MMR.
+                Please, check more details and register as a coach if interested via our 
+                {user ? (
+                  <LinkBold href="/coach-signup"> coach sign-up page</LinkBold>
+                ) : (
+                  <Bold href={urlBase + "?" + stringified}> coach sign-up page</Bold>
+                )}
+                .
               </ParagraphText>
               <ParagraphTitle>Content Creators</ParagraphTitle>
-              <ParagraphText>We are actively looking for content creators for Dota 2, requirement is at least 6500 MMR.</ParagraphText>
+              <ParagraphText>
+                We are actively looking for content creators for Dota 2, requirement is at least
+                6500 MMR.
+              </ParagraphText>
               <ParagraphTitle>Web Designers</ParagraphTitle>
-              <ParagraphText>We are actively looking for web designers to work on our website and for creating advertisment.</ParagraphText>
+              <ParagraphText>
+                We are actively looking for web designers to work on our website and for creating
+                advertisment.
+              </ParagraphText>
               <ParagraphTitle>Engineering</ParagraphTitle>
-              <ParagraphText>There are currently no open positions on the engineering team.</ParagraphText>
+              <ParagraphText>
+                There are currently no open positions on the engineering team.
+              </ParagraphText>
               <ParagraphTitle>Marketing</ParagraphTitle>
-              <ParagraphText>There are currently no open positions on the marketing team.</ParagraphText>
+              <ParagraphText>
+                There are currently no open positions on the marketing team.
+              </ParagraphText>
             </Box>
           </Box>
         </TextCard>
