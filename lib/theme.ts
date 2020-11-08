@@ -14,7 +14,7 @@ const theme: DefaultTheme = {
   textColorDark: "#5b5a5a",
   textFont: "'Montserrat',sans-serif",
   borderRadius: "50px",
-  lineColor: "#2d2d2d",
+  lineColor: "#3a3c43",
   line2Color: "#3c3c3c",
   headerColor: "#171717"
 }

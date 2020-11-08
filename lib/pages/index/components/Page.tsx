@@ -59,6 +59,10 @@ const MainTitle = styled.h1`
   margin-top: 20px;
 `
 
+const Bold = styled.b`
+  font-weight: bold;
+`
+
 const ParagraphText = styled.p`
   font-size: 15px;
   line-height: 20px;
@@ -322,7 +326,7 @@ const Page: AuthenticatedComponent = () => (
     <Container alignItems="center" flexDirection="column">
       <Head>
         <link rel="shortcut icon" href="/favicon.png" />
-        <title>Gamejitsu - Home</title>
+        <title>Gamejitsu</title>
       </Head>
       <StyledCookieConsent
         location="bottom"
@@ -353,10 +357,10 @@ const Page: AuthenticatedComponent = () => (
           <Box width="900px" mx="auto" style={{ position: "relative" }}>
             <Flex alignItems="center" height="100%">
               <Box width="375px">
-                <SecondaryTitle>A coaching Platform</SecondaryTitle>
-                <MainTitle>Hire a Pro Gaming Coach From 4$</MainTitle>
-                <ParagraphText>Get your game analyzed by a ranked coach</ParagraphText>
-                <ParagraphText>who will help you improve your skills</ParagraphText>
+                <SecondaryTitle>Esport coaching Platform</SecondaryTitle>
+                <MainTitle>Hire a Pro Coach from 10$</MainTitle>
+                <ParagraphText>Get your game analyzed asynchronously</ParagraphText>
+                <ParagraphText>by top quality coaches and start winning</ParagraphText>
               </Box>
             </Flex>
             <MainImage src={mainLogo} />
@@ -384,16 +388,20 @@ const Page: AuthenticatedComponent = () => (
         <Box width="900px" mx="auto" my={6} style={{ position: "relative" }}>
           <Flex alignItems="center">
             <Box width="375px">
-              <SecondaryTitle>Top Notch Platform</SecondaryTitle>
+              <SecondaryTitle>Asynch Coaching</SecondaryTitle>
               <MainTitle>Welcome to GameJitsu</MainTitle>
             </Box>
             <Box width="600px">
               <ParagraphText>
-                Gamejitsu uses state-of-the-art technologies to allow you and other palyers to get
-                their game reviewed without the need of recording their own game. Gamejitsu will
-                fetch autonously the game you selected to be reviewed and provides it to a coach
-                based on the selected MMR.
+                Gamejitsu uses state-of-the-art technologies to allow you (as a palyer) to get your{" "}
+                <Bold>game reviewed without recording your own game</Bold>.
               </ParagraphText>
+              <br />
+              <ParagraphText>
+                Gamejitsu will fetch autonously the game you selected to be reviewed and provides it
+                to a coach based on the <Bold>selected MMR</Bold>.
+              </ParagraphText>
+              <br />
               <ParagraphText>
                 Login in the platform is only available via Steam. Your profile has to be public in
                 order to see your recent games played.
@@ -424,7 +432,7 @@ const Page: AuthenticatedComponent = () => (
         <Box width="100%" style={{ position: "relative" }}>
           <Box mx="auto" width="900px" mt={5}>
             <SecondaryTitle>Games We Support</SecondaryTitle>
-            <MainTitle>Become a Legend</MainTitle>
+            <MainTitle>Optimize your Skillset</MainTitle>
           </Box>
           <Flex p={4} justifyContent="center">
             <Box width={1 / 4}>
@@ -452,9 +460,11 @@ const Page: AuthenticatedComponent = () => (
             </Box>
             <Box width="600px">
               <ParagraphText>
-                The Gamejitsu flow is composed by 4 simple steps. You don't need to record your own
-                game, Gamejitsu will take of it. Gamejitsu will also select the best coach for your
-                needs based on the required MMR.
+                The Gamejitsu flow is composed by <Bold>4 simple steps</Bold>.
+              </ParagraphText>
+              <ParagraphText>
+                <Bold>You don't need to record your own game</Bold>, Gamejitsu will take care of it.
+                Gamejitsu will also select the best coach for your needs, based on the required MMR.
               </ParagraphText>
             </Box>
           </Flex>
@@ -472,7 +482,8 @@ const Page: AuthenticatedComponent = () => (
                 </IconCircle>
                 <Box>
                   <FlowText>
-                    You submit a request for a replay to be analyzed by a coach based on MMR
+                    You submit a request for a replay to be analyzed by our selected coach based on
+                    MMR
                   </FlowText>
                 </Box>
               </FlowBox>
@@ -561,8 +572,8 @@ const Page: AuthenticatedComponent = () => (
       </MainFlow>
 
       <TextCard>
-        <SecondaryTitle>Master Schema</SecondaryTitle>
-        <MainTitle>Master comparison between all form of coaches</MainTitle>
+        <SecondaryTitle>Comparison Schema</SecondaryTitle>
+        <MainTitle>Built for players</MainTitle>
       </TextCard>
 
       <Box width="65%">
