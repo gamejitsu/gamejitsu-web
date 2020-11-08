@@ -87,6 +87,9 @@ const Footer: FunctionComponent<Props> = () => (
                 </LinkDark>
               </Box>
               <Box mb={25}>
+                <LinkDark href="/howitworks">How It Works</LinkDark>
+              </Box>
+              <Box mb={25}>
                 <LinkDark href="/careers">Careers</LinkDark>
               </Box>
               <Box mb={25}>
@@ -112,6 +115,12 @@ const Footer: FunctionComponent<Props> = () => (
               <FooterTitle>COACHES</FooterTitle>
               <Box mt={4} mb={25}>
                 <LinkDark href="/become-a-coach">Become a Coach</LinkDark>
+              </Box>
+              <Box mb={25}>
+                <LinkDark href="/our-coaches">Our Coaches</LinkDark>
+              </Box>
+              <Box mb={25}>
+                <LinkDark href="/demo">Coach Demo</LinkDark>
               </Box>
               <Box mb={25}>
                 <LinkDark href="/customer-reviews">Customer Reviews</LinkDark>
@@ -148,7 +157,7 @@ const Footer: FunctionComponent<Props> = () => (
             </Box>
             <Box mr={4}>
               <LinkSocialIcon
-                href="https://www.facebook.com/gamejitsu"
+                href="https://www.facebook.com/GamejitsuCoaching"
                 src="/images/social-media-facebook.svg"
               />
             </Box>

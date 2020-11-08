@@ -6,7 +6,14 @@ import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import { Navbar, ButtonNew, ButtonAlternative, ButtonDark, Footer } from "gamejitsu/components"
+import {
+  Navbar,
+  ButtonNew,
+  ButtonAlternative,
+  ButtonDark,
+  Footer,
+  Table
+} from "gamejitsu/components"
 import GameContainerCSGOSVG from "../../../../svgs/csgo-container-final-2.svg"
 import GameContainerLOLSVG from "../../../../svgs/lol-container-new-4.svg"
 import GameContainerOWSVG from "../../../../svgs/overwatch-container-1.svg"
@@ -50,6 +57,10 @@ const MainTitle = styled.h1`
   font-weight: bold;
   margin-bottom: 20px;
   margin-top: 20px;
+`
+
+const Bold = styled.b`
+  font-weight: bold;
 `
 
 const ParagraphText = styled.p`
@@ -187,7 +198,7 @@ const Line = styled.div`
 
 const FlowImage = styled(Box)<FlowImageType>`
   background-image: url(${(props) => props.url});
-  background-size: contain;
+  background-size: cover;
   height: 240px;
   margin-bottom: 150px;
   width: 380px;
@@ -315,7 +326,7 @@ const Page: AuthenticatedComponent = () => (
     <Container alignItems="center" flexDirection="column">
       <Head>
         <link rel="shortcut icon" href="/favicon.png" />
-        <title>Gamejitsu - Home</title>
+        <title>Gamejitsu</title>
       </Head>
       <StyledCookieConsent
         location="bottom"
@@ -346,10 +357,10 @@ const Page: AuthenticatedComponent = () => (
           <Box width="900px" mx="auto" style={{ position: "relative" }}>
             <Flex alignItems="center" height="100%">
               <Box width="375px">
-                <SecondaryTitle>A coaching Platform</SecondaryTitle>
-                <MainTitle>Hire a Pro Gaming Coach From 4$</MainTitle>
-                <ParagraphText>Get your game analyzed by a ranked coach</ParagraphText>
-                <ParagraphText>who will help you improve your skills</ParagraphText>
+                <SecondaryTitle>Esport coaching Platform</SecondaryTitle>
+                <MainTitle>Hire a Pro Coach from 10$</MainTitle>
+                <ParagraphText>Get your game analyzed asynchronously</ParagraphText>
+                <ParagraphText>by top quality coaches and start winning</ParagraphText>
               </Box>
             </Flex>
             <MainImage src={mainLogo} />
@@ -377,20 +388,41 @@ const Page: AuthenticatedComponent = () => (
         <Box width="900px" mx="auto" my={6} style={{ position: "relative" }}>
           <Flex alignItems="center">
             <Box width="375px">
-              <SecondaryTitle>Top Notch Platform</SecondaryTitle>
+              <SecondaryTitle>Asynch Coaching</SecondaryTitle>
               <MainTitle>Welcome to GameJitsu</MainTitle>
             </Box>
             <Box width="600px">
               <ParagraphText>
-                Gamejitsu uses state-of-the-art technologies to allow you and other palyers to get
-                their game reviewed without the need of recording their own game. Gamejitsu will
-                fetch autonously the game you selected to be reviewed and provides it to a coach
-                based on the selected MMR.
+                Gamejitsu uses state-of-the-art technologies to allow you (as a palyer) to get your{" "}
+                <Bold>game reviewed without recording your own game</Bold>.
               </ParagraphText>
+              <br />
+              <ParagraphText>
+                Gamejitsu will fetch autonously the game you selected to be reviewed and provides it
+                to a coach based on the <Bold>selected MMR</Bold>.
+              </ParagraphText>
+              <br />
               <ParagraphText>
                 Login in the platform is only available via Steam. Your profile has to be public in
                 order to see your recent games played.
               </ParagraphText>
+            </Box>
+          </Flex>
+          <Flex justifyContent="center">
+            <Box mt={100}>
+              <Flex>
+                <Box mr={10}>
+                  <ButtonNew key="demo" type="button" href="/demo" text="COACH DEMO" />
+                </Box>
+                <Box ml={10}>
+                  <ButtonAlternative
+                    key="howitworks"
+                    type="button"
+                    href="/howitworks"
+                    text="HOW IT WORKS"
+                  />
+                </Box>
+              </Flex>
             </Box>
           </Flex>
         </Box>
@@ -400,7 +432,7 @@ const Page: AuthenticatedComponent = () => (
         <Box width="100%" style={{ position: "relative" }}>
           <Box mx="auto" width="900px" mt={5}>
             <SecondaryTitle>Games We Support</SecondaryTitle>
-            <MainTitle>Become a Legend</MainTitle>
+            <MainTitle>Optimize your Skillset</MainTitle>
           </Box>
           <Flex p={4} justifyContent="center">
             <Box width={1 / 4}>
@@ -428,9 +460,11 @@ const Page: AuthenticatedComponent = () => (
             </Box>
             <Box width="600px">
               <ParagraphText>
-                The Gamejitsu flow is composed by 4 simple steps. You don't need to record your own
-                game, Gamejitsu will take of it. Gamejitsu will also select the best coach for your
-                needs based on the required MMR.
+                The Gamejitsu flow is composed by <Bold>4 simple steps</Bold>.
+              </ParagraphText>
+              <ParagraphText>
+                <Bold>You don't need to record your own game</Bold>, Gamejitsu will take care of it.
+                Gamejitsu will also select the best coach for your needs, based on the required MMR.
               </ParagraphText>
             </Box>
           </Flex>
@@ -448,7 +482,8 @@ const Page: AuthenticatedComponent = () => (
                 </IconCircle>
                 <Box>
                   <FlowText>
-                    You submit a request for a replay to be analyzed by a coach based on MMR
+                    You submit a request for a replay to be analyzed by our selected coach based on
+                    MMR
                   </FlowText>
                 </Box>
               </FlowBox>
@@ -464,13 +499,12 @@ const Page: AuthenticatedComponent = () => (
                 </IconCircle>
                 <Box>
                   <FlowText>
-                    The coach delivers to you the video reviewed with text feedbacks in the form of
-                    comments
+                    Coach reviews your game with text comments bound to your replay
                   </FlowText>
                 </Box>
               </FlowBox>
               <FlowBox>
-                <FlowImage url="/images/step4-image.png">
+                <FlowImage url="/images/step4-image1.png">
                   <FlowImageTitle>User Notified</FlowImageTitle>
                 </FlowImage>
               </FlowBox>
@@ -498,11 +532,13 @@ const Page: AuthenticatedComponent = () => (
                   <FlowStepIcon src="/images/step2.png" />
                 </IconCircle>
                 <Box>
-                  <FlowText>A human coach grabs your replay and starts the analysis</FlowText>
+                  <FlowText>
+                    Our professional coach responds to your request and starts the analysis
+                  </FlowText>
                 </Box>
               </FlowBox>
               <FlowBox>
-                <FlowImage url="/images/step3-image.jpeg">
+                <FlowImage url="/images/step3-image.png">
                   <FlowImageTitle>Feedback</FlowImageTitle>
                 </FlowImage>
               </FlowBox>
@@ -513,7 +549,7 @@ const Page: AuthenticatedComponent = () => (
                 </IconCircle>
                 <Box>
                   <FlowText>
-                    You are notified via mail of the available review and you can watch it in your
+                    You are notified via mail and you can watch the replay analyzed in your
                     dashboard
                   </FlowText>
                 </Box>
@@ -536,6 +572,25 @@ const Page: AuthenticatedComponent = () => (
       </MainFlow>
 
       <TextCard>
+        <SecondaryTitle>Comparison Schema</SecondaryTitle>
+        <MainTitle>Built for players</MainTitle>
+      </TextCard>
+
+      <Box width="65%">
+        <Table />
+      </Box>
+
+      <Flex justifyContent="center">
+        <Box mt={100}>
+          <Flex>
+            <Box mr={10}>
+              <ButtonNew key="login" type="button" onClick={login} text="OUR COACHES" />
+            </Box>
+          </Flex>
+        </Box>
+      </Flex>
+
+      <TextCard>
         <Box id="pricing" width="900px" mx="auto" my={4} style={{ position: "relative" }}>
           <Flex alignItems="center">
             <Box width="375px">
@@ -555,20 +610,20 @@ const Page: AuthenticatedComponent = () => (
       <PriceCards>
         <Box width="900px" mx="auto" style={{ position: "relative" }}>
           <Flex justifyContent="center">
-            <PriceCard title="Medium" price="$4.0" icon="award-badge-1">
-              <PriceFeature>4k MMR or above</PriceFeature>
-            </PriceCard>
-
-            <PriceCard title="High" price="$6.0" icon="award-badge">
+            <PriceCard title="High" price="$10.0" icon="award-badge">
               <PriceFeature>5k MMR or above</PriceFeature>
             </PriceCard>
 
-            <PriceCard title="Very High" price="$8.0" icon="award-badge-3">
+            <PriceCard title="Experienced" price="$17.5" icon="award-badge-3">
               <PriceFeature>6k MMR or above</PriceFeature>
             </PriceCard>
 
-            <PriceCard title="Pro" price="$10.0" icon="vip">
+            <PriceCard title="Pro" price="$25.0" icon="vip">
               <PriceFeature>7k MMR or above</PriceFeature>
+            </PriceCard>
+
+            <PriceCard title="Hero" price="$30.0" icon="king">
+              <PriceFeature>8k MMR or above</PriceFeature>
             </PriceCard>
           </Flex>
         </Box>

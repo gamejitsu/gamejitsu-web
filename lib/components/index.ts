@@ -13,6 +13,7 @@ import HeroImageSmall from "./HeroImageSmall"
 import ImageButton from "./ImageButton"
 import InputGroup from "./InputGroup"
 import Layout from "./Layout"
+import LayoutDemo from "./LayoutDemo"
 import LayoutWithMenu from "./LayoutWithMenu"
 import LayoutWithMenuUser from "./LayoutWithMenuUser"
 import Link from "./Link"
@@ -23,9 +24,12 @@ import LinkMailBold from "./LinkBold"
 import LinkLeftMenu from "./LinkLeftMenu"
 import Navbar from "./Navbar"
 import NavbarLeftMenu from "./NavbarLeftMenu"
+import Patch from "./Patch"
+import PatchFull from "./PatchFull"
 import SkillLevelSelect from "./SkillLevelSelect"
 import Spinner from "./Spinner"
 import SteamButton from "./SteamButton"
+import Table from "./Table"
 import Title from "./Title"
 
 export {
@@ -45,6 +49,7 @@ export {
   InputGroup,
   Layout,
   LayoutWithMenu,
+  LayoutDemo,
   LayoutWithMenuUser,
   Link,
   LinkDark,
@@ -54,8 +59,11 @@ export {
   LinkSocialIcon,
   Navbar,
   NavbarLeftMenu,
+  Patch,
+  PatchFull,
   SkillLevelSelect,
   Spinner,
   SteamButton,
+  Table,
   Title
 }

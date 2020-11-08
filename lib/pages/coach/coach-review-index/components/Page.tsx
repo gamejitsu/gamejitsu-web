@@ -1,14 +1,15 @@
+import { Box, Flex } from "rebass"
+import { NextPageContext, NextPage } from "next"
 import React from "react"
+import styled from "styled-components"
 
 import { CoachReviewCard } from "."
+import { DecoratedReview, decorateReviews } from "gamejitsu/models/review"
 import { LayoutWithMenu, Title } from "gamejitsu/components"
 import { listModels } from "gamejitsu/api"
-import { NextPageContext, NextPage } from "next"
-import ReviewResource, { Review } from "gamejitsu/api/resources/review"
-import { DecoratedReview, decorateReviews } from "gamejitsu/models/review"
-import { Box, Flex } from "rebass"
-import styled from "styled-components"
+import ReviewResource from "gamejitsu/api/resources/review"
 import SettingsSVG from "../../../../../svgs/settings.svg"
+
 interface Props {
   reviews: (DecoratedReview | undefined)[]
 }
@@ -33,10 +34,12 @@ const CoachReviewIndex: NextPage<Props> = ({ reviews }) => {
       <Title text="COMPLETED REVIEWS" />
       {reviews.length === 0 ? (
         <EmptyReviews height="100%">
-          <Box>
+          <Box mt={4} pt={4}>
             <SettingsSVG width="200" height="100" />
           </Box>
-          <Box mt={4}>No reviews completed to show</Box>
+          <Box mt={4} pb={4}>
+            No reviews completed to show
+          </Box>
         </EmptyReviews>
       ) : (
         reviews.map((review) => {

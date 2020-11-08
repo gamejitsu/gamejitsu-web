@@ -130,35 +130,43 @@ const Dashboard: FunctionComponent<Props> = (props) => {
           </Box>
         )}
         {user.isSyncingReplays ? <Spinner /> : <div></div>}
-        <Title>REQUESTED REVIEWS</Title>
-        {props.reviewRequests.length === 0 ? (
-          <EmptyRequestedReviews height="30%">
-            <Box>
-              <SettingsSVG width="200" height="100" />
-            </Box>
-            <Box mt={4}>No reviews accepted to show</Box>
-          </EmptyRequestedReviews>
-        ) : (
-          props.reviewRequests.map((reviewRequest) => {
-            if (reviewRequest)
-              return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
-          })
-        )}
-        <Title>REPLAYS</Title>
-        <Flex flexWrap="wrap">
-          {props.replays.length === 0 ? (
-            <EmptyReplays height="30%">
-              <Box>
+        <Box width="100%">
+          <Title>REQUESTED REVIEWS</Title>
+          {props.reviewRequests.length === 0 ? (
+            <EmptyRequestedReviews height="30%">
+              <Box mt={4} pt={4}>
                 <SettingsSVG width="200" height="100" />
               </Box>
-              <Box mt={4}>No reviews accepted to show</Box>
-            </EmptyReplays>
+              <Box mt={4} pb={4}>
+                No reviews accepted to show
+              </Box>
+            </EmptyRequestedReviews>
           ) : (
-            props.replays.map((replay) => {
-              return <ReplayCardNew key={replay.id} replay={replay} />
+            props.reviewRequests.map((reviewRequest) => {
+              if (reviewRequest)
+                return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
             })
           )}
-        </Flex>
+        </Box>
+        <Box mt={4}>
+          <Title>REPLAYS</Title>
+          <Flex flexWrap="wrap">
+            {props.replays.length === 0 ? (
+              <EmptyReplays height="30%">
+                <Box mt={4} pt={4}>
+                  <SettingsSVG width="200" height="100" />
+                </Box>
+                <Box mt={4} pb={4}>
+                  No reviews accepted to show
+                </Box>
+              </EmptyReplays>
+            ) : (
+              props.replays.map((replay) => {
+                return <ReplayCardNew key={replay.id} replay={replay} />
+              })
+            )}
+          </Flex>
+        </Box>
       </Box>
     </LayoutWithMenuUser>
   )
