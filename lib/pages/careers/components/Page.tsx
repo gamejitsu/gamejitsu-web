@@ -107,19 +107,11 @@ const Page: AuthenticatedComponent = () => {
               <ParagraphTitle>Coaches</ParagraphTitle>
               <ParagraphText>
                 We are actively looking for coaches for Dota 2, requirements is at least 5000 MMR.
-<<<<<<< Updated upstream
-                Please, check more details and register as a coach if interested via our 
-                {user ? (
-                  <LinkBold href="/coach-signup"> coach sign-up page</LinkBold>
-                ) : (
-                  <Bold href={urlBase + "?" + stringified}> coach sign-up page</Bold>
-=======
                 Please, check more details and register as a coach if interested via our
                 {user ? (
                   <LinkBold href="/coach-signup"> coach sign-up page</LinkBold>
                 ) : (
-                  <Bold href={urlBase + "?" + stringified}>coach sign-up page</Bold>
->>>>>>> Stashed changes
+                  <Bold href={urlBase + "?" + stringified}> coach sign-up page</Bold>
                 )}
                 .
               </ParagraphText>
