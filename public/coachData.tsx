@@ -56,6 +56,24 @@ export const coachData = [
     game: "Dota 2"
   },
   {
+    id: 5,
+    name: "Shoe",
+    username: "Shoe",
+    reviewsStars: 5,
+    description:
+      "Ukrainian/American semi-professional Dota 2 player who spends a lot of time on mastering the skills and understanding of the game. Having climbed multiple accounts to 8k and above, he understands what it takes to win the games and most importantly how to improve to the highest level.",
+    mmr: 8360,
+    roles: ["All Roles"],
+    achievements: [
+      "Over 100 students coached",
+      "   Participated in NA closed qualifications of MDL Chengdu Major, MDL Disneyland Paris Major, The Leipzig Major, ESL One Los Angeles Major, and AMD Sapphire Dota Pit Minor",
+      "   1st place CSL 2019 Invitational, 3rd place CSL 2019, 4th place CSL 2020, 5th-8th place Omega League: Americas Ancient Division, 4th place American Avengers cup",
+      "   Consistently ranked top 100 in North America"
+    ],
+    image: "../../../images/coaches/shoe.jpg",
+    game: "Dota 2"
+  },
+  {
     id: 3,
     name: "Kazami",
     username: "Kazami",
@@ -108,24 +126,6 @@ export const coachData = [
       "Selangor Cyber Games 2016 3rd place - MYR 2,000"
     ],
     image: "../../../images/coaches/storm.png",
-    game: "Dota 2"
-  },
-  {
-    id: 5,
-    name: "Shoe",
-    username: "Shoe",
-    reviewsStars: 5,
-    description:
-      "Ukrainian/American semi-professional Dota 2 player who spends a lot of time on mastering the skills and understanding of the game. Having climbed multiple accounts to 8k and above, he understands what it takes to win the games and most importantly how to improve to the highest level.",
-    mmr: 8360,
-    roles: ["All Roles"],
-    achievements: [
-      "Over 100 students coached",
-      "   Participated in NA closed qualifications of MDL Chengdu Major, MDL Disneyland Paris Major, The Leipzig Major, ESL One Los Angeles Major, and AMD Sapphire Dota Pit Minor",
-      "   1st place CSL 2019 Invitational, 3rd place CSL 2019, 4th place CSL 2020, 5th-8th place Omega League: Americas Ancient Division, 4th place American Avengers cup",
-      "   Consistently ranked top 100 in North America"
-    ],
-    image: "../../../images/coaches/shoe.jpeg",
     game: "Dota 2"
   }
 ]
