@@ -45,3 +45,13 @@ __`❍ npm run test`__
 Start ngrok to support Stripe webhooks, it will allow the creation of the review request after a successful checkout.
 
 __`❍ ngrok http -hostname=gamejitsu.eu.ngrok.io 4000`__
+
+## Before Committing
+
+**1)** Run Prettier:
+
+__`❍ npm run prettier -- --write`__
+
+**2)** Run Tests updating snapshot if needed (or CI will fail):
+
+__`❍ npm run test -- --updateSnapshot`__
