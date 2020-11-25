@@ -3,6 +3,7 @@ import { FunctionComponent } from "react"
 import { lighten, darken } from "polished"
 import Link from "next/link"
 import { Button as BPButton, Classes } from "@blueprintjs/core"
+import { breakpointDown } from "../utils/mediaQueryDevices"
 
 interface Props {
   text: string
@@ -28,6 +29,11 @@ const baseStyles = css`
   padding: 12px 30px 14px 30px;
   font-size: 15px;
   font-weight: bold;
+  text-align: center;
+
+  @media ${breakpointDown.lg} {
+    font-size: 12px;
+  }
 
   &:hover {
     background-image: linear-gradient(

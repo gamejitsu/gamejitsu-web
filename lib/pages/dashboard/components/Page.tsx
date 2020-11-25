@@ -45,21 +45,21 @@ const getReviewRequests = async (ctx: NextPageContext) => {
 }
 
 const EmptyReplays = styled(Flex)`
-  witdh: 100%;
   background-color: ${(props) => props.theme.lightBackgroundColor};
   font-weight: 40px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  opacity: 0.9;
 `
 
 const EmptyRequestedReviews = styled(Flex)`
-  witdh: 100%;
   background-color: ${(props) => props.theme.lightBackgroundColor};
   font-weight: 40px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  opacity: 0.9;
 `
 
 const Dashboard: FunctionComponent<Props> = (props) => {
@@ -98,11 +98,11 @@ const Dashboard: FunctionComponent<Props> = (props) => {
 
   return (
     <LayoutWithMenuUser title="Dashboard">
-      <Box width="1300px">
+      <Flex flexDirection="column">
         {user.hasPublicProfile ? (
           <div />
         ) : (
-          <Box mb={4}>
+          <Flex>
             <Callout title="Private Steam profile detected" intent="danger">
               You need to enable the public profile on Steam to be able to correctly fetch your
               replays.
@@ -127,19 +127,17 @@ const Dashboard: FunctionComponent<Props> = (props) => {
               <br />
               4. Click the Save button
             </Callout>
-          </Box>
+          </Flex>
         )}
         {user.isSyncingReplays ? <Spinner /> : <div></div>}
-        <Box width="100%">
+        <Flex width="100%" flexDirection="column">
           <Title>REQUESTED REVIEWS</Title>
           {props.reviewRequests.length === 0 ? (
-            <EmptyRequestedReviews height="30%">
-              <Box mt={4} pt={4}>
+            <EmptyRequestedReviews py={5}>
+              <Box py={3}>
                 <SettingsSVG width="200" height="100" />
               </Box>
-              <Box mt={4} pb={4}>
-                No reviews accepted to show
-              </Box>
+              <Box>No reviews accepted to show</Box>
             </EmptyRequestedReviews>
           ) : (
             props.reviewRequests.map((reviewRequest) => {
@@ -147,18 +145,16 @@ const Dashboard: FunctionComponent<Props> = (props) => {
                 return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
             })
           )}
-        </Box>
-        <Box mt={4}>
+        </Flex>
+        <Flex mt={4} flexDirection="column">
           <Title>REPLAYS</Title>
-          <Flex flexWrap="wrap">
+          <Flex flexWrap="wrap" justifyContent="space-between">
             {props.replays.length === 0 ? (
-              <EmptyReplays height="30%">
-                <Box mt={4} pt={4}>
+              <EmptyReplays py={5}>
+                <Box py={3}>
                   <SettingsSVG width="200" height="100" />
                 </Box>
-                <Box mt={4} pb={4}>
-                  No reviews accepted to show
-                </Box>
+                <Box>No reviews accepted to show</Box>
               </EmptyReplays>
             ) : (
               props.replays.map((replay) => {
@@ -166,8 +162,8 @@ const Dashboard: FunctionComponent<Props> = (props) => {
               })
             )}
           </Flex>
-        </Box>
-      </Box>
+        </Flex>
+      </Flex>
     </LayoutWithMenuUser>
   )
 }
