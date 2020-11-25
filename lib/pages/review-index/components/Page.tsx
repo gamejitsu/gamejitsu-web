@@ -15,33 +15,35 @@ interface Props {
 }
 
 const EmptyReviews = styled(Flex)`
-  witdh: 100%;
   background-color: ${(props) => props.theme.lightBackgroundColor};
   font-weight: 40px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  width: 100%;
+  opacity: 0.9;
+  border: 1px solid ${(props) => props.theme.activeColor};
 `
 
 const Page: NextPage<Props> = ({ reviews }) => (
   <LayoutWithMenuUser title="Reviews">
-    <Title text="COMPLETED REVIEWS" />
-    <Box mt={3}>
-      {reviews.length === 0 ? (
-        <EmptyReviews height="30%">
-          <Box mt={4} pt={4}>
-            <SettingsSVG width="200" height="100" />
-          </Box>
-          <Box my={4} pb={4}>
-            No reviews available
-          </Box>
-        </EmptyReviews>
-      ) : (
-        reviews.map((review) => {
-          if (review !== undefined) return <ReviewCard key={review.id} review={review} />
-        })
-      )}
-    </Box>
+    <Flex width="100%" flexDirection="column">
+      <Title text="COMPLETED REVIEWS" />
+      <Flex mt={3}>
+        {reviews.length === 0 ? (
+          <EmptyReviews py={5}>
+            <Box py={3}>
+              <SettingsSVG width="200" height="100" />
+            </Box>
+            <Box>No reviews available</Box>
+          </EmptyReviews>
+        ) : (
+          reviews.map((review) => {
+            if (review !== undefined) return <ReviewCard key={review.id} review={review} />
+          })
+        )}
+      </Flex>
+    </Flex>
   </LayoutWithMenuUser>
 )
 

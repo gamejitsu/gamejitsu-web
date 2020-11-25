@@ -10,6 +10,7 @@ import { ButtonIcon, ButtonNew, ImageButton } from "."
 import { UserContext } from "../contexts"
 
 import Link from "./Link"
+import { breakpointDown } from "../utils/mediaQueryDevices"
 
 const urlBase = "https://steamcommunity.com/openid/login"
 
@@ -28,10 +29,14 @@ const NavLinkContent = styled(Link)<NavLinkContentProps>`
   font-weight: bold;
   transition: all 0.15s ease-in-out;
   position: relative;
-  font-size: 9px;
+  font-size: 14px;
   letter-spacing: 1px;
   margin-left: 2px;
   margin-right: 2px;
+
+  @media ${breakpointDown.sm} {
+    display: none;
+  }
 
   &::before {
     background-color: ${(props) => transparentize(0.5, props.theme.textColor)};
@@ -56,6 +61,7 @@ const NavLinkContent = styled(Link)<NavLinkContentProps>`
 const NavLink: FunctionComponent<NavLinkProps> = ({ children, href }) => {
   const router = useRouter()
   const isActive = router && router.pathname === href
+
   return (
     <Box m={2}>
       <NavLinkContent isActive={isActive} href={href}>
@@ -66,12 +72,10 @@ const NavLink: FunctionComponent<NavLinkProps> = ({ children, href }) => {
 }
 
 const Container = styled(Flex)`
+  position: relative;
+  justify-content: space-between;
   background-color: transparent;
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  right 0;
+  width: 100%;
 `
 
 const Logo = styled.div`
@@ -104,16 +108,16 @@ const NavbarLeftMenu: FunctionComponent = () => {
   const user = useContext(UserContext)
 
   return (
-    <Container py={2} px={3} color="white" alignItems="center">
-      <Box mr="auto">
-        <Flex alignItems="center">
-          <Box width="175px" mr={3} ml={50}>
+    <Container py={20} px={3} color="white" alignItems="center">
+      <Flex>
+        <Flex alignItems="center" ml={4}>
+          <Box width="185px">
             <Logo>
               <ImageButton key="image-button" href="/" imageSrc={gamejitsuWritingImageSrc} />
             </Logo>
           </Box>
         </Flex>
-      </Box>
+      </Flex>
       {user ? (
         user?.coachId ? (
           [

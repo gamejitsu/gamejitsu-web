@@ -77,9 +77,6 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
       <Container width="100%" height="100%" mb={2}>
         <Header>
           <Box mt={3} ml={3} height="30px">
-            <Title>LATEST GAMES</Title>
-          </Box>
-          <Box mt={3} ml={3} height="30px">
             Played{" "}
             {formatDistanceToNow(new Date(reviewRequest.replay.playedAt), { addSuffix: true })}
           </Box>

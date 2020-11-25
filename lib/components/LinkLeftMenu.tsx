@@ -17,7 +17,7 @@ const Content = styled(Box)`
     background-color: ${(props) => transparentize(0.5, props.theme.textColor)};
     border-right: 3px solid ${(props) => props.theme.primaryColor};
   }
-  heigth: 170px;
+  /* height: 170px; */
   width: 100%;
   padding: 30px;
   background-color: transparent;
