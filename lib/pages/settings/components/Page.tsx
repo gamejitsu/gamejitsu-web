@@ -29,8 +29,8 @@ const UserSettings: NextPage = () => {
             <Box py={2}>Public Profile: {user?.hasPublicProfile.toString()}</Box>
             <Box py={2} style={{ position: "relative" }}>
               {user?.email
-              ? `Email: ${user.email}`
-              : "Email not provided yet, insert it while requesting the review"}
+                ? `Email: ${user.email}`
+                : "Email not provided yet, insert it while requesting the review"}
             </Box>
           </EmptyReviews>
         </Flex>
