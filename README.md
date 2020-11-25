@@ -40,8 +40,25 @@ __`❍`[`localhost:3000`](http://localhost:3000)__
 
 __`❍ npm run test`__
 
-## Ngrok
+## Ngrok & Stripe
 
-Start ngrok to support Stripe webhooks, it will allow the creation of the review request after a successful checkout.
+When a customer completes a checkout successfully, Stripe calls the backend to create a review request.
+If you are working with http://localhost:4000, of course Stripe cannot call it directly
 
-__`❍ ngrok http -hostname=gamejitsu.eu.ngrok.io 4000`__
+You need to create a tunnel, start `ngrok` to support Stripe webhooks, it will allow the creation of the review request after a successful checkout.
+
+__`❍ ngrok http -hostname=http://gamejitsu-dev.us.ngrok.io 4000`__
+
+### Notes
+
+Check on the Stripe Dashboard, enabling test data, that both the api key and the stripe webhook secret are correct.
+
+## Before Committing
+
+**1)** Run Prettier:
+
+__`❍ npm run prettier -- --write`__
+
+**2)** Run Tests updating snapshot if needed (or CI will fail):
+
+__`❍ npm run test -- --updateSnapshot`__
