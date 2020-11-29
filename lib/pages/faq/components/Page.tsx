@@ -95,18 +95,20 @@ const Page: AuthenticatedComponent = () => (
               is the one related to your Steam account.
               <ParagraphTitle>Can I change my email?</ParagraphTitle>
               You can't change your email from Gamejitsu, you have to change your email from Steam.
+              <ParagraphTitle>Can I get my old games reviewed?</ParagraphTitle>
+              Steam keeps replays just for 2 weeks, so you will be able to get your replays reviewed that do not go over this time range.
               <ChapterTitle>Payment</ChapterTitle>
               <ParagraphTitle>What are the possible Gamejitsu prices?</ParagraphTitle>
               At the moment, 4 prices are available based on the skill level of the coach:
               <br />
               <br />
-              1. Medium (4k MMR) - 4£ per review
+              1. High (5k MMR) - 10$ per review
               <br />
-              2. High (5k MMR) - 6£ per review
+              2. Experienced (6k MMR) - 15$ per review
               <br />
-              3. Very High (6k MMR) - 8£ per review
+              3. Pro (7k MMR) - 25$ per review
               <br />
-              4. Pro (7k MMR) - (10£ or custom price) per review
+              4. Hero (8k MMR) - (30$ or custom price) per review
             </ParagraphText>
           </Box>
         </Box>

@@ -398,7 +398,7 @@ const Page: AuthenticatedComponent = () => (
               </ParagraphText>
               <br />
               <ParagraphText>
-                Gamejitsu will fetch autonously the game you selected to be reviewed and provides it
+                Gamejitsu will fetch autonomously the game you selected to be reviewed and provides it
                 to a coach based on the <Bold>selected MMR</Bold>.
               </ParagraphText>
               <br />
@@ -584,7 +584,7 @@ const Page: AuthenticatedComponent = () => (
         <Box mt={100}>
           <Flex>
             <Box mr={10}>
-              <ButtonNew key="login" type="button" onClick={login} text="OUR COACHES" />
+              <ButtonNew key="login" type="button" href="/our-coaches" text="OUR COACHES" />
             </Box>
           </Flex>
         </Box>
