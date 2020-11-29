@@ -19,8 +19,7 @@ interface Props {
 }
 
 const getReviewRequests = async (ctx: NextPageContext) => {
-  const response = await listModels(ReviewRequestResource, ctx)
-  return response
+  return await listModels(ReviewRequestResource, ctx)
 }
 
 const getReviews = async (ctx: NextPageContext) => {
