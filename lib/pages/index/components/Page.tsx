@@ -4,6 +4,8 @@ import Head from "next/head"
 import queryString from "query-string"
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
+import { breakpointDown } from "../../../utils/mediaQueryDevices"
+import {Container, Background, Spacer, SecondaryTitle, MainTitle, ParagraphText} from "../../../components/UtilsComponents"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import {
@@ -14,15 +16,12 @@ import {
   Footer,
   Table
 } from "gamejitsu/components"
-import GameContainerCSGOSVG from "../../../../svgs/csgo-container-final-2.svg"
-import GameContainerLOLSVG from "../../../../svgs/lol-container-new-4.svg"
-import GameContainerOWSVG from "../../../../svgs/overwatch-container-1.svg"
-import GameContainerSVG from "../../../../svgs/dota2-bs-crop-cut.svg"
 
-const dota2Logo = "/images/dota2-logo.png"
-const fortniteLogo = "/images/fortnite-logo.png"
-const lolLogo = "/images/lol-logo.png"
-const mainLogo = "/images/gamejitsu-mascotte.svg"
+const dota2Experiment = "/images/dota-experiment-1.png"
+const dota2Logo = "/images/dota2-resized-logo.png"
+const fortniteLogo = "/images/fortnite-resized-logo.png"
+const lolLogo = "/images/lol-resized-logo.png"
+const mainLogo = "/images/gamejitsu-mascotte-crop.png"
 const overwatchLogo = "/images/overwatch-logo.png"
 
 interface PriceCardProps {
@@ -31,184 +30,89 @@ interface PriceCardProps {
   title: string
 }
 
-interface SecondaryTitleProps {
-  color?: string
+interface ResponsiveElemProps {
+  width?: string
+  order?: string
 }
 
 interface FlowImageType {
   url: string
 }
 
-const Container = styled(Flex)`
-  background-color: transparent;
-`
-
-const SecondaryTitle = styled.h2<SecondaryTitleProps>`
-  color: ${(props) => props.color || props.theme.primaryColor};
-  font-family: "Japanese 3017";
-  font-size: 21px;
-  font-weight: normal;
-  letter-spacing: 3px;
-`
-
-const MainTitle = styled.h1`
-  color: white;
-  font-size: 35px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  margin-top: 20px;
-`
-
 const Bold = styled.b`
   font-weight: bold;
-`
-
-const ParagraphText = styled.p`
-  font-size: 15px;
-  line-height: 20px;
-  margin-bottom: 5px;
 `
 
 const FlowText = styled.p`
   color: white;
   font-size: 20px;
-  line-height: 20px;
-  margin-bottom: 220px;
-`
-
-const Background = styled.div`
-  background-image: url('/images/background-hero-unit.jpg');
-  background-position: center;
-  background-size: cover;
-  bottom: 0;
-  left: 0;
-  opacity: 0.3;
-  position: absolute;
-  right 0;
-  top: 0;
-`
-
-const HeroUnitParent = styled.div`
-  height: 600px;
-  position: relative;
-  width: 100%;
-`
-
-const HeroUnit = styled(Flex)`
-  bottom: 0;
-  flex-grow: 1;
-  height: 600px;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 1;
-`
-
-const GamesBar = styled(Flex)`
-  background-color: ${(props) => props.theme.lightBackgroundColor};
-  height: 85px;
-  position: relative;
-  width: 100%;
+  line-height: 30px;
 `
 
 const GamesBarImage = styled.img`
-  margin-left: 40px;
-  margin-right: 40px;
-  position: absolute;
   width: 190px;
 `
 
-const GamesCard = styled(Flex)`
-  background-image: url("/images/background-hero-unit.jpg");
-  background-size: cover;
-  height: 800px;
-  width: 100%;
-`
+const MainImageContainer = styled(Flex)`
+  justify-content: center;
 
-const MainFlow = styled(Flex)`
-  position: relative;
-  width: 100%;
+  @media ${breakpointDown.md}  {
+    justify-content: flex-end;
+    padding-right: 32px;
+  }
+
+  @media ${breakpointDown.xs} {
+    justify-content: center;
+    padding-right: 0;
+  }
 `
 
 const MainImage = styled.img`
-  bottom: -65px;
-  position: absolute;
-  right: 0px;
-  width: 510px;
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  
+  @media ${breakpointDown.md}  {
+    max-width: 400px;
+  }
 `
-
-const TextCard = styled(Box)`
-  bottom: 0;
-  flex-grow: 1;
-  left: 0;
-  right: 0;
-  top: 0;
-  z-index: 1;
-`
-
-TextCard.defaultProps = {
-  my: 4
-}
 
 const OutsideCircle = styled.div`
   background: transparent;
   border-radius: 50%;
   border: 1.5px solid ${(props) => props.theme.lightBackgroundColor};
   box-sizing: content-box;
-  height: 50px;
+  height: 70px;
   margin-bottom: 20px;
   margin-top: 20px;
   padding: 2px;
   position: relative;
-  width: 50px;
+  width: 70px;
 `
 
 const InsideCircle = styled.div`
   background: ${(props) => props.theme.lightBackgroundColor};
   border-radius: 50%;
   color: white;
-  line-height: 50px;
+  line-height: 70px;
   position: relative;
   text-align: center;
   vertical-align: middle;
   width: 100%;
 `
 
-const NumberCircle = styled.div`
-  background: ${(props) => props.theme.lightBackgroundColor};
-  border-radius: 50%;
-  color: white;
-  font-weight: bold;
-  line-height: 50px;
-  margin-bottom: 250px;
-  text-align: center;
-  vertical-align: middle;
-  width: 50px;
-`
-
-const Line = styled.div`
-  background: ${(props) => props.theme.lightBackgroundColor};
-  height: 1250px;
-  left: 50%;
-  margin-left: -1px;
-  position: absolute;
-  width: 1px;
+const FlowImageContainer = styled.div`
+  width: 100%;
+  padding-top: 56%;
+  position:relative;
 `
 
 const FlowImage = styled(Box)<FlowImageType>`
   background-image: url(${(props) => props.url});
   background-size: cover;
-  height: 240px;
-  margin-bottom: 150px;
-  width: 380px;
+  position: absolute;
+  top: 0; left:0; right:0; bottom:0;
 `
-
-const FlowBox = styled(Box)`
-  height: 250px;
-`
-
-FlowBox.defaultProps = { mt: 50 }
 
 const FlowImageTitle = styled(Box)`
   background-color: ${(props) => props.theme.primaryColor};
@@ -219,14 +123,6 @@ const FlowImageTitle = styled(Box)`
   text-align: center;
   width: 176px;
 `
-
-const PriceCards = styled(Flex)`
-  width: 100%;
-`
-
-PriceCards.defaultProps = {
-  mb: 6
-}
 
 const Price = styled.div`
   align-items: center;
@@ -255,6 +151,11 @@ const Price = styled.div`
 
 const PriceCardContent = styled(Box)`
   background-color: ${(props) => props.theme.lightBackgroundColor};
+  width: 24%;
+  @media ${breakpointDown.xs} {
+    width: 45%;
+    margin-bottom: 16px;
+  }
 `
 
 const PriceFeatureContent = styled.span`
@@ -266,6 +167,31 @@ const PriceFeatureContent = styled.span`
 
   img {
     margin-right: 10px;
+  }
+`
+
+const GamesBarWrapper = styled(Flex)`
+  background-color: ${(props) => props.theme.lightBackgroundColor};
+  height: 120px;
+  position: relative;
+  width: 100%;
+
+  @media ${breakpointDown.sm} {
+    height: 100px;
+  }
+`
+
+const Wrapper = styled.div`
+  width: 100%;
+  position: relative;
+`
+
+const ResponsiveElem = styled.div<ResponsiveElemProps>`
+  width:${props => `${props.width ? props.width : "100%"}`};
+
+  @media ${breakpointDown.md} {
+    width: 100%;
+    order: ${props => `${props.order ? props.order : "1"}`};
   }
 `
 
@@ -281,7 +207,7 @@ const StyledCookieConsent = styled(CookieConsent)`
 `
 
 const PriceCard: FunctionComponent<PriceCardProps> = ({ children, icon, title, price }) => (
-  <PriceCardContent flex="1" p="20px" mr={3}>
+  <PriceCardContent p="20px" mb={[3,1]}>
     <Box pb={3}>
       <img src={`/images/icon-${icon}.png`} width="40" />
     </Box>
@@ -320,78 +246,123 @@ const login = () => {
   window.location.href = urlBase + "?" + stringified
 }
 
+const LegendStripeElem = styled.div`
+  width: 90%;
+
+  @media ${breakpointDown.sm} {
+    width: 85%;
+  }
+
+  @media ${breakpointDown.xs} {
+    min-width: 120px;
+  }
+`
+const LegendStripeElemImg = styled.img`
+ height: 270px;
+
+ @media ${breakpointDown.md} {
+   height: 210px;
+ }
+
+ @media ${breakpointDown.sm} {
+   height: 150px;
+ }
+`
+
 const Page: AuthenticatedComponent = () => (
   <div>
-    <Navbar />
-    <Container alignItems="center" flexDirection="column">
-      <Head>
-        <link rel="shortcut icon" href="/favicon.png" />
-        <title>Gamejitsu</title>
-      </Head>
-      <StyledCookieConsent
-        location="bottom"
-        buttonText="ACCEPT"
-        cookieName="CookiePolicy"
-        buttonStyle={{
-          fontSize: "13px",
-          display: "inline-flex",
-          "border-radius": "50px",
-          border: "2px solid #08ff07",
-          color: "#08ff07",
-          transition: "all 0.05s ease-in-out",
-          background: "transparent",
-          padding: "10px 25px 10px 25px",
-          "font-size": "15px",
-          "font-weight": "bold"
-        }}
-        expires={150}
-      >
-        We use necessary cookies to make our site work. We won't set optional cookies unless you
-        enable them. Using this tool will set a cookie on your device to remember your preferences.{" "}
-        <span style={{ fontSize: "10px" }}>
-          For more detailed information about the cookies we use, see our cookies page.
-        </span>
-      </StyledCookieConsent>
-      <HeroUnitParent>
-        <HeroUnit>
-          <Box width="900px" mx="auto" style={{ position: "relative" }}>
-            <Flex alignItems="center" height="100%">
-              <Box width="375px">
-                <SecondaryTitle>Esport coaching Platform</SecondaryTitle>
-                <MainTitle>Hire a Pro Coach from 10$</MainTitle>
-                <ParagraphText>Get your game analyzed asynchronously</ParagraphText>
-                <ParagraphText>by top quality coaches and start winning</ParagraphText>
+    <Head>
+      <link rel="shortcut icon" href="/favicon.png" />
+      <title>Gamejitsu</title>
+    </Head>
+    {/* <Navbar /> */}
+    {/* <StyledCookieConsent
+      location="bottom"
+      buttonText="ACCEPT"
+      cookieName="CookiePolicy"
+      buttonStyle={{
+        fontSize: "13px",
+        display: "inline-flex",
+        "border-radius": "50px",
+        border: "2px solid #08ff07",
+        color: "#08ff07",
+        transition: "all 0.05s ease-in-out",
+        background: "transparent",
+        padding: "10px 25px 10px 25px",
+        "font-size": "15px",
+        "font-weight": "bold"
+      }}
+      expires={150}
+    >
+      We use necessary cookies to make our site work. We won't set optional cookies unless you
+      enable them. Using this tool will set a cookie on your device to remember your preferences.{" "}
+      <span style={{ fontSize: "10px" }}>
+        For more detailed information about the cookies we use, see our cookies page.
+      </span>
+    </StyledCookieConsent> */}
+    <Wrapper>
+      <Background src="/images/background-hero-unit.jpg" opacity="0.35"/>
+      <Container>
+        <Spacer padding={80} />
+        <Flex flexWrap="wrap">
+          <ResponsiveElem width="50%">
+            <Box padding="8px 32px">
+              <SecondaryTitle>Esport coaching Platform</SecondaryTitle>
+              <MainTitle>Hire a Pro Coach from 10$</MainTitle>
+              <ParagraphText>Get your game analyzed asynchronously</ParagraphText>
+              <ParagraphText>by top quality coaches and start winning</ParagraphText>
+              <Flex>
+              <Box pt={4}>
+                <ButtonNew key="demo" type="button" href="/demo" text="COACH DEMO" />
               </Box>
-            </Flex>
-            <MainImage src={mainLogo} />
+              <Box pt={4} pl={[3]}>
+                  <ButtonAlternative
+                    key="howitworks"
+                    type="button"
+                    href="/howitworks"
+                    text="HOW IT WORKS"
+                  />
+                </Box>
+              </Flex>
+            </Box>
+          </ResponsiveElem>
+          <ResponsiveElem width="50%">
+            <MainImageContainer>
+              <MainImage src={mainLogo} />
+            </MainImageContainer>
+          </ResponsiveElem>
+        </Flex> 
+      </Container>
+    </Wrapper>
+    <GamesBarWrapper>
+      <Container>
+        <Flex alignItems="center" height="100%" justifyContent="space-between" overflowX="auto" padding="0 15px">
+          <Box minWidth="220px">
+            <GamesBarImage src={dota2Logo} />
           </Box>
-        </HeroUnit>
-        <Background />
-      </HeroUnitParent>
-
-      <GamesBar justifyContent="center">
-        <Box ml={200} width={1 / 4}>
-          <GamesBarImage style={{ bottom: "-52px" }} src={fortniteLogo} />
-        </Box>
-        <Box width={1 / 4}>
-          <GamesBarImage style={{ bottom: "27px" }} src={overwatchLogo} />
-        </Box>
-        <Box width={1 / 4}>
-          <GamesBarImage style={{ bottom: "-30px" }} src={dota2Logo} />
-        </Box>
-        <Box width={1 / 4}>
-          <GamesBarImage style={{ bottom: "-16px" }} src={lolLogo} />
-        </Box>
-      </GamesBar>
-
-      <TextCard>
-        <Box width="900px" mx="auto" my={6} style={{ position: "relative" }}>
-          <Flex alignItems="center">
-            <Box width="375px">
+          <Box minWidth="220px">
+            <GamesBarImage src={overwatchLogo} />
+          </Box> 
+          <Box minWidth="220px">
+            <GamesBarImage src={lolLogo} />
+          </Box>
+          <Box minWidth="220px">
+            <GamesBarImage src={fortniteLogo} />
+          </Box>
+        </Flex>
+      </Container>
+    </GamesBarWrapper>
+    <Container>
+      <Spacer padding={60} />
+        <Flex flexWrap="wrap">
+          <ResponsiveElem width="35%">
+            <Box padding="8px 32px">
               <SecondaryTitle>Asynch Coaching</SecondaryTitle>
               <MainTitle>Welcome to GameJitsu</MainTitle>
             </Box>
-            <Box width="600px">
+          </ResponsiveElem>
+          <ResponsiveElem width="60%">
+            <Box padding="8px 32px">
               <ParagraphText>
                 Gamejitsu uses state-of-the-art technologies to allow you (as a palyer) to get your{" "}
                 <Bold>game reviewed without recording your own game</Bold>.
@@ -407,230 +378,223 @@ const Page: AuthenticatedComponent = () => (
                 order to see your recent games played.
               </ParagraphText>
             </Box>
-          </Flex>
-          <Flex justifyContent="center">
-            <Box mt={100}>
-              <Flex>
-                <Box mr={10}>
-                  <ButtonNew key="demo" type="button" href="/demo" text="COACH DEMO" />
-                </Box>
-                <Box ml={10}>
-                  <ButtonAlternative
-                    key="howitworks"
-                    type="button"
-                    href="/howitworks"
-                    text="HOW IT WORKS"
-                  />
-                </Box>
-              </Flex>
-            </Box>
-          </Flex>
-        </Box>
-      </TextCard>
-
-      <GamesCard>
-        <Box width="100%" style={{ position: "relative" }}>
-          <Box mx="auto" width="900px" mt={5}>
+          </ResponsiveElem>
+        </Flex>
+        <Spacer padding={40} />
+    </Container>
+    <Wrapper>
+      <Background src="/images/background-hero-unit.jpg" opacity="0.7" style={{ backgroundPosition: "top"}} />
+      <Container>
+        <Spacer padding={40} />
+        <ResponsiveElem width="50%">
+          <Box padding="8px 32px">
             <SecondaryTitle>Games We Support</SecondaryTitle>
             <MainTitle>Optimize your Skillset</MainTitle>
           </Box>
-          <Flex p={4} justifyContent="center">
-            <Box width={1 / 4}>
-              <GameContainerSVG width="100%" height="100%" />
-            </Box>
-            <Box width={1 / 4} ml={-125}>
-              <GameContainerCSGOSVG width="101%" height="100%" />
-            </Box>
-            <Box width={1 / 4} ml={-125}>
-              <GameContainerLOLSVG width="100%" height="100%" />
-            </Box>
-            <Box width={1 / 4} ml={-125}>
-              <GameContainerOWSVG width="100%" height="100%" />
-            </Box>
+        </ResponsiveElem>
+        <Spacer padding={40} />
+        <Flex flexWrap="wrap" overflowX="auto">
+          <Flex width={"25%"} paddingLeft={[0, "16px", "32px"]}>
+            <LegendStripeElem>
+              <LegendStripeElemImg src={dota2Experiment} />
+            </LegendStripeElem>
+            <LegendStripeElem>
+              <LegendStripeElemImg src={dota2Experiment} />
+            </LegendStripeElem>
+            <LegendStripeElem>
+              <LegendStripeElemImg src={dota2Experiment} />
+            </LegendStripeElem>
+            <LegendStripeElem>
+              <LegendStripeElemImg src={dota2Experiment} />
+            </LegendStripeElem>
           </Flex>
-        </Box>
-      </GamesCard>
-
-      <TextCard>
-        <Box width="900px" mx="auto" my={6} style={{ position: "relative" }}>
-          <Flex alignItems="center" justifyContent="center">
-            <Box width="375px">
-              <SecondaryTitle>The Process</SecondaryTitle>
-              <MainTitle>Steps of the user flow of Gamejitsu</MainTitle>
+        </Flex>
+        <Spacer padding={60} />
+      </Container>
+    </Wrapper>
+    <Container>
+      <Spacer padding={30} />
+      <Flex flexWrap="wrap">
+        <ResponsiveElem width="50%">
+          <Box padding="8px 32px">
+            <SecondaryTitle>The Process</SecondaryTitle>
+            <MainTitle>Steps of the user flow of Gamejitsu</MainTitle>
+          </Box>
+        </ResponsiveElem>
+        <ResponsiveElem width="50%">
+          <Box padding="8px 32px">
+            <ParagraphText>
+              The Gamejitsu flow is composed by <Bold>4 simple steps</Bold>.
+            </ParagraphText>
+            <ParagraphText>
+              <Bold>You don't need to record your own game</Bold>, Gamejitsu will take care of it.
+              Gamejitsu will also select the best coach for your needs, based on the required MMR.
+            </ParagraphText>
+          </Box>
+        </ResponsiveElem>
+      </Flex>
+    </Container>
+    <Container>
+      <Spacer padding={30} />
+      <Flex flexWrap="wrap" padding="32px 0">
+        <ResponsiveElem width="50%">
+          <Box padding="8px 32px">
+            <SecondaryTitle>Step 01</SecondaryTitle>
+            <IconCircle>
+              <FlowStepIcon src="/images/step1.png" />
+            </IconCircle>
+            <Box padding="0 32px 0 0">
+              <FlowText>
+                You submit a request for a replay to be analyzed by our selected coach based on
+                MMR
+              </FlowText>
             </Box>
-            <Box width="600px">
-              <ParagraphText>
-                The Gamejitsu flow is composed by <Bold>4 simple steps</Bold>.
-              </ParagraphText>
-              <ParagraphText>
-                <Bold>You don't need to record your own game</Bold>, Gamejitsu will take care of it.
-                Gamejitsu will also select the best coach for your needs, based on the required MMR.
-              </ParagraphText>
+          </Box>
+        </ResponsiveElem>
+        <ResponsiveElem width="50%">
+          <Box padding="8px 32px">
+            <FlowImageContainer>
+              <FlowImage url="/images/step1-image.png">
+                <FlowImageTitle>Replay Video</FlowImageTitle>
+              </FlowImage>
+            </FlowImageContainer>
+          </Box>
+        </ResponsiveElem>
+      </Flex>
+      <Spacer padding={30} />
+      <Flex flexWrap="wrap" padding="32px 0">
+        <ResponsiveElem width="50%" order="2">
+          <Box padding="8px 32px">
+            <FlowImageContainer>
+              <FlowImage url="/images/step2-image.png">
+                <FlowImageTitle>Video Analyzing</FlowImageTitle>
+              </FlowImage>
+            </FlowImageContainer>
+          </Box>
+        </ResponsiveElem>
+        <ResponsiveElem width="50%" order="1">
+          <Box padding="8px 32px">
+            <SecondaryTitle>Step 02</SecondaryTitle>
+            <IconCircle>
+              <FlowStepIcon src="/images/step2.png" />
+            </IconCircle>
+            <Box padding="0 32px 0 0">
+              <FlowText>
+                Our professional coach responds to your request and starts the analysis
+              </FlowText>
             </Box>
-          </Flex>
-        </Box>
-      </TextCard>
-
-      <MainFlow flex="1 1 0" alignItems="center">
-        <Box width="900px" mx="auto" mb={4} display="block">
-          <Flex>
-            <Box flex="1 1 0" mr={90}>
-              <FlowBox>
-                <SecondaryTitle>Step 01</SecondaryTitle>
-                <IconCircle>
-                  <FlowStepIcon src="/images/step1.png" />
-                </IconCircle>
-                <Box>
-                  <FlowText>
-                    You submit a request for a replay to be analyzed by our selected coach based on
-                    MMR
-                  </FlowText>
-                </Box>
-              </FlowBox>
-              <FlowBox>
-                <FlowImage url="/images/step2-image.png">
-                  <FlowImageTitle>Video Analyzing</FlowImageTitle>
-                </FlowImage>
-              </FlowBox>
-              <FlowBox>
-                <SecondaryTitle>Step 03</SecondaryTitle>
-                <IconCircle>
-                  <FlowStepIcon src="/images/step3.png" />
-                </IconCircle>
-                <Box>
-                  <FlowText>
-                    Coach reviews your game with text comments bound to your replay
-                  </FlowText>
-                </Box>
-              </FlowBox>
-              <FlowBox>
-                <FlowImage url="/images/step4-image1.png">
-                  <FlowImageTitle>User Notified</FlowImageTitle>
-                </FlowImage>
-              </FlowBox>
+          </Box>
+        </ResponsiveElem>
+      </Flex>
+      <Spacer padding={30} />
+      <Flex flexWrap="wrap" padding="32px 0">
+        <ResponsiveElem width="50%">
+          <Box padding="8px 32px">
+            <SecondaryTitle>Step 03</SecondaryTitle>
+            <IconCircle>
+              <FlowStepIcon src="/images/step3.png" />
+            </IconCircle>
+            <Box padding="0 32px 0 0">
+              <FlowText>
+                Coach reviews your game with text comments bound to your replay
+              </FlowText>
             </Box>
-            <Flex ml={25} mr={25}>
-              <Box style={{ position: "relative" }}>
-                <Line />
-                <Box style={{ position: "absolute", left: "-25px" }}>
-                  <NumberCircle>1</NumberCircle>
-                  <NumberCircle>2</NumberCircle>
-                  <NumberCircle>3</NumberCircle>
-                  <NumberCircle>4</NumberCircle>
-                </Box>
-              </Box>
-            </Flex>
-            <Box flex="1 1 0" ml={90}>
-              <FlowBox>
-                <FlowImage url="/images/step1-image.png">
-                  <FlowImageTitle>Replay Video</FlowImageTitle>
-                </FlowImage>
-              </FlowBox>
-              <FlowBox>
-                <SecondaryTitle>Step 02</SecondaryTitle>
-                <IconCircle>
-                  <FlowStepIcon src="/images/step2.png" />
-                </IconCircle>
-                <Box>
-                  <FlowText>
-                    Our professional coach responds to your request and starts the analysis
-                  </FlowText>
-                </Box>
-              </FlowBox>
-              <FlowBox>
-                <FlowImage url="/images/step3-image.png">
-                  <FlowImageTitle>Feedback</FlowImageTitle>
-                </FlowImage>
-              </FlowBox>
-              <FlowBox>
-                <SecondaryTitle>Step 04</SecondaryTitle>
-                <IconCircle>
-                  <FlowStepIcon src="/images/step4.png" />
-                </IconCircle>
-                <Box>
-                  <FlowText>
-                    You are notified via mail and you can watch the replay analyzed in your
-                    dashboard
-                  </FlowText>
-                </Box>
-              </FlowBox>
+          </Box>
+        </ResponsiveElem>
+        <ResponsiveElem width="50%">
+          <Box padding="8px 32px">
+            <FlowImageContainer>
+              <FlowImage url="/images/step3-image.png">
+                <FlowImageTitle>Feedback</FlowImageTitle>
+              </FlowImage>
+            </FlowImageContainer>
+          </Box>
+        </ResponsiveElem>
+      </Flex>
+      <Spacer padding={30} />
+      <Flex flexWrap="wrap" padding="32px 0">
+        <ResponsiveElem width="50%" order="2">
+          <Box padding="8px 32px">
+            <FlowImageContainer>
+              <FlowImage url="/images/step4-image1.png">
+                <FlowImageTitle>User Notified</FlowImageTitle>
+              </FlowImage>
+            </FlowImageContainer>
+          </Box>
+        </ResponsiveElem>
+        <ResponsiveElem width="50%" order="1">
+          <Box padding="8px 32px">
+            <SecondaryTitle>Step 04</SecondaryTitle>
+            <IconCircle>
+              <FlowStepIcon src="/images/step4.png" />
+            </IconCircle>
+            <Box padding="0 32px 0 0">
+              <FlowText>
+                Coach reviews your game with text comments bound to your replay
+              </FlowText>
             </Box>
-          </Flex>
-          <Flex justifyContent="center">
-            <Box mt={100}>
-              <Flex>
-                <Box mr={10}>
-                  <ButtonNew key="login" type="button" onClick={login} text="GET STARTED" />
-                </Box>
-                <Box ml={10}>
-                  <ButtonAlternative href="#pricing" type="button" text="SEE PRICING" />
-                </Box>
-              </Flex>
-            </Box>
-          </Flex>
-        </Box>
-      </MainFlow>
-
-      <TextCard>
-        <SecondaryTitle>Comparison Schema</SecondaryTitle>
-        <MainTitle>Built for players</MainTitle>
-      </TextCard>
-
-      <Box width="65%">
-        <Table />
-      </Box>
-
+          </Box>
+        </ResponsiveElem>
+      </Flex>
+    </Container>
+    <Container>
+      <Spacer padding={30} />
       <Flex justifyContent="center">
-        <Box mt={100}>
-          <Flex>
-            <Box mr={10}>
-              <ButtonNew key="login" type="button" onClick={login} text="OUR COACHES" />
-            </Box>
-          </Flex>
+        <Box padding="32px 8px">
+          <SecondaryTitle style={{textAlign: "center"}}>Comparison Schema</SecondaryTitle>
+          <MainTitle>Built for players</MainTitle>
         </Box>
       </Flex>
-
-      <TextCard>
-        <Box id="pricing" width="900px" mx="auto" my={4} style={{ position: "relative" }}>
-          <Flex alignItems="center">
-            <Box width="375px">
-              <SecondaryTitle>Pricing</SecondaryTitle>
-              <MainTitle>We have a least Pricing Module</MainTitle>
-            </Box>
-            <Box width="600px">
-              <ParagraphText>
-                Find above our pricing offer. Pro pricing may be subject to variations based on
-                custom requests and top level coaches.
-              </ParagraphText>
-            </Box>
-          </Flex>
-        </Box>
-      </TextCard>
-
-      <PriceCards>
-        <Box width="900px" mx="auto" style={{ position: "relative" }}>
-          <Flex justifyContent="center">
-            <PriceCard title="High" price="$10.0" icon="award-badge">
-              <PriceFeature>5k MMR or above</PriceFeature>
-            </PriceCard>
-
-            <PriceCard title="Experienced" price="$17.5" icon="award-badge-3">
-              <PriceFeature>6k MMR or above</PriceFeature>
-            </PriceCard>
-
-            <PriceCard title="Pro" price="$25.0" icon="vip">
-              <PriceFeature>7k MMR or above</PriceFeature>
-            </PriceCard>
-
-            <PriceCard title="Hero" price="$30.0" icon="king">
-              <PriceFeature>8k MMR or above</PriceFeature>
-            </PriceCard>
-          </Flex>
-        </Box>
-      </PriceCards>
-
-      <Footer />
+      <Flex pl={[2,3]} pr={[2,3]}>
+        <Table />
+      </Flex>
     </Container>
+    <Container>
+      <Flex justifyContent="center">
+        <Box pt={[4,5]} pb={[4,5]} >
+          <ButtonNew key="login" type="button" onClick={login} text="OUR COACHES" />
+        </Box>
+      </Flex>
+    </Container>
+    <Container>
+      <Spacer padding={30} />
+      <Flex flexWrap="wrap">
+        <ResponsiveElem width="50%">
+          <Box padding="8px 32px">
+            <SecondaryTitle>Pricing</SecondaryTitle>
+            <MainTitle>We have a least Pricing Module</MainTitle>
+          </Box>
+        </ResponsiveElem>
+        <ResponsiveElem width="50%">
+        <Flex alignItems="center" height="100%">
+          <Box padding="8px 32px">
+            <ParagraphText>
+              Find above our pricing offer. Pro pricing may be subject to variations based on
+              custom requests and top level coaches.
+            </ParagraphText>
+            </Box>
+          </Flex>
+        </ResponsiveElem>
+      </Flex>
+    </Container>
+    <Container>
+      <Flex justifyContent="space-around" flexWrap="wrap" pl={[2,4]} pr={[2,4]}>
+        <PriceCard title="High" price="$10.0" icon="award-badge">
+          <PriceFeature>5k MMR or above</PriceFeature>
+        </PriceCard>
+        <PriceCard title="Expert" price="$17.5" icon="award-badge-3">
+          <PriceFeature>6k MMR or above</PriceFeature>
+        </PriceCard>
+        <PriceCard title="Pro" price="$25.0" icon="vip">
+          <PriceFeature>7k MMR or above</PriceFeature>
+        </PriceCard>
+        <PriceCard title="Hero" price="$30.0" icon="king">
+          <PriceFeature>8k MMR or above</PriceFeature>
+        </PriceCard>
+      </Flex>
+      <Spacer padding={60} />
+    </Container>
+    <Footer /> 
   </div>
 )
 

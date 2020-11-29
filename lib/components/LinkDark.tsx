@@ -14,7 +14,6 @@ const Content = styled(Box)`
   align-items: center;
   color: ${(props) => props.theme.textColor};
   font-size: 14px;
-  height: 10px;
   cursor: pointer;
   &:hover {
     text-decoration: none;
