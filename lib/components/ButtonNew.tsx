@@ -3,6 +3,7 @@ import { FunctionComponent } from "react"
 import { lighten, darken } from "polished"
 import Link from "next/link"
 import { Button as BPButton, Classes } from "@blueprintjs/core"
+import { breakpointDown } from "../utils/mediaQueryDevices"
 
 interface Props {
   text: string
@@ -32,7 +33,6 @@ const baseStyles = css`
       ${(props) => props.theme.primaryColor}
     );
     color: ${(props) => props.theme.lightBackgroundColor};
-
     box-shadow: inset 0px -3px 0px 0px ${(props) => darken(0.1, props.theme.primaryColor)};
   }
 
@@ -46,6 +46,11 @@ const baseStyles = css`
     box-shadow: inset 0px 3px 0px 0px ${(props) => darken(0.1, props.theme.primaryColor)};
     padding-bottom: 12px;
     margin-top: 2px;
+  }
+
+  @media ${breakpointDown.xs} {
+    font-size: 13px;
+    padding: 10px 18px 10px 18px;
   }
 `
 

@@ -2,7 +2,7 @@ import styled from "styled-components"
 import NextLink from "next/link"
 
 import { FunctionComponent } from "react"
-import { Box } from "rebass"
+import { Box, Link } from "rebass"
 
 interface Props {
   href: string
@@ -22,7 +22,7 @@ const Content = styled(Box)`
 
 const SocialNetworkBarIcon = styled.img`
   width: 20px;
-  position: absolute;
+  height: 20px;
   cursor: pointer;
   &:hover {
     text-decoration: none;
@@ -31,9 +31,9 @@ const SocialNetworkBarIcon = styled.img`
 `
 
 const LinkSocialIcon: FunctionComponent<Props> = ({ href, src }) => (
-  <a href={href}>
+  <Link href={href}>
     <SocialNetworkBarIcon src={src} />
-  </a>
+  </Link>
 )
 
 export default LinkSocialIcon

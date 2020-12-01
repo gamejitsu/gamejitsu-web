@@ -3,6 +3,7 @@ import { Box } from "rebass"
 import styled from "styled-components"
 
 import { masterSchemaData } from "../../public/masterSchemaData"
+import { breakpointDown } from "../utils/mediaQueryDevices"
 
 const CategoryTitle = styled.td`
   color: white;
@@ -19,6 +20,10 @@ const CategoryTd = styled.th`
   padding: 20px;
   font-size: 25px;
   vertical-align: middle;
+
+  @media ${breakpointDown.xl} {
+    display: none;
+  }
 `
 
 const HeaderTh = styled.th`
@@ -36,15 +41,22 @@ const TableContentHeader = styled.table`
   align-items: center;
   table-layout: fixed;
   margin: 0 auto;
+
+  @media ${breakpointDown.xs} {
+    font-size: 13px;
+  }
 `
 
 const TableContent = styled.table`
   font-family: ${(props) => props.theme.textFont};
-
   width: 100%;
   align-items: center;
   table-layout: fixed;
   margin: 0 auto;
+
+  @media ${breakpointDown.xs} {
+    font-size: 13px;
+  }
 `
 
 interface ElementProps {
