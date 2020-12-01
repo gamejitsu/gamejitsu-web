@@ -26,12 +26,13 @@ const Container = styled.div`
 interface BackgroundProps {
   src: string
   opacity?: string
+  bgPosition?: string
 }
 
 const Background = styled.div<BackgroundProps>`
   position: absolute;
   top: 0; left:0; right:0; bottom:0;
-  background-position:center;
+  background-position: ${(props) => props.bgPosition ? props.bgPosition : "center"};
   background-size: cover;
   z-index: 1;
   background-image: url(${(props) => props.src});

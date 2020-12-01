@@ -17,7 +17,11 @@ import {
   Table
 } from "gamejitsu/components"
 
-const dota2Experiment = "/images/dota-experiment-1.png"
+const dota2Diagonal = "/images/dota2-bs-crop-cut.png"
+const csgoDiagonal = "/images/csgo-container-final-2.png"
+const overwatchDiagonal = "/images/overwatch-container-1.png"
+const lolDiagonal = "/images/lol-container-new-4.png"
+
 const dota2Logo = "/images/dota2-resized-logo.png"
 const fortniteLogo = "/images/fortnite-resized-logo.png"
 const lolLogo = "/images/lol-resized-logo.png"
@@ -39,6 +43,11 @@ interface FlowImageType {
   url: string
 }
 
+interface LegendStrpeProps {
+  bottom?: string
+  left?: string
+}
+
 const Bold = styled.b`
   font-weight: bold;
 `
@@ -50,7 +59,7 @@ const FlowText = styled.p`
 `
 
 const GamesBarImage = styled.img`
-  width: 190px;
+  width: 170px;
 `
 
 const MainImageContainer = styled(Flex)`
@@ -172,13 +181,9 @@ const PriceFeatureContent = styled.span`
 
 const GamesBarWrapper = styled(Flex)`
   background-color: ${(props) => props.theme.lightBackgroundColor};
-  height: 120px;
+  height: 95px;
   position: relative;
   width: 100%;
-
-  @media ${breakpointDown.sm} {
-    height: 100px;
-  }
 `
 
 const Wrapper = styled.div`
@@ -247,8 +252,12 @@ const login = () => {
 }
 
 const LegendStripeElem = styled.div`
-  width: 90%;
-
+   width: 84%;
+  
+  @media ${breakpointDown.md} {
+    width: 92%;
+  }
+  
   @media ${breakpointDown.sm} {
     width: 85%;
   }
@@ -257,11 +266,20 @@ const LegendStripeElem = styled.div`
     min-width: 120px;
   }
 `
-const LegendStripeElemImg = styled.img`
- height: 270px;
+const LegendStripeElemImg = styled.img<LegendStrpeProps>`
+ height: 290px;
+ position: relative;
+ left: ${props => `${props.left ? props.left : "0"}`};
+ bottom: ${props => `${props.bottom ? props.bottom : "0"}`};
+
+ @media ${breakpointDown.lg} {
+  height: 270px;
+  bottom: 0;
+  left: 0;
+ }
 
  @media ${breakpointDown.md} {
-   height: 210px;
+   height: 200px;
  }
 
  @media ${breakpointDown.sm} {
@@ -275,8 +293,8 @@ const Page: AuthenticatedComponent = () => (
       <link rel="shortcut icon" href="/favicon.png" />
       <title>Gamejitsu</title>
     </Head>
-    {/* <Navbar /> */}
-    {/* <StyledCookieConsent
+    <Navbar />
+    <StyledCookieConsent
       location="bottom"
       buttonText="ACCEPT"
       cookieName="CookiePolicy"
@@ -299,7 +317,7 @@ const Page: AuthenticatedComponent = () => (
       <span style={{ fontSize: "10px" }}>
         For more detailed information about the cookies we use, see our cookies page.
       </span>
-    </StyledCookieConsent> */}
+    </StyledCookieConsent>
     <Wrapper>
       <Background src="/images/background-hero-unit.jpg" opacity="0.35"/>
       <Container>
@@ -337,16 +355,16 @@ const Page: AuthenticatedComponent = () => (
     <GamesBarWrapper>
       <Container>
         <Flex alignItems="center" height="100%" justifyContent="space-between" overflowX="auto" padding="0 15px">
-          <Box minWidth="220px">
+          <Box minWidth="215px">
             <GamesBarImage src={dota2Logo} />
           </Box>
-          <Box minWidth="220px">
+          <Box minWidth="215px">
             <GamesBarImage src={overwatchLogo} />
           </Box> 
-          <Box minWidth="220px">
+          <Box minWidth="215px">
             <GamesBarImage src={lolLogo} />
           </Box>
-          <Box minWidth="220px">
+          <Box minWidth="215px">
             <GamesBarImage src={fortniteLogo} />
           </Box>
         </Flex>
@@ -393,19 +411,19 @@ const Page: AuthenticatedComponent = () => (
           </Box>
         </ResponsiveElem>
         <Spacer padding={40} />
-        <Flex flexWrap="wrap" overflowX="auto">
-          <Flex width={"25%"} paddingLeft={[0, "16px", "32px"]}>
+        <Flex flexWrap="wrap" overflowX="auto" pt={[0, 0, 4]}>
+          <Flex width={"25%"} pl={[0, "16px", 0]} >
             <LegendStripeElem>
-              <LegendStripeElemImg src={dota2Experiment} />
+              <LegendStripeElemImg src={dota2Diagonal} />
             </LegendStripeElem>
             <LegendStripeElem>
-              <LegendStripeElemImg src={dota2Experiment} />
+              <LegendStripeElemImg left="12px" bottom="24px" src={csgoDiagonal} />
             </LegendStripeElem>
             <LegendStripeElem>
-              <LegendStripeElemImg src={dota2Experiment} />
+              <LegendStripeElemImg src={overwatchDiagonal} />
             </LegendStripeElem>
             <LegendStripeElem>
-              <LegendStripeElemImg src={dota2Experiment} />
+              <LegendStripeElemImg left="12px" bottom="24px" src={lolDiagonal} />
             </LegendStripeElem>
           </Flex>
         </Flex>

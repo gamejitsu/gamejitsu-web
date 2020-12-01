@@ -6,7 +6,7 @@ import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { Footer, Navbar } from "gamejitsu/components"
 import {Container, MainTitle, SecondaryTitle, Spacer, ParagraphText, ParagraphTitle} from "../../../components/UtilsComponents"
 
-const ChapterTitle = styled.h1`
+const ChapterTitle = styled.h3`
   color: white;
   font-size: 27px;
   font-weight: bold;

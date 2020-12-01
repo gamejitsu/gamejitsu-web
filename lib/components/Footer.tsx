@@ -36,8 +36,8 @@ const FooterColS = styled(Flex)<FooterColProps>`
   width:25%;
   flex-direction: column;
 
-  @media ${breakpointDown.sm} {
-    display: ${props => props.hiddenOnMobile ? "none" : "flex"};
+  @media ${breakpointDown.md} {
+    display: ${props => props.hiddenOnMobile ? "none!important" : "flex"};
     width: 33%;
   }
 
