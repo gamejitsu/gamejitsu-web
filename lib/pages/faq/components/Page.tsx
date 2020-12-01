@@ -4,7 +4,14 @@ import { Flex, Box } from "rebass"
 import Head from "next/head"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { Footer, Navbar } from "gamejitsu/components"
-import {Container, MainTitle, SecondaryTitle, Spacer, ParagraphText, ParagraphTitle} from "../../../components/UtilsComponents"
+import {
+  Container,
+  MainTitle,
+  SecondaryTitle,
+  Spacer,
+  ParagraphText,
+  ParagraphTitle
+} from "../../../components/UtilsComponents"
 
 const ChapterTitle = styled.h3`
   color: white;
@@ -28,20 +35,22 @@ const Page: AuthenticatedComponent = () => (
         <MainTitle>FAQ</MainTitle>
       </Box>
       <ParagraphText>
-        Below you can find common questions that we get asked a lot about our service, our
-        payment system and other service-related inquiries. Please feel free to email
-        support@gamejitsu.gg at any time, if you have a question regarding our service and
-        your account, or anything else that we can help you with.
+        Below you can find common questions that we get asked a lot about our service, our payment
+        system and other service-related inquiries. Please feel free to email support@gamejitsu.gg
+        at any time, if you have a question regarding our service and your account, or anything else
+        that we can help you with.
       </ParagraphText>
       <ChapterTitle>My Account</ChapterTitle>
       <ParagraphTitle>Why can't I log in?</ParagraphTitle>
       <ParagraphText>
-        If you have problems loggin in, please make sure that you have a valid Steam account.
-        Log in is possible only via Steam. There is no need for a password and the email used
-        is the one related to your Steam account.
+        If you have problems loggin in, please make sure that you have a valid Steam account. Log in
+        is possible only via Steam. There is no need for a password and the email used is the one
+        related to your Steam account.
       </ParagraphText>
       <ParagraphTitle>Can I change my email?</ParagraphTitle>
-      <ParagraphText>You can't change your email from Gamejitsu, you have to change your email from Steam.</ParagraphText>
+      <ParagraphText>
+        You can't change your email from Gamejitsu, you have to change your email from Steam.
+      </ParagraphText>
       <ChapterTitle>Payment</ChapterTitle>
       <ParagraphTitle>What are the possible Gamejitsu prices?</ParagraphTitle>
       <ParagraphText>

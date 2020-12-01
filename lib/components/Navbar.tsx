@@ -65,7 +65,6 @@ const NavLink: FunctionComponent<NavLinkProps> = ({ children, href }) => {
   )
 }
 
-
 const Logo = styled.div`
   filter: grayscale(1);
   transition: 0.25s filter ease-in-out;
@@ -93,10 +92,10 @@ const logout = () => {
 }
 
 const FlexWithOrderLogo = styled(Flex)`
-  @media ${breakpointDown.sm}{
+  @media ${breakpointDown.sm} {
     order: 1;
     align-items: center;
-    width:50%;
+    width: 50%;
   }
 `
 
@@ -105,8 +104,8 @@ const FlexWithOrderLinks = styled(Flex)`
   justify-content: flex-end;
   align-items: center;
   padding-right: 16px;
-  @media ${breakpointDown.sm}{
-    order:3;
+  @media ${breakpointDown.sm} {
+    order: 3;
     width: 100%;
     justify-content: flex-start;
     padding: 16px 0;
@@ -114,21 +113,18 @@ const FlexWithOrderLinks = styled(Flex)`
 `
 
 const FlexWithOrderButton = styled(Flex)`
-
-  @media ${breakpointDown.sm}{
-    order:2;
-    width:50%;
+  @media ${breakpointDown.sm} {
+    order: 2;
+    width: 50%;
     justify-content: flex-end;
-   
   }
 `
 
 const Navbar: FunctionComponent = () => {
   const user = useContext(UserContext)
   return (
-    <Flex pt={[3,2]} px={3} color="white" flexWrap="wrap">
-     
-      <FlexWithOrderLogo >
+    <Flex pt={[3, 2]} px={3} color="white" flexWrap="wrap">
+      <FlexWithOrderLogo>
         <Box width="175px">
           <Logo>
             <ImageButton key="home" href="/" imageSrc={gamejitsuWritingImageSrc} />
@@ -139,56 +135,47 @@ const Navbar: FunctionComponent = () => {
         <NavLink key="demo" href="/demo">
           COACH DEMO
         </NavLink>
-        {user?.coachId ?
-          [
-            <NavLink key="coach-reviews" href="/coach-reviews">
-              COACH REVIEWS
-            </NavLink>,
-            <NavLink key="coach-dashboard" href="/coach-dashboard">
-              COACH DASHBOARD
-            </NavLink>
-          ]:
-          [
-            <NavLink key="dashboard" href="/dashboard">
-              DASHBOARD
-            </NavLink>,
-            <NavLink key="reviews" href="/reviews">
-              REVIEWS
-            </NavLink>
-          ]
-        }
-        {user ? 
-          (
-            user?.coachId ? (
-              <NavLink key="username" href="/coach-settings">
-                Coach {user?.username}
+        {user?.coachId
+          ? [
+              <NavLink key="coach-reviews" href="/coach-reviews">
+                COACH REVIEWS
+              </NavLink>,
+              <NavLink key="coach-dashboard" href="/coach-dashboard">
+                COACH DASHBOARD
               </NavLink>
-            ) : 
-            (
-              <NavLink key="username" href="/settings">
-                {user.username}
+            ]
+          : [
+              <NavLink key="dashboard" href="/dashboard">
+                DASHBOARD
+              </NavLink>,
+              <NavLink key="reviews" href="/reviews">
+                REVIEWS
               </NavLink>
-            )
-          ):
-          (null)
-        }
+            ]}
+        {user ? (
+          user?.coachId ? (
+            <NavLink key="username" href="/coach-settings">
+              Coach {user?.username}
+            </NavLink>
+          ) : (
+            <NavLink key="username" href="/settings">
+              {user.username}
+            </NavLink>
+          )
+        ) : null}
       </FlexWithOrderLinks>
       <FlexWithOrderButton>
         {user ? (
-          user?.coachId ?
-            (
-              <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
-            ) : 
-            (
-              <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
-            )
-          ) : 
-          (
-            <Box>
-              <ButtonIcon key="login" text="SIGN IN" icon={user} onClick={login} />
-            </Box>
+          user?.coachId ? (
+            <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
+          ) : (
+            <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
           )
-        }
+        ) : (
+          <Box>
+            <ButtonIcon key="login" text="SIGN IN" icon={user} onClick={login} />
+          </Box>
+        )}
       </FlexWithOrderButton>
     </Flex>
   )

@@ -5,7 +5,14 @@ import queryString from "query-string"
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 import { breakpointDown } from "../../../utils/mediaQueryDevices"
-import {Container, Background, Spacer, SecondaryTitle, MainTitle, ParagraphText} from "../../../components/UtilsComponents"
+import {
+  Container,
+  Background,
+  Spacer,
+  SecondaryTitle,
+  MainTitle,
+  ParagraphText
+} from "../../../components/UtilsComponents"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import {
@@ -65,7 +72,7 @@ const GamesBarImage = styled.img`
 const MainImageContainer = styled(Flex)`
   justify-content: center;
 
-  @media ${breakpointDown.md}  {
+  @media ${breakpointDown.md} {
     justify-content: flex-end;
     padding-right: 32px;
   }
@@ -80,8 +87,8 @@ const MainImage = styled.img`
   position: relative;
   max-width: 500px;
   width: 100%;
-  
-  @media ${breakpointDown.md}  {
+
+  @media ${breakpointDown.md} {
     max-width: 400px;
   }
 `
@@ -113,14 +120,17 @@ const InsideCircle = styled.div`
 const FlowImageContainer = styled.div`
   width: 100%;
   padding-top: 56%;
-  position:relative;
+  position: relative;
 `
 
 const FlowImage = styled(Box)<FlowImageType>`
   background-image: url(${(props) => props.url});
   background-size: cover;
   position: absolute;
-  top: 0; left:0; right:0; bottom:0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 `
 
 const FlowImageTitle = styled(Box)`
@@ -192,11 +202,11 @@ const Wrapper = styled.div`
 `
 
 const ResponsiveElem = styled.div<ResponsiveElemProps>`
-  width:${props => `${props.width ? props.width : "100%"}`};
+  width: ${(props) => `${props.width ? props.width : "100%"}`};
 
   @media ${breakpointDown.md} {
     width: 100%;
-    order: ${props => `${props.order ? props.order : "1"}`};
+    order: ${(props) => `${props.order ? props.order : "1"}`};
   }
 `
 
@@ -212,7 +222,7 @@ const StyledCookieConsent = styled(CookieConsent)`
 `
 
 const PriceCard: FunctionComponent<PriceCardProps> = ({ children, icon, title, price }) => (
-  <PriceCardContent p="20px" mb={[3,1]}>
+  <PriceCardContent p="20px" mb={[3, 1]}>
     <Box pb={3}>
       <img src={`/images/icon-${icon}.png`} width="40" />
     </Box>
@@ -252,12 +262,12 @@ const login = () => {
 }
 
 const LegendStripeElem = styled.div`
-   width: 84%;
-  
+  width: 84%;
+
   @media ${breakpointDown.md} {
     width: 92%;
   }
-  
+
   @media ${breakpointDown.sm} {
     width: 85%;
   }
@@ -267,24 +277,24 @@ const LegendStripeElem = styled.div`
   }
 `
 const LegendStripeElemImg = styled.img<LegendStrpeProps>`
- height: 290px;
- position: relative;
- left: ${props => `${props.left ? props.left : "0"}`};
- bottom: ${props => `${props.bottom ? props.bottom : "0"}`};
+  height: 290px;
+  position: relative;
+  left: ${(props) => `${props.left ? props.left : "0"}`};
+  bottom: ${(props) => `${props.bottom ? props.bottom : "0"}`};
 
- @media ${breakpointDown.lg} {
-  height: 270px;
-  bottom: 0;
-  left: 0;
- }
+  @media ${breakpointDown.lg} {
+    height: 270px;
+    bottom: 0;
+    left: 0;
+  }
 
- @media ${breakpointDown.md} {
-   height: 200px;
- }
+  @media ${breakpointDown.md} {
+    height: 200px;
+  }
 
- @media ${breakpointDown.sm} {
-   height: 150px;
- }
+  @media ${breakpointDown.sm} {
+    height: 150px;
+  }
 `
 
 const Page: AuthenticatedComponent = () => (
@@ -319,7 +329,7 @@ const Page: AuthenticatedComponent = () => (
       </span>
     </StyledCookieConsent>
     <Wrapper>
-      <Background src="/images/background-hero-unit.jpg" opacity="0.35"/>
+      <Background src="/images/background-hero-unit.jpg" opacity="0.35" />
       <Container>
         <Spacer padding={80} />
         <Flex flexWrap="wrap">
@@ -330,10 +340,10 @@ const Page: AuthenticatedComponent = () => (
               <ParagraphText>Get your game analyzed asynchronously</ParagraphText>
               <ParagraphText>by top quality coaches and start winning</ParagraphText>
               <Flex>
-              <Box pt={4}>
-                <ButtonNew key="demo" type="button" href="/demo" text="COACH DEMO" />
-              </Box>
-              <Box pt={4} pl={[3]}>
+                <Box pt={4}>
+                  <ButtonNew key="demo" type="button" href="/demo" text="COACH DEMO" />
+                </Box>
+                <Box pt={4} pl={[3]}>
                   <ButtonAlternative
                     key="howitworks"
                     type="button"
@@ -349,18 +359,24 @@ const Page: AuthenticatedComponent = () => (
               <MainImage src={mainLogo} />
             </MainImageContainer>
           </ResponsiveElem>
-        </Flex> 
+        </Flex>
       </Container>
     </Wrapper>
     <GamesBarWrapper>
       <Container>
-        <Flex alignItems="center" height="100%" justifyContent="space-between" overflowX="auto" padding="0 15px">
+        <Flex
+          alignItems="center"
+          height="100%"
+          justifyContent="space-between"
+          overflowX="auto"
+          padding="0 15px"
+        >
           <Box minWidth="215px">
             <GamesBarImage src={dota2Logo} />
           </Box>
           <Box minWidth="215px">
             <GamesBarImage src={overwatchLogo} />
-          </Box> 
+          </Box>
           <Box minWidth="215px">
             <GamesBarImage src={lolLogo} />
           </Box>
@@ -372,36 +388,40 @@ const Page: AuthenticatedComponent = () => (
     </GamesBarWrapper>
     <Container>
       <Spacer padding={60} />
-        <Flex flexWrap="wrap">
-          <ResponsiveElem width="35%">
-            <Box padding="8px 32px">
-              <SecondaryTitle>Asynch Coaching</SecondaryTitle>
-              <MainTitle>Welcome to GameJitsu</MainTitle>
-            </Box>
-          </ResponsiveElem>
-          <ResponsiveElem width="60%">
-            <Box padding="8px 32px">
-              <ParagraphText>
-                Gamejitsu uses state-of-the-art technologies to allow you (as a palyer) to get your{" "}
-                <Bold>game reviewed without recording your own game</Bold>.
-              </ParagraphText>
-              <br />
-              <ParagraphText>
-                Gamejitsu will fetch autonously the game you selected to be reviewed and provides it
-                to a coach based on the <Bold>selected MMR</Bold>.
-              </ParagraphText>
-              <br />
-              <ParagraphText>
-                Login in the platform is only available via Steam. Your profile has to be public in
-                order to see your recent games played.
-              </ParagraphText>
-            </Box>
-          </ResponsiveElem>
-        </Flex>
-        <Spacer padding={40} />
+      <Flex flexWrap="wrap">
+        <ResponsiveElem width="35%">
+          <Box padding="8px 32px">
+            <SecondaryTitle>Asynch Coaching</SecondaryTitle>
+            <MainTitle>Welcome to GameJitsu</MainTitle>
+          </Box>
+        </ResponsiveElem>
+        <ResponsiveElem width="60%">
+          <Box padding="8px 32px">
+            <ParagraphText>
+              Gamejitsu uses state-of-the-art technologies to allow you (as a palyer) to get your{" "}
+              <Bold>game reviewed without recording your own game</Bold>.
+            </ParagraphText>
+            <br />
+            <ParagraphText>
+              Gamejitsu will fetch autonously the game you selected to be reviewed and provides it
+              to a coach based on the <Bold>selected MMR</Bold>.
+            </ParagraphText>
+            <br />
+            <ParagraphText>
+              Login in the platform is only available via Steam. Your profile has to be public in
+              order to see your recent games played.
+            </ParagraphText>
+          </Box>
+        </ResponsiveElem>
+      </Flex>
+      <Spacer padding={40} />
     </Container>
     <Wrapper>
-      <Background src="/images/background-hero-unit.jpg" opacity="0.7" style={{ backgroundPosition: "top"}} />
+      <Background
+        src="/images/background-hero-unit.jpg"
+        opacity="0.7"
+        style={{ backgroundPosition: "top" }}
+      />
       <Container>
         <Spacer padding={40} />
         <ResponsiveElem width="50%">
@@ -412,7 +432,7 @@ const Page: AuthenticatedComponent = () => (
         </ResponsiveElem>
         <Spacer padding={40} />
         <Flex flexWrap="wrap" overflowX="auto" pt={[0, 0, 4]}>
-          <Flex width={"25%"} pl={[0, "16px", 0]} >
+          <Flex width={"25%"} pl={[0, "16px", 0]}>
             <LegendStripeElem>
               <LegendStripeElemImg src={dota2Diagonal} />
             </LegendStripeElem>
@@ -463,8 +483,7 @@ const Page: AuthenticatedComponent = () => (
             </IconCircle>
             <Box padding="0 32px 0 0">
               <FlowText>
-                You submit a request for a replay to be analyzed by our selected coach based on
-                MMR
+                You submit a request for a replay to be analyzed by our selected coach based on MMR
               </FlowText>
             </Box>
           </Box>
@@ -513,9 +532,7 @@ const Page: AuthenticatedComponent = () => (
               <FlowStepIcon src="/images/step3.png" />
             </IconCircle>
             <Box padding="0 32px 0 0">
-              <FlowText>
-                Coach reviews your game with text comments bound to your replay
-              </FlowText>
+              <FlowText>Coach reviews your game with text comments bound to your replay</FlowText>
             </Box>
           </Box>
         </ResponsiveElem>
@@ -547,9 +564,7 @@ const Page: AuthenticatedComponent = () => (
               <FlowStepIcon src="/images/step4.png" />
             </IconCircle>
             <Box padding="0 32px 0 0">
-              <FlowText>
-                Coach reviews your game with text comments bound to your replay
-              </FlowText>
+              <FlowText>Coach reviews your game with text comments bound to your replay</FlowText>
             </Box>
           </Box>
         </ResponsiveElem>
@@ -559,17 +574,17 @@ const Page: AuthenticatedComponent = () => (
       <Spacer padding={30} />
       <Flex justifyContent="center">
         <Box padding="32px 8px">
-          <SecondaryTitle style={{textAlign: "center"}}>Comparison Schema</SecondaryTitle>
+          <SecondaryTitle style={{ textAlign: "center" }}>Comparison Schema</SecondaryTitle>
           <MainTitle>Built for players</MainTitle>
         </Box>
       </Flex>
-      <Flex pl={[2,3]} pr={[2,3]}>
+      <Flex pl={[2, 3]} pr={[2, 3]}>
         <Table />
       </Flex>
     </Container>
     <Container>
       <Flex justifyContent="center">
-        <Box pt={[4,5]} pb={[4,5]} >
+        <Box pt={[4, 5]} pb={[4, 5]}>
           <ButtonNew key="login" type="button" onClick={login} text="OUR COACHES" />
         </Box>
       </Flex>
@@ -584,19 +599,19 @@ const Page: AuthenticatedComponent = () => (
           </Box>
         </ResponsiveElem>
         <ResponsiveElem width="50%">
-        <Flex alignItems="center" height="100%">
-          <Box padding="8px 32px">
-            <ParagraphText>
-              Find above our pricing offer. Pro pricing may be subject to variations based on
-              custom requests and top level coaches.
-            </ParagraphText>
+          <Flex alignItems="center" height="100%">
+            <Box padding="8px 32px">
+              <ParagraphText>
+                Find above our pricing offer. Pro pricing may be subject to variations based on
+                custom requests and top level coaches.
+              </ParagraphText>
             </Box>
           </Flex>
         </ResponsiveElem>
       </Flex>
     </Container>
     <Container>
-      <Flex justifyContent="space-around" flexWrap="wrap" pl={[2,4]} pr={[2,4]}>
+      <Flex justifyContent="space-around" flexWrap="wrap" pl={[2, 4]} pr={[2, 4]}>
         <PriceCard title="High" price="$10.0" icon="award-badge">
           <PriceFeature>5k MMR or above</PriceFeature>
         </PriceCard>
@@ -612,7 +627,7 @@ const Page: AuthenticatedComponent = () => (
       </Flex>
       <Spacer padding={60} />
     </Container>
-    <Footer /> 
+    <Footer />
   </div>
 )
 

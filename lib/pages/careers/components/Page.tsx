@@ -5,7 +5,14 @@ import { Flex, Box } from "rebass"
 import Head from "next/head"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import queryString from "query-string"
-import {Container, MainTitle, SecondaryTitle, Spacer, ParagraphText, ParagraphTitle} from "../../../components/UtilsComponents"
+import {
+  Container,
+  MainTitle,
+  SecondaryTitle,
+  Spacer,
+  ParagraphText,
+  ParagraphTitle
+} from "../../../components/UtilsComponents"
 import { Footer, LinkBold, Navbar } from "gamejitsu/components"
 
 const Bold = styled.a`
@@ -44,7 +51,7 @@ const Page: AuthenticatedComponent = () => {
       </Head>
       <Navbar />
       <Spacer padding={80} />
-      <Box px={[4]}> 
+      <Box px={[4]}>
         <Box>
           <SecondaryTitle>Gamejitsu</SecondaryTitle>
           <MainTitle>Careers</MainTitle>
@@ -63,8 +70,8 @@ const Page: AuthenticatedComponent = () => {
           </ParagraphText>
           <ParagraphTitle>Content Creators</ParagraphTitle>
           <ParagraphText>
-            We are actively looking for content creators for Dota 2, requirement is at least
-            6500 MMR.
+            We are actively looking for content creators for Dota 2, requirement is at least 6500
+            MMR.
           </ParagraphText>
           <ParagraphTitle>Web Designers</ParagraphTitle>
           <ParagraphText>

@@ -31,12 +31,15 @@ interface BackgroundProps {
 
 const Background = styled.div<BackgroundProps>`
   position: absolute;
-  top: 0; left:0; right:0; bottom:0;
-  background-position: ${(props) => props.bgPosition ? props.bgPosition : "center"};
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-position: ${(props) => (props.bgPosition ? props.bgPosition : "center")};
   background-size: cover;
   z-index: 1;
   background-image: url(${(props) => props.src});
-  opacity: ${(props) => props.opacity ? props.opacity : "1.0"};
+  opacity: ${(props) => (props.opacity ? props.opacity : "1.0")};
 `
 
 interface SpacerProps {
@@ -45,13 +48,13 @@ interface SpacerProps {
 
 const Spacer = styled.div<SpacerProps>`
   width: 100%;
-  padding-top: ${props => `${props.padding}px`};
-  padding-bottom: ${props => `${props.padding}px`};
-  
+  padding-top: ${(props) => `${props.padding}px`};
+  padding-bottom: ${(props) => `${props.padding}px`};
+
   @media ${breakpointDown.md} {
     width: 100%;
-    padding-top: ${props => `${Math.trunc(props.padding / 3)}px`};
-    padding-bottom: ${props => `${Math.trunc(props.padding / 3)}px`};
+    padding-top: ${(props) => `${Math.trunc(props.padding / 3)}px`};
+    padding-bottom: ${(props) => `${Math.trunc(props.padding / 3)}px`};
   }
 `
 const MainTitle = styled.h1`
@@ -88,4 +91,4 @@ const ParagraphText = styled.p`
   line-height: 24px;
   margin-bottom: 5px;
 `
-export {Container, Background, Spacer, MainTitle, SecondaryTitle, ParagraphTitle, ParagraphText}
+export { Container, Background, Spacer, MainTitle, SecondaryTitle, ParagraphTitle, ParagraphText }

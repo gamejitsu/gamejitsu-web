@@ -6,8 +6,14 @@ import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { Footer, Navbar } from "gamejitsu/components"
 import { coachData } from "../../../../public/coachData"
 import CoachCard from "./CoachCard"
-import {Container, MainTitle, SecondaryTitle, Spacer, ParagraphText, ParagraphTitle} from "../../../components/UtilsComponents"
-
+import {
+  Container,
+  MainTitle,
+  SecondaryTitle,
+  Spacer,
+  ParagraphText,
+  ParagraphTitle
+} from "../../../components/UtilsComponents"
 
 interface Coach {
   id: number
@@ -23,7 +29,6 @@ interface Coach {
 }
 
 const Page: AuthenticatedComponent = () => (
-
   <Container>
     <Head>
       <link rel="shortcut icon" href="/favicon.png" />

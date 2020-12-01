@@ -5,7 +5,15 @@ import { Flex, Box } from "rebass"
 import { UserContext } from "gamejitsu/contexts"
 import UserPhotoSVG from "../../../../svgs/user-photo.svg"
 import { breakpointDown } from "../../../utils/mediaQueryDevices"
-import {Container, MainTitle, SecondaryTitle, Spacer, ParagraphText, ParagraphTitle, Background} from "lib/components/UtilsComponents"
+import {
+  Container,
+  MainTitle,
+  SecondaryTitle,
+  Spacer,
+  ParagraphText,
+  ParagraphTitle,
+  Background
+} from "lib/components/UtilsComponents"
 
 interface Coach {
   id: number
@@ -59,7 +67,7 @@ const CoachWrapper = styled(Flex)`
   width: 49%;
   border: 1px solid ${(props) => props.theme.activeColor};
   background: ${(props) => props.theme.lightBackgroundColor};
-  
+
   @media ${breakpointDown.sm} {
     width: 100%;
   }
@@ -67,7 +75,7 @@ const CoachWrapper = styled(Flex)`
 
 const CoachImgWrapper = styled(Flex)`
   position: relative;
-  width:50%;
+  width: 50%;
   padding-bottom: 35%;
 
   @media ${breakpointDown.md} {
@@ -87,9 +95,9 @@ const CoachImgWrapper = styled(Flex)`
 `
 
 const CoachHeaderInfo = styled(Flex)`
-  width:50%;
+  width: 50%;
   padding: 16px 16px 0 32px;
-  
+
   @media ${breakpointDown.md} {
     width: 100%;
     padding: 32px 16px 0 0;
@@ -113,7 +121,7 @@ const Rank = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  `
+`
 
 const CoachCard: FunctionComponent<Props> = ({ coach }) => {
   const user = useContext(UserContext)
@@ -123,23 +131,23 @@ const CoachCard: FunctionComponent<Props> = ({ coach }) => {
       <Flex flexWrap="wrap">
         <CoachImgWrapper>
           <Background src={`${coach.image}`} bgPosition="top">
-          <Rank><PatchFull text={"MMR: ".concat(coach.mmr.toString())} /></Rank>
+            <Rank>
+              <PatchFull text={"MMR: ".concat(coach.mmr.toString())} />
+            </Rank>
           </Background>
         </CoachImgWrapper>
         <CoachHeaderInfo flexDirection="column">
-            <SecondaryTitle>{coach.game}</SecondaryTitle>
-            <MainTitle>{coach.name}</MainTitle>
+          <SecondaryTitle>{coach.game}</SecondaryTitle>
+          <MainTitle>{coach.name}</MainTitle>
         </CoachHeaderInfo>
-        <Flex width="100%" flexWrap="wrap" pt={[0,0, 0,3]}>
+        <Flex width="100%" flexWrap="wrap" pt={[0, 0, 0, 3]}>
           {coach.roles.map((role) => (
             <Box mt={3} mr={2}>
               <Patch text={role} />{" "}
             </Box>
           ))}
         </Flex>
-        <Flex py={3}>
-          {coach.description}
-        </Flex>
+        <Flex py={3}>{coach.description}</Flex>
         <HorizontalLine />
         <Flex py={3} flexDirection="column">
           <ChapterTitle>Top Achievements</ChapterTitle>
@@ -149,7 +157,7 @@ const CoachCard: FunctionComponent<Props> = ({ coach }) => {
             </Box>
           ))}
           <Box pt={2}>
-           <Button href={`/review-requests/${coach.id}`} text="Book Now" />
+            <Button href={`/review-requests/${coach.id}`} text="Book Now" />
           </Box>
         </Flex>
       </Flex>

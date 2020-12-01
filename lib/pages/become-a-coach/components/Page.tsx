@@ -7,8 +7,14 @@ import queryString from "query-string"
 import { UserContext } from "gamejitsu/contexts"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { Footer, Navbar, LinkBold } from "gamejitsu/components"
-import {Container, MainTitle, SecondaryTitle, Spacer, ParagraphText, ParagraphTitle} from "../../../components/UtilsComponents"
-
+import {
+  Container,
+  MainTitle,
+  SecondaryTitle,
+  Spacer,
+  ParagraphText,
+  ParagraphTitle
+} from "../../../components/UtilsComponents"
 
 const Bold = styled.a`
   color: white;
@@ -46,7 +52,7 @@ const Page: AuthenticatedComponent = () => {
       <Navbar />
       <Spacer padding={80} />
       <Box px={[4]}>
-        <Box >
+        <Box>
           <SecondaryTitle>Gamejitsu</SecondaryTitle>
           <MainTitle>Become a Coach</MainTitle>
         </Box>
@@ -59,8 +65,8 @@ const Page: AuthenticatedComponent = () => {
                 You need to enable the public profile on Steam to be able to sign up as coach.
                 <br />
                 <br />
-                If you are logged in to Steam, you can change your Privacy Settings by
-                navigating to your{" "}
+                If you are logged in to Steam, you can change your Privacy Settings by navigating to
+                your{" "}
                 <a href="https://steamcommunity.com/my/edit/settings">
                   Profile Privacy Settings Page
                 </a>
@@ -70,8 +76,7 @@ const Page: AuthenticatedComponent = () => {
                 Alternatively, you can navigate to the Profile Privacy Settings page manually:
                 <br />
                 <br />
-                1. From your Steam Profile, click the Edit Profile link under your displayed
-                badge.
+                1. From your Steam Profile, click the Edit Profile link under your displayed badge.
                 <br />
                 2. Click the My Privacy Settings tab
                 <br />
@@ -106,8 +111,8 @@ const Page: AuthenticatedComponent = () => {
           </ParagraphText>
           <ParagraphTitle>Sign Up</ParagraphTitle>
           <ParagraphText>
-            If you match the required MMR, and you are not already a coach you can sign up to
-            become one at the Gamejitsu
+            If you match the required MMR, and you are not already a coach you can sign up to become
+            one at the Gamejitsu
           </ParagraphText>
           {user ? (
             <LinkBold href="/coach-signup"> coach sign-up page</LinkBold>

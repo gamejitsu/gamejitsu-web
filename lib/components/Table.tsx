@@ -53,7 +53,7 @@ const TableContent = styled.table`
   align-items: center;
   table-layout: fixed;
   margin: 0 auto;
-  
+
   @media ${breakpointDown.xs} {
     font-size: 13px;
   }

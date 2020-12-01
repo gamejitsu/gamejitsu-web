@@ -3,11 +3,16 @@ import { Flex, Box } from "rebass"
 import Head from "next/head"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { Footer, Navbar } from "gamejitsu/components"
-import {Container, MainTitle, SecondaryTitle, Spacer, ParagraphText} from "../../../components/UtilsComponents"
+import {
+  Container,
+  MainTitle,
+  SecondaryTitle,
+  Spacer,
+  ParagraphText
+} from "../../../components/UtilsComponents"
 
 const Page: AuthenticatedComponent = () => {
   return (
-
     <Container>
       <Head>
         <link rel="shortcut icon" href="/favicon.png" />
