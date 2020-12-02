@@ -356,7 +356,9 @@ const Page: AuthenticatedComponent = () => (
           </ResponsiveElem>
           <ResponsiveElem width="50%">
             <MainImageContainer>
-              <MainImage src={mainLogo} />
+              <Box>
+                <MainImage src={mainLogo} />
+              </Box>
             </MainImageContainer>
           </ResponsiveElem>
         </Flex>
@@ -564,7 +566,9 @@ const Page: AuthenticatedComponent = () => (
               <FlowStepIcon src="/images/step4.png" />
             </IconCircle>
             <Box padding="0 32px 0 0">
-              <FlowText>Coach reviews your game with text comments bound to your replay</FlowText>
+              <FlowText>
+                You are notified via mail and you can watch the replay analyzed in your dashboard
+              </FlowText>
             </Box>
           </Box>
         </ResponsiveElem>
