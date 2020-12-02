@@ -1862,43 +1862,49 @@ exports[`Index page should match snapshot 1`] = `
                                   <div
                                     className="Page__MainImageContainer-sc-1ix2o3i-3 befiRr css-4cffwv"
                                   >
-                                    <Page__MainImage
-                                      src="/images/gamejitsu-mascotte-crop.png"
-                                    >
-                                      <StyledComponent
-                                        forwardedComponent={
-                                          Object {
-                                            "$$typeof": Symbol(react.forward_ref),
-                                            "attrs": Array [],
-                                            "componentStyle": ComponentStyle {
-                                              "componentId": "Page__MainImage-sc-1ix2o3i-4",
-                                              "isStatic": false,
-                                              "lastClassName": "ysQyX",
-                                              "rules": Array [
-                                                "position:relative;max-width:500px;width:100%;@media ",
-                                                "(max-width: 991.98px)",
-                                                "{max-width:400px;}",
-                                              ],
-                                            },
-                                            "displayName": "Page__MainImage",
-                                            "foldedComponentIds": Array [],
-                                            "render": [Function],
-                                            "styledComponentId": "Page__MainImage-sc-1ix2o3i-4",
-                                            "target": "img",
-                                            "toString": [Function],
-                                            "warnTooManyClasses": [Function],
-                                            "withComponent": [Function],
-                                          }
-                                        }
-                                        forwardedRef={null}
-                                        src="/images/gamejitsu-mascotte-crop.png"
+                                    <Styled(div)>
+                                      <div
+                                        className="css-vurnku"
                                       >
-                                        <img
-                                          className="Page__MainImage-sc-1ix2o3i-4 ysQyX"
+                                        <Page__MainImage
                                           src="/images/gamejitsu-mascotte-crop.png"
-                                        />
-                                      </StyledComponent>
-                                    </Page__MainImage>
+                                        >
+                                          <StyledComponent
+                                            forwardedComponent={
+                                              Object {
+                                                "$$typeof": Symbol(react.forward_ref),
+                                                "attrs": Array [],
+                                                "componentStyle": ComponentStyle {
+                                                  "componentId": "Page__MainImage-sc-1ix2o3i-4",
+                                                  "isStatic": false,
+                                                  "lastClassName": "ysQyX",
+                                                  "rules": Array [
+                                                    "position:relative;max-width:500px;width:100%;@media ",
+                                                    "(max-width: 991.98px)",
+                                                    "{max-width:400px;}",
+                                                  ],
+                                                },
+                                                "displayName": "Page__MainImage",
+                                                "foldedComponentIds": Array [],
+                                                "render": [Function],
+                                                "styledComponentId": "Page__MainImage-sc-1ix2o3i-4",
+                                                "target": "img",
+                                                "toString": [Function],
+                                                "warnTooManyClasses": [Function],
+                                                "withComponent": [Function],
+                                              }
+                                            }
+                                            forwardedRef={null}
+                                            src="/images/gamejitsu-mascotte-crop.png"
+                                          >
+                                            <img
+                                              className="Page__MainImage-sc-1ix2o3i-4 ysQyX"
+                                              src="/images/gamejitsu-mascotte-crop.png"
+                                            />
+                                          </StyledComponent>
+                                        </Page__MainImage>
+                                      </div>
+                                    </Styled(div)>
                                   </div>
                                 </Styled(div)>
                               </StyledComponent>
@@ -6121,7 +6127,7 @@ exports[`Index page should match snapshot 1`] = `
                                   <p
                                     className="Page__FlowText-sc-1ix2o3i-1 dTaSRq"
                                   >
-                                    Coach reviews your game with text comments bound to your replay
+                                    You are notified via mail and you can watch the replay analyzed in your dashboard
                                   </p>
                                 </StyledComponent>
                               </Page__FlowText>
