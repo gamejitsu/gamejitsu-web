@@ -1,4 +1,4 @@
-import { Flex, Box } from "rebass"
+import { Box } from "rebass"
 import styled from "styled-components"
 import { breakpointDown } from "../utils/mediaQueryDevices"
 
@@ -91,4 +91,17 @@ const ParagraphText = styled.p`
   line-height: 24px;
   margin-bottom: 5px;
 `
-export { Container, Background, Spacer, MainTitle, SecondaryTitle, ParagraphTitle, ParagraphText }
+
+interface FlowImageType {
+  url: string
+  imageHeight: string
+}
+
+const FlowImage = styled(Box) <FlowImageType>`
+  background-image: url(${(props) => props.url});
+  background-size: cover;
+  width: 100%;
+  padding-top: ${(props) => props.imageHeight ? `${props.imageHeight}%` : `100%`};
+`
+
+export { Container, Background, Spacer, MainTitle, SecondaryTitle, ParagraphTitle, ParagraphText, FlowImage }
