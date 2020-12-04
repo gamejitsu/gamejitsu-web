@@ -309,16 +309,15 @@ const Page: AuthenticatedComponent = () => (
       buttonText="ACCEPT"
       cookieName="CookiePolicy"
       buttonStyle={{
-        fontSize: "13px",
         display: "inline-flex",
-        "border-radius": "50px",
+        borderRadius: "50px",
         border: "2px solid #08ff07",
         color: "#08ff07",
         transition: "all 0.05s ease-in-out",
         background: "transparent",
         padding: "10px 25px 10px 25px",
-        "font-size": "15px",
-        "font-weight": "bold"
+        fontSize: "15px",
+        fontWeight: "bold"
       }}
       expires={150}
     >

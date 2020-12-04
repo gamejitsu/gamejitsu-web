@@ -1,7 +1,7 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { UserContext } from "gamejitsu/contexts"
 import styled from "styled-components"
-import { Flex, Box } from "rebass"
+import { Box } from "rebass"
 import Head from "next/head"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import queryString from "query-string"
@@ -15,7 +15,7 @@ import {
 } from "../../../components/UtilsComponents"
 import { Footer, LinkBold, Navbar } from "gamejitsu/components"
 
-const Bold = styled.a`
+const ABold = styled.a`
   color: white;
   font-weight: bold;
   text-decoration: none;
@@ -32,16 +32,22 @@ const Page: AuthenticatedComponent = () => {
   const user = getCurrentUser()
   const urlBase = "https://steamcommunity.com/openid/login"
 
+  let redirectLink = ""
+  useEffect(() => {
+    redirectLink = window.origin + "/auth?redirect=/coach-signup"
+  });
+
   const urlQuery = {
     "openid.claimed_id": "http://specs.openid.net/auth/2.0/identifier_select",
     "openid.identity": "http://specs.openid.net/auth/2.0/identifier_select",
     "openid.mode": "checkid_setup",
     "openid.ns": "http://specs.openid.net/auth/2.0",
-    "openid.realm": window.origin + "/auth?redirect=/coach-signup",
-    "openid.return_to": window.origin + "/auth?redirect=/coach-signup"
+    "openid.realm": redirectLink,
+    "openid.return_to": redirectLink
   }
 
-  const stringified = queryString.stringify(urlQuery)
+  const stringified: string = queryString.stringify(urlQuery)
+  const coachSignupLink: string = "/coach-signup"
 
   return (
     <Container>
@@ -61,13 +67,13 @@ const Page: AuthenticatedComponent = () => {
           <ParagraphText>
             We are actively looking for coaches for Dota 2, requirements is at least 5000 MMR.
             Please, check more details and register as a coach if interested via our
-            {user ? (
-              <LinkBold href="/coach-signup"> coach sign-up page</LinkBold>
-            ) : (
-              <Bold href={urlBase + "?" + stringified}> coach sign-up page</Bold>
-            )}
-            .
           </ParagraphText>
+          {user ? (
+            console.log("coachLink:", coachSignupLink),
+            <LinkBold href={coachSignupLink}> coach sign-up page</LinkBold>
+          ) : (
+              <ABold href={urlBase + "?" + stringified}> coach sign-up page</ABold>
+            )}.
           <ParagraphTitle>Content Creators</ParagraphTitle>
           <ParagraphText>
             We are actively looking for content creators for Dota 2, requirement is at least 6500
