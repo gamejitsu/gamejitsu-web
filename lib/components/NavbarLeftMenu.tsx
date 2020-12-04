@@ -14,7 +14,6 @@ import { breakpointDown } from "../utils/mediaQueryDevices"
 
 const urlBase = "https://steamcommunity.com/openid/login"
 
-const steamImageSrc = "/images/steam-button.png"
 const gamejitsuWritingImageSrc = "/images/gamejitsu-writing.svg"
 
 interface NavLinkContentProps {
@@ -25,7 +24,7 @@ interface NavLinkProps {
   href: string
 }
 
-const NavLinkContent = styled(Link)<NavLinkContentProps>`
+const NavLinkContent = styled(Link) <NavLinkContentProps>`
   font-weight: bold;
   transition: all 0.15s ease-in-out;
   position: relative;
@@ -78,14 +77,6 @@ const Container = styled(Flex)`
   width: 100%;
 `
 
-const Logo = styled.div`
-  filter: grayscale(1);
-  transition: 0.25s filter ease-in-out;
-  &:hover {
-    filter: grayscale(0);
-  }
-`
-
 const login = () => {
   const urlQuery = {
     "openid.claimed_id": "http://specs.openid.net/auth/2.0/identifier_select",
@@ -112,9 +103,7 @@ const NavbarLeftMenu: FunctionComponent = () => {
       <Flex>
         <Flex alignItems="center" ml={4}>
           <Box width="185px">
-            <Logo>
-              <ImageButton key="image-button" href="/" imageSrc={gamejitsuWritingImageSrc} />
-            </Logo>
+            <ImageButton key="image-button" href="/" imageSrc={gamejitsuWritingImageSrc} />
           </Box>
         </Flex>
       </Flex>
@@ -127,18 +116,18 @@ const NavbarLeftMenu: FunctionComponent = () => {
             <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
           ]
         ) : (
-          [
-            <NavLink key="username" href="/settings">
-              {user.username}
-            </NavLink>,
-            <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
-          ]
-        )
+            [
+              <NavLink key="username" href="/settings">
+                {user.username}
+              </NavLink>,
+              <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
+            ]
+          )
       ) : (
-        <Box>
-          <ButtonIcon key="login" text="SIGN IN" icon={user} onClick={login} />
-        </Box>
-      )}
+          <Box>
+            <ButtonIcon key="login" text="SIGN IN" icon={user} onClick={login} />
+          </Box>
+        )}
     </Container>
   )
 }
