@@ -95,7 +95,6 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
     } else if (!(skillLevels as string[]).includes(values.skillLevel)) {
       errors.skillLevel = "Invalid skill level"
     }
-    console.log(errors)
     return errors
   }
 

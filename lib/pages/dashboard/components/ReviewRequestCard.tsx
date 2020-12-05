@@ -1,16 +1,19 @@
 import React, { FunctionComponent } from "react"
 
-import { Button, Card, HeroImageSmall } from "gamejitsu/components"
+import { Card, HeroImageSmall } from "gamejitsu/components"
 import { Flex, Box, Text } from "rebass"
 import { DecoratedReviewRequest } from "gamejitsu/models/review-request"
 import { SkillLevel } from "gamejitsu/api/types/skill-level"
 import { prices } from "../../../../public/prices"
+import { reviewStatus } from "../../../../public/reviewStatus"
+import { ReviewRequestStatus } from "gamejitsu/api/types/review-request-status"
 
 interface Props {
   reviewRequest: DecoratedReviewRequest | undefined
 }
 
 const skillLevels = SkillLevel.types.map((t) => t.value)
+const reviewRequestStatus = ReviewRequestStatus.types.map((t) => t.value)
 
 const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => (
   <Box>
@@ -22,6 +25,7 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => (
             (above {prices[skillLevels.indexOf(reviewRequest?.skillLevel as SkillLevel)].mmr} MMR)
           </Text>
           <Text p={2}>Comment: {reviewRequest?.comment}</Text>
+          <Text p={2}>Status: {reviewStatus[reviewRequestStatus.indexOf(reviewRequest?.status as ReviewRequestStatus)].name}</Text>
         </Box>
         <Flex p={3} alignItems="center">
           <Box>
