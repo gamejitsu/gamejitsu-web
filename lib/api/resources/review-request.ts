@@ -15,6 +15,11 @@ import {
   transformer as coachTransformer,
   Coach
 } from "gamejitsu/api/resources/coach"
+import {
+  decoder as reviewDecoder,
+  transformer as reviewTransformer,
+  Review
+} from "gamejitsu/api/resources/review"
 import { buildResource, extractValue } from "../resource"
 import { Model } from "gamejitsu/interfaces"
 
@@ -23,6 +28,7 @@ export interface ReviewRequest extends Model {
   comment: string | null
   replayId: string
   userId: string
+  reviewsIds: string[]
 }
 
 export const decoder = t.type({
@@ -44,6 +50,14 @@ export const decoder = t.type({
         type: t.literal("user"),
         id: t.string
       })
+    }),
+    reviews: t.type({
+      data: t.array(
+        t.type({
+          type: t.literal("review"),
+          id: t.string
+        })
+      )
     })
   })
 })
@@ -53,7 +67,8 @@ export const transformer = (value: t.TypeOf<typeof decoder>): ReviewRequest => (
   skillLevel: value.attributes["skill-level"],
   comment: value.attributes["comment"],
   replayId: value.relationships["replay"].data.id,
-  userId: value.relationships["user"].data.id
+  userId: value.relationships["user"].data.id,
+  reviewsIds: value.relationships["reviews"].data.map((r) => r.id)
 })
 
 export default buildResource({
@@ -65,7 +80,15 @@ export default buildResource({
         t
           .strict({
             included: t.union([
-              t.array(t.union([replayDecoder, userDecoder, coachDecoder])),
+              t.array(
+                t.union([
+                  replayDecoder,
+                  userDecoder,
+                  coachDecoder,
+                  reviewDecoder,
+                  decoder //todo maybe remove
+                ])
+              ),
               t.undefined
             ])
           })
@@ -89,6 +112,16 @@ export default buildResource({
         coach: (value.included || []).reduce(
           (a, r) => (r.type === "coach" ? [...a, coachTransformer(r)] : a),
           [] as Coach[]
+        ),
+
+        review: (value.included || []).reduce(
+          (a, r) => (r.type === "review" ? [...a, reviewTransformer(r)] : a),
+          [] as Review[]
+        ),
+
+        "review-request": (value.included || []).reduce(
+          (a, r) => (r.type === "review-request" ? [...a, transformer(r)] : a),
+          [] as ReviewRequest[]
         )
       }
     })
@@ -111,7 +144,13 @@ export default buildResource({
           id: value.userId,
           type: "user"
         }
-      }
+      },
+      reviews: (value.reviewsIds || []).map((id) => ({
+        data: {
+          id,
+          type: "review"
+        }
+      }))
     }
   })
 })

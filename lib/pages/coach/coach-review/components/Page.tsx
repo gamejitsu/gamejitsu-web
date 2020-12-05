@@ -182,8 +182,6 @@ CoachReviewPage.getInitialProps = async (ctx: NextPageContext) => {
   const reviewDecorated: DecoratedReview = decorateReview(response.data, response.included)
   const replay: DecoratedReplay = reviewDecorated.replay
   const review: Review = response.data
-  console.log("review:", review)
-  console.log("replay:", replay)
   return { review, replay }
 }
 

@@ -76,7 +76,7 @@ export default buildResource({
                   replayDecoder,
                   userDecoder,
                   coachDecoder,
-                  coachDecoder
+                  decoder,
                 ])
               ),
               t.undefined
@@ -107,6 +107,11 @@ export default buildResource({
         coach: (value.included || []).reduce(
           (a, r) => (r.type === "coach" ? [...a, coachTransformer(r)] : a),
           [] as Coach[]
+        ),
+
+        review: (value.included || []).reduce(
+          (a, r) => (r.type === "review" ? [...a, transformer(r)] : a),
+          [] as Review[]
         )
       }
     })

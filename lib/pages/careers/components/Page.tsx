@@ -69,7 +69,6 @@ const Page: AuthenticatedComponent = () => {
             Please, check more details and register as a coach if interested via our
           </ParagraphText>
           {user ? (
-            console.log("coachLink:", coachSignupLink),
             <LinkBold href={coachSignupLink}> coach sign-up page</LinkBold>
           ) : (
               <ABold href={urlBase + "?" + stringified}> coach sign-up page</ABold>
