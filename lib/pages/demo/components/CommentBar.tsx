@@ -26,15 +26,15 @@ interface TProps {
 const Container = styled(Box)`
   background-color: ${(props) => props.theme.backgroundColor};
   position: relative;
-  height: 120px;
+  height: 90px;
   background: ${(props) => props.theme.lightBackgroundColor};
   border: 1px solid ${(props) => props.theme.activeColor};
 `
 
 const T = styled(Box)<TProps>`
-  height: 80%;
-  width: 4px;
-  background-color: ${(props) => (props.selected ? props.theme.highlightColor : "white")};
+  height: 60%;
+  width: 3px;
+  background-color: ${(props) => (props.selected ? props.theme.highlightColor : "#37373a")};
   &:hover {
     background-image: linear-gradient(
       to bottom,
@@ -46,7 +46,7 @@ const T = styled(Box)<TProps>`
 
 const ElementComment = styled(Box)<ElementCommentProps>`
   height: 90%;
-  width: 4.5px;
+  width: 3px;
   bottom: 0;
   position: absolute;
   background-color: ${(props) => props.theme.primaryColor};
@@ -61,7 +61,7 @@ const ElementComment = styled(Box)<ElementCommentProps>`
 
 const Bar = styled(Box)`
   background-color: ${(props) => props.theme.lightBackgroundColor};
-  width: 85%;
+  width: 100%;
 `
 
 const BarText = styled.h3`
@@ -127,14 +127,7 @@ const CommentBar: FunctionComponent<Props> = ({
 
   return (
     <Container>
-      <Flex height="100%" width="100%" justifyContent="center">
-        <Box mb={1} mr={3}>
-          <Flex height="100%" alignItems="flex-end">
-            <Box>
-              <BarText>START</BarText>
-            </Box>
-          </Flex>
-        </Box>
+      <Flex height="100%" width="100%" justifyContent="center" px={2}>
         <Bar onClick={onBarClick} ref={containerRef}>
           <Flex height="100%" alignItems="flex-end" justifyContent="space-between">
             {emptyBarsArray.map((key) => {
@@ -172,13 +165,6 @@ const CommentBar: FunctionComponent<Props> = ({
             })}
           </Flex>
         </Bar>
-        <Box mb={2} ml={3}>
-          <Flex height="100%" alignItems="flex-end">
-            <Box>
-              <BarText>FINISH</BarText>
-            </Box>
-          </Flex>
-        </Box>
       </Flex>
     </Container>
   )

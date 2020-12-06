@@ -15,6 +15,8 @@ import { object, string } from "yup"
 
 import { Button } from "gamejitsu/components"
 import { Comment } from "gamejitsu/api/types/comment"
+import { backgrounds } from "polished"
+import { withTheme } from "styled-components"
 
 interface Props {
   comment: Comment | null
@@ -89,7 +91,7 @@ const CommentFormNew: CommentFormComponent = ({
   return (
     <div>
       <Flex alignItems="center">
-        <Box height="90px" p={3} width="100%">
+        <Box py={3} width="100%">
           <form onSubmit={formik.handleSubmit}>
             <TextArea
               growVertically={true}
@@ -99,6 +101,7 @@ const CommentFormNew: CommentFormComponent = ({
               name={"text"}
               fill={true}
               value={formik.values.text}
+              style={{backgroundColor: "#212122", color: "#eee", height: "120px", opacity: 0.9, padding: "12px", boxShadow: "1px 1px #212212"}}
             />
             {formik.errors.text ? (
               <Toaster position={Position.TOP}>

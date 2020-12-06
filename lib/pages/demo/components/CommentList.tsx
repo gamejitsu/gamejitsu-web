@@ -24,34 +24,20 @@ interface ListItemContainerProps {
   isCollapsed: boolean
 }
 
-const Container = styled(Box)`
-  width: 800px;
-  max-height: 660px;
-  max-width: 500px;
-  overflow: auto;
-  &::scrollable-element {
-    scrollbar-color: red yellow;
-  }
-  scrollbar-color: red yellow;
-`
-
 const ListItemContainer = styled(Box)<ListItemContainerProps>`
-  height: ${(props) => (props.isCollapsed ? "120px;" : "auto;")}
+  min-height: 120px; 
   flex: 1;
-  ${(props) =>
-    props.isCollapsed
-      ? "white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"
-      : "overflow-wrap: break-word;"}
-  background-color: #212121;
   border: 2px solid ${(props) => props.theme.secondaryColor};
   border-top: 0;
+  background-color: #212122;
 `
 
 const ListItem = styled.li<ListItemProps>`
-  background-color: ${({ comment, selectedComment, theme }) =>
-    comment !== selectedComment ? "transparent" : lighten(0.1, theme.lightBackgroundColor)}; };
+  background-color: ${
+    ({ comment, selectedComment, theme }) => {
+      return comment !== selectedComment ? "transparent" : lighten(0.1, theme.lightBackgroundColor)}
+    };
   cursor: pointer;
-  padding: 20px;
 `
 
 const CommentListTitle = styled.h1`
@@ -67,7 +53,8 @@ const Header = styled(Box)`
   background-color: ${(props) => props.theme.backgroundColor};
   border: 2px solid ${(props) => props.theme.secondaryColor};
   align-items: center;
-  padding: 10px;
+  padding: 16px;
+  width: 100%;
 `
 
 const TimeTag = styled(Box)`
@@ -121,39 +108,14 @@ const CommentList: FunctionComponent<Props> = ({
     setCommentsExpanded(newCommentsExpanded)
   }
   return (
-    <Container ml={4} width="100%">
+    <>
+    <Flex width="100%" flexDirection="column" ml={[2,3]} height="calc(87vh)" overflowY="scroll">
       <Header>
-        <Flex ml={3}>
-          <CommentListTitle>COMMENTS ADDED BY COACH</CommentListTitle>
-          <Button text="Save review" type="button" onClick={handleSaveReviewOpen} />
-          <Dialog
-            className={Classes.DIALOG}
-            icon="info-sign"
-            onClose={handleCloseNoSaveReview}
-            title="Save review confirmation"
-            autoFocus={true}
-            canEscapeKeyClose={true}
-            canOutsideClickClose={true}
-            enforceFocus={true}
-            isOpen={isSaveReviewOpen}
-            usePortal={true}
-          >
-            <div className={Classes.DIALOG_BODY}>
-              <p>
-                Are you sure you want to save the review? Please click SAVE to approve the saving.
-              </p>
-            </div>
-            <div className={Classes.DIALOG_FOOTER}>
-              <div className={Classes.DIALOG_FOOTER_ACTIONS}>
-                <Tooltip content="This button is hooked up to close the dialog.">
-                  <Button text="CLOSE" onClick={handleCloseNoSaveReview} />
-                </Tooltip>
-                <Tooltip content="This button is hooked up to save the review and close the dialog.">
-                  <Button text="SAVE REVIEW" onClick={handleSaveReviewClose} />
-                </Tooltip>
-              </div>
-            </div>
-          </Dialog>
+        <Flex width="100%">
+          <Flex><CommentListTitle>COMMENTS ADDED BY COACH</CommentListTitle></Flex>
+          <Flex width="50%" justifyContent="flex-end" alignItems="center">
+            <Box><Button text="Save" type="button" onClick={handleSaveReviewOpen} /></Box>
+          </Flex>
         </Flex>
       </Header>
       <Box>
@@ -165,12 +127,12 @@ const CommentList: FunctionComponent<Props> = ({
             })
             return (
               <Flex key={index.toString()}>
-                <ListItemContainer isCollapsed={isCollapsed}>
-                  <Flex alignItems="center">
-                    <TimeTag ml={4} mt={3}>
+                <ListItemContainer p={3} isCollapsed={isCollapsed}>
+                  <Flex alignItems="center" justifyContent="space-between">
+                    <TimeTag >
                       {formatTimestamp(comment.timestamp)}
                     </TimeTag>
-                    <LessExpandTag ml="auto" mr={4} mt={3}>
+                    <LessExpandTag>
                       {isCollapsed ? (
                         <a onClick={onExpandComment.bind(null, comment)}>Expand</a>
                       ) : (
@@ -178,9 +140,11 @@ const CommentList: FunctionComponent<Props> = ({
                       )}
                     </LessExpandTag>
                   </Flex>
-                  <Box ml={3}>
+                  <Box pt={3}>
                     <ListItem comment={comment} selectedComment={selectedComment}>
-                      <a onClick={onSelectListItem.bind(null, comment)}>{comment.text}</a>
+                      <a onClick={onSelectListItem.bind(null, comment)}>
+                        {isCollapsed ? `${comment.text.substring(0,90)}...` : comment.text }
+                      </a>
                     </ListItem>
                   </Box>
                 </ListItemContainer>
@@ -189,7 +153,36 @@ const CommentList: FunctionComponent<Props> = ({
           })}
         </ul>
       </Box>
-    </Container>
+    </Flex>
+    <Dialog
+      className={Classes.DIALOG}
+      icon="info-sign"
+      onClose={handleCloseNoSaveReview}
+      title="Save review confirmation"
+      autoFocus={true}
+      canEscapeKeyClose={true}
+      canOutsideClickClose={true}
+      enforceFocus={true}
+      isOpen={isSaveReviewOpen}
+      usePortal={true}
+    >
+      <div className={Classes.DIALOG_BODY}>
+        <p>
+          Are you sure you want to save the review? Please click SAVE to approve the saving.
+        </p>
+      </div>
+      <div className={Classes.DIALOG_FOOTER}>
+        <div className={Classes.DIALOG_FOOTER_ACTIONS}>
+          <Tooltip content="This button is hooked up to close the dialog.">
+            <Button text="CLOSE" onClick={handleCloseNoSaveReview} />
+          </Tooltip>
+          <Tooltip content="This button is hooked up to save the review and close the dialog.">
+            <Button text="SAVE REVIEW" onClick={handleSaveReviewClose} />
+          </Tooltip>
+        </div>
+      </div>
+    </Dialog>
+    </>
   )
 }
 
