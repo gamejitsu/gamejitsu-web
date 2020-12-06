@@ -51,6 +51,7 @@ const EmptyReplays = styled(Flex)`
   justify-content: center;
   flex-direction: column;
   opacity: 0.9;
+  border: 1px solid ${(props) => props.theme.activeColor};
 `
 
 const EmptyRequestedReviews = styled(Flex)`
@@ -60,6 +61,7 @@ const EmptyRequestedReviews = styled(Flex)`
   justify-content: center;
   flex-direction: column;
   opacity: 0.9;
+  border: 1px solid ${(props) => props.theme.activeColor};
 `
 
 const Dashboard: FunctionComponent<Props> = (props) => {
@@ -98,7 +100,7 @@ const Dashboard: FunctionComponent<Props> = (props) => {
 
   return (
     <LayoutWithMenuUser title="Dashboard">
-      <Flex flexDirection="column">
+      <Flex flexDirection="column" width="100%">
         {user.hasPublicProfile ? (
           <div />
         ) : (
@@ -133,7 +135,7 @@ const Dashboard: FunctionComponent<Props> = (props) => {
         <Flex width="100%" flexDirection="column">
           <Title>REQUESTED REVIEWS</Title>
           {props.reviewRequests.length === 0 ? (
-            <EmptyRequestedReviews py={5}>
+            <EmptyRequestedReviews width="100%" py={5}>
               <Box py={3}>
                 <SettingsSVG width="200" height="100" />
               </Box>
@@ -141,7 +143,7 @@ const Dashboard: FunctionComponent<Props> = (props) => {
             </EmptyRequestedReviews>
           ) : (
             props.reviewRequests.map((reviewRequest) => {
-              if (reviewRequest)
+              if (reviewRequest && reviewRequest.status !== "published")
                 return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
             })
           )}
@@ -150,11 +152,11 @@ const Dashboard: FunctionComponent<Props> = (props) => {
           <Title>REPLAYS</Title>
           <Flex flexWrap="wrap" justifyContent="space-between">
             {props.replays.length === 0 ? (
-              <EmptyReplays py={5}>
+              <EmptyReplays width="100%" py={5}>
                 <Box py={3}>
                   <SettingsSVG width="200" height="100" />
                 </Box>
-                <Box>No reviews accepted to show</Box>
+                <Box>No recent replays to show</Box>
               </EmptyReplays>
             ) : (
               props.replays.map((replay) => {

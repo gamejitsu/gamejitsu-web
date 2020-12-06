@@ -48,11 +48,6 @@ const HeroImageWrapper = styled(Flex)`
   }
 `
 
-const Title = styled.h1`
-  font-weight: bold;
-  color: white;
-`
-
 const GameInfoWinner = styled.h3`
   color: ${(props) => props.theme.primaryColor};
 `

@@ -60,7 +60,6 @@ const LeftMenu = styled(Flex)`
 const Container = styled(Flex)`
   flex: 1;
   flex-wrap: wrap;
-  align-items: flex-start;
   padding: 32px 32px;
   background-image: url("/images/background-hero-unit.jpg");
   background-position: center;

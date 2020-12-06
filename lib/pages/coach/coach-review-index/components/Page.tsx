@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 import { CoachReviewCard } from "."
 import { DecoratedReview, decorateReviews } from "gamejitsu/models/review"
-import { LayoutWithMenu, Title } from "gamejitsu/components"
+import { LayoutWithMenu } from "gamejitsu/components"
 import { listModels } from "gamejitsu/api"
 import ReviewResource from "gamejitsu/api/resources/review"
 import SettingsSVG from "../../../../../svgs/settings.svg"
@@ -20,32 +20,39 @@ const getReviews = async (ctx: NextPageContext) => {
 }
 
 const EmptyReviews = styled(Flex)`
-  witdh: 100%;
-  background-color: ${(props) => props.theme.lightBackgroundColor};
-  font-weight: 40px;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+background-color: ${(props) => props.theme.lightBackgroundColor};
+font-weight: 40px;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+opacity: 0.9;
+`
+
+const Title = styled.h1`
+  font-weight: bold;
+  color: white;
+  font-size: 24px;
+  margin-bottom: 20px;
 `
 
 const CoachReviewIndex: NextPage<Props> = ({ reviews }) => {
   return (
     <LayoutWithMenu title="Completed Reviews">
-      <Title text="COMPLETED REVIEWS" />
-      {reviews.length === 0 ? (
-        <EmptyReviews height="100%">
-          <Box mt={4} pt={4}>
-            <SettingsSVG width="200" height="100" />
-          </Box>
-          <Box mt={4} pb={4}>
-            No reviews completed to show
-          </Box>
-        </EmptyReviews>
-      ) : (
-        reviews.map((review) => {
-          if (review?.isPublished) return <CoachReviewCard key={review.id} review={review} />
-        })
-      )}
+        <Flex width="100%" flexDirection="column">
+          <Title>COMPLETED REVIEWS</Title>
+          {reviews.length === 0 ? (
+            <EmptyReviews py={5}>
+              <Box py={3}>
+                <SettingsSVG width="200" height="100" />
+              </Box>
+              <Box>No reviews completed to show</Box>
+            </EmptyReviews>
+          ) : (
+              reviews.map((review) => {
+                if (review?.isPublished) return <CoachReviewCard key={review.id} review={review} />
+              })
+            )}
+        </Flex>
     </LayoutWithMenu>
   )
 }

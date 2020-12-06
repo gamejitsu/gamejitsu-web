@@ -5,6 +5,9 @@ import ButtonAlternative from "./ButtonAlternative"
 import ButtonDark from "./ButtonDark"
 import Card from "./Card"
 import CardNew from "./CardNew"
+import CommentBar from "./CommentBar"
+import CommentFormNew from "./CommentFormNew"
+import CommentList from "./CommentList"
 import Form from "./Form"
 import FormGroup from "./FormGroup"
 import Footer from "./Footer"
@@ -40,6 +43,9 @@ export {
   ButtonDark,
   Card,
   CardNew,
+  CommentBar,
+  CommentFormNew,
+  CommentList,
   Form,
   FormGroup,
   Footer,

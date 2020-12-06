@@ -588,7 +588,7 @@ const Page: AuthenticatedComponent = () => (
     <Container>
       <Flex justifyContent="center">
         <Box pt={[4, 5]} pb={[4, 5]}>
-          <ButtonNew key="login" type="button" onClick={login} text="OUR COACHES" />
+          <ButtonNew key="ourcoaches" type="button" href="/our-coaches" text="OUR COACHES" />
         </Box>
       </Flex>
     </Container>

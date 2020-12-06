@@ -5,9 +5,8 @@ import React, { SyntheticEvent, useRef, useState, useEffect } from "react"
 import styled from "styled-components"
 
 import { Comment } from "gamejitsu/api/types/comment"
-import { CommentBar, CommentList, CommentFormNew } from "."
 import { findModel, updateModel } from "gamejitsu/api"
-import { LayoutWithMenu } from "gamejitsu/components"
+import { LayoutWithMenu, CommentBar, CommentFormNew, CommentList } from "gamejitsu/components"
 import ReviewResource, { Review } from "gamejitsu/api/resources/review"
 import { useWarnIfUnsavedChanges } from "./RefreshPageWarner"
 import { DecoratedReview, decorateReview } from "gamejitsu/models/review"
@@ -123,55 +122,53 @@ const CoachReviewPage: NextPage<Props> = (props) => {
 
   return (
     <LayoutWithMenu title="Coach Review">
-      <Box>
-        <Flex justifyContent="center">
-          <Box>
-            <VideoContainer>
-              <video
-                ref={videoRef}
-                onDurationChange={onSetVideoDuration}
-                onTimeUpdate={onSetVideoTimestamp}
-                width="100%"
-                controls
-              >
-                <source
-                  src={props.replay.videoUrl ? props.replay.videoUrl : "/video/sample.mp4"}
-                  type="video/mp4"
-                />
-              </video>
-            </VideoContainer>
-            <Box>
-              <Box py={3}>
-                <Title>MATCH NAVIGATION</Title>
-              </Box>
-              <CommentBar
-                comments={review.comments}
-                videoDuration={videoDuration}
-                onVideoTimestampChange={setVideoTimestamp}
-                videoTimestamp={videoTimestamp}
-              />
-            </Box>
-            <Box py={3}>
-              <Title>INSERT COMMENT BY COACH</Title>
-              <CommentFormNew
-                comment={selectedComment}
-                onSave={onSaveComment}
-                onDelete={onDeleteComment}
-                onDeselect={onDeselectComment}
-                timestamp={videoTimestamp}
-              />
-            </Box>
+      <Flex width={["100%", "100%", "67%"]} flexDirection="column">
+        <VideoContainer>
+          <video
+            ref={videoRef}
+            onDurationChange={onSetVideoDuration}
+            onTimeUpdate={onSetVideoTimestamp}
+            width="100%"
+            controls
+          >
+            <source
+              src={props.replay.videoUrl ? props.replay.videoUrl : "/video/sample.mp4"}
+              type="video/mp4"
+            />
+          </video>
+        </VideoContainer>
+        <Flex flexDirection="column">
+          <Box py={3}>
+            <Title>MATCH NAVIGATION</Title>
           </Box>
-          <Box>
-            <CommentList
-              comments={review.comments}
-              selectedComment={selectedComment}
-              onSelect={onSelectComment}
-              onSaveReview={onSaveReview}
+          <CommentBar
+            comments={review.comments}
+            videoDuration={videoDuration}
+            onVideoTimestampChange={setVideoTimestamp}
+            videoTimestamp={videoTimestamp}
+          />
+        </Flex>
+        <Flex flexDirection="column">
+          <Box py={3}>
+            <Title>INSERT COMMENT BY COACH</Title>
+            <CommentFormNew
+              comment={selectedComment}
+              onSave={onSaveComment}
+              onDelete={onDeleteComment}
+              onDeselect={onDeselectComment}
+              timestamp={videoTimestamp}
             />
           </Box>
         </Flex>
-      </Box>
+      </Flex>
+      <Flex width={["100%", "100%", "33%"]}>
+        <CommentList
+          comments={review.comments}
+          selectedComment={selectedComment}
+          onSelect={onSelectComment}
+          onSaveReview={onSaveReview}
+        />
+      </Flex>
     </LayoutWithMenu>
   )
 }

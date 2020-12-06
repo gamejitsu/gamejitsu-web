@@ -16,7 +16,7 @@ const skillLevels = SkillLevel.types.map((t) => t.value)
 const reviewRequestStatus = ReviewRequestStatus.types.map((t) => t.value)
 
 const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => (
-  <Box>
+  <Box width="100%">
     <Card>
       <Flex justifyContent="space-between">
         <Box p={3}>

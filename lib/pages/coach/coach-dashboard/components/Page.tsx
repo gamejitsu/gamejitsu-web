@@ -1,11 +1,11 @@
+import React from "react"
 import { Flex, Box } from "rebass"
 import { NextPageContext, NextPage } from "next"
-import React from "react"
 import styled from "styled-components"
 
 import { DecoratedReview, decorateReviews } from "gamejitsu/models/review"
 import { DecoratedReviewRequest, decorateReviewRequests } from "gamejitsu/models/review-request"
-import { LayoutWithMenu, Title } from "gamejitsu/components"
+import { LayoutWithMenu } from "gamejitsu/components"
 import { listModels } from "gamejitsu/api"
 import CoachReviewCard from "./CoachReviewCard"
 import ReviewRequestCard from "./ReviewRequestCard"
@@ -18,6 +18,13 @@ interface Props {
   reviews: DecoratedReview[]
 }
 
+const Title = styled.h1`
+  font-weight: bold;
+  color: white;
+  font-size: 24px;
+  margin-bottom: 20px;
+`
+
 const getReviewRequests = async (ctx: NextPageContext) => {
   return await listModels(ReviewRequestResource, ctx)
 }
@@ -28,21 +35,23 @@ const getReviews = async (ctx: NextPageContext) => {
 }
 
 const EmptyAcceptedReviews = styled(Flex)`
-  witdh: 100%;
   background-color: ${(props) => props.theme.lightBackgroundColor};
   font-weight: 40px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  opacity: 0.9;
+  border: 1px solid ${(props) => props.theme.activeColor};
 `
 
 const EmptyReviewRequests = styled(Flex)`
-  witdh: 100%;
   background-color: ${(props) => props.theme.lightBackgroundColor};
   font-weight: 40px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  opacity: 0.9;
+  border: 1px solid ${(props) => props.theme.activeColor};
 `
 
 const areAllReviewsPublished = (reviews: DecoratedReview[]) => {
@@ -58,42 +67,44 @@ const areAllReviewsPublished = (reviews: DecoratedReview[]) => {
 const CoachDashboardPage: NextPage<Props> = ({ reviewRequests, reviews }) => {
   return (
     <LayoutWithMenu title="Coach Dashboard">
-      <Title text="ACCEPTED REVIEWS" />
-      {reviews.length === 0 || areAllReviewsPublished(reviews) ? (
-        <EmptyAcceptedReviews height="30%">
-          <Box mt={4} pt={4}>
-            <SettingsSVG width="200" height="100" />
-          </Box>
-          <Box mt={4} pb={4}>
-            No reviews accepted to show
-          </Box>
-        </EmptyAcceptedReviews>
-      ) : (
-        reviews.map((review) => {
-          if (review && !review.isPublished) {
-            return <CoachReviewCard key={review.id} review={review} />
-          }
-        })
-      )}
-
-      <Title text="AVAILABLE REVIEW REQUESTS" />
-      {reviewRequests.length === 0 ? (
-        <EmptyReviewRequests height="50%">
-          <Box mt={4} pt={4}>
-            <SettingsSVG width="200" height="100" />
-          </Box>
-          <Box mt={4} pb={4}>
-            No review requests available
-          </Box>
-        </EmptyReviewRequests>
-      ) : (
-        reviewRequests.map((reviewRequest) => {
-          return (
-            <ReviewRequestCard key={reviewRequest.id.toString()} reviewRequest={reviewRequest} />
-          )
-        })
-      )}
-    </LayoutWithMenu>
+      <Flex flexDirection="column" width="100%">
+        <Flex width="100%" flexDirection="column">
+          <Title>ACCEPTED REVIEWS</Title>
+          {reviews.length === 0 || areAllReviewsPublished(reviews) ? (
+            <EmptyAcceptedReviews width="100%" py={5}>
+              <Box py={3}>
+                <SettingsSVG width="200" height="100" />
+              </Box>
+              <Box>No reviews accepted to show</Box>
+            </EmptyAcceptedReviews>
+          ) : (
+              reviews.map((review) => {
+                if (review && !review.isPublished)
+                  return <CoachReviewCard key={review.id} review={review} />
+              })
+            )}
+        </Flex>
+        <Flex mt={4} flexDirection="column" width="100%">
+          <Title>AVAILABLE REVIEW REQUESTS</Title>
+          <Flex flexWrap="wrap" justifyContent="space-between">
+            {reviewRequests.length === 0 ? (
+              <EmptyReviewRequests width="100%" py={5}>
+                <Box py={3}>
+                  <SettingsSVG width="200" height="100" />
+                </Box>
+                <Box>No review requests available</Box>
+              </EmptyReviewRequests>
+            ) : (
+                reviewRequests.map((reviewRequest) => {
+                  return (
+                    <ReviewRequestCard key={reviewRequest.id.toString()} reviewRequest={reviewRequest} />
+                  )
+                })
+              )}
+          </Flex>
+        </Flex>
+      </Flex>
+    </LayoutWithMenu >
   )
 }
 
