@@ -109,7 +109,7 @@ const CommentList: FunctionComponent<Props> = ({
   }
   return (
     <>
-    <Flex width="100%" flexDirection="column" ml={[2,3]} height="calc(87vh)" overflowY="scroll">
+    <Flex width="100%" flexDirection="column" ml={[0,0,3]} height={["100%","100%","87vh"]} overflowY="scroll">
       <Header>
         <Flex width="100%">
           <Flex><CommentListTitle>COMMENTS ADDED BY COACH</CommentListTitle></Flex>
