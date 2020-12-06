@@ -26,7 +26,7 @@ const baseStyles = css`
     ${(props) => props.theme.primaryColor}
   );
 
-  padding: 12px 30px 14px 30px;
+  padding: 10px 20px 10px 20px;
   font-size: 15px;
   font-weight: bold;
   text-align: center;

@@ -12,6 +12,8 @@ import AnalysisCompletedSVG from "../../svgs/analysis-completed.svg"
 import SettingsSVG from "../../svgs/settings.svg"
 import { transparentize } from "polished"
 
+import { breakpointDown } from "../utils/mediaQueryDevices"
+
 const companyName = "Gamejitsu"
 
 interface Props {
@@ -36,46 +38,47 @@ const LeftMenuLink: FunctionComponent<LeftMenuLinkProps> = ({ children, href }) 
   )
 }
 
-const LinkDemo = styled(Box)`
-  color: ${(props) => props.theme.textColor};
-  cursor: pointer;
-  &:hover {
-    text-decoration: none;
-    background-color: ${(props) => transparentize(0.5, props.theme.textColor)};
-    border-right: 3px solid ${(props) => props.theme.primaryColor};
-  }
-  heigth: 170px;
-  width: 100%;
-  padding: 30px;
-  background-color: transparent;
-  font-weight: bold;
-  transition: all 0.15s ease-in-out;
+const LeftMenu = styled(Flex)`
   position: relative;
-  font-size: 12px;
-  letter-spacing: 1px;
-  margin-left: 2px;
-  margin-right: 2px;
-  display: flex;
-  align-items: center;
-`
-
-const LeftMenu = styled(Box)`
-  width: 300px;
+  padding: 64px 0 0;
+  width: 280px;
+  flex-direction: column;
   background-color: ${(props) => props.theme.lightBackgroundColor};
-  padding-top: 92px;
+  min-height: 90vh;
+
+  @media ${breakpointDown.lg} {
+    justify-content: center;
+    padding-top: 0;
+    width: 100%;
+    flex-direction: row;
+    min-height: 0;
+    top: 0;
+    z-index: 2;
+  }
 `
 
-const Container = styled(Box)`
-  height: 100vh;
-  flex-grow: 1;
-  padding: 50px;
+const Container = styled(Flex)`
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 32px 32px;
   background-image: url("/images/background-hero-unit.jpg");
   background-position: center;
+  background-position: top;
+  background-repeat: no-repeat;
+
+  @media ${breakpointDown.md} {
+    padding: 32px 16px;
+  }
+
+  @media ${breakpointDown.sm} {
+    min-height: 72vh;
+  }
 `
 
 const LeftMenuLinkContent = styled(LinkLeftMenu)<LeftMenuLinkContentProps>`
   font-weight: bold;
-  transition: all 0.15s ease-in-out;
+  transition: background-color 0.15s ease-in-out;
   position: relative;
   font-size: 12px;
   letter-spacing: 1px;
@@ -83,82 +86,95 @@ const LeftMenuLinkContent = styled(LinkLeftMenu)<LeftMenuLinkContentProps>`
   margin-right: 2px;
   display: flex;
   align-items: center;
-`
 
-const MenuTitle = styled(Box)`
-  height: 60px;
-  font-size: 15px;
-  color: white;
-  font-weight: bold;
+  background-color: ${(props) =>
+    props.isActive ? transparentize(0.5, props.theme.textColor) : "inherit"};
+  border-right: ${(props) => (props.isActive ? `3px solid ${props.theme.primaryColor}` : "none")};
+
+  @media ${breakpointDown.lg} {
+    justify-content: center;
+  }
 `
 
 const Wrapper = styled(Flex)`
-  min-height: 100vh;
-  flex-direction: column;
+  flex-wrap: wrap;
 `
 
 const MenuFooterParent = styled(Box)`
-  margin-top: 100px;
-  position: relative;
+  position: absolute;
+  bottom: 1rem;
   width: 100%;
-  flex-grow: 1;
-  height: 55vh;
+
+  @media ${breakpointDown.lg} {
+    display: none;
+  }
 `
 
 const MenuFooter = styled(Flex)`
+  text-align: center;
   background-color: ${(props) => props.theme.lightBackgroundColor};
-  width: 100%;
-  position: absolute;
-  bottom: 0;
+`
+const MenuElementWrapper = styled.div`
+  @media ${breakpointDown.lg} {
+    width: 33.3%;
+  }
 `
 
-const Logo = styled.div`
-  filter: grayscale(1);
-  transition: 0.25s filter ease-in-out;
-  &:hover {
-    filter: grayscale(0);
+const InnerWrapper = styled.div`
+  position: sticky;
+  top: 70px;
+  display: block;
+
+  @media ${breakpointDown.lg} {
+    position: relative;
+    display: flex;
+    top: 0;
+    width: 100%;
+  }
+`
+const MenuLinkText = styled.div`
+  @media ${breakpointDown.md} {
+    display: none;
   }
 `
 
 const LayoutWithMenu: FunctionComponent<Props> = ({ title, children }) => (
   <>
+    <Head>
+      <link rel="shortcut icon" href="/favicon.png" />
+      <title>{title === undefined ? companyName : `${companyName} - ${title}`}</title>
+    </Head>
+
+    <NavbarLeftMenu />
     <Wrapper>
-      <NavbarLeftMenu />
-      <Head>
-        <link rel="shortcut icon" href="/favicon.png" />
-        <title>{title === undefined ? companyName : `${companyName} - ${title}`}</title>
-      </Head>
-      <Flex height="100%">
-        <LeftMenu>
-          <Flex justifyContent="center" mt={4}>
-            <MenuTitle>COACH MENU</MenuTitle>
-          </Flex>
-          <LinkDemo href="/coach-dashboard">
-            <Flex alignItems="center">
+      <LeftMenu>
+        <InnerWrapper>
+          <MenuElementWrapper>
+            <LeftMenuLink href="#">
               <CoachDashboardSVG width="60" height="35" />
-              Coach Dashboard
-            </Flex>
-          </LinkDemo>
-          <LinkDemo href="/placeholder">
-            <Flex alignItems="center">
+              <MenuLinkText>Coach Dashboard</MenuLinkText>
+            </LeftMenuLink>
+          </MenuElementWrapper>
+          <MenuElementWrapper>
+            <LeftMenuLink href="#">
               <AnalysisCompletedSVG width="60" height="35" />
-              Analysis Completed
-            </Flex>
-          </LinkDemo>
-          <LinkDemo href="/coach-settings">
-            <Flex alignItems="center">
+              <MenuLinkText>Analysis Completed</MenuLinkText>
+            </LeftMenuLink>
+          </MenuElementWrapper>
+          <MenuElementWrapper>
+            <LeftMenuLink href="#">
               <SettingsSVG width="60" height="35" />
-              Settings
-            </Flex>
-          </LinkDemo>
-          <MenuFooterParent>
-            <MenuFooter justifyContent="center" pb={4}>
-              © 2020 - Gamejitsu Copyright.
-            </MenuFooter>
-          </MenuFooterParent>
-        </LeftMenu>
-        <Container pt={92}>{children}</Container>
-      </Flex>
+              <MenuLinkText>Settings</MenuLinkText>
+            </LeftMenuLink>
+          </MenuElementWrapper>
+        </InnerWrapper>
+        <MenuFooterParent>
+          <MenuFooter justifyContent="center" pb={4}>
+            © 2020 - Gamejitsu Copyright.
+          </MenuFooter>
+        </MenuFooterParent>
+      </LeftMenu>
+      <Container>{children}</Container>
     </Wrapper>
   </>
 )
