@@ -122,12 +122,10 @@ const DemoPage: AuthenticatedComponent = () => {
     }
   })
 
- 
-
- const ContentWrapper = styled.div`
-  width: 100%;
-  display: flex;
- `
+  const ContentWrapper = styled.div`
+    width: 100%;
+    display: flex;
+  `
 
   return (
     <LayoutDemo title="Coach Demo">

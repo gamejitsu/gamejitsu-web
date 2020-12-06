@@ -25,7 +25,7 @@ interface ListItemContainerProps {
 }
 
 const ListItemContainer = styled(Box)<ListItemContainerProps>`
-  min-height: 120px; 
+  min-height: 120px;
   flex: 1;
   border: 2px solid ${(props) => props.theme.secondaryColor};
   border-top: 0;
@@ -33,10 +33,9 @@ const ListItemContainer = styled(Box)<ListItemContainerProps>`
 `
 
 const ListItem = styled.li<ListItemProps>`
-  background-color: ${
-    ({ comment, selectedComment, theme }) => {
-      return comment !== selectedComment ? "transparent" : lighten(0.1, theme.lightBackgroundColor)}
-    };
+  background-color: ${({ comment, selectedComment, theme }) => {
+    return comment !== selectedComment ? "transparent" : lighten(0.1, theme.lightBackgroundColor)
+  }};
   cursor: pointer;
 `
 
@@ -109,79 +108,85 @@ const CommentList: FunctionComponent<Props> = ({
   }
   return (
     <>
-    <Flex width="100%" flexDirection="column" ml={[0,0,3]} height={["100%","100%","87vh"]} overflowY="scroll">
-      <Header>
-        <Flex width="100%">
-          <Flex><CommentListTitle>COMMENTS ADDED BY COACH</CommentListTitle></Flex>
-          <Flex width="50%" justifyContent="flex-end" alignItems="center">
-            <Box><Button text="Save" type="button" onClick={handleSaveReviewOpen} /></Box>
+      <Flex
+        width="100%"
+        flexDirection="column"
+        ml={[0, 0, 3]}
+        height={["100%", "100%", "87vh"]}
+        overflowY="scroll"
+      >
+        <Header>
+          <Flex width="100%">
+            <Flex>
+              <CommentListTitle>COMMENTS ADDED BY COACH</CommentListTitle>
+            </Flex>
+            <Flex width="50%" justifyContent="flex-end" alignItems="center">
+              <Box>
+                <Button text="Save" type="button" onClick={handleSaveReviewOpen} />
+              </Box>
+            </Flex>
           </Flex>
-        </Flex>
-      </Header>
-      <Box>
-        <ul>
-          {sortedComments.map((comment, index) => {
-            let isCollapsed: boolean = true
-            commentsExpanded.forEach((commentExpanded) => {
-              commentExpanded == comment ? (isCollapsed = false) : ""
-            })
-            return (
-              <Flex key={index.toString()}>
-                <ListItemContainer p={3} isCollapsed={isCollapsed}>
-                  <Flex alignItems="center" justifyContent="space-between">
-                    <TimeTag >
-                      {formatTimestamp(comment.timestamp)}
-                    </TimeTag>
-                    <LessExpandTag>
-                      {isCollapsed ? (
-                        <a onClick={onExpandComment.bind(null, comment)}>Expand</a>
-                      ) : (
-                        <a onClick={onCollapseComment.bind(null, comment)}>Collapse</a>
-                      )}
-                    </LessExpandTag>
-                  </Flex>
-                  <Box pt={3}>
-                    <ListItem comment={comment} selectedComment={selectedComment}>
-                      <a onClick={onSelectListItem.bind(null, comment)}>
-                        {isCollapsed ? `${comment.text.substring(0,90)}...` : comment.text }
-                      </a>
-                    </ListItem>
-                  </Box>
-                </ListItemContainer>
-              </Flex>
-            )
-          })}
-        </ul>
-      </Box>
-    </Flex>
-    <Dialog
-      className={Classes.DIALOG}
-      icon="info-sign"
-      onClose={handleCloseNoSaveReview}
-      title="Save review confirmation"
-      autoFocus={true}
-      canEscapeKeyClose={true}
-      canOutsideClickClose={true}
-      enforceFocus={true}
-      isOpen={isSaveReviewOpen}
-      usePortal={true}
-    >
-      <div className={Classes.DIALOG_BODY}>
-        <p>
-          Are you sure you want to save the review? Please click SAVE to approve the saving.
-        </p>
-      </div>
-      <div className={Classes.DIALOG_FOOTER}>
-        <div className={Classes.DIALOG_FOOTER_ACTIONS}>
-          <Tooltip content="This button is hooked up to close the dialog.">
-            <Button text="CLOSE" onClick={handleCloseNoSaveReview} />
-          </Tooltip>
-          <Tooltip content="This button is hooked up to save the review and close the dialog.">
-            <Button text="SAVE REVIEW" onClick={handleSaveReviewClose} />
-          </Tooltip>
+        </Header>
+        <Box>
+          <ul>
+            {sortedComments.map((comment, index) => {
+              let isCollapsed: boolean = true
+              commentsExpanded.forEach((commentExpanded) => {
+                commentExpanded == comment ? (isCollapsed = false) : ""
+              })
+              return (
+                <Flex key={index.toString()}>
+                  <ListItemContainer p={3} isCollapsed={isCollapsed}>
+                    <Flex alignItems="center" justifyContent="space-between">
+                      <TimeTag>{formatTimestamp(comment.timestamp)}</TimeTag>
+                      <LessExpandTag>
+                        {isCollapsed ? (
+                          <a onClick={onExpandComment.bind(null, comment)}>Expand</a>
+                        ) : (
+                          <a onClick={onCollapseComment.bind(null, comment)}>Collapse</a>
+                        )}
+                      </LessExpandTag>
+                    </Flex>
+                    <Box pt={3}>
+                      <ListItem comment={comment} selectedComment={selectedComment}>
+                        <a onClick={onSelectListItem.bind(null, comment)}>
+                          {isCollapsed ? `${comment.text.substring(0, 90)}...` : comment.text}
+                        </a>
+                      </ListItem>
+                    </Box>
+                  </ListItemContainer>
+                </Flex>
+              )
+            })}
+          </ul>
+        </Box>
+      </Flex>
+      <Dialog
+        className={Classes.DIALOG}
+        icon="info-sign"
+        onClose={handleCloseNoSaveReview}
+        title="Save review confirmation"
+        autoFocus={true}
+        canEscapeKeyClose={true}
+        canOutsideClickClose={true}
+        enforceFocus={true}
+        isOpen={isSaveReviewOpen}
+        usePortal={true}
+      >
+        <div className={Classes.DIALOG_BODY}>
+          <p>Are you sure you want to save the review? Please click SAVE to approve the saving.</p>
         </div>
-      </div>
-    </Dialog>
+        <div className={Classes.DIALOG_FOOTER}>
+          <div className={Classes.DIALOG_FOOTER_ACTIONS}>
+            <Tooltip content="This button is hooked up to close the dialog.">
+              <Button text="CLOSE" onClick={handleCloseNoSaveReview} />
+            </Tooltip>
+            <Tooltip content="This button is hooked up to save the review and close the dialog.">
+              <Button text="SAVE REVIEW" onClick={handleSaveReviewClose} />
+            </Tooltip>
+          </div>
+        </div>
+      </Dialog>
     </>
   )
 }

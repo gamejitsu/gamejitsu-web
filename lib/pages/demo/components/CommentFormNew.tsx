@@ -101,7 +101,14 @@ const CommentFormNew: CommentFormComponent = ({
               name={"text"}
               fill={true}
               value={formik.values.text}
-              style={{backgroundColor: "#212122", color: "#eee", height: "120px", opacity: 0.9, padding: "12px", boxShadow: "1px 1px #212212"}}
+              style={{
+                backgroundColor: "#212122",
+                color: "#eee",
+                height: "120px",
+                opacity: 0.9,
+                padding: "12px",
+                boxShadow: "1px 1px #212212"
+              }}
             />
             {formik.errors.text ? (
               <Toaster position={Position.TOP}>
