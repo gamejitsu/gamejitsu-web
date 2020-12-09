@@ -71,17 +71,7 @@ export default buildResource({
           .strict({
             included: t.union([
               t.array(
-<<<<<<< HEAD
                 t.union([reviewRequestDecoder, replayDecoder, userDecoder, coachDecoder, decoder])
-=======
-                t.union([
-                  reviewRequestDecoder,
-                  replayDecoder,
-                  userDecoder,
-                  coachDecoder,
-                  decoder,
-                ])
->>>>>>> 1f7fe565bedbf3d5d8cdf6c551f71dd9bca77515
               ),
               t.undefined
             ])

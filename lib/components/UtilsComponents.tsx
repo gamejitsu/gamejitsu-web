@@ -97,7 +97,6 @@ interface FlowImageType {
   imageHeight: string
 }
 
-<<<<<<< HEAD
 const FlowImage = styled(Box)<FlowImageType>`
   background-image: url(${(props) => props.url});
   background-size: cover;
@@ -115,13 +114,3 @@ export {
   ParagraphText,
   FlowImage
 }
-=======
-const FlowImage = styled(Box) <FlowImageType>`
-  background-image: url(${(props) => props.url});
-  background-size: cover;
-  width: 100%;
-  padding-top: ${(props) => props.imageHeight ? `${props.imageHeight}%` : `100%`};
-`
-
-export { Container, Background, Spacer, MainTitle, SecondaryTitle, ParagraphTitle, ParagraphText, FlowImage }
->>>>>>> 1f7fe565bedbf3d5d8cdf6c551f71dd9bca77515

@@ -25,7 +25,6 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => (
             (above {prices[skillLevels.indexOf(reviewRequest?.skillLevel as SkillLevel)].mmr} MMR)
           </Text>
           <Text p={2}>Comment: {reviewRequest?.comment}</Text>
-<<<<<<< HEAD
           <Text p={2}>
             Status:{" "}
             {
@@ -34,9 +33,6 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => (
               ].name
             }
           </Text>
-=======
-          <Text p={2}>Status: {reviewStatus[reviewRequestStatus.indexOf(reviewRequest?.status as ReviewRequestStatus)].name}</Text>
->>>>>>> 1f7fe565bedbf3d5d8cdf6c551f71dd9bca77515
         </Box>
         <Flex p={3} alignItems="center">
           <Box>

@@ -8,8 +8,4 @@ export const ReviewRequestStatus = t.union([
 
 export const encoder = t.identity
 
-<<<<<<< HEAD
 export type ReviewRequestStatus = t.TypeOf<typeof ReviewRequestStatus>
-=======
-export type ReviewRequestStatus = t.TypeOf<typeof ReviewRequestStatus>
->>>>>>> 1f7fe565bedbf3d5d8cdf6c551f71dd9bca77515
