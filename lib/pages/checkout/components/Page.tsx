@@ -39,6 +39,7 @@ const Page: NextPage<Props> = ({ checkout }) => (
         </Box>
         <Box mt={4} p={3}>
           {" "}
+<<<<<<< HEAD
           Thanks, the payment successfully went through!
           <br />
           <br />
@@ -46,6 +47,15 @@ const Page: NextPage<Props> = ({ checkout }) => (
           coach. <br />
           It will take approximately 24h.
           <br />
+=======
+        Thanks, the payment successfully went through!
+        <br />
+          <br />
+        We will notify you as soon as the review is completed by a {checkout.skillLevel} level
+        coach. <br />
+        It will take approximately 24h.
+        <br />
+>>>>>>> 1f7fe565bedbf3d5d8cdf6c551f71dd9bca77515
         </Box>
       </CheckoutCard>
     </Flex>

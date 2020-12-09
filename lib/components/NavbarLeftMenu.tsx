@@ -24,7 +24,7 @@ interface NavLinkProps {
   href: string
 }
 
-const NavLinkContent = styled(Link)<NavLinkContentProps>`
+const NavLinkContent = styled(Link) <NavLinkContentProps>`
   font-weight: bold;
   transition: all 0.15s ease-in-out;
   position: relative;
@@ -116,18 +116,18 @@ const NavbarLeftMenu: FunctionComponent = () => {
             <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
           ]
         ) : (
-          [
-            <NavLink key="username" href="/settings">
-              {user.username}
-            </NavLink>,
-            <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
-          ]
-        )
+            [
+              <NavLink key="username" href="/settings">
+                {user.username}
+              </NavLink>,
+              <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
+            ]
+          )
       ) : (
-        <Box>
-          <ButtonIcon key="login" text="SIGN IN" icon={user} onClick={login} />
-        </Box>
-      )}
+          <Box>
+            <ButtonIcon key="login" text="SIGN IN" icon={user} onClick={login} />
+          </Box>
+        )}
     </Container>
   )
 }
