@@ -17,17 +17,17 @@ interface Props {
 }
 
 const Container = styled(Box)`
-width: 49%;
-border: 1px solid ${(props) => props.theme.activeColor};
-position: relative;
-align-items: center;
-justify-content: center;
-background: ${(props) => props.theme.lightBackgroundColor};
-opacity: 0.9;
+  width: 49%;
+  border: 1px solid ${(props) => props.theme.activeColor};
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background: ${(props) => props.theme.lightBackgroundColor};
+  opacity: 0.9;
 
-@media ${breakpointDown.lg} {
-  width: 100%;
-}
+  @media ${breakpointDown.lg} {
+    width: 100%;
+  }
 `
 
 const HorizontalLine = styled.div`
@@ -83,8 +83,7 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
     <Container my={2}>
       <Header>
         <Box mt={3} ml={3} height="30px">
-          Played{" "}
-          {formatDistanceToNow(new Date(reviewRequest.replay.playedAt), { addSuffix: true })}
+          Played {formatDistanceToNow(new Date(reviewRequest.replay.playedAt), { addSuffix: true })}
         </Box>
         <Box mt={3} ml="auto" mr={3} height="30px">
           <GameInfo>Game won</GameInfo>

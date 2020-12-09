@@ -7,7 +7,7 @@ import { LayoutWithMenu, Title } from "gamejitsu/components"
 import { UserContext } from "gamejitsu/contexts"
 import UserPhotoSVG from "../../../../../svgs/user-photo.svg"
 
-const EmptyReviews = styled(Flex)`
+const SettingsCard = styled(Flex)`
   background-color: ${(props) => props.theme.lightBackgroundColor};
   align-items: center;
   justify-content: center;
@@ -25,14 +25,14 @@ const CoachSettings: NextPage = () => {
     <LayoutWithMenu title="Settings">
       <Flex width="100%" flexDirection="column">
         <Title text="SETTINGS" />
-        <Flex mt={3}>
-          <EmptyReviews py={5} width="100%">
+        <Flex>
+          <SettingsCard py={5} width="100%">
             <Box pb={4}>
               {coach.photoUrl != null ? (
                 <img src={coach.photoUrl} />
               ) : (
-                  <UserPhotoSVG width="200" height="100" />
-                )}
+                <UserPhotoSVG width="200" height="100" />
+              )}
             </Box>
             <Box py={2}>Coach: {user?.username}</Box>
             <Box py={2}>Public Profile: {user?.hasPublicProfile.toString()}</Box>
@@ -41,7 +41,7 @@ const CoachSettings: NextPage = () => {
             <Box py={2}>Skill Level: {coach.skillLevel}</Box>
             <Box py={2}>Email: {coach.email}</Box>
             <Box py={2}>Approved: {coach.isApproved.toString()}</Box>
-          </EmptyReviews>
+          </SettingsCard>
         </Flex>
       </Flex>
     </LayoutWithMenu>

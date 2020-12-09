@@ -35,7 +35,7 @@ const Page: AuthenticatedComponent = () => {
   let redirectLink = ""
   useEffect(() => {
     redirectLink = window.origin + "/auth?redirect=/coach-signup"
-  });
+  })
 
   const urlQuery = {
     "openid.claimed_id": "http://specs.openid.net/auth/2.0/identifier_select",
@@ -71,9 +71,9 @@ const Page: AuthenticatedComponent = () => {
           {user ? (
             <LinkBold href={coachSignupLink}> coach sign-up page</LinkBold>
           ) : (
-              <ABold href={urlBase + "?" + stringified}> coach sign-up page</ABold>
-            )}.
-          <ParagraphTitle>Content Creators</ParagraphTitle>
+            <ABold href={urlBase + "?" + stringified}> coach sign-up page</ABold>
+          )}
+          .<ParagraphTitle>Content Creators</ParagraphTitle>
           <ParagraphText>
             We are actively looking for content creators for Dota 2, requirement is at least 6500
             MMR.

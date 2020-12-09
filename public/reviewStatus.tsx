@@ -1,14 +1,14 @@
 export const reviewStatus = [
   {
     id: 1,
-    name: "waiting for Coach",
+    name: "waiting for Coach"
   },
   {
     id: 2,
-    name: "published",
+    name: "published"
   },
   {
     id: 3,
-    name: "accepted by Coach",
+    name: "accepted by Coach"
   }
 ]

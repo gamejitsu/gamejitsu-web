@@ -76,7 +76,7 @@ const Container = styled(Flex)`
   }
 `
 
-const LeftMenuLinkContent = styled(LinkLeftMenu) <LeftMenuLinkContentProps>`
+const LeftMenuLinkContent = styled(LinkLeftMenu)<LeftMenuLinkContentProps>`
   font-weight: bold;
   transition: background-color 0.15s ease-in-out;
   position: relative;

@@ -36,7 +36,7 @@ const Page: AuthenticatedComponent = () => {
   let redirectLink = ""
   useEffect(() => {
     redirectLink = window.origin + "/auth?redirect=/coach-signup"
-  });
+  })
 
   const urlQuery = {
     "openid.claimed_id": "http://specs.openid.net/auth/2.0/identifier_select",

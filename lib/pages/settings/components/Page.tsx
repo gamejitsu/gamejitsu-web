@@ -6,7 +6,7 @@ import styled from "styled-components"
 import { LayoutWithMenuUser, Title } from "gamejitsu/components"
 import { UserContext } from "gamejitsu/contexts"
 
-const EmptyReviews = styled(Flex)`
+const SettingsCard = styled(Flex)`
   background-color: ${(props) => props.theme.lightBackgroundColor};
   align-items: center;
   justify-content: center;
@@ -23,8 +23,8 @@ const UserSettings: NextPage = () => {
     <LayoutWithMenuUser title="Settings">
       <Flex width="100%" flexDirection="column">
         <Title text="SETTINGS" />
-        <Flex mt={3}>
-          <EmptyReviews py={5} width="100%">
+        <Flex>
+          <SettingsCard py={5} width="100%">
             <Box py={2}>Username: {user?.username}</Box>
             <Box py={2}>Public Profile: {user?.hasPublicProfile.toString()}</Box>
             <Box py={2} style={{ position: "relative" }}>
@@ -32,7 +32,7 @@ const UserSettings: NextPage = () => {
                 ? `Email: ${user.email}`
                 : "Email not provided yet, insert it while requesting the review"}
             </Box>
-          </EmptyReviews>
+          </SettingsCard>
         </Flex>
       </Flex>
     </LayoutWithMenuUser>

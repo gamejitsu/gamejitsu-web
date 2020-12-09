@@ -30,12 +30,12 @@ export const decorateReviewRequests = (
     const replay = included.replay.find((r) => r.id === reviewRequest.replayId)
     const user = included.user.find((u) => u.id === reviewRequest.userId)
     const review = included.review.find((re) => reviewRequest.reviewsIds.includes(re.id))
-    let status: ReviewRequestStatus = ("waiting_for_coach" as ReviewRequestStatus)
-      review?.isPublished 
-        ? status = ("published" as ReviewRequestStatus) 
-        : review?.id 
-        ? status = ("accepted_by_coach" as ReviewRequestStatus)
-        : status = ("waiting_for_coach" as ReviewRequestStatus)
+    let status: ReviewRequestStatus = "waiting_for_coach" as ReviewRequestStatus
+    review?.isPublished
+      ? (status = "published" as ReviewRequestStatus)
+      : review?.id
+      ? (status = "accepted_by_coach" as ReviewRequestStatus)
+      : (status = "waiting_for_coach" as ReviewRequestStatus)
     if (replay && user) {
       return {
         skillLevel: reviewRequest.skillLevel,
