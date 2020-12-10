@@ -1,7 +1,7 @@
 import { Flex, Box } from "rebass"
 import { formatDistanceToNow } from "date-fns"
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3"
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, useEffect } from "react"
 import Router from "next/router"
 import styled from "styled-components"
 
@@ -54,21 +54,17 @@ const GameInfo = styled.h3`
   color: ${(props) => props.theme.primaryColor};
 `
 
-const acceptReviewRequest = async (reviewRequestId: string, token: Promise<string>) => {
-  const response = await createModel(
+const acceptReviewRequest = async (reviewRequestId: string) => {
+  await createModel(
     ReviewResource,
     { requestId: reviewRequestId, coachId: "" },
-    undefined,
-    { params: { "g-recaptcha-response": await token } }
+    undefined
   )
   // TODO Maybe add confirm?
   Router.push("/coach-dashboard")
 }
 
 const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
-  const { executeRecaptcha } = useGoogleReCaptcha()
-  let token: Promise<string>
-  if (executeRecaptcha) token = executeRecaptcha("review_request_page")
   const players = reviewRequest.replay.playersDire.concat(reviewRequest.replay.playersRadiant)
   const playedHeroUser = reviewRequest.user
   const currentPlayer = players.find((player) => {
@@ -119,8 +115,8 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
               </Box>
               <Box mt={4}>
                 <Button
-                  onClick={() => {
-                    acceptReviewRequest(reviewRequest.id, token)
+                  onClick={async () => {
+                    await acceptReviewRequest(reviewRequest.id)
                   }}
                   text="ACCEPT REVIEW"
                 />
@@ -135,9 +131,7 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
 
 const GoogleRecaptchaReviewRequestCard: FunctionComponent<Props> = (props) => {
   return (
-    <GoogleReCaptchaProvider reCaptchaKey={process.env.GOOGLE_RECAPTCHA_PUBLIC_KEY}>
       <ReviewRequestCard {...props} />
-    </GoogleReCaptchaProvider>
   )
 }
 
