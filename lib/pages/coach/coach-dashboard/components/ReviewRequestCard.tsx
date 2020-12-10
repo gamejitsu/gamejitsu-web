@@ -55,11 +55,7 @@ const GameInfo = styled.h3`
 `
 
 const acceptReviewRequest = async (reviewRequestId: string) => {
-  await createModel(
-    ReviewResource,
-    { requestId: reviewRequestId, coachId: "" },
-    undefined
-  )
+  await createModel(ReviewResource, { requestId: reviewRequestId, coachId: "" }, undefined)
   // TODO Maybe add confirm?
   Router.push("/coach-dashboard")
 }
@@ -130,9 +126,7 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
 }
 
 const GoogleRecaptchaReviewRequestCard: FunctionComponent<Props> = (props) => {
-  return (
-      <ReviewRequestCard {...props} />
-  )
+  return <ReviewRequestCard {...props} />
 }
 
 export default GoogleRecaptchaReviewRequestCard
