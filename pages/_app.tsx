@@ -103,10 +103,33 @@ export default class App extends NextApp<Props> {
 
   render() {
     const { Component, pageProps, user } = this.props
+    const renderAnalytics = () => {
+      if (process.env.NODE_ENV === "production") {
+        return (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=G-DD40PZGYEM`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                console.log("Load Analytics");
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-DD40PZGYEM', {
+                  page_path: window.location.pathname,
+                });
+              `
+              }}
+            />
+          </>
+        )
+      }
+    }
     return (
       <>
         <Head>
           <script src="https://js.stripe.com/v3/" />
+          {renderAnalytics()}
         </Head>
         <Reset />
         <ThemeProvider theme={theme}>
