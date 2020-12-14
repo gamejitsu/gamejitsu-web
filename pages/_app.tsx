@@ -104,7 +104,7 @@ export default class App extends NextApp<Props> {
   render() {
     const { Component, pageProps, user } = this.props
     const renderAnalytics = () => {
-      if(process.env.NODE_ENV === 'production') {
+      if (process.env.NODE_ENV === "production") {
         return (
           <>
             <script async src={`https://www.googletagmanager.com/gtag/js?id=G-DD40PZGYEM`} />
