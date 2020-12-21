@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { Flex, Box } from "rebass"
+import { Box } from "rebass"
 import Head from "next/head"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { Footer, Navbar } from "gamejitsu/components"
@@ -57,13 +57,13 @@ const Page: AuthenticatedComponent = () => (
         At the moment, 4 prices are available based on the skill level of the coach:
         <br />
         <br />
-        1. High (5k MMR) - 10£ per review
+        1. High (5k MMR) - 10$ per review
         <br />
-        2. Expert (6k MMR) - 17.5£ per review
+        2. Experienced (6k MMR) - 17.5$ per review
         <br />
-        3. Pro (7k MMR) - 25£ per review
+        3. Pro (7k MMR) - 25$ per review
         <br />
-        4. Hero (8k MMR) - 30£ per review
+        4. Hero (8k MMR) - 30$ per review
       </ParagraphText>
     </Box>
     <Spacer padding={80} />

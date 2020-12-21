@@ -20,32 +20,35 @@ const Title = styled.h1`
 `
 
 const CheckoutCard = styled(Flex)`
-  witdh: 100%;
   background-color: ${(props) => props.theme.lightBackgroundColor};
   font-weight: 40px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  opacity: 0.96;
+  border: 1px solid ${(props) => props.theme.activeColor};
 `
 
 const Page: NextPage<Props> = ({ checkout }) => (
   <LayoutWithMenuUser title="Review Request Checkout">
-    <Title>PAYMENT DONE!</Title>
-    <CheckoutCard height="100%">
-      <Box>
-        <CheckoutSVG width="200" height="100" />
-      </Box>
-      <Box mt={4}>
-        {" "}
-        Thanks, the payment successfully went through!
-        <br />
-        <br />
-        We will notify you as soon as the review is completed by a {checkout.skillLevel} level
-        coach. <br />
-        It will take approximately 24h.
-        <br />
-      </Box>
-    </CheckoutCard>
+    <Flex width="100%" flexDirection="column">
+      <Title>PAYMENT DONE!</Title>
+      <CheckoutCard py={5}>
+        <Box>
+          <CheckoutSVG width="200" height="100" />
+        </Box>
+        <Box mt={4} p={3}>
+          {" "}
+          Thanks, the payment successfully went through!
+          <br />
+          <br />
+          We will notify you as soon as the review is completed by a {checkout.skillLevel} level
+          coach. <br />
+          It will take approximately 24h.
+          <br />
+        </Box>
+      </CheckoutCard>
+    </Flex>
   </LayoutWithMenuUser>
 )
 

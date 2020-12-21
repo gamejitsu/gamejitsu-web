@@ -1,7 +1,6 @@
 import queryString from "query-string"
 import styled from "styled-components"
 import Link from "./Link"
-import LinkDark from "./LinkDark"
 
 import { Box, Flex } from "rebass"
 import { destroyCookie } from "nookies"

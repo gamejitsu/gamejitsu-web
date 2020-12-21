@@ -9,9 +9,9 @@ interface Props {
 const Content = styled.h1`
   font-family: "Montserrat";
   font-weight: bold;
-  letter-spacing: 1px;
-  font-size: 22px;
   color: white;
+  font-size: 24px;
+  margin-bottom: 20px;
 `
 
 const Title: FunctionComponent<Props> = ({ text }) => <Content>{text}</Content>

@@ -1,5 +1,5 @@
 import React from "react"
-import { Flex, Box } from "rebass"
+import { Box } from "rebass"
 import Head from "next/head"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { Footer, Navbar, LinkMailBold } from "gamejitsu/components"

@@ -2,7 +2,7 @@ import React, { useState, useEffect, FunctionComponent } from "react"
 import { Callout } from "@blueprintjs/core"
 import { NextPageContext, NextPage } from "next"
 import { parseCookies } from "nookies"
-import { Flex, Box } from "rebass"
+import { Flex } from "rebass"
 import styled from "styled-components"
 import { Socket } from "phoenix"
 
@@ -10,25 +10,17 @@ import ReplayResource from "gamejitsu/api/resources/replay"
 import UserResource, { User } from "gamejitsu/api/resources/user"
 import ReviewRequestResource from "gamejitsu/api/resources/review-request"
 import { DecoratedReplay, decorateReplays } from "gamejitsu/models/replay"
-import { Spinner, LayoutWithMenuUser } from "gamejitsu/components"
+import { Spinner, LayoutWithMenuUser, EmptyCard, Title } from "gamejitsu/components"
 import { listModels, findModel } from "gamejitsu/api"
 import { decorateReviewRequests, DecoratedReviewRequest } from "gamejitsu/models/review-request"
 import { UserContext } from "gamejitsu/contexts"
 import { ReviewRequestCard, ReplayCardNew } from "."
-import SettingsSVG from "../../../../svgs/settings.svg"
 
 interface Props {
   user: User
   replays: DecoratedReplay[]
   reviewRequests: (DecoratedReviewRequest | undefined)[]
 }
-
-const Title = styled.h1`
-  font-weight: bold;
-  color: white;
-  font-size: 24px;
-  margin-bottom: 20px;
-`
 
 const getReplays = async (ctx?: NextPageContext) => {
   const { data } = await listModels(ReplayResource, ctx)
@@ -43,24 +35,6 @@ const getCurrentUser = async () => {
 const getReviewRequests = async (ctx: NextPageContext) => {
   return await listModels(ReviewRequestResource, ctx)
 }
-
-const EmptyReplays = styled(Flex)`
-  background-color: ${(props) => props.theme.lightBackgroundColor};
-  font-weight: 40px;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  opacity: 0.9;
-`
-
-const EmptyRequestedReviews = styled(Flex)`
-  background-color: ${(props) => props.theme.lightBackgroundColor};
-  font-weight: 40px;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  opacity: 0.9;
-`
 
 const Dashboard: FunctionComponent<Props> = (props) => {
   const [user, setUser] = useState(props.user)
@@ -98,7 +72,7 @@ const Dashboard: FunctionComponent<Props> = (props) => {
 
   return (
     <LayoutWithMenuUser title="Dashboard">
-      <Flex flexDirection="column">
+      <Flex flexDirection="column" width="100%">
         {user.hasPublicProfile ? (
           <div />
         ) : (
@@ -131,31 +105,21 @@ const Dashboard: FunctionComponent<Props> = (props) => {
         )}
         {user.isSyncingReplays ? <Spinner /> : <div></div>}
         <Flex width="100%" flexDirection="column">
-          <Title>REQUESTED REVIEWS</Title>
+          <Title text="REQUESTED REVIEWS" />
           {props.reviewRequests.length === 0 ? (
-            <EmptyRequestedReviews py={5}>
-              <Box py={3}>
-                <SettingsSVG width="200" height="100" />
-              </Box>
-              <Box>No reviews accepted to show</Box>
-            </EmptyRequestedReviews>
+            <EmptyCard text="No request reviews to show" />
           ) : (
             props.reviewRequests.map((reviewRequest) => {
-              if (reviewRequest)
+              if (reviewRequest && reviewRequest.status !== "published")
                 return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
             })
           )}
         </Flex>
         <Flex mt={4} flexDirection="column">
-          <Title>REPLAYS</Title>
+          <Title text="REPLAYS" />
           <Flex flexWrap="wrap" justifyContent="space-between">
             {props.replays.length === 0 ? (
-              <EmptyReplays py={5}>
-                <Box py={3}>
-                  <SettingsSVG width="200" height="100" />
-                </Box>
-                <Box>No reviews accepted to show</Box>
-              </EmptyReplays>
+              <EmptyCard text="No recent replays to show" />
             ) : (
               props.replays.map((replay) => {
                 return <ReplayCardNew key={replay.id} replay={replay} />

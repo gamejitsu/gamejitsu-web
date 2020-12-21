@@ -993,12 +993,11 @@ exports[`Index page should match snapshot 1`] = `
           Object {
             "background": "transparent",
             "border": "2px solid #08ff07",
-            "border-radius": "50px",
+            "borderRadius": "50px",
             "color": "#08ff07",
             "display": "inline-flex",
-            "font-size": "15px",
-            "font-weight": "bold",
-            "fontSize": "13px",
+            "fontSize": "15px",
+            "fontWeight": "bold",
             "padding": "10px 25px 10px 25px",
             "transition": "all 0.05s ease-in-out",
           }
@@ -1013,12 +1012,11 @@ exports[`Index page should match snapshot 1`] = `
             Object {
               "background": "transparent",
               "border": "2px solid #08ff07",
-              "border-radius": "50px",
+              "borderRadius": "50px",
               "color": "#08ff07",
               "display": "inline-flex",
-              "font-size": "15px",
-              "font-weight": "bold",
-              "fontSize": "13px",
+              "fontSize": "15px",
+              "fontWeight": "bold",
               "padding": "10px 25px 10px 25px",
               "transition": "all 0.05s ease-in-out",
             }
@@ -1063,12 +1061,11 @@ exports[`Index page should match snapshot 1`] = `
               Object {
                 "background": "transparent",
                 "border": "2px solid #08ff07",
-                "border-radius": "50px",
+                "borderRadius": "50px",
                 "color": "#08ff07",
                 "display": "inline-flex",
-                "font-size": "15px",
-                "font-weight": "bold",
-                "fontSize": "13px",
+                "fontSize": "15px",
+                "fontWeight": "bold",
                 "padding": "10px 25px 10px 25px",
                 "transition": "all 0.05s ease-in-out",
               }
@@ -1154,16 +1151,14 @@ exports[`Index page should match snapshot 1`] = `
                         Object {
                           "background": "transparent",
                           "border": "2px solid #08ff07",
-                          "border-radius": "50px",
-                          "borderRadius": "0px",
+                          "borderRadius": "50px",
                           "boxShadow": "none",
                           "color": "#08ff07",
                           "cursor": "pointer",
                           "display": "inline-flex",
                           "flex": "0 0 auto",
-                          "font-size": "15px",
-                          "font-weight": "bold",
-                          "fontSize": "13px",
+                          "fontSize": "15px",
+                          "fontWeight": "bold",
                           "margin": "15px",
                           "padding": "10px 25px 10px 25px",
                           "transition": "all 0.05s ease-in-out",
@@ -1178,16 +1173,14 @@ exports[`Index page should match snapshot 1`] = `
                           Object {
                             "background": "transparent",
                             "border": "2px solid #08ff07",
-                            "border-radius": "50px",
-                            "borderRadius": "0px",
+                            "borderRadius": "50px",
                             "boxShadow": "none",
                             "color": "#08ff07",
                             "cursor": "pointer",
                             "display": "inline-flex",
                             "flex": "0 0 auto",
-                            "font-size": "15px",
-                            "font-weight": "bold",
-                            "fontSize": "13px",
+                            "fontSize": "15px",
+                            "fontWeight": "bold",
                             "margin": "15px",
                             "padding": "10px 25px 10px 25px",
                             "transition": "all 0.05s ease-in-out",
@@ -6556,6 +6549,248 @@ exports[`Index page should match snapshot 1`] = `
                           className="css-1qa1a31"
                         >
                           <Row
+                            gamejitsuCoaching="Very short"
+                            green={
+                              Array [
+                                false,
+                                false,
+                              ]
+                            }
+                            liveCoaching="High"
+                            nonLiveVideoReplayAnalisys="Very High"
+                            title="Time used to find a coach"
+                          >
+                            <Table__TableContent>
+                              <StyledComponent
+                                forwardedComponent={
+                                  Object {
+                                    "$$typeof": Symbol(react.forward_ref),
+                                    "attrs": Array [],
+                                    "componentStyle": ComponentStyle {
+                                      "componentId": "Table__TableContent-sc-161dbgp-4",
+                                      "isStatic": false,
+                                      "lastClassName": "hmuXCs",
+                                      "rules": Array [
+                                        "font-family:",
+                                        [Function],
+                                        ";width:100%;align-items:center;table-layout:fixed;margin:0 auto;@media ",
+                                        "(max-width: 575.98px)",
+                                        "{font-size:13px;}",
+                                      ],
+                                    },
+                                    "displayName": "Table__TableContent",
+                                    "foldedComponentIds": Array [],
+                                    "render": [Function],
+                                    "styledComponentId": "Table__TableContent-sc-161dbgp-4",
+                                    "target": "table",
+                                    "toString": [Function],
+                                    "warnTooManyClasses": [Function],
+                                    "withComponent": [Function],
+                                  }
+                                }
+                                forwardedRef={null}
+                              >
+                                <table
+                                  className="Table__TableContent-sc-161dbgp-4 hmuXCs"
+                                >
+                                  <Table__Tr>
+                                    <StyledComponent
+                                      forwardedComponent={
+                                        Object {
+                                          "$$typeof": Symbol(react.forward_ref),
+                                          "attrs": Array [],
+                                          "componentStyle": ComponentStyle {
+                                            "componentId": "Table__Tr-sc-161dbgp-7",
+                                            "isStatic": false,
+                                            "lastClassName": "hexXgT",
+                                            "rules": Array [
+                                              "&:nth-child(odd){background:",
+                                              [Function],
+                                              ";}&:nth-child(even){background:",
+                                              [Function],
+                                              ";}",
+                                            ],
+                                          },
+                                          "displayName": "Table__Tr",
+                                          "foldedComponentIds": Array [],
+                                          "render": [Function],
+                                          "styledComponentId": "Table__Tr-sc-161dbgp-7",
+                                          "target": "tr",
+                                          "toString": [Function],
+                                          "warnTooManyClasses": [Function],
+                                          "withComponent": [Function],
+                                        }
+                                      }
+                                      forwardedRef={null}
+                                    >
+                                      <tr
+                                        className="Table__Tr-sc-161dbgp-7 hexXgT"
+                                      >
+                                        <Table__CategoryTitle>
+                                          <StyledComponent
+                                            forwardedComponent={
+                                              Object {
+                                                "$$typeof": Symbol(react.forward_ref),
+                                                "attrs": Array [],
+                                                "componentStyle": ComponentStyle {
+                                                  "componentId": "Table__CategoryTitle-sc-161dbgp-0",
+                                                  "isStatic": false,
+                                                  "lastClassName": "hoilNf",
+                                                  "rules": Array [
+                                                    "color:white;font-weight:bold;background-color:",
+                                                    [Function],
+                                                    ";padding:10px;vertical-align:middle;",
+                                                  ],
+                                                },
+                                                "displayName": "Table__CategoryTitle",
+                                                "foldedComponentIds": Array [],
+                                                "render": [Function],
+                                                "styledComponentId": "Table__CategoryTitle-sc-161dbgp-0",
+                                                "target": "td",
+                                                "toString": [Function],
+                                                "warnTooManyClasses": [Function],
+                                                "withComponent": [Function],
+                                              }
+                                            }
+                                            forwardedRef={null}
+                                          >
+                                            <td
+                                              className="Table__CategoryTitle-sc-161dbgp-0 hoilNf"
+                                            >
+                                              Time used to find a coach
+                                            </td>
+                                          </StyledComponent>
+                                        </Table__CategoryTitle>
+                                        <Table__Element
+                                          green={false}
+                                        >
+                                          <StyledComponent
+                                            forwardedComponent={
+                                              Object {
+                                                "$$typeof": Symbol(react.forward_ref),
+                                                "attrs": Array [],
+                                                "componentStyle": ComponentStyle {
+                                                  "componentId": "Table__Element-sc-161dbgp-5",
+                                                  "isStatic": false,
+                                                  "lastClassName": "hZbjP",
+                                                  "rules": Array [
+                                                    "padding:10px;text-align:left;color:",
+                                                    [Function],
+                                                    ";height:50px;vertical-align:middle;",
+                                                  ],
+                                                },
+                                                "displayName": "Table__Element",
+                                                "foldedComponentIds": Array [],
+                                                "render": [Function],
+                                                "styledComponentId": "Table__Element-sc-161dbgp-5",
+                                                "target": "td",
+                                                "toString": [Function],
+                                                "warnTooManyClasses": [Function],
+                                                "withComponent": [Function],
+                                              }
+                                            }
+                                            forwardedRef={null}
+                                            green={false}
+                                          >
+                                            <td
+                                              className="Table__Element-sc-161dbgp-5 hZbjP"
+                                            >
+                                              High
+                                            </td>
+                                          </StyledComponent>
+                                        </Table__Element>
+                                        <Table__Element
+                                          green={false}
+                                        >
+                                          <StyledComponent
+                                            forwardedComponent={
+                                              Object {
+                                                "$$typeof": Symbol(react.forward_ref),
+                                                "attrs": Array [],
+                                                "componentStyle": ComponentStyle {
+                                                  "componentId": "Table__Element-sc-161dbgp-5",
+                                                  "isStatic": false,
+                                                  "lastClassName": "hZbjP",
+                                                  "rules": Array [
+                                                    "padding:10px;text-align:left;color:",
+                                                    [Function],
+                                                    ";height:50px;vertical-align:middle;",
+                                                  ],
+                                                },
+                                                "displayName": "Table__Element",
+                                                "foldedComponentIds": Array [],
+                                                "render": [Function],
+                                                "styledComponentId": "Table__Element-sc-161dbgp-5",
+                                                "target": "td",
+                                                "toString": [Function],
+                                                "warnTooManyClasses": [Function],
+                                                "withComponent": [Function],
+                                              }
+                                            }
+                                            forwardedRef={null}
+                                            green={false}
+                                          >
+                                            <td
+                                              className="Table__Element-sc-161dbgp-5 hZbjP"
+                                            >
+                                              Very High
+                                            </td>
+                                          </StyledComponent>
+                                        </Table__Element>
+                                        <Table__GamejitsuElement>
+                                          <StyledComponent
+                                            forwardedComponent={
+                                              Object {
+                                                "$$typeof": Symbol(react.forward_ref),
+                                                "attrs": Array [],
+                                                "componentStyle": ComponentStyle {
+                                                  "componentId": "Table__GamejitsuElement-sc-161dbgp-6",
+                                                  "isStatic": false,
+                                                  "lastClassName": "iCsxLA",
+                                                  "rules": Array [
+                                                    "padding:10px;text-align:left;height:50px;color:",
+                                                    [Function],
+                                                    ";font-weight:bold;background-color:",
+                                                    [Function],
+                                                    ";vertical-align:middle;",
+                                                  ],
+                                                },
+                                                "displayName": "Table__GamejitsuElement",
+                                                "foldedComponentIds": Array [],
+                                                "render": [Function],
+                                                "styledComponentId": "Table__GamejitsuElement-sc-161dbgp-6",
+                                                "target": "td",
+                                                "toString": [Function],
+                                                "warnTooManyClasses": [Function],
+                                                "withComponent": [Function],
+                                              }
+                                            }
+                                            forwardedRef={null}
+                                          >
+                                            <td
+                                              className="Table__GamejitsuElement-sc-161dbgp-6 iCsxLA"
+                                            >
+                                              Very short
+                                            </td>
+                                          </StyledComponent>
+                                        </Table__GamejitsuElement>
+                                      </tr>
+                                    </StyledComponent>
+                                  </Table__Tr>
+                                </table>
+                              </StyledComponent>
+                            </Table__TableContent>
+                          </Row>
+                        </div>
+                      </Styled(div)>
+                      <Styled(div)
+                        key="1"
+                        mt={2}
+                      >
+                        <div
+                          className="css-1qa1a31"
+                        >
+                          <Row
                             gamejitsuCoaching="Very High"
                             green={
                               Array [
@@ -6791,7 +7026,7 @@ exports[`Index page should match snapshot 1`] = `
                         </div>
                       </Styled(div)>
                       <Styled(div)
-                        key="1"
+                        key="2"
                         mt={2}
                       >
                         <div
@@ -7033,7 +7268,7 @@ exports[`Index page should match snapshot 1`] = `
                         </div>
                       </Styled(div)>
                       <Styled(div)
-                        key="2"
+                        key="3"
                         mt={2}
                       >
                         <div
@@ -7275,7 +7510,7 @@ exports[`Index page should match snapshot 1`] = `
                         </div>
                       </Styled(div)>
                       <Styled(div)
-                        key="3"
+                        key="4"
                         mt={2}
                       >
                         <div
@@ -7517,7 +7752,7 @@ exports[`Index page should match snapshot 1`] = `
                         </div>
                       </Styled(div)>
                       <Styled(div)
-                        key="4"
+                        key="5"
                         mt={2}
                       >
                         <div
@@ -7823,98 +8058,80 @@ exports[`Index page should match snapshot 1`] = `
                     className="css-18q58qp"
                   >
                     <ButtonNew
-                      key="login"
-                      onClick={[Function]}
+                      href="/our-coaches"
+                      key="ourcoaches"
                       text="OUR COACHES"
                       type="button"
                     >
-                      <ButtonNew__ButtonContent
-                        onClick={[Function]}
-                        type="button"
+                      <Link
+                        href="/our-coaches"
                       >
-                        <StyledComponent
-                          forwardedComponent={
-                            Object {
-                              "$$typeof": Symbol(react.forward_ref),
-                              "attrs": Array [],
-                              "componentStyle": ComponentStyle {
-                                "componentId": "ButtonNew__ButtonContent-sj5i96-0",
-                                "isStatic": false,
-                                "lastClassName": "fKofOx",
-                                "rules": Array [
-                                  "&.",
-                                  "bp3-button",
-                                  "{",
-                                  "display:inline-flex;border-radius:",
-                                  [Function],
-                                  ";border:2px solid ",
-                                  [Function],
-                                  ";color:",
-                                  [Function],
-                                  ";transition:all 0.05s ease-in-out;background:transparent;padding:10px 25px 10px 25px;font-size:15px;font-weight:bold;&:hover{background-image:linear-gradient( to bottom,",
-                                  [Function],
-                                  ",",
-                                  [Function],
-                                  " );color:",
-                                  [Function],
-                                  ";box-shadow:inset 0px -3px 0px 0px ",
-                                  [Function],
-                                  ";}&:active{background-image:linear-gradient( to bottom,",
-                                  [Function],
-                                  ",",
-                                  [Function],
-                                  " );box-shadow:inset 0px 3px 0px 0px ",
-                                  [Function],
-                                  ";padding-bottom:12px;margin-top:2px;}@media ",
-                                  "(max-width: 575.98px)",
-                                  "{font-size:13px;padding:10px 18px 10px 18px;}",
-                                  " outline:none;font-family:",
-                                  [Function],
-                                  ";&:active{outline:none;}}",
-                                ],
-                              },
-                              "displayName": "ButtonNew__ButtonContent",
-                              "foldedComponentIds": Array [],
-                              "render": [Function],
-                              "styledComponentId": "ButtonNew__ButtonContent-sj5i96-0",
-                              "target": [Function],
-                              "toString": [Function],
-                              "warnTooManyClasses": [Function],
-                              "withComponent": [Function],
-                            }
-                          }
-                          forwardedRef={null}
+                        <ButtonNew__LinkContent
                           onClick={[Function]}
-                          type="button"
+                          onMouseEnter={[Function]}
                         >
-                          <Blueprint3.Button
-                            className="ButtonNew__ButtonContent-sj5i96-0 fKofOx"
+                          <StyledComponent
+                            forwardedComponent={
+                              Object {
+                                "$$typeof": Symbol(react.forward_ref),
+                                "attrs": Array [],
+                                "componentStyle": ComponentStyle {
+                                  "componentId": "ButtonNew__LinkContent-sj5i96-1",
+                                  "isStatic": false,
+                                  "lastClassName": "hQrXnM",
+                                  "rules": Array [
+                                    "display:inline-flex;border-radius:",
+                                    [Function],
+                                    ";border:2px solid ",
+                                    [Function],
+                                    ";color:",
+                                    [Function],
+                                    ";transition:all 0.05s ease-in-out;background:transparent;padding:10px 25px 10px 25px;font-size:15px;font-weight:bold;&:hover{background-image:linear-gradient( to bottom,",
+                                    [Function],
+                                    ",",
+                                    [Function],
+                                    " );color:",
+                                    [Function],
+                                    ";box-shadow:inset 0px -3px 0px 0px ",
+                                    [Function],
+                                    ";}&:active{background-image:linear-gradient( to bottom,",
+                                    [Function],
+                                    ",",
+                                    [Function],
+                                    " );box-shadow:inset 0px 3px 0px 0px ",
+                                    [Function],
+                                    ";padding-bottom:12px;margin-top:2px;}@media ",
+                                    "(max-width: 575.98px)",
+                                    "{font-size:13px;padding:10px 18px 10px 18px;}",
+                                    " &:hover{text-decoration:none;color:",
+                                    [Function],
+                                    ";}",
+                                  ],
+                                },
+                                "displayName": "ButtonNew__LinkContent",
+                                "foldedComponentIds": Array [],
+                                "render": [Function],
+                                "styledComponentId": "ButtonNew__LinkContent-sj5i96-1",
+                                "target": "a",
+                                "toString": [Function],
+                                "warnTooManyClasses": [Function],
+                                "withComponent": [Function],
+                              }
+                            }
+                            forwardedRef={[Function]}
                             onClick={[Function]}
-                            type="button"
+                            onMouseEnter={[Function]}
                           >
-                            <button
-                              className="bp3-button ButtonNew__ButtonContent-sj5i96-0 fKofOx"
+                            <a
+                              className="ButtonNew__LinkContent-sj5i96-1 hQrXnM"
                               onClick={[Function]}
-                              onKeyDown={[Function]}
-                              onKeyUp={[Function]}
-                              type="button"
+                              onMouseEnter={[Function]}
                             >
-                              <Blueprint3.Icon
-                                key="leftIcon"
-                              />
-                              <span
-                                className="bp3-button-text"
-                                key="text"
-                              >
-                                OUR COACHES
-                              </span>
-                              <Blueprint3.Icon
-                                key="rightIcon"
-                              />
-                            </button>
-                          </Blueprint3.Button>
-                        </StyledComponent>
-                      </ButtonNew__ButtonContent>
+                              OUR COACHES
+                            </a>
+                          </StyledComponent>
+                        </ButtonNew__LinkContent>
+                      </Link>
                     </ButtonNew>
                   </div>
                 </Styled(div)>

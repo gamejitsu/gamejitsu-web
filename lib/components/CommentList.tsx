@@ -150,7 +150,11 @@ const CommentList: FunctionComponent<Props> = ({
                     <Box pt={3}>
                       <ListItem comment={comment} selectedComment={selectedComment}>
                         <a onClick={onSelectListItem.bind(null, comment)}>
-                          {isCollapsed ? `${comment.text.substring(0, 90)}...` : comment.text}
+                          {isCollapsed
+                            ? `${comment.text.substring(0, 90)} ${
+                                comment.text.length < 90 ? `` : `...`
+                              }`
+                            : comment.text}
                         </a>
                       </ListItem>
                     </Box>

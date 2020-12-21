@@ -13,35 +13,39 @@ const goToReviewPage = (id?: string) => {
 }
 
 const ReviewCard: FunctionComponent<Props> = ({ review }) => (
-  <Box width="1200px">
+  <Box width="100%">
     <Card>
-      <Flex>
-        <Box p={3} mr="auto">
+      <Flex justifyContent="space-between">
+        <Box p={3}>
           <Text p={2}>Skill Level: {review?.reviewRequest.skillLevel}</Text>
           <Text p={2}>Comment: {review?.reviewRequest.comment}</Text>
         </Box>
-        <Box p={3} mr="auto">
-          <div>
-            {review?.replay.playersDire.map((player, index) => {
-              const key = player.steamId ? player.steamId : index.toString()
-              return <HeroImageSmall key={key} player={player} />
-            })}
-          </div>
-          <div>
-            {review?.replay.playersRadiant.map((player, index) => {
-              const key = player.steamId ? player.steamId : index.toString()
-              return <HeroImageSmall key={key} player={player} />
-            })}
-          </div>
-        </Box>
-        <Box alignSelf="center" pr={3}>
-          <Button
-            onClick={() => {
-              goToReviewPage(review?.id)
-            }}
-            text="See completed review"
-          />
-        </Box>
+        <Flex p={3} alignItems="center">
+          <Box>
+            <div>
+              {review?.replay.playersDire.map((player, index) => {
+                const key = player.steamId ? player.steamId : index.toString()
+                return <HeroImageSmall key={key} player={player} />
+              })}
+            </div>
+            <div>
+              {review?.replay.playersRadiant.map((player, index) => {
+                const key = player.steamId ? player.steamId : index.toString()
+                return <HeroImageSmall key={key} player={player} />
+              })}
+            </div>
+          </Box>
+        </Flex>
+        <Flex p={3} alignItems="center">
+          <Box>
+            <Button
+              onClick={() => {
+                goToReviewPage(review?.id)
+              }}
+              text="See Completed Review"
+            />
+          </Box>
+        </Flex>
       </Flex>
     </Card>
   </Box>

@@ -15,8 +15,6 @@ import { object, string } from "yup"
 
 import { Button } from "gamejitsu/components"
 import { Comment } from "gamejitsu/api/types/comment"
-import { backgrounds } from "polished"
-import { withTheme } from "styled-components"
 
 interface Props {
   comment: Comment | null
