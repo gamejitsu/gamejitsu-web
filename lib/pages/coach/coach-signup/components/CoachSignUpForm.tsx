@@ -19,7 +19,7 @@ const initialValues = {
   lastName: "",
   email: "",
   photoUrl: "",
-  skillLevel: "medium"
+  skillLevel: "high"
 }
 
 type Values = typeof initialValues
@@ -36,7 +36,7 @@ const onSubmitCoach = async (values: Values, token: Promise<string>): Promise<vo
   }
   await createModel(
     CoachResource,
-    { email, firstName, lastName, photoUrl, skillLevel },
+    { email, firstName, lastName, photoUrl, skillLevel, isApproved: false },
     undefined,
     { params: { "g-recaptcha-response": await token } }
   )

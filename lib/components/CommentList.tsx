@@ -12,7 +12,7 @@ interface Props {
   comments: Comment[]
   selectedComment: Comment | null
   onSelect: (comment: Comment | null) => void
-  onSaveReview: () => void
+  onSaveReview?: () => void
 }
 
 interface ListItemProps {
@@ -90,8 +90,10 @@ const CommentList: FunctionComponent<Props> = ({
     setIsSaveReviewOpen(false)
   }
   const handleSaveReviewClose = () => {
-    onSaveReview()
-    setIsSaveReviewOpen(false)
+    if (onSaveReview) {
+      onSaveReview()
+      setIsSaveReviewOpen(false)
+    }
   }
   const handleSaveReviewOpen = () => {
     setIsSaveReviewOpen(true)
@@ -120,11 +122,15 @@ const CommentList: FunctionComponent<Props> = ({
             <Flex>
               <CommentListTitle>COMMENTS ADDED BY COACH</CommentListTitle>
             </Flex>
-            <Flex width="50%" justifyContent="flex-end" alignItems="center">
-              <Box>
-                <Button text="Save" type="button" onClick={handleSaveReviewOpen} />
-              </Box>
-            </Flex>
+            {onSaveReview ? (
+              <Flex width="50%" justifyContent="flex-end" alignItems="center">
+                <Box>
+                  <Button text="Save" type="button" onClick={handleSaveReviewOpen} />
+                </Box>
+              </Flex>
+            ) : (
+              <div />
+            )}
           </Flex>
         </Header>
         <Box>
@@ -150,7 +156,11 @@ const CommentList: FunctionComponent<Props> = ({
                     <Box pt={3}>
                       <ListItem comment={comment} selectedComment={selectedComment}>
                         <a onClick={onSelectListItem.bind(null, comment)}>
-                          {isCollapsed ? `${comment.text.substring(0, 90)}...` : comment.text}
+                          {isCollapsed
+                            ? `${comment.text.substring(0, 90)} ${
+                                comment.text.length < 90 ? `` : `...`
+                              }`
+                            : comment.text}
                         </a>
                       </ListItem>
                     </Box>
@@ -161,32 +171,38 @@ const CommentList: FunctionComponent<Props> = ({
           </ul>
         </Box>
       </Flex>
-      <Dialog
-        className={Classes.DIALOG}
-        icon="info-sign"
-        onClose={handleCloseNoSaveReview}
-        title="Save review confirmation"
-        autoFocus={true}
-        canEscapeKeyClose={true}
-        canOutsideClickClose={true}
-        enforceFocus={true}
-        isOpen={isSaveReviewOpen}
-        usePortal={true}
-      >
-        <div className={Classes.DIALOG_BODY}>
-          <p>Are you sure you want to save the review? Please click SAVE to approve the saving.</p>
-        </div>
-        <div className={Classes.DIALOG_FOOTER}>
-          <div className={Classes.DIALOG_FOOTER_ACTIONS}>
-            <Tooltip content="This button is hooked up to close the dialog.">
-              <Button text="CLOSE" onClick={handleCloseNoSaveReview} />
-            </Tooltip>
-            <Tooltip content="This button is hooked up to save the review and close the dialog.">
-              <Button text="SAVE REVIEW" onClick={handleSaveReviewClose} />
-            </Tooltip>
+      {onSaveReview ? (
+        <Dialog
+          className={Classes.DIALOG}
+          icon="info-sign"
+          onClose={handleCloseNoSaveReview}
+          title="Save review confirmation"
+          autoFocus={true}
+          canEscapeKeyClose={true}
+          canOutsideClickClose={true}
+          enforceFocus={true}
+          isOpen={isSaveReviewOpen}
+          usePortal={true}
+        >
+          <div className={Classes.DIALOG_BODY}>
+            <p>
+              Are you sure you want to save the review? Please click SAVE to approve the saving.
+            </p>
           </div>
-        </div>
-      </Dialog>
+          <div className={Classes.DIALOG_FOOTER}>
+            <div className={Classes.DIALOG_FOOTER_ACTIONS}>
+              <Tooltip content="This button is hooked up to close the dialog.">
+                <Button text="CLOSE" onClick={handleCloseNoSaveReview} />
+              </Tooltip>
+              <Tooltip content="This button is hooked up to save the review and close the dialog.">
+                <Button text="SAVE REVIEW" onClick={handleSaveReviewClose} />
+              </Tooltip>
+            </div>
+          </div>
+        </Dialog>
+      ) : (
+        <div />
+      )}
     </>
   )
 }

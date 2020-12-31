@@ -10,7 +10,17 @@ const CoachSignUpPage: NextPage = () => {
   const user: any = useContext(UserContext)
   return (
     <Layout title="Coach Sign Up">
-      {user.coachId ? (
+      {console.log(user)}
+      {user.coach?.isApproved ? (
+        <Callout title="Coach registration successfull" intent="success">
+          You can register only once to be a coach.
+          <br />
+          If you are experiencing issues, send an email to support@gamejitsu.gg
+          <br />
+          <br />
+          You status of approval is: approved.
+        </Callout>
+      ) : user.coachId ? (
         <Callout title="Coach registration under examination" intent="warning">
           You can register only once to be a coach. We process the applications in 24h.
           <br />

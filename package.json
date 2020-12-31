@@ -10,7 +10,8 @@
     "build": "next build",
     "start": "next start",
     "test": "npm run prettier -- --check && jest",
-    "generate-resources": "ts-node-script ./scripts/generate-resources.ts && prettier --write \"lib/api/{resources,types}/**/*.ts\""
+    "generate-resources": "ts-node-script ./scripts/generate-resources.ts && prettier --write \"lib/api/{resources,types}/**/*.ts\"",
+    "ngrok": "ngrok http -hostname=gamejitsu-dev.us.ngrok.io 4000"
   },
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.7.5",

@@ -1,23 +1,14 @@
 import { Flex, Box } from "rebass"
-import { NextPageContext, NextPage } from "next"
 import { Position, Toaster, Intent } from "@blueprintjs/core"
 import React, { SyntheticEvent, useRef, useState, useEffect } from "react"
 import styled from "styled-components"
 
 import { Comment } from "gamejitsu/api/types/comment"
-import { CommentBar, CommentList, CommentFormNew } from "."
-import { LayoutDemo } from "gamejitsu/components"
+import { LayoutDemo, CommentBar, CommentList, CommentFormNew } from "gamejitsu/components"
 import { Review } from "gamejitsu/api/resources/review"
 import { useWarnIfUnsavedChanges } from "./RefreshPageWarner"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { demoComments } from "../demo-comments/demo-comments"
-
-import { breakpointDown } from "../../../utils/mediaQueryDevices"
-import { Container } from "gamejitsu/components/UtilsComponents"
-
-interface Props {
-  review: Review
-}
 
 const VideoContainer = styled(Box)`
   width: 100%;
@@ -121,11 +112,6 @@ const DemoPage: AuthenticatedComponent = () => {
       setVideoDuration(0)
     }
   })
-
-  const ContentWrapper = styled.div`
-    width: 100%;
-    display: flex;
-  `
 
   return (
     <LayoutDemo title="Coach Demo">

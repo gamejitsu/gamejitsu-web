@@ -7,13 +7,13 @@ import { LayoutWithMenu, Title } from "gamejitsu/components"
 import { UserContext } from "gamejitsu/contexts"
 import UserPhotoSVG from "../../../../../svgs/user-photo.svg"
 
-const EmptyReviews = styled(Flex)`
-  witdh: 100%;
+const SettingsCard = styled(Flex)`
   background-color: ${(props) => props.theme.lightBackgroundColor};
-  font-weight: 40px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  opacity: 0.9;
+  border: 1px solid ${(props) => props.theme.activeColor};
 `
 
 const getCurrentUser = () => useContext(UserContext)
@@ -23,23 +23,27 @@ const CoachSettings: NextPage = () => {
   const coach = user?.coach
   return (
     <LayoutWithMenu title="Settings">
-      <Title text="SETTINGS" />
-      <EmptyReviews height="100%">
-        <Box>
-          {coach.photoUrl != null ? (
-            <img src={coach.photoUrl} />
-          ) : (
-            <UserPhotoSVG width="200" height="100" />
-          )}
-        </Box>
-        <Box>Coach: {user?.username}</Box>
-        <Box>Public Profile: {user?.hasPublicProfile.toString()}</Box>
-        <Box>First name: {coach.firstName}</Box>
-        <Box>Last name: {coach.lastName}</Box>
-        <Box>Skill Level: {coach.skillLevel}</Box>
-        <Box>Email: {coach.email}</Box>
-        <Box>Approved: {coach.isApproved.toString()}</Box>
-      </EmptyReviews>
+      <Flex width="100%" flexDirection="column">
+        <Title text="SETTINGS" />
+        <Flex>
+          <SettingsCard py={5} width="100%">
+            <Box pb={4}>
+              {coach.photoUrl != null ? (
+                <img src={coach.photoUrl} />
+              ) : (
+                <UserPhotoSVG width="200" height="100" />
+              )}
+            </Box>
+            <Box py={2}>Coach: {user?.username}</Box>
+            <Box py={2}>Public Profile: {user?.hasPublicProfile.toString()}</Box>
+            <Box py={2}>First name: {coach.firstName}</Box>
+            <Box py={2}>Last name: {coach.lastName}</Box>
+            <Box py={2}>Skill Level: {coach.skillLevel}</Box>
+            <Box py={2}>Email: {coach.email}</Box>
+            <Box py={2}>Approved: {coach.isApproved.toString()}</Box>
+          </SettingsCard>
+        </Flex>
+      </Flex>
     </LayoutWithMenu>
   )
 }

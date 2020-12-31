@@ -1,5 +1,12 @@
 export const masterSchemaData = [
   {
+    title: "Time used to find a coach",
+    liveCoaching: "High",
+    nonLiveVideoReplayAnalisys: "Very High",
+    gamejitsuCoaching: "Very short",
+    green: [false, false]
+  },
+  {
     title: "Improvment after multiple sessions",
     liveCoaching: "High",
     nonLiveVideoReplayAnalisys: "Very High",

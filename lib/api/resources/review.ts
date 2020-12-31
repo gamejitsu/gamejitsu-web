@@ -71,13 +71,7 @@ export default buildResource({
           .strict({
             included: t.union([
               t.array(
-                t.union([
-                  reviewRequestDecoder,
-                  replayDecoder,
-                  userDecoder,
-                  coachDecoder,
-                  coachDecoder
-                ])
+                t.union([reviewRequestDecoder, replayDecoder, userDecoder, coachDecoder, decoder])
               ),
               t.undefined
             ])
@@ -107,6 +101,11 @@ export default buildResource({
         coach: (value.included || []).reduce(
           (a, r) => (r.type === "coach" ? [...a, coachTransformer(r)] : a),
           [] as Coach[]
+        ),
+
+        review: (value.included || []).reduce(
+          (a, r) => (r.type === "review" ? [...a, transformer(r)] : a),
+          [] as Review[]
         )
       }
     })

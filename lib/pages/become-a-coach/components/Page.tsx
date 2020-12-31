@@ -1,6 +1,6 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import styled from "styled-components"
-import { Flex, Box } from "rebass"
+import { Box } from "rebass"
 import Head from "next/head"
 import { Callout } from "@blueprintjs/core"
 import queryString from "query-string"
@@ -33,13 +33,18 @@ const Page: AuthenticatedComponent = () => {
   const user = getCurrentUser()
   const urlBase = "https://steamcommunity.com/openid/login"
 
+  let redirectLink = ""
+  useEffect(() => {
+    redirectLink = window.origin + "/auth?redirect=/coach-signup"
+  })
+
   const urlQuery = {
     "openid.claimed_id": "http://specs.openid.net/auth/2.0/identifier_select",
     "openid.identity": "http://specs.openid.net/auth/2.0/identifier_select",
     "openid.mode": "checkid_setup",
     "openid.ns": "http://specs.openid.net/auth/2.0",
-    "openid.realm": window.origin + "/auth?redirect=/coach-signup",
-    "openid.return_to": window.origin + "/auth?redirect=/coach-signup"
+    "openid.realm": redirectLink,
+    "openid.return_to": redirectLink
   }
 
   const stringified = queryString.stringify(urlQuery)
@@ -93,7 +98,7 @@ const Page: AuthenticatedComponent = () => {
           </ParagraphText>
           <ParagraphTitle>Required MMR</ParagraphTitle>
           <ParagraphText>
-            If you have an MMR greater or equal than 4k, you are entitle to become a Gamejitsu
+            If you have an MMR greater or equal than 5k, you are entitle to become a Gamejitsu
             Coach.
           </ParagraphText>
           <ParagraphTitle>Skill level</ParagraphTitle>
@@ -101,13 +106,13 @@ const Page: AuthenticatedComponent = () => {
             You will be able to pickup reviews based on you skill level:
             <br />
             <br />
-            4k MMR: medium
+            5k MMR: high
             <br />
-            5k MMR: high, medium
+            6k MMR: very high, high
             <br />
-            6k MMR: very high, high, medium
+            7k MMR: pro, very high, high
             <br />
-            7k MMR: pro, very high, high, medium
+            8k MMR: hero, pro, very high, high
           </ParagraphText>
           <ParagraphTitle>Sign Up</ParagraphTitle>
           <ParagraphText>

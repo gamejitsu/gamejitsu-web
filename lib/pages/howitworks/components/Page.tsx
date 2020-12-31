@@ -1,5 +1,5 @@
 import React from "react"
-import { Flex, Box } from "rebass"
+import { Box } from "rebass"
 import Head from "next/head"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import {
@@ -8,7 +8,8 @@ import {
   SecondaryTitle,
   Spacer,
   ParagraphText,
-  ParagraphTitle
+  ParagraphTitle,
+  FlowImage
 } from "../../../components/UtilsComponents"
 import { Footer, Navbar } from "gamejitsu/components"
 
@@ -30,6 +31,7 @@ const Page: AuthenticatedComponent = () => (
         <ParagraphText>
           Select your game: [ Dota 2 ] [ CS:GO ] [ League of Legends ] [ Fortnite ]
         </ParagraphText>
+        <FlowImage url="/images/user-dashboard.png" imageHeight="61" />
         <ParagraphTitle>Why Gamejitsu?</ParagraphTitle>
         <ParagraphText>
           Personalized coaching, for you and you only. Watching gameplays of professional players
@@ -53,6 +55,7 @@ const Page: AuthenticatedComponent = () => (
           Think of it as hiring a strategic advisor in your gaming career.
         </ParagraphText>
         <ParagraphTitle>Plan your game strategy with Gamejitsu.</ParagraphTitle>
+        <FlowImage url="/images/coach-dashboard.png" imageHeight="61" />
       </Box>
     </Box>
     <Spacer padding={80} />

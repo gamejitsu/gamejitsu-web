@@ -45,7 +45,7 @@ const LeftMenu = styled(Flex)`
   background-color: ${(props) => props.theme.lightBackgroundColor};
   min-height: 90vh;
 
-  @media ${breakpointDown.sm} {
+  @media ${breakpointDown.lg} {
     justify-content: center;
     padding-top: 0;
     width: 100%;
@@ -59,15 +59,12 @@ const LeftMenu = styled(Flex)`
 
 const Container = styled(Flex)`
   flex: 1;
-  padding: 64px 64px;
+  flex-wrap: wrap;
+  padding: 32px 32px;
   background-image: url("/images/background-hero-unit.jpg");
   background-position: center;
   background-position: top;
   background-repeat: no-repeat;
-
-  @media ${breakpointDown.xl} {
-    padding: 64px 32px;
-  }
 
   @media ${breakpointDown.md} {
     padding: 32px 16px;
@@ -93,7 +90,7 @@ const LeftMenuLinkContent = styled(LinkLeftMenu)<LeftMenuLinkContentProps>`
     props.isActive ? transparentize(0.5, props.theme.textColor) : "inherit"};
   border-right: ${(props) => (props.isActive ? `3px solid ${props.theme.primaryColor}` : "none")};
 
-  @media ${breakpointDown.sm} {
+  @media ${breakpointDown.lg} {
     justify-content: center;
   }
 `
@@ -107,7 +104,7 @@ const MenuFooterParent = styled(Box)`
   bottom: 1rem;
   width: 100%;
 
-  @media ${breakpointDown.sm} {
+  @media ${breakpointDown.lg} {
     display: none;
   }
 `
@@ -117,14 +114,8 @@ const MenuFooter = styled(Flex)`
   background-color: ${(props) => props.theme.lightBackgroundColor};
 `
 
-const MenuLinkText = styled.div`
-  @media ${breakpointDown.sm} {
-    display: none;
-  }
-`
-
 const MenuElementWrapper = styled.div`
-  @media ${breakpointDown.sm} {
+  @media ${breakpointDown.lg} {
     width: 33.3%;
   }
 `
@@ -133,11 +124,17 @@ const InnerWrapper = styled.div`
   top: 70px;
   display: block;
 
-  @media ${breakpointDown.sm} {
+  @media ${breakpointDown.lg} {
     position: relative;
     display: flex;
     top: 0;
     width: 100%;
+  }
+`
+
+const MenuLinkText = styled.div`
+  @media ${breakpointDown.md} {
+    display: none;
   }
 `
 

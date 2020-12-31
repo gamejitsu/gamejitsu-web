@@ -87,6 +87,12 @@ export async function makeRequest<T, U>(
     })
   } catch (error) {
     if (error.response) {
+      //Handle custom errors (like do not create more than one review at a time).
+      if (error.response.data.custom_error) {
+        throw new Error(error.response.data.custom_error.message)
+      }
+
+      console.log("after first if")
       if (error.response.status >= 200 && error.response.status < 300) {
         throw new Error(`Unexpected status: ${error.response.status}`)
       }

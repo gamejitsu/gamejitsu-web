@@ -1,29 +1,32 @@
 import { Flex, Box } from "rebass"
 import { formatDistanceToNow } from "date-fns"
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3"
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, useState } from "react"
 import Router from "next/router"
 import styled from "styled-components"
-
 import { Button, HeroImage } from "gamejitsu/components"
 import { createModel } from "gamejitsu/api"
 import { DecoratedReviewRequest } from "gamejitsu/models/review-request"
 import ReviewResource from "gamejitsu/api/resources/review"
+import { Classes, Dialog, Tooltip } from "@blueprintjs/core"
+import { breakpointDown } from "../../../../utils/mediaQueryDevices"
 
 interface Props {
   reviewRequest: DecoratedReviewRequest
 }
 
 const Container = styled(Box)`
+  width: 49%;
   border: 1px solid ${(props) => props.theme.activeColor};
   position: relative;
   align-items: center;
   justify-content: center;
-  display: grid | inline-grid;
-  grid-template-rows: ... | ...;
   background: ${(props) => props.theme.lightBackgroundColor};
-  z-index: 1;
   opacity: 0.9;
+
+  @media ${breakpointDown.lg} {
+    width: 100%;
+  }
 `
 
 const HorizontalLine = styled.div`
@@ -38,30 +41,29 @@ const Header = styled(Flex)`
   vertical-align: middle;
 `
 
-const Title = styled.h1`
-  font-weight: bold;
-  color: white;
-`
-
 const GameInfo = styled.h3`
   color: ${(props) => props.theme.primaryColor};
 `
 
-const acceptReviewRequest = async (reviewRequestId: string, token: Promise<string>) => {
-  const response = await createModel(
-    ReviewResource,
-    { requestId: reviewRequestId, coachId: "" },
-    undefined,
-    { params: { "g-recaptcha-response": await token } }
-  )
-  // TODO Maybe add confirm?
-  Router.push("/coach-dashboard")
-}
-
 const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
-  const { executeRecaptcha } = useGoogleReCaptcha()
-  let token: Promise<string>
-  if (executeRecaptcha) token = executeRecaptcha("review_request_page")
+  const [acceptReviewIsOpen, setAcceptReviewIsOpen] = useState(false)
+  const [pendingReviewWarning, setPendingReviewWarning] = useState(false)
+
+  const acceptReviewRequest = async (reviewRequestId: string) => {
+    try {
+      setAcceptReviewIsOpen(false)
+      await createModel(ReviewResource, { requestId: reviewRequestId, coachId: "" }, undefined)
+    } catch (error) {
+      if (error.message === "some_reviews_are_not_published") {
+        setPendingReviewWarning(true)
+        console.log(error)
+      } else {
+        throw Error(error)
+      }
+    }
+    Router.push("/coach-dashboard")
+  }
+
   const players = reviewRequest.replay.playersDire.concat(reviewRequest.replay.playersRadiant)
   const playedHeroUser = reviewRequest.user
   const currentPlayer = players.find((player) => {
@@ -73,8 +75,8 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
   }
 
   return (
-    <Box width="50%" mb={50} px={30}>
-      <Container width="100%" height="100%" mb={2}>
+    <>
+      <Container my={2}>
         <Header>
           <Box mt={3} ml={3} height="30px">
             Played{" "}
@@ -113,28 +115,75 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
                   Played with {currentPlayer.heroName}
                 </Box>
                 <Box mt={4}>
-                  <Button
-                    onClick={() => {
-                      acceptReviewRequest(reviewRequest.id, token)
-                    }}
-                    text="ACCEPT REVIEW"
-                  />
+                  <Button onClick={() => setAcceptReviewIsOpen(true)} text="ACCEPT REVIEW" />
                 </Box>
               </Flex>
             </Box>
           </Flex>
         </Box>
       </Container>
-    </Box>
+
+      <Dialog
+        className={Classes.DIALOG}
+        icon="info-sign"
+        isOpen={acceptReviewIsOpen}
+        onClose={() => setAcceptReviewIsOpen(false)}
+        title="Are you sure?"
+        autoFocus={true}
+        canEscapeKeyClose={true}
+        canOutsideClickClose={true}
+        enforceFocus={true}
+        usePortal={true}
+      >
+        <div className={Classes.DIALOG_BODY}>
+          <p>s</p>
+        </div>
+        <div className={Classes.DIALOG_FOOTER}>
+          <div className={Classes.DIALOG_FOOTER_ACTIONS}>
+            <Tooltip content="This button is hooked up to close the dialog.">
+              <Button text="Cancel" onClick={() => setAcceptReviewIsOpen(false)} />
+            </Tooltip>
+            <Tooltip content="This button is hooked up to accept the review.">
+              <Button
+                text="Accept review"
+                onClick={() => {
+                  acceptReviewRequest(reviewRequest.id)
+                }}
+              />
+            </Tooltip>
+          </div>
+        </div>
+      </Dialog>
+
+      <Dialog
+        className={Classes.DIALOG}
+        icon="warning-sign"
+        isOpen={pendingReviewWarning}
+        onClose={() => setPendingReviewWarning(false)}
+        title="Warning"
+        autoFocus={true}
+        canEscapeKeyClose={true}
+        canOutsideClickClose={true}
+        enforceFocus={true}
+        usePortal={true}
+      >
+        <div className={Classes.DIALOG_BODY}>
+          <p>You can only accept one review at time.</p>
+        </div>
+        <div className={Classes.DIALOG_FOOTER}>
+          <div className={Classes.DIALOG_FOOTER_ACTIONS}>
+            <Tooltip content="">
+              <Button text="Ok" onClick={() => setPendingReviewWarning(false)} />
+            </Tooltip>
+          </div>
+        </div>
+      </Dialog>
+    </>
   )
 }
 
 const GoogleRecaptchaReviewRequestCard: FunctionComponent<Props> = (props) => {
-  return (
-    <GoogleReCaptchaProvider reCaptchaKey={process.env.GOOGLE_RECAPTCHA_PUBLIC_KEY}>
-      <ReviewRequestCard {...props} />
-    </GoogleReCaptchaProvider>
-  )
+  return <ReviewRequestCard {...props} />
 }
 
 export default GoogleRecaptchaReviewRequestCard
