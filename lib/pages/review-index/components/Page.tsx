@@ -16,15 +16,13 @@ const Page: NextPage<Props> = ({ reviews }) => (
   <LayoutWithMenuUser title="Reviews">
     <Flex width="100%" flexDirection="column">
       <Title text="COMPLETED REVIEWS" />
-      <Flex>
-        {reviews.length === 0 ? (
-          <EmptyCard text="No reviews available" />
-        ) : (
-          reviews.map((review) => {
-            if (review !== undefined) return <ReviewCard key={review.id} review={review} />
-          })
-        )}
-      </Flex>
+      {reviews.length === 0 ? (
+        <EmptyCard text="No reviews available" />
+      ) : (
+        reviews.map((review) => {
+          if (review !== undefined) return <ReviewCard key={review.id} review={review} />
+        })
+      )}
     </Flex>
   </LayoutWithMenuUser>
 )

@@ -15,6 +15,7 @@ import { listModels, findModel } from "gamejitsu/api"
 import { decorateReviewRequests, DecoratedReviewRequest } from "gamejitsu/models/review-request"
 import { UserContext } from "gamejitsu/contexts"
 import { ReviewRequestCard, ReplayCardNew } from "."
+import { DecoratedReview } from "gamejitsu/models/review"
 
 interface Props {
   user: User
@@ -34,6 +35,29 @@ const getCurrentUser = async () => {
 
 const getReviewRequests = async (ctx: NextPageContext) => {
   return await listModels(ReviewRequestResource, ctx)
+}
+
+const areAllReviewsPublished = (reviews: DecoratedReview[]) => {
+  let areAllPublished = true
+  console.log("reviews:", reviews)
+  reviews.map((review) => {
+    if (review && !review.isPublished) {
+      areAllPublished = false
+    }
+  })
+  return areAllPublished
+}
+
+const areAllReviewRequestsPublished = (reviewRequests: (DecoratedReviewRequest | undefined)[]) => {
+  if (reviewRequests) {
+    reviewRequests.map((reviewRequest) => {
+      if (reviewRequest && reviewRequest.status !== "published") {
+        return false
+      }
+    })
+    return true
+  }
+  return true
 }
 
 const Dashboard: FunctionComponent<Props> = (props) => {
@@ -106,7 +130,8 @@ const Dashboard: FunctionComponent<Props> = (props) => {
         {user.isSyncingReplays ? <Spinner /> : <div></div>}
         <Flex width="100%" flexDirection="column">
           <Title text="REQUESTED REVIEWS" />
-          {props.reviewRequests.length === 0 ? (
+          {props.reviewRequests.length === 0 ||
+          areAllReviewRequestsPublished(props.reviewRequests) ? (
             <EmptyCard text="No request reviews to show" />
           ) : (
             props.reviewRequests.map((reviewRequest) => {
