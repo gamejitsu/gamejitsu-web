@@ -52,11 +52,11 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
   const acceptReviewRequest = async (reviewRequestId: string) => {
     try {
       setAcceptReviewIsOpen(false)
-      await createModel(ReviewResource, { requestId: reviewRequestId, coachId: "" }, undefined)  
+      await createModel(ReviewResource, { requestId: reviewRequestId, coachId: "" }, undefined)
     } catch (error) {
       if (error.message === "some_reviews_are_not_published") {
         setPendingReviewWarning(true)
-        console.log( error)
+        console.log(error)
       } else {
         throw Error(error)
       }
@@ -76,55 +76,53 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
 
   return (
     <>
-    <Container my={2}>
-      <Header>
-        <Box mt={3} ml={3} height="30px">
-          Played {formatDistanceToNow(new Date(reviewRequest.replay.playedAt), { addSuffix: true })}
-        </Box>
-        <Box mt={3} ml="auto" mr={3} height="30px">
-          <GameInfo>Game won</GameInfo>
-        </Box>
-      </Header>
-      <HorizontalLine />
-      <Box px={3} pb={1} mt={4} mb={3}>
-        <Flex alignItems="center" justifyContent="center">
-          <Box>
-            <Flex>
-              {reviewRequest.replay.playersDire.map((player, index) => {
-                const key = player.steamId ? player.steamId : index.toString()
-                return (
-                  <Box mr={3} key={key}>
-                    <HeroImage player={player} />
-                  </Box>
-                )
-              })}
-            </Flex>
-            <Flex>
-              {reviewRequest.replay.playersRadiant.map((player, index) => {
-                const key = player.steamId ? player.steamId : index.toString()
-                return (
-                  <Box mt={2} mr={3} key={key}>
-                    <HeroImage player={player} />
-                  </Box>
-                )
-              })}
-            </Flex>
-            <Flex alignItems="center">
-              <Box mr="auto" mt={4}>
-                Played with {currentPlayer.heroName}
-              </Box>
-              <Box mt={4}>
-                <Button
-                  onClick={() => setAcceptReviewIsOpen(true)}
-                  text="ACCEPT REVIEW"
-                />
-              </Box>
-            </Flex>
+      <Container my={2}>
+        <Header>
+          <Box mt={3} ml={3} height="30px">
+            Played{" "}
+            {formatDistanceToNow(new Date(reviewRequest.replay.playedAt), { addSuffix: true })}
           </Box>
-        </Flex>
-      </Box>
-    </Container>
-    
+          <Box mt={3} ml="auto" mr={3} height="30px">
+            <GameInfo>Game won</GameInfo>
+          </Box>
+        </Header>
+        <HorizontalLine />
+        <Box px={3} pb={1} mt={4} mb={3}>
+          <Flex alignItems="center" justifyContent="center">
+            <Box>
+              <Flex>
+                {reviewRequest.replay.playersDire.map((player, index) => {
+                  const key = player.steamId ? player.steamId : index.toString()
+                  return (
+                    <Box mr={3} key={key}>
+                      <HeroImage player={player} />
+                    </Box>
+                  )
+                })}
+              </Flex>
+              <Flex>
+                {reviewRequest.replay.playersRadiant.map((player, index) => {
+                  const key = player.steamId ? player.steamId : index.toString()
+                  return (
+                    <Box mt={2} mr={3} key={key}>
+                      <HeroImage player={player} />
+                    </Box>
+                  )
+                })}
+              </Flex>
+              <Flex alignItems="center">
+                <Box mr="auto" mt={4}>
+                  Played with {currentPlayer.heroName}
+                </Box>
+                <Box mt={4}>
+                  <Button onClick={() => setAcceptReviewIsOpen(true)} text="ACCEPT REVIEW" />
+                </Box>
+              </Flex>
+            </Box>
+          </Flex>
+        </Box>
+      </Container>
+
       <Dialog
         className={Classes.DIALOG}
         icon="info-sign"
@@ -146,13 +144,18 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
               <Button text="Cancel" onClick={() => setAcceptReviewIsOpen(false)} />
             </Tooltip>
             <Tooltip content="This button is hooked up to accept the review.">
-              <Button text="Accept review" onClick={() => {acceptReviewRequest(reviewRequest.id)}} />
+              <Button
+                text="Accept review"
+                onClick={() => {
+                  acceptReviewRequest(reviewRequest.id)
+                }}
+              />
             </Tooltip>
           </div>
         </div>
       </Dialog>
-    
-     <Dialog
+
+      <Dialog
         className={Classes.DIALOG}
         icon="warning-sign"
         isOpen={pendingReviewWarning}

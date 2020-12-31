@@ -87,9 +87,8 @@ export async function makeRequest<T, U>(
     })
   } catch (error) {
     if (error.response) {
-      
       //Handle custom errors (like do not create more than one review at a time).
-      if(error.response.data.custom_error){
+      if (error.response.data.custom_error) {
         throw new Error(error.response.data.custom_error.message)
       }
 
