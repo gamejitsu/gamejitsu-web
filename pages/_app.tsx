@@ -220,6 +220,7 @@ const handleUserAccessingCoachResources = (ctx: NextPageContext, user: any) => {
   }
 }
 
+// Redirect customers not logged in
 const handleUnauthorized = (ctx: NextPageContext) => {
   destroyCookie(ctx, "authToken")
   redirectToPage(ctx)
