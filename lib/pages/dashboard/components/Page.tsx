@@ -32,13 +32,10 @@ const getCurrentUser = async () => {
 }
 
 const getReviewRequests = async (ctx: NextPageContext) =>
-   await listModels(ReviewRequestResource, ctx)
+  await listModels(ReviewRequestResource, ctx)
 
-const areAllReviewRequestsPublished = (reviewRequests: (DecoratedReviewRequest | undefined)[]) =>   
-   reviewRequests?.every((reviewRequest) =>
-    reviewRequest?.status !== "published" 
-  )
-
+const areAllReviewRequestsPublished = (reviewRequests: (DecoratedReviewRequest | undefined)[]) =>
+  reviewRequests?.every((reviewRequest) => reviewRequest?.status !== "published")
 
 const Dashboard: FunctionComponent<Props> = (props) => {
   const [user, setUser] = useState(props.user)

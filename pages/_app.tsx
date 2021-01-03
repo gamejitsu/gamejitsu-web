@@ -206,14 +206,17 @@ const handleUserAccessingCoachResources = (ctx: NextPageContext, user: any) => {
     //Special redirect after coach sign_in:
     if (ctx.pathname.match(/\/dashboard/)) {
       redirectToPage(ctx, "/coach-dashboard")
-    }
-    else {
-      if (coachForbiddenRoutes.some(route => route.test(ctx.pathname))){redirectToPage(ctx)}
+    } else {
+      if (coachForbiddenRoutes.some((route) => route.test(ctx.pathname))) {
+        redirectToPage(ctx)
+      }
     }
   }
   // Redirects for users
   else {
-    if (userForbiddenRoutes.some(route => route.test(ctx.pathname))){redirectToPage(ctx)}
+    if (userForbiddenRoutes.some((route) => route.test(ctx.pathname))) {
+      redirectToPage(ctx)
+    }
   }
 }
 
