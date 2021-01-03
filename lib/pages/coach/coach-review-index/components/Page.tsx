@@ -20,8 +20,6 @@ const getReviews = async (ctx: NextPageContext) => {
 const atLeastOneReviewPublished = (reviews: (DecoratedReview | undefined)[]) => {
   let published = false
   reviews.forEach((review) => {
-    console.log("in")
-    console.log(review)
     if (review?.isPublished) published = true
   })
   return published
