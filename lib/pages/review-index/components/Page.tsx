@@ -20,7 +20,7 @@ const Page: NextPage<Props> = ({ reviews }) => (
         <EmptyCard text="No reviews available" />
       ) : (
         reviews.map((review) => {
-          if (review !== undefined) return <ReviewCard key={review.id} review={review} />
+          if (review !== undefined && review.isPublished) return <ReviewCard key={review.id} review={review} />
         })
       )}
     </Flex>
