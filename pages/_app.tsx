@@ -83,6 +83,7 @@ export default class App extends NextApp<Props> {
     if (authToken) {
       try {
         user = await getCurrentUser(ctx)
+        handleUserAccessingCoachResources(ctx, user)
       } catch (e) {
         if (e.response && e.response.status === 401) {
           if (requiresAuthentication) {
@@ -197,12 +198,35 @@ const isAuthTokenValid = (authToken?: string) => {
   return decoded.exp > Date.now() / 1000
 }
 
+const handleUserAccessingCoachResources = (ctx: NextPageContext, user: any) => {
+  const userForbiddenRoutes = [/\/coach-dashboard.*/, /\/coach-reviews.*/, /\/coach-settings.*/]
+  const coachForbiddenRoutes = [/\/dashboard/, /\/reviews.*/, /\/settings.*/]
+  // Redirects for coach users
+  if (user.coachId) {
+    //Special redirect after coach sign_in:
+    if (ctx.pathname.match(/\/dashboard/)) {
+      redirectToPage(ctx, "/coach-dashboard")
+    }
+    else {
+      if (coachForbiddenRoutes.some(route => route.test(ctx.pathname))){redirectToPage(ctx)}
+    }
+  }
+  // Redirects for users
+  else {
+    if (userForbiddenRoutes.some(route => route.test(ctx.pathname))){redirectToPage(ctx)}
+  }
+}
+
 const handleUnauthorized = (ctx: NextPageContext) => {
   destroyCookie(ctx, "authToken")
+  redirectToPage(ctx)
+}
+
+const redirectToPage = (ctx: NextPageContext, pageLink: string = "/") => {
   if (ctx.res) {
-    ctx.res.writeHead(302, { Location: "/" })
+    ctx.res.writeHead(302, { Location: pageLink })
     ctx.res.end()
   } else {
-    Router.replace("/")
+    Router.replace(pageLink)
   }
 }

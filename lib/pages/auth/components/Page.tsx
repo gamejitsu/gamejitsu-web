@@ -17,13 +17,8 @@ interface Query {
 }
 
 const Auth: NextPage<Props> = ({ query }) => {
-  const user = useContext(UserContext)
   useEffect(() => {
-    query.redirect
-      ? Router.push(query.redirect)
-      : user?.coachId
-      ? Router.push("/coach-dashboard")
-      : Router.push("/dashboard")
+    Router.push("/dashboard")
   })
   return null
 }
