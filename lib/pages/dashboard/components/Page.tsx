@@ -146,7 +146,6 @@ const Page: NextPage<Omit<Props, "user">> = ({ replays, reviewRequests }) => (
 Page.getInitialProps = async (ctx) => {
   const replays = await getReplays(ctx)
   const reviewRequestResponse = await getReviewRequests(ctx)
-  console.log(reviewRequestResponse)
   const reviewRequests: (DecoratedReviewRequest | undefined)[] = decorateReviewRequests(
     reviewRequestResponse.data,
     reviewRequestResponse.included

@@ -10,7 +10,6 @@ const CoachSignUpPage: NextPage = () => {
   const user: any = useContext(UserContext)
   return (
     <Layout title="Coach Sign Up">
-      {console.log(user)}
       {user.coach?.isApproved ? (
         <Callout title="Coach registration successfull" intent="success">
           You can register only once to be a coach.
