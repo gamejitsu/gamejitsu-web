@@ -40,7 +40,7 @@ const onSubmitCoach = async (values: Values, token: Promise<string>): Promise<vo
     undefined,
     { params: { "g-recaptcha-response": await token } }
   )
-  Router.push("/coach-dashboard")
+  Router.push("/coach-signup")
 }
 
 const getUser = () => {
