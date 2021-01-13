@@ -29,6 +29,7 @@ import Navbar from "./Navbar"
 import NavbarLeftMenu from "./NavbarLeftMenu"
 import Patch from "./Patch"
 import PatchFull from "./PatchFull"
+import useWarnIfUnsavedChanges from "./RefreshPageWarner"
 import SkillLevelSelect from "./SkillLevelSelect"
 import Spinner from "./Spinner"
 import SteamButton from "./SteamButton"
@@ -67,6 +68,7 @@ export {
   NavbarLeftMenu,
   Patch,
   PatchFull,
+  useWarnIfUnsavedChanges,
   SkillLevelSelect,
   Spinner,
   SteamButton,

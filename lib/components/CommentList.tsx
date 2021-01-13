@@ -37,7 +37,8 @@ const ListItem = styled.li<ListItemProps>`
     return comment !== selectedComment ? "transparent" : lighten(0.1, theme.lightBackgroundColor)
   }};
   cursor: pointer;
-`
+  word-break: break-all;
+  `
 
 const CommentListTitle = styled.h1`
   color: white;
@@ -79,8 +80,13 @@ const CommentList: FunctionComponent<Props> = ({
   const [isSaveReviewOpen, setIsSaveReviewOpen] = useState(false)
   const [commentsExpanded, setCommentsExpanded] = useState<Comment[]>([])
 
-  const onSelectListItem = (comment: Comment) =>
+  const onClickToTimestamp = (comment: Comment) =>
     comment === selectedComment ? onSelect(null) : onSelect(comment)
+
+  const onSelectListItem = (comment: Comment, isCollapsed: boolean) => {
+    onExpandComment(comment)
+    return comment === selectedComment ? onSelect(null) : onSelect(comment)
+  }
 
   const compareTimestamp = (a: Comment, b: Comment) => a.timestamp - b.timestamp
 
@@ -144,18 +150,25 @@ const CommentList: FunctionComponent<Props> = ({
                 <Flex key={index.toString()}>
                   <ListItemContainer p={3} isCollapsed={isCollapsed}>
                     <Flex alignItems="center" justifyContent="space-between">
-                      <TimeTag>{formatTimestamp(comment.timestamp)}</TimeTag>
+                      <TimeTag>
+                      <a onClick={onClickToTimestamp.bind(null, comment)}>
+                        {formatTimestamp(comment.timestamp)}
+                        </a>
+                      </TimeTag>
+                      {comment.text.length >= 90 ?
                       <LessExpandTag>
                         {isCollapsed ? (
                           <a onClick={onExpandComment.bind(null, comment)}>Expand</a>
                         ) : (
                           <a onClick={onCollapseComment.bind(null, comment)}>Collapse</a>
                         )}
-                      </LessExpandTag>
+                      </LessExpandTag> : 
+                      null
+                      }
                     </Flex>
                     <Box pt={3}>
                       <ListItem comment={comment} selectedComment={selectedComment}>
-                        <a onClick={onSelectListItem.bind(null, comment)}>
+                        <a onClick={onSelectListItem.bind(null, comment, isCollapsed)}>
                           {isCollapsed
                             ? `${comment.text.substring(0, 90)} ${
                                 comment.text.length < 90 ? `` : `...`

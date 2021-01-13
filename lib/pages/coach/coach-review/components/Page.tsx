@@ -6,9 +6,8 @@ import styled from "styled-components"
 
 import { Comment } from "gamejitsu/api/types/comment"
 import { findModel, updateModel } from "gamejitsu/api"
-import { LayoutWithMenu, CommentBar, CommentFormNew, CommentList } from "gamejitsu/components"
+import { LayoutWithMenu, CommentBar, CommentFormNew, CommentList, useWarnIfUnsavedChanges } from "gamejitsu/components"
 import ReviewResource, { Review } from "gamejitsu/api/resources/review"
-import { useWarnIfUnsavedChanges } from "./RefreshPageWarner"
 import { DecoratedReview, decorateReview } from "gamejitsu/models/review"
 import { DecoratedReplay } from "gamejitsu/models/replay"
 
@@ -132,7 +131,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
             controls
           >
             <source
-              src={props.replay.videoUrl ? props.replay.videoUrl : "/video/sample.mp4"}
+              src={props.replay.videoUrl ? props.replay.videoUrl : ""}
               type="video/mp4"
             />
           </video>
