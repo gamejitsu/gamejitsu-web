@@ -2,7 +2,8 @@ import { useEffect } from "react"
 import Router from "next/router"
 
 const useWarnIfUnsavedChanges: any = (unsavedChanges: boolean) => {
-  const message = "Do you want to leave? Please, remember to save your review or you will lose your progresses."
+  const message =
+    "Do you want to leave? Please, remember to save your review or you will lose your progresses."
 
   useEffect(() => {
     const routeChangeStart = (url: string) => {

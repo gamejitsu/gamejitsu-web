@@ -205,9 +205,7 @@ const handleUserAccessingCoachResources = (ctx: NextPageContext, user: any) => {
   if (user.coachId) {
     //Special redirect after coach sign_in:
     if (ctx.pathname.match(/\/dashboard/)) {
-      user.coachId.approved 
-      ? redirectToPage(ctx, "/coach-dashboard")
-      : redirectToPage(ctx)
+      user.coachId.approved ? redirectToPage(ctx, "/coach-dashboard") : redirectToPage(ctx)
     } else {
       if (coachForbiddenRoutes.some((route) => route.test(ctx.pathname))) {
         redirectToPage(ctx)

@@ -38,7 +38,7 @@ const ListItem = styled.li<ListItemProps>`
   }};
   cursor: pointer;
   word-break: break-all;
-  `
+`
 
 const CommentListTitle = styled.h1`
   color: white;
@@ -151,20 +151,19 @@ const CommentList: FunctionComponent<Props> = ({
                   <ListItemContainer p={3} isCollapsed={isCollapsed}>
                     <Flex alignItems="center" justifyContent="space-between">
                       <TimeTag>
-                      <a onClick={onClickToTimestamp.bind(null, comment)}>
-                        {formatTimestamp(comment.timestamp)}
+                        <a onClick={onClickToTimestamp.bind(null, comment)}>
+                          {formatTimestamp(comment.timestamp)}
                         </a>
                       </TimeTag>
-                      {comment.text.length >= 90 ?
-                      <LessExpandTag>
-                        {isCollapsed ? (
-                          <a onClick={onExpandComment.bind(null, comment)}>Expand</a>
-                        ) : (
-                          <a onClick={onCollapseComment.bind(null, comment)}>Collapse</a>
-                        )}
-                      </LessExpandTag> : 
-                      null
-                      }
+                      {comment.text.length >= 90 ? (
+                        <LessExpandTag>
+                          {isCollapsed ? (
+                            <a onClick={onExpandComment.bind(null, comment)}>Expand</a>
+                          ) : (
+                            <a onClick={onCollapseComment.bind(null, comment)}>Collapse</a>
+                          )}
+                        </LessExpandTag>
+                      ) : null}
                     </Flex>
                     <Box pt={3}>
                       <ListItem comment={comment} selectedComment={selectedComment}>

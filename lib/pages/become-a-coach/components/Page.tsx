@@ -117,7 +117,7 @@ const Page: AuthenticatedComponent = () => {
           <ParagraphTitle>Sign Up</ParagraphTitle>
           <ParagraphText>
             If you match the required MMR, and you are not already a coach you can sign up to become
-            one at the Gamejitsu. 
+            one at the Gamejitsu.
           </ParagraphText>
           <ParagraphText>
             Email us at{" "}
