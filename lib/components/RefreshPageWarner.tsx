@@ -1,14 +1,9 @@
-import { useEffect, FunctionComponent } from "react"
+import { useEffect } from "react"
 import Router from "next/router"
 
-interface Props {
-  unsavedChanges: boolean
-}
-type UseWarnIfUnsavedChangesComponent = (props: Props) => void
-
-//const UseWarnIfUnsavedChanges: UseWarnIfUnsavedChangesComponent = ({ unsavedChanges }) => {
-export const useWarnIfUnsavedChanges: any = (unsavedChanges: boolean) => {
-  const message = "Do you want to leave?"
+const useWarnIfUnsavedChanges: any = (unsavedChanges: boolean) => {
+  const message =
+    "Do you want to leave? Please, remember to save your review or you will lose your progresses."
 
   useEffect(() => {
     const routeChangeStart = (url: string) => {
@@ -37,4 +32,4 @@ export const useWarnIfUnsavedChanges: any = (unsavedChanges: boolean) => {
   }, [unsavedChanges])
 }
 
-//export default UseWarnIfUnsavedChanges
+export default useWarnIfUnsavedChanges

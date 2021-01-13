@@ -1,7 +1,6 @@
 import { Flex } from "rebass"
 import { NextPageContext, NextPage } from "next"
 import React from "react"
-import styled from "styled-components"
 
 import { CoachReviewCard } from "."
 import { DecoratedReview, decorateReviews } from "gamejitsu/models/review"

@@ -45,7 +45,7 @@ const CoachReviewCard: FunctionComponent<Props> = ({ review }) => (
         </Flex>
         <Flex p={3} alignItems="center">
           <Box>
-            <Button href={"/coach-reviews/" + review.id} text="Complete review" />
+            <Button href={"/coach-reviews/" + review.id} text="Work on review" />
             <Button onClick={onDelete.bind(null, review)} text="Cancel review" />
             <Button onClick={onPublish.bind(null, review)} text="Publish review" />
           </Box>

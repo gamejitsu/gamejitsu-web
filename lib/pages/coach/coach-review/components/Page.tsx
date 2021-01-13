@@ -6,9 +6,14 @@ import styled from "styled-components"
 
 import { Comment } from "gamejitsu/api/types/comment"
 import { findModel, updateModel } from "gamejitsu/api"
-import { LayoutWithMenu, CommentBar, CommentFormNew, CommentList } from "gamejitsu/components"
+import {
+  LayoutWithMenu,
+  CommentBar,
+  CommentFormNew,
+  CommentList,
+  useWarnIfUnsavedChanges
+} from "gamejitsu/components"
 import ReviewResource, { Review } from "gamejitsu/api/resources/review"
-import { useWarnIfUnsavedChanges } from "./RefreshPageWarner"
 import { DecoratedReview, decorateReview } from "gamejitsu/models/review"
 import { DecoratedReplay } from "gamejitsu/models/replay"
 
@@ -72,8 +77,10 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   }
 
   const onSetVideoTimestamp = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
-    const timestamp = event.currentTarget.currentTime
-    setVideoTimestamp(Math.floor(timestamp))
+    if (event.currentTarget.currentTime > videoTimestamp + 60) {
+      const timestamp = event.currentTarget.currentTime
+      setVideoTimestamp(Math.floor(timestamp))
+    }
   }
 
   const onSelectComment = (comment: Comment | null) => {
@@ -131,10 +138,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
             width="100%"
             controls
           >
-            <source
-              src={props.replay.videoUrl ? props.replay.videoUrl : "/video/sample.mp4"}
-              type="video/mp4"
-            />
+            <source src={props.replay.videoUrl ? props.replay.videoUrl : ""} type="video/mp4" />
           </video>
         </VideoContainer>
         <Flex flexDirection="column">
