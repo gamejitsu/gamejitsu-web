@@ -37,7 +37,6 @@ const ListItem = styled.li<ListItemProps>`
     return comment !== selectedComment ? "transparent" : lighten(0.1, theme.lightBackgroundColor)
   }};
   cursor: pointer;
-  word-break: break-all;
 `
 
 const CommentListTitle = styled.h1`
