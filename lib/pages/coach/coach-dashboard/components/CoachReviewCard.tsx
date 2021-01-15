@@ -5,6 +5,7 @@ import { Button, Card, HeroImageSmall } from "gamejitsu/components"
 import { DecoratedReview } from "gamejitsu/models/review"
 import { deleteModel, updateModel } from "gamejitsu/api"
 import ReviewResource from "gamejitsu/api/resources/review"
+import Router from "next/router"
 
 interface Props {
   review: DecoratedReview
@@ -12,11 +13,13 @@ interface Props {
 
 const onDelete = (review: DecoratedReview) => {
   deleteModel(ReviewResource, review)
+  Router.push(window.location.pathname)
 }
 
 const onPublish = async (review: DecoratedReview) => {
   review.isPublished = true
   await updateModel(ReviewResource, review)
+  Router.push(window.location.pathname)
 }
 
 const CoachReviewCard: FunctionComponent<Props> = ({ review }) => (
