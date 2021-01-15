@@ -54,7 +54,7 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
       setAcceptReviewIsOpen(false)
       await createModel(ReviewResource, { requestId: reviewRequestId, coachId: "" }, undefined)
     } catch (error) {
-      if (error.message === "some_reviews_are_not_published") {
+      if (error.message === "some_reviews_are_not_published_or_not_deleted") {
         setPendingReviewWarning(true)
         console.log(error)
       } else {
