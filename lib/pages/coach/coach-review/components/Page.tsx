@@ -119,6 +119,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   }
 
   useEffect(() => {
+    setTimeout(() => onSaveReview(), 30000)
     if (videoRef.current) {
       setVideoDuration(videoRef.current.duration)
       videoRef.current.currentTime = videoTimestamp
