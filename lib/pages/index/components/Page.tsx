@@ -50,7 +50,7 @@ interface FlowImageType {
   url: string
 }
 
-interface LegendStrpeProps {
+interface LegendStripeProps {
   bottom?: string
   left?: string
 }
@@ -276,7 +276,7 @@ const LegendStripeElem = styled.div`
     min-width: 120px;
   }
 `
-const LegendStripeElemImg = styled.img<LegendStrpeProps>`
+const LegendStripeElemImg = styled.img<LegendStripeProps>`
   height: 290px;
   position: relative;
   left: ${(props) => `${props.left ? props.left : "0"}`};
@@ -392,19 +392,19 @@ const Page: AuthenticatedComponent = () => (
       <Flex flexWrap="wrap">
         <ResponsiveElem width="35%">
           <Box padding="8px 32px">
-            <SecondaryTitle>Asynch Coaching</SecondaryTitle>
+            <SecondaryTitle>Async Coaching</SecondaryTitle>
             <MainTitle>Welcome to GameJitsu</MainTitle>
           </Box>
         </ResponsiveElem>
         <ResponsiveElem width="60%">
           <Box padding="8px 32px">
             <ParagraphText>
-              Gamejitsu uses state-of-the-art technologies to allow you (as a palyer) to get your{" "}
+              Gamejitsu uses state-of-the-art technologies to allow you (as a player) to get your{" "}
               <Bold>game reviewed without recording your own game</Bold>.
             </ParagraphText>
             <br />
             <ParagraphText>
-              Gamejitsu will fetch autonously the game you selected to be reviewed and provides it
+              Gamejitsu will fetch autonomously the game you selected to be reviewed and provides it
               to a coach based on the <Bold>selected MMR</Bold>.
             </ParagraphText>
             <br />
@@ -428,7 +428,7 @@ const Page: AuthenticatedComponent = () => (
         <ResponsiveElem width="50%">
           <Box padding="8px 32px">
             <SecondaryTitle>Games We Support</SecondaryTitle>
-            <MainTitle>Optimize your Skillset</MainTitle>
+            <MainTitle>Optimize your Skill Set</MainTitle>
           </Box>
         </ResponsiveElem>
         <Spacer padding={40} />
