@@ -4,28 +4,25 @@ import { Position, Toaster, Intent } from "@blueprintjs/core"
 import React, { SyntheticEvent, useRef, useState, useEffect } from "react"
 import styled from "styled-components"
 
-import { Comment } from "gamejitsu/api/types/comment"
-import { findModel, updateModel } from "gamejitsu/api"
 import {
-  LayoutWithMenu,
   CommentBar,
   CommentFormNew,
   CommentList,
+  LayoutWithMenu,
   useWarnIfUnsavedChanges
 } from "gamejitsu/components"
-import ReviewResource, { Review } from "gamejitsu/api/resources/review"
-import { DecoratedReview, decorateReview } from "gamejitsu/models/review"
+import { Comment } from "gamejitsu/api/types/comment"
 import { DecoratedReplay } from "gamejitsu/models/replay"
+import { DecoratedReview, decorateReview } from "gamejitsu/models/review"
+import { findModel, updateModel } from "gamejitsu/api"
+import ReviewResource, { Review } from "gamejitsu/api/resources/review"
 
 interface Props {
   review: Review
   replay: DecoratedReplay
 }
 
-const getReview = async (ctx: NextPageContext, id: string) => {
-  const response = await findModel(ReviewResource, id, ctx)
-  return response
-}
+const getReview = async (ctx: NextPageContext, id: string) => await findModel(ReviewResource, id, ctx)
 
 const VideoContainer = styled(Box)`
   width: 100%;
@@ -48,6 +45,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   const onSaveComment = async (savedComment: Comment) => {
+    console.log("saved comment:", savedComment)
     const newComments = selectedComment
       ? review.comments.map((comment) => (comment === selectedComment ? savedComment : comment))
       : review.comments.concat(savedComment)
@@ -77,8 +75,11 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   }
 
   const onSetVideoTimestamp = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
+    //console.log("current video timestamp", event.currentTarget.currentTime)
+    console.log("video timestamp:", videoTimestamp)
     if (event.currentTarget.currentTime > videoTimestamp + 60) {
       const timestamp = event.currentTarget.currentTime
+      console.log("set video timestamp current time:", timestamp)
       setVideoTimestamp(Math.floor(timestamp))
     }
   }
@@ -119,7 +120,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   }
 
   useEffect(() => {
-    setTimeout(() => onSaveReview(), 30000)
+    //setTimeout(() => onSaveReview(), 60000)
     if (videoRef.current) {
       setVideoDuration(videoRef.current.duration)
       videoRef.current.currentTime = videoTimestamp

@@ -1,7 +1,6 @@
 import React from "react"
 import { Flex } from "rebass"
 import { NextPageContext, NextPage } from "next"
-import styled from "styled-components"
 
 import { DecoratedReview, decorateReviews } from "gamejitsu/models/review"
 import { DecoratedReviewRequest, decorateReviewRequests } from "gamejitsu/models/review-request"

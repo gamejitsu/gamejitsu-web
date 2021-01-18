@@ -28,12 +28,12 @@ const Page: AuthenticatedComponent = () => {
         </Box>
         <Box>
           <ParagraphText>
-            Gamejitsu is an idea hatched to fill the current gap in the esport coaching industry in
+            Gamejitsu is an idea hatched to fill the current gap in the e-sport coaching industry in
             terms of customizability.
           </ParagraphText>
           <ParagraphTitle>Goal</ParagraphTitle>
           <ParagraphText>
-            As most coaches are focusing on video / live coaching, we realised that the only
+            As most coaches are focusing on video / live coaching, we realized that the only
             possible way currently to learn and improve at your own tempo is to repeatedly watch
             your own replays, and that is both boring and difficult because you might not realise
             your own mistakes. Live coaching might not be suitable for all. Playing at a high level

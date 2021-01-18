@@ -6,7 +6,7 @@ import { Callout } from "@blueprintjs/core"
 import queryString from "query-string"
 import { UserContext } from "gamejitsu/contexts"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import { Footer, Navbar, LinkBold, LinkMailBold } from "gamejitsu/components"
+import { Footer, Navbar, LinkMailBold } from "gamejitsu/components"
 import {
   Container,
   MainTitle,
@@ -15,17 +15,6 @@ import {
   ParagraphText,
   ParagraphTitle
 } from "../../../components/UtilsComponents"
-
-const Bold = styled.a`
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: none;
-    color: ${(props) => props.theme.primaryColor};
-  }
-`
 
 const getCurrentUser = () => useContext(UserContext)
 

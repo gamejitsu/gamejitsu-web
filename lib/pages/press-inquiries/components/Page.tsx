@@ -28,7 +28,7 @@ const Page: AuthenticatedComponent = () => (
       <Box>
         <ParagraphTitle>Who we are</ParagraphTitle>
         <ParagraphText>
-          Gamejitsu is an esport and entertainment software company founded in 2019 and based in
+          Gamejitsu is an e-sport and entertainment software company founded in 2019 and based in
           London, UK. The company's debut product, a learning platform for Dota 2 players, was
           launched in August 2020. Today, Valve is composed by its founders and software engineers.
           For press inquiries,{" "}

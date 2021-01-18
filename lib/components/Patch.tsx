@@ -1,6 +1,5 @@
 import styled, { css } from "styled-components"
 import { FunctionComponent } from "react"
-import { lighten, darken } from "polished"
 
 interface Props {
   text: string

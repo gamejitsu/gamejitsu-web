@@ -45,12 +45,12 @@ const Page: AuthenticatedComponent = () => (
         </ParagraphText>
         <ParagraphText>
           Get coaching advice accurate for your skill level. Trying to apply a different skill
-          level’s playstyle onto your game might do more harm than good, especially if it is a team
+          level’s play-style onto your game might do more harm than good, especially if it is a team
           game where your teammates do not cooperate and you have to take carrying the team into
           your own hands.
         </ParagraphText>
         <ParagraphText>
-          Eliminating the need to constantly rewatch your own replays. Don’t turn gaming into a
+          Eliminating the need to constantly re-watch your own replays. Don’t turn gaming into a
           drag, let our coaches do your homework for you. All you have to do is to keep playing.
           Think of it as hiring a strategic advisor in your gaming career.
         </ParagraphText>

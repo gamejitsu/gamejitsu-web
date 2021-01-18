@@ -124,13 +124,15 @@ const Page: AuthenticatedComponent = () => (
         </ParagraphText>
         <ParagraphTitle>Keeping Data secure</ParagraphTitle>
         <ParagraphText>
-          13. We will use technical and organisational measures to safeguard your Data, for example:
-          a. access to your account is controlled by a password and a user name that is unique to
-          you. b. we store your Data on secure servers. 14. Technical and organisational measures
+          13. We will use technical and organizational measures to safeguard your Data, for example:
+          a. access to your account is controlled via Steam and that is unique to
+          you. 
+          b. we store your Data on secure servers. 
+          14. Technical and organizational measures
           include measures to deal with any suspected data breach. If you suspect any misuse or loss
-          or unauthorised access to your Data, please let us know immediately by contacting us via
-          this e-mail address: admin@gamejitsu.gg. 15. If you want detailed information from Get
-          Safe Online on how to protect your information and your computers and devices against
+          or unauthorized access to your Data, please let us know immediately by contacting us via
+          this e-mail address: admin@gamejitsu.gg. 
+          15. If you want detailed information from Get Safe Online on how to protect your information and your computers and devices against
           fraud, identity theft, viruses and many other online problems, please visit
           www.getsafeonline.org. Get Safe Online is supported by HM Government and leading
           businesses.
@@ -204,7 +206,7 @@ const Page: AuthenticatedComponent = () => (
           accept Cookies but this can be changed. For further details, please consult the help menu
           in your internet browser. 32. You can choose to delete Cookies at any time; however you
           may lose any information that enables you to access the Website more quickly and
-          efficiently including, but not limited to, personalisation settings. 33. It is recommended
+          efficiently including, but not limited to, personalization settings. 33. It is recommended
           that you ensure that your internet browser is up-to-date and that you consult the help and
           guidance provided by the developer of your internet browser if you are unsure about
           adjusting your privacy settings. 34. For more information generally on cookies, including

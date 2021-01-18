@@ -1,11 +1,11 @@
-import React from "react"
-import { NextPage } from "next"
-import styled from "styled-components"
 import { Flex, Box } from "rebass"
+import { NextPage } from "next"
+import React from "react"
+import styled from "styled-components"
 
-import CheckoutResource, { Checkout } from "gamejitsu/api/resources/checkout"
-import { LayoutWithMenuUser } from "gamejitsu/components"
 import { findModel } from "gamejitsu/api"
+import { LayoutWithMenuUser } from "gamejitsu/components"
+import CheckoutResource, { Checkout } from "gamejitsu/api/resources/checkout"
 import CheckoutSVG from "../../../../svgs/checkout.svg"
 
 interface Props {

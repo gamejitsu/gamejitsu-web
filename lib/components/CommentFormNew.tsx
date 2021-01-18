@@ -58,6 +58,7 @@ const CommentFormNew: CommentFormComponent = ({
     validationSchema,
     onSubmit: async ({ text }, { setSubmitting, resetForm }) => {
       setSubmitting(true)
+      console.log("comment-timestamp:", timestamp)
       await onSave({ text, timestamp })
       resetForm({})
       setSubmitting(false)
