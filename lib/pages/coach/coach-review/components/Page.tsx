@@ -45,7 +45,6 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   const onSaveComment = async (savedComment: Comment) => {
-    console.log("saved comment:", savedComment)
     const newComments = selectedComment
       ? review.comments.map((comment) => (comment === selectedComment ? savedComment : comment))
       : review.comments.concat(savedComment)
@@ -70,14 +69,11 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   }
 
   const onSetVideoDuration = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
-    console.log("furation change")
     const duration = event.currentTarget.duration
     setVideoDuration(Math.floor(duration))
   }
 
   const onSetVideoTimestamp = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
-    //console.log("current video timestamp", event.currentTarget.currentTime)
-    //console.log("video timestamp:", videoTimestamp)
     if (event.currentTarget.currentTime > videoTimestamp ) {
       const timestamp = event.currentTarget.currentTime
       setVideoTimestamp(Math.floor(timestamp))
