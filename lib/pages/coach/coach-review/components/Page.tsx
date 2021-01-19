@@ -74,7 +74,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   }
 
   const onSetVideoTimestamp = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
-    if (event.currentTarget.currentTime > videoTimestamp ) {
+    if (event.currentTarget.currentTime > videoTimestamp) {
       const timestamp = event.currentTarget.currentTime
       setVideoTimestamp(Math.floor(timestamp))
     }
