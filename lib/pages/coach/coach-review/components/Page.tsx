@@ -70,16 +70,16 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   }
 
   const onSetVideoDuration = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
+    console.log("furation change")
     const duration = event.currentTarget.duration
     setVideoDuration(Math.floor(duration))
   }
 
   const onSetVideoTimestamp = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
     //console.log("current video timestamp", event.currentTarget.currentTime)
-    console.log("video timestamp:", videoTimestamp)
-    if (event.currentTarget.currentTime > videoTimestamp + 60) {
+    //console.log("video timestamp:", videoTimestamp)
+    if (event.currentTarget.currentTime > videoTimestamp ) {
       const timestamp = event.currentTarget.currentTime
-      console.log("set video timestamp current time:", timestamp)
       setVideoTimestamp(Math.floor(timestamp))
     }
   }
@@ -120,14 +120,18 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   }
 
   useEffect(() => {
-    //setTimeout(() => onSaveReview(), 60000)
     if (videoRef.current) {
       setVideoDuration(videoRef.current.duration)
-      videoRef.current.currentTime = videoTimestamp
     } else {
       setVideoDuration(0)
     }
-  })
+  }, [])
+
+  useEffect(() => {
+    if (videoRef.current && Math.floor(videoRef.current.currentTime) != Math.floor(videoTimestamp)) {
+      videoRef.current.currentTime = videoTimestamp
+    }
+  }, [videoTimestamp])
 
   return (
     <LayoutWithMenu title="Coach Review">
