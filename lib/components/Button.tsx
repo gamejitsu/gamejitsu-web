@@ -21,14 +21,15 @@ interface BaseProps {
 const baseStyles = css<BaseProps>`
   display: inline-flex;
   border-radius: ${(props) => props.theme.borderRadius};
-  box-shadow: inset 0px -3px 0px 0px ${(props) => props.color ? darken(0.1, props.color) : darken(0.1, props.theme.primaryColor)};
+  box-shadow: inset 0px -3px 0px 0px ${(props) => (props.color ? darken(0.1, props.color) : darken(0.1, props.theme.primaryColor))};
   color: ${(props) => props.theme.backgroundColor};
   transition: all 0.05s ease-in-out;
 
   background: linear-gradient(
     to bottom,
-    ${(props) => props.color ? lighten(0.15, props.color) : lighten(0.15, props.theme.primaryColor)},
-    ${(props) => props.color ? props.color : props.theme.primaryColor}
+    ${(props) =>
+      props.color ? lighten(0.15, props.color) : lighten(0.15, props.theme.primaryColor)},
+    ${(props) => (props.color ? props.color : props.theme.primaryColor)}
   );
 
   padding: 10px 20px 10px 20px;
@@ -43,18 +44,20 @@ const baseStyles = css<BaseProps>`
   &:hover {
     background-image: linear-gradient(
       to bottom,
-      ${(props) => props.color ? lighten(0.25, props.color) : lighten(0.25, props.theme.primaryColor)},
-      ${(props) => props.color ? props.color : props.theme.primaryColor}
+      ${(props) =>
+        props.color ? lighten(0.25, props.color) : lighten(0.25, props.theme.primaryColor)},
+      ${(props) => (props.color ? props.color : props.theme.primaryColor)}
     );
 
-    box-shadow: inset 0px -3px 0px 0px ${(props) => props.color ? darken(0.1, props.color) : darken(0.1, props.theme.primaryColor)};
+    box-shadow: inset 0px -3px 0px 0px ${(props) => (props.color ? darken(0.1, props.color) : darken(0.1, props.theme.primaryColor))};
   }
 
   &:active {
     background-image: linear-gradient(
       to bottom,
-      ${(props) => props.color ? props.color : props.theme.primaryColor},
-      ${(props) => props.color ? darken(0.1, props.color) : darken(0.1, props.theme.primaryColor)};
+      ${(props) => (props.color ? props.color : props.theme.primaryColor)},
+      ${(props) =>
+        props.color ? darken(0.1, props.color) : darken(0.1, props.theme.primaryColor)};
     );
 
     box-shadow: inset 0px 3px 0px 0px ${(props) => darken(0.1, props.theme.primaryColor)};
@@ -87,9 +90,16 @@ const LinkContent = styled.a`
   }
 `
 
-const Button: FunctionComponent<Props> = ({ text, href, type = "button", onClick, color, ...props }) =>
+const Button: FunctionComponent<Props> = ({
+  text,
+  href,
+  type = "button",
+  onClick,
+  color,
+  ...props
+}) =>
   href ? (
-    <Link href={href} >
+    <Link href={href}>
       <LinkContent {...props}>{text}</LinkContent>
     </Link>
   ) : (

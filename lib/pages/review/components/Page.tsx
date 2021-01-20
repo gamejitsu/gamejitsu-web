@@ -59,7 +59,10 @@ const ReviewPage: NextPage<Props> = (props) => {
   }, [])
 
   useEffect(() => {
-    if (videoRef.current && Math.floor(videoRef.current.currentTime) != Math.floor(videoTimestamp)) {
+    if (
+      videoRef.current &&
+      Math.floor(videoRef.current.currentTime) != Math.floor(videoTimestamp)
+    ) {
       videoRef.current.currentTime = videoTimestamp
     }
   }, [videoTimestamp])

@@ -118,7 +118,10 @@ const DemoPage: AuthenticatedComponent = () => {
   }, [])
 
   useEffect(() => {
-    if (videoRef.current && Math.floor(videoRef.current.currentTime) != Math.floor(videoTimestamp)) {
+    if (
+      videoRef.current &&
+      Math.floor(videoRef.current.currentTime) != Math.floor(videoTimestamp)
+    ) {
       videoRef.current.currentTime = videoTimestamp
     }
   }, [videoTimestamp])

@@ -22,7 +22,8 @@ interface Props {
   replay: DecoratedReplay
 }
 
-const getReview = async (ctx: NextPageContext, id: string) => await findModel(ReviewResource, id, ctx)
+const getReview = async (ctx: NextPageContext, id: string) =>
+  await findModel(ReviewResource, id, ctx)
 
 const VideoContainer = styled(Box)`
   width: 100%;
@@ -124,7 +125,10 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   }, [])
 
   useEffect(() => {
-    if (videoRef.current && Math.floor(videoRef.current.currentTime) != Math.floor(videoTimestamp)) {
+    if (
+      videoRef.current &&
+      Math.floor(videoRef.current.currentTime) != Math.floor(videoTimestamp)
+    ) {
       videoRef.current.currentTime = videoTimestamp
     }
   }, [videoTimestamp])

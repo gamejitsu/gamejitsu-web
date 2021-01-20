@@ -4,11 +4,7 @@ import styled from "styled-components"
 import { Flex, Box } from "rebass"
 import { UserContext } from "gamejitsu/contexts"
 import { breakpointDown } from "../../../utils/mediaQueryDevices"
-import {
-  MainTitle,
-  SecondaryTitle,
-  Background
-} from "lib/components/UtilsComponents"
+import { MainTitle, SecondaryTitle, Background } from "lib/components/UtilsComponents"
 
 interface Coach {
   id: number
