@@ -1,7 +1,7 @@
 import { Flex, Box } from "rebass"
 import { NextPageContext, NextPage } from "next"
-import { Position, Toaster, Intent } from "@blueprintjs/core"
-import React, { SyntheticEvent, useRef, useState, useEffect } from "react"
+import { Position, Toaster, Intent, Switch } from "@blueprintjs/core"
+import React, { SyntheticEvent, useRef, useState, useEffect, useCallback } from "react"
 import styled from "styled-components"
 
 import {
@@ -40,6 +40,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   useWarnIfUnsavedChanges(true)
 
   const [review, setReview] = useState(props.review)
+  const [autosaveEnabled, setAutosave] = useState(true)
   const [videoDuration, setVideoDuration] = useState(0)
   const [videoTimestamp, setVideoTimestamp] = useState(0)
   const [selectedComment, setSelectedComment] = useState<Comment | null>(null)
@@ -90,6 +91,10 @@ const CoachReviewPage: NextPage<Props> = (props) => {
     setSelectedComment(null)
   }
 
+  const toggleAutosave = () => {
+    setAutosave(!autosaveEnabled)
+  }
+
   const onSaveReview = async () => {
     const AppToaster = Toaster.create({
       className: "recipe-toaster",
@@ -133,6 +138,16 @@ const CoachReviewPage: NextPage<Props> = (props) => {
     }
   }, [videoTimestamp])
 
+  useEffect(() => {
+    const autosave = async () => {
+      await updateModel(ReviewResource, review)
+    }
+
+    if (autosaveEnabled) {
+      autosave()
+    }
+  }, [autosaveEnabled, review])
+
   return (
     <LayoutWithMenu title="Coach Review">
       <Flex width={["100%", "100%", "67%"]} flexDirection="column">
@@ -171,8 +186,16 @@ const CoachReviewPage: NextPage<Props> = (props) => {
           </Box>
         </Flex>
       </Flex>
-      <Flex width={["100%", "100%", "33%"]}>
+      <Flex width={["100%", "100%", "33%"]} flexDirection="column">
+        <Box ml={[0, 0, 3]}>
+          <Switch
+            checked={autosaveEnabled}
+            label={autosaveEnabled ? "Autosave Enabled" : "Autosave Disabled"}
+            onChange={(e) => toggleAutosave()}
+          />
+        </Box>
         <CommentList
+          displaySaveButton={!autosaveEnabled}
           comments={review.comments}
           selectedComment={selectedComment}
           onSelect={onSelectComment}
