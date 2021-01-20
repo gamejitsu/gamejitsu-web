@@ -5,10 +5,10 @@ import styled from "styled-components"
 
 import { Comment } from "gamejitsu/api/types/comment"
 import {
-  LayoutDemo,
   CommentBar,
-  CommentList,
   CommentFormNew,
+  CommentList,
+  LayoutDemo,
   useWarnIfUnsavedChanges
 } from "gamejitsu/components"
 import { Review } from "gamejitsu/api/resources/review"
@@ -73,7 +73,7 @@ const DemoPage: AuthenticatedComponent = () => {
   }
 
   const onSetVideoTimestamp = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
-    if (event.currentTarget.currentTime > videoTimestamp + 60) {
+    if (event.currentTarget.currentTime > videoTimestamp) {
       const timestamp = event.currentTarget.currentTime
       setVideoTimestamp(Math.floor(timestamp))
     }
@@ -112,11 +112,19 @@ const DemoPage: AuthenticatedComponent = () => {
   useEffect(() => {
     if (videoRef.current) {
       setVideoDuration(videoRef.current.duration)
-      videoRef.current.currentTime = videoTimestamp
     } else {
       setVideoDuration(0)
     }
-  })
+  }, [])
+
+  useEffect(() => {
+    if (
+      videoRef.current &&
+      Math.floor(videoRef.current.currentTime) != Math.floor(videoTimestamp)
+    ) {
+      videoRef.current.currentTime = videoTimestamp
+    }
+  }, [videoTimestamp])
 
   return (
     <LayoutDemo title="Coach Demo">

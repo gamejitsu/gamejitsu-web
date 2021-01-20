@@ -3,17 +3,8 @@ import { Button, Patch, PatchFull } from "gamejitsu/components"
 import styled from "styled-components"
 import { Flex, Box } from "rebass"
 import { UserContext } from "gamejitsu/contexts"
-import UserPhotoSVG from "../../../../svgs/user-photo.svg"
 import { breakpointDown } from "../../../utils/mediaQueryDevices"
-import {
-  Container,
-  MainTitle,
-  SecondaryTitle,
-  Spacer,
-  ParagraphText,
-  ParagraphTitle,
-  Background
-} from "lib/components/UtilsComponents"
+import { MainTitle, SecondaryTitle, Background } from "lib/components/UtilsComponents"
 
 interface Coach {
   id: number

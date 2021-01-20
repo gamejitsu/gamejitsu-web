@@ -43,8 +43,8 @@ const Page: AuthenticatedComponent = () => (
       <ChapterTitle>My Account</ChapterTitle>
       <ParagraphTitle>Why can't I log in?</ParagraphTitle>
       <ParagraphText>
-        If you have problems loggin in, please make sure that you have a valid Steam account. Log in
-        is possible only via Steam. There is no need for a password and the email used is the one
+        If you have problems logging in, please make sure that you have a valid Steam account. Log
+        in is possible only via Steam. There is no need for a password and the email used is the one
         related to your Steam account.
       </ParagraphText>
       <ParagraphTitle>Can I change my email?</ParagraphTitle>

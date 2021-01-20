@@ -9,6 +9,7 @@ import { Button } from "gamejitsu/components"
 import { Classes, Dialog, Tooltip } from "@blueprintjs/core"
 
 interface Props {
+  displaySaveButton?: boolean
   comments: Comment[]
   selectedComment: Comment | null
   onSelect: (comment: Comment | null) => void
@@ -74,7 +75,8 @@ const CommentList: FunctionComponent<Props> = ({
   comments,
   selectedComment,
   onSelect,
-  onSaveReview
+  onSaveReview,
+  displaySaveButton
 }) => {
   const [isSaveReviewOpen, setIsSaveReviewOpen] = useState(false)
   const [commentsExpanded, setCommentsExpanded] = useState<Comment[]>([])
@@ -127,15 +129,22 @@ const CommentList: FunctionComponent<Props> = ({
             <Flex>
               <CommentListTitle>COMMENTS ADDED BY COACH</CommentListTitle>
             </Flex>
-            {onSaveReview ? (
-              <Flex width="50%" justifyContent="flex-end" alignItems="center">
-                <Box>
-                  <Button text="Save" type="button" onClick={handleSaveReviewOpen} />
-                </Box>
-              </Flex>
-            ) : (
-              <div />
-            )}
+            {onSaveReview
+              ? [
+                  displaySaveButton ? (
+                    <Flex
+                      key="saveButton"
+                      width="50%"
+                      justifyContent="flex-end"
+                      alignItems="center"
+                    >
+                      <Box>
+                        <Button text="Save" type="button" onClick={handleSaveReviewOpen} />
+                      </Box>
+                    </Flex>
+                  ) : null
+                ]
+              : null}
           </Flex>
         </Header>
         <Box>

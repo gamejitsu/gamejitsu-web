@@ -1,31 +1,29 @@
 import { Flex, Box } from "rebass"
 import { NextPageContext, NextPage } from "next"
-import { Position, Toaster, Intent } from "@blueprintjs/core"
-import React, { SyntheticEvent, useRef, useState, useEffect } from "react"
+import { Position, Toaster, Intent, Switch } from "@blueprintjs/core"
+import React, { SyntheticEvent, useRef, useState, useEffect, useCallback } from "react"
 import styled from "styled-components"
 
-import { Comment } from "gamejitsu/api/types/comment"
-import { findModel, updateModel } from "gamejitsu/api"
 import {
-  LayoutWithMenu,
   CommentBar,
   CommentFormNew,
   CommentList,
+  LayoutWithMenu,
   useWarnIfUnsavedChanges
 } from "gamejitsu/components"
-import ReviewResource, { Review } from "gamejitsu/api/resources/review"
-import { DecoratedReview, decorateReview } from "gamejitsu/models/review"
+import { Comment } from "gamejitsu/api/types/comment"
 import { DecoratedReplay } from "gamejitsu/models/replay"
+import { DecoratedReview, decorateReview } from "gamejitsu/models/review"
+import { findModel, updateModel } from "gamejitsu/api"
+import ReviewResource, { Review } from "gamejitsu/api/resources/review"
 
 interface Props {
   review: Review
   replay: DecoratedReplay
 }
 
-const getReview = async (ctx: NextPageContext, id: string) => {
-  const response = await findModel(ReviewResource, id, ctx)
-  return response
-}
+const getReview = async (ctx: NextPageContext, id: string) =>
+  await findModel(ReviewResource, id, ctx)
 
 const VideoContainer = styled(Box)`
   width: 100%;
@@ -42,6 +40,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   useWarnIfUnsavedChanges(true)
 
   const [review, setReview] = useState(props.review)
+  const [autosaveEnabled, setAutosave] = useState(true)
   const [videoDuration, setVideoDuration] = useState(0)
   const [videoTimestamp, setVideoTimestamp] = useState(0)
   const [selectedComment, setSelectedComment] = useState<Comment | null>(null)
@@ -77,7 +76,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   }
 
   const onSetVideoTimestamp = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
-    if (event.currentTarget.currentTime > videoTimestamp + 60) {
+    if (event.currentTarget.currentTime > videoTimestamp) {
       const timestamp = event.currentTarget.currentTime
       setVideoTimestamp(Math.floor(timestamp))
     }
@@ -90,6 +89,10 @@ const CoachReviewPage: NextPage<Props> = (props) => {
 
   const onDeselectComment = () => {
     setSelectedComment(null)
+  }
+
+  const toggleAutosave = () => {
+    setAutosave(!autosaveEnabled)
   }
 
   const onSaveReview = async () => {
@@ -121,11 +124,29 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   useEffect(() => {
     if (videoRef.current) {
       setVideoDuration(videoRef.current.duration)
-      videoRef.current.currentTime = videoTimestamp
     } else {
       setVideoDuration(0)
     }
-  })
+  }, [])
+
+  useEffect(() => {
+    if (
+      videoRef.current &&
+      Math.floor(videoRef.current.currentTime) != Math.floor(videoTimestamp)
+    ) {
+      videoRef.current.currentTime = videoTimestamp
+    }
+  }, [videoTimestamp])
+
+  useEffect(() => {
+    const autosave = async () => {
+      await updateModel(ReviewResource, review)
+    }
+
+    if (autosaveEnabled) {
+      autosave()
+    }
+  }, [autosaveEnabled, review])
 
   return (
     <LayoutWithMenu title="Coach Review">
@@ -165,8 +186,16 @@ const CoachReviewPage: NextPage<Props> = (props) => {
           </Box>
         </Flex>
       </Flex>
-      <Flex width={["100%", "100%", "33%"]}>
+      <Flex width={["100%", "100%", "33%"]} flexDirection="column">
+        <Box ml={[0, 0, 3]}>
+          <Switch
+            checked={autosaveEnabled}
+            label={autosaveEnabled ? "Autosave Enabled" : "Autosave Disabled"}
+            onChange={(e) => toggleAutosave()}
+          />
+        </Box>
         <CommentList
+          displaySaveButton={!autosaveEnabled}
           comments={review.comments}
           selectedComment={selectedComment}
           onSelect={onSelectComment}

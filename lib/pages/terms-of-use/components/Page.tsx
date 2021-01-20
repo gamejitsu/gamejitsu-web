@@ -141,7 +141,7 @@ const Page: AuthenticatedComponent = () => (
           quality.  Gamejitsu LTD  is under no obligation to update information on the Website.
           <br />
           <br />
-          16. Whilst  Gamejitsu LTD  uses reasonable endeavours to ensure that the Website is secure
+          16. Whilst  Gamejitsu LTD  uses reasonable endeavors to ensure that the Website is secure
           and free of errors, viruses and other malware, we give no warranty or guaranty in that
           regard and all Users take responsibility for their own security, that of their personal
           details and their computers.
