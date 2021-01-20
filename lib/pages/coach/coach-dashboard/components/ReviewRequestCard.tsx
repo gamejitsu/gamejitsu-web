@@ -136,7 +136,7 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
         usePortal={true}
       >
         <div className={Classes.DIALOG_BODY}>
-          <p>s</p>
+          <p>Click "Accept Review" to confirm the acceptation of the review request</p>
         </div>
         <div className={Classes.DIALOG_FOOTER}>
           <div className={Classes.DIALOG_FOOTER_ACTIONS}>
