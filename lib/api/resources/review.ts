@@ -26,6 +26,7 @@ import { Model } from "gamejitsu/interfaces"
 export interface Review extends Model {
   comments: Comment[]
   isPublished: boolean
+  isDeleted: boolean
   requestId: string
   coachId: string
 }
@@ -35,7 +36,8 @@ export const decoder = t.type({
   type: t.literal("review"),
   attributes: t.type({
     comments: t.array(Comment),
-    "is-published": t.boolean
+    "is-published": t.boolean,
+    "is-deleted": t.boolean
   }),
   relationships: t.type({
     request: t.type({
@@ -57,6 +59,7 @@ export const transformer = (value: t.TypeOf<typeof decoder>): Review => ({
   id: value.id,
   comments: value.attributes["comments"],
   isPublished: value.attributes["is-published"],
+  isDeleted: value.attributes["is-deleted"],
   requestId: value.relationships["request"].data.id,
   coachId: value.relationships["coach"].data.id
 })
@@ -114,7 +117,8 @@ export default buildResource({
     type: "review",
     attributes: {
       comments: (value.comments || []).map((v) => commentEncoder(v)),
-      "is-published": value.isPublished
+      "is-published": value.isPublished,
+      "is-deleted": value.isDeleted
     },
     relationships: {
       request: {
