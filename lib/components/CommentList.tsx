@@ -30,7 +30,7 @@ const ListItemContainer = styled(Box)<ListItemContainerProps>`
   background-color: ${({ comment, selectedComment, theme }) => {
     return comment !== selectedComment
       ? theme.lightBackgroundColor
-      : lighten(0.15, theme.lightBackgroundColor)
+      : lighten(0.18, theme.lightBackgroundColor)
   }};
 `
 
