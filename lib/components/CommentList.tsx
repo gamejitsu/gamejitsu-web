@@ -16,13 +16,10 @@ interface Props {
   onSaveReview?: () => void
 }
 
-interface ListItemProps {
-  comment: Comment
-  selectedComment: Comment | null
-}
-
 interface ListItemContainerProps {
   isCollapsed: boolean
+  comment: Comment
+  selectedComment: Comment | null
 }
 
 const ListItemContainer = styled(Box)<ListItemContainerProps>`
@@ -30,13 +27,14 @@ const ListItemContainer = styled(Box)<ListItemContainerProps>`
   flex: 1;
   border: 2px solid ${(props) => props.theme.secondaryColor};
   border-top: 0;
-  background-color: #212122;
+  background-color: ${({ comment, selectedComment, theme }) => {
+    return comment !== selectedComment
+      ? theme.lightBackgroundColor
+      : lighten(0.15, theme.lightBackgroundColor)
+  }};
 `
 
-const ListItem = styled.li<ListItemProps>`
-  background-color: ${({ comment, selectedComment, theme }) => {
-    return comment !== selectedComment ? "transparent" : lighten(0.1, theme.lightBackgroundColor)
-  }};
+const ListItem = styled.li`
   cursor: pointer;
   white-space: pre-line;
 `
@@ -85,7 +83,7 @@ const CommentList: FunctionComponent<Props> = ({
   const onClickToTimestamp = (comment: Comment) =>
     comment === selectedComment ? onSelect(null) : onSelect(comment)
 
-  const onSelectListItem = (comment: Comment, isCollapsed: boolean) => {
+  const onSelectListItem = (comment: Comment) => {
     onExpandComment(comment)
     return comment === selectedComment ? onSelect(null) : onSelect(comment)
   }
@@ -157,7 +155,12 @@ const CommentList: FunctionComponent<Props> = ({
               })
               return (
                 <Flex key={index.toString()}>
-                  <ListItemContainer p={3} isCollapsed={isCollapsed}>
+                  <ListItemContainer
+                    p={3}
+                    isCollapsed={isCollapsed}
+                    comment={comment}
+                    selectedComment={selectedComment}
+                  >
                     <Flex alignItems="center" justifyContent="space-between">
                       <TimeTag>
                         <a onClick={onClickToTimestamp.bind(null, comment)}>
@@ -175,8 +178,8 @@ const CommentList: FunctionComponent<Props> = ({
                       ) : null}
                     </Flex>
                     <Box pt={3}>
-                      <ListItem comment={comment} selectedComment={selectedComment}>
-                        <a onClick={onSelectListItem.bind(null, comment, isCollapsed)}>
+                      <ListItem>
+                        <a onClick={onSelectListItem.bind(null, comment)}>
                           {isCollapsed
                             ? `${comment.text.substring(0, 90)} ${
                                 comment.text.length < 90 ? `` : `...`
