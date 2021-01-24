@@ -12,6 +12,7 @@ export interface DecoratedReview extends Review {
   comments: Comment[]
   id: string
   isPublished: boolean
+  isDeleted: boolean
   requestId: string
 }
 
@@ -32,6 +33,7 @@ export const decorateReview = (review: Review, included: IncludedReviews) => {
       comments: review.comments,
       id: review.id,
       isPublished: review.isPublished,
+      isDeleted: review.isDeleted,
       requestId: review.requestId
     }
   } else {
@@ -51,6 +53,7 @@ export const decorateReviews = (reviews: Review[], included: IncludedReviews) =>
         comments: review.comments,
         id: review.id,
         isPublished: review.isPublished,
+        isDeleted: review.isDeleted,
         requestId: review.requestId
       }
     } else {
