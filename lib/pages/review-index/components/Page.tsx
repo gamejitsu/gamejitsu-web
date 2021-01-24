@@ -19,11 +19,11 @@ const isTheReviewListEmpty = (reviews: DecoratedReview[]) => {
     // If the review is not deleted and not published means it is showed already as review request to the user
     if (!review.isDeleted && !review.isPublished) {
     } else {
-      // If at least one review is published the review page is not empty 
+      // If at least one review is published the review page is not empty
       if (review.isPublished) {
         isTheReviewListEmpty = false
       }
-      // If at least one review is deleted the review page is not empty 
+      // If at least one review is deleted the review page is not empty
       if (review.isDeleted) {
         isTheReviewListEmpty = false
       }
