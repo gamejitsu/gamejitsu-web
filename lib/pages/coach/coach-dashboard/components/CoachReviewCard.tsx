@@ -12,17 +12,6 @@ interface Props {
   review: DecoratedReview
 }
 
-const onDelete = (review: DecoratedReview) => {
-  deleteModel(ReviewResource, review)
-  Router.push(window.location.pathname)
-}
-
-const onPublish = async (review: DecoratedReview) => {
-  review.isPublished = true
-  await updateModel(ReviewResource, review)
-  Router.push(window.location.pathname)
-}
-
 const CoachReviewCard: FunctionComponent<Props> = ({ review }) => {
   const [publishReviewIsOpen, setPublishReviewIsOpen] = useState(false)
   const [cancelReviewIsOpen, setCancelReviewIsOpen] = useState(false)
