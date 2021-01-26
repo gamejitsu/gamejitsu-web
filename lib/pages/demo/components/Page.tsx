@@ -33,6 +33,7 @@ const DemoPage: AuthenticatedComponent = () => {
     id: "0",
     comments: demoComments,
     isPublished: false,
+    isDeleted: false,
     requestId: "0",
     coachId: "0"
   }

@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from "react"
 import styled from "styled-components"
+import ReactMarkdown from 'react-markdown'
 
 import { Box, Flex } from "rebass"
 import { Comment } from "gamejitsu/api/types/comment"
@@ -23,15 +24,7 @@ interface ListItemContainerProps {
 }
 
 const ListItemContainer = styled(Box)<ListItemContainerProps>`
-  min-height: 120px;
-  flex: 1;
-  border: 2px solid ${(props) => props.theme.secondaryColor};
-  border-top: 0;
-  background-color: ${({ comment, selectedComment, theme }) => {
-    return comment !== selectedComment
-      ? theme.lightBackgroundColor
-      : lighten(0.18, theme.lightBackgroundColor)
-  }};
+
 `
 
 const ListItem = styled.li`
@@ -184,10 +177,12 @@ const CommentList: FunctionComponent<Props> = ({
                             ? `${comment.text.substring(0, 90)} ${
                                 comment.text.length < 90 ? `` : `...`
                               }`
-                            : comment.text}
+                            :  <ReactMarkdown  children={comment.text} />}
                         </a>
+                        <ReactMarkdown  children={comment.text} />
                       </ListItem>
                     </Box>
+
                   </ListItemContainer>
                 </Flex>
               )
