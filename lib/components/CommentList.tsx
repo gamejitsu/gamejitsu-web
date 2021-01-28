@@ -24,12 +24,86 @@ interface ListItemContainerProps {
 }
 
 const ListItemContainer = styled(Box)<ListItemContainerProps>`
-
+background-color: ${({ comment, selectedComment, theme }) => {
+  return comment !== selectedComment ? "#212122" : lighten(0.15, theme.lightBackgroundColor)
+}};
+  min-height: 120px;
+  flex: 1;
+  border: 2px solid ${(props) => props.theme.secondaryColor};
+  border-top: 0;
 `
 
 const ListItem = styled.li`
   cursor: pointer;
   white-space: pre-line;
+  color: #ffffff;
+  
+  h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 27px;
+    font-weight: bold;
+    margin-bottom: 7px;
+  }
+
+  h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  h4 {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 3px;
+  }
+
+  strong {
+   font-weight: bold;
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-bottom: 6px;
+  }
+
+  ol {
+    display: block;
+    list-style-type: decimal;
+    margin-bottom: 6px;
+    text-align: left;
+  }
+
+  li {
+    margin-left: 2rem;
+    display: list-item;
+    text-align: -webkit-match-parent;
+  }
+
+  p {
+    margin-bottom: 6px;
+  }
+
+  strike {
+    font-weight: bold;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  code {
+    font-size: 17px;
+    font-family: monospace;
+  }
+
+  a {
+    text-decoration: none;
+  } 
 `
 
 const CommentListTitle = styled.h1`
@@ -148,11 +222,9 @@ const CommentList: FunctionComponent<Props> = ({
               })
               return (
                 <Flex key={index.toString()}>
-                  <ListItemContainer
+                  <ListItemContainer comment={comment} selectedComment={selectedComment}
                     p={3}
                     isCollapsed={isCollapsed}
-                    comment={comment}
-                    selectedComment={selectedComment}
                   >
                     <Flex alignItems="center" justifyContent="space-between">
                       <TimeTag>
@@ -171,15 +243,13 @@ const CommentList: FunctionComponent<Props> = ({
                       ) : null}
                     </Flex>
                     <Box pt={3}>
-                      <ListItem>
+                    <ListItem>
                         <a onClick={onSelectListItem.bind(null, comment)}>
-                          {isCollapsed
-                            ? `${comment.text.substring(0, 90)} ${
-                                comment.text.length < 90 ? `` : `...`
-                              }`
-                            :  <ReactMarkdown  children={comment.text} />}
+                        {isCollapsed
+                            ? <ReactMarkdown children={comment.text.substring(0, 90)+`...`} />
+                            :  <ReactMarkdown  children={comment.text} />
+                          }
                         </a>
-                        <ReactMarkdown  children={comment.text} />
                       </ListItem>
                     </Box>
 
