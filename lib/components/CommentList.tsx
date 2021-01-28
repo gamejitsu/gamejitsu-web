@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from "react"
 import styled from "styled-components"
+import ReactMarkdown from "react-markdown"
 
 import { Box, Flex } from "rebass"
 import { Comment } from "gamejitsu/api/types/comment"
@@ -16,28 +17,93 @@ interface Props {
   onSaveReview?: () => void
 }
 
-interface ListItemProps {
+interface ListItemContainerProps {
+  isCollapsed: boolean
   comment: Comment
   selectedComment: Comment | null
 }
 
-interface ListItemContainerProps {
-  isCollapsed: boolean
-}
-
 const ListItemContainer = styled(Box)<ListItemContainerProps>`
+  background-color: ${({ comment, selectedComment, theme }) => {
+    return comment !== selectedComment ? "#212122" : lighten(0.15, theme.lightBackgroundColor)
+  }};
   min-height: 120px;
   flex: 1;
   border: 2px solid ${(props) => props.theme.secondaryColor};
   border-top: 0;
-  background-color: #212122;
 `
 
-const ListItem = styled.li<ListItemProps>`
-  background-color: ${({ comment, selectedComment, theme }) => {
-    return comment !== selectedComment ? "transparent" : lighten(0.1, theme.lightBackgroundColor)
-  }};
+const ListItem = styled.li`
   cursor: pointer;
+  white-space: pre-line;
+  color: #ffffff;
+
+  h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 27px;
+    font-weight: bold;
+    margin-bottom: 7px;
+  }
+
+  h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  h4 {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 3px;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-bottom: 6px;
+  }
+
+  ol {
+    display: block;
+    list-style-type: decimal;
+    margin-bottom: 6px;
+    text-align: left;
+  }
+
+  li {
+    margin-left: 2rem;
+    display: list-item;
+    text-align: -webkit-match-parent;
+  }
+
+  p {
+    margin-bottom: 6px;
+  }
+
+  strike {
+    font-weight: bold;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  code {
+    font-size: 17px;
+    font-family: monospace;
+  }
+
+  a {
+    text-decoration: none;
+  }
 `
 
 const CommentListTitle = styled.h1`
@@ -84,7 +150,7 @@ const CommentList: FunctionComponent<Props> = ({
   const onClickToTimestamp = (comment: Comment) =>
     comment === selectedComment ? onSelect(null) : onSelect(comment)
 
-  const onSelectListItem = (comment: Comment, isCollapsed: boolean) => {
+  const onSelectListItem = (comment: Comment) => {
     onExpandComment(comment)
     return comment === selectedComment ? onSelect(null) : onSelect(comment)
   }
@@ -156,7 +222,12 @@ const CommentList: FunctionComponent<Props> = ({
               })
               return (
                 <Flex key={index.toString()}>
-                  <ListItemContainer p={3} isCollapsed={isCollapsed}>
+                  <ListItemContainer
+                    comment={comment}
+                    selectedComment={selectedComment}
+                    p={3}
+                    isCollapsed={isCollapsed}
+                  >
                     <Flex alignItems="center" justifyContent="space-between">
                       <TimeTag>
                         <a onClick={onClickToTimestamp.bind(null, comment)}>
@@ -174,13 +245,13 @@ const CommentList: FunctionComponent<Props> = ({
                       ) : null}
                     </Flex>
                     <Box pt={3}>
-                      <ListItem comment={comment} selectedComment={selectedComment}>
-                        <a onClick={onSelectListItem.bind(null, comment, isCollapsed)}>
-                          {isCollapsed
-                            ? `${comment.text.substring(0, 90)} ${
-                                comment.text.length < 90 ? `` : `...`
-                              }`
-                            : comment.text}
+                      <ListItem>
+                        <a onClick={onSelectListItem.bind(null, comment)}>
+                          {isCollapsed ? (
+                            <ReactMarkdown children={comment.text.substring(0, 90) + `...`} />
+                          ) : (
+                            <ReactMarkdown children={comment.text} />
+                          )}
                         </a>
                       </ListItem>
                     </Box>

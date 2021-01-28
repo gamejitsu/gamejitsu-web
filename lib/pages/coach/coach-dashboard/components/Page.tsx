@@ -25,14 +25,17 @@ const getReviews = async (ctx: NextPageContext) => {
   return response
 }
 
-const areAllReviewsPublished = (reviews: DecoratedReview[]) => {
-  let areAllPublished = true
+const areAllReviewsPublishedOrDeleted = (reviews: DecoratedReview[]) => {
+  let areAllPublishedOrDeleted = true
   reviews.map((review) => {
     if (review && !review.isPublished) {
-      areAllPublished = false
+      areAllPublishedOrDeleted = false
+    }
+    if (review && !review.isDeleted) {
+      areAllPublishedOrDeleted = false
     }
   })
-  return areAllPublished
+  return areAllPublishedOrDeleted
 }
 
 const CoachDashboardPage: NextPage<Props> = ({ reviewRequests, reviews }) => {
@@ -41,7 +44,7 @@ const CoachDashboardPage: NextPage<Props> = ({ reviewRequests, reviews }) => {
       <Flex flexDirection="column" width="100%">
         <Flex width="100%" flexDirection="column">
           <Title text="ACCEPTED REVIEWS" />
-          {reviews.length === 0 || areAllReviewsPublished(reviews) ? (
+          {reviews.length === 0 || areAllReviewsPublishedOrDeleted(reviews) ? (
             <EmptyCard text="No reviews accepted to show" />
           ) : (
             reviews.map((review) => {
