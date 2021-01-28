@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from "react"
 import styled from "styled-components"
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from "react-markdown"
 
 import { Box, Flex } from "rebass"
 import { Comment } from "gamejitsu/api/types/comment"
@@ -24,9 +24,9 @@ interface ListItemContainerProps {
 }
 
 const ListItemContainer = styled(Box)<ListItemContainerProps>`
-background-color: ${({ comment, selectedComment, theme }) => {
-  return comment !== selectedComment ? "#212122" : lighten(0.15, theme.lightBackgroundColor)
-}};
+  background-color: ${({ comment, selectedComment, theme }) => {
+    return comment !== selectedComment ? "#212122" : lighten(0.15, theme.lightBackgroundColor)
+  }};
   min-height: 120px;
   flex: 1;
   border: 2px solid ${(props) => props.theme.secondaryColor};
@@ -37,7 +37,7 @@ const ListItem = styled.li`
   cursor: pointer;
   white-space: pre-line;
   color: #ffffff;
-  
+
   h1 {
     font-size: 32px;
     font-weight: bold;
@@ -63,7 +63,7 @@ const ListItem = styled.li`
   }
 
   strong {
-   font-weight: bold;
+    font-weight: bold;
   }
 
   ul {
@@ -103,7 +103,7 @@ const ListItem = styled.li`
 
   a {
     text-decoration: none;
-  } 
+  }
 `
 
 const CommentListTitle = styled.h1`
@@ -222,7 +222,9 @@ const CommentList: FunctionComponent<Props> = ({
               })
               return (
                 <Flex key={index.toString()}>
-                  <ListItemContainer comment={comment} selectedComment={selectedComment}
+                  <ListItemContainer
+                    comment={comment}
+                    selectedComment={selectedComment}
                     p={3}
                     isCollapsed={isCollapsed}
                   >
@@ -243,16 +245,16 @@ const CommentList: FunctionComponent<Props> = ({
                       ) : null}
                     </Flex>
                     <Box pt={3}>
-                    <ListItem>
+                      <ListItem>
                         <a onClick={onSelectListItem.bind(null, comment)}>
-                        {isCollapsed
-                            ? <ReactMarkdown children={comment.text.substring(0, 90)+`...`} />
-                            :  <ReactMarkdown  children={comment.text} />
-                          }
+                          {isCollapsed ? (
+                            <ReactMarkdown children={comment.text.substring(0, 90) + `...`} />
+                          ) : (
+                            <ReactMarkdown children={comment.text} />
+                          )}
                         </a>
                       </ListItem>
                     </Box>
-
                   </ListItemContainer>
                 </Flex>
               )
