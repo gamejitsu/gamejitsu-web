@@ -18,9 +18,9 @@ const onSubmitUser = async (user: any, values: Values): Promise<void> => {
   const { email } = values
   user.email = email
   console.log("user:", user)
-  await updateModel(UserResource,user)
+  await updateModel(UserResource, user)
   console.log("after user update:")
- // Router.push("/settings")
+  // Router.push("/settings")
 }
 
 const getUser = () => {
@@ -49,7 +49,6 @@ const UpdateEmailForm: FunctionComponent = () => {
   //const { executeRecaptcha } = useGoogleReCaptcha()
   //let token: Promise<string>
   //if (executeRecaptcha) token = executeRecaptcha("update_email_page")
-
 
   return (
     <Box width="700px" mx="auto" p={3}>
