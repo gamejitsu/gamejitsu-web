@@ -4,7 +4,7 @@ import { EmptyCard, LayoutWithMenuUser, Title } from "gamejitsu/components"
 import { listModels } from "gamejitsu/api"
 import { NextPage } from "next"
 import ReviewResource from "gamejitsu/api/resources/review"
-import { ReviewCard } from "."
+import { ReviewCard, DeletedReviewCard } from "."
 import { Flex } from "rebass"
 import { decorateReviews, DecoratedReview } from "gamejitsu/models/review"
 
@@ -43,6 +43,8 @@ const Page: NextPage<Props> = ({ reviews }) => (
         reviews.map((review) => {
           if (review !== undefined && review.isPublished)
             return <ReviewCard key={review.id} review={review} />
+          if (review !== undefined && review.isDeleted)
+            return <DeletedReviewCard key={review.id} review={review} />
         })
       )}
     </Flex>
