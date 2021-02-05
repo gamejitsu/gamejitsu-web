@@ -15,7 +15,6 @@ interface Props {
 const isTheReviewListEmpty = (reviews: DecoratedReview[]) => {
   let isTheReviewListEmpty = true
   reviews.map((review) => {
-    console.log(review)
     // If the review is not deleted and not published means it is showed already as review request to the user
     if (!review.isDeleted && !review.isPublished) {
     } else {
@@ -36,7 +35,6 @@ const Page: NextPage<Props> = ({ reviews }) => (
   <LayoutWithMenuUser title="Reviews">
     <Flex width="100%" flexDirection="column">
       <Title text="COMPLETED REVIEWS" />
-      {console.log(isTheReviewListEmpty(reviews))}
       {reviews.length === 0 || isTheReviewListEmpty(reviews) ? (
         <EmptyCard text="No reviews available" />
       ) : (

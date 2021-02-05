@@ -14,10 +14,8 @@ const initialValues = {
 type Values = typeof initialValues
 
 const onSubmitUser = async (user: any, values: Values): Promise<void> => {
-  console.log("on submit user")
   const { email } = values
   user.email = email
-  console.log("user:", user)
   await updateModel(UserResource, user)
   console.log("after user update:")
   // Router.push("/settings")
@@ -35,20 +33,8 @@ const schema = object({
     .required()
 })
 
-/*const GoogleRecaptchaCoachSignUpForm: FunctionComponent = () => {
-  return (
-    <GoogleReCaptchaProvider reCaptchaKey={process.env.GOOGLE_RECAPTCHA_PUBLIC_KEY}>
-      <UpdateEmailForm />
-    </GoogleReCaptchaProvider>
-  )
-}*/
-
 const UpdateEmailForm: FunctionComponent = () => {
   let user = getUser()
-  console.log("user:", user)
-  //const { executeRecaptcha } = useGoogleReCaptcha()
-  //let token: Promise<string>
-  //if (executeRecaptcha) token = executeRecaptcha("update_email_page")
 
   return (
     <Box width="700px" mx="auto" p={3}>
