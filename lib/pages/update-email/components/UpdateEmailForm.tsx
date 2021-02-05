@@ -6,6 +6,7 @@ import { updateModel } from "gamejitsu/api"
 import { Form, FormGroup, InputGroup } from "gamejitsu/components"
 import { UserContext } from "gamejitsu/contexts"
 import UserResource from "gamejitsu/api/resources/user"
+import Router from "next/router"
 
 const initialValues = {
   email: ""
@@ -17,8 +18,7 @@ const onSubmitUser = async (user: any, values: Values): Promise<void> => {
   const { email } = values
   user.email = email
   await updateModel(UserResource, user)
-  console.log("after user update:")
-  // Router.push("/settings")
+  Router.push("/settings")
 }
 
 const getUser = () => {
