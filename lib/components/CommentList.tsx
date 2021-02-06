@@ -248,7 +248,13 @@ const CommentList: FunctionComponent<Props> = ({
                       <ListItem>
                         <a onClick={onSelectListItem.bind(null, comment)}>
                           {isCollapsed ? (
-                            <ReactMarkdown children={comment.text.substring(0, 90) + `...`} />
+                            <ReactMarkdown
+                              children={
+                                comment.text.length <= 90
+                                  ? comment.text.substring(0, 90)
+                                  : comment.text.substring(0, 90) + `...`
+                              }
+                            />
                           ) : (
                             <ReactMarkdown children={comment.text} />
                           )}
