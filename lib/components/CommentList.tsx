@@ -146,6 +146,7 @@ const CommentList: FunctionComponent<Props> = ({
 }) => {
   const [isSaveReviewOpen, setIsSaveReviewOpen] = useState(false)
   const [commentsExpanded, setCommentsExpanded] = useState<Comment[]>([])
+  const [isAllCollapsed, setIsAllCollapsed] = useState(true)
 
   const onClickToTimestamp = (comment: Comment) =>
     comment === selectedComment ? onSelect(null) : onSelect(comment)
@@ -181,6 +182,14 @@ const CommentList: FunctionComponent<Props> = ({
     const newCommentsExpanded: Comment[] = [...commentsExpanded, selectedComment]
     setCommentsExpanded(newCommentsExpanded)
   }
+  const onExpandAllComments = () => {
+    setCommentsExpanded(comments)
+    setIsAllCollapsed(false)
+  }
+  const onCollapseAllComments = () => {
+    setCommentsExpanded([])
+    setIsAllCollapsed(true)
+  }
   return (
     <>
       <Flex
@@ -192,8 +201,25 @@ const CommentList: FunctionComponent<Props> = ({
       >
         <Header>
           <Flex width="100%">
-            <Flex>
+            <Flex width="100%">
               <CommentListTitle>COMMENTS ADDED BY COACH</CommentListTitle>
+              <Flex key="saveButton" justifyContent="flex-end" alignItems="center" width="50%">
+                <Box>
+                  {isAllCollapsed ? (
+                    <Button
+                      text="Expand all"
+                      type="button"
+                      onClick={onExpandAllComments.bind(null, comments)}
+                    />
+                  ) : (
+                    <Button
+                      text="Collapse all"
+                      type="button"
+                      onClick={onCollapseAllComments.bind(null, comments)}
+                    />
+                  )}
+                </Box>
+              </Flex>
             </Flex>
             {onSaveReview
               ? [
