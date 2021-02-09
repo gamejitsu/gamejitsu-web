@@ -14,6 +14,7 @@ import { listModels, findModel } from "gamejitsu/api"
 import { decorateReviewRequests, DecoratedReviewRequest } from "gamejitsu/models/review-request"
 import { UserContext } from "gamejitsu/contexts"
 import { ReviewRequestCard, ReplayCardNew } from "."
+import Router from "next/router"
 
 interface Props {
   user: User
@@ -65,6 +66,7 @@ const Dashboard: FunctionComponent<Props> = (props) => {
         const replays = await getReplays()
         setUser(user)
         setReplays(replays)
+        Router.push("/dashboard")
       }
     })
     return () => {
