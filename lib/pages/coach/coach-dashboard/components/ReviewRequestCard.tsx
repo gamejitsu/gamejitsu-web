@@ -1,6 +1,5 @@
 import { Flex, Box } from "rebass"
 import { formatDistanceToNow } from "date-fns"
-import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import React, { FunctionComponent, useState } from "react"
 import Router from "next/router"
 import styled from "styled-components"
