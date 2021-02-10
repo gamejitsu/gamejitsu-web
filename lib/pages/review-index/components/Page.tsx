@@ -4,7 +4,7 @@ import { EmptyCard, LayoutWithMenuUser, Title } from "gamejitsu/components"
 import { listModels } from "gamejitsu/api"
 import { NextPage } from "next"
 import ReviewResource from "gamejitsu/api/resources/review"
-import { ReviewCard } from "."
+import { ReviewCard, DeletedReviewCard } from "."
 import { Flex } from "rebass"
 import { decorateReviews, DecoratedReview } from "gamejitsu/models/review"
 
@@ -15,7 +15,6 @@ interface Props {
 const isTheReviewListEmpty = (reviews: DecoratedReview[]) => {
   let isTheReviewListEmpty = true
   reviews.map((review) => {
-    console.log(review)
     // If the review is not deleted and not published means it is showed already as review request to the user
     if (!review.isDeleted && !review.isPublished) {
     } else {
@@ -36,13 +35,14 @@ const Page: NextPage<Props> = ({ reviews }) => (
   <LayoutWithMenuUser title="Reviews">
     <Flex width="100%" flexDirection="column">
       <Title text="COMPLETED REVIEWS" />
-      {console.log(isTheReviewListEmpty(reviews))}
       {reviews.length === 0 || isTheReviewListEmpty(reviews) ? (
         <EmptyCard text="No reviews available" />
       ) : (
         reviews.map((review) => {
           if (review !== undefined && review.isPublished)
             return <ReviewCard key={review.id} review={review} />
+          if (review !== undefined && review.isDeleted)
+            return <DeletedReviewCard key={review.id} review={review} />
         })
       )}
     </Flex>
