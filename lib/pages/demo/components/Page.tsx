@@ -74,10 +74,8 @@ const DemoPage: AuthenticatedComponent = () => {
   }
 
   const onSetVideoTimestamp = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
-    if (event.currentTarget.currentTime > videoTimestamp) {
-      const timestamp = event.currentTarget.currentTime
-      setVideoTimestamp(Math.floor(timestamp))
-    }
+    const timestamp = event.currentTarget.currentTime
+    setVideoTimestamp(Math.floor(timestamp))
   }
 
   const onSelectComment = (comment: Comment | null) => {
