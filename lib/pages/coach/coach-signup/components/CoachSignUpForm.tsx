@@ -3,7 +3,7 @@ import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recapt
 import { object, string } from "yup"
 import { Slider } from "@blueprintjs/core"
 import humanize from "humanize-string"
-import React, { FunctionComponent, useContext } from "react"
+import React, { FunctionComponent } from "react"
 import Router from "next/router"
 import styled from "styled-components"
 import titleize from "titleize"
@@ -11,7 +11,6 @@ import titleize from "titleize"
 import { createModel } from "gamejitsu/api"
 import { Form, FormGroup, InputGroup } from "gamejitsu/components"
 import { SkillLevel } from "gamejitsu/api/types/skill-level"
-import { UserContext } from "gamejitsu/contexts"
 import CoachResource from "gamejitsu/api/resources/coach"
 
 const initialValues = {
@@ -43,12 +42,6 @@ const onSubmitCoach = async (values: Values, token: Promise<string>): Promise<vo
   Router.push("/coach-signup")
 }
 
-const getUser = () => {
-  const user = useContext(UserContext)
-  if (user) return user
-  else throw new Error("user null")
-}
-
 const schema = object({
   firstName: string().required(),
   lastName: string().required(),
@@ -75,8 +68,6 @@ const CoachSignUpForm: FunctionComponent = () => {
   const { executeRecaptcha } = useGoogleReCaptcha()
   let token: Promise<string>
   if (executeRecaptcha) token = executeRecaptcha("coach_signup_page")
-
-  const user = getUser()
 
   const renderLabel = (val: number) => {
     return <LabelContent>{titleize(humanize(skillLevels[val]))}</LabelContent>
