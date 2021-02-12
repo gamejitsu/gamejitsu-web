@@ -81,7 +81,7 @@ const Page: AuthenticatedComponent = () => {
           <ParagraphTitle>Web Designers</ParagraphTitle>
           <ParagraphText>
             We are actively looking for web designers to work on our website and for creating
-            advertisment.
+            advertisement.
           </ParagraphText>
           <ParagraphTitle>Engineering</ParagraphTitle>
           <ParagraphText>

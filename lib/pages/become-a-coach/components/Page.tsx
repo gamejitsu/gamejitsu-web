@@ -6,7 +6,7 @@ import { Callout } from "@blueprintjs/core"
 import queryString from "query-string"
 import { UserContext } from "gamejitsu/contexts"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import { Footer, Navbar, LinkBold } from "gamejitsu/components"
+import { Footer, Navbar, LinkMailBold } from "gamejitsu/components"
 import {
   Container,
   MainTitle,
@@ -15,17 +15,6 @@ import {
   ParagraphText,
   ParagraphTitle
 } from "../../../components/UtilsComponents"
-
-const Bold = styled.a`
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: none;
-    color: ${(props) => props.theme.primaryColor};
-  }
-`
 
 const getCurrentUser = () => useContext(UserContext)
 
@@ -117,13 +106,12 @@ const Page: AuthenticatedComponent = () => {
           <ParagraphTitle>Sign Up</ParagraphTitle>
           <ParagraphText>
             If you match the required MMR, and you are not already a coach you can sign up to become
-            one at the Gamejitsu
+            one at the Gamejitsu.
           </ParagraphText>
-          {user ? (
-            <LinkBold href="/coach-signup"> coach sign-up page</LinkBold>
-          ) : (
-            <Bold href={urlBase + "?" + stringified}>coach sign-up page</Bold>
-          )}
+          <ParagraphText>
+            Email us at{" "}
+            <LinkMailBold href="mailto:support@gamejitsu.gg">support@gamejitsu.gg</LinkMailBold>
+          </ParagraphText>
         </Box>
       </Box>
       <Spacer padding={80} />

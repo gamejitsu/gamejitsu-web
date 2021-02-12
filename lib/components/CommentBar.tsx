@@ -48,6 +48,7 @@ const ElementComment = styled(Box)<ElementCommentProps>`
   height: 90%;
   width: 3px;
   bottom: 0;
+  cursor: pointer;
   position: absolute;
   background-color: ${(props) => props.theme.primaryColor};
   &:hover {
@@ -62,12 +63,6 @@ const ElementComment = styled(Box)<ElementCommentProps>`
 const Bar = styled(Box)`
   background-color: ${(props) => props.theme.lightBackgroundColor};
   width: 100%;
-`
-
-const BarText = styled.h3`
-  color: white;
-  font-weight: bold;
-  font-size: 12px;
 `
 
 const TimeTag = styled(Box)`

@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from "react"
 import styled from "styled-components"
+import ReactMarkdown from "react-markdown"
 
 import { Box, Flex } from "rebass"
 import { Comment } from "gamejitsu/api/types/comment"
@@ -9,34 +10,100 @@ import { Button } from "gamejitsu/components"
 import { Classes, Dialog, Tooltip } from "@blueprintjs/core"
 
 interface Props {
+  displaySaveButton?: boolean
   comments: Comment[]
   selectedComment: Comment | null
   onSelect: (comment: Comment | null) => void
   onSaveReview?: () => void
 }
 
-interface ListItemProps {
+interface ListItemContainerProps {
+  isCollapsed: boolean
   comment: Comment
   selectedComment: Comment | null
 }
 
-interface ListItemContainerProps {
-  isCollapsed: boolean
-}
-
 const ListItemContainer = styled(Box)<ListItemContainerProps>`
+  background-color: ${({ comment, selectedComment, theme }) => {
+    return comment !== selectedComment ? "#212122" : lighten(0.15, theme.lightBackgroundColor)
+  }};
   min-height: 120px;
   flex: 1;
   border: 2px solid ${(props) => props.theme.secondaryColor};
   border-top: 0;
-  background-color: #212122;
 `
 
-const ListItem = styled.li<ListItemProps>`
-  background-color: ${({ comment, selectedComment, theme }) => {
-    return comment !== selectedComment ? "transparent" : lighten(0.1, theme.lightBackgroundColor)
-  }};
+const ListItem = styled.li`
   cursor: pointer;
+  white-space: pre-line;
+  color: #ffffff;
+
+  h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 27px;
+    font-weight: bold;
+    margin-bottom: 7px;
+  }
+
+  h3 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  h4 {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 3px;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-bottom: 6px;
+  }
+
+  ol {
+    display: block;
+    list-style-type: decimal;
+    margin-bottom: 6px;
+    text-align: left;
+  }
+
+  li {
+    margin-left: 2rem;
+    display: list-item;
+    text-align: -webkit-match-parent;
+  }
+
+  p {
+    margin-bottom: 6px;
+  }
+
+  strike {
+    font-weight: bold;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  code {
+    font-size: 17px;
+    font-family: monospace;
+  }
+
+  a {
+    text-decoration: none;
+  }
 `
 
 const CommentListTitle = styled.h1`
@@ -74,13 +141,20 @@ const CommentList: FunctionComponent<Props> = ({
   comments,
   selectedComment,
   onSelect,
-  onSaveReview
+  onSaveReview,
+  displaySaveButton
 }) => {
   const [isSaveReviewOpen, setIsSaveReviewOpen] = useState(false)
   const [commentsExpanded, setCommentsExpanded] = useState<Comment[]>([])
+  const [isAllCollapsed, setIsAllCollapsed] = useState(true)
 
-  const onSelectListItem = (comment: Comment) =>
+  const onClickToTimestamp = (comment: Comment) =>
     comment === selectedComment ? onSelect(null) : onSelect(comment)
+
+  const onSelectListItem = (comment: Comment) => {
+    onExpandComment(comment)
+    return comment === selectedComment ? onSelect(null) : onSelect(comment)
+  }
 
   const compareTimestamp = (a: Comment, b: Comment) => a.timestamp - b.timestamp
 
@@ -108,6 +182,14 @@ const CommentList: FunctionComponent<Props> = ({
     const newCommentsExpanded: Comment[] = [...commentsExpanded, selectedComment]
     setCommentsExpanded(newCommentsExpanded)
   }
+  const onExpandAllComments = () => {
+    setCommentsExpanded(comments)
+    setIsAllCollapsed(false)
+  }
+  const onCollapseAllComments = () => {
+    setCommentsExpanded([])
+    setIsAllCollapsed(true)
+  }
   return (
     <>
       <Flex
@@ -119,18 +201,42 @@ const CommentList: FunctionComponent<Props> = ({
       >
         <Header>
           <Flex width="100%">
-            <Flex>
+            <Flex width="100%">
               <CommentListTitle>COMMENTS ADDED BY COACH</CommentListTitle>
-            </Flex>
-            {onSaveReview ? (
-              <Flex width="50%" justifyContent="flex-end" alignItems="center">
+              <Flex key="saveButton" justifyContent="flex-end" alignItems="center" width="50%">
                 <Box>
-                  <Button text="Save" type="button" onClick={handleSaveReviewOpen} />
+                  {isAllCollapsed ? (
+                    <Button
+                      text="Expand all"
+                      type="button"
+                      onClick={onExpandAllComments.bind(null, comments)}
+                    />
+                  ) : (
+                    <Button
+                      text="Collapse all"
+                      type="button"
+                      onClick={onCollapseAllComments.bind(null, comments)}
+                    />
+                  )}
                 </Box>
               </Flex>
-            ) : (
-              <div />
-            )}
+            </Flex>
+            {onSaveReview
+              ? [
+                  displaySaveButton ? (
+                    <Flex
+                      key="saveButton"
+                      width="50%"
+                      justifyContent="flex-end"
+                      alignItems="center"
+                    >
+                      <Box>
+                        <Button text="Save" type="button" onClick={handleSaveReviewOpen} />
+                      </Box>
+                    </Flex>
+                  ) : null
+                ]
+              : null}
           </Flex>
         </Header>
         <Box>
@@ -142,25 +248,42 @@ const CommentList: FunctionComponent<Props> = ({
               })
               return (
                 <Flex key={index.toString()}>
-                  <ListItemContainer p={3} isCollapsed={isCollapsed}>
+                  <ListItemContainer
+                    comment={comment}
+                    selectedComment={selectedComment}
+                    p={3}
+                    isCollapsed={isCollapsed}
+                  >
                     <Flex alignItems="center" justifyContent="space-between">
-                      <TimeTag>{formatTimestamp(comment.timestamp)}</TimeTag>
-                      <LessExpandTag>
-                        {isCollapsed ? (
-                          <a onClick={onExpandComment.bind(null, comment)}>Expand</a>
-                        ) : (
-                          <a onClick={onCollapseComment.bind(null, comment)}>Collapse</a>
-                        )}
-                      </LessExpandTag>
+                      <TimeTag>
+                        <a onClick={onClickToTimestamp.bind(null, comment)}>
+                          {formatTimestamp(comment.timestamp)}
+                        </a>
+                      </TimeTag>
+                      {comment.text.length >= 90 ? (
+                        <LessExpandTag>
+                          {isCollapsed ? (
+                            <a onClick={onExpandComment.bind(null, comment)}>Expand</a>
+                          ) : (
+                            <a onClick={onCollapseComment.bind(null, comment)}>Collapse</a>
+                          )}
+                        </LessExpandTag>
+                      ) : null}
                     </Flex>
                     <Box pt={3}>
-                      <ListItem comment={comment} selectedComment={selectedComment}>
+                      <ListItem>
                         <a onClick={onSelectListItem.bind(null, comment)}>
-                          {isCollapsed
-                            ? `${comment.text.substring(0, 90)} ${
-                                comment.text.length < 90 ? `` : `...`
-                              }`
-                            : comment.text}
+                          {isCollapsed ? (
+                            <ReactMarkdown
+                              children={
+                                comment.text.length <= 90
+                                  ? comment.text.substring(0, 90)
+                                  : comment.text.substring(0, 90) + `...`
+                              }
+                            />
+                          ) : (
+                            <ReactMarkdown children={comment.text} />
+                          )}
                         </a>
                       </ListItem>
                     </Box>

@@ -55,7 +55,8 @@
   "review": {
     "attributes": {
       "comments": { "type": "array", "value": "comment" },
-      "isPublished": { "type": "boolean" }
+      "isPublished": { "type": "boolean" },
+      "isDeleted": { "type": "boolean" }
     },
     "relationships": {
       "request": { "cardinality": "one", "type": "review-request", "include": true },

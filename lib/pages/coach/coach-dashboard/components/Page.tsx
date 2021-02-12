@@ -1,7 +1,6 @@
 import React from "react"
 import { Flex } from "rebass"
 import { NextPageContext, NextPage } from "next"
-import styled from "styled-components"
 
 import { DecoratedReview, decorateReviews } from "gamejitsu/models/review"
 import { DecoratedReviewRequest, decorateReviewRequests } from "gamejitsu/models/review-request"
@@ -26,14 +25,14 @@ const getReviews = async (ctx: NextPageContext) => {
   return response
 }
 
-const areAllReviewsPublished = (reviews: DecoratedReview[]) => {
-  let areAllPublished = true
+const isThereANonCompletedReview = (reviews: DecoratedReview[]) => {
+  let isThereANonCompletedReview = false
   reviews.map((review) => {
-    if (review && !review.isPublished) {
-      areAllPublished = false
+    if (!review?.isPublished && !review?.isDeleted) {
+      isThereANonCompletedReview = true
     }
   })
-  return areAllPublished
+  return isThereANonCompletedReview
 }
 
 const CoachDashboardPage: NextPage<Props> = ({ reviewRequests, reviews }) => {
@@ -42,11 +41,11 @@ const CoachDashboardPage: NextPage<Props> = ({ reviewRequests, reviews }) => {
       <Flex flexDirection="column" width="100%">
         <Flex width="100%" flexDirection="column">
           <Title text="ACCEPTED REVIEWS" />
-          {reviews.length === 0 || areAllReviewsPublished(reviews) ? (
+          {reviews.length === 0 || !isThereANonCompletedReview(reviews) ? (
             <EmptyCard text="No reviews accepted to show" />
           ) : (
             reviews.map((review) => {
-              if (review && !review.isPublished)
+              if (!review?.isPublished && !review?.isDeleted)
                 return <CoachReviewCard key={review.id} review={review} />
             })
           )}

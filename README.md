@@ -2,7 +2,7 @@
 
 # :space_invader: Gamejitsu Web
 
-The **Gamejitsu** React.js frontend.
+The **Gamejitsu** Typescript React.js frontend.
 
 ## :page_with_curl:  _Instructions_:
 
@@ -47,7 +47,7 @@ If you are working with http://localhost:4000, of course Stripe cannot call it d
 
 You need to create a tunnel, start `ngrok` to support Stripe webhooks, it will allow the creation of the review request after a successful checkout.
 
-__`❍ ngrok http -hostname=gamejitsu-dev.us.ngrok.io 4000`__
+__`❍ ngrok http -hostname=gamejitsu-dev-us.ngrok.io 4000`__
 
 ### Notes
 

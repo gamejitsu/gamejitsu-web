@@ -39,8 +39,10 @@ const ReviewPage: NextPage<Props> = (props) => {
   }
 
   const onSetVideoTimestamp = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
-    const timestamp = event.currentTarget.currentTime
-    setVideoTimestamp(Math.floor(timestamp))
+    if (event.currentTarget.currentTime > videoTimestamp) {
+      const timestamp = event.currentTarget.currentTime
+      setVideoTimestamp(Math.floor(timestamp))
+    }
   }
 
   const onSelectComment = (comment: Comment | null) => {
@@ -51,52 +53,56 @@ const ReviewPage: NextPage<Props> = (props) => {
   useEffect(() => {
     if (videoRef.current) {
       setVideoDuration(videoRef.current.duration)
-      videoRef.current.currentTime = videoTimestamp
     } else {
       setVideoDuration(0)
     }
-  })
+  }, [])
+
+  useEffect(() => {
+    if (
+      videoRef.current &&
+      Math.floor(videoRef.current.currentTime) != Math.floor(videoTimestamp)
+    ) {
+      videoRef.current.currentTime = videoTimestamp
+    }
+  }, [videoTimestamp])
 
   return (
     <LayoutWithMenuUser title="Review">
-      <Box>
-        <Flex justifyContent="center">
-          <Box>
-            <VideoContainer>
-              <video
-                ref={videoRef}
-                onDurationChange={onSetVideoDuration}
-                onTimeUpdate={onSetVideoTimestamp}
-                width="100%"
-                controls
-              >
-                <source
-                  src={props.replay.videoUrl ? props.replay.videoUrl : "/video/sample.mp4"}
-                  type="video/mp4"
-                />
-              </video>
-            </VideoContainer>
-            <Box>
-              <Box py={3}>
-                <Title>MATCH NAVIGATION</Title>
-              </Box>
-              <CommentBar
-                comments={review.comments}
-                videoDuration={videoDuration}
-                onVideoTimestampChange={setVideoTimestamp}
-                videoTimestamp={videoTimestamp}
-              />
-            </Box>
-          </Box>
-          <Box>
-            <CommentList
-              comments={review.comments}
-              selectedComment={selectedComment}
-              onSelect={onSelectComment}
+      <Flex width={["100%", "100%", "67%"]} flexDirection="column">
+        <VideoContainer>
+          <video
+            ref={videoRef}
+            onDurationChange={onSetVideoDuration}
+            onTimeUpdate={onSetVideoTimestamp}
+            width="100%"
+            controls
+          >
+            <source
+              src={props.replay.videoUrl ? props.replay.videoUrl : "/video/sample.mp4"}
+              type="video/mp4"
             />
+          </video>
+        </VideoContainer>
+        <Flex flexDirection="column">
+          <Box py={3}>
+            <Title>MATCH NAVIGATION</Title>
           </Box>
+          <CommentBar
+            comments={review.comments}
+            videoDuration={videoDuration}
+            onVideoTimestampChange={setVideoTimestamp}
+            videoTimestamp={videoTimestamp}
+          />
         </Flex>
-      </Box>
+      </Flex>
+      <Flex width={["100%", "100%", "33%"]}>
+        <CommentList
+          comments={review.comments}
+          selectedComment={selectedComment}
+          onSelect={onSelectComment}
+        />
+      </Flex>
     </LayoutWithMenuUser>
   )
 }

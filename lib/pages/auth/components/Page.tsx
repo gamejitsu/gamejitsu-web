@@ -1,11 +1,10 @@
 import { NextPage } from "next"
 import { setCookie } from "nookies"
 import { stringify as stringifyQueryString } from "querystring"
-import { useEffect, useContext } from "react"
+import { useEffect } from "react"
 import Router from "next/router"
 
 import { createModel } from "gamejitsu/api"
-import { UserContext } from "gamejitsu/contexts"
 import SessionResource from "gamejitsu/api/resources/session"
 
 interface Props {

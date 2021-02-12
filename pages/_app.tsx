@@ -205,7 +205,7 @@ const handleUserAccessingCoachResources = (ctx: NextPageContext, user: any) => {
   if (user.coachId) {
     //Special redirect after coach sign_in:
     if (ctx.pathname.match(/\/dashboard/)) {
-      redirectToPage(ctx, "/coach-dashboard")
+      user.coachId.approved ? redirectToPage(ctx, "/coach-dashboard") : redirectToPage(ctx)
     } else {
       if (coachForbiddenRoutes.some((route) => route.test(ctx.pathname))) {
         redirectToPage(ctx)
@@ -220,6 +220,7 @@ const handleUserAccessingCoachResources = (ctx: NextPageContext, user: any) => {
   }
 }
 
+// Redirect customers not logged in
 const handleUnauthorized = (ctx: NextPageContext) => {
   destroyCookie(ctx, "authToken")
   redirectToPage(ctx)

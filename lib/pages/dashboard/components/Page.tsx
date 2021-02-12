@@ -14,6 +14,7 @@ import { listModels, findModel } from "gamejitsu/api"
 import { decorateReviewRequests, DecoratedReviewRequest } from "gamejitsu/models/review-request"
 import { UserContext } from "gamejitsu/contexts"
 import { ReviewRequestCard, ReplayCardNew } from "."
+import Router from "next/router"
 
 interface Props {
   user: User
@@ -34,8 +35,9 @@ const getCurrentUser = async () => {
 const getReviewRequests = async (ctx: NextPageContext) =>
   await listModels(ReviewRequestResource, ctx)
 
-const areAllReviewRequestsPublished = (reviewRequests: (DecoratedReviewRequest | undefined)[]) =>
-  reviewRequests?.every((reviewRequest) => reviewRequest?.status !== "published")
+const areAllReviewRequestsPublished = (reviewRequests: (DecoratedReviewRequest | undefined)[]) => {
+  return reviewRequests?.every((reviewRequest) => reviewRequest?.status === "published")
+}
 
 const Dashboard: FunctionComponent<Props> = (props) => {
   const [user, setUser] = useState(props.user)
@@ -64,6 +66,7 @@ const Dashboard: FunctionComponent<Props> = (props) => {
         const replays = await getReplays()
         setUser(user)
         setReplays(replays)
+        Router.push("/dashboard")
       }
     })
     return () => {

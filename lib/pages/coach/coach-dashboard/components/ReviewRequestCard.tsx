@@ -1,6 +1,5 @@
 import { Flex, Box } from "rebass"
 import { formatDistanceToNow } from "date-fns"
-import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import React, { FunctionComponent, useState } from "react"
 import Router from "next/router"
 import styled from "styled-components"
@@ -10,6 +9,9 @@ import { DecoratedReviewRequest } from "gamejitsu/models/review-request"
 import ReviewResource from "gamejitsu/api/resources/review"
 import { Classes, Dialog, Tooltip } from "@blueprintjs/core"
 import { breakpointDown } from "../../../../utils/mediaQueryDevices"
+import { prices } from "../../../../../public/prices"
+import { SkillLevel } from "gamejitsu/api/types/skill-level"
+const skillLevels = SkillLevel.types.map((t) => t.value)
 
 interface Props {
   reviewRequest: DecoratedReviewRequest
@@ -54,7 +56,7 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
       setAcceptReviewIsOpen(false)
       await createModel(ReviewResource, { requestId: reviewRequestId, coachId: "" }, undefined)
     } catch (error) {
-      if (error.message === "some_reviews_are_not_published") {
+      if (error.message === "some_reviews_are_not_published_or_not_deleted") {
         setPendingReviewWarning(true)
         console.log(error)
       } else {
@@ -111,13 +113,18 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
                 })}
               </Flex>
               <Flex alignItems="center">
-                <Box mr="auto" mt={4}>
-                  Played with {currentPlayer.heroName}
-                </Box>
+                <Flex>
+                  <Box mr="auto" mt={4}>
+                    Played with {currentPlayer.heroName} <br />
+                    Match ID: {reviewRequest.replay.matchId} <br />
+                    Price: ${prices[skillLevels.indexOf(reviewRequest.skillLevel)].priceUSD}
+                  </Box>
+                </Flex>
                 <Box mt={4}>
                   <Button onClick={() => setAcceptReviewIsOpen(true)} text="ACCEPT REVIEW" />
                 </Box>
               </Flex>
+              <Box mt={4}>Comment: {reviewRequest.comment}</Box>
             </Box>
           </Flex>
         </Box>
@@ -136,7 +143,7 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
         usePortal={true}
       >
         <div className={Classes.DIALOG_BODY}>
-          <p>s</p>
+          <p>Click "Accept Review" to confirm the acceptation of the review request</p>
         </div>
         <div className={Classes.DIALOG_FOOTER}>
           <div className={Classes.DIALOG_FOOTER_ACTIONS}>

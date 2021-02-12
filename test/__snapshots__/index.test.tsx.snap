@@ -2396,7 +2396,7 @@ exports[`Index page should match snapshot 1`] = `
                               <h2
                                 className="UtilsComponents__SecondaryTitle-iaogrl-4 flzrWF"
                               >
-                                Asynch Coaching
+                                Async Coaching
                               </h2>
                             </StyledComponent>
                           </UtilsComponents__SecondaryTitle>
@@ -2512,7 +2512,7 @@ exports[`Index page should match snapshot 1`] = `
                               <p
                                 className="UtilsComponents__ParagraphText-iaogrl-6 UFtIG"
                               >
-                                Gamejitsu uses state-of-the-art technologies to allow you (as a palyer) to get your
+                                Gamejitsu uses state-of-the-art technologies to allow you (as a player) to get your
                                  
                                 <Page__Bold>
                                   <StyledComponent
@@ -2581,7 +2581,7 @@ exports[`Index page should match snapshot 1`] = `
                               <p
                                 className="UtilsComponents__ParagraphText-iaogrl-6 UFtIG"
                               >
-                                Gamejitsu will fetch autonously the game you selected to be reviewed and provides it to a coach based on the 
+                                Gamejitsu will fetch autonomously the game you selected to be reviewed and provides it to a coach based on the 
                                 <Page__Bold>
                                   <StyledComponent
                                     forwardedComponent={
@@ -2981,7 +2981,7 @@ exports[`Index page should match snapshot 1`] = `
                                 <h1
                                   className="UtilsComponents__MainTitle-iaogrl-3 gJbXjW"
                                 >
-                                  Optimize your Skillset
+                                  Optimize your Skill Set
                                 </h1>
                               </StyledComponent>
                             </UtilsComponents__MainTitle>

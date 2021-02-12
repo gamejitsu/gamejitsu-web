@@ -3,7 +3,7 @@ import { NextPage } from "next"
 import React, { useContext } from "react"
 import styled from "styled-components"
 
-import { LayoutWithMenuUser, Title } from "gamejitsu/components"
+import { Button, LayoutWithMenuUser, Title } from "gamejitsu/components"
 import { UserContext } from "gamejitsu/contexts"
 
 const SettingsCard = styled(Flex)`
@@ -31,6 +31,9 @@ const UserSettings: NextPage = () => {
               {user?.email
                 ? `Email: ${user.email}`
                 : "Email not provided yet, insert it while requesting the review"}
+            </Box>
+            <Box pt={4}>
+              <Button href={"/update-email"} text="Update email" />
             </Box>
           </SettingsCard>
         </Flex>

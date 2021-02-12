@@ -30,18 +30,6 @@ const validationSchema = object({
 
 type CommentFormComponent = (props: Props) => React.ReactElement
 
-const onError = () => {
-  const AppToaster = Toaster.create({
-    className: "recipe-toaster",
-    position: Position.TOP
-  })
-  AppToaster.show({
-    intent: Intent.SUCCESS,
-    icon: "tick",
-    message: "Review saved!"
-  })
-}
-
 const CommentFormNew: CommentFormComponent = ({
   onSave,
   onDelete,

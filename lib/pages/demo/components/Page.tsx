@@ -4,9 +4,14 @@ import React, { SyntheticEvent, useRef, useState, useEffect } from "react"
 import styled from "styled-components"
 
 import { Comment } from "gamejitsu/api/types/comment"
-import { LayoutDemo, CommentBar, CommentList, CommentFormNew } from "gamejitsu/components"
+import {
+  CommentBar,
+  CommentFormNew,
+  CommentList,
+  LayoutDemo,
+  useWarnIfUnsavedChanges
+} from "gamejitsu/components"
 import { Review } from "gamejitsu/api/resources/review"
-import { useWarnIfUnsavedChanges } from "./RefreshPageWarner"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { demoComments } from "../demo-comments/demo-comments"
 
@@ -28,6 +33,7 @@ const DemoPage: AuthenticatedComponent = () => {
     id: "0",
     comments: demoComments,
     isPublished: false,
+    isDeleted: false,
     requestId: "0",
     coachId: "0"
   }
@@ -68,10 +74,8 @@ const DemoPage: AuthenticatedComponent = () => {
   }
 
   const onSetVideoTimestamp = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
-    if (event.currentTarget.currentTime > videoTimestamp + 60) {
-      const timestamp = event.currentTarget.currentTime
-      setVideoTimestamp(Math.floor(timestamp))
-    }
+    const timestamp = event.currentTarget.currentTime
+    setVideoTimestamp(Math.floor(timestamp))
   }
 
   const onSelectComment = (comment: Comment | null) => {
@@ -107,11 +111,19 @@ const DemoPage: AuthenticatedComponent = () => {
   useEffect(() => {
     if (videoRef.current) {
       setVideoDuration(videoRef.current.duration)
-      videoRef.current.currentTime = videoTimestamp
     } else {
       setVideoDuration(0)
     }
-  })
+  }, [])
+
+  useEffect(() => {
+    if (
+      videoRef.current &&
+      Math.floor(videoRef.current.currentTime) != Math.floor(videoTimestamp)
+    ) {
+      videoRef.current.currentTime = videoTimestamp
+    }
+  }, [videoTimestamp])
 
   return (
     <LayoutDemo title="Coach Demo">
