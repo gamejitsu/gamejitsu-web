@@ -2,7 +2,7 @@
 
 # :space_invader: Gamejitsu Web
 
-The **Gamejitsu** React.js frontend.
+The **Gamejitsu** Typescript React.js frontend.
 
 ## :page_with_curl:  _Instructions_:
 
