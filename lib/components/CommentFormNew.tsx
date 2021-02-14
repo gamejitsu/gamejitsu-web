@@ -22,6 +22,7 @@ interface Props {
   onSave: (comment: Comment) => void
   onDelete: () => void
   onDeselect: () => void
+  pauseVideo: () => void
 }
 
 const validationSchema = object({
@@ -34,6 +35,7 @@ const CommentFormNew: CommentFormComponent = ({
   onSave,
   onDelete,
   onDeselect,
+  pauseVideo,
   comment,
   timestamp
 }) => {
@@ -74,12 +76,18 @@ const CommentFormNew: CommentFormComponent = ({
     setIsUpdateOpen(true)
   }
 
+  const handlePauseVideo = () => {
+    if (comment === null) {
+      pauseVideo()
+    }
+  }
+
   return (
     <div>
       <Flex alignItems="center">
         <Box py={3} width="100%">
           <form onSubmit={formik.handleSubmit}>
-            <TextArea
+            <TextArea onFocus={() => handlePauseVideo()}
               growVertically={true}
               large={true}
               intent={Intent.PRIMARY}

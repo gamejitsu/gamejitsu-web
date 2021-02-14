@@ -38,7 +38,6 @@ const Title = styled.h1`
 
 const CoachReviewPage: NextPage<Props> = (props) => {
   useWarnIfUnsavedChanges(true)
-
   const [review, setReview] = useState(props.review)
   const [autosaveEnabled, setAutosave] = useState(true)
   const [videoDuration, setVideoDuration] = useState(0)
