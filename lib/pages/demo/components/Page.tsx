@@ -80,7 +80,7 @@ const DemoPage: AuthenticatedComponent = () => {
   }
 
   const toggleVideoSpeed = () => {
-    const speeds = [1, 2, 3]
+    const speeds = [1, 2, 3, 4]
     let nextSpeed =
       speeds[(((speeds.indexOf(videoSpeed) + 1) % speeds.length) + speeds.length) % speeds.length]
     setVideoSpeed(nextSpeed)
