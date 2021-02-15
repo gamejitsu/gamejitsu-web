@@ -79,6 +79,7 @@ const DemoPage: AuthenticatedComponent = () => {
     setVideoDuration(Math.floor(duration))
   }
 
+
   const toggleVideoSpeed = () => {
     const speeds = [1, 2, 3]
     let nextSpeed =
