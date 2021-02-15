@@ -20,6 +20,13 @@ const VideoContainer = styled(Box)`
   border: 1px solid ${(props) => props.theme.secondaryColor};
 `
 
+const VideoSpeedControl = styled(Flex)`
+  cursor: pointer;
+  b {
+    font-weight: bold;
+  }
+`
+
 const Title = styled.h1`
   color: white;
   font-size: 18px;
@@ -29,6 +36,7 @@ const Title = styled.h1`
 const ReviewPage: NextPage<Props> = (props) => {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [review] = useState(props.review)
+  const [videoSpeed, setVideoSpeed] = useState(1)
   const [videoDuration, setVideoDuration] = useState(0)
   const [videoTimestamp, setVideoTimestamp] = useState(0)
   const [selectedComment, setSelectedComment] = useState<Comment | null>(null)
@@ -44,6 +52,19 @@ const ReviewPage: NextPage<Props> = (props) => {
       setVideoTimestamp(Math.floor(timestamp))
     }
   }
+
+  const toggleVideoSpeed = () => {
+    const speeds = [1, 2, 3]
+    let nextSpeed =
+      speeds[(((speeds.indexOf(videoSpeed) + 1) % speeds.length) + speeds.length) % speeds.length]
+    setVideoSpeed(nextSpeed)
+  }
+  // This is a right way, we must wait the useEffect hook after variable update
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = videoSpeed
+    }
+  }, [videoSpeed])
 
   const onSelectComment = (comment: Comment | null) => {
     setVideoTimestamp(comment !== null ? comment.timestamp : videoTimestamp)
@@ -84,6 +105,11 @@ const ReviewPage: NextPage<Props> = (props) => {
             />
           </video>
         </VideoContainer>
+        <VideoSpeedControl justifyContent="flex-end" pt={2} onClick={() => toggleVideoSpeed()}>
+          <Box>
+            Video Speed: <b>{videoSpeed}x</b>
+          </Box>
+        </VideoSpeedControl>
         <Flex flexDirection="column">
           <Box py={3}>
             <Title>MATCH NAVIGATION</Title>
@@ -93,6 +119,7 @@ const ReviewPage: NextPage<Props> = (props) => {
             videoDuration={videoDuration}
             onVideoTimestampChange={setVideoTimestamp}
             videoTimestamp={videoTimestamp}
+            onSelect={onSelectComment}
           />
         </Flex>
       </Flex>

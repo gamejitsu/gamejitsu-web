@@ -19,7 +19,12 @@ const VideoContainer = styled(Box)`
   width: 100%;
   border: 1px solid ${(props) => props.theme.secondaryColor};
 `
-
+const VideoSpeedControl = styled(Flex)`
+  cursor: pointer;
+  b {
+    font-weight: bold;
+  }
+`
 const Title = styled.h1`
   color: white;
   font-size: 18px;
@@ -39,6 +44,7 @@ const DemoPage: AuthenticatedComponent = () => {
   }
 
   const [review, setReview] = useState(reviewInitial)
+  const [videoSpeed, setVideoSpeed] = useState(1)
   const [videoDuration, setVideoDuration] = useState(0)
   const [videoTimestamp, setVideoTimestamp] = useState(0)
   const [selectedComment, setSelectedComment] = useState<Comment | null>(null)
@@ -71,6 +77,25 @@ const DemoPage: AuthenticatedComponent = () => {
   const onSetVideoDuration = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
     const duration = event.currentTarget.duration
     setVideoDuration(Math.floor(duration))
+  }
+
+  const toggleVideoSpeed = () => {
+    const speeds = [1, 2, 3]
+    let nextSpeed =
+      speeds[(((speeds.indexOf(videoSpeed) + 1) % speeds.length) + speeds.length) % speeds.length]
+    setVideoSpeed(nextSpeed)
+  }
+  // This is a right way, we must wait the useEffect hook after variable update
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = videoSpeed
+    }
+  }, [videoSpeed])
+
+  const pauseVideo = () => {
+    if (videoRef.current) {
+      videoRef.current.pause()
+    }
   }
 
   const onSetVideoTimestamp = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
@@ -144,6 +169,11 @@ const DemoPage: AuthenticatedComponent = () => {
             />
           </video>
         </VideoContainer>
+        <VideoSpeedControl justifyContent="flex-end" pt={2} onClick={() => toggleVideoSpeed()}>
+          <Box>
+            Video Speed: <b>{videoSpeed}x</b>
+          </Box>
+        </VideoSpeedControl>
         <Flex flexDirection="column">
           <Box py={3}>
             <Title>MATCH NAVIGATION</Title>
@@ -153,6 +183,7 @@ const DemoPage: AuthenticatedComponent = () => {
             videoDuration={videoDuration}
             onVideoTimestampChange={setVideoTimestamp}
             videoTimestamp={videoTimestamp}
+            onSelect={onSelectComment}
           />
         </Flex>
         <Flex flexDirection="column">
@@ -164,6 +195,7 @@ const DemoPage: AuthenticatedComponent = () => {
               onDelete={onDeleteComment}
               onDeselect={onDeselectComment}
               timestamp={videoTimestamp}
+              pauseVideo={pauseVideo}
             />
           </Box>
         </Flex>
