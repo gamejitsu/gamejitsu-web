@@ -87,7 +87,8 @@ const CommentFormNew: CommentFormComponent = ({
       <Flex alignItems="center">
         <Box py={3} width="100%">
           <form onSubmit={formik.handleSubmit}>
-            <TextArea onFocus={() => handlePauseVideo()}
+            <TextArea
+              onFocus={() => handlePauseVideo()}
               growVertically={true}
               large={true}
               intent={Intent.PRIMARY}

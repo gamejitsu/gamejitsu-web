@@ -50,7 +50,8 @@ const ElementComment = styled(Box)<ElementCommentProps>`
   height: 90%;
   width: 3px;
   cursor: pointer;
-  background-color: ${(props) => (props.selected ? lighten(0.3, props.theme.primaryColor) : props.theme.primaryColor)};
+  background-color: ${(props) =>
+    props.selected ? lighten(0.3, props.theme.primaryColor) : props.theme.primaryColor};
   &:hover {
     background-color: #fff;
   }
@@ -83,7 +84,7 @@ const CommentBar: FunctionComponent<Props> = ({
   videoDuration,
   videoTimestamp,
   onVideoTimestampChange,
-  onSelect,
+  onSelect
 }) => {
   let [containerWidth, setContainerWidth] = useState(0)
   let containerRef = useRef<HTMLElement>(null)
@@ -105,7 +106,6 @@ const CommentBar: FunctionComponent<Props> = ({
   const emptyBarsArray = [...Array(100).keys()]
 
   const reducedComments = reduceComments(comments)
-
 
   return (
     <Container>
@@ -130,7 +130,7 @@ const CommentBar: FunctionComponent<Props> = ({
                     containerWidth={containerWidth}
                     duration={videoDuration}
                     selected={selected}
-                    onClick={() =>onSelectComment(comments[0])}
+                    onClick={() => onSelectComment(comments[0])}
                   />
                 )
               } else {

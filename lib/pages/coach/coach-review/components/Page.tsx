@@ -22,6 +22,13 @@ interface Props {
   replay: DecoratedReplay
 }
 
+const VideoSpeedControl = styled(Flex)`
+  cursor: pointer;
+  b {
+    font-weight: bold;
+  }
+`
+
 const getReview = async (ctx: NextPageContext, id: string) =>
   await findModel(ReviewResource, id, ctx)
 
@@ -39,6 +46,7 @@ const Title = styled.h1`
 const CoachReviewPage: NextPage<Props> = (props) => {
   useWarnIfUnsavedChanges(true)
   const [review, setReview] = useState(props.review)
+  const [videoSpeed, setVideoSpeed] = useState(1)
   const [autosaveEnabled, setAutosave] = useState(true)
   const [videoDuration, setVideoDuration] = useState(0)
   const [videoTimestamp, setVideoTimestamp] = useState(0)
@@ -90,6 +98,25 @@ const CoachReviewPage: NextPage<Props> = (props) => {
 
   const toggleAutosave = () => {
     setAutosave(!autosaveEnabled)
+  }
+
+  const toggleVideoSpeed = () => {
+    const speeds = [1, 2, 3]
+    let nextSpeed =
+      speeds[(((speeds.indexOf(videoSpeed) + 1) % speeds.length) + speeds.length) % speeds.length]
+    setVideoSpeed(nextSpeed)
+  }
+  // This is a right way, we must wait the useEffect hook after variable update
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = videoSpeed
+    }
+  }, [videoSpeed])
+
+  const pauseVideo = () => {
+    if (videoRef.current) {
+      videoRef.current.pause()
+    }
   }
 
   const onSaveReview = async () => {
@@ -159,6 +186,11 @@ const CoachReviewPage: NextPage<Props> = (props) => {
             <source src={props.replay.videoUrl ? props.replay.videoUrl : ""} type="video/mp4" />
           </video>
         </VideoContainer>
+        <VideoSpeedControl justifyContent="flex-end" pt={2} onClick={() => toggleVideoSpeed()}>
+          <Box>
+            Video Speed: <b>{videoSpeed}x</b>
+          </Box>
+        </VideoSpeedControl>
         <Flex flexDirection="column">
           <Box py={3}>
             <Title>MATCH NAVIGATION</Title>
@@ -168,6 +200,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
             videoDuration={videoDuration}
             onVideoTimestampChange={setVideoTimestamp}
             videoTimestamp={videoTimestamp}
+            onSelect={onSelectComment}
           />
         </Flex>
         <Flex flexDirection="column">
@@ -179,6 +212,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
               onDelete={onDeleteComment}
               onDeselect={onDeselectComment}
               timestamp={videoTimestamp}
+              pauseVideo={pauseVideo}
             />
           </Box>
         </Flex>

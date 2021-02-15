@@ -24,7 +24,6 @@ const VideoSpeedControl = styled(Flex)`
   b {
     font-weight: bold;
   }
-
 `
 const Title = styled.h1`
   color: white;
@@ -34,7 +33,7 @@ const Title = styled.h1`
 
 const DemoPage: AuthenticatedComponent = () => {
   useWarnIfUnsavedChanges(true)
-  
+
   const reviewInitial: Review = {
     id: "0",
     comments: demoComments,
@@ -81,8 +80,9 @@ const DemoPage: AuthenticatedComponent = () => {
   }
 
   const toggleVideoSpeed = () => {
-    const speeds = [1,2,3]
-    let nextSpeed = speeds[((speeds.indexOf(videoSpeed) + 1) % speeds.length + speeds.length) % speeds.length];
+    const speeds = [1, 2, 3]
+    let nextSpeed =
+      speeds[(((speeds.indexOf(videoSpeed) + 1) % speeds.length) + speeds.length) % speeds.length]
     setVideoSpeed(nextSpeed)
   }
   // This is a right way, we must wait the useEffect hook after variable update
@@ -100,7 +100,7 @@ const DemoPage: AuthenticatedComponent = () => {
 
   const onSetVideoTimestamp = (event: SyntheticEvent<HTMLVideoElement, Event>) => {
     const timestamp = event.currentTarget.currentTime
-    setVideoTimestamp(Math.floor(timestamp))    
+    setVideoTimestamp(Math.floor(timestamp))
   }
 
   const onSelectComment = (comment: Comment | null) => {
@@ -169,9 +169,10 @@ const DemoPage: AuthenticatedComponent = () => {
             />
           </video>
         </VideoContainer>
-        <VideoSpeedControl justifyContent="flex-end" pt={2} onClick={() => toggleVideoSpeed()} >
-            <Box>Video Speed: <b>{videoSpeed}x</b>
-            </Box>
+        <VideoSpeedControl justifyContent="flex-end" pt={2} onClick={() => toggleVideoSpeed()}>
+          <Box>
+            Video Speed: <b>{videoSpeed}x</b>
+          </Box>
         </VideoSpeedControl>
         <Flex flexDirection="column">
           <Box py={3}>
