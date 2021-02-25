@@ -16,7 +16,7 @@ import { UserContext } from "gamejitsu/contexts"
 import { prices } from "../../../../public/prices"
 import CheckoutResource, { Checkout } from "gamejitsu/api/resources/checkout"
 
-const redirectToCheckout = async ({ comment, skillLevel, replayId, email }: Partial<Checkout>) => {
+const redirectToCheckout = async ({ comment, skillLevel, replayId, email, metadata }: Partial<Checkout>) => {
   const stripe = Stripe(process.env.STRIPE_PUBLIC_KEY)
   const {
     data: { stripeId }
@@ -26,6 +26,7 @@ const redirectToCheckout = async ({ comment, skillLevel, replayId, email }: Part
     replayId,
     reviewRequestId: null,
     email,
+    metadata,
     redirectUrl: window.location.origin
   })
   return await stripe.redirectToCheckout({ sessionId: stripeId })
@@ -76,7 +77,8 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
     if (replay === undefined) {
       throw new Error(`Invalid replay`)
     }
-    redirectToCheckout({ comment, skillLevel, replayId: replay.id, email })
+    const metadata = { mmr: 1200, isParty: true }
+    redirectToCheckout({ comment, skillLevel, replayId: replay.id, email, metadata })
   }
 
   const renderLabel = (val: number) => {

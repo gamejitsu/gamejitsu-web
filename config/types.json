@@ -17,5 +17,12 @@
       "text": { "type": "string" },
       "timestamp": { "type": "number" }
     }
+  },
+  "metadata": {
+    "type": "object",
+    "attributes": {
+      "mmr": { "type": "number" },
+      "isParty": { "type": "boolean" }    
+    }  
   }
 }

@@ -60,6 +60,8 @@ export function buildResource<D, R, TD, TR>({
 
 export function extractValue<T>(value: Either<t.Errors, T>) {
   if (isLeft(value)) {
+    console.log("type of value:", typeof value)
+    console.log("value:", JSON.stringify(value))
     throw new DecodingError(value.left)
   }
   return value.right
