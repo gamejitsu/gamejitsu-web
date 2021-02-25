@@ -84,15 +84,7 @@ export default buildResource({
         t
           .strict({
             included: t.union([
-              t.array(
-                t.union([
-                  replayDecoder,
-                  userDecoder,
-                  coachDecoder,
-                  reviewDecoder,
-                  decoder
-                ])
-              ),
+              t.array(t.union([replayDecoder, userDecoder, coachDecoder, reviewDecoder, decoder])),
               t.undefined
             ])
           })

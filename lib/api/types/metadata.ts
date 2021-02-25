@@ -8,12 +8,12 @@ export interface Metadata {
 
 const decoder = t.type({
   mmr: t.number,
-  "is_party": t.boolean
+  is_party: t.boolean
 })
 
 export const encoder = (value: Metadata) => ({
   mmr: value.mmr,
-  "is_party": value.isParty
+  is_party: value.isParty
 })
 
 export const Metadata = new t.Type(

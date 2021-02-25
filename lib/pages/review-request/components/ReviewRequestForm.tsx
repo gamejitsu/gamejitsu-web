@@ -16,7 +16,13 @@ import { UserContext } from "gamejitsu/contexts"
 import { prices } from "../../../../public/prices"
 import CheckoutResource, { Checkout } from "gamejitsu/api/resources/checkout"
 
-const redirectToCheckout = async ({ comment, skillLevel, replayId, email, metadata }: Partial<Checkout>) => {
+const redirectToCheckout = async ({
+  comment,
+  skillLevel,
+  replayId,
+  email,
+  metadata
+}: Partial<Checkout>) => {
   const stripe = Stripe(process.env.STRIPE_PUBLIC_KEY)
   const {
     data: { stripeId }

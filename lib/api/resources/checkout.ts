@@ -80,7 +80,7 @@ export default buildResource({
       "redirect-url": value.redirectUrl,
       "stripe-id": value.stripeId,
       email: value.email,
-      metadata: value.metadata? metadataEncoder(value.metadata) : "{}"
+      metadata: value.metadata ? metadataEncoder(value.metadata) : "{}"
     },
     relationships: {
       replay: {
