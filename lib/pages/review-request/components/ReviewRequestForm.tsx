@@ -62,7 +62,10 @@ const isSkillLevelValid = (value: string): value is SkillLevel =>
 const schema = object({
   skillLevel: string().required(),
   email: string(),
-  mmr: number().required().positive().integer()
+  mmr: number()
+    .required()
+    .positive()
+    .integer()
 })
 
 const getUser = () => {
@@ -186,21 +189,27 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
               </FormGroup>
               <FormGroup label="MMR" labelFor="number-input">
                 <Tooltip content="Add a number which should approximately represent your MMR, if you don't know use 0 instead">
-                  <InputGroup
-                    onChange={formik.handleChange("mmr")}
-                    name="MMR"
-                    id="MMR"
-                  />
+                  <InputGroup onChange={formik.handleChange("mmr")} name="MMR" id="MMR" />
                 </Tooltip>
               </FormGroup>
               <FormGroup label="Price" labelFor="text-input">
                 ${prices[skillLevels.indexOf(formik.values.skillLevel as SkillLevel)].priceUSD}
               </FormGroup>
               <FormGroup label="isParty" labelFor="checkbox">
-                <Checkbox checked={formik.values.isParty} label="isParty" onChange={() => formik.setFieldValue("isParty", !formik.values.isParty)} />
+                <Checkbox
+                  checked={formik.values.isParty}
+                  label="isParty"
+                  onChange={() => formik.setFieldValue("isParty", !formik.values.isParty)}
+                />
               </FormGroup>
               <FormGroup label="isDisconnected" labelFor="checkbox">
-                <Checkbox checked={formik.values.isDisconnected} label="isDisconnected" onChange={() => formik.setFieldValue("isDisconnected", !formik.values.isDisconnected)} />
+                <Checkbox
+                  checked={formik.values.isDisconnected}
+                  label="isDisconnected"
+                  onChange={() =>
+                    formik.setFieldValue("isDisconnected", !formik.values.isDisconnected)
+                  }
+                />
               </FormGroup>
             </div>
           )}
