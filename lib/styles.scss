@@ -1,6 +1,7 @@
 $pt-font-family: 'Montserrat';
 $pt-link-color: #ffffff;
 $pt-intent-success: #08ff07;
+$pt-intent-success-hover: #07C007;
 
 $pt-divider-black: rgb(117, 116, 119);
 $divider-margin: 0px;
@@ -14,3 +15,11 @@ $pt-elevation-shadow-3:  0 0 0 1px rgba($pt-divider-black, $pt-drop-shadow-opaci
                         0 8px 24px rgba($pt-divider-black, $pt-drop-shadow-opacity);
 
 @import "../node_modules/@blueprintjs/core/src/blueprint.scss";
+
+.bp3-control input:checked ~ .bp3-control-indicator {
+    background-color: $pt-intent-success;
+}
+
+.bp3-control:hover input:checked ~ .bp3-control-indicator {
+    background-color: $pt-intent-success-hover;
+}
