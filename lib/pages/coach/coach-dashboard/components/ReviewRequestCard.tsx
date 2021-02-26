@@ -96,7 +96,7 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
                 {reviewRequest.replay.playersDire.map((player, index) => {
                   const key = player.steamId ? player.steamId : index.toString()
                   return (
-                    <Box mr={3} key={key}>
+                    <Box mx={2} key={key}>
                       <HeroImage player={player} />
                     </Box>
                   )
@@ -106,23 +106,25 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
                 {reviewRequest.replay.playersRadiant.map((player, index) => {
                   const key = player.steamId ? player.steamId : index.toString()
                   return (
-                    <Box mt={2} mr={3} key={key}>
+                    <Box mt={2} mx={2} key={key}>
                       <HeroImage player={player} />
                     </Box>
                   )
                 })}
               </Flex>
-              <Flex alignItems="center">
-                <Flex>
-                  <Box mr="auto" mt={4}>
+              <Flex alignItems="center" pt={4}>
+                <Flex flex={1}>
+                  <Box>
                     Played with {currentPlayer.heroName} <br />
                     Match ID: {reviewRequest.replay.matchId} <br />
                     Price: ${prices[skillLevels.indexOf(reviewRequest.skillLevel)].priceUSD}
                   </Box>
                 </Flex>
-                <Box mt={4}>
-                  <Button onClick={() => setAcceptReviewIsOpen(true)} text="ACCEPT REVIEW" />
-                </Box>
+                <Flex>
+                  <Box>
+                    <Button onClick={() => setAcceptReviewIsOpen(true)} text="ACCEPT REVIEW" />
+                  </Box>
+                </Flex>
               </Flex>
               <Box mt={4}>Comment: {reviewRequest.comment}</Box>
             </Box>

@@ -69,10 +69,7 @@ const Container = styled(Flex)`
 
   @media ${breakpointDown.md} {
     padding: 32px 16px;
-  }
-
-  @media ${breakpointDown.sm} {
-    min-height: 72vh;
+    min-height: 79vh;
   }
 `
 
