@@ -17,14 +17,14 @@ $pt-elevation-shadow-3:  0 0 0 1px rgba($pt-divider-black, $pt-drop-shadow-opaci
 
 @import "../node_modules/@blueprintjs/core/src/blueprint.scss";
 
-<<<<<<< Updated upstream
 .bp3-control input:checked ~ .bp3-control-indicator {
-    background-color: $pt-intent-success;
+  background-color: $pt-intent-success;
 }
 
 .bp3-control:hover input:checked ~ .bp3-control-indicator {
-    background-color: $pt-intent-success-hover;
-=======
+  background-color: $pt-intent-success-hover;
+}
+
 .bp3-control.bp3-switch input:checked ~ .bp3-control-indicator {
   background: #08ff07;
  }
@@ -36,5 +36,4 @@ $pt-elevation-shadow-3:  0 0 0 1px rgba($pt-divider-black, $pt-drop-shadow-opaci
 .bp3-dialog {
   background-color: #212121;
   opacity: 0.9;
->>>>>>> Stashed changes
 }
