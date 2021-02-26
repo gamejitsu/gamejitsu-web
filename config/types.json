@@ -22,7 +22,8 @@
     "type": "object",
     "attributes": {
       "mmr": { "type": "number" },
-      "isParty": { "type": "boolean" }    
+      "isParty": { "type": "boolean" },
+      "isDisconnected": { "type": "boolean" }    
     }  
   }
 }
