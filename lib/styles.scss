@@ -2,13 +2,13 @@ $pt-font-family: 'Montserrat';
 $pt-link-color: #ffffff;
 $pt-intent-success: #08ff07;
 $pt-intent-success-hover: #07C007;
-
 $pt-divider-black: rgb(117, 116, 119);
 $divider-margin: 0px;
 $card-background-color: #14161C;
 $pt-drop-shadow-opacity: 0.2;
 $pt-border-shadow-opacity: 0.1;
 $pt-text-color-muted: #bdbdc5;
+$pt-app-background-color		: red;
 
 $pt-elevation-shadow-3:  0 0 0 1px rgba($pt-divider-black, $pt-drop-shadow-opacity),
                         0 2px 4px rgba($pt-divider-black, $pt-drop-shadow-opacity),
@@ -17,9 +17,22 @@ $pt-elevation-shadow-3:  0 0 0 1px rgba($pt-divider-black, $pt-drop-shadow-opaci
 @import "../node_modules/@blueprintjs/core/src/blueprint.scss";
 
 .bp3-control input:checked ~ .bp3-control-indicator {
-    background-color: $pt-intent-success;
+  background-color: $pt-intent-success;
 }
 
 .bp3-control:hover input:checked ~ .bp3-control-indicator {
-    background-color: $pt-intent-success-hover;
+  background-color: $pt-intent-success-hover;
+}
+
+.bp3-control.bp3-switch input:checked ~ .bp3-control-indicator {
+  background: #08ff07;
+ }
+
+.bp3-control.bp3-switch:hover input:checked ~ .bp3-control-indicator {
+  background: #07c007;
+}
+
+.bp3-dialog {
+  background-color: #212121;
+  opacity: 0.9;
 }
