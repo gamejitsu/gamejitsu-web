@@ -65,7 +65,9 @@ const schema = object({
   mmr: number()
     .required()
     .positive()
-    .integer()
+    .integer(),
+  isParty: boolean().required(),
+  isDisconnected: boolean().required()
 })
 
 const getUser = () => {
@@ -91,9 +93,6 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
       throw new Error(`Invalid replay`)
     }
     const metadata = { mmr, isParty, isDisconnected }
-    console.log("isParty:", isParty)
-    console.log("isDisconnected:", isDisconnected)
-    console.log("mmr:", mmr)
     redirectToCheckout({ comment, skillLevel, replayId: replay.id, email, metadata })
   }
 
