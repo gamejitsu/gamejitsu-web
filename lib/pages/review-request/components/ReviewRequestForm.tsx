@@ -9,11 +9,13 @@ import { createModel } from "gamejitsu/api"
 import { DecoratedReplay } from "gamejitsu/models/replay"
 import { Form, FormGroup, InputGroup } from "gamejitsu/components"
 import { HeroImage } from "gamejitsu/components"
+import { MatchHeroes } from "gamejitsu/components"
 import { Layout } from "gamejitsu/components"
 import { SkillLevel } from "gamejitsu/api/types/skill-level"
 import { UserContext } from "gamejitsu/contexts"
 import { prices } from "../../../../public/prices"
 import CheckoutResource, { Checkout } from "gamejitsu/api/resources/checkout"
+import { Tooltip2 } from "@blueprintjs/popover2"
 
 
 const redirectToCheckout = async ({
@@ -52,6 +54,19 @@ const ReplayStatus = styled(Flex)<ReplayStatusProps>`
   border: solid 1px ${(props) => props.availability ? props.theme.primaryColor : "#f00"};
 `
 
+const LabelContent = styled.span`
+  white-space: nowrap;
+`
+
+const ErrorField = styled(Box)`
+ color: red;
+`
+
+const PriceField = styled(Box)`
+  font-size: 1.25rem;
+  font-weight: bold;
+`
+
 const initialValues = {
   skillLevel: "high",
   replay: null,
@@ -86,13 +101,7 @@ const getUser = () => {
   else throw new Error("user null")
 }
 
-const LabelContent = styled.span`
-  white-space: nowrap;
-`
-
 const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailability }) => {
-  const user = getUser()
-   
   const onSubmitReviewRequest = async (values: Values): Promise<void> => {
     const { skillLevel, comment, email, isParty, isDisconnected, mmr } = values
     if (!isSkillLevelValid(skillLevel)) {
@@ -133,7 +142,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
   return (
     <Layout title="Dashboard">
       
-      <Box mx="auto" p={3}>
+      <Box mx={"auto"} px={[3,4]} py={[3]} style={{maxWidth: "640px"}}>
         <ReplayStatus mb={4} p={3} availability={replayAvailability[0]} alignItems={"center"} >
           <Icon icon={replayAvailability[0] ? "tick-circle" : "error"} iconSize={32} intent={replayAvailability[0] ? "success" : "danger"} /> 
           <Box pl={3}>{replayAvailability[1]}</Box>
@@ -149,24 +158,9 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
         >
           {(formik) => (
             <div>
-              {user.username}
-              <Box p={3} mr="auto">
-                <Flex justifyContent="center">
-                  {replay.playersDire.map((player, index) => {
-                    const key = player.steamId ? player.steamId : index.toString()
-                    return <HeroImage key={key} player={player} />
-                  })}
-                </Flex>
-                <Flex justifyContent="center">
-                  {replay.playersRadiant.map((player, index) => {
-                    const key = player.steamId ? player.steamId : index.toString()
-                    return <HeroImage key={key} player={player} />
-                  })}
-                </Flex>
-              </Box>
-              <FormGroup label="Skill Level" labelFor="text-input">
-                <Box width="250px">
-                  <Slider
+              <MatchHeroes replay={replay}></MatchHeroes>
+              <Flex mx={3} my={4}>
+              <Slider
                     min={0}
                     max={3}
                     stepSize={1}
@@ -180,52 +174,67 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
                     vertical={false}
                     intent="success"
                   />
-                </Box>
-              </FormGroup>
-              Insert email if you want to receive status notifications
-              {formik.errors.email ? <div>{formik.errors.email}</div> : null}
-              {formik.errors.mmr ? <div>{formik.errors.mmr}</div> : null}
-              <FormGroup label="Email" labelFor="email">
-                <InputGroup
-                  onChange={formik.handleChange("email")}
-                  id="email"
-                  type="email"
-                  name="email"
-                />
-              </FormGroup>
-              <FormGroup label="Comment" labelFor="text-input">
-                <Tooltip content="Add any info you desire: language preferred, coach preference, role, focus, etc...">
-                  <InputGroup
-                    leftIcon="warning-sign"
-                    onChange={formik.handleChange("comment")}
-                    id="text-input-comment"
-                  />
-                </Tooltip>
-              </FormGroup>
-              <FormGroup label="MMR" labelFor="number-input">
-                <Tooltip content="Add a number which should approximately represent your MMR, if you don't know use 0 instead">
-                  <InputGroup onChange={formik.handleChange("mmr")} name="MMR" id="MMR" />
-                </Tooltip>
-              </FormGroup>
-              <FormGroup label="Price" labelFor="text-input">
-                ${prices[skillLevels.indexOf(formik.values.skillLevel as SkillLevel)].priceUSD}
-              </FormGroup>
-              <FormGroup label="isParty" labelFor="checkbox">
-                <Checkbox
-                  checked={formik.values.isParty}
-                  label="isParty"
-                  onChange={() => formik.setFieldValue("isParty", !formik.values.isParty)}
-                />
-              </FormGroup>
-              <FormGroup label="isDisconnected" labelFor="checkbox">
-                <Checkbox
-                  checked={formik.values.isDisconnected}
-                  label="isDisconnected"
-                  onChange={() =>
-                    formik.setFieldValue("isDisconnected", !formik.values.isDisconnected)
-                  }
-                />
-              </FormGroup>
+              </Flex>
+              <Flex flexWrap={"wrap"}>
+                <Flex flex={"3 1 260px"} mr={[2,3]}>
+                  <FormGroup label="Email" labelFor="email" helperText={"Insert email if you want to receive status notifications"}>
+                    <InputGroup
+                      onChange={formik.handleChange("email")}
+                      id="email"
+                      type="email"
+                      name="email"
+                    />
+                  </FormGroup>
+                </Flex>
+                <Flex flex={"1 1 100px"} mr={[2,3]}>
+                  <FormGroup label="MMR" labelFor="number-input" helperText={"(Required)"}>
+                    <Tooltip2 content="Add a number which should approximately represent your MMR, if you don't know use 0 instead" targetTagName={"div"}>
+                      <InputGroup onChange={formik.handleChange("mmr")} name="MMR" id="MMR" />
+                    </Tooltip2>
+                  </FormGroup>
+                </Flex>
+              </Flex>
+              <Flex mr={[2,3]}>
+                <FormGroup label="Comment" labelFor="text-input"  helperText={"(maximum 250 characters)"}>
+                  <Tooltip2 content="Add any info you desire: language preferred, coach preference, role, focus, etc..." targetTagName={"div"}>
+                    <InputGroup
+                      leftIcon="warning-sign"
+                      onChange={formik.handleChange("comment")}
+                      id="text-input-comment"
+                    />
+                  </Tooltip2>
+                </FormGroup>
+              </Flex>
+              <Flex flexWrap={"wrap"} mt={2}>
+                <Flex flex={"1 1 300px"} mr={[2,3]}>
+                  <FormGroup label="Tick this checkbox if you are in a party" labelFor="checkbox">
+                    <Checkbox
+                      checked={formik.values.isParty}
+                      label="I'm in a party"
+                      onChange={() => formik.setFieldValue("isParty", !formik.values.isParty)}
+                    />
+                  </FormGroup>
+                </Flex>
+                <Flex flex={"1 1 300px"} mr={[2,3]}>
+                  <FormGroup label="Tick this box if you are disconnected during the game" labelFor="checkbox">
+                    <Checkbox
+                      checked={formik.values.isDisconnected}
+                      label="I'm disconnected"
+                      onChange={() =>
+                        formik.setFieldValue("isDisconnected", !formik.values.isDisconnected)
+                      }
+                    />
+                  </FormGroup>
+                </Flex>
+              </Flex>
+              <ErrorField>
+                {formik.errors.email ? <div>{formik.errors.email}</div> : null}
+                {formik.errors.mmr ? <div>{formik.errors.mmr}</div> : null}
+              </ErrorField>
+              <Flex justifyContent={"flex-end"}>
+                <PriceField><b>Price</b>: ${prices[skillLevels.indexOf(formik.values.skillLevel as SkillLevel)].priceUSD}</PriceField>
+              </Flex>
+              
             </div>
           )}
         </Form>

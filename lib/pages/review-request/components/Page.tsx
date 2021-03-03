@@ -23,7 +23,7 @@ Page.getInitialProps = async (ctx) => {
   }
   let replayIsPresent = true
   let replayIsPresentMessage = "Your replay is eligible for a review!"
-  try {
+  /* try {
     const gameInfo = await axios.get(`https://api.opendota.com/api/matches/${replay.matchId}`)
     const replayUrl = get(gameInfo, ["data", "replay_url"], false)
     if (replayUrl) {
@@ -41,8 +41,8 @@ Page.getInitialProps = async (ctx) => {
       replayIsPresent = false
       replayIsPresentMessage = "We cannot find your replay, please retry later or try with a different match"
       
-    }
-  }
+    } 
+  } */
 
   return { replay: decorateReplays([replay])[0], replayAvailability: [replayIsPresent, replayIsPresentMessage] }
 }

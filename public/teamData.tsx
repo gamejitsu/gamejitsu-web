@@ -9,10 +9,10 @@ export const coachData = [
   },
   {
     id: 2,
-    name: "Eugenio Depalo",
-    username: "Aveil",
+    name: "Federico Giorni",
+    username: "Fedeth",
     description: "",
-    titles: "Founder - CTO",
+    titles: "CTO",
     image: ""
   },
   {
