@@ -1,44 +1,19 @@
 import humanize from "humanize-string"
-import React, { FunctionComponent, useContext} from "react"
+import React, { FunctionComponent, useState } from "react"
 import styled from "styled-components"
 import titleize from "titleize"
-import { Checkbox, Slider, Tooltip, Icon } from "@blueprintjs/core"
+import { Checkbox, Slider, Icon } from "@blueprintjs/core"
+import { Tooltip2 } from "@blueprintjs/popover2"
 import { Box, Flex } from "rebass"
 import { boolean, number, object, string } from "yup"
 import { createModel } from "gamejitsu/api"
 import { DecoratedReplay } from "gamejitsu/models/replay"
 import { Form, FormGroup, InputGroup } from "gamejitsu/components"
-import { HeroImage } from "gamejitsu/components"
 import { MatchHeroes } from "gamejitsu/components"
 import { Layout } from "gamejitsu/components"
 import { SkillLevel } from "gamejitsu/api/types/skill-level"
-import { UserContext } from "gamejitsu/contexts"
 import { prices } from "../../../../public/prices"
 import CheckoutResource, { Checkout } from "gamejitsu/api/resources/checkout"
-import { Tooltip2 } from "@blueprintjs/popover2"
-
-
-const redirectToCheckout = async ({
-  comment,
-  skillLevel,
-  replayId,
-  email,
-  metadata
-}: Partial<Checkout>) => {
-  const stripe = Stripe(process.env.STRIPE_PUBLIC_KEY)
-  const {
-    data: { stripeId }
-  }: any = await createModel(CheckoutResource, {
-    comment,
-    skillLevel,
-    replayId,
-    reviewRequestId: null,
-    email,
-    metadata,
-    redirectUrl: window.location.origin
-  })
-  return await stripe.redirectToCheckout({ sessionId: stripeId })
-}
 
 interface Props {
   replay: DecoratedReplay
@@ -92,16 +67,43 @@ const schema = object({
     .positive()
     .integer(),
   isParty: boolean().required(),
-  isDisconnected: boolean().required()
+  isDisconnected: boolean().required(),
+  comment: string().max(255, 'Comment Too Long, max length is 255 characters')
 })
 
-const getUser = () => {
-  const user = useContext(UserContext)
-  if (user) return user
-  else throw new Error("user null")
-}
-
 const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailability }) => {
+  const [error, setError] = useState("");
+
+  const redirectToCheckout = async ({
+    comment,
+    skillLevel,
+    replayId,
+    email,
+    metadata
+  }: Partial<Checkout>) => {
+    try {
+      const stripe = Stripe(process.env.STRIPE_PUBLIC_KEY)
+      const {
+       data: { stripeId }
+      }: any = await createModel(CheckoutResource, {
+        comment,
+       skillLevel,
+       replayId,
+        reviewRequestId: null,
+       email,
+        metadata,
+       redirectUrl: window.location.origin
+      })
+      return await stripe.redirectToCheckout({ sessionId: stripeId })
+    } catch(error) {
+      if (error.message == "Create checkout failed.") {
+        setError('Create checkout error')
+      } else {
+        setError('Unexpected error, please retry later or contact support')
+      }
+    }
+  }
+
   const onSubmitReviewRequest = async (values: Values): Promise<void> => {
     const { skillLevel, comment, email, isParty, isDisconnected, mmr } = values
     if (!isSkillLevelValid(skillLevel)) {
@@ -136,12 +138,15 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
     } else if (isNaN(values.mmr)) {
       errors.mmr = "Invalid MMR"
     }
+    if (values.comment.length > 255) {
+       errors.comment = "Comment Too long"
+    }
     return errors
   }
 
   return (
     <Layout title="Dashboard">
-      
+      {error ? <Box>{error}</Box> : null}
       <Box mx={"auto"} px={[3,4]} py={[3]} style={{maxWidth: "640px"}}>
         <ReplayStatus mb={4} p={3} availability={replayAvailability[0]} alignItems={"center"} >
           <Icon icon={replayAvailability[0] ? "tick-circle" : "error"} iconSize={32} intent={replayAvailability[0] ? "success" : "danger"} /> 

@@ -10,11 +10,10 @@ import UserResource, { User } from "gamejitsu/api/resources/user"
 import ReviewRequestResource from "gamejitsu/api/resources/review-request"
 import { DecoratedReplay, decorateReplays } from "gamejitsu/models/replay"
 import { Spinner, LayoutWithMenuUser, EmptyCard, Title } from "gamejitsu/components"
-import { listModels, findModel } from "gamejitsu/api"
+import { listModels } from "gamejitsu/api"
 import { decorateReviewRequests, DecoratedReviewRequest } from "gamejitsu/models/review-request"
 import { UserContext } from "gamejitsu/contexts"
 import { ReviewRequestCard, ReplayCardNew } from "."
-import Router from "next/router"
 
 interface Props {
   user: User
@@ -25,11 +24,6 @@ interface Props {
 const getReplays = async (ctx?: NextPageContext) => {
   const { data } = await listModels(ReplayResource, ctx)
   return decorateReplays(data)
-}
-
-const getCurrentUser = async () => {
-  const { data } = await findModel(UserResource, "current")
-  return data
 }
 
 const getReviewRequests = async (ctx: NextPageContext) =>
@@ -108,7 +102,6 @@ const Dashboard: FunctionComponent<Props> = (props) => {
             <EmptyCard text="No request reviews to show" />
           ) : (
             props.reviewRequests.map((reviewRequest) => {
-              console.log(reviewRequest)
               if (reviewRequest && reviewRequest.status !== "published"){
                 return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
               }
