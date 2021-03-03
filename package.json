@@ -16,6 +16,7 @@
   "dependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.7.5",
     "@blueprintjs/core": "^3.25.0",
+    "@types/lodash.get": "^4.4.6",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "axios": "^0.21.1",
@@ -29,6 +30,7 @@
     "humanize-string": "^2.1.0",
     "io-ts": "^2.0.1",
     "jwt-decode": "^2.2.0",
+    "lodash.get": "^4.4.2",
     "monocle-ts": "^2.0.0",
     "next": "^9.3.4",
     "node-sass": "^4.14.1",

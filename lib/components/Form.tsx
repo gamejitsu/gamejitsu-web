@@ -16,6 +16,7 @@ interface Props<T> {
   children: (handlers: FormikProps<T>) => React.ReactNode
   buttonText: string
   validate?: (values: T) => any
+  isDisabled?: boolean
 }
 
 const Header = styled(Box)`
@@ -41,7 +42,8 @@ const Form: FormComponent = ({
   schema,
   onSubmit,
   buttonText = "Submit",
-  validate
+  validate,
+  isDisabled = false
 }) => {
   const formik = useFormik({
     initialValues,
@@ -69,7 +71,7 @@ const Form: FormComponent = ({
       </Box>
       <Box py={3} px={3}>
         <Flex justifyContent="flex-end">
-          <Button
+          <Button disabled={isDisabled}
             onClick={() => {
               formik.handleSubmit()
             }}

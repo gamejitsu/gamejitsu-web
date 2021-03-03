@@ -1,11 +1,10 @@
 import humanize from "humanize-string"
-import React, { FunctionComponent, useContext } from "react"
+import React, { FunctionComponent, useContext} from "react"
 import styled from "styled-components"
 import titleize from "titleize"
-import { Checkbox, Slider, Tooltip } from "@blueprintjs/core"
+import { Checkbox, Slider, Tooltip, Icon } from "@blueprintjs/core"
 import { Box, Flex } from "rebass"
 import { boolean, number, object, string } from "yup"
-
 import { createModel } from "gamejitsu/api"
 import { DecoratedReplay } from "gamejitsu/models/replay"
 import { Form, FormGroup, InputGroup } from "gamejitsu/components"
@@ -15,6 +14,7 @@ import { SkillLevel } from "gamejitsu/api/types/skill-level"
 import { UserContext } from "gamejitsu/contexts"
 import { prices } from "../../../../public/prices"
 import CheckoutResource, { Checkout } from "gamejitsu/api/resources/checkout"
+
 
 const redirectToCheckout = async ({
   comment,
@@ -40,7 +40,17 @@ const redirectToCheckout = async ({
 
 interface Props {
   replay: DecoratedReplay
+  replayAvailability: [boolean, string]
 }
+
+interface ReplayStatusProps {
+  availability: boolean
+}
+
+const ReplayStatus = styled(Flex)<ReplayStatusProps>`
+  width: 100%;
+  border: solid 1px ${(props) => props.availability ? props.theme.primaryColor : "#f00"};
+`
 
 const initialValues = {
   skillLevel: "high",
@@ -80,9 +90,9 @@ const LabelContent = styled.span`
   white-space: nowrap;
 `
 
-const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
+const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailability }) => {
   const user = getUser()
-
+   
   const onSubmitReviewRequest = async (values: Values): Promise<void> => {
     const { skillLevel, comment, email, isParty, isDisconnected, mmr } = values
     if (!isSkillLevelValid(skillLevel)) {
@@ -122,7 +132,12 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
 
   return (
     <Layout title="Dashboard">
-      <Box width="700px" mx="auto" p={3}>
+      
+      <Box mx="auto" p={3}>
+        <ReplayStatus mb={4} p={3} availability={replayAvailability[0]} alignItems={"center"} >
+          <Icon icon={replayAvailability[0] ? "tick-circle" : "error"} iconSize={32} intent={replayAvailability[0] ? "success" : "danger"} /> 
+          <Box pl={3}>{replayAvailability[1]}</Box>
+        </ReplayStatus>
         <Form
           title="REQUEST REVIEW"
           initialValues={initialValues}
@@ -130,6 +145,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay }) => {
           validate={validate}
           onSubmit={onSubmitReviewRequest}
           buttonText="Checkout"
+          isDisabled={!replayAvailability[0]}
         >
           {(formik) => (
             <div>

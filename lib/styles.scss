@@ -1,3 +1,5 @@
+@import "./styles/global-style.scss";
+
 $pt-font-family: 'Montserrat';
 $pt-link-color: #ffffff;
 $pt-intent-success: #08ff07;
@@ -15,7 +17,9 @@ $pt-elevation-shadow-3:  0 0 0 1px rgba($pt-divider-black, $pt-drop-shadow-opaci
                         0 8px 24px rgba($pt-divider-black, $pt-drop-shadow-opacity);
 
 @import "../node_modules/@blueprintjs/core/src/blueprint.scss";
+@import "../node_modules/@blueprintjs/popover2/src/blueprint-popover2.scss";
 
+// BluePrint Overrides
 .bp3-control input:checked ~ .bp3-control-indicator {
   background-color: $pt-intent-success;
 }
@@ -35,4 +39,9 @@ $pt-elevation-shadow-3:  0 0 0 1px rgba($pt-divider-black, $pt-drop-shadow-opaci
 .bp3-dialog {
   background-color: #212121;
   opacity: 0.9;
+    background-color: $pt-intent-success-hover;
+}
+
+.bp3-icon.bp3-intent-success {
+    color: $pt-intent-success;
 }
