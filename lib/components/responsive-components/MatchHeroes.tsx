@@ -14,13 +14,12 @@ interface HeroPicProps {
   player: Player
 }
 
-const HeroPic: FunctionComponent<HeroPicProps> = ({player}) => {
-
+const HeroPic: FunctionComponent<HeroPicProps> = ({ player }) => {
   interface PictureContainerProps {
     isYourHero: boolean
     heroPortraitUrl: string
   }
-  
+
   const PictureContainer = styled.div<PictureContainerProps>`
     opacity: 0.85;
     background-size: cover;
@@ -42,9 +41,9 @@ const HeroPic: FunctionComponent<HeroPicProps> = ({player}) => {
     width: 100%;
     position: relative;
   `
-   const user = useContext(UserContext)
-   const isYourHero = player?.steamId === user?.steamId
-   const heroName = isYourHero ? player.heroName + " (you)" : player.heroName
+  const user = useContext(UserContext)
+  const isYourHero = player?.steamId === user?.steamId
+  const heroName = isYourHero ? player.heroName + " (you)" : player.heroName
 
   return (
     <PictureContainer isYourHero={isYourHero} heroPortraitUrl={player.heroPortraitUrl}>
@@ -55,8 +54,7 @@ const HeroPic: FunctionComponent<HeroPicProps> = ({player}) => {
   )
 }
 
- const MatchHeroes: FunctionComponent<MatchHeroesProps> = ({replay}) => {
-
+const MatchHeroes: FunctionComponent<MatchHeroesProps> = ({ replay }) => {
   const Wrapper = styled(Flex)`
     padding-top: 20%;
     position: relative;

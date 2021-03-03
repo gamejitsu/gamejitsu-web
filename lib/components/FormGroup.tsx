@@ -14,8 +14,13 @@ const Label = styled.div`
   color: ${(props) => props.theme.linkColor};
 `
 
-const FormGroup: FunctionComponent<Props> = ({ children, label, labelInfo, labelFor, helperText }) => (
-  
+const FormGroup: FunctionComponent<Props> = ({
+  children,
+  label,
+  labelInfo,
+  labelFor,
+  helperText
+}) => (
   <BPFormGroup
     className={"w100"}
     helperText={helperText}
@@ -30,8 +35,7 @@ const FormGroup: FunctionComponent<Props> = ({ children, label, labelInfo, label
     labelFor={labelFor}
   >
     {children}
-    </BPFormGroup>
-
+  </BPFormGroup>
 )
 
 export default FormGroup

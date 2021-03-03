@@ -17,8 +17,7 @@ interface Props<T> {
   isDisabled?: boolean
 }
 
-const FormTitle = styled.h1`
-`
+const FormTitle = styled.h1``
 
 const Header = styled(Box)`
   border-radius: 3px;
@@ -63,7 +62,7 @@ const Form: FormComponent = ({
         </Header>
       </Flex>
       <Divider />
-      <Box px={[3,4]} py={4}>
+      <Box px={[3, 4]} py={4}>
         <form onSubmit={formik.handleSubmit}>{children(formik)}</form>
       </Box>
       <Box>
@@ -71,7 +70,8 @@ const Form: FormComponent = ({
       </Box>
       <Box py={3} px={3}>
         <Flex justifyContent="flex-end">
-          <Button disabled={isDisabled}
+          <Button
+            disabled={isDisabled}
             onClick={() => {
               formik.handleSubmit()
             }}

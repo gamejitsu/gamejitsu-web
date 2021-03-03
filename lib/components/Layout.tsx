@@ -14,7 +14,7 @@ interface Props {
 const Layout: FunctionComponent<Props> = ({ title, children }) => (
   <>
     <Navbar />
-    <Box mx="auto" px={[1,3,4]} py={[2,4]}>
+    <Box mx="auto" px={[1, 3, 4]} py={[2, 4]}>
       <Head>
         <link rel="shortcut icon" href="/favicon.png" />
         <title>{title === undefined ? companyName : `${companyName} - ${title}`}</title>

@@ -36,13 +36,15 @@ const areAllReviewRequestsPublished = (reviewRequests: (DecoratedReviewRequest |
 const Dashboard: FunctionComponent<Props> = (props) => {
   const [user, setUser] = useState(props.user)
   const [replays, setReplays] = useState(props.replays)
-  
+
   useEffect(() => {
     const { authToken } = parseCookies({})
-    const socket = new Socket(process.env.SOCKET_ENDPOINT + "/socket", {params: { token: authToken }})
+    const socket = new Socket(process.env.SOCKET_ENDPOINT + "/socket", {
+      params: { token: authToken }
+    })
     socket.connect()
     const channel = socket.channel("users:" + user.id)
-    channel.join().receive("ok",  () => {
+    channel.join().receive("ok", () => {
       console.log("channel joined")
     })
     channel.on("update", async (userData) => {
@@ -102,7 +104,7 @@ const Dashboard: FunctionComponent<Props> = (props) => {
             <EmptyCard text="No request reviews to show" />
           ) : (
             props.reviewRequests.map((reviewRequest) => {
-              if (reviewRequest && reviewRequest.status !== "published"){
+              if (reviewRequest && reviewRequest.status !== "published") {
                 return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
               }
             })

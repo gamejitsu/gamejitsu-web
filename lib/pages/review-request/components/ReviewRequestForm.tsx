@@ -26,7 +26,7 @@ interface ReplayStatusProps {
 
 const ReplayStatus = styled(Flex)<ReplayStatusProps>`
   width: 100%;
-  border: solid 1px ${(props) => props.availability ? props.theme.primaryColor : "#f00"};
+  border: solid 1px ${(props) => (props.availability ? props.theme.primaryColor : "#f00")};
 `
 
 const LabelContent = styled.span`
@@ -34,7 +34,7 @@ const LabelContent = styled.span`
 `
 
 const ErrorField = styled(Box)`
- color: red;
+  color: red;
 `
 
 const PriceField = styled(Box)`
@@ -68,11 +68,11 @@ const schema = object({
     .integer(),
   isParty: boolean().required(),
   isDisconnected: boolean().required(),
-  comment: string().max(255, 'Comment Too Long, max length is 255 characters')
+  comment: string().max(255, "Comment Too Long, max length is 255 characters")
 })
 
 const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailability }) => {
-  const [error, setError] = useState("");
+  const [error, setError] = useState("")
 
   const redirectToCheckout = async ({
     comment,
@@ -84,22 +84,22 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
     try {
       const stripe = Stripe(process.env.STRIPE_PUBLIC_KEY)
       const {
-       data: { stripeId }
+        data: { stripeId }
       }: any = await createModel(CheckoutResource, {
         comment,
-       skillLevel,
-       replayId,
+        skillLevel,
+        replayId,
         reviewRequestId: null,
-       email,
+        email,
         metadata,
-       redirectUrl: window.location.origin
+        redirectUrl: window.location.origin
       })
       return await stripe.redirectToCheckout({ sessionId: stripeId })
-    } catch(error) {
+    } catch (error) {
       if (error.message == "Create checkout failed.") {
-        setError('Create checkout error')
+        setError("Create checkout error")
       } else {
-        setError('Unexpected error, please retry later or contact support')
+        setError("Unexpected error, please retry later or contact support")
       }
     }
   }
@@ -139,7 +139,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
       errors.mmr = "Invalid MMR"
     }
     if (values.comment.length > 255) {
-       errors.comment = "Comment Too long"
+      errors.comment = "Comment Too long"
     }
     return errors
   }
@@ -147,9 +147,13 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
   return (
     <Layout title="Dashboard">
       {error ? <Box>{error}</Box> : null}
-      <Box mx={"auto"} px={[3,4]} py={[3]} style={{maxWidth: "640px"}}>
-        <ReplayStatus mb={4} p={3} availability={replayAvailability[0]} alignItems={"center"} >
-          <Icon icon={replayAvailability[0] ? "tick-circle" : "error"} iconSize={32} intent={replayAvailability[0] ? "success" : "danger"} /> 
+      <Box mx={"auto"} px={[3, 4]} py={[3]} style={{ maxWidth: "640px" }}>
+        <ReplayStatus mb={4} p={3} availability={replayAvailability[0]} alignItems={"center"}>
+          <Icon
+            icon={replayAvailability[0] ? "tick-circle" : "error"}
+            iconSize={32}
+            intent={replayAvailability[0] ? "success" : "danger"}
+          />
           <Box pl={3}>{replayAvailability[1]}</Box>
         </ReplayStatus>
         <Form
@@ -165,24 +169,28 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
             <div>
               <MatchHeroes replay={replay}></MatchHeroes>
               <Flex mx={3} my={4}>
-              <Slider
-                    min={0}
-                    max={3}
-                    stepSize={1}
-                    labelStepSize={1}
-                    onChange={(value: number) =>
-                      formik.setFieldValue("skillLevel", skillLevels[value])
-                    }
-                    labelRenderer={renderLabel}
-                    showTrackFill={true}
-                    value={skillLevels.indexOf(formik.values.skillLevel as SkillLevel)}
-                    vertical={false}
-                    intent="success"
-                  />
+                <Slider
+                  min={0}
+                  max={3}
+                  stepSize={1}
+                  labelStepSize={1}
+                  onChange={(value: number) =>
+                    formik.setFieldValue("skillLevel", skillLevels[value])
+                  }
+                  labelRenderer={renderLabel}
+                  showTrackFill={true}
+                  value={skillLevels.indexOf(formik.values.skillLevel as SkillLevel)}
+                  vertical={false}
+                  intent="success"
+                />
               </Flex>
               <Flex flexWrap={"wrap"}>
-                <Flex flex={"3 1 260px"} mr={[2,3]}>
-                  <FormGroup label="Email" labelFor="email" helperText={"Insert email if you want to receive status notifications"}>
+                <Flex flex={"3 1 260px"} mr={[2, 3]}>
+                  <FormGroup
+                    label="Email"
+                    labelFor="email"
+                    helperText={"Insert email if you want to receive status notifications"}
+                  >
                     <InputGroup
                       onChange={formik.handleChange("email")}
                       id="email"
@@ -191,17 +199,27 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
                     />
                   </FormGroup>
                 </Flex>
-                <Flex flex={"1 1 100px"} mr={[2,3]}>
+                <Flex flex={"1 1 100px"} mr={[2, 3]}>
                   <FormGroup label="MMR" labelFor="number-input" helperText={"(Required)"}>
-                    <Tooltip2 content="Add a number which should approximately represent your MMR, if you don't know use 0 instead" targetTagName={"div"}>
+                    <Tooltip2
+                      content="Add a number which should approximately represent your MMR, if you don't know use 0 instead"
+                      targetTagName={"div"}
+                    >
                       <InputGroup onChange={formik.handleChange("mmr")} name="MMR" id="MMR" />
                     </Tooltip2>
                   </FormGroup>
                 </Flex>
               </Flex>
-              <Flex mr={[2,3]}>
-                <FormGroup label="Comment" labelFor="text-input"  helperText={"(maximum 250 characters)"}>
-                  <Tooltip2 content="Add any info you desire: language preferred, coach preference, role, focus, etc..." targetTagName={"div"}>
+              <Flex mr={[2, 3]}>
+                <FormGroup
+                  label="Comment"
+                  labelFor="text-input"
+                  helperText={"(maximum 250 characters)"}
+                >
+                  <Tooltip2
+                    content="Add any info you desire: language preferred, coach preference, role, focus, etc..."
+                    targetTagName={"div"}
+                  >
                     <InputGroup
                       leftIcon="warning-sign"
                       onChange={formik.handleChange("comment")}
@@ -211,7 +229,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
                 </FormGroup>
               </Flex>
               <Flex flexWrap={"wrap"} mt={2}>
-                <Flex flex={"1 1 300px"} mr={[2,3]}>
+                <Flex flex={"1 1 300px"} mr={[2, 3]}>
                   <FormGroup label="Tick this checkbox if you are in a party" labelFor="checkbox">
                     <Checkbox
                       checked={formik.values.isParty}
@@ -220,8 +238,11 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
                     />
                   </FormGroup>
                 </Flex>
-                <Flex flex={"1 1 300px"} mr={[2,3]}>
-                  <FormGroup label="Tick this box if you are disconnected during the game" labelFor="checkbox">
+                <Flex flex={"1 1 300px"} mr={[2, 3]}>
+                  <FormGroup
+                    label="Tick this box if you are disconnected during the game"
+                    labelFor="checkbox"
+                  >
                     <Checkbox
                       checked={formik.values.isDisconnected}
                       label="I'm disconnected"
@@ -237,9 +258,11 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
                 {formik.errors.mmr ? <div>{formik.errors.mmr}</div> : null}
               </ErrorField>
               <Flex justifyContent={"flex-end"}>
-                <PriceField><b>Price</b>: ${prices[skillLevels.indexOf(formik.values.skillLevel as SkillLevel)].priceUSD}</PriceField>
+                <PriceField>
+                  <b>Price</b>: $
+                  {prices[skillLevels.indexOf(formik.values.skillLevel as SkillLevel)].priceUSD}
+                </PriceField>
               </Flex>
-              
             </div>
           )}
         </Form>
