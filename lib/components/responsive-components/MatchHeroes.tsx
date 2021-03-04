@@ -56,7 +56,7 @@ const HeroPic: FunctionComponent<HeroPicProps> = ({ player }) => {
 
 const MatchHeroes: FunctionComponent<MatchHeroesProps> = ({ replay }) => {
   const Wrapper = styled(Flex)`
-    padding-top: 20%;
+    padding-top: 24%;
     position: relative;
   `
 
