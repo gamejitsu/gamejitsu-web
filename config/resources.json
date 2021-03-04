@@ -5,7 +5,8 @@
       "comment": {"type": "string", "optional": true},
       "redirectUrl": {"type": "string", "optional":true},
       "stripeId": {"type": "string"},
-      "email": { "type": "string", "optional": true}
+      "email": { "type": "string", "optional": true},
+      "metadata": { "type": "metadata", "value": "metadata" }
     },
     "relationships": {
       "replay": { "cardinality": "one", "type": "replay", "optional": true },
@@ -44,12 +45,13 @@
   "review-request": {
     "attributes": {
       "skillLevel": { "type": "skill-level" },
-      "comment": { "type": "string", "optional": true}
+      "comment": { "type": "string", "optional": true},
+      "metadata": { "type": "metadata", "value": "metadata" }
     },
     "relationships": {
       "replay": { "cardinality": "one", "type": "replay", "include": true },
       "user": { "cardinality": "one", "type": "user", "include": true },
-      "reviews": { "cardinality": "one", "type": "review", "include": true}
+      "reviews": { "cardinality": "many", "type": "review", "include": true}
     }
   },
   "review": {

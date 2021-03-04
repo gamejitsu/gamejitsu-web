@@ -12,7 +12,7 @@ import {
   Tooltip
 } from "@blueprintjs/core"
 import { object, string } from "yup"
-
+import { MarkdownDialog } from "gamejitsu/components"
 import { Button } from "gamejitsu/components"
 import { Comment } from "gamejitsu/api/types/comment"
 
@@ -22,6 +22,7 @@ interface Props {
   onSave: (comment: Comment) => void
   onDelete: () => void
   onDeselect: () => void
+  pauseVideo: () => void
 }
 
 const validationSchema = object({
@@ -34,11 +35,13 @@ const CommentFormNew: CommentFormComponent = ({
   onSave,
   onDelete,
   onDeselect,
+  pauseVideo,
   comment,
   timestamp
 }) => {
   const [isDeleteOpen, setIsDeleteOpen] = useState(false)
   const [isUpdateOpen, setIsUpdateOpen] = useState(false)
+  const [isMarkdownInfoOpen, setIsMarkdownInfoOpen] = useState(false)
 
   const formik = useFormik({
     initialValues: { text: comment ? comment.text : "" },
@@ -62,9 +65,14 @@ const CommentFormNew: CommentFormComponent = ({
     setIsDeleteOpen(true)
   }
 
+  const toggleMarkdownModal = () => {
+    setIsMarkdownInfoOpen(!isMarkdownInfoOpen)
+  }
+
   const handleCloseNoUpdate = () => {
     setIsUpdateOpen(false)
   }
+
   const handleUpdateClose = async () => {
     await formik.submitForm()
     setIsUpdateOpen(false)
@@ -74,12 +82,19 @@ const CommentFormNew: CommentFormComponent = ({
     setIsUpdateOpen(true)
   }
 
+  const handlePauseVideo = () => {
+    if (comment === null) {
+      pauseVideo()
+    }
+  }
+
   return (
     <div>
       <Flex alignItems="center">
-        <Box py={3} width="100%">
+        <Box width="100%">
           <form onSubmit={formik.handleSubmit}>
             <TextArea
+              onFocus={() => handlePauseVideo()}
               growVertically={true}
               large={true}
               intent={Intent.PRIMARY}
@@ -107,6 +122,17 @@ const CommentFormNew: CommentFormComponent = ({
             ) : (
               <div />
             )}
+            <Flex justifyContent={"flex-end"}>
+              <Box
+                pt={1}
+                onClick={toggleMarkdownModal}
+                fontSize={"0.8rem"}
+                style={{ cursor: "pointer" }}
+              >
+                Formatting help
+              </Box>
+            </Flex>
+            <MarkdownDialog toggleModal={toggleMarkdownModal} isOpen={isMarkdownInfoOpen} />
             <Box mt={3}>
               {comment !== null ? (
                 <Flex>
