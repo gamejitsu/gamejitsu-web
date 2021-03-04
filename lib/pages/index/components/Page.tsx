@@ -615,9 +615,6 @@ const Page: AuthenticatedComponent = () => (
     </Container>
     <Container>
       <Flex justifyContent="space-around" flexWrap="wrap" pl={[2, 4]} pr={[2, 4]}>
-        <PriceCard title="High" price="$10.0" icon="award-badge">
-          <PriceFeature>5k MMR or above</PriceFeature>
-        </PriceCard>
         <PriceCard title="Expert" price="$17.5" icon="award-badge-3">
           <PriceFeature>6k MMR or above</PriceFeature>
         </PriceCard>

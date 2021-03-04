@@ -43,7 +43,7 @@ const PriceField = styled(Box)`
 `
 
 const initialValues = {
-  skillLevel: "high",
+  skillLevel: "very_high",
   replay: null,
   comment: "",
   email: "",
@@ -178,7 +178,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
               <Flex mx={3} my={4}>
                 <Slider
                   min={0}
-                  max={3}
+                  max={2}
                   stepSize={1}
                   labelStepSize={1}
                   onChange={(value: number) =>

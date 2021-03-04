@@ -1,7 +1,7 @@
 {
   "skill-level": {
     "type": "union",
-    "values": ["high", "very_high", "pro", "hero"]
+    "values": ["very_high", "pro", "hero"]
   },
   "player": {
     "type": "object",

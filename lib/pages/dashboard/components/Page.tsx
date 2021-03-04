@@ -29,8 +29,12 @@ const getReplays = async (ctx?: NextPageContext) => {
 const getReviewRequests = async (ctx: NextPageContext) =>
   await listModels(ReviewRequestResource, ctx)
 
-const areAllReviewRequestsPublished = (reviewRequests: (DecoratedReviewRequest | undefined)[]) => {
-  return reviewRequests?.every((reviewRequest) => reviewRequest?.status === "published")
+const areAllReviewRequestsPublishedOrDeleted = (
+  reviewRequests: (DecoratedReviewRequest | undefined)[]
+) => {
+  return reviewRequests?.every(
+    (reviewRequest) => reviewRequest?.status === "published" || reviewRequest?.status === "deleted"
+  )
 }
 
 const Dashboard: FunctionComponent<Props> = (props) => {
@@ -100,10 +104,11 @@ const Dashboard: FunctionComponent<Props> = (props) => {
         <Flex width="100%" flexDirection="column">
           <Title text="REQUESTED REVIEWS" />
           {props.reviewRequests.length === 0 ||
-          areAllReviewRequestsPublished(props.reviewRequests) ? (
+          areAllReviewRequestsPublishedOrDeleted(props.reviewRequests) ? (
             <EmptyCard text="No request reviews to show" />
           ) : (
             props.reviewRequests.map((reviewRequest) => {
+              console.log("review request found")
               if (
                 reviewRequest &&
                 reviewRequest.status !== "published" &&

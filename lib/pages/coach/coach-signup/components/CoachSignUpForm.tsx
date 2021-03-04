@@ -18,7 +18,7 @@ const initialValues = {
   lastName: "",
   email: "",
   photoUrl: "",
-  skillLevel: "high"
+  skillLevel: "very_high"
 }
 
 type Values = typeof initialValues
@@ -103,7 +103,7 @@ const CoachSignUpForm: FunctionComponent = () => {
             <Flex mx={3} my={4}>
               <Slider
                 min={0}
-                max={3}
+                max={2}
                 stepSize={1}
                 labelStepSize={1}
                 onChange={(value: number) => formik.setFieldValue("skillLevel", skillLevels[value])}
