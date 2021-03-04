@@ -104,14 +104,14 @@ const Dashboard: FunctionComponent<Props> = (props) => {
             <EmptyCard text="No request reviews to show" />
           ) : (
             props.reviewRequests.map((reviewRequest) => {
-              if (reviewRequest && reviewRequest.status !== "published") {
+              if (reviewRequest && (reviewRequest.status !== "published" && reviewRequest.status !== "deleted" )) {
                 return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
               }
             })
           )}
         </Flex>
         <Flex mt={4} flexDirection="column">
-          <Title text="REPLAYS" />
+          <Title text="YOUR RECENT MATCHES" />
           <Flex flexWrap="wrap" justifyContent="space-between">
             {replays.length === 0 ? (
               <EmptyCard text="No recent replays to show" />
