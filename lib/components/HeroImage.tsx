@@ -21,10 +21,6 @@ const Content = styled.img<ContentProps>`
       ? `2px solid  ${props.theme.primaryColor}`
       : `1px solid ${props.theme.textColor}`};
   border-radius: 3px;
-
-  @media ${breakpointDown.xs} {
-    width: 60px;
-  }
 `
 
 const HeroImage: FunctionComponent<Props> = ({ player }) => {

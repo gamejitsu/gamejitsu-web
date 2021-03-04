@@ -167,7 +167,7 @@ const LayoutWithMenuUser: FunctionComponent<Props> = ({ title, children }) => (
         </InnerWrapper>
         <MenuFooterParent>
           <MenuFooter justifyContent="center" pb={4}>
-            © 2020 - Gamejitsu Copyright.
+            © 2021 - Gamejitsu Copyright.
           </MenuFooter>
         </MenuFooterParent>
       </LeftMenu>

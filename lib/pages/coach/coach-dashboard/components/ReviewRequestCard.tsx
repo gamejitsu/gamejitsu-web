@@ -3,7 +3,7 @@ import { formatDistanceToNow } from "date-fns"
 import React, { FunctionComponent, useState } from "react"
 import Router from "next/router"
 import styled from "styled-components"
-import { Button, HeroImage } from "gamejitsu/components"
+import { Button, MatchHeroes } from "gamejitsu/components"
 import { createModel } from "gamejitsu/api"
 import { DecoratedReviewRequest } from "gamejitsu/models/review-request"
 import ReviewResource from "gamejitsu/api/resources/review"
@@ -91,32 +91,16 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
         <HorizontalLine />
         <Box px={3} pb={1} mt={4} mb={3}>
           <Flex alignItems="center" justifyContent="center">
-            <Box>
+            <Box width={"100%"} style={{ maxWidth: "540px" }}>
               <Flex>
-                {reviewRequest.replay.playersDire.map((player, index) => {
-                  const key = player.steamId ? player.steamId : index.toString()
-                  return (
-                    <Box mx={2} key={key}>
-                      <HeroImage player={player} />
-                    </Box>
-                  )
-                })}
-              </Flex>
-              <Flex>
-                {reviewRequest.replay.playersRadiant.map((player, index) => {
-                  const key = player.steamId ? player.steamId : index.toString()
-                  return (
-                    <Box mt={2} mx={2} key={key}>
-                      <HeroImage player={player} />
-                    </Box>
-                  )
-                })}
+                <MatchHeroes replay={reviewRequest.replay} />
               </Flex>
               <Flex alignItems="center" pt={4}>
                 <Flex flex={1}>
                   <Box>
                     Played with {currentPlayer.heroName} <br />
                     Match ID: {reviewRequest.replay.matchId} <br />
+                    MMR: {reviewRequest.metadata.mmr} <br />
                     Price: ${prices[skillLevels.indexOf(reviewRequest.skillLevel)].priceUSD}
                   </Box>
                 </Flex>

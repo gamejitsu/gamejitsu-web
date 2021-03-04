@@ -1,6 +1,6 @@
 import React, { useContext, FunctionComponent } from "react"
 import { formatDistanceToNow } from "date-fns"
-import { Button } from "gamejitsu/components"
+import { Button, MatchHeroes } from "gamejitsu/components"
 import styled from "styled-components"
 import { Flex, Box } from "rebass"
 
@@ -86,26 +86,9 @@ const RecentMatchesCardNew: FunctionComponent<Props> = ({ replay }) => {
       <HorizontalLine />
       <Box px={3} pb={1} mt={4} mb={3}>
         <Flex alignItems="center" justifyContent="center">
-          <Box>
+          <Box width={"100%"} style={{ maxWidth: "540px" }}>
             <Flex>
-              {replay.playersDire.map((player, index) => {
-                const key = player.steamId ? player.steamId : index.toString()
-                return (
-                  <HeroImageWrapper key={key}>
-                    <HeroImage player={player} />
-                  </HeroImageWrapper>
-                )
-              })}
-            </Flex>
-            <Flex>
-              {replay.playersRadiant.map((player, index) => {
-                const key = player.steamId ? player.steamId : index.toString()
-                return (
-                  <HeroImageWrapper mt={2} key={key}>
-                    <HeroImage player={player} />
-                  </HeroImageWrapper>
-                )
-              })}
+              <MatchHeroes replay={replay} />
             </Flex>
             <Flex alignItems="center">
               <Box mr="auto" mt={4}>

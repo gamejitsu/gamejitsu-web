@@ -37,7 +37,7 @@ const UpdateEmailForm: FunctionComponent = () => {
   let user = getUser()
 
   return (
-    <Box width="700px" mx="auto" p={3}>
+    <Box mx={"auto"} px={[3, 4]} style={{ maxWidth: "640px" }}>
       <Form
         title="Change Email"
         initialValues={initialValues}

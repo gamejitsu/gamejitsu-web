@@ -95,13 +95,11 @@ const Page: AuthenticatedComponent = () => {
             You will be able to pickup reviews based on you skill level:
             <br />
             <br />
-            5k MMR: high
+            6k MMR: very high
             <br />
-            6k MMR: very high, high
+            7k MMR: pro, very high
             <br />
-            7k MMR: pro, very high, high
-            <br />
-            8k MMR: hero, pro, very high, high
+            8k MMR: hero, pro, very high
           </ParagraphText>
           <ParagraphTitle>Sign Up</ParagraphTitle>
           <ParagraphText>

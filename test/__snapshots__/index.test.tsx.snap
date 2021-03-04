@@ -905,7 +905,7 @@ exports[`Index page should match snapshot 1`] = `
                               "componentStyle": ComponentStyle {
                                 "componentId": "ButtonNew__ButtonContent-sj5i96-0",
                                 "isStatic": false,
-                                "lastClassName": "fKofOx",
+                                "lastClassName": "ekRlvI",
                                 "rules": Array [
                                   "&.",
                                   "bp3-button",
@@ -930,7 +930,7 @@ exports[`Index page should match snapshot 1`] = `
                                   [Function],
                                   " );box-shadow:inset 0px 3px 0px 0px ",
                                   [Function],
-                                  ";padding-bottom:12px;margin-top:2px;}@media ",
+                                  ";}@media ",
                                   "(max-width: 575.98px)",
                                   "{font-size:13px;padding:10px 18px 10px 18px;}",
                                   " outline:none;font-family:",
@@ -953,12 +953,12 @@ exports[`Index page should match snapshot 1`] = `
                           type="button"
                         >
                           <Blueprint3.Button
-                            className="ButtonNew__ButtonContent-sj5i96-0 fKofOx"
+                            className="ButtonNew__ButtonContent-sj5i96-0 ekRlvI"
                             onClick={[Function]}
                             type="button"
                           >
                             <button
-                              className="bp3-button ButtonNew__ButtonContent-sj5i96-0 fKofOx"
+                              className="bp3-button ButtonNew__ButtonContent-sj5i96-0 ekRlvI"
                               onClick={[Function]}
                               onKeyDown={[Function]}
                               onKeyUp={[Function]}
@@ -1563,7 +1563,7 @@ exports[`Index page should match snapshot 1`] = `
                                                     "componentStyle": ComponentStyle {
                                                       "componentId": "ButtonNew__LinkContent-sj5i96-1",
                                                       "isStatic": false,
-                                                      "lastClassName": "hQrXnM",
+                                                      "lastClassName": "eQDjqA",
                                                       "rules": Array [
                                                         "display:inline-flex;border-radius:",
                                                         [Function],
@@ -1585,7 +1585,7 @@ exports[`Index page should match snapshot 1`] = `
                                                         [Function],
                                                         " );box-shadow:inset 0px 3px 0px 0px ",
                                                         [Function],
-                                                        ";padding-bottom:12px;margin-top:2px;}@media ",
+                                                        ";}@media ",
                                                         "(max-width: 575.98px)",
                                                         "{font-size:13px;padding:10px 18px 10px 18px;}",
                                                         " &:hover{text-decoration:none;color:",
@@ -1608,7 +1608,7 @@ exports[`Index page should match snapshot 1`] = `
                                                 onMouseEnter={[Function]}
                                               >
                                                 <a
-                                                  className="ButtonNew__LinkContent-sj5i96-1 hQrXnM"
+                                                  className="ButtonNew__LinkContent-sj5i96-1 eQDjqA"
                                                   onClick={[Function]}
                                                   onMouseEnter={[Function]}
                                                 >
@@ -1652,7 +1652,7 @@ exports[`Index page should match snapshot 1`] = `
                                                     "componentStyle": ComponentStyle {
                                                       "componentId": "ButtonAlternative__LinkContent-sc-4kmbfx-1",
                                                       "isStatic": false,
-                                                      "lastClassName": "dgNmWl",
+                                                      "lastClassName": "gwUBa",
                                                       "rules": Array [
                                                         "display:inline-flex;border-radius:",
                                                         [Function],
@@ -1672,7 +1672,7 @@ exports[`Index page should match snapshot 1`] = `
                                                         [Function],
                                                         " );box-shadow:inset 0px 3px 0px 0px ",
                                                         [Function],
-                                                        ";padding-bottom:12px;margin-top:2px;}@media ",
+                                                        ";}@media ",
                                                         "(max-width: 575.98px)",
                                                         "{font-size:13px;padding:10px 18px 10px 18px;}",
                                                         " &:hover{text-decoration:none;color:",
@@ -1695,7 +1695,7 @@ exports[`Index page should match snapshot 1`] = `
                                                 onMouseEnter={[Function]}
                                               >
                                                 <a
-                                                  className="ButtonAlternative__LinkContent-sc-4kmbfx-1 dgNmWl"
+                                                  className="ButtonAlternative__LinkContent-sc-4kmbfx-1 gwUBa"
                                                   onClick={[Function]}
                                                   onMouseEnter={[Function]}
                                                 >
@@ -8078,7 +8078,7 @@ exports[`Index page should match snapshot 1`] = `
                                 "componentStyle": ComponentStyle {
                                   "componentId": "ButtonNew__LinkContent-sj5i96-1",
                                   "isStatic": false,
-                                  "lastClassName": "hQrXnM",
+                                  "lastClassName": "eQDjqA",
                                   "rules": Array [
                                     "display:inline-flex;border-radius:",
                                     [Function],
@@ -8100,7 +8100,7 @@ exports[`Index page should match snapshot 1`] = `
                                     [Function],
                                     " );box-shadow:inset 0px 3px 0px 0px ",
                                     [Function],
-                                    ";padding-bottom:12px;margin-top:2px;}@media ",
+                                    ";}@media ",
                                     "(max-width: 575.98px)",
                                     "{font-size:13px;padding:10px 18px 10px 18px;}",
                                     " &:hover{text-decoration:none;color:",
@@ -8123,7 +8123,7 @@ exports[`Index page should match snapshot 1`] = `
                             onMouseEnter={[Function]}
                           >
                             <a
-                              className="ButtonNew__LinkContent-sj5i96-1 hQrXnM"
+                              className="ButtonNew__LinkContent-sj5i96-1 eQDjqA"
                               onClick={[Function]}
                               onMouseEnter={[Function]}
                             >
@@ -8491,359 +8491,6 @@ exports[`Index page should match snapshot 1`] = `
                 className="css-qccoaa"
               >
                 <PriceCard
-                  icon="award-badge"
-                  price="$10.0"
-                  title="High"
-                >
-                  <Page__PriceCardContent
-                    mb={
-                      Array [
-                        3,
-                        1,
-                      ]
-                    }
-                    p="20px"
-                  >
-                    <StyledComponent
-                      forwardedComponent={
-                        Object {
-                          "$$typeof": Symbol(react.forward_ref),
-                          "__emotion_base": "div",
-                          "__emotion_forwardProp": [Function],
-                          "__emotion_real": Object {
-                            "$$typeof": Symbol(react.forward_ref),
-                            "__emotion_base": "div",
-                            "__emotion_forwardProp": [Function],
-                            "__emotion_real": [Circular],
-                            "__emotion_styles": Array [
-                              Object {
-                                "boxSizing": "border-box",
-                                "margin": 0,
-                                "minWidth": 0,
-                              },
-                              [Function],
-                              [Function],
-                              [Function],
-                              [Function],
-                              [Function],
-                            ],
-                            "defaultProps": undefined,
-                            "displayName": "Styled(div)",
-                            "render": [Function],
-                            "withComponent": [Function],
-                          },
-                          "__emotion_styles": Array [
-                            Object {
-                              "boxSizing": "border-box",
-                              "margin": 0,
-                              "minWidth": 0,
-                            },
-                            [Function],
-                            [Function],
-                            [Function],
-                            [Function],
-                            [Function],
-                          ],
-                          "attrs": Array [],
-                          "componentStyle": ComponentStyle {
-                            "componentId": "Page__PriceCardContent-sc-1ix2o3i-11",
-                            "isStatic": false,
-                            "lastClassName": "kDHmdG",
-                            "rules": Array [
-                              "background-color:",
-                              [Function],
-                              ";width:24%;@media ",
-                              "(max-width: 575.98px)",
-                              "{width:45%;margin-bottom:16px;}",
-                            ],
-                          },
-                          "displayName": "Page__PriceCardContent",
-                          "foldedComponentIds": Array [],
-                          "render": [Function],
-                          "styledComponentId": "Page__PriceCardContent-sc-1ix2o3i-11",
-                          "target": Object {
-                            "$$typeof": Symbol(react.forward_ref),
-                            "__emotion_base": "div",
-                            "__emotion_forwardProp": [Function],
-                            "__emotion_real": [Circular],
-                            "__emotion_styles": Array [
-                              Object {
-                                "boxSizing": "border-box",
-                                "margin": 0,
-                                "minWidth": 0,
-                              },
-                              [Function],
-                              [Function],
-                              [Function],
-                              [Function],
-                              [Function],
-                            ],
-                            "defaultProps": undefined,
-                            "displayName": "Styled(div)",
-                            "render": [Function],
-                            "withComponent": [Function],
-                          },
-                          "toString": [Function],
-                          "warnTooManyClasses": [Function],
-                          "withComponent": [Function],
-                        }
-                      }
-                      forwardedRef={null}
-                      mb={
-                        Array [
-                          3,
-                          1,
-                        ]
-                      }
-                      p="20px"
-                    >
-                      <Styled(div)
-                        className="Page__PriceCardContent-sc-1ix2o3i-11 kDHmdG"
-                        mb={
-                          Array [
-                            3,
-                            1,
-                          ]
-                        }
-                        p="20px"
-                      >
-                        <div
-                          className="Page__PriceCardContent-sc-1ix2o3i-11 kDHmdG css-19oa00l"
-                        >
-                          <Styled(div)
-                            pb={3}
-                          >
-                            <div
-                              className="css-lc3py3"
-                            >
-                              <img
-                                src="/images/icon-award-badge.png"
-                                width="40"
-                              />
-                            </div>
-                          </Styled(div)>
-                          <UtilsComponents__SecondaryTitle
-                            color="white"
-                          >
-                            <StyledComponent
-                              color="white"
-                              forwardedComponent={
-                                Object {
-                                  "$$typeof": Symbol(react.forward_ref),
-                                  "attrs": Array [],
-                                  "componentStyle": ComponentStyle {
-                                    "componentId": "UtilsComponents__SecondaryTitle-iaogrl-4",
-                                    "isStatic": false,
-                                    "lastClassName": "flngbD",
-                                    "rules": Array [
-                                      "color:",
-                                      [Function],
-                                      ";font-family:\\"Japanese 3017\\";font-size:21px;font-weight:normal;letter-spacing:3px;",
-                                    ],
-                                  },
-                                  "displayName": "UtilsComponents__SecondaryTitle",
-                                  "foldedComponentIds": Array [],
-                                  "render": [Function],
-                                  "styledComponentId": "UtilsComponents__SecondaryTitle-iaogrl-4",
-                                  "target": "h2",
-                                  "toString": [Function],
-                                  "warnTooManyClasses": [Function],
-                                  "withComponent": [Function],
-                                }
-                              }
-                              forwardedRef={null}
-                            >
-                              <h2
-                                className="UtilsComponents__SecondaryTitle-iaogrl-4 flngbD"
-                                color="white"
-                              >
-                                High
-                              </h2>
-                            </StyledComponent>
-                          </UtilsComponents__SecondaryTitle>
-                          <Page__Price>
-                            <StyledComponent
-                              forwardedComponent={
-                                Object {
-                                  "$$typeof": Symbol(react.forward_ref),
-                                  "attrs": Array [],
-                                  "componentStyle": ComponentStyle {
-                                    "componentId": "Page__Price-sc-1ix2o3i-10",
-                                    "isStatic": false,
-                                    "lastClassName": "czydAl",
-                                    "rules": Array [
-                                      "align-items:center;background-color:",
-                                      [Function],
-                                      ";border-bottom-right-radius:50px;border-top-right-radius:50px;color:white;display:inline-flex;margin-bottom:20px;margin-left:-20px;margin-top:30px;padding:16px 25px;span{display:block;font-size:20px;font-weight:bold;padding-right:5px;}span:last-child{display:block;font-size:12px;}",
-                                    ],
-                                  },
-                                  "displayName": "Page__Price",
-                                  "foldedComponentIds": Array [],
-                                  "render": [Function],
-                                  "styledComponentId": "Page__Price-sc-1ix2o3i-10",
-                                  "target": "div",
-                                  "toString": [Function],
-                                  "warnTooManyClasses": [Function],
-                                  "withComponent": [Function],
-                                }
-                              }
-                              forwardedRef={null}
-                            >
-                              <div
-                                className="Page__Price-sc-1ix2o3i-10 czydAl"
-                              >
-                                <span>
-                                  $10.0
-                                </span>
-                                 
-                                <span>
-                                  Per Replay
-                                </span>
-                              </div>
-                            </StyledComponent>
-                          </Page__Price>
-                          <div>
-                            <PriceFeature>
-                              <Page__PriceFeatureContent>
-                                <StyledComponent
-                                  forwardedComponent={
-                                    Object {
-                                      "$$typeof": Symbol(react.forward_ref),
-                                      "attrs": Array [],
-                                      "componentStyle": ComponentStyle {
-                                        "componentId": "Page__PriceFeatureContent-sc-1ix2o3i-12",
-                                        "isStatic": false,
-                                        "lastClassName": "kmCrDB",
-                                        "rules": Array [
-                                          "align-items:center;color:",
-                                          [Function],
-                                          ";display:inline-flex;font-size:14px;margin-bottom:25px;img{margin-right:10px;}",
-                                        ],
-                                      },
-                                      "displayName": "Page__PriceFeatureContent",
-                                      "foldedComponentIds": Array [],
-                                      "render": [Function],
-                                      "styledComponentId": "Page__PriceFeatureContent-sc-1ix2o3i-12",
-                                      "target": "span",
-                                      "toString": [Function],
-                                      "warnTooManyClasses": [Function],
-                                      "withComponent": [Function],
-                                    }
-                                  }
-                                  forwardedRef={null}
-                                >
-                                  <span
-                                    className="Page__PriceFeatureContent-sc-1ix2o3i-12 kmCrDB"
-                                  >
-                                    <img
-                                      src="/images/icon-check-circle-1.png"
-                                      width="20"
-                                    />
-                                     
-                                    5k MMR or above
-                                  </span>
-                                </StyledComponent>
-                              </Page__PriceFeatureContent>
-                            </PriceFeature>
-                          </div>
-                          <ButtonAlternative
-                            key="login"
-                            onClick={[Function]}
-                            text="Get Started"
-                            type="button"
-                          >
-                            <ButtonDark__ButtonContent
-                              onClick={[Function]}
-                              type="button"
-                            >
-                              <StyledComponent
-                                forwardedComponent={
-                                  Object {
-                                    "$$typeof": Symbol(react.forward_ref),
-                                    "attrs": Array [],
-                                    "componentStyle": ComponentStyle {
-                                      "componentId": "ButtonDark__ButtonContent-le6ouf-0",
-                                      "isStatic": false,
-                                      "lastClassName": "epkWcR",
-                                      "rules": Array [
-                                        "&.",
-                                        "bp3-button",
-                                        "{",
-                                        "display:inline-flex;border-radius:",
-                                        [Function],
-                                        ";color:white;transition:all 0.05s ease-in-out;background:",
-                                        [Function],
-                                        ";padding:10px 25px 10px 25px;font-size:15px;font-weight:bold;text-transform:uppercase;&:hover{background-image:linear-gradient( to bottom,",
-                                        [Function],
-                                        ",",
-                                        [Function],
-                                        " );color:",
-                                        [Function],
-                                        ";box-shadow:inset 0px -3px 0px 0px ",
-                                        [Function],
-                                        ";}&:active{background-image:linear-gradient( to bottom,",
-                                        [Function],
-                                        ",",
-                                        [Function],
-                                        " );box-shadow:inset 0px 3px 0px 0px ",
-                                        [Function],
-                                        ";padding-bottom:12px;margin-top:2px;}@media ",
-                                        "(max-width: 575.98px)",
-                                        "{font-size:13px;padding:10px 18px 10px 18px;}",
-                                        " outline:none;font-family:",
-                                        [Function],
-                                        ";&:active{outline:none;}}",
-                                      ],
-                                    },
-                                    "displayName": "ButtonDark__ButtonContent",
-                                    "foldedComponentIds": Array [],
-                                    "render": [Function],
-                                    "styledComponentId": "ButtonDark__ButtonContent-le6ouf-0",
-                                    "target": [Function],
-                                    "toString": [Function],
-                                    "warnTooManyClasses": [Function],
-                                    "withComponent": [Function],
-                                  }
-                                }
-                                forwardedRef={null}
-                                onClick={[Function]}
-                                type="button"
-                              >
-                                <Blueprint3.Button
-                                  className="ButtonDark__ButtonContent-le6ouf-0 epkWcR"
-                                  onClick={[Function]}
-                                  type="button"
-                                >
-                                  <button
-                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 epkWcR"
-                                    onClick={[Function]}
-                                    onKeyDown={[Function]}
-                                    onKeyUp={[Function]}
-                                    type="button"
-                                  >
-                                    <Blueprint3.Icon
-                                      key="leftIcon"
-                                    />
-                                    <span
-                                      className="bp3-button-text"
-                                      key="text"
-                                    >
-                                      Get Started
-                                    </span>
-                                    <Blueprint3.Icon
-                                      key="rightIcon"
-                                    />
-                                  </button>
-                                </Blueprint3.Button>
-                              </StyledComponent>
-                            </ButtonDark__ButtonContent>
-                          </ButtonAlternative>
-                        </div>
-                      </Styled(div)>
-                    </StyledComponent>
-                  </Page__PriceCardContent>
-                </PriceCard>
-                <PriceCard
                   icon="award-badge-3"
                   price="$17.5"
                   title="Expert"
@@ -9117,7 +8764,7 @@ exports[`Index page should match snapshot 1`] = `
                                     "componentStyle": ComponentStyle {
                                       "componentId": "ButtonDark__ButtonContent-le6ouf-0",
                                       "isStatic": false,
-                                      "lastClassName": "epkWcR",
+                                      "lastClassName": "hHqgzh",
                                       "rules": Array [
                                         "&.",
                                         "bp3-button",
@@ -9140,7 +8787,7 @@ exports[`Index page should match snapshot 1`] = `
                                         [Function],
                                         " );box-shadow:inset 0px 3px 0px 0px ",
                                         [Function],
-                                        ";padding-bottom:12px;margin-top:2px;}@media ",
+                                        ";}@media ",
                                         "(max-width: 575.98px)",
                                         "{font-size:13px;padding:10px 18px 10px 18px;}",
                                         " outline:none;font-family:",
@@ -9163,12 +8810,12 @@ exports[`Index page should match snapshot 1`] = `
                                 type="button"
                               >
                                 <Blueprint3.Button
-                                  className="ButtonDark__ButtonContent-le6ouf-0 epkWcR"
+                                  className="ButtonDark__ButtonContent-le6ouf-0 hHqgzh"
                                   onClick={[Function]}
                                   type="button"
                                 >
                                   <button
-                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 epkWcR"
+                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 hHqgzh"
                                     onClick={[Function]}
                                     onKeyDown={[Function]}
                                     onKeyUp={[Function]}
@@ -9470,7 +9117,7 @@ exports[`Index page should match snapshot 1`] = `
                                     "componentStyle": ComponentStyle {
                                       "componentId": "ButtonDark__ButtonContent-le6ouf-0",
                                       "isStatic": false,
-                                      "lastClassName": "epkWcR",
+                                      "lastClassName": "hHqgzh",
                                       "rules": Array [
                                         "&.",
                                         "bp3-button",
@@ -9493,7 +9140,7 @@ exports[`Index page should match snapshot 1`] = `
                                         [Function],
                                         " );box-shadow:inset 0px 3px 0px 0px ",
                                         [Function],
-                                        ";padding-bottom:12px;margin-top:2px;}@media ",
+                                        ";}@media ",
                                         "(max-width: 575.98px)",
                                         "{font-size:13px;padding:10px 18px 10px 18px;}",
                                         " outline:none;font-family:",
@@ -9516,12 +9163,12 @@ exports[`Index page should match snapshot 1`] = `
                                 type="button"
                               >
                                 <Blueprint3.Button
-                                  className="ButtonDark__ButtonContent-le6ouf-0 epkWcR"
+                                  className="ButtonDark__ButtonContent-le6ouf-0 hHqgzh"
                                   onClick={[Function]}
                                   type="button"
                                 >
                                   <button
-                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 epkWcR"
+                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 hHqgzh"
                                     onClick={[Function]}
                                     onKeyDown={[Function]}
                                     onKeyUp={[Function]}
@@ -9823,7 +9470,7 @@ exports[`Index page should match snapshot 1`] = `
                                     "componentStyle": ComponentStyle {
                                       "componentId": "ButtonDark__ButtonContent-le6ouf-0",
                                       "isStatic": false,
-                                      "lastClassName": "epkWcR",
+                                      "lastClassName": "hHqgzh",
                                       "rules": Array [
                                         "&.",
                                         "bp3-button",
@@ -9846,7 +9493,7 @@ exports[`Index page should match snapshot 1`] = `
                                         [Function],
                                         " );box-shadow:inset 0px 3px 0px 0px ",
                                         [Function],
-                                        ";padding-bottom:12px;margin-top:2px;}@media ",
+                                        ";}@media ",
                                         "(max-width: 575.98px)",
                                         "{font-size:13px;padding:10px 18px 10px 18px;}",
                                         " outline:none;font-family:",
@@ -9869,12 +9516,12 @@ exports[`Index page should match snapshot 1`] = `
                                 type="button"
                               >
                                 <Blueprint3.Button
-                                  className="ButtonDark__ButtonContent-le6ouf-0 epkWcR"
+                                  className="ButtonDark__ButtonContent-le6ouf-0 hHqgzh"
                                   onClick={[Function]}
                                   type="button"
                                 >
                                   <button
-                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 epkWcR"
+                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 hHqgzh"
                                     onClick={[Function]}
                                     onKeyDown={[Function]}
                                     onKeyUp={[Function]}

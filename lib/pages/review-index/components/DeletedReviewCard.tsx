@@ -1,10 +1,12 @@
-import { Flex, Box, Text } from "rebass"
+import { Flex, Box, Text as RbText } from "rebass"
 import React, { FunctionComponent, useState } from "react"
-import { Button, Card, HeroImageSmall } from "gamejitsu/components"
+import { Button, Card, MatchHeroes } from "gamejitsu/components"
 import { DecoratedReview } from "gamejitsu/models/review"
 import { Classes, Dialog, Tooltip } from "@blueprintjs/core"
 import { breakpointDown } from "../../../utils/mediaQueryDevices"
 import styled from "styled-components"
+import { SkillLevel } from "gamejitsu/api/types/skill-level"
+import { prices } from "../../../../public/prices"
 
 interface Props {
   review: DecoratedReview | undefined
@@ -26,33 +28,35 @@ const HeroesAndCtaContainer = styled(Flex)`
   }
 `
 
+const Text = styled(RbText)`
+  b {
+    font-weight: bold;
+  }
+`
+
 const DeletedReviewCard: FunctionComponent<Props> = ({ review }) => {
   const [cancelReviewIsOpen, setCancelReviewIsOpen] = useState(false)
-
+  const skillLevels = SkillLevel.types.map((t) => t.value)
   return (
     <Box width="100%">
       <Card>
         <Flex flexWrap={["wrap", "wrap", "nowrap"]}>
           <InfoContainer p={3}>
-            <Text p={2}>Skill Level: {review?.reviewRequest.skillLevel}</Text>
-            <Text p={2}>Comment: {review?.reviewRequest.comment}</Text>
+            <Text p={2}>
+              <b>Skill Level:</b>{" "}
+              {prices[skillLevels.indexOf(review?.reviewRequest.skillLevel as SkillLevel)].name}{" "}
+              (above{" "}
+              {prices[skillLevels.indexOf(review?.reviewRequest.skillLevel as SkillLevel)].mmr} MMR)
+            </Text>
+            <Text p={2}>
+              <b>Comment: </b> {review?.reviewRequest.comment}
+            </Text>
           </InfoContainer>
           <HeroesAndCtaContainer p={3} alignItems="center" justifyContent={"space-between"}>
-            <Box>
-              <div>
-                {review?.replay.playersDire.map((player, index) => {
-                  const key = player.steamId ? player.steamId : index.toString()
-                  return <HeroImageSmall key={key} player={player} />
-                })}
-              </div>
-              <div>
-                {review?.replay.playersRadiant.map((player, index) => {
-                  const key = player.steamId ? player.steamId : index.toString()
-                  return <HeroImageSmall key={key} player={player} />
-                })}
-              </div>
+            <Box width={"100%"} style={{ maxWidth: "240px" }}>
+              {review?.replay ? <MatchHeroes replay={review?.replay} /> : null}
             </Box>
-            <Box>
+            <Box pl={3}>
               <Button
                 color="#ff1705"
                 onClick={() => setCancelReviewIsOpen(true)}

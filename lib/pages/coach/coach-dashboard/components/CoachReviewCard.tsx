@@ -1,7 +1,8 @@
 import React, { FunctionComponent, useState } from "react"
-import { Flex, Box, Text } from "rebass"
+import { Flex, Box, Text as RbText } from "rebass"
+import styled from "styled-components"
 
-import { Button, Card, HeroImageSmall } from "gamejitsu/components"
+import { Button, Card, MatchHeroes } from "gamejitsu/components"
 import { DecoratedReview } from "gamejitsu/models/review"
 import { deleteModel, updateModel } from "gamejitsu/api"
 import ReviewResource from "gamejitsu/api/resources/review"
@@ -39,41 +40,58 @@ const CoachReviewCard: FunctionComponent<Props> = ({ review }) => {
     Router.push("/coach-dashboard")
   }
 
+  const Text = styled(RbText)`
+    .warning {
+      color: red;
+    }
+
+    b {
+      font-weight: bold;
+    }
+  `
+
   return (
     <Box>
       <Card>
-        <Flex justifyContent="space-between">
-          <Box p={3}>
-            <Text p={2}>Coach Skill Level: {review.reviewRequest.skillLevel}</Text>
-            <Text p={2}>Comment: {review.reviewRequest.comment}</Text>
-            <Text p={2}>Match Id: {review.replay.matchId}</Text>
-          </Box>
-          <Flex p={3} alignItems="center">
+        <Flex justifyContent="space-between" flexWrap={"wrap"}>
+          <Flex p={3} alignItems="center" flex={"1 1 300px"}>
             <Box>
-              <div>
-                {review.replay.playersDire.map((player, index) => {
-                  const key = player.steamId ? player.steamId : index.toString()
-                  return <HeroImageSmall key={key} player={player} />
-                })}
-              </div>
-              <div>
-                {review.replay.playersRadiant.map((player, index) => {
-                  const key = player.steamId ? player.steamId : index.toString()
-                  return <HeroImageSmall key={key} player={player} />
-                })}
-              </div>
+              {/* <Text p={2}><b>Coach Skill Level: </b> {review.reviewRequest.skillLevel}</Text> */}
+              <Text p={2}>
+                <b>Match Id: </b> {review.replay.matchId}
+              </Text>
+              <Text p={2}>
+                <b>Player MMR: </b> {review.reviewRequest.metadata.mmr}
+              </Text>
+              <Text p={2}>
+                <b>Solo/Party: </b> {review.reviewRequest.metadata.isParty ? "Party" : "Solo"}
+              </Text>
+              <Text p={2}>
+                <b>Comment: </b> {review.reviewRequest.comment}
+              </Text>
+              {review.reviewRequest.metadata.isDisconnected ? (
+                <Text p={2}>
+                  <div className="warning">
+                    The player has reported that he was disconnected in this game. If during replay
+                    playback the focus on the hero is lost, please contact support.
+                  </div>
+                </Text>
+              ) : null}
             </Box>
           </Flex>
-          <Flex p={3} alignItems="center">
-            <Box>
-              <Button href={"/coach-reviews/" + review.id} text="Work on review" />
-              <Button onClick={() => setPublishReviewIsOpen(true)} text="Publish Review" />
-              <Button
-                onClick={() => setCancelReviewIsOpen(true)}
-                color="#ff1705"
-                text="Cancel Review"
-              />
+          <Flex p={3} alignItems="center" flex={["1 1 280px", "0 1 320px"]}>
+            <Box width={"100%"}>
+              <MatchHeroes replay={review.replay}></MatchHeroes>
             </Box>
+          </Flex>
+          <Flex p={3} alignItems="center" justifyContent={"space-between"}>
+            <Button href={"/coach-reviews/" + review.id} text="Work on review" />
+            <Button onClick={() => setPublishReviewIsOpen(true)} text="Publish Review" />
+            <Button
+              onClick={() => setCancelReviewIsOpen(true)}
+              color="#ff1705"
+              text="Cancel Review"
+            />
           </Flex>
         </Flex>
       </Card>

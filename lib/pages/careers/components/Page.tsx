@@ -65,15 +65,10 @@ const Page: AuthenticatedComponent = () => {
         <Box>
           <ParagraphTitle>Coaches</ParagraphTitle>
           <ParagraphText>
-            We are actively looking for coaches for Dota 2, requirements is at least 5000 MMR.
-            Please, check more details and register as a coach if interested via our
+            We are actively looking for coaches for Dota 2, requirements is at least 6000 MMR.
+            Please, check more details and write us at contact@gamejitsu.gg.
           </ParagraphText>
-          {user ? (
-            <LinkBold href={coachSignupLink}> coach sign-up page</LinkBold>
-          ) : (
-            <ABold href={urlBase + "?" + stringified}> coach sign-up page</ABold>
-          )}
-          .<ParagraphTitle>Content Creators</ParagraphTitle>
+          <ParagraphTitle>Content Creators</ParagraphTitle>
           <ParagraphText>
             We are actively looking for content creators for Dota 2, requirement is at least 6500
             MMR.
