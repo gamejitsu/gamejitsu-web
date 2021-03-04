@@ -45,12 +45,20 @@ const ReviewCard: FunctionComponent<Props> = ({ review }) => {
       <Card>
         <Flex flexWrap={["wrap", "wrap", "nowrap"]}>
           <InfoContainer p={3}>
-            <Text p={2}><b>Skill Level:</b> {prices[skillLevels.indexOf(review?.reviewRequest.skillLevel as SkillLevel)].name}{" "}
-            (above {prices[skillLevels.indexOf(review?.reviewRequest.skillLevel as SkillLevel)].mmr} MMR)</Text>
-            <Text p={2}><b>Comment: </b> {review?.reviewRequest.comment}</Text>
+            <Text p={2}>
+              <b>Skill Level:</b>{" "}
+              {prices[skillLevels.indexOf(review?.reviewRequest.skillLevel as SkillLevel)].name}{" "}
+              (above{" "}
+              {prices[skillLevels.indexOf(review?.reviewRequest.skillLevel as SkillLevel)].mmr} MMR)
+            </Text>
+            <Text p={2}>
+              <b>Comment: </b> {review?.reviewRequest.comment}
+            </Text>
           </InfoContainer>
           <HeroesAndCtaContainer p={3} alignItems="center" justifyContent={"space-between"}>
-            <Box width={"100%"} style={{maxWidth: "240px"}}>{review?.replay ? <MatchHeroes replay={review?.replay} /> : null}</Box>
+            <Box width={"100%"} style={{ maxWidth: "240px" }}>
+              {review?.replay ? <MatchHeroes replay={review?.replay} /> : null}
+            </Box>
             <Box pl={3}>
               <Button
                 onClick={() => {
@@ -63,7 +71,7 @@ const ReviewCard: FunctionComponent<Props> = ({ review }) => {
         </Flex>
       </Card>
     </Box>
-    )
-  }
+  )
+}
 
 export default ReviewCard

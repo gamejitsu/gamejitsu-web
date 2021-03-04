@@ -91,15 +91,17 @@ const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {
         <HorizontalLine />
         <Box px={3} pb={1} mt={4} mb={3}>
           <Flex alignItems="center" justifyContent="center">
-            <Box width={"100%"} style={{maxWidth: "540px"}}>
-              <Flex><MatchHeroes replay={reviewRequest.replay} /></Flex>
+            <Box width={"100%"} style={{ maxWidth: "540px" }}>
+              <Flex>
+                <MatchHeroes replay={reviewRequest.replay} />
+              </Flex>
               <Flex alignItems="center" pt={4}>
                 <Flex flex={1}>
                   <Box>
                     Played with {currentPlayer.heroName} <br />
                     Match ID: {reviewRequest.replay.matchId} <br />
                     MMR: {reviewRequest.metadata.mmr} <br />
-                    Price: ${prices[skillLevels.indexOf(reviewRequest.skillLevel)].priceUSD} 
+                    Price: ${prices[skillLevels.indexOf(reviewRequest.skillLevel)].priceUSD}
                   </Box>
                 </Flex>
                 <Flex>

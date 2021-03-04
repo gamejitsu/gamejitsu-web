@@ -49,7 +49,6 @@ const baseStyles = css`
     );
 
     box-shadow: inset 0px 3px 0px 0px ${(props) => darken(0.1, props.theme.primaryColor)};
-    
   }
 `
 

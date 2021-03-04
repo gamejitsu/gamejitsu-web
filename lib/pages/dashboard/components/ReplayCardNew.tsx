@@ -86,8 +86,10 @@ const RecentMatchesCardNew: FunctionComponent<Props> = ({ replay }) => {
       <HorizontalLine />
       <Box px={3} pb={1} mt={4} mb={3}>
         <Flex alignItems="center" justifyContent="center">
-          <Box width={"100%"} style={{maxWidth: "540px"}}>
-            <Flex><MatchHeroes replay={replay} /></Flex>
+          <Box width={"100%"} style={{ maxWidth: "540px" }}>
+            <Flex>
+              <MatchHeroes replay={replay} />
+            </Flex>
             <Flex alignItems="center">
               <Box mr="auto" mt={4}>
                 <div>Played with {currentPlayer.heroName}</div>

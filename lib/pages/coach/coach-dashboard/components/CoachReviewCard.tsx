@@ -41,7 +41,6 @@ const CoachReviewCard: FunctionComponent<Props> = ({ review }) => {
   }
 
   const Text = styled(RbText)`
-
     .warning {
       color: red;
     }
@@ -49,30 +48,40 @@ const CoachReviewCard: FunctionComponent<Props> = ({ review }) => {
     b {
       font-weight: bold;
     }
-    `
+  `
 
   return (
     <Box>
       <Card>
         <Flex justifyContent="space-between" flexWrap={"wrap"}>
-         <Flex p={3} alignItems="center" flex={"1 1 300px"}>
+          <Flex p={3} alignItems="center" flex={"1 1 300px"}>
             <Box>
               {/* <Text p={2}><b>Coach Skill Level: </b> {review.reviewRequest.skillLevel}</Text> */}
-              <Text p={2}><b>Match Id: </b> {review.replay.matchId}</Text>
-              <Text p={2}><b>Player MMR: </b> {review.reviewRequest.metadata.mmr}</Text>
-              <Text p={2}><b>Solo/Party: </b> {review.reviewRequest.metadata.isParty ? "Party" : "Solo"}</Text>
-              <Text p={2}><b>Comment: </b> {review.reviewRequest.comment}</Text>
-              {review.reviewRequest.metadata.isDisconnected 
-                ? 
-                  <Text p={2} ><div className="warning">The player has reported that he was disconnected in this game. If during replay playback the focus on the hero is lost, please contact support.</div></Text>
-                : 
-                null
-              }
+              <Text p={2}>
+                <b>Match Id: </b> {review.replay.matchId}
+              </Text>
+              <Text p={2}>
+                <b>Player MMR: </b> {review.reviewRequest.metadata.mmr}
+              </Text>
+              <Text p={2}>
+                <b>Solo/Party: </b> {review.reviewRequest.metadata.isParty ? "Party" : "Solo"}
+              </Text>
+              <Text p={2}>
+                <b>Comment: </b> {review.reviewRequest.comment}
+              </Text>
+              {review.reviewRequest.metadata.isDisconnected ? (
+                <Text p={2}>
+                  <div className="warning">
+                    The player has reported that he was disconnected in this game. If during replay
+                    playback the focus on the hero is lost, please contact support.
+                  </div>
+                </Text>
+              ) : null}
             </Box>
           </Flex>
-          <Flex p={3} alignItems="center" flex={["1 1 280px" ,"0 1 320px"]}>
+          <Flex p={3} alignItems="center" flex={["1 1 280px", "0 1 320px"]}>
             <Box width={"100%"}>
-              <MatchHeroes replay={review.replay} ></MatchHeroes>
+              <MatchHeroes replay={review.replay}></MatchHeroes>
             </Box>
           </Flex>
           <Flex p={3} alignItems="center" justifyContent={"space-between"}>

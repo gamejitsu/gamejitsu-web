@@ -104,7 +104,11 @@ const Dashboard: FunctionComponent<Props> = (props) => {
             <EmptyCard text="No request reviews to show" />
           ) : (
             props.reviewRequests.map((reviewRequest) => {
-              if (reviewRequest && (reviewRequest.status !== "published" && reviewRequest.status !== "deleted" )) {
+              if (
+                reviewRequest &&
+                reviewRequest.status !== "published" &&
+                reviewRequest.status !== "deleted"
+              ) {
                 return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
               }
             })

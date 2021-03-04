@@ -144,7 +144,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
       errors.comment = "Comment exceeds 255 characters"
     }
 
-    if (Object.keys(errors).length === 0){
+    if (Object.keys(errors).length === 0) {
       setFormValidity(true)
     }
 
