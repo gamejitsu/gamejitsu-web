@@ -5,6 +5,7 @@ import { SkillLevel } from "gamejitsu/api/types/skill-level"
 import { User } from "gamejitsu/api/resources/user"
 import { ReviewRequestStatus } from "gamejitsu/api/types/review-request-status"
 import { Review } from "gamejitsu/api/resources/review"
+import { Metadata } from "gamejitsu/api/types/metadata"
 
 export interface DecoratedReviewRequest {
   skillLevel: SkillLevel
@@ -14,6 +15,7 @@ export interface DecoratedReviewRequest {
   replay: DecoratedReplay
   user: User
   status: ReviewRequestStatus
+  metadata: Metadata
 }
 
 interface IncludedReviewRequest {
@@ -56,6 +58,7 @@ export const decorateReviewRequests = (
         id: reviewRequest.id,
         replay: decorateReplay(replay),
         user,
+        metadata: reviewRequest.metadata,
         status
       }
     } else {

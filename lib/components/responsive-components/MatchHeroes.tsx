@@ -26,7 +26,7 @@ const HeroPic: FunctionComponent<HeroPicProps> = ({ player }) => {
     background-image: url("${(props) => props.heroPortraitUrl}");
     width: 19.5%;
     cursor: pointer;
-    border-radius: 3px;
+    border-radius: 4px;
     border: ${(props) =>
       props.isYourHero
         ? `2px solid  ${props.theme.primaryColor}`

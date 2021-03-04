@@ -17,6 +17,6 @@ export const reviewStatus = [
   },
   {
     id: 5,
-    name: "Waiting for replay"
+    name: "Waiting for replay recording"
   }
 ]
