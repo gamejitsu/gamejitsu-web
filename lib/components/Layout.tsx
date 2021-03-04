@@ -11,21 +11,16 @@ interface Props {
   title?: string
 }
 
-const Container = styled(Box)`
-  max-width: 1024px;
-  height: 100%;
-`
-
 const Layout: FunctionComponent<Props> = ({ title, children }) => (
   <>
     <Navbar />
-    <Container mx="auto" p={4} pt={92}>
+    <Box mx="auto" px={[1, 3, 4]} py={[2, 4]}>
       <Head>
         <link rel="shortcut icon" href="/favicon.png" />
         <title>{title === undefined ? companyName : `${companyName} - ${title}`}</title>
       </Head>
       {children}
-    </Container>
+    </Box>
   </>
 )
 

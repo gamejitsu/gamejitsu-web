@@ -10,11 +10,10 @@ import UserResource, { User } from "gamejitsu/api/resources/user"
 import ReviewRequestResource from "gamejitsu/api/resources/review-request"
 import { DecoratedReplay, decorateReplays } from "gamejitsu/models/replay"
 import { Spinner, LayoutWithMenuUser, EmptyCard, Title } from "gamejitsu/components"
-import { listModels, findModel } from "gamejitsu/api"
+import { listModels } from "gamejitsu/api"
 import { decorateReviewRequests, DecoratedReviewRequest } from "gamejitsu/models/review-request"
 import { UserContext } from "gamejitsu/contexts"
 import { ReviewRequestCard, ReplayCardNew } from "."
-import Router from "next/router"
 
 interface Props {
   user: User
@@ -27,11 +26,6 @@ const getReplays = async (ctx?: NextPageContext) => {
   return decorateReplays(data)
 }
 
-const getCurrentUser = async () => {
-  const { data } = await findModel(UserResource, "current")
-  return data
-}
-
 const getReviewRequests = async (ctx: NextPageContext) =>
   await listModels(ReviewRequestResource, ctx)
 
@@ -42,35 +36,30 @@ const areAllReviewRequestsPublished = (reviewRequests: (DecoratedReviewRequest |
 const Dashboard: FunctionComponent<Props> = (props) => {
   const [user, setUser] = useState(props.user)
   const [replays, setReplays] = useState(props.replays)
-  const [socket, setSocket] = useState<Socket | null>(null)
+
   useEffect(() => {
     const { authToken } = parseCookies({})
-    const currentSocket = socket
-      ? socket
-      : new Socket(process.env.SOCKET_ENDPOINT + "/socket", {
-          params: { token: authToken }
-        })
-    setSocket(currentSocket)
-    currentSocket.connect()
-    const channel = currentSocket.channel("users:" + user.id)
-    channel.join().receive("ok", async () => {
-      const user = await getCurrentUser()
-      setUser(user)
+    const socket = new Socket(process.env.SOCKET_ENDPOINT + "/socket", {
+      params: { token: authToken }
+    })
+    socket.connect()
+    const channel = socket.channel("users:" + user.id)
+    channel.join().receive("ok", () => {
+      console.log("channel joined")
     })
     channel.on("update", async (userData) => {
-      const { data: user } = UserResource.decodeOne(userData)
-      if (user.isSyncingReplays) {
-        setUser(user)
-      } else {
-        currentSocket.disconnect()
+      const { data: usr } = UserResource.decodeOne(userData)
+      if (!usr.isSyncingReplays) {
+        socket.disconnect()
         const replays = await getReplays()
-        setUser(user)
         setReplays(replays)
-        Router.push("/dashboard")
+        setUser(usr)
+      } else {
+        setUser(usr)
       }
     })
     return () => {
-      currentSocket.disconnect()
+      socket.disconnect()
     }
   }, [])
 
@@ -115,18 +104,23 @@ const Dashboard: FunctionComponent<Props> = (props) => {
             <EmptyCard text="No request reviews to show" />
           ) : (
             props.reviewRequests.map((reviewRequest) => {
-              if (reviewRequest && reviewRequest.status !== "published")
+              if (
+                reviewRequest &&
+                reviewRequest.status !== "published" &&
+                reviewRequest.status !== "deleted"
+              ) {
                 return <ReviewRequestCard key={reviewRequest.id} reviewRequest={reviewRequest} />
+              }
             })
           )}
         </Flex>
         <Flex mt={4} flexDirection="column">
-          <Title text="REPLAYS" />
+          <Title text="YOUR RECENT MATCHES" />
           <Flex flexWrap="wrap" justifyContent="space-between">
-            {props.replays.length === 0 ? (
+            {replays.length === 0 ? (
               <EmptyCard text="No recent replays to show" />
             ) : (
-              props.replays.map((replay) => {
+              replays.map((replay) => {
                 return <ReplayCardNew key={replay.id} replay={replay} />
               })
             )}

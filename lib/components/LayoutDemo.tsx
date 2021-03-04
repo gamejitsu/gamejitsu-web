@@ -95,6 +95,12 @@ const LeftMenuLinkContent = styled(LinkLeftMenu)<LeftMenuLinkContentProps>`
   }
 `
 
+const DemoMode = styled(Flex)`
+  justify-content: center;
+  font-weight: bold;
+  color: #0bff09;
+`
+
 const Wrapper = styled(Flex)`
   flex-wrap: wrap;
 `
@@ -149,6 +155,9 @@ const LayoutWithMenu: FunctionComponent<Props> = ({ title, children }) => (
       <LeftMenu>
         <InnerWrapper>
           <MenuElementWrapper>
+            <DemoMode pb={3}>DEMO MODE</DemoMode>
+          </MenuElementWrapper>
+          <MenuElementWrapper>
             <LeftMenuLink href="#">
               <CoachDashboardSVG width="60" height="35" />
               <MenuLinkText>Coach Dashboard</MenuLinkText>
@@ -169,7 +178,7 @@ const LayoutWithMenu: FunctionComponent<Props> = ({ title, children }) => (
         </InnerWrapper>
         <MenuFooterParent>
           <MenuFooter justifyContent="center" pb={4}>
-            © 2020 - Gamejitsu Copyright.
+            © 2021 - Gamejitsu Copyright.
           </MenuFooter>
         </MenuFooterParent>
       </LeftMenu>

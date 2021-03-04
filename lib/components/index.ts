@@ -37,6 +37,8 @@ import Table from "./Table"
 import Title from "./Title"
 import MarkdownDialog from "./MarkdownDialog"
 
+import MatchHeroes from "./responsive-components/MatchHeroes"
+
 export {
   Button,
   ButtonNew,
@@ -75,5 +77,6 @@ export {
   SteamButton,
   Table,
   Title,
-  MarkdownDialog
+  MarkdownDialog,
+  MatchHeroes
 }

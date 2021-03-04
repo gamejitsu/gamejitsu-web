@@ -60,8 +60,6 @@ const baseStyles = css<BaseProps>`
     );
 
     box-shadow: inset 0px 3px 0px 0px ${(props) => darken(0.1, props.theme.primaryColor)};
-    padding-bottom: 12px;
-    margin-top: 2px;
   }
 `
 
@@ -69,7 +67,8 @@ const ButtonContent = styled(BPButton)`
   &.${Classes.BUTTON} {
     ${baseStyles}
     background-color: ${(props) => props.color};
-
+    margin-left: 4px;
+    margin-right: 4px;
     border: 0;
     outline: none;
     font-family: ${(props) => props.theme.textFont};
@@ -82,7 +81,9 @@ const ButtonContent = styled(BPButton)`
 
 const LinkContent = styled.a`
   ${baseStyles}
-
+  line-height: normal;
+  margin-left: 4px;
+  margin-right: 4px;
   &:hover {
     text-decoration: none;
     color: ${(props) => props.theme.backgroundColor};

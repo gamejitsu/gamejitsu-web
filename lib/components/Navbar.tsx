@@ -134,46 +134,37 @@ const Navbar: FunctionComponent = () => {
         <NavLink key="demo" href="/demo">
           COACH DEMO
         </NavLink>
-        {user?.coachId
-          ? [
-              <NavLink key="coach-reviews" href="/coach-reviews">
-                COACH REVIEWS
-              </NavLink>,
-              <NavLink key="coach-dashboard" href="/coach-dashboard">
-                COACH DASHBOARD
-              </NavLink>
-            ]
-          : [
-              <NavLink key="dashboard" href="/dashboard">
-                DASHBOARD
-              </NavLink>,
-              <NavLink key="reviews" href="/reviews">
-                REVIEWS
-              </NavLink>
-            ]}
-        {user ? (
-          user?.coachId ? (
-            <NavLink key="username" href="/coach-settings">
-              Coach {user?.username}
-            </NavLink>
-          ) : (
-            <NavLink key="username" href="/settings">
-              {user.username}
-            </NavLink>
-          )
-        ) : null}
+        {user
+          ? user?.coachId
+            ? [
+                <NavLink key="coach-reviews" href="/coach-reviews">
+                  COACH REVIEWS
+                </NavLink>,
+                <NavLink key="coach-dashboard" href="/coach-dashboard">
+                  COACH DASHBOARD
+                </NavLink>,
+                <NavLink key="username" href="/coach-settings">
+                  Coach {user?.username}
+                </NavLink>
+              ]
+            : [
+                <NavLink key="dashboard" href="/dashboard">
+                  DASHBOARD
+                </NavLink>,
+                <NavLink key="reviews" href="/reviews">
+                  REVIEWS
+                </NavLink>,
+                <NavLink key="username" href="/settings">
+                  {user.username}
+                </NavLink>
+              ]
+          : null}
       </FlexWithOrderLinks>
       <FlexWithOrderButton>
         {user ? (
-          user?.coachId ? (
-            <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
-          ) : (
-            <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
-          )
+          <ButtonNew key="logout" text="LOGOUT" onClick={logout} />
         ) : (
-          <Box>
-            <ButtonIcon key="login" text="SIGN IN" icon={user} onClick={login} />
-          </Box>
+          <ButtonIcon key="login" text="SIGN IN" icon={user} onClick={login} />
         )}
       </FlexWithOrderButton>
     </Flex>

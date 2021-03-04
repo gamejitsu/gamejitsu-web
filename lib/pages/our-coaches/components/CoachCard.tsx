@@ -147,9 +147,6 @@ const CoachCard: FunctionComponent<Props> = ({ coach }) => {
               <Achievement>{achievement}</Achievement>
             </Box>
           ))}
-          <Box pt={2}>
-            <Button href={`/review-requests/${coach.id}`} text="Book Now" />
-          </Box>
         </Flex>
       </Flex>
     </CoachWrapper>
