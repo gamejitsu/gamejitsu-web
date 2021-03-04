@@ -10,7 +10,7 @@ The **Gamejitsu** Typescript React.js frontend.
 
 __`❍ git clone https://github.com/gamejitsu/gamejitsu-web.git`__
 
-**2)** Enter the directory and install all the dependencies:
+**2)** Enter the directory and install the dependencies:
 
 __`❍ cd gamejitsu-web && npm install`__
 

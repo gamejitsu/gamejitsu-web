@@ -1,6 +1,5 @@
 import * as t from "io-ts"
 import { SkillLevel, encoder as skillLevelEncoder } from "gamejitsu/api/types/skill-level"
-import { Metadata, encoder as metadataEncoder } from "gamejitsu/api/types/metadata"
 import {
   decoder as replayDecoder,
   transformer as replayTransformer,
@@ -27,7 +26,6 @@ import { Model } from "gamejitsu/interfaces"
 export interface ReviewRequest extends Model {
   skillLevel: SkillLevel
   comment: string | null
-  metadata: Metadata
   replayId: string
   userId: string
   reviewsIds: string[]
@@ -38,8 +36,7 @@ export const decoder = t.type({
   type: t.literal("review-request"),
   attributes: t.type({
     "skill-level": SkillLevel,
-    comment: t.union([t.string, t.null]),
-    metadata: Metadata
+    comment: t.union([t.string, t.null])
   }),
   relationships: t.type({
     replay: t.type({
@@ -69,7 +66,6 @@ export const transformer = (value: t.TypeOf<typeof decoder>): ReviewRequest => (
   id: value.id,
   skillLevel: value.attributes["skill-level"],
   comment: value.attributes["comment"],
-  metadata: value.attributes["metadata"],
   replayId: value.relationships["replay"].data.id,
   userId: value.relationships["user"].data.id,
   reviewsIds: value.relationships["reviews"].data.map((r) => r.id)
@@ -84,7 +80,15 @@ export default buildResource({
         t
           .strict({
             included: t.union([
-              t.array(t.union([replayDecoder, userDecoder, coachDecoder, reviewDecoder, decoder])),
+              t.array(
+                t.union([
+                  replayDecoder,
+                  userDecoder,
+                  coachDecoder,
+                  reviewDecoder,
+                  decoder //todo maybe remove
+                ])
+              ),
               t.undefined
             ])
           })
@@ -126,8 +130,7 @@ export default buildResource({
     type: "review-request",
     attributes: {
       "skill-level": skillLevelEncoder(value.skillLevel),
-      comment: value.comment,
-      metadata: value.metadata ? metadataEncoder(value.metadata) : "{}"
+      comment: value.comment
     },
     relationships: {
       replay: {

@@ -3,28 +3,10 @@ import React, { FunctionComponent, useState } from "react"
 import { Button, Card, HeroImageSmall } from "gamejitsu/components"
 import { DecoratedReview } from "gamejitsu/models/review"
 import { Classes, Dialog, Tooltip } from "@blueprintjs/core"
-import { breakpointDown } from "../../../utils/mediaQueryDevices"
-import styled from "styled-components"
 
 interface Props {
   review: DecoratedReview | undefined
 }
-
-const InfoContainer = styled(Box)`
-  flex: 1 1 40%;
-
-  @media ${breakpointDown.sm} {
-    flex: 1 1 100%;
-  }
-`
-
-const HeroesAndCtaContainer = styled(Flex)`
-  flex: 2 2 40%;
-
-  @media ${breakpointDown.sm} {
-    flex: 1 1 100%;
-  }
-`
 
 const DeletedReviewCard: FunctionComponent<Props> = ({ review }) => {
   const [cancelReviewIsOpen, setCancelReviewIsOpen] = useState(false)
@@ -32,12 +14,12 @@ const DeletedReviewCard: FunctionComponent<Props> = ({ review }) => {
   return (
     <Box width="100%">
       <Card>
-        <Flex flexWrap={["wrap", "wrap", "nowrap"]}>
-          <InfoContainer p={3}>
+        <Flex justifyContent="space-between">
+          <Box p={3}>
             <Text p={2}>Skill Level: {review?.reviewRequest.skillLevel}</Text>
             <Text p={2}>Comment: {review?.reviewRequest.comment}</Text>
-          </InfoContainer>
-          <HeroesAndCtaContainer p={3} alignItems="center" justifyContent={"space-between"}>
+          </Box>
+          <Flex p={3} alignItems="center">
             <Box>
               <div>
                 {review?.replay.playersDire.map((player, index) => {
@@ -52,6 +34,8 @@ const DeletedReviewCard: FunctionComponent<Props> = ({ review }) => {
                 })}
               </div>
             </Box>
+          </Flex>
+          <Flex p={3} alignItems="center">
             <Box>
               <Button
                 color="#ff1705"
@@ -59,7 +43,7 @@ const DeletedReviewCard: FunctionComponent<Props> = ({ review }) => {
                 text="Canceled Review"
               />
             </Box>
-          </HeroesAndCtaContainer>
+          </Flex>
         </Flex>
       </Card>
       <Dialog

@@ -11,14 +11,12 @@ interface Props {
   videoDuration: number
   videoTimestamp: number
   onVideoTimestampChange: (timestamp: number) => void
-  onSelect: (comment: Comment | null) => void
 }
 
 interface ElementCommentProps {
   duration: number
   containerWidth: number
   comment: Comment
-  selected: boolean
 }
 
 interface TProps {
@@ -49,17 +47,30 @@ const T = styled(Box)<TProps>`
 const ElementComment = styled(Box)<ElementCommentProps>`
   height: 90%;
   width: 3px;
+  bottom: 0;
   cursor: pointer;
-  background-color: ${(props) =>
-    props.selected ? lighten(0.3, props.theme.primaryColor) : props.theme.primaryColor};
+  position: absolute;
+  background-color: ${(props) => props.theme.primaryColor};
   &:hover {
-    background-color: #fff;
+    background-image: linear-gradient(
+      to bottom,
+      ${(props) => lighten(0.3, props.theme.primaryColor)},
+      ${(props) => lighten(0.3, props.theme.primaryColor)}
+    );
   }
 `
 
 const Bar = styled(Box)`
   background-color: ${(props) => props.theme.lightBackgroundColor};
   width: 100%;
+`
+
+const TimeTag = styled(Box)`
+  background-color: ${(props) => props.theme.primaryColor};
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 5px;
 `
 
 const getPercentage = (timestamp: number, duration: number) => {
@@ -83,20 +94,16 @@ const CommentBar: FunctionComponent<Props> = ({
   comments,
   videoDuration,
   videoTimestamp,
-  onVideoTimestampChange,
-  onSelect
+  onVideoTimestampChange
 }) => {
   let [containerWidth, setContainerWidth] = useState(0)
   let containerRef = useRef<HTMLElement>(null)
+
   const onBarClick = (e: React.MouseEvent) => {
     const rect = containerRef.current && containerRef.current.getBoundingClientRect()
     const x = e.clientX - (rect ? rect.left : 0)
     const timestamp = Math.floor((x / containerWidth) * videoDuration)
     onVideoTimestampChange(timestamp)
-  }
-
-  const onSelectComment = (comment: Comment) => {
-    return onSelect(comment)
   }
 
   useEffect(() => {
@@ -106,6 +113,12 @@ const CommentBar: FunctionComponent<Props> = ({
   const emptyBarsArray = [...Array(100).keys()]
 
   const reducedComments = reduceComments(comments)
+
+  let selected = false
+
+  const showTimeTag = () => {
+    selected = true
+  }
 
   return (
     <Container>
@@ -120,20 +133,28 @@ const CommentBar: FunctionComponent<Props> = ({
                   commentTimestamp = comments[0].timestamp
                 }
               })
-              const selected = key === getPercentage(videoTimestamp, videoDuration)
               if (commentTimestamp) {
                 const comments = reducedComments[commentTimestamp]
                 return (
-                  <ElementComment
-                    key={commentTimestamp}
-                    comment={comments[0]}
-                    containerWidth={containerWidth}
-                    duration={videoDuration}
-                    selected={selected}
-                    onClick={() => onSelectComment(comments[0])}
-                  />
+                  <Box height="100%" key={commentTimestamp}>
+                    {selected ? (
+                      <TimeTag>
+                        {formatTimestamp(commentTimestamp)}{" "}
+                        {comments.length > 1 ? `(${comments.length})` : ""}
+                      </TimeTag>
+                    ) : (
+                      <div />
+                    )}
+                    <ElementComment
+                      comment={comments[0]}
+                      containerWidth={containerWidth}
+                      duration={videoDuration}
+                      onClick={showTimeTag}
+                    />
+                  </Box>
                 )
               } else {
+                const selected = key === getPercentage(videoTimestamp, videoDuration)
                 return <T selected={selected} key={`${key.toString()}-bar`} />
               }
             })}

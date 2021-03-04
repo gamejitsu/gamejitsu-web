@@ -1,6 +1,5 @@
 import * as t from "io-ts"
 import { SkillLevel, encoder as skillLevelEncoder } from "gamejitsu/api/types/skill-level"
-import { Metadata, encoder as metadataEncoder } from "gamejitsu/api/types/metadata"
 import { buildResource, extractValue } from "../resource"
 import { Model } from "gamejitsu/interfaces"
 
@@ -10,7 +9,6 @@ export interface Checkout extends Model {
   redirectUrl: string | null
   stripeId: string
   email: string | null
-  metadata: Metadata
   replayId: string | null
   reviewRequestId: string | null
 }
@@ -23,8 +21,7 @@ export const decoder = t.type({
     comment: t.union([t.string, t.null]),
     "redirect-url": t.union([t.string, t.null]),
     "stripe-id": t.string,
-    email: t.union([t.string, t.null]),
-    metadata: Metadata
+    email: t.union([t.string, t.null])
   }),
   relationships: t.type({
     replay: t.type({
@@ -55,7 +52,6 @@ export const transformer = (value: t.TypeOf<typeof decoder>): Checkout => ({
   redirectUrl: value.attributes["redirect-url"],
   stripeId: value.attributes["stripe-id"],
   email: value.attributes["email"],
-  metadata: value.attributes["metadata"],
   replayId: value.relationships["replay"].data ? value.relationships["replay"].data.id : null,
   reviewRequestId: value.relationships["review-request"].data
     ? value.relationships["review-request"].data.id
@@ -79,8 +75,7 @@ export default buildResource({
       comment: value.comment,
       "redirect-url": value.redirectUrl,
       "stripe-id": value.stripeId,
-      email: value.email,
-      metadata: value.metadata ? metadataEncoder(value.metadata) : "{}"
+      email: value.email
     },
     relationships: {
       replay: {

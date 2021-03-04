@@ -35,7 +35,6 @@ import Spinner from "./Spinner"
 import SteamButton from "./SteamButton"
 import Table from "./Table"
 import Title from "./Title"
-import MarkdownDialog from "./MarkdownDialog"
 
 export {
   Button,
@@ -74,6 +73,5 @@ export {
   Spinner,
   SteamButton,
   Table,
-  Title,
-  MarkdownDialog
+  Title
 }

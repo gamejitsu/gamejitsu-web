@@ -129,10 +129,6 @@ const TimeTag = styled(Box)`
   font-weight: bold;
   font-size: 14px;
   padding: 5px;
-
-  a {
-    color: black;
-  }
 `
 
 const LessExpandTag = styled(Box)`

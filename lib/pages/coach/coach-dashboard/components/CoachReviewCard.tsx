@@ -44,9 +44,8 @@ const CoachReviewCard: FunctionComponent<Props> = ({ review }) => {
       <Card>
         <Flex justifyContent="space-between">
           <Box p={3}>
-            <Text p={2}>Coach Skill Level: {review.reviewRequest.skillLevel}</Text>
+            <Text p={2}>Skill Level: {review.reviewRequest.skillLevel}</Text>
             <Text p={2}>Comment: {review.reviewRequest.comment}</Text>
-            <Text p={2}>Match Id: {review.replay.matchId}</Text>
           </Box>
           <Flex p={3} alignItems="center">
             <Box>
