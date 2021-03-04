@@ -1,4 +1,4 @@
-import { Box } from "rebass"
+import { Box, Flex } from "rebass"
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import { object, string } from "yup"
 import { Slider } from "@blueprintjs/core"
@@ -74,7 +74,7 @@ const CoachSignUpForm: FunctionComponent = () => {
   }
 
   return (
-    <Box width="700px" mx="auto" p={3}>
+    <Box mx={"auto"} px={[3, 4]}  style={{ maxWidth: "640px" }}>
       <Form
         title="Sign up as a coach"
         initialValues={initialValues}
@@ -100,24 +100,22 @@ const CoachSignUpForm: FunctionComponent = () => {
                 placeholder="Placeholder text"
               />
             </FormGroup>
-            <FormGroup label="Skill Level" labelFor="text-input">
-              <Box width="250px">
-                <Slider
-                  min={0}
-                  max={3}
-                  stepSize={1}
-                  labelStepSize={1}
-                  onChange={(value: number) =>
-                    formik.setFieldValue("skillLevel", skillLevels[value])
-                  }
-                  labelRenderer={renderLabel}
-                  showTrackFill={true}
-                  value={skillLevels.indexOf(formik.values.skillLevel as SkillLevel)}
-                  vertical={false}
-                  intent="success"
-                />
-              </Box>
-            </FormGroup>
+            <Flex mx={3} my={4}>
+              <Slider
+                min={0}
+                max={3}
+                stepSize={1}
+                labelStepSize={1}
+                onChange={(value: number) =>
+                  formik.setFieldValue("skillLevel", skillLevels[value])
+                }
+                labelRenderer={renderLabel}
+                showTrackFill={true}
+                value={skillLevels.indexOf(formik.values.skillLevel as SkillLevel)}
+                vertical={false}
+                intent="success"
+              />
+            </Flex>
           </div>
         )}
       </Form>
