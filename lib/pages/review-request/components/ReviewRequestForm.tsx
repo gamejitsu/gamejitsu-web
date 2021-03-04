@@ -121,6 +121,8 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
     return <LabelContent>{titleize(humanize(skillLevels[val]))}</LabelContent>
   }
 
+  const [formIsValid, setFormValidity] = useState(false)
+
   const validate = (values: Values) => {
     const errors: any = {}
 
@@ -139,8 +141,13 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
       errors.mmr = "Invalid MMR"
     }
     if (values.comment.length > 255) {
-      errors.comment = "Comment Too long"
+      errors.comment = "Comment exceeds 255 characters"
     }
+
+    if (Object.keys(errors).length === 0){
+      setFormValidity(true)
+    }
+
     return errors
   }
 
@@ -163,7 +170,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
           validate={validate}
           onSubmit={onSubmitReviewRequest}
           buttonText="Checkout"
-          isDisabled={!replayAvailability[0]}
+          isDisabled={!replayAvailability[0] || !formIsValid}
         >
           {(formik) => (
             <div>
@@ -217,7 +224,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
                   helperText={"(maximum 250 characters)"}
                 >
                   <Tooltip2
-                    content="Add any info you desire: language preferred, coach preference, role, focus, etc..."
+                    content="Add any useful info for coaches: coach preference, focus, role etc..."
                     targetTagName={"div"}
                   >
                     <InputGroup
@@ -233,7 +240,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
                   <FormGroup label="Tick this checkbox if you are in a party" labelFor="checkbox">
                     <Checkbox
                       checked={formik.values.isParty}
-                      label="I'm in a party"
+                      label="Yes, I'm in a party"
                       onChange={() => formik.setFieldValue("isParty", !formik.values.isParty)}
                     />
                   </FormGroup>
@@ -245,7 +252,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
                   >
                     <Checkbox
                       checked={formik.values.isDisconnected}
-                      label="I'm disconnected"
+                      label="Yes, I'm disconnected"
                       onChange={() =>
                         formik.setFieldValue("isDisconnected", !formik.values.isDisconnected)
                       }
@@ -256,6 +263,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
               <ErrorField>
                 {formik.errors.email ? <div>{formik.errors.email}</div> : null}
                 {formik.errors.mmr ? <div>{formik.errors.mmr}</div> : null}
+                {formik.errors.comment ? <div>{formik.errors.comment}</div> : null}
               </ErrorField>
               <Flex justifyContent={"flex-end"}>
                 <PriceField>
