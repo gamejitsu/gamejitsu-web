@@ -16,10 +16,6 @@ const SkillLevelSelect: FunctionComponent = () => (
       <Field type="radio" name="skill" value="very_high" />
       <label htmlFor="skill">Very High</label>
     </Box>
-    <Box m={2} p={2} width={[1, 1, 1]}>
-      <Field type="radio" name="skill" value="high" />
-      <label htmlFor="skill">High</label>
-    </Box>
   </Flex>
 )
 
