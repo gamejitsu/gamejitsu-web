@@ -37,25 +37,6 @@ export const coachData = [
     game: "Dota 2"
   },
   {
-    id: 4,
-    name: "Great Heart",
-    username: "Great Heart",
-    reviewsStars: 5,
-    description:
-      "I'm a multi-level DotA 2 coach with a plethora of organized team gameplay and public matchmaking experience. I've been involved in competitive sports my entire life and have been playing DotA for over 10 years all the way back to the early DotA 1 days on the WC3 client. ",
-    mmr: 5000,
-    roles: ["Carry", "Support"],
-    achievements: [
-      "60+ live hours coached",
-      "7350+ in game commends",
-      "220+ match MVP awards",
-      "7500+ hours in game",
-      "14 weekend Battle Cup Champion."
-    ],
-    image: "../../../images/coaches/great_heart.png",
-    game: "Dota 2"
-  },
-  {
     id: 5,
     name: "Shoe",
     username: "Shoe",
