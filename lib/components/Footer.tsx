@@ -122,7 +122,7 @@ const Footer: FunctionComponent<Props> = () => (
     <Flex px={[4]} pb={4} pt={[2, 4]} width="100%" flexWrap="wrap">
       <Flex width={[1, 1 / 2]} order={[2, 1]}>
         <Box>
-          © Copyright 2020 Gamejitsu.
+          © Copyright 2021 Gamejitsu.
           <br />
           All Rights Reserved.
         </Box>

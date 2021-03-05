@@ -1,4 +1,4 @@
-export const coachData = [
+export const teamData = [
   {
     id: 1,
     name: "Riccardo Persiani",
