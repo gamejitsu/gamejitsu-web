@@ -170,9 +170,9 @@ const Price = styled.div`
 
 const PriceCardContent = styled(Box)`
   background-color: ${(props) => props.theme.lightBackgroundColor};
-  width: 32%;
-  @media ${breakpointDown.xs} {
-    width: 45.5%;
+  width: 24%;
+  @media ${breakpointDown.sm} {
+    width: 46.5%;
     margin-bottom: 16px;
   }
 `
