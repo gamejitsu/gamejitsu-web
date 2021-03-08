@@ -8905,7 +8905,7 @@ exports[`Index page should match snapshot 1`] = `
                             "rules": Array [
                               "background-color:",
                               [Function],
-                              ";width:24%;@media ",
+                              ";width:32%;@media ",
                               "(max-width: 575.98px)",
                               "{width:45.5%;margin-bottom:16px;}",
                             ],
@@ -9258,7 +9258,7 @@ exports[`Index page should match snapshot 1`] = `
                             "rules": Array [
                               "background-color:",
                               [Function],
-                              ";width:24%;@media ",
+                              ";width:32%;@media ",
                               "(max-width: 575.98px)",
                               "{width:45.5%;margin-bottom:16px;}",
                             ],
@@ -9611,7 +9611,7 @@ exports[`Index page should match snapshot 1`] = `
                             "rules": Array [
                               "background-color:",
                               [Function],
-                              ";width:24%;@media ",
+                              ";width:32%;@media ",
                               "(max-width: 575.98px)",
                               "{width:45.5%;margin-bottom:16px;}",
                             ],
