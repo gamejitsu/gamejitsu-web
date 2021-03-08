@@ -87,7 +87,7 @@ const Page: AuthenticatedComponent = () => {
           </ParagraphText>
           <ParagraphTitle>Required MMR</ParagraphTitle>
           <ParagraphText>
-            If you have an MMR greater or equal than 6k, you are entitle to become a Gamejitsu
+            If you have an MMR greater or equal than 5k, you are entitle to become a Gamejitsu
             Coach.
           </ParagraphText>
           <ParagraphTitle>Skill level</ParagraphTitle>
