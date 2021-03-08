@@ -7,6 +7,7 @@ import Card from "./Card"
 import CommentBar from "./CommentBar"
 import CommentFormNew from "./CommentFormNew"
 import CommentList from "./CommentList"
+import CommentListR from "./responsive-components/comment-list/CommentListR"
 import EmptyCard from "./EmptyCard"
 import Form from "./Form"
 import FormGroup from "./FormGroup"
@@ -51,6 +52,7 @@ export {
   CommentList,
   EmptyCard,
   Form,
+  CommentListR,
   FormGroup,
   Footer,
   HeroImage,
