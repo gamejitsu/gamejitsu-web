@@ -65,7 +65,7 @@ const Page: AuthenticatedComponent = () => {
         <Box>
           <ParagraphTitle>Coaches</ParagraphTitle>
           <ParagraphText>
-            We are actively looking for coaches for Dota 2, requirements is at least 6000 MMR.
+            We are actively looking for coaches for Dota 2, requirements is at least 5000 MMR.
             Please, check more details and write us at contact@gamejitsu.gg.
           </ParagraphText>
           <ParagraphTitle>Content Creators</ParagraphTitle>

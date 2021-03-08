@@ -57,11 +57,13 @@ const Page: AuthenticatedComponent = () => (
         At the moment, 4 prices are available based on the skill level of the coach:
         <br />
         <br />
-        1. Experienced (6k MMR) - 17.5$ per review
+        1. Experienced (5k MMR) - 10$ per review
         <br />
-        2. Pro (7k MMR) - 25$ per review
+        2. Experienced (6k MMR) - 17.5$ per review
         <br />
-        3. Hero (8k MMR) - 30$ per review
+        3. Pro (7k MMR) - 25$ per review
+        <br />
+        4. Hero (8k MMR) - 50$ per review
       </ParagraphText>
     </Box>
     <Spacer padding={80} />
