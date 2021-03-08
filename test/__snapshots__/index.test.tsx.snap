@@ -8548,13 +8548,13 @@ exports[`Index page should match snapshot 1`] = `
                           "componentStyle": ComponentStyle {
                             "componentId": "Page__PriceCardContent-sc-1ix2o3i-11",
                             "isStatic": false,
-                            "lastClassName": "kDHmdG",
+                            "lastClassName": "kkhyvw",
                             "rules": Array [
                               "background-color:",
                               [Function],
                               ";width:24%;@media ",
                               "(max-width: 575.98px)",
-                              "{width:45%;margin-bottom:16px;}",
+                              "{width:45.5%;margin-bottom:16px;}",
                             ],
                           },
                           "displayName": "Page__PriceCardContent",
@@ -8598,7 +8598,7 @@ exports[`Index page should match snapshot 1`] = `
                       p="20px"
                     >
                       <Styled(div)
-                        className="Page__PriceCardContent-sc-1ix2o3i-11 kDHmdG"
+                        className="Page__PriceCardContent-sc-1ix2o3i-11 kkhyvw"
                         mb={
                           Array [
                             3,
@@ -8608,7 +8608,7 @@ exports[`Index page should match snapshot 1`] = `
                         p="20px"
                       >
                         <div
-                          className="Page__PriceCardContent-sc-1ix2o3i-11 kDHmdG css-19oa00l"
+                          className="Page__PriceCardContent-sc-1ix2o3i-11 kkhyvw css-19oa00l"
                         >
                           <Styled(div)
                             pb={3}
@@ -8901,13 +8901,13 @@ exports[`Index page should match snapshot 1`] = `
                           "componentStyle": ComponentStyle {
                             "componentId": "Page__PriceCardContent-sc-1ix2o3i-11",
                             "isStatic": false,
-                            "lastClassName": "kDHmdG",
+                            "lastClassName": "kkhyvw",
                             "rules": Array [
                               "background-color:",
                               [Function],
                               ";width:24%;@media ",
                               "(max-width: 575.98px)",
-                              "{width:45%;margin-bottom:16px;}",
+                              "{width:45.5%;margin-bottom:16px;}",
                             ],
                           },
                           "displayName": "Page__PriceCardContent",
@@ -8951,7 +8951,7 @@ exports[`Index page should match snapshot 1`] = `
                       p="20px"
                     >
                       <Styled(div)
-                        className="Page__PriceCardContent-sc-1ix2o3i-11 kDHmdG"
+                        className="Page__PriceCardContent-sc-1ix2o3i-11 kkhyvw"
                         mb={
                           Array [
                             3,
@@ -8961,7 +8961,7 @@ exports[`Index page should match snapshot 1`] = `
                         p="20px"
                       >
                         <div
-                          className="Page__PriceCardContent-sc-1ix2o3i-11 kDHmdG css-19oa00l"
+                          className="Page__PriceCardContent-sc-1ix2o3i-11 kkhyvw css-19oa00l"
                         >
                           <Styled(div)
                             pb={3}
@@ -9254,13 +9254,13 @@ exports[`Index page should match snapshot 1`] = `
                           "componentStyle": ComponentStyle {
                             "componentId": "Page__PriceCardContent-sc-1ix2o3i-11",
                             "isStatic": false,
-                            "lastClassName": "kDHmdG",
+                            "lastClassName": "kkhyvw",
                             "rules": Array [
                               "background-color:",
                               [Function],
                               ";width:24%;@media ",
                               "(max-width: 575.98px)",
-                              "{width:45%;margin-bottom:16px;}",
+                              "{width:45.5%;margin-bottom:16px;}",
                             ],
                           },
                           "displayName": "Page__PriceCardContent",
@@ -9304,7 +9304,7 @@ exports[`Index page should match snapshot 1`] = `
                       p="20px"
                     >
                       <Styled(div)
-                        className="Page__PriceCardContent-sc-1ix2o3i-11 kDHmdG"
+                        className="Page__PriceCardContent-sc-1ix2o3i-11 kkhyvw"
                         mb={
                           Array [
                             3,
@@ -9314,7 +9314,7 @@ exports[`Index page should match snapshot 1`] = `
                         p="20px"
                       >
                         <div
-                          className="Page__PriceCardContent-sc-1ix2o3i-11 kDHmdG css-19oa00l"
+                          className="Page__PriceCardContent-sc-1ix2o3i-11 kkhyvw css-19oa00l"
                         >
                           <Styled(div)
                             pb={3}
@@ -9607,13 +9607,13 @@ exports[`Index page should match snapshot 1`] = `
                           "componentStyle": ComponentStyle {
                             "componentId": "Page__PriceCardContent-sc-1ix2o3i-11",
                             "isStatic": false,
-                            "lastClassName": "kDHmdG",
+                            "lastClassName": "kkhyvw",
                             "rules": Array [
                               "background-color:",
                               [Function],
                               ";width:24%;@media ",
                               "(max-width: 575.98px)",
-                              "{width:45%;margin-bottom:16px;}",
+                              "{width:45.5%;margin-bottom:16px;}",
                             ],
                           },
                           "displayName": "Page__PriceCardContent",
@@ -9657,7 +9657,7 @@ exports[`Index page should match snapshot 1`] = `
                       p="20px"
                     >
                       <Styled(div)
-                        className="Page__PriceCardContent-sc-1ix2o3i-11 kDHmdG"
+                        className="Page__PriceCardContent-sc-1ix2o3i-11 kkhyvw"
                         mb={
                           Array [
                             3,
@@ -9667,7 +9667,7 @@ exports[`Index page should match snapshot 1`] = `
                         p="20px"
                       >
                         <div
-                          className="Page__PriceCardContent-sc-1ix2o3i-11 kDHmdG css-19oa00l"
+                          className="Page__PriceCardContent-sc-1ix2o3i-11 kkhyvw css-19oa00l"
                         >
                           <Styled(div)
                             pb={3}
