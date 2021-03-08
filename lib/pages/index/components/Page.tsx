@@ -172,7 +172,7 @@ const PriceCardContent = styled(Box)`
   background-color: ${(props) => props.theme.lightBackgroundColor};
   width: 32%;
   @media ${breakpointDown.xs} {
-    width: 45%;
+    width: 45.5%;
     margin-bottom: 16px;
   }
 `
@@ -615,13 +615,16 @@ const Page: AuthenticatedComponent = () => (
     </Container>
     <Container>
       <Flex justifyContent="space-around" flexWrap="wrap" pl={[2, 4]} pr={[2, 4]}>
+        <PriceCard title="High" price="$10.0" icon="award-badge">
+          <PriceFeature>5k MMR or above</PriceFeature>
+        </PriceCard>
         <PriceCard title="Expert" price="$17.5" icon="award-badge-3">
           <PriceFeature>6k MMR or above</PriceFeature>
         </PriceCard>
         <PriceCard title="Pro" price="$25.0" icon="vip">
           <PriceFeature>7k MMR or above</PriceFeature>
         </PriceCard>
-        <PriceCard title="Hero" price="$30.0" icon="king">
+        <PriceCard title="Hero" price="$50.0" icon="king">
           <PriceFeature>8k MMR or above</PriceFeature>
         </PriceCard>
       </Flex>

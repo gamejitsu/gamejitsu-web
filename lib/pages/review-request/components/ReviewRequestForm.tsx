@@ -43,7 +43,7 @@ const PriceField = styled(Box)`
 `
 
 const initialValues = {
-  skillLevel: "very_high",
+  skillLevel: "high",
   replay: null,
   comment: "",
   email: "",

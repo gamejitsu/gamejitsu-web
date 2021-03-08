@@ -18,7 +18,7 @@ const initialValues = {
   lastName: "",
   email: "",
   photoUrl: "",
-  skillLevel: "very_high"
+  skillLevel: "high"
 }
 
 type Values = typeof initialValues
