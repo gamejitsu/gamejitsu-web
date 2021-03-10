@@ -93,7 +93,13 @@ const LeftMenuLinkContent = styled(LinkLeftMenu)<LeftMenuLinkContentProps>`
 `
 
 const Wrapper = styled(Flex)`
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+
+  @media ${breakpointDown.lg} {
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
 `
 
 const MenuFooterParent = styled(Box)`

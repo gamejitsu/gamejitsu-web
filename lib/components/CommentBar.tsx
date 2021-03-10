@@ -2,9 +2,7 @@ import React, { FunctionComponent, useState, useRef, useEffect } from "react"
 import styled from "styled-components"
 import { Box, Flex } from "rebass"
 import { lighten } from "polished"
-
 import { Comment } from "gamejitsu/api/types/comment"
-import { formatTimestamp } from "gamejitsu/utils/duration"
 
 interface Props {
   comments: Comment[]
@@ -34,7 +32,7 @@ const Container = styled(Box)`
 `
 
 const T = styled(Box)<TProps>`
-  height: 60%;
+  height: 55%;
   width: 3px;
   background-color: ${(props) => (props.selected ? props.theme.highlightColor : "#37373a")};
   &:hover {
