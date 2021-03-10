@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { breakpointDown } from "../utils/mediaQueryDevices"
 
 const Container = styled.div`
-  overflow: hidden;
   position: relative;
   width: 100%;
   padding-right: 15px;
