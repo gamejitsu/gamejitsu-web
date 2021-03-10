@@ -7,7 +7,7 @@ import { Comment } from "gamejitsu/api/types/comment"
 import {
   CommentBar,
   CommentFormNew,
-  CommentListR,
+  CommentList,
   LayoutDemo,
   useWarnIfUnsavedChanges
 } from "gamejitsu/components"
@@ -269,7 +269,7 @@ const DemoPage: AuthenticatedComponent = () => {
         </Flex>
       </Flex>
       <Flex width={["100%", "100%", "33%"]}>
-        <CommentListR
+        <CommentList
           comments={review.comments}
           selectedComment={selectedComment}
           onSelect={onSelectComment}
