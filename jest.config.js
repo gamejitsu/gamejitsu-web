@@ -5,6 +5,7 @@ module.exports = {
   testEnvironment: 'jsdom',
   moduleNameMapper: {
     "^gamejitsu/(.*)": "<rootDir>/lib/$1",
-    "^gamejitsu": "<rootDir>/lib"
+    "^gamejitsu": "<rootDir>/lib",
+    "^customUtils": "<rootDir>/lib/utils",
   }
 }

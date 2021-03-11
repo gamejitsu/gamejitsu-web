@@ -4,7 +4,7 @@ import styled from "styled-components"
 import titleize from "titleize"
 import { Checkbox, Slider, Icon } from "@blueprintjs/core"
 import { Tooltip2 } from "@blueprintjs/popover2"
-import { Box, Flex } from "rebass"
+import { Box, Flex } from "rebass/styled-components"
 import { boolean, number, object, string } from "yup"
 import { createModel } from "gamejitsu/api"
 import { DecoratedReplay } from "gamejitsu/models/replay"
@@ -26,7 +26,7 @@ interface ReplayStatusProps {
 
 const ReplayStatus = styled(Flex)<ReplayStatusProps>`
   width: 100%;
-  border: solid 1px ${(props) => (props.availability ? props.theme.primaryColor : "#f00")};
+  border: solid 1px ${(props) => (props.availability ? props.theme.colors.primaryColor : "#f00")};
 `
 
 const LabelContent = styled.span`

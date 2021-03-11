@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Box, Flex } from "rebass"
+import { Box, Flex } from "rebass/styled-components"
 import { Button } from "gamejitsu/components"
 import { darken } from "polished"
 import { Divider, Card, Elevation } from "@blueprintjs/core"
@@ -23,8 +23,8 @@ const Header = styled(Box)`
   border-radius: 3px;
   background: linear-gradient(
     to bottom,
-    ${(props) => props.theme.lightBackgroundColor},
-    ${(props) => darken(0.15, props.theme.lightBackgroundColor)}
+    ${(props) => props.theme.colors.lightBackgroundColor},
+    ${(props) => darken(0.15, props.theme.colors.lightBackgroundColor)}
   );
 `
 

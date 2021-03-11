@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { markdownStyle } from "./markdownStyle"
 import ReactMarkdown from "react-markdown"
 import { Comment as CommentType } from "gamejitsu/api/types/comment"
-import { Box, Flex } from "rebass"
+import { Box, Flex } from "rebass/styled-components"
 import { lighten } from "polished"
 import { formatTimestamp } from "gamejitsu/utils/duration"
 
@@ -54,13 +54,15 @@ const Comment: FunctionComponent<CommentProps> = ({
     flex: 1;
     flex-direction: column;
     border-top: 0;
-    border: 1px solid ${(props) => props.theme.secondaryColor};
+    border: 1px solid ${(props) => props.theme.colors.secondaryColor};
     background-color: ${({ comment, selectedComment, theme }) => {
-      return comment !== selectedComment ? "#212122" : lighten(0.15, theme.lightBackgroundColor)
+      return comment !== selectedComment
+        ? "#212122"
+        : lighten(0.15, theme.colors.lightBackgroundColor)
     }};
   `
   const TimeTag = styled(Box)`
-    background-color: ${(props) => props.theme.primaryColor};
+    background-color: ${(props) => props.theme.colors.primaryColor};
     color: black;
     font-weight: bold;
     font-size: 14px;

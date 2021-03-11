@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState } from "react"
 import styled from "styled-components"
 import { Button } from "gamejitsu/components"
 import { Comment } from "gamejitsu/api/types/comment"
-import { Box, Flex } from "rebass"
+import { Box, Flex } from "rebass/styled-components"
 import CommentElement from "./Comment"
 import { breakpointDown } from "../../../utils/mediaQueryDevices"
 
@@ -13,8 +13,8 @@ interface Props {
 }
 
 const Header = styled(Box)`
-  background-color: ${(props) => props.theme.backgroundColor};
-  border: 2px solid ${(props) => props.theme.secondaryColor};
+  background-color: ${(props) => props.theme.colors.backgroundColor};
+  border: 2px solid ${(props) => props.theme.colors.secondaryColor};
   align-items: center;
   padding: 16px;
   width: 100%;

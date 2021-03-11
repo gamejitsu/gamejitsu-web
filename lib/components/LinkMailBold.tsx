@@ -14,7 +14,7 @@ const Content = styled.a`
   cursor: pointer;
   &:hover {
     text-decoration: none;
-    color: ${(props) => props.theme.primaryColor};
+    color: ${(props) => props.theme.colors.primaryColor};
   }
 `
 

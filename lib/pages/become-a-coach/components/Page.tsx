@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import styled from "styled-components"
-import { Box } from "rebass"
+import { Box } from "rebass/styled-components"
 import Head from "next/head"
 import { Callout } from "@blueprintjs/core"
 import queryString from "query-string"

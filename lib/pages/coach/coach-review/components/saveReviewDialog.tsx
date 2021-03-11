@@ -1,6 +1,6 @@
 import { Classes, Dialog, Tooltip } from "@blueprintjs/core"
 import { Button } from "gamejitsu/components"
-import { Flex, Box } from "rebass"
+import { Flex, Box } from "rebass/styled-components"
 import styled from "styled-components"
 import React, { FunctionComponent, useState, useEffect } from "react"
 

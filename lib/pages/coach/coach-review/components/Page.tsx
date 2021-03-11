@@ -1,4 +1,4 @@
-import { Flex, Box } from "rebass"
+import { Flex, Box } from "rebass/styled-components"
 import { NextPageContext, NextPage } from "next"
 import { Position, Toaster, Intent, Switch } from "@blueprintjs/core"
 import React, { SyntheticEvent, useRef, useState, useEffect, useCallback } from "react"
@@ -34,7 +34,7 @@ interface SelectedSpeedProps {
 type SeekDirection = "B" | "F"
 
 const SelecetdSpeed = styled.b<SelectedSpeedProps>`
-  color: ${(props) => (props.isSelected ? props.theme.primaryColor : "#ccc")};
+  color: ${(props) => (props.isSelected ? props.theme.colors.primaryColor : "#ccc")};
   cursor: pointer;
   font-weight: bold;
   &:hover {
@@ -47,7 +47,7 @@ const getReview = async (ctx: NextPageContext, id: string) =>
 
 const VideoContainer = styled(Box)`
   width: 100%;
-  border: 1px solid ${(props) => props.theme.secondaryColor};
+  border: 1px solid ${(props) => props.theme.colors.secondaryColor};
 `
 
 const Title = styled.h1`

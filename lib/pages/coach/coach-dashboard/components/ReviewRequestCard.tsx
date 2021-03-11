@@ -1,4 +1,4 @@
-import { Flex, Box } from "rebass"
+import { Flex, Box } from "rebass/styled-components"
 import { formatDistanceToNow } from "date-fns"
 import React, { FunctionComponent, useState } from "react"
 import Router from "next/router"
@@ -19,11 +19,11 @@ interface Props {
 
 const Container = styled(Box)`
   width: 49%;
-  border: 1px solid ${(props) => props.theme.activeColor};
+  border: 1px solid ${(props) => props.theme.colors.activeColor};
   position: relative;
   align-items: center;
   justify-content: center;
-  background: ${(props) => props.theme.lightBackgroundColor};
+  background: ${(props) => props.theme.colors.lightBackgroundColor};
   opacity: 0.9;
 
   @media ${breakpointDown.lg} {
@@ -34,7 +34,7 @@ const Container = styled(Box)`
 const HorizontalLine = styled.div`
   width: 95%;
   height: 1px;
-  background-color: ${(props) => props.theme.textColorDark};
+  background-color: ${(props) => props.theme.colors.textColorDark};
   margin: 0 auto;
 `
 
@@ -44,7 +44,7 @@ const Header = styled(Flex)`
 `
 
 const GameInfo = styled.h3`
-  color: ${(props) => props.theme.primaryColor};
+  color: ${(props) => props.theme.colors.primaryColor};
 `
 
 const ReviewRequestCard: FunctionComponent<Props> = ({ reviewRequest }) => {

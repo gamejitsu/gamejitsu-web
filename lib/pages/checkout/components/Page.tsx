@@ -1,4 +1,4 @@
-import { Flex, Box } from "rebass"
+import { Flex, Box } from "rebass/styled-components"
 import { NextPage } from "next"
 import React from "react"
 import styled from "styled-components"
@@ -20,13 +20,13 @@ const Title = styled.h1`
 `
 
 const CheckoutCard = styled(Flex)`
-  background-color: ${(props) => props.theme.lightBackgroundColor};
+  background-color: ${(props) => props.theme.colors.lightBackgroundColor};
   font-weight: 40px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   opacity: 0.96;
-  border: 1px solid ${(props) => props.theme.activeColor};
+  border: 1px solid ${(props) => props.theme.colors.activeColor};
 `
 
 const Page: NextPage<Props> = ({ checkout }) => (

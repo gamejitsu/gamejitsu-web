@@ -1,17 +1,17 @@
 import styled from "styled-components"
 
-import { Box, Flex } from "rebass"
+import { Box, Flex } from "rebass/styled-components"
 import { FunctionComponent } from "react"
 import SettingsSVG from "../../svgs/settings.svg"
 
 const Container = styled(Flex)`
-  background-color: ${(props) => props.theme.lightBackgroundColor};
+  background-color: ${(props) => props.theme.colors.lightBackgroundColor};
   font-weight: 40px;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   opacity: 0.9;
-  border: 1px solid ${(props) => props.theme.activeColor};
+  border: 1px solid ${(props) => props.theme.colors.activeColor};
 `
 
 interface Props {

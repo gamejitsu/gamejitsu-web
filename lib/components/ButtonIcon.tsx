@@ -3,7 +3,7 @@ import { FunctionComponent } from "react"
 import { lighten, darken } from "polished"
 import Link from "next/link"
 import { Button as BPButton, Classes } from "@blueprintjs/core"
-import { Box } from "rebass"
+import { Box } from "rebass/styled-components"
 import React from "react"
 
 interface Props {
@@ -20,8 +20,8 @@ import SteamSVG from "../../svgs/steam-icon-new-3.svg"
 const baseStyles = css`
   display: inline-flex;
   border-radius: ${(props) => props.theme.borderRadius};
-  border: 2px solid ${(props) => props.theme.primaryColor};
-  color: ${(props) => props.theme.primaryColor};
+  border: 2px solid ${(props) => props.theme.colors.primaryColor};
+  color: ${(props) => props.theme.colors.primaryColor};
   transition: all 0.05s ease-in-out;
 
   background: transparent;
@@ -33,22 +33,22 @@ const baseStyles = css`
   &:hover {
     background-image: linear-gradient(
       to bottom,
-      ${(props) => lighten(0.25, props.theme.primaryColor)},
-      ${(props) => props.theme.primaryColor}
+      ${(props) => lighten(0.25, props.theme.colors.primaryColor)},
+      ${(props) => props.theme.colors.primaryColor}
     );
-    color: ${(props) => props.theme.lightBackgroundColor};
+    color: ${(props) => props.theme.colors.lightBackgroundColor};
 
-    box-shadow: inset 0px -3px 0px 0px ${(props) => darken(0.1, props.theme.primaryColor)};
+    box-shadow: inset 0px -3px 0px 0px ${(props) => darken(0.1, props.theme.colors.primaryColor)};
   }
 
   &:active {
     background-image: linear-gradient(
       to bottom,
-      ${(props) => props.theme.primaryColor},
-      ${(props) => darken(0.1, props.theme.primaryColor)}
+      ${(props) => props.theme.colors.primaryColor},
+      ${(props) => darken(0.1, props.theme.colors.primaryColor)}
     );
 
-    box-shadow: inset 0px 3px 0px 0px ${(props) => darken(0.1, props.theme.primaryColor)};
+    box-shadow: inset 0px 3px 0px 0px ${(props) => darken(0.1, props.theme.colors.primaryColor)};
   }
 `
 
@@ -74,7 +74,7 @@ const LinkContent = styled.a`
 
   &:hover {
     text-decoration: none;
-    color: ${(props) => props.theme.backgroundColor};
+    color: ${(props) => props.theme.colors.backgroundColor};
   }
 `
 

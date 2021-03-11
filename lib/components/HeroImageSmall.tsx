@@ -16,7 +16,7 @@ interface ContentProps {
 const Content = styled.img<ContentProps>`
   width: 40px;
   border: ${(props) => (props.isYourHero ? "1px" : "0px")} solid
-    ${(props) => props.theme.primaryColor};
+    ${(props) => props.theme.colors.primaryColor};
 `
 
 const HeroImageSmall: FunctionComponent<Props> = ({ player }) => {

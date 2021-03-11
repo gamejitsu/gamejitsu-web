@@ -1,4 +1,4 @@
-import { Flex, Box, Text as RbText } from "rebass"
+import { Flex, Box, Text as RbText } from "rebass/styled-components"
 import React, { FunctionComponent } from "react"
 import Router from "next/router"
 import styled from "styled-components"

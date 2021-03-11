@@ -2,11 +2,9 @@ import React, { useContext, FunctionComponent } from "react"
 import { formatDistanceToNow } from "date-fns"
 import { Button, MatchHeroes } from "gamejitsu/components"
 import styled from "styled-components"
-import { Flex, Box } from "rebass"
-
+import { Flex, Box } from "rebass/styled-components"
 import { DecoratedReplay } from "gamejitsu/models/replay"
 import { UserContext } from "gamejitsu/contexts"
-import { HeroImage } from "."
 
 import { breakpointDown } from "../../../utils/mediaQueryDevices"
 
@@ -16,11 +14,11 @@ interface Props {
 
 const Container = styled(Box)`
   width: 49%;
-  border: 1px solid ${(props) => props.theme.activeColor};
+  border: 1px solid ${(props) => props.theme.colors.activeColor};
   position: relative;
   align-items: center;
   justify-content: center;
-  background: ${(props) => props.theme.lightBackgroundColor};
+  background: ${(props) => props.theme.colors.lightBackgroundColor};
   opacity: 0.9;
 
   @media ${breakpointDown.lg} {
@@ -31,7 +29,7 @@ const Container = styled(Box)`
 const HorizontalLine = styled.div`
   width: 95%;
   height: 1px;
-  background-color: ${(props) => props.theme.textColorDark};
+  background-color: ${(props) => props.theme.colors.textColorDark};
   margin: 0 auto;
 `
 
@@ -49,7 +47,7 @@ const HeroImageWrapper = styled(Flex)`
 `
 
 const GameInfoWinner = styled.h3`
-  color: ${(props) => props.theme.primaryColor};
+  color: ${(props) => props.theme.colors.primaryColor};
 `
 
 const GameInfoLoser = styled.h3`

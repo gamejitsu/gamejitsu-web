@@ -9,7 +9,7 @@ interface Props {
 }
 
 const Content = styled.a`
-  color: ${(props) => props.theme.linkColor};
+  color: ${(props) => props.theme.colors.linkColor};
   cursor: pointer;
   &:hover {
     text-decoration: none;

@@ -1,7 +1,7 @@
 import NextLink from "next/link"
 import styled from "styled-components"
 import { FunctionComponent } from "react"
-import { Box } from "rebass"
+import { Box } from "rebass/styled-components"
 
 interface Props {
   href: string
@@ -16,7 +16,7 @@ const Content = styled(Box)`
   cursor: pointer;
   &:hover {
     text-decoration: none;
-    color: ${(props) => props.theme.primaryColor};
+    color: ${(props) => props.theme.colors.primaryColor};
   }
 `
 

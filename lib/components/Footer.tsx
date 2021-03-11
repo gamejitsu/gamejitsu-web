@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import { FunctionComponent } from "react"
-import { Box, Flex } from "rebass"
+import { Box, Flex } from "rebass/styled-components"
 import { LinkDark, LinkSocialIcon } from "."
 import { Container } from "./UtilsComponents"
 import LinkMailBold from "gamejitsu/components/LinkMailBold"
@@ -26,7 +26,7 @@ const FooterTitle = styled.h3`
 
 const FooterText = styled(Box)`
   align-items: center;
-  color: ${(props) => props.theme.textColor};
+  color: ${(props) => props.theme.colors.textColor};
   font-size: 14px;
   margin-bottom: 16px;
   line-height: 20px;

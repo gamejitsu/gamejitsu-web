@@ -1,4 +1,4 @@
-import { Box } from "rebass"
+import { Box } from "rebass/styled-components"
 import styled from "styled-components"
 import { breakpointDown } from "../utils/mediaQueryDevices"
 
@@ -70,7 +70,7 @@ interface SecondaryTitleProps {
 }
 
 const SecondaryTitle = styled.h2<SecondaryTitleProps>`
-  color: ${(props) => props.color || props.theme.primaryColor};
+  color: ${(props) => props.color || props.theme.colors.primaryColor};
   font-family: "Japanese 3017";
   font-size: 21px;
   font-weight: normal;

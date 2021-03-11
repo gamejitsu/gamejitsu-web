@@ -1,4 +1,4 @@
-import { Box, Flex } from "rebass"
+import { Box, Flex } from "rebass/styled-components"
 import { GoogleReCaptchaProvider, useGoogleReCaptcha } from "react-google-recaptcha-v3"
 import { object, string } from "yup"
 import { Slider } from "@blueprintjs/core"

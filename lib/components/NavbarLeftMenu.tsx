@@ -1,4 +1,4 @@
-import { Box, Flex } from "rebass"
+import { Box, Flex } from "rebass/styled-components"
 import { destroyCookie } from "nookies"
 import { transparentize } from "polished"
 import { useContext, FunctionComponent } from "react"
@@ -38,7 +38,7 @@ const NavLinkContent = styled(Link)<NavLinkContentProps>`
   }
 
   &::before {
-    background-color: ${(props) => transparentize(0.5, props.theme.textColor)};
+    background-color: ${(props) => transparentize(0.5, props.theme.colors.textColor)};
     content: "";
     height: 5px;
     margin-top: 3px;

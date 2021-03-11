@@ -2,7 +2,7 @@ import styled from "styled-components"
 import NextLink from "next/link"
 
 import { FunctionComponent } from "react"
-import { Box, Link } from "rebass"
+import { Box, Link } from "rebass/styled-components"
 
 interface Props {
   href: string
@@ -11,7 +11,7 @@ interface Props {
 
 const Content = styled(Box)`
   align-items: center;
-  color: ${(props) => props.theme.textColor};
+  color: ${(props) => props.theme.colors.textColor};
   font-size: 14px;
   margin-bottom: 25px;
   &:hover {
@@ -26,7 +26,7 @@ const SocialNetworkBarIcon = styled.img`
   cursor: pointer;
   &:hover {
     text-decoration: none;
-    color: ${(props) => props.theme.primaryColor};
+    color: ${(props) => props.theme.colors.primaryColor};
   }
 `
 

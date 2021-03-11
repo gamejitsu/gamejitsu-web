@@ -2,7 +2,7 @@ import queryString from "query-string"
 import styled from "styled-components"
 import Link from "./Link"
 
-import { Box, Flex } from "rebass"
+import { Box, Flex } from "rebass/styled-components"
 import { destroyCookie } from "nookies"
 import { UserContext } from "../contexts"
 import { ButtonIcon, ButtonNew, ImageButton } from "."
@@ -33,7 +33,7 @@ const NavLinkContent = styled(Link)<NavLinkContentProps>`
   margin-right: 2px;
 
   &::before {
-    background-color: ${(props) => transparentize(0.5, props.theme.textColor)};
+    background-color: ${(props) => transparentize(0.5, props.theme.colors.textColor)};
     content: "";
     height: 5px;
     margin-top: 3px;

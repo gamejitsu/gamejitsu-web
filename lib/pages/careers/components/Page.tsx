@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { UserContext } from "gamejitsu/contexts"
 import styled from "styled-components"
-import { Box } from "rebass"
+import { Box } from "rebass/styled-components"
 import Head from "next/head"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import queryString from "query-string"
@@ -22,7 +22,7 @@ const ABold = styled.a`
 
   &:hover {
     text-decoration: none;
-    color: ${(props) => props.theme.primaryColor};
+    color: ${(props) => props.theme.colors.primaryColor};
   }
 `
 

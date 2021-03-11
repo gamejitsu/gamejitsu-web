@@ -2,21 +2,21 @@ import "styled-components"
 
 declare module "styled-components" {
   export interface DefaultTheme {
-    activeColor: string
-    backgroundColor: string
-    buttonTextColor: string
-    lightBackgroundColor: string
-    errorColor: string
-    linkColor: string
-    primaryColor: string
-    secondaryColor: string
-    textColor: string
-    textColorDark: string
-    highlightColor: string
+    breakpoints: string[]
+    colors: {
+      activeColor: string
+      backgroundColor: string
+      lightBackgroundColor: string
+      linkColor: string
+      primaryColor: string
+      secondaryColor: string
+      textColor: string
+      textColorDark: string
+      highlightColor: string
+      lineColor: string
+      line2Color: string
+    }
     textFont: string
     borderRadius: string
-    lineColor: string
-    line2Color: string
-    headerColor: string
   }
 }

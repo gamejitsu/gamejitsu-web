@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState, useRef, useEffect } from "react"
 import styled from "styled-components"
-import { Box, Flex } from "rebass"
+import { Box, Flex } from "rebass/styled-components"
 import { lighten } from "polished"
 import { Comment } from "gamejitsu/api/types/comment"
 
@@ -24,22 +24,22 @@ interface TProps {
 }
 
 const Container = styled(Box)`
-  background-color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.colors.backgroundColor};
   position: relative;
   height: 90px;
-  background: ${(props) => props.theme.lightBackgroundColor};
-  border: 1px solid ${(props) => props.theme.activeColor};
+  background: ${(props) => props.theme.colors.lightBackgroundColor};
+  border: 1px solid ${(props) => props.theme.colors.activeColor};
 `
 
 const T = styled(Box)<TProps>`
   height: 55%;
   width: 3px;
-  background-color: ${(props) => (props.selected ? props.theme.highlightColor : "#37373a")};
+  background-color: ${(props) => (props.selected ? props.theme.colors.highlightColor : "#37373a")};
   &:hover {
     background-image: linear-gradient(
       to bottom,
-      ${(props) => props.theme.highlightColor},
-      ${(props) => props.theme.highlightColor}
+      ${(props) => props.theme.colors.highlightColor},
+      ${(props) => props.theme.colors.highlightColor}
     );
   }
 `
@@ -49,14 +49,16 @@ const ElementComment = styled(Box)<ElementCommentProps>`
   width: 3px;
   cursor: pointer;
   background-color: ${(props) =>
-    props.selected ? lighten(0.3, props.theme.primaryColor) : props.theme.primaryColor};
+    props.selected
+      ? lighten(0.3, props.theme.colors.primaryColor)
+      : props.theme.colors.primaryColor};
   &:hover {
     background-color: #fff;
   }
 `
 
 const Bar = styled(Box)`
-  background-color: ${(props) => props.theme.lightBackgroundColor};
+  background-color: ${(props) => props.theme.colors.lightBackgroundColor};
   width: 100%;
 `
 

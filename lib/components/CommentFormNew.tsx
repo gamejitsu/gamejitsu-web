@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Box, Flex } from "rebass"
+import { Box, Flex } from "rebass/styled-components"
 import { useFormik } from "formik"
 import {
   TextArea,

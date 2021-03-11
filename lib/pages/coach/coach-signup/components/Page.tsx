@@ -5,7 +5,7 @@ import { Layout } from "gamejitsu/components"
 import { NextPage } from "next"
 import { UserContext } from "gamejitsu/contexts"
 import { Callout } from "@blueprintjs/core"
-import { Box, Flex } from "rebass"
+import { Box, Flex } from "rebass/styled-components"
 
 const CoachSignUpPage: NextPage = () => {
   const user: any = useContext(UserContext)
