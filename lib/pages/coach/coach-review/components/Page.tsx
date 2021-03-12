@@ -77,7 +77,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
       comments: newComments
     }
     setReview(updatedReview)
-    setSelectedComment(null)
+    setSelectedComment(savedComment)
   }
 
   const onDeleteComment = async () => {
