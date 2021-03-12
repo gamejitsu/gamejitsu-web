@@ -46,7 +46,7 @@ const Comment: FunctionComponent<CommentProps> = ({
       }
     }
     setCommentText(textToDisplay)
-  }, [isCollapsed])
+  }, [isCollapsed, selectedComment])
 
   const CommentWrapper = styled(Flex)<CommentWrapperProps>`
     min-height: 120px;
@@ -82,6 +82,7 @@ const Comment: FunctionComponent<CommentProps> = ({
     line-height: 115%;
     color: white;
     cursor: pointer;
+    word-break: break-word;
     ${markdownStyle}
   `
 

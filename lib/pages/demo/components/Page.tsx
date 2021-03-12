@@ -71,7 +71,7 @@ const DemoPage: AuthenticatedComponent = () => {
       comments: newComments
     }
     setReview(updatedReview)
-    setSelectedComment(null)
+    setSelectedComment(savedComment)
   }
 
   const onDeleteComment = async () => {
