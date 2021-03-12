@@ -5,7 +5,7 @@ import { listModels } from "gamejitsu/api"
 import { NextPage } from "next"
 import ReviewResource from "gamejitsu/api/resources/review"
 import { ReviewCard, DeletedReviewCard } from "."
-import { Flex } from "rebass"
+import { Flex } from "rebass/styled-components"
 import { decorateReviews, DecoratedReview } from "gamejitsu/models/review"
 
 interface Props {

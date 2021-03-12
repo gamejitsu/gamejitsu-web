@@ -1,4 +1,4 @@
-import { Flex, Box } from "rebass"
+import { Flex, Box } from "rebass/styled-components"
 import { Position, Toaster, Intent, Switch } from "@blueprintjs/core"
 import React, { SyntheticEvent, useRef, useState, useEffect } from "react"
 import styled from "styled-components"
@@ -19,7 +19,7 @@ import ForwardTenSecSVG from "../../../../svgs/forward10.svg"
 
 const VideoContainer = styled(Box)`
   width: 100%;
-  border: 1px solid ${(props) => props.theme.secondaryColor};
+  border: 1px solid ${(props) => props.theme.colors.secondaryColor};
 `
 interface SelectedSpeedProps {
   isSelected: boolean
@@ -28,7 +28,7 @@ interface SelectedSpeedProps {
 type SeekDirection = "B" | "F"
 
 const SelecetdSpeed = styled.b<SelectedSpeedProps>`
-  color: ${(props) => (props.isSelected ? props.theme.primaryColor : "#ccc")};
+  color: ${(props) => (props.isSelected ? props.theme.colors.primaryColor : "#ccc")};
   cursor: pointer;
   font-weight: bold;
   &:hover {
@@ -71,7 +71,7 @@ const DemoPage: AuthenticatedComponent = () => {
       comments: newComments
     }
     setReview(updatedReview)
-    setSelectedComment(null)
+    setSelectedComment(savedComment)
   }
 
   const onDeleteComment = async () => {
@@ -273,7 +273,6 @@ const DemoPage: AuthenticatedComponent = () => {
           comments={review.comments}
           selectedComment={selectedComment}
           onSelect={onSelectComment}
-          onSaveReview={onSaveReview}
         />
       </Flex>
     </LayoutDemo>

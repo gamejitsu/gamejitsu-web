@@ -6,7 +6,7 @@ import ButtonDark from "./ButtonDark"
 import Card from "./Card"
 import CommentBar from "./CommentBar"
 import CommentFormNew from "./CommentFormNew"
-import CommentList from "./CommentList"
+import CommentList from "./responsive-components/comment-list/CommentList"
 import EmptyCard from "./EmptyCard"
 import Form from "./Form"
 import FormGroup from "./FormGroup"
@@ -36,6 +36,7 @@ import SteamButton from "./SteamButton"
 import Table from "./Table"
 import Title from "./Title"
 import MarkdownDialog from "./MarkdownDialog"
+import GenericToaster from "./responsive-components/GenericToaster"
 
 import MatchHeroes from "./responsive-components/MatchHeroes"
 
@@ -48,9 +49,9 @@ export {
   Card,
   CommentBar,
   CommentFormNew,
-  CommentList,
   EmptyCard,
   Form,
+  CommentList,
   FormGroup,
   Footer,
   HeroImage,
@@ -78,5 +79,6 @@ export {
   Table,
   Title,
   MarkdownDialog,
-  MatchHeroes
+  MatchHeroes,
+  GenericToaster
 }

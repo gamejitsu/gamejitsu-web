@@ -22,6 +22,8 @@
     "paths": {
       "gamejitsu": ["lib"],
       "gamejitsu/*": ["lib/*"],
+      "rebass/styled-components": ["node_modules/@types/rebass"],
+      "customUtils": ["lib/utils"]
     }
   },
   "exclude": [

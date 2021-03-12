@@ -1,14 +1,13 @@
 import React, { FunctionComponent } from "react"
-import { Box } from "rebass"
+import { Box } from "rebass/styled-components"
 import styled from "styled-components"
-
 import { masterSchemaData } from "../../public/masterSchemaData"
-import { breakpointDown } from "../utils/mediaQueryDevices"
+import { media } from "customUtils"
 
 const CategoryTitle = styled.td`
   color: white;
   font-weight: bold;
-  background-color: ${(props) => props.theme.lineColor};
+  background-color: ${(props) => props.theme.colors.lineColor};
   padding: 10px;
   vertical-align: middle;
 `
@@ -21,9 +20,9 @@ const CategoryTd = styled.th`
   font-size: 25px;
   vertical-align: middle;
 
-  @media ${breakpointDown.xl} {
+  ${media.lessThan("lg")`
     display: none;
-  }
+  `};
 `
 
 const HeaderTh = styled.th`
@@ -35,16 +34,16 @@ const HeaderTh = styled.th`
 
 const TableContentHeader = styled.table`
   font-family: ${(props) => props.theme.textFont};
-  background-color: ${(props) => props.theme.lightBackgroundColor};
+  background-color: ${(props) => props.theme.colors.lightBackgroundColor};
   height: 80px;
   width: 100%;
   align-items: center;
   table-layout: fixed;
   margin: 0 auto;
 
-  @media ${breakpointDown.xs} {
+  ${media.lessThan("xs")`
     font-size: 13px;
-  }
+  `}
 `
 
 const TableContent = styled.table`
@@ -54,9 +53,9 @@ const TableContent = styled.table`
   table-layout: fixed;
   margin: 0 auto;
 
-  @media ${breakpointDown.xs} {
+  ${media.lessThan("xs")`
     font-size: 13px;
-  }
+  `}
 `
 
 interface ElementProps {
@@ -66,7 +65,8 @@ interface ElementProps {
 const Element = styled.td<ElementProps>`
   padding: 10px;
   text-align: left;
-  color: ${(props) => (props.green ? props.theme.primaryColor : props.theme.textColor)};
+  color: ${(props) =>
+    props.green ? props.theme.colors.primaryColor : props.theme.colors.textColor};
   height: 50px;
   vertical-align: middle;
 `
@@ -75,18 +75,18 @@ const GamejitsuElement = styled.td`
   padding: 10px;
   text-align: left;
   height: 50px;
-  color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.colors.backgroundColor};
   font-weight: bold;
-  background-color: ${(props) => props.theme.primaryColor};
+  background-color: ${(props) => props.theme.colors.primaryColor};
   vertical-align: middle;
 `
 
 const Tr = styled.tr`
   &:nth-child(odd) {
-    background: ${(props) => props.theme.lineColor};
+    background: ${(props) => props.theme.colors.lineColor};
   }
   &:nth-child(even) {
-    background: ${(props) => props.theme.line2Color};
+    background: ${(props) => props.theme.colors.line2Color};
   }
 `
 

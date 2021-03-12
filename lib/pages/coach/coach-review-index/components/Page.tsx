@@ -1,4 +1,4 @@
-import { Flex } from "rebass"
+import { Flex } from "rebass/styled-components"
 import { NextPageContext, NextPage } from "next"
 import React from "react"
 

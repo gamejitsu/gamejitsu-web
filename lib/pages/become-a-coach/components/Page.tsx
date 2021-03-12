@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import styled from "styled-components"
-import { Box } from "rebass"
+import { Box } from "rebass/styled-components"
 import Head from "next/head"
 import { Callout } from "@blueprintjs/core"
 import queryString from "query-string"
@@ -87,7 +87,7 @@ const Page: AuthenticatedComponent = () => {
           </ParagraphText>
           <ParagraphTitle>Required MMR</ParagraphTitle>
           <ParagraphText>
-            If you have an MMR greater or equal than 6k, you are entitle to become a Gamejitsu
+            If you have an MMR greater or equal than 5k, you are entitle to become a Gamejitsu
             Coach.
           </ParagraphText>
           <ParagraphTitle>Skill level</ParagraphTitle>

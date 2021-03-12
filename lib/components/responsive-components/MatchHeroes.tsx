@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Flex } from "rebass"
+import { Flex } from "rebass/styled-components"
 import { FunctionComponent, useContext } from "react"
 import { DecoratedReplay } from "gamejitsu/models/replay"
 import { UserContext } from "gamejitsu/contexts"
@@ -29,8 +29,8 @@ const HeroPic: FunctionComponent<HeroPicProps> = ({ player }) => {
     border-radius: 4px;
     border: ${(props) =>
       props.isYourHero
-        ? `2px solid  ${props.theme.primaryColor}`
-        : `1px solid ${props.theme.textColor}`};
+        ? `2px solid  ${props.theme.colors.primaryColor}`
+        : `1px solid ${props.theme.colors.textColor}`};
 
     &:hover{
       opacity: 1;

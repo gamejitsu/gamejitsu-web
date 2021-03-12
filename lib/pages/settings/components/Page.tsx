@@ -1,4 +1,4 @@
-import { Box, Flex } from "rebass"
+import { Box, Flex } from "rebass/styled-components"
 import { NextPage } from "next"
 import React, { useContext } from "react"
 import styled from "styled-components"
@@ -7,12 +7,12 @@ import { Button, LayoutWithMenuUser, Title } from "gamejitsu/components"
 import { UserContext } from "gamejitsu/contexts"
 
 const SettingsCard = styled(Flex)`
-  background-color: ${(props) => props.theme.lightBackgroundColor};
+  background-color: ${(props) => props.theme.colors.lightBackgroundColor};
   align-items: center;
   justify-content: center;
   flex-direction: column;
   opacity: 0.9;
-  border: 1px solid ${(props) => props.theme.activeColor};
+  border: 1px solid ${(props) => props.theme.colors.activeColor};
 `
 
 const getCurrentUser = () => useContext(UserContext)

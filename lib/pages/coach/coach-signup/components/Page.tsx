@@ -5,7 +5,7 @@ import { Layout } from "gamejitsu/components"
 import { NextPage } from "next"
 import { UserContext } from "gamejitsu/contexts"
 import { Callout } from "@blueprintjs/core"
-import { Box, Flex } from "rebass"
+import { Box, Flex } from "rebass/styled-components"
 
 const CoachSignUpPage: NextPage = () => {
   const user: any = useContext(UserContext)
@@ -18,7 +18,7 @@ const CoachSignUpPage: NextPage = () => {
         minHeight={["240px", "360px"]}
         px={[3, 1]}
       >
-        <Box style={{ maxWidth: "640px" }}>
+        <Box width={"100%"} style={{ maxWidth: "640px" }}>
           {user.coach?.isApproved ? (
             <Callout title="Coach registration successful" intent="success">
               You can register only once to be a coach.

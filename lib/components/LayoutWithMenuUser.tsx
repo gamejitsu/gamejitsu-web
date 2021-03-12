@@ -1,4 +1,4 @@
-import { Box, Flex } from "rebass"
+import { Box, Flex } from "rebass/styled-components"
 import { FunctionComponent } from "react"
 import { useRouter } from "next/router"
 import Head from "next/head"
@@ -42,7 +42,7 @@ const LeftMenu = styled(Flex)`
   padding: 64px 0 0;
   width: 280px;
   flex-direction: column;
-  background-color: ${(props) => props.theme.lightBackgroundColor};
+  background-color: ${(props) => props.theme.colors.lightBackgroundColor};
   min-height: 90vh;
 
   @media ${breakpointDown.lg} {
@@ -84,8 +84,9 @@ const LeftMenuLinkContent = styled(LinkLeftMenu)<LeftMenuLinkContentProps>`
   align-items: center;
 
   background-color: ${(props) =>
-    props.isActive ? transparentize(0.5, props.theme.textColor) : "inherit"};
-  border-right: ${(props) => (props.isActive ? `3px solid ${props.theme.primaryColor}` : "none")};
+    props.isActive ? transparentize(0.5, props.theme.colors.textColor) : "inherit"};
+  border-right: ${(props) =>
+    props.isActive ? `3px solid ${props.theme.colors.primaryColor}` : "none"};
 
   @media ${breakpointDown.lg} {
     justify-content: center;
@@ -93,7 +94,13 @@ const LeftMenuLinkContent = styled(LinkLeftMenu)<LeftMenuLinkContentProps>`
 `
 
 const Wrapper = styled(Flex)`
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+
+  @media ${breakpointDown.lg} {
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
 `
 
 const MenuFooterParent = styled(Box)`
@@ -108,7 +115,7 @@ const MenuFooterParent = styled(Box)`
 
 const MenuFooter = styled(Flex)`
   text-align: center;
-  background-color: ${(props) => props.theme.lightBackgroundColor};
+  background-color: ${(props) => props.theme.colors.lightBackgroundColor};
 `
 
 const MenuElementWrapper = styled.div`

@@ -23,6 +23,7 @@ module.exports = withCSS(withSASS({
       resolve: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
         alias: {
+          customUtils: path.resolve(__dirname, 'lib/utils/'),
           gamejitsu: path.resolve(__dirname, 'lib/'),
         }
       }

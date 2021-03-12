@@ -1,5 +1,5 @@
 import { Field } from "formik"
-import { Flex, Box } from "rebass"
+import { Flex, Box } from "rebass/styled-components"
 import { FunctionComponent } from "react"
 
 const SkillLevelSelect: FunctionComponent = () => (

@@ -1,5 +1,12 @@
 export const prices = [
   {
+    id: 0,
+    name: "High",
+    mmr: 5000,
+    priceUSD: 10,
+    priceDiscounted: 8.75
+  },
+  {
     id: 1,
     name: "Experienced",
     mmr: 6000,
@@ -17,7 +24,7 @@ export const prices = [
     id: 3,
     name: "Hero",
     mmr: 8000,
-    priceUSD: 30,
-    priceDiscounted: 25
+    priceUSD: 50,
+    priceDiscounted: 40
   }
 ]

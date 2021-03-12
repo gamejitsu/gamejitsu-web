@@ -2,7 +2,7 @@ import React, { useState, useEffect, FunctionComponent } from "react"
 import { Callout } from "@blueprintjs/core"
 import { NextPageContext, NextPage } from "next"
 import { parseCookies } from "nookies"
-import { Flex } from "rebass"
+import { Flex } from "rebass/styled-components"
 import { Socket } from "phoenix"
 
 import ReplayResource from "gamejitsu/api/resources/replay"

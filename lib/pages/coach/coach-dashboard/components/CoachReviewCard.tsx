@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from "react"
-import { Flex, Box, Text as RbText } from "rebass"
+import { Flex, Box, Text as RbText } from "rebass/styled-components"
 import styled from "styled-components"
 
 import { Button, Card, MatchHeroes } from "gamejitsu/components"

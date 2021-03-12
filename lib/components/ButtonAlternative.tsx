@@ -19,7 +19,7 @@ const baseStyles = css`
   color: white;
   transition: all 0.05s ease-in-out;
 
-  background: ${(props) => props.theme.lightBackgroundColor};
+  background: ${(props) => props.theme.colors.lightBackgroundColor};
 
   padding: 15px 25px 15px 25px;
   font-size: 15px;
@@ -29,22 +29,22 @@ const baseStyles = css`
   &:hover {
     background-image: linear-gradient(
       to bottom,
-      ${(props) => lighten(0.25, props.theme.primaryColor)},
-      ${(props) => props.theme.primaryColor}
+      ${(props) => lighten(0.25, props.theme.colors.primaryColor)},
+      ${(props) => props.theme.colors.primaryColor}
     );
-    color: ${(props) => props.theme.lightBackgroundColor};
+    color: ${(props) => props.theme.colors.lightBackgroundColor};
 
-    box-shadow: inset 0px -3px 0px 0px ${(props) => darken(0.1, props.theme.primaryColor)};
+    box-shadow: inset 0px -3px 0px 0px ${(props) => darken(0.1, props.theme.colors.primaryColor)};
   }
 
   &:active {
     background-image: linear-gradient(
       to bottom,
-      ${(props) => props.theme.primaryColor},
-      ${(props) => darken(0.1, props.theme.primaryColor)}
+      ${(props) => props.theme.colors.primaryColor},
+      ${(props) => darken(0.1, props.theme.colors.primaryColor)}
     );
 
-    box-shadow: inset 0px 3px 0px 0px ${(props) => darken(0.1, props.theme.primaryColor)};
+    box-shadow: inset 0px 3px 0px 0px ${(props) => darken(0.1, props.theme.colors.primaryColor)};
   }
 
   @media ${breakpointDown.xs} {
@@ -71,7 +71,7 @@ const LinkContent = styled.a`
 
   &:hover {
     text-decoration: none;
-    color: ${(props) => props.theme.backgroundColor};
+    color: ${(props) => props.theme.colors.backgroundColor};
   }
 `
 

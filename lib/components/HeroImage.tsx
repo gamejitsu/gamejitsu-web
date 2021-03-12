@@ -18,8 +18,8 @@ const Content = styled.img<ContentProps>`
   width: 80px;
   border: ${(props) =>
     props.isYourHero
-      ? `2px solid  ${props.theme.primaryColor}`
-      : `1px solid ${props.theme.textColor}`};
+      ? `2px solid  ${props.theme.colors.primaryColor}`
+      : `1px solid ${props.theme.colors.textColor}`};
   border-radius: 3px;
 `
 

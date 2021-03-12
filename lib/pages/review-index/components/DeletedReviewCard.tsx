@@ -1,4 +1,4 @@
-import { Flex, Box, Text as RbText } from "rebass"
+import { Flex, Box, Text as RbText } from "rebass/styled-components"
 import React, { FunctionComponent, useState } from "react"
 import { Button, Card, MatchHeroes } from "gamejitsu/components"
 import { DecoratedReview } from "gamejitsu/models/review"

@@ -1,7 +1,7 @@
 import React, { useContext, FunctionComponent } from "react"
 import { Button, Patch, PatchFull } from "gamejitsu/components"
 import styled from "styled-components"
-import { Flex, Box } from "rebass"
+import { Flex, Box } from "rebass/styled-components"
 import { UserContext } from "gamejitsu/contexts"
 import { breakpointDown } from "../../../utils/mediaQueryDevices"
 import { MainTitle, SecondaryTitle, Background } from "lib/components/UtilsComponents"
@@ -26,7 +26,7 @@ interface Props {
 const HorizontalLine = styled.div`
   width: 95%;
   height: 1px;
-  background-color: ${(props) => props.theme.textColorDark};
+  background-color: ${(props) => props.theme.colors.textColorDark};
   margin: 0 auto;
 `
 const ChapterTitle = styled.h3`
@@ -56,8 +56,8 @@ const Achievement: FunctionComponent = ({ children }) => (
 
 const CoachWrapper = styled(Flex)`
   width: 49%;
-  border: 1px solid ${(props) => props.theme.activeColor};
-  background: ${(props) => props.theme.lightBackgroundColor};
+  border: 1px solid ${(props) => props.theme.colors.activeColor};
+  background: ${(props) => props.theme.colors.lightBackgroundColor};
 
   @media ${breakpointDown.sm} {
     width: 100%;

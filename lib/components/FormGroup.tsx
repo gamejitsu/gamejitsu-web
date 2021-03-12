@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { Box } from "rebass"
+import { Box } from "rebass/styled-components"
 import { FormGroup as BPFormGroup, Classes } from "@blueprintjs/core"
 import { FunctionComponent } from "react"
 
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const Label = styled.div`
-  color: ${(props) => props.theme.linkColor};
+  color: ${(props) => props.theme.colors.linkColor};
 `
 
 const FormGroup: FunctionComponent<Props> = ({

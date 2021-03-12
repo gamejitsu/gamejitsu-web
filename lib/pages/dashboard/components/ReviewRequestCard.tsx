@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 import { Card, HeroImageSmall } from "gamejitsu/components"
-import { Flex, Box, Text as RbText } from "rebass"
+import { Flex, Box, Text as RbText } from "rebass/styled-components"
 import { DecoratedReviewRequest } from "gamejitsu/models/review-request"
 import { SkillLevel } from "gamejitsu/api/types/skill-level"
 import { prices } from "../../../../public/prices"

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react"
 
 import { Button, Card, HeroImageSmall } from "gamejitsu/components"
-import { Flex, Box, Text } from "rebass"
+import { Flex, Box, Text } from "rebass/styled-components"
 import { DecoratedReview } from "gamejitsu/models/review"
 import styled from "styled-components"
 import { breakpointDown } from "../../../../utils/mediaQueryDevices"

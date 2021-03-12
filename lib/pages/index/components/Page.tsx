@@ -1,4 +1,4 @@
-import { Flex, Box } from "rebass"
+import { Flex, Box } from "rebass/styled-components"
 import CookieConsent from "react-cookie-consent"
 import Head from "next/head"
 import queryString from "query-string"
@@ -96,7 +96,7 @@ const MainImage = styled.img`
 const OutsideCircle = styled.div`
   background: transparent;
   border-radius: 50%;
-  border: 1.5px solid ${(props) => props.theme.lightBackgroundColor};
+  border: 1.5px solid ${(props) => props.theme.colors.lightBackgroundColor};
   box-sizing: content-box;
   height: 70px;
   margin-bottom: 20px;
@@ -107,7 +107,7 @@ const OutsideCircle = styled.div`
 `
 
 const InsideCircle = styled.div`
-  background: ${(props) => props.theme.lightBackgroundColor};
+  background: ${(props) => props.theme.colors.lightBackgroundColor};
   border-radius: 50%;
   color: white;
   line-height: 70px;
@@ -134,7 +134,7 @@ const FlowImage = styled(Box)<FlowImageType>`
 `
 
 const FlowImageTitle = styled(Box)`
-  background-color: ${(props) => props.theme.primaryColor};
+  background-color: ${(props) => props.theme.colors.primaryColor};
   color: black;
   font-weight: 550;
   height: 44px;
@@ -145,7 +145,7 @@ const FlowImageTitle = styled(Box)`
 
 const Price = styled.div`
   align-items: center;
-  background-color: ${(props) => props.theme.backgroundColor};
+  background-color: ${(props) => props.theme.colors.backgroundColor};
   border-bottom-right-radius: 50px;
   border-top-right-radius: 50px;
   color: white;
@@ -169,7 +169,7 @@ const Price = styled.div`
 `
 
 const PriceCardContent = styled(Box)`
-  background-color: ${(props) => props.theme.lightBackgroundColor};
+  background-color: ${(props) => props.theme.colors.lightBackgroundColor};
   width: 24%;
   @media ${breakpointDown.sm} {
     width: 46.5%;
@@ -179,7 +179,7 @@ const PriceCardContent = styled(Box)`
 
 const PriceFeatureContent = styled.span`
   align-items: center;
-  color: ${(props) => props.theme.textColor};
+  color: ${(props) => props.theme.colors.textColor};
   display: inline-flex;
   font-size: 14px;
   margin-bottom: 25px;
@@ -190,7 +190,7 @@ const PriceFeatureContent = styled.span`
 `
 
 const GamesBarWrapper = styled(Flex)`
-  background-color: ${(props) => props.theme.lightBackgroundColor};
+  background-color: ${(props) => props.theme.colors.lightBackgroundColor};
   height: 95px;
   position: relative;
   width: 100%;
@@ -218,7 +218,7 @@ const FlowStepIcon = styled.img`
 `
 
 const StyledCookieConsent = styled(CookieConsent)`
-  background: ${(props) => props.theme.textColor};
+  background: ${(props) => props.theme.colors.textColor};
 `
 
 const PriceCard: FunctionComponent<PriceCardProps> = ({ children, icon, title, price }) => (

@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Box, Flex } from "rebass"
+import { Box, Flex } from "rebass/styled-components"
 import { useFormik } from "formik"
 import {
   TextArea,
@@ -12,7 +12,7 @@ import {
   Tooltip
 } from "@blueprintjs/core"
 import { object, string } from "yup"
-import { MarkdownDialog } from "gamejitsu/components"
+import { MarkdownDialog, GenericToaster } from "gamejitsu/components"
 import { Button } from "gamejitsu/components"
 import { Comment } from "gamejitsu/api/types/comment"
 
@@ -43,10 +43,30 @@ const CommentFormNew: CommentFormComponent = ({
   const [isUpdateOpen, setIsUpdateOpen] = useState(false)
   const [isMarkdownInfoOpen, setIsMarkdownInfoOpen] = useState(false)
 
+  const validate = (values: any) => {
+    const errors: any = {}
+
+    if (!values.text) {
+      GenericToaster
+        ? GenericToaster.show({
+            message: " Error inserting comment.  Comment empty.",
+            icon: "warning-sign",
+            intent: Intent.DANGER,
+            timeout: 3500
+          })
+        : null
+      errors.text = "Required"
+    }
+
+    return errors
+  }
+
   const formik = useFormik({
     initialValues: { text: comment ? comment.text : "" },
     enableReinitialize: true,
+    validateOnChange: false,
     validationSchema,
+    validate,
     onSubmit: async ({ text }, { setSubmitting, resetForm }) => {
       setSubmitting(true)
       await onSave({ text, timestamp })
@@ -54,6 +74,7 @@ const CommentFormNew: CommentFormComponent = ({
       setSubmitting(false)
     }
   })
+
   const handleCloseNoDelete = () => {
     setIsDeleteOpen(false)
   }
@@ -95,7 +116,6 @@ const CommentFormNew: CommentFormComponent = ({
           <form onSubmit={formik.handleSubmit}>
             <TextArea
               onFocus={() => handlePauseVideo()}
-              growVertically={true}
               large={true}
               intent={Intent.PRIMARY}
               onChange={formik.handleChange}
@@ -103,31 +123,22 @@ const CommentFormNew: CommentFormComponent = ({
               fill={true}
               value={formik.values.text}
               style={{
+                resize: "none",
                 backgroundColor: "#212122",
                 color: "#eee",
-                height: "120px",
+                height: "150px",
+                maxHeight: "180px",
                 opacity: 0.9,
                 padding: "12px",
                 boxShadow: "1px 1px #212212"
               }}
             />
-            {formik.errors.text ? (
-              <Toaster position={Position.TOP}>
-                <Toast
-                  intent={Intent.DANGER}
-                  icon="warning-sign"
-                  message={"Error inserting comment.  Comment empty."}
-                />
-              </Toaster>
-            ) : (
-              <div />
-            )}
             <Flex justifyContent={"flex-end"}>
               <Box
-                pt={1}
+                p={1}
                 onClick={toggleMarkdownModal}
                 fontSize={"0.8rem"}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer", color: "#08ff07" }}
               >
                 Formatting help
               </Box>

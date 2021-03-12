@@ -1,4 +1,4 @@
-import { Flex, Box } from "rebass"
+import { Flex, Box } from "rebass/styled-components"
 import { NextPageContext, NextPage } from "next"
 import { Position, Toaster, Intent, Switch } from "@blueprintjs/core"
 import React, { SyntheticEvent, useRef, useState, useEffect, useCallback } from "react"
@@ -9,10 +9,13 @@ import ForwardTenSecSVG from "../../../../../svgs/forward10.svg"
 import {
   CommentBar,
   CommentFormNew,
+  Button,
   CommentList,
   LayoutWithMenu,
   useWarnIfUnsavedChanges
 } from "gamejitsu/components"
+
+import SaveReviewDialog from "./saveReviewDialog"
 import { Comment } from "gamejitsu/api/types/comment"
 import { DecoratedReplay } from "gamejitsu/models/replay"
 import { DecoratedReview, decorateReview } from "gamejitsu/models/review"
@@ -31,7 +34,7 @@ interface SelectedSpeedProps {
 type SeekDirection = "B" | "F"
 
 const SelecetdSpeed = styled.b<SelectedSpeedProps>`
-  color: ${(props) => (props.isSelected ? props.theme.primaryColor : "#ccc")};
+  color: ${(props) => (props.isSelected ? props.theme.colors.primaryColor : "#ccc")};
   cursor: pointer;
   font-weight: bold;
   &:hover {
@@ -44,7 +47,7 @@ const getReview = async (ctx: NextPageContext, id: string) =>
 
 const VideoContainer = styled(Box)`
   width: 100%;
-  border: 1px solid ${(props) => props.theme.secondaryColor};
+  border: 1px solid ${(props) => props.theme.colors.secondaryColor};
 `
 
 const Title = styled.h1`
@@ -62,6 +65,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   const [videoDuration, setVideoDuration] = useState(0)
   const [videoTimestamp, setVideoTimestamp] = useState(0)
   const [selectedComment, setSelectedComment] = useState<Comment | null>(null)
+  const [saveReviewIsOpen, setSaveReviewIsOpen] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   const onSaveComment = async (savedComment: Comment) => {
@@ -73,7 +77,7 @@ const CoachReviewPage: NextPage<Props> = (props) => {
       comments: newComments
     }
     setReview(updatedReview)
-    setSelectedComment(null)
+    setSelectedComment(savedComment)
   }
 
   const onDeleteComment = async () => {
@@ -109,6 +113,14 @@ const CoachReviewPage: NextPage<Props> = (props) => {
 
   const toggleAutosave = () => {
     setAutosave(!autosaveEnabled)
+  }
+
+  const closeSaveReviewDialog = () => {
+    setSaveReviewIsOpen(false)
+  }
+
+  const openSaveReviewDialog = () => {
+    setSaveReviewIsOpen(true)
   }
 
   const videoSpeeds = [1, 2, 3, 4]
@@ -166,6 +178,8 @@ const CoachReviewPage: NextPage<Props> = (props) => {
         message: "Error saving review. \
         Please try later or contact our support."
       })
+    } finally {
+      setSaveReviewIsOpen(false)
     }
   }
 
@@ -197,110 +211,123 @@ const CoachReviewPage: NextPage<Props> = (props) => {
   }, [autosaveEnabled, review])
 
   return (
-    <LayoutWithMenu title="Coach Review">
-      <Flex width={["100%", "100%", "67%"]} flexDirection="column">
-        <VideoContainer>
-          <video
-            ref={videoRef}
-            onDurationChange={onSetVideoDuration}
-            onTimeUpdate={onSetVideoTimestamp}
-            width="100%"
-            controls
-            controlsList="nodownload"
-          >
-            <source src={props.replay.videoUrl ? props.replay.videoUrl : ""} type="video/mp4" />
-          </video>
-        </VideoContainer>
-        <Flex justifyContent="space-between" alignItems={"center"} pt={2}>
-          <Box>
-            Video Speed:
-            {videoSpeeds.map((speed) => {
-              return (
-                <SelecetdSpeed
-                  key={speed}
-                  isSelected={videoSpeed == speed}
-                  onClick={() => changeVideoSpeed(speed)}
-                >
-                  {" "}
-                  {speed}x
-                </SelecetdSpeed>
-              )
-            })}
-          </Box>
-          <Flex justifyContent={"center"}>
-            <Box mr={2}>
-              <BackTenSecSVG
-                width="24"
-                height="24"
-                onClick={() => seekVideo("B", 10)}
-                style={{ cursor: "pointer" }}
-              ></BackTenSecSVG>
-            </Box>
+    <>
+      <LayoutWithMenu title="Coach Review">
+        <Flex width={["100%", "100%", "67%"]} flexDirection="column">
+          <VideoContainer>
+            <video
+              ref={videoRef}
+              onDurationChange={onSetVideoDuration}
+              onTimeUpdate={onSetVideoTimestamp}
+              width="100%"
+              controls
+              controlsList="nodownload"
+            >
+              <source src={props.replay.videoUrl ? props.replay.videoUrl : ""} type="video/mp4" />
+            </video>
+          </VideoContainer>
+          <Flex justifyContent="space-between" alignItems={"center"} pt={2}>
             <Box>
-              <ForwardTenSecSVG
-                width="24"
-                height="24"
-                onClick={() => seekVideo("F", 10)}
-                style={{ cursor: "pointer" }}
-              >
-                P
-              </ForwardTenSecSVG>
+              Video Speed:
+              {videoSpeeds.map((speed) => {
+                return (
+                  <SelecetdSpeed
+                    key={speed}
+                    isSelected={videoSpeed == speed}
+                    onClick={() => changeVideoSpeed(speed)}
+                  >
+                    {" "}
+                    {speed}x
+                  </SelecetdSpeed>
+                )
+              })}
+            </Box>
+            <Flex justifyContent={"center"}>
+              <Box mr={2}>
+                <BackTenSecSVG
+                  width="24"
+                  height="24"
+                  onClick={() => seekVideo("B", 10)}
+                  style={{ cursor: "pointer" }}
+                ></BackTenSecSVG>
+              </Box>
+              <Box>
+                <ForwardTenSecSVG
+                  width="24"
+                  height="24"
+                  onClick={() => seekVideo("F", 10)}
+                  style={{ cursor: "pointer" }}
+                >
+                  P
+                </ForwardTenSecSVG>
+              </Box>
+            </Flex>
+          </Flex>
+          <Flex flexDirection="column">
+            <Box py={3}>
+              <Title>MATCH NAVIGATION</Title>
+            </Box>
+            <CommentBar
+              comments={review.comments}
+              videoDuration={videoDuration}
+              onVideoTimestampChange={setVideoTimestamp}
+              videoTimestamp={videoTimestamp}
+              onSelect={onSelectComment}
+            />
+          </Flex>
+          <Flex flexDirection="column">
+            <Box pt={3}>
+              <Flex pt={3} justifyContent={"space-between"}>
+                <Box>
+                  <Title>INSERT COMMENT BY COACH</Title>
+                </Box>
+                <Switch
+                  checked={autoPauseEnabled}
+                  alignIndicator={"right"}
+                  label={"Pause video on focus"}
+                  onChange={(e) => toggleAutoPause()}
+                />
+              </Flex>
+              <CommentFormNew
+                comment={selectedComment}
+                onSave={onSaveComment}
+                onDelete={onDeleteComment}
+                onDeselect={onDeselectComment}
+                timestamp={videoTimestamp}
+                pauseVideo={pauseVideo}
+              />
             </Box>
           </Flex>
         </Flex>
-        <Flex flexDirection="column">
-          <Box py={3}>
-            <Title>MATCH NAVIGATION</Title>
-          </Box>
-          <CommentBar
+        <Flex width={["100%", "100%", "33%"]} flexDirection="column">
+          <Flex justifyContent={"space-between"} alignItems={"center"} minHeight={"64px"}>
+            <Flex ml={[0, 0, 3]}>
+              <Switch
+                style={{ marginBottom: 0 }}
+                checked={autosaveEnabled}
+                label={autosaveEnabled ? "Autosave Enabled" : "Autosave Disabled"}
+                onChange={(e) => toggleAutosave()}
+              />
+            </Flex>
+            {!autosaveEnabled ? (
+              <Flex>
+                <Button text="Save" type="button" onClick={openSaveReviewDialog} />
+              </Flex>
+            ) : null}
+          </Flex>
+          <CommentList
             comments={review.comments}
-            videoDuration={videoDuration}
-            onVideoTimestampChange={setVideoTimestamp}
-            videoTimestamp={videoTimestamp}
+            selectedComment={selectedComment}
             onSelect={onSelectComment}
           />
         </Flex>
-        <Flex flexDirection="column">
-          <Box pt={3}>
-            <Flex pt={3} justifyContent={"space-between"}>
-              <Box>
-                <Title>INSERT COMMENT BY COACH</Title>
-              </Box>
-              <Switch
-                checked={autoPauseEnabled}
-                alignIndicator={"right"}
-                label={"Pause video on focus"}
-                onChange={(e) => toggleAutoPause()}
-              />
-            </Flex>
-            <CommentFormNew
-              comment={selectedComment}
-              onSave={onSaveComment}
-              onDelete={onDeleteComment}
-              onDeselect={onDeselectComment}
-              timestamp={videoTimestamp}
-              pauseVideo={pauseVideo}
-            />
-          </Box>
-        </Flex>
-      </Flex>
-      <Flex width={["100%", "100%", "33%"]} flexDirection="column">
-        <Box ml={[0, 0, 3]}>
-          <Switch
-            checked={autosaveEnabled}
-            label={autosaveEnabled ? "Autosave Enabled" : "Autosave Disabled"}
-            onChange={(e) => toggleAutosave()}
-          />
-        </Box>
-        <CommentList
-          displaySaveButton={!autosaveEnabled}
-          comments={review.comments}
-          selectedComment={selectedComment}
-          onSelect={onSelectComment}
-          onSaveReview={onSaveReview}
-        />
-      </Flex>
-    </LayoutWithMenu>
+      </LayoutWithMenu>
+      <SaveReviewDialog
+        isOpen={saveReviewIsOpen}
+        onClose={closeSaveReviewDialog}
+        onSave={onSaveReview}
+      ></SaveReviewDialog>
+    </>
   )
 }
 

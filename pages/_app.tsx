@@ -33,15 +33,17 @@ interface Props {
 }
 
 const Content = styled.div`
-  background-color: ${(props) => props.theme.backgroundColor};
+  margin: auto;
+  background-color: ${(props) => props.theme.colors.backgroundColor};
+  max-width: 1920px;
 `
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap');
   body {
-    background-color: ${(props) => props.theme.backgroundColor};
+    background-color: ${(props) => props.theme.colors.backgroundColor};
     font-family: ${(props) => props.theme.textFont};
-    color: ${(props) => props.theme.textColor};
+    color: ${(props) => props.theme.colors.textColor};
   }
   input {
     font-family: ${(props) => props.theme.textFont};
