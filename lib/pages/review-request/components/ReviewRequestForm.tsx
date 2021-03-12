@@ -178,7 +178,7 @@ const ReviewRequestForm: FunctionComponent<Props> = ({ replay, replayAvailabilit
               <Flex mx={3} my={4}>
                 <Slider
                   min={0}
-                  max={2}
+                  max={3}
                   stepSize={1}
                   labelStepSize={1}
                   onChange={(value: number) =>

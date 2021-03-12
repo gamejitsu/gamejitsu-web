@@ -74,7 +74,7 @@ const CoachSignUpForm: FunctionComponent = () => {
   }
 
   return (
-    <Box mx={"auto"} px={[3, 4]} style={{ maxWidth: "640px" }}>
+    <Box mx={"auto"} px={[3, 4]} width={"100%"} style={{ maxWidth: "640px" }}>
       <Form
         title="Sign up as a coach"
         initialValues={initialValues}
@@ -103,7 +103,7 @@ const CoachSignUpForm: FunctionComponent = () => {
             <Flex mx={3} my={4}>
               <Slider
                 min={0}
-                max={2}
+                max={3}
                 stepSize={1}
                 labelStepSize={1}
                 onChange={(value: number) => formik.setFieldValue("skillLevel", skillLevels[value])}

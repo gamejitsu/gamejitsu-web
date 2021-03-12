@@ -30,10 +30,9 @@ const Comment: FunctionComponent<CommentProps> = ({
   onCollapseComment
 }) => {
   const commentRef = useRef<HTMLDivElement>(null)
-  const [commentText, setCommentText] = useState("d")
+  const [commentText, setCommentText] = useState("")
 
   useEffect(() => {
-    console.log("event triggered")
     if (selectedComment === comment && commentRef && commentRef.current != null) {
       commentRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" })
     }
