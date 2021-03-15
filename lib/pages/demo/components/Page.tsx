@@ -43,8 +43,6 @@ const Title = styled.h1`
 `
 
 const DemoPage: AuthenticatedComponent = () => {
-  useWarnIfUnsavedChanges(true)
-
   const reviewInitial: Review = {
     id: "0",
     comments: demoComments,
@@ -189,7 +187,7 @@ const DemoPage: AuthenticatedComponent = () => {
           >
             <source
               src={
-                "https://gamejitsu-recorder.s3.eu-west-2.amazonaws.com/videos/d13ddb7d-25ea-4255-b9ce-d7f8742d95b8.mp4"
+                "https://gamejitsu-recorder.s3.eu-west-2.amazonaws.com/videos/2aa00c60-5daf-46bf-9f22-0af1a015aaf0.mp4"
               }
               type="video/mp4"
             />

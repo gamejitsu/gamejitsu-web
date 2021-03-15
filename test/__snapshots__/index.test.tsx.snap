@@ -464,7 +464,7 @@ exports[`Index page should match snapshot 1`] = `
                                           onClick={[Function]}
                                           onMouseEnter={[Function]}
                                         >
-                                          COACH DEMO
+                                          WATCH DEMO
                                         </a>
                                       </StyledComponent>
                                     </Link__Content>
@@ -953,7 +953,7 @@ exports[`Index page should match snapshot 1`] = `
                               "componentStyle": ComponentStyle {
                                 "componentId": "ButtonNew__ButtonContent-sj5i96-0",
                                 "isStatic": false,
-                                "lastClassName": "ekRlvI",
+                                "lastClassName": "buWcqA",
                                 "rules": Array [
                                   "&.",
                                   "bp3-button",
@@ -964,7 +964,7 @@ exports[`Index page should match snapshot 1`] = `
                                   [Function],
                                   ";color:",
                                   [Function],
-                                  ";transition:all 0.05s ease-in-out;background:transparent;padding:10px 25px 10px 25px;font-size:15px;font-weight:bold;&:hover{background-image:linear-gradient( to bottom,",
+                                  ";transition:all 0.05s ease-in-out;background:transparent;padding:13px 25px 13px 25px;font-size:15px;font-weight:bold;&:hover{background-image:linear-gradient( to bottom,",
                                   [Function],
                                   ",",
                                   [Function],
@@ -1001,12 +1001,12 @@ exports[`Index page should match snapshot 1`] = `
                           type="button"
                         >
                           <Blueprint3.Button
-                            className="ButtonNew__ButtonContent-sj5i96-0 ekRlvI"
+                            className="ButtonNew__ButtonContent-sj5i96-0 buWcqA"
                             onClick={[Function]}
                             type="button"
                           >
                             <button
-                              className="bp3-button ButtonNew__ButtonContent-sj5i96-0 ekRlvI"
+                              className="bp3-button ButtonNew__ButtonContent-sj5i96-0 buWcqA"
                               onClick={[Function]}
                               onKeyDown={[Function]}
                               onKeyUp={[Function]}
@@ -1730,7 +1730,7 @@ exports[`Index page should match snapshot 1`] = `
                                                 <ButtonNew
                                                   href="/demo"
                                                   key="demo"
-                                                  text="COACH DEMO"
+                                                  text="WATCH DEMO"
                                                   type="button"
                                                 >
                                                   <Link
@@ -1748,7 +1748,7 @@ exports[`Index page should match snapshot 1`] = `
                                                             "componentStyle": ComponentStyle {
                                                               "componentId": "ButtonNew__LinkContent-sj5i96-1",
                                                               "isStatic": false,
-                                                              "lastClassName": "eQDjqA",
+                                                              "lastClassName": "bfjIpV",
                                                               "rules": Array [
                                                                 "display:inline-flex;border-radius:",
                                                                 [Function],
@@ -1756,7 +1756,7 @@ exports[`Index page should match snapshot 1`] = `
                                                                 [Function],
                                                                 ";color:",
                                                                 [Function],
-                                                                ";transition:all 0.05s ease-in-out;background:transparent;padding:10px 25px 10px 25px;font-size:15px;font-weight:bold;&:hover{background-image:linear-gradient( to bottom,",
+                                                                ";transition:all 0.05s ease-in-out;background:transparent;padding:13px 25px 13px 25px;font-size:15px;font-weight:bold;&:hover{background-image:linear-gradient( to bottom,",
                                                                 [Function],
                                                                 ",",
                                                                 [Function],
@@ -1793,11 +1793,11 @@ exports[`Index page should match snapshot 1`] = `
                                                         onMouseEnter={[Function]}
                                                       >
                                                         <a
-                                                          className="ButtonNew__LinkContent-sj5i96-1 eQDjqA"
+                                                          className="ButtonNew__LinkContent-sj5i96-1 bfjIpV"
                                                           onClick={[Function]}
                                                           onMouseEnter={[Function]}
                                                         >
-                                                          COACH DEMO
+                                                          WATCH DEMO
                                                         </a>
                                                       </StyledComponent>
                                                     </ButtonNew__LinkContent>
@@ -9393,7 +9393,7 @@ exports[`Index page should match snapshot 1`] = `
                                     "componentStyle": ComponentStyle {
                                       "componentId": "ButtonNew__LinkContent-sj5i96-1",
                                       "isStatic": false,
-                                      "lastClassName": "eQDjqA",
+                                      "lastClassName": "bfjIpV",
                                       "rules": Array [
                                         "display:inline-flex;border-radius:",
                                         [Function],
@@ -9401,7 +9401,7 @@ exports[`Index page should match snapshot 1`] = `
                                         [Function],
                                         ";color:",
                                         [Function],
-                                        ";transition:all 0.05s ease-in-out;background:transparent;padding:10px 25px 10px 25px;font-size:15px;font-weight:bold;&:hover{background-image:linear-gradient( to bottom,",
+                                        ";transition:all 0.05s ease-in-out;background:transparent;padding:13px 25px 13px 25px;font-size:15px;font-weight:bold;&:hover{background-image:linear-gradient( to bottom,",
                                         [Function],
                                         ",",
                                         [Function],
@@ -9438,7 +9438,7 @@ exports[`Index page should match snapshot 1`] = `
                                 onMouseEnter={[Function]}
                               >
                                 <a
-                                  className="ButtonNew__LinkContent-sj5i96-1 eQDjqA"
+                                  className="ButtonNew__LinkContent-sj5i96-1 bfjIpV"
                                   onClick={[Function]}
                                   onMouseEnter={[Function]}
                                 >

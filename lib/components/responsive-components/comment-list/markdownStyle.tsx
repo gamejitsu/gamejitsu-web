@@ -1,13 +1,20 @@
-export const markdownStyle = `h1 {
+export const markdownStyle = `
+h1,h2,h3,h4,ul,p {
+  line-height: 1.4;
+}
+
+h1 {
   font-size: 32px;
   font-weight: bold;
   margin-bottom: 10px;
+  
 }
 
 h2 {
   font-size: 27px;
   font-weight: bold;
   margin-bottom: 7px;
+
 }
 
 h3 {
