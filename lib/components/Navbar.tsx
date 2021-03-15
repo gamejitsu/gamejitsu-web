@@ -132,7 +132,7 @@ const Navbar: FunctionComponent = () => {
       </FlexWithOrderLogo>
       <FlexWithOrderLinks>
         <NavLink key="demo" href="/demo">
-          COACH DEMO
+          WATCH DEMO
         </NavLink>
         {user
           ? user?.coachId

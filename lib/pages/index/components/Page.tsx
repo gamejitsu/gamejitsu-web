@@ -340,7 +340,7 @@ const Page: AuthenticatedComponent = () => (
               <ParagraphText>by top quality coaches and start winning</ParagraphText>
               <Flex>
                 <Box pt={4}>
-                  <ButtonNew key="demo" type="button" href="/demo" text="COACH DEMO" />
+                  <ButtonNew key="demo" type="button" href="/demo" text="WATCH DEMO" />
                 </Box>
                 <Box pt={4} pl={[3]}>
                   <ButtonAlternative

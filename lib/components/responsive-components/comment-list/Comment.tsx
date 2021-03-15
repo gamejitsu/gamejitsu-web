@@ -4,7 +4,7 @@ import { markdownStyle } from "./markdownStyle"
 import ReactMarkdown from "react-markdown"
 import { Comment as CommentType } from "gamejitsu/api/types/comment"
 import { Box, Flex } from "rebass/styled-components"
-import { lighten } from "polished"
+import { darken } from "polished"
 import { formatTimestamp } from "gamejitsu/utils/duration"
 
 interface CommentProps {
@@ -40,9 +40,9 @@ const Comment: FunctionComponent<CommentProps> = ({
 
   useEffect(() => {
     let textToDisplay = comment.text
-    if (comment.text.length > 120) {
+    if (comment.text.length > 160) {
       if (isCollapsed) {
-        textToDisplay = comment.text.substring(0, 120) + `...`
+        textToDisplay = comment.text.substring(0, 160) + `...`
       }
     }
     setCommentText(textToDisplay)
@@ -55,9 +55,7 @@ const Comment: FunctionComponent<CommentProps> = ({
     border-top: 0;
     border: 1px solid ${(props) => props.theme.colors.secondaryColor};
     background-color: ${({ comment, selectedComment, theme }) => {
-      return comment !== selectedComment
-        ? "#212122"
-        : lighten(0.15, theme.colors.lightBackgroundColor)
+      return comment !== selectedComment ? "#1d1d1d" : darken(0.05, "#1d1d1d")
     }};
   `
   const TimeTag = styled(Box)`
@@ -79,8 +77,8 @@ const Comment: FunctionComponent<CommentProps> = ({
   `
 
   const MarkdownWrapper = styled(Flex)`
-    line-height: 115%;
-    color: white;
+    line-height: 1;
+    color: #d7d7d7;
     cursor: pointer;
     word-break: break-word;
     ${markdownStyle}

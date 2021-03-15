@@ -32,7 +32,7 @@ const LeftMenuLink: FunctionComponent<LeftMenuLinkProps> = ({ children, href }) 
   const router = useRouter()
   const isActive = router && router.pathname === href
   return (
-    <LeftMenuLinkContent isActive={isActive} href={href}>
+    <LeftMenuLinkContent isActive={isActive} href={href} isForbidden={true}>
       {children}
     </LeftMenuLinkContent>
   )

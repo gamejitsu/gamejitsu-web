@@ -78,7 +78,7 @@ const CommentList: FunctionComponent<Props> = ({ comments, selectedComment, onSe
         <Header>
           <Flex width="100%">
             <Flex width="100%">
-              <CommentListTitle>COMMENTS ADDED BY COACH</CommentListTitle>
+              <CommentListTitle>REPLAY ANALYSIS</CommentListTitle>
               <Flex key="saveButton" justifyContent="flex-end" alignItems="center" width="50%">
                 <Box>
                   {isAllCollapsed ? (
