@@ -3,7 +3,7 @@ import { FunctionComponent } from "react"
 import { lighten, darken } from "polished"
 import Link from "next/link"
 import { Button as BPButton, Classes } from "@blueprintjs/core"
-import { media } from "customUtils"
+import { down } from "customUtils"
 
 interface Props {
   text: string
@@ -37,9 +37,9 @@ const baseStyles = css<BaseProps>`
   font-weight: bold;
   text-align: center;
 
-  ${media.lessThan("md")`
+  ${down("md")}{
     font-size: 12px;
-  `}
+  }
 
   &:hover {
     background-image: linear-gradient(

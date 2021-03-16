@@ -4,7 +4,7 @@ import { FunctionComponent, useContext } from "react"
 import { Player } from "gamejitsu/api/types/player"
 import { UserContext } from "gamejitsu/contexts"
 import { Position, Tooltip } from "@blueprintjs/core"
-import { breakpointDown } from "../utils/mediaQueryDevices"
+
 
 interface Props {
   player: Player

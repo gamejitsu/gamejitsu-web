@@ -13,7 +13,6 @@ import Link from "./Link"
 import { breakpointDown } from "../utils/mediaQueryDevices"
 
 const urlBase = "https://steamcommunity.com/openid/login"
-
 const gamejitsuWritingImageSrc = "/images/gamejitsu-writing.svg"
 
 interface NavLinkContentProps {

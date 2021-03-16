@@ -1,7 +1,15 @@
 import "styled-components"
 
+interface MediaBreakpointObj {
+  xs: string
+  sm: string
+  md: string
+  lg: string
+}
+
 declare module "styled-components" {
   export interface DefaultTheme {
+    breakpointsObj: MediaBreakpointObj
     breakpoints: string[]
     colors: {
       activeColor: string

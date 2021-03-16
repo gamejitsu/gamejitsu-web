@@ -16,6 +16,7 @@ import { theme } from "gamejitsu"
 import UserResource, { User } from "gamejitsu/api/resources/user"
 import { Coach } from "gamejitsu/api/resources/coach"
 import { UserContext } from "gamejitsu/contexts"
+import Navbar from "lib/components/responsive-components/header-menu/navbar"
 
 interface DecoratedUser {
   coach: Coach | undefined
@@ -164,6 +165,7 @@ export default class App extends NextApp<Props> {
           <GlobalStyle />
           <Content>
             <UserContext.Provider value={user}>
+              <Navbar />
               <Component {...pageProps} />
             </UserContext.Provider>
           </Content>

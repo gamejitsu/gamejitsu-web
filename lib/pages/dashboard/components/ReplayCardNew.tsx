@@ -38,14 +38,6 @@ const Header = styled(Flex)`
   vertical-align: middle;
 `
 
-const HeroImageWrapper = styled(Flex)`
-  margin-right: 16px;
-
-  @media ${breakpointDown.lg} {
-    overflow: hidden;
-  }
-`
-
 const GameInfoWinner = styled.h3`
   color: ${(props) => props.theme.colors.primaryColor};
 `

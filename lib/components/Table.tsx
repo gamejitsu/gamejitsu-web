@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react"
 import { Box } from "rebass/styled-components"
 import styled from "styled-components"
 import { masterSchemaData } from "../../public/masterSchemaData"
-import { media } from "customUtils"
+import { down} from "customUtils"
 
 const CategoryTitle = styled.td`
   color: white;
@@ -19,10 +19,10 @@ const CategoryTd = styled.th`
   padding: 20px;
   font-size: 25px;
   vertical-align: middle;
-
-  ${media.lessThan("lg")`
+  
+  ${down("md")}{
     display: none;
-  `};
+  }
 `
 
 const HeaderTh = styled.th`
@@ -41,9 +41,9 @@ const TableContentHeader = styled.table`
   table-layout: fixed;
   margin: 0 auto;
 
-  ${media.lessThan("xs")`
+  ${down("xs")}{
     font-size: 13px;
-  `}
+  }
 `
 
 const TableContent = styled.table`
@@ -53,9 +53,10 @@ const TableContent = styled.table`
   table-layout: fixed;
   margin: 0 auto;
 
-  ${media.lessThan("xs")`
+  ${down("xs")}{
     font-size: 13px;
-  `}
+  }
+
 `
 
 interface ElementProps {
