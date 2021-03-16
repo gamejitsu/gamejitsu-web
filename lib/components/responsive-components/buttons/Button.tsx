@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components"
-import React, {FunctionComponent } from "react"
+import React, { FunctionComponent } from "react"
 import { lighten, darken } from "polished"
 import Link from "next/link"
 import { down } from "customUtils"
@@ -34,11 +34,11 @@ const baseStyles = css<BaseProps>`
   font-family: ${(props) => props.theme.textFont};
   border-radius: ${(props) => props.theme.borderRadius};
 
-  &:hover{
+  &:hover {
     text-decoration: none;
   }
 
-  ${down("md")}{
+  ${down("md")} {
     font-size: 12px;
   }
 `
@@ -91,7 +91,6 @@ const BtnNewStyles = css<BaseProps>`
     fill: ${(props) => props.theme.colors.primaryColor};
   }
 
-
   &:hover {
     background-image: linear-gradient(
       to bottom,
@@ -136,7 +135,7 @@ const BtnAlternativeStyles = css<BaseProps>`
     border: 2px solid ${(props) => props.theme.colors.primaryColor};
     color: ${(props) => props.theme.colors.lightBackgroundColor};
     svg * {
-      stroke:${(props) => props.theme.colors.lightBackgroundColor};
+      stroke: ${(props) => props.theme.colors.lightBackgroundColor};
       fill: ${(props) => props.theme.colors.lightBackgroundColor};
     }
     box-shadow: inset 0px -3px 0px 0px ${(props) => darken(0.1, props.theme.colors.primaryColor)};
@@ -171,7 +170,7 @@ const BtnDarkStyles = css<BaseProps>`
     color: ${(props) => props.theme.colors.lightBackgroundColor};
     border: 2px solid ${(props) => props.theme.colors.primaryColor};
     svg * {
-      stroke:${(props) => props.theme.colors.lightBackgroundColor};
+      stroke: ${(props) => props.theme.colors.lightBackgroundColor};
       fill: ${(props) => props.theme.colors.lightBackgroundColor};
     }
 
@@ -186,7 +185,8 @@ const BtnDarkStyles = css<BaseProps>`
     );
 
     box-shadow: inset 0px 3px 0px 0px ${(props) => darken(0.1, props.theme.colors.primaryColor)};
-  }`
+  }
+`
 
 const ButtonContent = styled.button`
   ${baseStyles}
@@ -251,18 +251,21 @@ const Button: FunctionComponent<Props> = ({
             {text}
           </LinkContent>
         </Link>
-        ) : (
+      ) : (
         <ButtonContent
           type={type}
-          onClick={(event: React.MouseEvent<HTMLElement, MouseEvent>) => {if (onClick) onClick(event)}}
+          onClick={(event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+            if (onClick) onClick(event)
+          }}
           color={color}
           {...props}
         >
-        {icon ? icon : null}
-        {text}
+          {icon ? icon : null}
+          {text}
         </ButtonContent>
       )}
     </ButtonWrapper>
-  )}
-  
+  )
+}
+
 export default Button

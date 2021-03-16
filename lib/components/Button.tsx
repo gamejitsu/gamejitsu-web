@@ -37,7 +37,7 @@ const baseStyles = css<BaseProps>`
   font-weight: bold;
   text-align: center;
 
-  ${down("md")}{
+  ${down("md")} {
     font-size: 12px;
   }
 

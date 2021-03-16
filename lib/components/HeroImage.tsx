@@ -5,7 +5,6 @@ import { Player } from "gamejitsu/api/types/player"
 import { UserContext } from "gamejitsu/contexts"
 import { Position, Tooltip } from "@blueprintjs/core"
 
-
 interface Props {
   player: Player
 }

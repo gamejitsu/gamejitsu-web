@@ -1,8 +1,8 @@
 import { FunctionComponent, useContext } from "react"
 import { UserContext } from "gamejitsu/contexts"
-import Burger from './burger';
-import styled from 'styled-components'
-import { Flex } from 'rebass/styled-components'
+import Burger from "./burger"
+import styled from "styled-components"
+import { Flex } from "rebass/styled-components"
 
 const gamejitsuWritingImageSrc = "/images/gamejitsu-writing.svg"
 
@@ -31,13 +31,13 @@ const Logo = styled(Flex)`
     filter: grayscale(0);
   }
 `
- 
+
 const Navbar: FunctionComponent = () => {
   const user = useContext(UserContext)
   return (
     <Nav>
       <Logo>
-        <img src={gamejitsuWritingImageSrc} style={{width: "100%", height:"auto"}} />
+        <img src={gamejitsuWritingImageSrc} style={{ width: "100%", height: "auto" }} />
       </Logo>
       <Burger />
     </Nav>

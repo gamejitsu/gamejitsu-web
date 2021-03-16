@@ -40,7 +40,6 @@ import CommentList from "./responsive-components/comment-list/CommentList"
 import MatchHeroes from "./responsive-components/MatchHeroes"
 import ButtonTest from "./responsive-components/buttons/Button"
 
-
 export {
   Button,
   ButtonNew,

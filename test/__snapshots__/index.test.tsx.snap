@@ -11,11 +11,17 @@ exports[`Index page should match snapshot 1`] = `
         "1024px",
         "1420px",
       ],
+      "breakpointsObj": Object {
+        "lg": "1420px",
+        "md": "1024px",
+        "sm": "768px",
+        "xs": "576px",
+      },
       "colors": Object {
         "activeColor": "#454545",
         "backgroundColor": "#00030c",
         "highlightColor": "#3518e5",
-        "lightBackgroundColor": "#14161C",
+        "lightBackgroundColor": "#212329",
         "line2Color": "#3c3c3c",
         "lineColor": "#3a3c43",
         "linkColor": "#ffffff",
@@ -953,7 +959,7 @@ exports[`Index page should match snapshot 1`] = `
                               "componentStyle": ComponentStyle {
                                 "componentId": "ButtonNew__ButtonContent-sj5i96-0",
                                 "isStatic": false,
-                                "lastClassName": "buWcqA",
+                                "lastClassName": "gUnVyo",
                                 "rules": Array [
                                   "&.",
                                   "bp3-button",
@@ -1001,12 +1007,12 @@ exports[`Index page should match snapshot 1`] = `
                           type="button"
                         >
                           <Blueprint3.Button
-                            className="ButtonNew__ButtonContent-sj5i96-0 buWcqA"
+                            className="ButtonNew__ButtonContent-sj5i96-0 gUnVyo"
                             onClick={[Function]}
                             type="button"
                           >
                             <button
-                              className="bp3-button ButtonNew__ButtonContent-sj5i96-0 buWcqA"
+                              className="bp3-button ButtonNew__ButtonContent-sj5i96-0 gUnVyo"
                               onClick={[Function]}
                               onKeyDown={[Function]}
                               onKeyUp={[Function]}
@@ -1748,7 +1754,7 @@ exports[`Index page should match snapshot 1`] = `
                                                             "componentStyle": ComponentStyle {
                                                               "componentId": "ButtonNew__LinkContent-sj5i96-1",
                                                               "isStatic": false,
-                                                              "lastClassName": "bfjIpV",
+                                                              "lastClassName": "fBXtwL",
                                                               "rules": Array [
                                                                 "display:inline-flex;border-radius:",
                                                                 [Function],
@@ -1793,7 +1799,7 @@ exports[`Index page should match snapshot 1`] = `
                                                         onMouseEnter={[Function]}
                                                       >
                                                         <a
-                                                          className="ButtonNew__LinkContent-sj5i96-1 bfjIpV"
+                                                          className="ButtonNew__LinkContent-sj5i96-1 fBXtwL"
                                                           onClick={[Function]}
                                                           onMouseEnter={[Function]}
                                                         >
@@ -1876,7 +1882,7 @@ exports[`Index page should match snapshot 1`] = `
                                                             "componentStyle": ComponentStyle {
                                                               "componentId": "ButtonAlternative__LinkContent-sc-4kmbfx-1",
                                                               "isStatic": false,
-                                                              "lastClassName": "gwUBa",
+                                                              "lastClassName": "iNyJcP",
                                                               "rules": Array [
                                                                 "display:inline-flex;border-radius:",
                                                                 [Function],
@@ -1919,7 +1925,7 @@ exports[`Index page should match snapshot 1`] = `
                                                         onMouseEnter={[Function]}
                                                       >
                                                         <a
-                                                          className="ButtonAlternative__LinkContent-sc-4kmbfx-1 gwUBa"
+                                                          className="ButtonAlternative__LinkContent-sc-4kmbfx-1 iNyJcP"
                                                           onClick={[Function]}
                                                           onMouseEnter={[Function]}
                                                         >
@@ -2125,7 +2131,7 @@ exports[`Index page should match snapshot 1`] = `
               "componentStyle": ComponentStyle {
                 "componentId": "Page__GamesBarWrapper-sc-1ix2o3i-13",
                 "isStatic": false,
-                "lastClassName": "hRmkSc",
+                "lastClassName": "ghsVHa",
                 "rules": Array [
                   "box-sizing: border-box;",
                   "margin: 0;",
@@ -2157,7 +2163,7 @@ exports[`Index page should match snapshot 1`] = `
           forwardedRef={null}
         >
           <div
-            className="sc-bdVaJa sc-bwzfXH Page__GamesBarWrapper-sc-1ix2o3i-13 hRmkSc"
+            className="sc-bdVaJa sc-bwzfXH Page__GamesBarWrapper-sc-1ix2o3i-13 ghsVHa"
           >
             <UtilsComponents__Container>
               <StyledComponent
@@ -4745,7 +4751,7 @@ exports[`Index page should match snapshot 1`] = `
                                         "componentStyle": ComponentStyle {
                                           "componentId": "Page__OutsideCircle-sc-1ix2o3i-5",
                                           "isStatic": false,
-                                          "lastClassName": "dtyGTZ",
+                                          "lastClassName": "dmtjHF",
                                           "rules": Array [
                                             "background:transparent;border-radius:50%;border:1.5px solid ",
                                             [Function],
@@ -4765,7 +4771,7 @@ exports[`Index page should match snapshot 1`] = `
                                     forwardedRef={null}
                                   >
                                     <div
-                                      className="Page__OutsideCircle-sc-1ix2o3i-5 dtyGTZ"
+                                      className="Page__OutsideCircle-sc-1ix2o3i-5 dmtjHF"
                                     >
                                       <Page__InsideCircle>
                                         <StyledComponent
@@ -4776,7 +4782,7 @@ exports[`Index page should match snapshot 1`] = `
                                               "componentStyle": ComponentStyle {
                                                 "componentId": "Page__InsideCircle-sc-1ix2o3i-6",
                                                 "isStatic": false,
-                                                "lastClassName": "elYVNV",
+                                                "lastClassName": "hywBAm",
                                                 "rules": Array [
                                                   "background:",
                                                   [Function],
@@ -4796,7 +4802,7 @@ exports[`Index page should match snapshot 1`] = `
                                           forwardedRef={null}
                                         >
                                           <div
-                                            className="Page__InsideCircle-sc-1ix2o3i-6 elYVNV"
+                                            className="Page__InsideCircle-sc-1ix2o3i-6 hywBAm"
                                           >
                                             <Page__FlowStepIcon
                                               src="/images/step1.png"
@@ -5557,7 +5563,7 @@ exports[`Index page should match snapshot 1`] = `
                                         "componentStyle": ComponentStyle {
                                           "componentId": "Page__OutsideCircle-sc-1ix2o3i-5",
                                           "isStatic": false,
-                                          "lastClassName": "dtyGTZ",
+                                          "lastClassName": "dmtjHF",
                                           "rules": Array [
                                             "background:transparent;border-radius:50%;border:1.5px solid ",
                                             [Function],
@@ -5577,7 +5583,7 @@ exports[`Index page should match snapshot 1`] = `
                                     forwardedRef={null}
                                   >
                                     <div
-                                      className="Page__OutsideCircle-sc-1ix2o3i-5 dtyGTZ"
+                                      className="Page__OutsideCircle-sc-1ix2o3i-5 dmtjHF"
                                     >
                                       <Page__InsideCircle>
                                         <StyledComponent
@@ -5588,7 +5594,7 @@ exports[`Index page should match snapshot 1`] = `
                                               "componentStyle": ComponentStyle {
                                                 "componentId": "Page__InsideCircle-sc-1ix2o3i-6",
                                                 "isStatic": false,
-                                                "lastClassName": "elYVNV",
+                                                "lastClassName": "hywBAm",
                                                 "rules": Array [
                                                   "background:",
                                                   [Function],
@@ -5608,7 +5614,7 @@ exports[`Index page should match snapshot 1`] = `
                                           forwardedRef={null}
                                         >
                                           <div
-                                            className="Page__InsideCircle-sc-1ix2o3i-6 elYVNV"
+                                            className="Page__InsideCircle-sc-1ix2o3i-6 hywBAm"
                                           >
                                             <Page__FlowStepIcon
                                               src="/images/step2.png"
@@ -5947,7 +5953,7 @@ exports[`Index page should match snapshot 1`] = `
                                         "componentStyle": ComponentStyle {
                                           "componentId": "Page__OutsideCircle-sc-1ix2o3i-5",
                                           "isStatic": false,
-                                          "lastClassName": "dtyGTZ",
+                                          "lastClassName": "dmtjHF",
                                           "rules": Array [
                                             "background:transparent;border-radius:50%;border:1.5px solid ",
                                             [Function],
@@ -5967,7 +5973,7 @@ exports[`Index page should match snapshot 1`] = `
                                     forwardedRef={null}
                                   >
                                     <div
-                                      className="Page__OutsideCircle-sc-1ix2o3i-5 dtyGTZ"
+                                      className="Page__OutsideCircle-sc-1ix2o3i-5 dmtjHF"
                                     >
                                       <Page__InsideCircle>
                                         <StyledComponent
@@ -5978,7 +5984,7 @@ exports[`Index page should match snapshot 1`] = `
                                               "componentStyle": ComponentStyle {
                                                 "componentId": "Page__InsideCircle-sc-1ix2o3i-6",
                                                 "isStatic": false,
-                                                "lastClassName": "elYVNV",
+                                                "lastClassName": "hywBAm",
                                                 "rules": Array [
                                                   "background:",
                                                   [Function],
@@ -5998,7 +6004,7 @@ exports[`Index page should match snapshot 1`] = `
                                           forwardedRef={null}
                                         >
                                           <div
-                                            className="Page__InsideCircle-sc-1ix2o3i-6 elYVNV"
+                                            className="Page__InsideCircle-sc-1ix2o3i-6 hywBAm"
                                           >
                                             <Page__FlowStepIcon
                                               src="/images/step3.png"
@@ -6759,7 +6765,7 @@ exports[`Index page should match snapshot 1`] = `
                                         "componentStyle": ComponentStyle {
                                           "componentId": "Page__OutsideCircle-sc-1ix2o3i-5",
                                           "isStatic": false,
-                                          "lastClassName": "dtyGTZ",
+                                          "lastClassName": "dmtjHF",
                                           "rules": Array [
                                             "background:transparent;border-radius:50%;border:1.5px solid ",
                                             [Function],
@@ -6779,7 +6785,7 @@ exports[`Index page should match snapshot 1`] = `
                                     forwardedRef={null}
                                   >
                                     <div
-                                      className="Page__OutsideCircle-sc-1ix2o3i-5 dtyGTZ"
+                                      className="Page__OutsideCircle-sc-1ix2o3i-5 dmtjHF"
                                     >
                                       <Page__InsideCircle>
                                         <StyledComponent
@@ -6790,7 +6796,7 @@ exports[`Index page should match snapshot 1`] = `
                                               "componentStyle": ComponentStyle {
                                                 "componentId": "Page__InsideCircle-sc-1ix2o3i-6",
                                                 "isStatic": false,
-                                                "lastClassName": "elYVNV",
+                                                "lastClassName": "hywBAm",
                                                 "rules": Array [
                                                   "background:",
                                                   [Function],
@@ -6810,7 +6816,7 @@ exports[`Index page should match snapshot 1`] = `
                                           forwardedRef={null}
                                         >
                                           <div
-                                            className="Page__InsideCircle-sc-1ix2o3i-6 elYVNV"
+                                            className="Page__InsideCircle-sc-1ix2o3i-6 hywBAm"
                                           >
                                             <Page__FlowStepIcon
                                               src="/images/step4.png"
@@ -7302,24 +7308,15 @@ exports[`Index page should match snapshot 1`] = `
                                   "componentStyle": ComponentStyle {
                                     "componentId": "Table__TableContentHeader-sc-161dbgp-3",
                                     "isStatic": false,
-                                    "lastClassName": "iyIdCm",
+                                    "lastClassName": "eZOIBo",
                                     "rules": Array [
                                       "font-family:",
                                       [Function],
                                       ";background-color:",
                                       [Function],
                                       ";height:80px;width:100%;align-items:center;table-layout:fixed;margin:0 auto;",
-                                      "
-    @media (max-width: ",
-                                      "576px",
-                                      ") {
-      ",
-                                      "
-    font-size: 13px;
-  ",
-                                      "
-    }
-  ",
+                                      [Function],
+                                      "{font-size:13px;}",
                                     ],
                                   },
                                   "displayName": "Table__TableContentHeader",
@@ -7335,7 +7332,7 @@ exports[`Index page should match snapshot 1`] = `
                               forwardedRef={null}
                             >
                               <table
-                                className="Table__TableContentHeader-sc-161dbgp-3 iyIdCm"
+                                className="Table__TableContentHeader-sc-161dbgp-3 eZOIBo"
                               >
                                 <Table__HeaderTh>
                                   <StyledComponent
@@ -7375,21 +7372,11 @@ exports[`Index page should match snapshot 1`] = `
                                               "componentStyle": ComponentStyle {
                                                 "componentId": "Table__CategoryTd-sc-161dbgp-1",
                                                 "isStatic": false,
-                                                "lastClassName": "jVvLOk",
+                                                "lastClassName": "krzdYt",
                                                 "rules": Array [
                                                   "color:white;height:50px;font-weight:bold;padding:20px;font-size:25px;vertical-align:middle;",
-                                                  "
-    @media (max-width: ",
-                                                  "1420px",
-                                                  ") {
-      ",
-                                                  "
-    display: none;
-  ",
-                                                  "
-    }
-  ",
-                                                  ";",
+                                                  [Function],
+                                                  "{display:none;}",
                                                 ],
                                               },
                                               "displayName": "Table__CategoryTd",
@@ -7405,7 +7392,7 @@ exports[`Index page should match snapshot 1`] = `
                                           forwardedRef={null}
                                         >
                                           <th
-                                            className="Table__CategoryTd-sc-161dbgp-1 jVvLOk"
+                                            className="Table__CategoryTd-sc-161dbgp-1 krzdYt"
                                           >
                                             Categories
                                           </th>
@@ -7577,22 +7564,13 @@ exports[`Index page should match snapshot 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "Table__TableContent-sc-161dbgp-4",
                                             "isStatic": false,
-                                            "lastClassName": "gUCAkx",
+                                            "lastClassName": "gYnaBG",
                                             "rules": Array [
                                               "font-family:",
                                               [Function],
                                               ";width:100%;align-items:center;table-layout:fixed;margin:0 auto;",
-                                              "
-    @media (max-width: ",
-                                              "576px",
-                                              ") {
-      ",
-                                              "
-    font-size: 13px;
-  ",
-                                              "
-    }
-  ",
+                                              [Function],
+                                              "{font-size:13px;}",
                                             ],
                                           },
                                           "displayName": "Table__TableContent",
@@ -7608,7 +7586,7 @@ exports[`Index page should match snapshot 1`] = `
                                       forwardedRef={null}
                                     >
                                       <table
-                                        className="Table__TableContent-sc-161dbgp-4 gUCAkx"
+                                        className="Table__TableContent-sc-161dbgp-4 gYnaBG"
                                       >
                                         <Table__Tr>
                                           <StyledComponent
@@ -7862,22 +7840,13 @@ exports[`Index page should match snapshot 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "Table__TableContent-sc-161dbgp-4",
                                             "isStatic": false,
-                                            "lastClassName": "gUCAkx",
+                                            "lastClassName": "gYnaBG",
                                             "rules": Array [
                                               "font-family:",
                                               [Function],
                                               ";width:100%;align-items:center;table-layout:fixed;margin:0 auto;",
-                                              "
-    @media (max-width: ",
-                                              "576px",
-                                              ") {
-      ",
-                                              "
-    font-size: 13px;
-  ",
-                                              "
-    }
-  ",
+                                              [Function],
+                                              "{font-size:13px;}",
                                             ],
                                           },
                                           "displayName": "Table__TableContent",
@@ -7893,7 +7862,7 @@ exports[`Index page should match snapshot 1`] = `
                                       forwardedRef={null}
                                     >
                                       <table
-                                        className="Table__TableContent-sc-161dbgp-4 gUCAkx"
+                                        className="Table__TableContent-sc-161dbgp-4 gYnaBG"
                                       >
                                         <Table__Tr>
                                           <StyledComponent
@@ -8147,22 +8116,13 @@ exports[`Index page should match snapshot 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "Table__TableContent-sc-161dbgp-4",
                                             "isStatic": false,
-                                            "lastClassName": "gUCAkx",
+                                            "lastClassName": "gYnaBG",
                                             "rules": Array [
                                               "font-family:",
                                               [Function],
                                               ";width:100%;align-items:center;table-layout:fixed;margin:0 auto;",
-                                              "
-    @media (max-width: ",
-                                              "576px",
-                                              ") {
-      ",
-                                              "
-    font-size: 13px;
-  ",
-                                              "
-    }
-  ",
+                                              [Function],
+                                              "{font-size:13px;}",
                                             ],
                                           },
                                           "displayName": "Table__TableContent",
@@ -8178,7 +8138,7 @@ exports[`Index page should match snapshot 1`] = `
                                       forwardedRef={null}
                                     >
                                       <table
-                                        className="Table__TableContent-sc-161dbgp-4 gUCAkx"
+                                        className="Table__TableContent-sc-161dbgp-4 gYnaBG"
                                       >
                                         <Table__Tr>
                                           <StyledComponent
@@ -8432,22 +8392,13 @@ exports[`Index page should match snapshot 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "Table__TableContent-sc-161dbgp-4",
                                             "isStatic": false,
-                                            "lastClassName": "gUCAkx",
+                                            "lastClassName": "gYnaBG",
                                             "rules": Array [
                                               "font-family:",
                                               [Function],
                                               ";width:100%;align-items:center;table-layout:fixed;margin:0 auto;",
-                                              "
-    @media (max-width: ",
-                                              "576px",
-                                              ") {
-      ",
-                                              "
-    font-size: 13px;
-  ",
-                                              "
-    }
-  ",
+                                              [Function],
+                                              "{font-size:13px;}",
                                             ],
                                           },
                                           "displayName": "Table__TableContent",
@@ -8463,7 +8414,7 @@ exports[`Index page should match snapshot 1`] = `
                                       forwardedRef={null}
                                     >
                                       <table
-                                        className="Table__TableContent-sc-161dbgp-4 gUCAkx"
+                                        className="Table__TableContent-sc-161dbgp-4 gYnaBG"
                                       >
                                         <Table__Tr>
                                           <StyledComponent
@@ -8717,22 +8668,13 @@ exports[`Index page should match snapshot 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "Table__TableContent-sc-161dbgp-4",
                                             "isStatic": false,
-                                            "lastClassName": "gUCAkx",
+                                            "lastClassName": "gYnaBG",
                                             "rules": Array [
                                               "font-family:",
                                               [Function],
                                               ";width:100%;align-items:center;table-layout:fixed;margin:0 auto;",
-                                              "
-    @media (max-width: ",
-                                              "576px",
-                                              ") {
-      ",
-                                              "
-    font-size: 13px;
-  ",
-                                              "
-    }
-  ",
+                                              [Function],
+                                              "{font-size:13px;}",
                                             ],
                                           },
                                           "displayName": "Table__TableContent",
@@ -8748,7 +8690,7 @@ exports[`Index page should match snapshot 1`] = `
                                       forwardedRef={null}
                                     >
                                       <table
-                                        className="Table__TableContent-sc-161dbgp-4 gUCAkx"
+                                        className="Table__TableContent-sc-161dbgp-4 gYnaBG"
                                       >
                                         <Table__Tr>
                                           <StyledComponent
@@ -9002,22 +8944,13 @@ exports[`Index page should match snapshot 1`] = `
                                           "componentStyle": ComponentStyle {
                                             "componentId": "Table__TableContent-sc-161dbgp-4",
                                             "isStatic": false,
-                                            "lastClassName": "gUCAkx",
+                                            "lastClassName": "gYnaBG",
                                             "rules": Array [
                                               "font-family:",
                                               [Function],
                                               ";width:100%;align-items:center;table-layout:fixed;margin:0 auto;",
-                                              "
-    @media (max-width: ",
-                                              "576px",
-                                              ") {
-      ",
-                                              "
-    font-size: 13px;
-  ",
-                                              "
-    }
-  ",
+                                              [Function],
+                                              "{font-size:13px;}",
                                             ],
                                           },
                                           "displayName": "Table__TableContent",
@@ -9033,7 +8966,7 @@ exports[`Index page should match snapshot 1`] = `
                                       forwardedRef={null}
                                     >
                                       <table
-                                        className="Table__TableContent-sc-161dbgp-4 gUCAkx"
+                                        className="Table__TableContent-sc-161dbgp-4 gYnaBG"
                                       >
                                         <Table__Tr>
                                           <StyledComponent
@@ -9393,7 +9326,7 @@ exports[`Index page should match snapshot 1`] = `
                                     "componentStyle": ComponentStyle {
                                       "componentId": "ButtonNew__LinkContent-sj5i96-1",
                                       "isStatic": false,
-                                      "lastClassName": "bfjIpV",
+                                      "lastClassName": "fBXtwL",
                                       "rules": Array [
                                         "display:inline-flex;border-radius:",
                                         [Function],
@@ -9438,7 +9371,7 @@ exports[`Index page should match snapshot 1`] = `
                                 onMouseEnter={[Function]}
                               >
                                 <a
-                                  className="ButtonNew__LinkContent-sj5i96-1 bfjIpV"
+                                  className="ButtonNew__LinkContent-sj5i96-1 fBXtwL"
                                   onClick={[Function]}
                                   onMouseEnter={[Function]}
                                 >
@@ -10022,7 +9955,7 @@ exports[`Index page should match snapshot 1`] = `
                             "componentStyle": ComponentStyle {
                               "componentId": "Page__PriceCardContent-sc-1ix2o3i-11",
                               "isStatic": false,
-                              "lastClassName": "fajKve",
+                              "lastClassName": "jyeYiR",
                               "rules": Array [
                                 "box-sizing: border-box;",
                                 "margin: 0;",
@@ -10061,7 +9994,7 @@ exports[`Index page should match snapshot 1`] = `
                         p="20px"
                       >
                         <div
-                          className="sc-bdVaJa Page__PriceCardContent-sc-1ix2o3i-11 fajKve"
+                          className="sc-bdVaJa Page__PriceCardContent-sc-1ix2o3i-11 jyeYiR"
                         >
                           <styled.div
                             pb={3}
@@ -10251,7 +10184,7 @@ exports[`Index page should match snapshot 1`] = `
                                     "componentStyle": ComponentStyle {
                                       "componentId": "ButtonDark__ButtonContent-le6ouf-0",
                                       "isStatic": false,
-                                      "lastClassName": "hHqgzh",
+                                      "lastClassName": "bztDKt",
                                       "rules": Array [
                                         "&.",
                                         "bp3-button",
@@ -10297,12 +10230,12 @@ exports[`Index page should match snapshot 1`] = `
                                 type="button"
                               >
                                 <Blueprint3.Button
-                                  className="ButtonDark__ButtonContent-le6ouf-0 hHqgzh"
+                                  className="ButtonDark__ButtonContent-le6ouf-0 bztDKt"
                                   onClick={[Function]}
                                   type="button"
                                 >
                                   <button
-                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 hHqgzh"
+                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 bztDKt"
                                     onClick={[Function]}
                                     onKeyDown={[Function]}
                                     onKeyUp={[Function]}
@@ -10351,7 +10284,7 @@ exports[`Index page should match snapshot 1`] = `
                             "componentStyle": ComponentStyle {
                               "componentId": "Page__PriceCardContent-sc-1ix2o3i-11",
                               "isStatic": false,
-                              "lastClassName": "fajKve",
+                              "lastClassName": "jyeYiR",
                               "rules": Array [
                                 "box-sizing: border-box;",
                                 "margin: 0;",
@@ -10390,7 +10323,7 @@ exports[`Index page should match snapshot 1`] = `
                         p="20px"
                       >
                         <div
-                          className="sc-bdVaJa Page__PriceCardContent-sc-1ix2o3i-11 fajKve"
+                          className="sc-bdVaJa Page__PriceCardContent-sc-1ix2o3i-11 jyeYiR"
                         >
                           <styled.div
                             pb={3}
@@ -10580,7 +10513,7 @@ exports[`Index page should match snapshot 1`] = `
                                     "componentStyle": ComponentStyle {
                                       "componentId": "ButtonDark__ButtonContent-le6ouf-0",
                                       "isStatic": false,
-                                      "lastClassName": "hHqgzh",
+                                      "lastClassName": "bztDKt",
                                       "rules": Array [
                                         "&.",
                                         "bp3-button",
@@ -10626,12 +10559,12 @@ exports[`Index page should match snapshot 1`] = `
                                 type="button"
                               >
                                 <Blueprint3.Button
-                                  className="ButtonDark__ButtonContent-le6ouf-0 hHqgzh"
+                                  className="ButtonDark__ButtonContent-le6ouf-0 bztDKt"
                                   onClick={[Function]}
                                   type="button"
                                 >
                                   <button
-                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 hHqgzh"
+                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 bztDKt"
                                     onClick={[Function]}
                                     onKeyDown={[Function]}
                                     onKeyUp={[Function]}
@@ -10680,7 +10613,7 @@ exports[`Index page should match snapshot 1`] = `
                             "componentStyle": ComponentStyle {
                               "componentId": "Page__PriceCardContent-sc-1ix2o3i-11",
                               "isStatic": false,
-                              "lastClassName": "fajKve",
+                              "lastClassName": "jyeYiR",
                               "rules": Array [
                                 "box-sizing: border-box;",
                                 "margin: 0;",
@@ -10719,7 +10652,7 @@ exports[`Index page should match snapshot 1`] = `
                         p="20px"
                       >
                         <div
-                          className="sc-bdVaJa Page__PriceCardContent-sc-1ix2o3i-11 fajKve"
+                          className="sc-bdVaJa Page__PriceCardContent-sc-1ix2o3i-11 jyeYiR"
                         >
                           <styled.div
                             pb={3}
@@ -10909,7 +10842,7 @@ exports[`Index page should match snapshot 1`] = `
                                     "componentStyle": ComponentStyle {
                                       "componentId": "ButtonDark__ButtonContent-le6ouf-0",
                                       "isStatic": false,
-                                      "lastClassName": "hHqgzh",
+                                      "lastClassName": "bztDKt",
                                       "rules": Array [
                                         "&.",
                                         "bp3-button",
@@ -10955,12 +10888,12 @@ exports[`Index page should match snapshot 1`] = `
                                 type="button"
                               >
                                 <Blueprint3.Button
-                                  className="ButtonDark__ButtonContent-le6ouf-0 hHqgzh"
+                                  className="ButtonDark__ButtonContent-le6ouf-0 bztDKt"
                                   onClick={[Function]}
                                   type="button"
                                 >
                                   <button
-                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 hHqgzh"
+                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 bztDKt"
                                     onClick={[Function]}
                                     onKeyDown={[Function]}
                                     onKeyUp={[Function]}
@@ -11009,7 +10942,7 @@ exports[`Index page should match snapshot 1`] = `
                             "componentStyle": ComponentStyle {
                               "componentId": "Page__PriceCardContent-sc-1ix2o3i-11",
                               "isStatic": false,
-                              "lastClassName": "fajKve",
+                              "lastClassName": "jyeYiR",
                               "rules": Array [
                                 "box-sizing: border-box;",
                                 "margin: 0;",
@@ -11048,7 +10981,7 @@ exports[`Index page should match snapshot 1`] = `
                         p="20px"
                       >
                         <div
-                          className="sc-bdVaJa Page__PriceCardContent-sc-1ix2o3i-11 fajKve"
+                          className="sc-bdVaJa Page__PriceCardContent-sc-1ix2o3i-11 jyeYiR"
                         >
                           <styled.div
                             pb={3}
@@ -11238,7 +11171,7 @@ exports[`Index page should match snapshot 1`] = `
                                     "componentStyle": ComponentStyle {
                                       "componentId": "ButtonDark__ButtonContent-le6ouf-0",
                                       "isStatic": false,
-                                      "lastClassName": "hHqgzh",
+                                      "lastClassName": "bztDKt",
                                       "rules": Array [
                                         "&.",
                                         "bp3-button",
@@ -11284,12 +11217,12 @@ exports[`Index page should match snapshot 1`] = `
                                 type="button"
                               >
                                 <Blueprint3.Button
-                                  className="ButtonDark__ButtonContent-le6ouf-0 hHqgzh"
+                                  className="ButtonDark__ButtonContent-le6ouf-0 bztDKt"
                                   onClick={[Function]}
                                   type="button"
                                 >
                                   <button
-                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 hHqgzh"
+                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 bztDKt"
                                     onClick={[Function]}
                                     onKeyDown={[Function]}
                                     onKeyUp={[Function]}
