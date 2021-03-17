@@ -108,7 +108,6 @@ const Dashboard: FunctionComponent<Props> = (props) => {
             <EmptyCard text="No request reviews to show" />
           ) : (
             props.reviewRequests.map((reviewRequest) => {
-              console.log("review request found")
               if (
                 reviewRequest &&
                 reviewRequest.status !== "published" &&

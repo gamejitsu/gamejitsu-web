@@ -2,7 +2,7 @@ import React from "react"
 import { Flex, Box } from "rebass/styled-components"
 import Head from "next/head"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import { Footer, Navbar } from "gamejitsu/components"
+import { Footer } from "gamejitsu/components"
 import LinkMailBold from "gamejitsu/components/LinkMailBold"
 import {
   Container,
@@ -19,7 +19,6 @@ const Page: AuthenticatedComponent = () => (
       <link rel="shortcut icon" href="/favicon.png" />
       <title>Gamejitsu - Security</title>
     </Head>
-    <Navbar />
     <Spacer padding={80} />
     <Box px={[4]}>
       <Box>

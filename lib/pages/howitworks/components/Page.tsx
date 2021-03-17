@@ -11,7 +11,7 @@ import {
   ParagraphTitle,
   FlowImage
 } from "../../../components/UtilsComponents"
-import { Footer, Navbar } from "gamejitsu/components"
+import { Footer } from "gamejitsu/components"
 
 const Page: AuthenticatedComponent = () => (
   <Container>
@@ -19,7 +19,6 @@ const Page: AuthenticatedComponent = () => (
       <link rel="shortcut icon" href="/favicon.png" />
       <title>Gamejitsu - How It Works</title>
     </Head>
-    <Navbar />
     <Spacer padding={80} />
     <Box px={[4]}>
       <Box>

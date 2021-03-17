@@ -1,10 +1,8 @@
-import React, { useContext, useEffect } from "react"
-import { UserContext } from "gamejitsu/contexts"
+import React from "react"
 import styled from "styled-components"
 import { Box } from "rebass/styled-components"
 import Head from "next/head"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import queryString from "query-string"
 import {
   Container,
   MainTitle,
@@ -13,49 +11,15 @@ import {
   ParagraphText,
   ParagraphTitle
 } from "../../../components/UtilsComponents"
-import { Footer, LinkBold, Navbar } from "gamejitsu/components"
-
-const ABold = styled.a`
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: none;
-    color: ${(props) => props.theme.colors.primaryColor};
-  }
-`
-
-const getCurrentUser = () => useContext(UserContext)
+import { Footer } from "gamejitsu/components"
 
 const Page: AuthenticatedComponent = () => {
-  const user = getCurrentUser()
-  const urlBase = "https://steamcommunity.com/openid/login"
-
-  let redirectLink = ""
-  useEffect(() => {
-    redirectLink = window.origin + "/auth?redirect=/coach-signup"
-  })
-
-  const urlQuery = {
-    "openid.claimed_id": "http://specs.openid.net/auth/2.0/identifier_select",
-    "openid.identity": "http://specs.openid.net/auth/2.0/identifier_select",
-    "openid.mode": "checkid_setup",
-    "openid.ns": "http://specs.openid.net/auth/2.0",
-    "openid.realm": redirectLink,
-    "openid.return_to": redirectLink
-  }
-
-  const stringified: string = queryString.stringify(urlQuery)
-  const coachSignupLink: string = "/coach-signup"
-
   return (
     <Container>
       <Head>
         <link rel="shortcut icon" href="/favicon.png" />
         <title>Gamejitsu - Careers</title>
       </Head>
-      <Navbar />
       <Spacer padding={80} />
       <Box px={[4]}>
         <Box>

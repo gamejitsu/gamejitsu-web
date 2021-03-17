@@ -16,7 +16,7 @@ import { theme } from "gamejitsu"
 import UserResource, { User } from "gamejitsu/api/resources/user"
 import { Coach } from "gamejitsu/api/resources/coach"
 import { UserContext } from "gamejitsu/contexts"
-import Navbar from "lib/components/responsive-components/header-menu/navbar"
+import Navbar from "gamejitsu/components/responsive-components/header-menu/Navbar"
 
 interface DecoratedUser {
   coach: Coach | undefined

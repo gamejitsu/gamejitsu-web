@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import SideBar from "./sidebar"
+import SideBar from "./Sidebar"
 import { down } from "customUtils"
 
 interface StyledBurgerProps {
@@ -11,8 +11,6 @@ const StyledBurger = styled.div<StyledBurgerProps>`
   width: 2rem;
   height: 2rem;
   position: relative;
-  top: 15px;
-  right: 20px;
   z-index: 20;
   display: none;
   cursor: pointer;

@@ -17,11 +17,12 @@ interface Props {
 
 interface BaseProps {
   color?: string
+  disabled?: boolean
 }
 
 const baseStyles = css<BaseProps>`
   margin-left: 4px;
-  cursor: pointer;
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   margin-right: 4px;
   display: flex;
   line-height: 1;
@@ -30,7 +31,7 @@ const baseStyles = css<BaseProps>`
   font-weight: bold;
   text-align: center;
   transition: all 0.07s ease-in-out;
-  border: 2px solid ${(props) => props.theme.colors.primaryColor};
+  border: 2px solid ${(props) => (props.color ? props.color : props.theme.colors.primaryColor)};
   font-family: ${(props) => props.theme.textFont};
   border-radius: ${(props) => props.theme.borderRadius};
 
@@ -60,25 +61,24 @@ const BtnNormalStyles = css<BaseProps>`
   );
 
   &:hover {
+    box-shadow: inset 0px -3px 0px 0px ${(props) => (props.color ? darken(0.1, props.color) : darken(0.1, props.theme.colors.primaryColor))};
     background-image: linear-gradient(
       to bottom,
       ${(props) =>
         props.color ? lighten(0.25, props.color) : lighten(0.25, props.theme.colors.primaryColor)},
       ${(props) => (props.color ? props.color : props.theme.colors.primaryColor)}
     );
-
-    box-shadow: inset 0px -3px 0px 0px ${(props) => (props.color ? darken(0.1, props.color) : darken(0.1, props.theme.colors.primaryColor))};
   }
 
   &:active {
+    box-shadow: inset 0px 3px 0px 0px
+      ${(props) => darken(0.1, props.color ? props.color : props.theme.colors.primaryColor)};
     background-image: linear-gradient(
       to bottom,
       ${(props) => (props.color ? props.color : props.theme.colors.primaryColor)},
       ${(props) =>
         props.color ? darken(0.1, props.color) : darken(0.1, props.theme.colors.primaryColor)}
     );
-
-    box-shadow: inset 0px 3px 0px 0px ${(props) => darken(0.1, props.theme.colors.primaryColor)};
   }
 `
 
@@ -92,27 +92,27 @@ const BtnNewStyles = css<BaseProps>`
   }
 
   &:hover {
+    color: ${(props) => props.theme.colors.lightBackgroundColor};
+    box-shadow: inset 0px -3px 0px 0px ${(props) => darken(0.1, props.theme.colors.primaryColor)};
     background-image: linear-gradient(
       to bottom,
       ${(props) => lighten(0.25, props.theme.colors.primaryColor)},
       ${(props) => props.theme.colors.primaryColor}
     );
-    color: ${(props) => props.theme.colors.lightBackgroundColor};
+
     svg * {
       stroke: ${(props) => props.theme.colors.lightBackgroundColor};
       fill: ${(props) => props.theme.colors.lightBackgroundColor};
     }
-    box-shadow: inset 0px -3px 0px 0px ${(props) => darken(0.1, props.theme.colors.primaryColor)};
   }
 
   &:active {
+    box-shadow: inset 0px 3px 0px 0px ${(props) => darken(0.1, props.theme.colors.primaryColor)};
     background-image: linear-gradient(
       to bottom,
       ${(props) => props.theme.colors.primaryColor},
       ${(props) => darken(0.1, props.theme.colors.primaryColor)}
     );
-
-    box-shadow: inset 0px 3px 0px 0px ${(props) => darken(0.1, props.theme.colors.primaryColor)};
   }
 `
 
@@ -233,15 +233,7 @@ const ButtonWrapper = styled.div`
   display: block;
 `
 
-const Button: FunctionComponent<Props> = ({
-  text,
-  href,
-  type = "button",
-  onClick,
-  color,
-  icon,
-  ...props
-}) => {
+const Button: FunctionComponent<Props> = ({ text, href, type, onClick, color, icon, ...props }) => {
   return (
     <ButtonWrapper>
       {href ? (
@@ -266,6 +258,12 @@ const Button: FunctionComponent<Props> = ({
       )}
     </ButtonWrapper>
   )
+}
+
+Button.defaultProps = {
+  type: "button",
+  className: "normal",
+  disabled: false
 }
 
 export default Button

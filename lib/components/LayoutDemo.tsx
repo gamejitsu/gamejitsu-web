@@ -4,7 +4,6 @@ import { Box, Flex } from "rebass/styled-components"
 import { FunctionComponent } from "react"
 import { useRouter } from "next/router"
 
-import NavbarLeftMenu from "./NavbarLeftMenu"
 import LinkLeftMenu from "./LinkLeftMenu"
 
 import CoachDashboardSVG from "../../svgs/coach-dashboard.svg"
@@ -151,7 +150,6 @@ const LayoutWithMenu: FunctionComponent<Props> = ({ title, children }) => (
       <title>{title === undefined ? companyName : `${companyName} - ${title}`}</title>
     </Head>
 
-    <NavbarLeftMenu />
     <Wrapper>
       <LeftMenu>
         <InnerWrapper>

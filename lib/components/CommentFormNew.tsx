@@ -1,16 +1,7 @@
 import React, { useState } from "react"
 import { Box, Flex } from "rebass/styled-components"
 import { useFormik } from "formik"
-import {
-  TextArea,
-  Intent,
-  Toaster,
-  Position,
-  Toast,
-  Dialog,
-  Classes,
-  Tooltip
-} from "@blueprintjs/core"
+import { TextArea, Intent, Dialog, Classes, Tooltip } from "@blueprintjs/core"
 import { object, string } from "yup"
 import { MarkdownDialog, GenericToaster } from "gamejitsu/components"
 import { Button } from "gamejitsu/components"

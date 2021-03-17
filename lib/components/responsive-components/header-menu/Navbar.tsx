@@ -1,8 +1,8 @@
 import { FunctionComponent, useContext } from "react"
-import { UserContext } from "gamejitsu/contexts"
-import Burger from "./burger"
+import NextLink from "next/link"
+import Burger from "./Burger"
 import styled from "styled-components"
-import { Flex } from "rebass/styled-components"
+import { Flex, Box } from "rebass/styled-components"
 
 const gamejitsuWritingImageSrc = "/images/gamejitsu-writing.svg"
 
@@ -12,8 +12,8 @@ const Nav = styled.nav`
   max-width: 1920px;
   width: 100%;
   margin: auto;
-  height: 55px;
-  border-bottom: 2px solid #f1f1f1;
+  align-items: center;
+  min-height: 70px;
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
@@ -33,12 +33,15 @@ const Logo = styled(Flex)`
 `
 
 const Navbar: FunctionComponent = () => {
-  const user = useContext(UserContext)
   return (
     <Nav>
-      <Logo>
-        <img src={gamejitsuWritingImageSrc} style={{ width: "100%", height: "auto" }} />
-      </Logo>
+      <Box pl={[2, 2, 2, 3, 3]}>
+        <Logo>
+          <NextLink href="/">
+            <img src={gamejitsuWritingImageSrc} style={{ width: "100%", height: "auto" }} />
+          </NextLink>
+        </Logo>
+      </Box>
       <Burger />
     </Nav>
   )

@@ -27,7 +27,6 @@ const Page: AuthenticatedComponent = () => (
       <link rel="shortcut icon" href="/favicon.png" />
       <title>Gamejitsu - FAQ</title>
     </Head>
-    <Navbar />
     <Spacer padding={80} />
     <Box px={[4]}>
       <Box>

@@ -15,14 +15,7 @@ import {
 } from "../../../components/UtilsComponents"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import {
-  Navbar,
-  ButtonNew,
-  ButtonAlternative,
-  ButtonDark,
-  Footer,
-  Table
-} from "gamejitsu/components"
+import { Button, Footer, Table } from "gamejitsu/components"
 
 const dota2Diagonal = "/images/dota2-bs-crop-cut.png"
 const csgoDiagonal = "/images/csgo-container-final-2.png"
@@ -231,7 +224,7 @@ const PriceCard: FunctionComponent<PriceCardProps> = ({ children, icon, title, p
       <span>{price}</span> <span>Per Replay</span>
     </Price>
     <div>{children}</div>
-    <ButtonDark key="login" type="button" onClick={login} text="Get Started" />
+    <Button key="login" text="Get Started" onClick={login} className={"dark"} />
   </PriceCardContent>
 )
 
@@ -303,7 +296,6 @@ const Page: AuthenticatedComponent = () => (
       <link rel="shortcut icon" href="/favicon.png" />
       <title>Gamejitsu</title>
     </Head>
-    <Navbar />
     <StyledCookieConsent
       location="bottom"
       buttonText="ACCEPT"
@@ -340,14 +332,14 @@ const Page: AuthenticatedComponent = () => (
               <ParagraphText>by top quality coaches and start winning</ParagraphText>
               <Flex>
                 <Box pt={4}>
-                  <ButtonNew key="demo" type="button" href="/demo" text="WATCH DEMO" />
+                  <Button key="demo" text="WATCH DEMO" href="/demo" className={"new"} />
                 </Box>
                 <Box pt={4} pl={[3]}>
-                  <ButtonAlternative
+                  <Button
                     key="howitworks"
-                    type="button"
-                    href="/howitworks"
                     text="HOW IT WORKS"
+                    href="/howitworks"
+                    className={"alternative"}
                   />
                 </Box>
               </Flex>
@@ -588,7 +580,7 @@ const Page: AuthenticatedComponent = () => (
     <Container>
       <Flex justifyContent="center">
         <Box pt={[4, 5]} pb={[4, 5]}>
-          <ButtonNew key="ourcoaches" type="button" href="/our-coaches" text="OUR COACHES" />
+          <Button key="ourcoaches" text="OUR COACHES" href="/our-coaches" className={"new"} />
         </Box>
       </Flex>
     </Container>

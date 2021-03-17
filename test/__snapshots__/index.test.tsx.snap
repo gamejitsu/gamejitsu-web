@@ -43,1005 +43,6 @@ exports[`Index page should match snapshot 1`] = `
           reduceComponentsToState={[Function]}
         />
       </Head>
-      <Navbar>
-        <Styled(styled.div)
-          color="white"
-          flexWrap="wrap"
-          pt={
-            Array [
-              3,
-              2,
-            ]
-          }
-          px={3}
-        >
-          <StyledComponent
-            color="white"
-            flexWrap="wrap"
-            forwardedComponent={
-              Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "attrs": Array [],
-                "componentStyle": ComponentStyle {
-                  "componentId": "sc-bwzfXH",
-                  "isStatic": false,
-                  "lastClassName": "hswaSY",
-                  "rules": Array [
-                    "box-sizing: border-box;",
-                    "margin: 0;",
-                    "min-width: 0;",
-                    [Function],
-                    [Function],
-                    [Function],
-                    [Function],
-                    [Function],
-                    "display: flex;",
-                  ],
-                },
-                "displayName": "Styled(styled.div)",
-                "foldedComponentIds": Array [
-                  "sc-bdVaJa",
-                ],
-                "render": [Function],
-                "styledComponentId": "sc-bwzfXH",
-                "target": "div",
-                "toString": [Function],
-                "warnTooManyClasses": [Function],
-                "withComponent": [Function],
-              }
-            }
-            forwardedRef={null}
-            pt={
-              Array [
-                3,
-                2,
-              ]
-            }
-            px={3}
-          >
-            <div
-              className="sc-bdVaJa sc-bwzfXH dObikt"
-              color="white"
-            >
-              <Navbar__FlexWithOrderLogo>
-                <StyledComponent
-                  forwardedComponent={
-                    Object {
-                      "$$typeof": Symbol(react.forward_ref),
-                      "attrs": Array [],
-                      "componentStyle": ComponentStyle {
-                        "componentId": "Navbar__FlexWithOrderLogo-sc-1qe3s5x-2",
-                        "isStatic": false,
-                        "lastClassName": "cMtnkf",
-                        "rules": Array [
-                          "box-sizing: border-box;",
-                          "margin: 0;",
-                          "min-width: 0;",
-                          [Function],
-                          [Function],
-                          [Function],
-                          [Function],
-                          [Function],
-                          "display: flex;",
-                          "@media ",
-                          "(max-width: 767.98px)",
-                          "{order:1;align-items:center;width:50%;}",
-                        ],
-                      },
-                      "displayName": "Navbar__FlexWithOrderLogo",
-                      "foldedComponentIds": Array [
-                        "sc-bdVaJa",
-                        "sc-bwzfXH",
-                      ],
-                      "render": [Function],
-                      "styledComponentId": "Navbar__FlexWithOrderLogo-sc-1qe3s5x-2",
-                      "target": "div",
-                      "toString": [Function],
-                      "warnTooManyClasses": [Function],
-                      "withComponent": [Function],
-                    }
-                  }
-                  forwardedRef={null}
-                >
-                  <div
-                    className="sc-bdVaJa sc-bwzfXH Navbar__FlexWithOrderLogo-sc-1qe3s5x-2 cMtnkf"
-                  >
-                    <styled.div
-                      width="175px"
-                    >
-                      <StyledComponent
-                        forwardedComponent={
-                          Object {
-                            "$$typeof": Symbol(react.forward_ref),
-                            "attrs": Array [],
-                            "componentStyle": ComponentStyle {
-                              "componentId": "sc-bdVaJa",
-                              "isStatic": false,
-                              "lastClassName": "gtVQmG",
-                              "rules": Array [
-                                "box-sizing: border-box;",
-                                "margin: 0;",
-                                "min-width: 0;",
-                                [Function],
-                                [Function],
-                                [Function],
-                                [Function],
-                                [Function],
-                              ],
-                            },
-                            "displayName": "styled.div",
-                            "foldedComponentIds": Array [],
-                            "render": [Function],
-                            "styledComponentId": "sc-bdVaJa",
-                            "target": "div",
-                            "toString": [Function],
-                            "warnTooManyClasses": [Function],
-                            "withComponent": [Function],
-                          }
-                        }
-                        forwardedRef={null}
-                        width="175px"
-                      >
-                        <div
-                          className="sc-bdVaJa dxfyNt"
-                          width="175px"
-                        >
-                          <Navbar__Logo>
-                            <StyledComponent
-                              forwardedComponent={
-                                Object {
-                                  "$$typeof": Symbol(react.forward_ref),
-                                  "attrs": Array [],
-                                  "componentStyle": ComponentStyle {
-                                    "componentId": "Navbar__Logo-sc-1qe3s5x-1",
-                                    "isStatic": false,
-                                    "lastClassName": "KJmwW",
-                                    "rules": Array [
-                                      "filter:grayscale(1);transition:0.25s filter ease-in-out;&:hover{filter:grayscale(0);}",
-                                    ],
-                                  },
-                                  "displayName": "Navbar__Logo",
-                                  "foldedComponentIds": Array [],
-                                  "render": [Function],
-                                  "styledComponentId": "Navbar__Logo-sc-1qe3s5x-1",
-                                  "target": "div",
-                                  "toString": [Function],
-                                  "warnTooManyClasses": [Function],
-                                  "withComponent": [Function],
-                                }
-                              }
-                              forwardedRef={null}
-                            >
-                              <div
-                                className="Navbar__Logo-sc-1qe3s5x-1 KJmwW"
-                              >
-                                <ImageButton
-                                  href="/"
-                                  imageSrc="/images/gamejitsu-writing.svg"
-                                  key="home"
-                                >
-                                  <ImageButton__Link
-                                    href="/"
-                                  >
-                                    <StyledComponent
-                                      forwardedComponent={
-                                        Object {
-                                          "$$typeof": Symbol(react.forward_ref),
-                                          "attrs": Array [],
-                                          "componentStyle": ComponentStyle {
-                                            "componentId": "ImageButton__Link-ijww0w-1",
-                                            "isStatic": false,
-                                            "lastClassName": "bhGqMS",
-                                            "rules": Array [
-                                              [Function],
-                                            ],
-                                          },
-                                          "displayName": "ImageButton__Link",
-                                          "foldedComponentIds": Array [],
-                                          "render": [Function],
-                                          "styledComponentId": "ImageButton__Link-ijww0w-1",
-                                          "target": "a",
-                                          "toString": [Function],
-                                          "warnTooManyClasses": [Function],
-                                          "withComponent": [Function],
-                                        }
-                                      }
-                                      forwardedRef={null}
-                                      href="/"
-                                    >
-                                      <a
-                                        className="ImageButton__Link-ijww0w-1 bhGqMS"
-                                        href="/"
-                                      >
-                                        <ImageButton__Image
-                                          src="/images/gamejitsu-writing.svg"
-                                        >
-                                          <StyledComponent
-                                            forwardedComponent={
-                                              Object {
-                                                "$$typeof": Symbol(react.forward_ref),
-                                                "attrs": Array [],
-                                                "componentStyle": ComponentStyle {
-                                                  "componentId": "ImageButton__Image-ijww0w-2",
-                                                  "isStatic": false,
-                                                  "lastClassName": "hEKrRQ",
-                                                  "rules": Array [
-                                                    "width:100%;",
-                                                  ],
-                                                },
-                                                "displayName": "ImageButton__Image",
-                                                "foldedComponentIds": Array [],
-                                                "render": [Function],
-                                                "styledComponentId": "ImageButton__Image-ijww0w-2",
-                                                "target": "img",
-                                                "toString": [Function],
-                                                "warnTooManyClasses": [Function],
-                                                "withComponent": [Function],
-                                              }
-                                            }
-                                            forwardedRef={null}
-                                            src="/images/gamejitsu-writing.svg"
-                                          >
-                                            <img
-                                              className="ImageButton__Image-ijww0w-2 hEKrRQ"
-                                              src="/images/gamejitsu-writing.svg"
-                                            />
-                                          </StyledComponent>
-                                        </ImageButton__Image>
-                                      </a>
-                                    </StyledComponent>
-                                  </ImageButton__Link>
-                                </ImageButton>
-                              </div>
-                            </StyledComponent>
-                          </Navbar__Logo>
-                        </div>
-                      </StyledComponent>
-                    </styled.div>
-                  </div>
-                </StyledComponent>
-              </Navbar__FlexWithOrderLogo>
-              <Navbar__FlexWithOrderLinks>
-                <StyledComponent
-                  forwardedComponent={
-                    Object {
-                      "$$typeof": Symbol(react.forward_ref),
-                      "attrs": Array [],
-                      "componentStyle": ComponentStyle {
-                        "componentId": "Navbar__FlexWithOrderLinks-sc-1qe3s5x-3",
-                        "isStatic": false,
-                        "lastClassName": "fDXTcs",
-                        "rules": Array [
-                          "box-sizing: border-box;",
-                          "margin: 0;",
-                          "min-width: 0;",
-                          [Function],
-                          [Function],
-                          [Function],
-                          [Function],
-                          [Function],
-                          "display: flex;",
-                          "flex-grow:1;justify-content:flex-end;align-items:center;padding-right:16px;@media ",
-                          "(max-width: 767.98px)",
-                          "{order:3;width:100%;justify-content:flex-start;padding:16px 0;}",
-                        ],
-                      },
-                      "displayName": "Navbar__FlexWithOrderLinks",
-                      "foldedComponentIds": Array [
-                        "sc-bdVaJa",
-                        "sc-bwzfXH",
-                      ],
-                      "render": [Function],
-                      "styledComponentId": "Navbar__FlexWithOrderLinks-sc-1qe3s5x-3",
-                      "target": "div",
-                      "toString": [Function],
-                      "warnTooManyClasses": [Function],
-                      "withComponent": [Function],
-                    }
-                  }
-                  forwardedRef={null}
-                >
-                  <div
-                    className="sc-bdVaJa sc-bwzfXH Navbar__FlexWithOrderLinks-sc-1qe3s5x-3 fDXTcs"
-                  >
-                    <NavLink
-                      href="/demo"
-                      key="demo"
-                    >
-                      <styled.div
-                        m={2}
-                      >
-                        <StyledComponent
-                          forwardedComponent={
-                            Object {
-                              "$$typeof": Symbol(react.forward_ref),
-                              "attrs": Array [],
-                              "componentStyle": ComponentStyle {
-                                "componentId": "sc-bdVaJa",
-                                "isStatic": false,
-                                "lastClassName": "gtVQmG",
-                                "rules": Array [
-                                  "box-sizing: border-box;",
-                                  "margin: 0;",
-                                  "min-width: 0;",
-                                  [Function],
-                                  [Function],
-                                  [Function],
-                                  [Function],
-                                  [Function],
-                                ],
-                              },
-                              "displayName": "styled.div",
-                              "foldedComponentIds": Array [],
-                              "render": [Function],
-                              "styledComponentId": "sc-bdVaJa",
-                              "target": "div",
-                              "toString": [Function],
-                              "warnTooManyClasses": [Function],
-                              "withComponent": [Function],
-                            }
-                          }
-                          forwardedRef={null}
-                          m={2}
-                        >
-                          <div
-                            className="sc-bdVaJa jlyeAw"
-                          >
-                            <Navbar__NavLinkContent
-                              href="/demo"
-                              isActive={null}
-                            >
-                              <StyledComponent
-                                forwardedComponent={
-                                  Object {
-                                    "$$typeof": Symbol(react.forward_ref),
-                                    "attrs": Array [],
-                                    "componentStyle": ComponentStyle {
-                                      "componentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
-                                      "isStatic": false,
-                                      "lastClassName": "ceFcFq",
-                                      "rules": Array [
-                                        "font-weight:bold;transition:all 0.15s ease-in-out;position:relative;font-size:9px;letter-spacing:1px;margin-left:2px;margin-right:2px;&::before{background-color:",
-                                        [Function],
-                                        ";content:\\"\\";height:5px;margin-top:3px;left:0;opacity:",
-                                        [Function],
-                                        ";pointer-events:none;position:absolute;right:0;top:100%;transition:opacity 0.2s;width:100%;}&:hover::before{opacity:1;}",
-                                      ],
-                                    },
-                                    "displayName": "Navbar__NavLinkContent",
-                                    "foldedComponentIds": Array [],
-                                    "render": [Function],
-                                    "styledComponentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
-                                    "target": [Function],
-                                    "toString": [Function],
-                                    "warnTooManyClasses": [Function],
-                                    "withComponent": [Function],
-                                  }
-                                }
-                                forwardedRef={null}
-                                href="/demo"
-                                isActive={null}
-                              >
-                                <Link
-                                  className="Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
-                                  href="/demo"
-                                  isActive={null}
-                                >
-                                  <Link
-                                    href="/demo"
-                                  >
-                                    <Link__Content
-                                      className="Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
-                                      onClick={[Function]}
-                                      onMouseEnter={[Function]}
-                                    >
-                                      <StyledComponent
-                                        className="Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
-                                        forwardedComponent={
-                                          Object {
-                                            "$$typeof": Symbol(react.forward_ref),
-                                            "attrs": Array [],
-                                            "componentStyle": ComponentStyle {
-                                              "componentId": "Link__Content-j0sqir-0",
-                                              "isStatic": false,
-                                              "lastClassName": "kuoXkD",
-                                              "rules": Array [
-                                                "color:",
-                                                [Function],
-                                                ";cursor:pointer;&:hover{text-decoration:none;}",
-                                              ],
-                                            },
-                                            "displayName": "Link__Content",
-                                            "foldedComponentIds": Array [],
-                                            "render": [Function],
-                                            "styledComponentId": "Link__Content-j0sqir-0",
-                                            "target": "a",
-                                            "toString": [Function],
-                                            "warnTooManyClasses": [Function],
-                                            "withComponent": [Function],
-                                          }
-                                        }
-                                        forwardedRef={[Function]}
-                                        onClick={[Function]}
-                                        onMouseEnter={[Function]}
-                                      >
-                                        <a
-                                          className="Link__Content-j0sqir-0 kuoXkD Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
-                                          onClick={[Function]}
-                                          onMouseEnter={[Function]}
-                                        >
-                                          WATCH DEMO
-                                        </a>
-                                      </StyledComponent>
-                                    </Link__Content>
-                                  </Link>
-                                </Link>
-                              </StyledComponent>
-                            </Navbar__NavLinkContent>
-                          </div>
-                        </StyledComponent>
-                      </styled.div>
-                    </NavLink>
-                    <NavLink
-                      href="/dashboard"
-                      key="dashboard"
-                    >
-                      <styled.div
-                        m={2}
-                      >
-                        <StyledComponent
-                          forwardedComponent={
-                            Object {
-                              "$$typeof": Symbol(react.forward_ref),
-                              "attrs": Array [],
-                              "componentStyle": ComponentStyle {
-                                "componentId": "sc-bdVaJa",
-                                "isStatic": false,
-                                "lastClassName": "gtVQmG",
-                                "rules": Array [
-                                  "box-sizing: border-box;",
-                                  "margin: 0;",
-                                  "min-width: 0;",
-                                  [Function],
-                                  [Function],
-                                  [Function],
-                                  [Function],
-                                  [Function],
-                                ],
-                              },
-                              "displayName": "styled.div",
-                              "foldedComponentIds": Array [],
-                              "render": [Function],
-                              "styledComponentId": "sc-bdVaJa",
-                              "target": "div",
-                              "toString": [Function],
-                              "warnTooManyClasses": [Function],
-                              "withComponent": [Function],
-                            }
-                          }
-                          forwardedRef={null}
-                          m={2}
-                        >
-                          <div
-                            className="sc-bdVaJa jlyeAw"
-                          >
-                            <Navbar__NavLinkContent
-                              href="/dashboard"
-                              isActive={null}
-                            >
-                              <StyledComponent
-                                forwardedComponent={
-                                  Object {
-                                    "$$typeof": Symbol(react.forward_ref),
-                                    "attrs": Array [],
-                                    "componentStyle": ComponentStyle {
-                                      "componentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
-                                      "isStatic": false,
-                                      "lastClassName": "ceFcFq",
-                                      "rules": Array [
-                                        "font-weight:bold;transition:all 0.15s ease-in-out;position:relative;font-size:9px;letter-spacing:1px;margin-left:2px;margin-right:2px;&::before{background-color:",
-                                        [Function],
-                                        ";content:\\"\\";height:5px;margin-top:3px;left:0;opacity:",
-                                        [Function],
-                                        ";pointer-events:none;position:absolute;right:0;top:100%;transition:opacity 0.2s;width:100%;}&:hover::before{opacity:1;}",
-                                      ],
-                                    },
-                                    "displayName": "Navbar__NavLinkContent",
-                                    "foldedComponentIds": Array [],
-                                    "render": [Function],
-                                    "styledComponentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
-                                    "target": [Function],
-                                    "toString": [Function],
-                                    "warnTooManyClasses": [Function],
-                                    "withComponent": [Function],
-                                  }
-                                }
-                                forwardedRef={null}
-                                href="/dashboard"
-                                isActive={null}
-                              >
-                                <Link
-                                  className="Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
-                                  href="/dashboard"
-                                  isActive={null}
-                                >
-                                  <Link
-                                    href="/dashboard"
-                                  >
-                                    <Link__Content
-                                      className="Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
-                                      onClick={[Function]}
-                                      onMouseEnter={[Function]}
-                                    >
-                                      <StyledComponent
-                                        className="Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
-                                        forwardedComponent={
-                                          Object {
-                                            "$$typeof": Symbol(react.forward_ref),
-                                            "attrs": Array [],
-                                            "componentStyle": ComponentStyle {
-                                              "componentId": "Link__Content-j0sqir-0",
-                                              "isStatic": false,
-                                              "lastClassName": "kuoXkD",
-                                              "rules": Array [
-                                                "color:",
-                                                [Function],
-                                                ";cursor:pointer;&:hover{text-decoration:none;}",
-                                              ],
-                                            },
-                                            "displayName": "Link__Content",
-                                            "foldedComponentIds": Array [],
-                                            "render": [Function],
-                                            "styledComponentId": "Link__Content-j0sqir-0",
-                                            "target": "a",
-                                            "toString": [Function],
-                                            "warnTooManyClasses": [Function],
-                                            "withComponent": [Function],
-                                          }
-                                        }
-                                        forwardedRef={[Function]}
-                                        onClick={[Function]}
-                                        onMouseEnter={[Function]}
-                                      >
-                                        <a
-                                          className="Link__Content-j0sqir-0 kuoXkD Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
-                                          onClick={[Function]}
-                                          onMouseEnter={[Function]}
-                                        >
-                                          DASHBOARD
-                                        </a>
-                                      </StyledComponent>
-                                    </Link__Content>
-                                  </Link>
-                                </Link>
-                              </StyledComponent>
-                            </Navbar__NavLinkContent>
-                          </div>
-                        </StyledComponent>
-                      </styled.div>
-                    </NavLink>
-                    <NavLink
-                      href="/reviews"
-                      key="reviews"
-                    >
-                      <styled.div
-                        m={2}
-                      >
-                        <StyledComponent
-                          forwardedComponent={
-                            Object {
-                              "$$typeof": Symbol(react.forward_ref),
-                              "attrs": Array [],
-                              "componentStyle": ComponentStyle {
-                                "componentId": "sc-bdVaJa",
-                                "isStatic": false,
-                                "lastClassName": "gtVQmG",
-                                "rules": Array [
-                                  "box-sizing: border-box;",
-                                  "margin: 0;",
-                                  "min-width: 0;",
-                                  [Function],
-                                  [Function],
-                                  [Function],
-                                  [Function],
-                                  [Function],
-                                ],
-                              },
-                              "displayName": "styled.div",
-                              "foldedComponentIds": Array [],
-                              "render": [Function],
-                              "styledComponentId": "sc-bdVaJa",
-                              "target": "div",
-                              "toString": [Function],
-                              "warnTooManyClasses": [Function],
-                              "withComponent": [Function],
-                            }
-                          }
-                          forwardedRef={null}
-                          m={2}
-                        >
-                          <div
-                            className="sc-bdVaJa jlyeAw"
-                          >
-                            <Navbar__NavLinkContent
-                              href="/reviews"
-                              isActive={null}
-                            >
-                              <StyledComponent
-                                forwardedComponent={
-                                  Object {
-                                    "$$typeof": Symbol(react.forward_ref),
-                                    "attrs": Array [],
-                                    "componentStyle": ComponentStyle {
-                                      "componentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
-                                      "isStatic": false,
-                                      "lastClassName": "ceFcFq",
-                                      "rules": Array [
-                                        "font-weight:bold;transition:all 0.15s ease-in-out;position:relative;font-size:9px;letter-spacing:1px;margin-left:2px;margin-right:2px;&::before{background-color:",
-                                        [Function],
-                                        ";content:\\"\\";height:5px;margin-top:3px;left:0;opacity:",
-                                        [Function],
-                                        ";pointer-events:none;position:absolute;right:0;top:100%;transition:opacity 0.2s;width:100%;}&:hover::before{opacity:1;}",
-                                      ],
-                                    },
-                                    "displayName": "Navbar__NavLinkContent",
-                                    "foldedComponentIds": Array [],
-                                    "render": [Function],
-                                    "styledComponentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
-                                    "target": [Function],
-                                    "toString": [Function],
-                                    "warnTooManyClasses": [Function],
-                                    "withComponent": [Function],
-                                  }
-                                }
-                                forwardedRef={null}
-                                href="/reviews"
-                                isActive={null}
-                              >
-                                <Link
-                                  className="Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
-                                  href="/reviews"
-                                  isActive={null}
-                                >
-                                  <Link
-                                    href="/reviews"
-                                  >
-                                    <Link__Content
-                                      className="Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
-                                      onClick={[Function]}
-                                      onMouseEnter={[Function]}
-                                    >
-                                      <StyledComponent
-                                        className="Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
-                                        forwardedComponent={
-                                          Object {
-                                            "$$typeof": Symbol(react.forward_ref),
-                                            "attrs": Array [],
-                                            "componentStyle": ComponentStyle {
-                                              "componentId": "Link__Content-j0sqir-0",
-                                              "isStatic": false,
-                                              "lastClassName": "kuoXkD",
-                                              "rules": Array [
-                                                "color:",
-                                                [Function],
-                                                ";cursor:pointer;&:hover{text-decoration:none;}",
-                                              ],
-                                            },
-                                            "displayName": "Link__Content",
-                                            "foldedComponentIds": Array [],
-                                            "render": [Function],
-                                            "styledComponentId": "Link__Content-j0sqir-0",
-                                            "target": "a",
-                                            "toString": [Function],
-                                            "warnTooManyClasses": [Function],
-                                            "withComponent": [Function],
-                                          }
-                                        }
-                                        forwardedRef={[Function]}
-                                        onClick={[Function]}
-                                        onMouseEnter={[Function]}
-                                      >
-                                        <a
-                                          className="Link__Content-j0sqir-0 kuoXkD Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
-                                          onClick={[Function]}
-                                          onMouseEnter={[Function]}
-                                        >
-                                          REVIEWS
-                                        </a>
-                                      </StyledComponent>
-                                    </Link__Content>
-                                  </Link>
-                                </Link>
-                              </StyledComponent>
-                            </Navbar__NavLinkContent>
-                          </div>
-                        </StyledComponent>
-                      </styled.div>
-                    </NavLink>
-                    <NavLink
-                      href="/settings"
-                      key="username"
-                    >
-                      <styled.div
-                        m={2}
-                      >
-                        <StyledComponent
-                          forwardedComponent={
-                            Object {
-                              "$$typeof": Symbol(react.forward_ref),
-                              "attrs": Array [],
-                              "componentStyle": ComponentStyle {
-                                "componentId": "sc-bdVaJa",
-                                "isStatic": false,
-                                "lastClassName": "gtVQmG",
-                                "rules": Array [
-                                  "box-sizing: border-box;",
-                                  "margin: 0;",
-                                  "min-width: 0;",
-                                  [Function],
-                                  [Function],
-                                  [Function],
-                                  [Function],
-                                  [Function],
-                                ],
-                              },
-                              "displayName": "styled.div",
-                              "foldedComponentIds": Array [],
-                              "render": [Function],
-                              "styledComponentId": "sc-bdVaJa",
-                              "target": "div",
-                              "toString": [Function],
-                              "warnTooManyClasses": [Function],
-                              "withComponent": [Function],
-                            }
-                          }
-                          forwardedRef={null}
-                          m={2}
-                        >
-                          <div
-                            className="sc-bdVaJa jlyeAw"
-                          >
-                            <Navbar__NavLinkContent
-                              href="/settings"
-                              isActive={null}
-                            >
-                              <StyledComponent
-                                forwardedComponent={
-                                  Object {
-                                    "$$typeof": Symbol(react.forward_ref),
-                                    "attrs": Array [],
-                                    "componentStyle": ComponentStyle {
-                                      "componentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
-                                      "isStatic": false,
-                                      "lastClassName": "ceFcFq",
-                                      "rules": Array [
-                                        "font-weight:bold;transition:all 0.15s ease-in-out;position:relative;font-size:9px;letter-spacing:1px;margin-left:2px;margin-right:2px;&::before{background-color:",
-                                        [Function],
-                                        ";content:\\"\\";height:5px;margin-top:3px;left:0;opacity:",
-                                        [Function],
-                                        ";pointer-events:none;position:absolute;right:0;top:100%;transition:opacity 0.2s;width:100%;}&:hover::before{opacity:1;}",
-                                      ],
-                                    },
-                                    "displayName": "Navbar__NavLinkContent",
-                                    "foldedComponentIds": Array [],
-                                    "render": [Function],
-                                    "styledComponentId": "Navbar__NavLinkContent-sc-1qe3s5x-0",
-                                    "target": [Function],
-                                    "toString": [Function],
-                                    "warnTooManyClasses": [Function],
-                                    "withComponent": [Function],
-                                  }
-                                }
-                                forwardedRef={null}
-                                href="/settings"
-                                isActive={null}
-                              >
-                                <Link
-                                  className="Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
-                                  href="/settings"
-                                  isActive={null}
-                                >
-                                  <Link
-                                    href="/settings"
-                                  >
-                                    <Link__Content
-                                      className="Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
-                                      onClick={[Function]}
-                                      onMouseEnter={[Function]}
-                                    >
-                                      <StyledComponent
-                                        className="Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
-                                        forwardedComponent={
-                                          Object {
-                                            "$$typeof": Symbol(react.forward_ref),
-                                            "attrs": Array [],
-                                            "componentStyle": ComponentStyle {
-                                              "componentId": "Link__Content-j0sqir-0",
-                                              "isStatic": false,
-                                              "lastClassName": "kuoXkD",
-                                              "rules": Array [
-                                                "color:",
-                                                [Function],
-                                                ";cursor:pointer;&:hover{text-decoration:none;}",
-                                              ],
-                                            },
-                                            "displayName": "Link__Content",
-                                            "foldedComponentIds": Array [],
-                                            "render": [Function],
-                                            "styledComponentId": "Link__Content-j0sqir-0",
-                                            "target": "a",
-                                            "toString": [Function],
-                                            "warnTooManyClasses": [Function],
-                                            "withComponent": [Function],
-                                          }
-                                        }
-                                        forwardedRef={[Function]}
-                                        onClick={[Function]}
-                                        onMouseEnter={[Function]}
-                                      >
-                                        <a
-                                          className="Link__Content-j0sqir-0 kuoXkD Navbar__NavLinkContent-sc-1qe3s5x-0 ceFcFq"
-                                          onClick={[Function]}
-                                          onMouseEnter={[Function]}
-                                        >
-                                          userTest
-                                        </a>
-                                      </StyledComponent>
-                                    </Link__Content>
-                                  </Link>
-                                </Link>
-                              </StyledComponent>
-                            </Navbar__NavLinkContent>
-                          </div>
-                        </StyledComponent>
-                      </styled.div>
-                    </NavLink>
-                  </div>
-                </StyledComponent>
-              </Navbar__FlexWithOrderLinks>
-              <Navbar__FlexWithOrderButton>
-                <StyledComponent
-                  forwardedComponent={
-                    Object {
-                      "$$typeof": Symbol(react.forward_ref),
-                      "attrs": Array [],
-                      "componentStyle": ComponentStyle {
-                        "componentId": "Navbar__FlexWithOrderButton-sc-1qe3s5x-4",
-                        "isStatic": false,
-                        "lastClassName": "lnZqiM",
-                        "rules": Array [
-                          "box-sizing: border-box;",
-                          "margin: 0;",
-                          "min-width: 0;",
-                          [Function],
-                          [Function],
-                          [Function],
-                          [Function],
-                          [Function],
-                          "display: flex;",
-                          "@media ",
-                          "(max-width: 767.98px)",
-                          "{order:2;width:50%;justify-content:flex-end;}",
-                        ],
-                      },
-                      "displayName": "Navbar__FlexWithOrderButton",
-                      "foldedComponentIds": Array [
-                        "sc-bdVaJa",
-                        "sc-bwzfXH",
-                      ],
-                      "render": [Function],
-                      "styledComponentId": "Navbar__FlexWithOrderButton-sc-1qe3s5x-4",
-                      "target": "div",
-                      "toString": [Function],
-                      "warnTooManyClasses": [Function],
-                      "withComponent": [Function],
-                    }
-                  }
-                  forwardedRef={null}
-                >
-                  <div
-                    className="sc-bdVaJa sc-bwzfXH Navbar__FlexWithOrderButton-sc-1qe3s5x-4 lnZqiM"
-                  >
-                    <ButtonNew
-                      key="logout"
-                      onClick={[Function]}
-                      text="LOGOUT"
-                    >
-                      <ButtonNew__ButtonContent
-                        onClick={[Function]}
-                        type="button"
-                      >
-                        <StyledComponent
-                          forwardedComponent={
-                            Object {
-                              "$$typeof": Symbol(react.forward_ref),
-                              "attrs": Array [],
-                              "componentStyle": ComponentStyle {
-                                "componentId": "ButtonNew__ButtonContent-sj5i96-0",
-                                "isStatic": false,
-                                "lastClassName": "gUnVyo",
-                                "rules": Array [
-                                  "&.",
-                                  "bp3-button",
-                                  "{",
-                                  "display:inline-flex;border-radius:",
-                                  [Function],
-                                  ";border:2px solid ",
-                                  [Function],
-                                  ";color:",
-                                  [Function],
-                                  ";transition:all 0.05s ease-in-out;background:transparent;padding:13px 25px 13px 25px;font-size:15px;font-weight:bold;&:hover{background-image:linear-gradient( to bottom,",
-                                  [Function],
-                                  ",",
-                                  [Function],
-                                  " );color:",
-                                  [Function],
-                                  ";box-shadow:inset 0px -3px 0px 0px ",
-                                  [Function],
-                                  ";}&:active{background-image:linear-gradient( to bottom,",
-                                  [Function],
-                                  ",",
-                                  [Function],
-                                  " );box-shadow:inset 0px 3px 0px 0px ",
-                                  [Function],
-                                  ";}@media ",
-                                  "(max-width: 575.98px)",
-                                  "{font-size:13px;padding:10px 18px 10px 18px;}",
-                                  " outline:none;font-family:",
-                                  [Function],
-                                  ";&:active{outline:none;}}",
-                                ],
-                              },
-                              "displayName": "ButtonNew__ButtonContent",
-                              "foldedComponentIds": Array [],
-                              "render": [Function],
-                              "styledComponentId": "ButtonNew__ButtonContent-sj5i96-0",
-                              "target": [Function],
-                              "toString": [Function],
-                              "warnTooManyClasses": [Function],
-                              "withComponent": [Function],
-                            }
-                          }
-                          forwardedRef={null}
-                          onClick={[Function]}
-                          type="button"
-                        >
-                          <Blueprint3.Button
-                            className="ButtonNew__ButtonContent-sj5i96-0 gUnVyo"
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <button
-                              className="bp3-button ButtonNew__ButtonContent-sj5i96-0 gUnVyo"
-                              onClick={[Function]}
-                              onKeyDown={[Function]}
-                              onKeyUp={[Function]}
-                              type="button"
-                            >
-                              <Blueprint3.Icon
-                                key="leftIcon"
-                              />
-                              <span
-                                className="bp3-button-text"
-                                key="text"
-                              >
-                                LOGOUT
-                              </span>
-                              <Blueprint3.Icon
-                                key="rightIcon"
-                              />
-                            </button>
-                          </Blueprint3.Button>
-                        </StyledComponent>
-                      </ButtonNew__ButtonContent>
-                    </ButtonNew>
-                  </div>
-                </StyledComponent>
-              </Navbar__FlexWithOrderButton>
-            </div>
-          </StyledComponent>
-        </Styled(styled.div)>
-      </Navbar>
       <Page__StyledCookieConsent
         buttonStyle={
           Object {
@@ -1733,82 +734,209 @@ exports[`Index page should match snapshot 1`] = `
                                               <div
                                                 className="sc-bdVaJa iUJZES"
                                               >
-                                                <ButtonNew
+                                                <Button
+                                                  className="new"
+                                                  disabled={false}
                                                   href="/demo"
                                                   key="demo"
                                                   text="WATCH DEMO"
                                                   type="button"
                                                 >
-                                                  <Link
-                                                    href="/demo"
-                                                  >
-                                                    <ButtonNew__LinkContent
-                                                      onClick={[Function]}
-                                                      onMouseEnter={[Function]}
-                                                    >
-                                                      <StyledComponent
-                                                        forwardedComponent={
-                                                          Object {
-                                                            "$$typeof": Symbol(react.forward_ref),
-                                                            "attrs": Array [],
-                                                            "componentStyle": ComponentStyle {
-                                                              "componentId": "ButtonNew__LinkContent-sj5i96-1",
-                                                              "isStatic": false,
-                                                              "lastClassName": "fBXtwL",
-                                                              "rules": Array [
-                                                                "display:inline-flex;border-radius:",
-                                                                [Function],
-                                                                ";border:2px solid ",
-                                                                [Function],
-                                                                ";color:",
-                                                                [Function],
-                                                                ";transition:all 0.05s ease-in-out;background:transparent;padding:13px 25px 13px 25px;font-size:15px;font-weight:bold;&:hover{background-image:linear-gradient( to bottom,",
-                                                                [Function],
-                                                                ",",
-                                                                [Function],
-                                                                " );color:",
-                                                                [Function],
-                                                                ";box-shadow:inset 0px -3px 0px 0px ",
-                                                                [Function],
-                                                                ";}&:active{background-image:linear-gradient( to bottom,",
-                                                                [Function],
-                                                                ",",
-                                                                [Function],
-                                                                " );box-shadow:inset 0px 3px 0px 0px ",
-                                                                [Function],
-                                                                ";}@media ",
-                                                                "(max-width: 575.98px)",
-                                                                "{font-size:13px;padding:10px 18px 10px 18px;}",
-                                                                " &:hover{text-decoration:none;color:",
-                                                                [Function],
-                                                                ";}",
-                                                              ],
-                                                            },
-                                                            "displayName": "ButtonNew__LinkContent",
-                                                            "foldedComponentIds": Array [],
-                                                            "render": [Function],
-                                                            "styledComponentId": "ButtonNew__LinkContent-sj5i96-1",
-                                                            "target": "a",
-                                                            "toString": [Function],
-                                                            "warnTooManyClasses": [Function],
-                                                            "withComponent": [Function],
-                                                          }
+                                                  <Button__ButtonWrapper>
+                                                    <StyledComponent
+                                                      forwardedComponent={
+                                                        Object {
+                                                          "$$typeof": Symbol(react.forward_ref),
+                                                          "attrs": Array [],
+                                                          "componentStyle": ComponentStyle {
+                                                            "componentId": "Button__ButtonWrapper-sc-160bmy5-2",
+                                                            "isStatic": false,
+                                                            "lastClassName": "gBWKLt",
+                                                            "rules": Array [
+                                                              "position:relative;display:block;",
+                                                            ],
+                                                          },
+                                                          "displayName": "Button__ButtonWrapper",
+                                                          "foldedComponentIds": Array [],
+                                                          "render": [Function],
+                                                          "styledComponentId": "Button__ButtonWrapper-sc-160bmy5-2",
+                                                          "target": "div",
+                                                          "toString": [Function],
+                                                          "warnTooManyClasses": [Function],
+                                                          "withComponent": [Function],
                                                         }
-                                                        forwardedRef={[Function]}
-                                                        onClick={[Function]}
-                                                        onMouseEnter={[Function]}
+                                                      }
+                                                      forwardedRef={null}
+                                                    >
+                                                      <div
+                                                        className="Button__ButtonWrapper-sc-160bmy5-2 gBWKLt"
                                                       >
-                                                        <a
-                                                          className="ButtonNew__LinkContent-sj5i96-1 fBXtwL"
-                                                          onClick={[Function]}
-                                                          onMouseEnter={[Function]}
+                                                        <Link
+                                                          href="/demo"
                                                         >
-                                                          WATCH DEMO
-                                                        </a>
-                                                      </StyledComponent>
-                                                    </ButtonNew__LinkContent>
-                                                  </Link>
-                                                </ButtonNew>
+                                                          <Button__LinkContent
+                                                            className="new"
+                                                            disabled={false}
+                                                            onClick={[Function]}
+                                                            onMouseEnter={[Function]}
+                                                          >
+                                                            <StyledComponent
+                                                              className="new"
+                                                              disabled={false}
+                                                              forwardedComponent={
+                                                                Object {
+                                                                  "$$typeof": Symbol(react.forward_ref),
+                                                                  "attrs": Array [],
+                                                                  "componentStyle": ComponentStyle {
+                                                                    "componentId": "Button__LinkContent-sc-160bmy5-1",
+                                                                    "isStatic": false,
+                                                                    "lastClassName": "gZpdDj",
+                                                                    "rules": Array [
+                                                                      "margin-left:4px;cursor:",
+                                                                      [Function],
+                                                                      ";margin-right:4px;display:flex;line-height:1;padding:10px 20px 10px 20px;font-size:15px;font-weight:bold;text-align:center;transition:all 0.07s ease-in-out;border:2px solid ",
+                                                                      [Function],
+                                                                      ";font-family:",
+                                                                      [Function],
+                                                                      ";border-radius:",
+                                                                      [Function],
+                                                                      ";&:hover{text-decoration:none;}",
+                                                                      [Function],
+                                                                      "{font-size:12px;}",
+                                                                      " &.new{",
+                                                                      "background:transparent;color:",
+                                                                      [Function],
+                                                                      ";svg *{stroke:",
+                                                                      [Function],
+                                                                      ";fill:",
+                                                                      [Function],
+                                                                      ";}&:hover{color:",
+                                                                      [Function],
+                                                                      ";box-shadow:inset 0px -3px 0px 0px ",
+                                                                      [Function],
+                                                                      ";background-image:linear-gradient( to bottom,",
+                                                                      [Function],
+                                                                      ",",
+                                                                      [Function],
+                                                                      " );svg *{stroke:",
+                                                                      [Function],
+                                                                      ";fill:",
+                                                                      [Function],
+                                                                      ";}}&:active{box-shadow:inset 0px 3px 0px 0px ",
+                                                                      [Function],
+                                                                      ";background-image:linear-gradient( to bottom,",
+                                                                      [Function],
+                                                                      ",",
+                                                                      [Function],
+                                                                      " );}",
+                                                                      "}&.normal{",
+                                                                      "box-shadow:inset 0px -3px 0px 0px ",
+                                                                      [Function],
+                                                                      ";color:",
+                                                                      [Function],
+                                                                      ";svg *{stroke:",
+                                                                      [Function],
+                                                                      ";fill:",
+                                                                      [Function],
+                                                                      ";}background:linear-gradient( to bottom,",
+                                                                      [Function],
+                                                                      ",",
+                                                                      [Function],
+                                                                      " );&:hover{box-shadow:inset 0px -3px 0px 0px ",
+                                                                      [Function],
+                                                                      ";background-image:linear-gradient( to bottom,",
+                                                                      [Function],
+                                                                      ",",
+                                                                      [Function],
+                                                                      " );}&:active{box-shadow:inset 0px 3px 0px 0px ",
+                                                                      [Function],
+                                                                      ";background-image:linear-gradient( to bottom,",
+                                                                      [Function],
+                                                                      ",",
+                                                                      [Function],
+                                                                      " );}",
+                                                                      "}&.alternative{",
+                                                                      "background:",
+                                                                      [Function],
+                                                                      ";border:2px solid ",
+                                                                      [Function],
+                                                                      ";color:white;svg *{stroke:white;fill:white;}&:hover{background-image:linear-gradient( to bottom,",
+                                                                      [Function],
+                                                                      ",",
+                                                                      [Function],
+                                                                      " );border:2px solid ",
+                                                                      [Function],
+                                                                      ";color:",
+                                                                      [Function],
+                                                                      ";svg *{stroke:",
+                                                                      [Function],
+                                                                      ";fill:",
+                                                                      [Function],
+                                                                      ";}box-shadow:inset 0px -3px 0px 0px ",
+                                                                      [Function],
+                                                                      ";}&:active{background-image:linear-gradient( to bottom,",
+                                                                      [Function],
+                                                                      ",",
+                                                                      [Function],
+                                                                      " );box-shadow:inset 0px 3px 0px 0px ",
+                                                                      [Function],
+                                                                      ";}",
+                                                                      "}&.dark{",
+                                                                      "background:",
+                                                                      [Function],
+                                                                      ";border:2px solid #000;color:white;svg *{stroke:white;fill:white;}&:hover{background-image:linear-gradient( to bottom,",
+                                                                      [Function],
+                                                                      ",",
+                                                                      [Function],
+                                                                      " );color:",
+                                                                      [Function],
+                                                                      ";border:2px solid ",
+                                                                      [Function],
+                                                                      ";svg *{stroke:",
+                                                                      [Function],
+                                                                      ";fill:",
+                                                                      [Function],
+                                                                      ";}box-shadow:inset 0px -3px 0px 0px ",
+                                                                      [Function],
+                                                                      ";}&:active{background-image:linear-gradient( to bottom,",
+                                                                      [Function],
+                                                                      ",",
+                                                                      [Function],
+                                                                      " );box-shadow:inset 0px 3px 0px 0px ",
+                                                                      [Function],
+                                                                      ";}",
+                                                                      "}",
+                                                                    ],
+                                                                  },
+                                                                  "displayName": "Button__LinkContent",
+                                                                  "foldedComponentIds": Array [],
+                                                                  "render": [Function],
+                                                                  "styledComponentId": "Button__LinkContent-sc-160bmy5-1",
+                                                                  "target": "a",
+                                                                  "toString": [Function],
+                                                                  "warnTooManyClasses": [Function],
+                                                                  "withComponent": [Function],
+                                                                }
+                                                              }
+                                                              forwardedRef={[Function]}
+                                                              onClick={[Function]}
+                                                              onMouseEnter={[Function]}
+                                                            >
+                                                              <a
+                                                                className="Button__LinkContent-sc-160bmy5-1 gZpdDj new"
+                                                                disabled={false}
+                                                                onClick={[Function]}
+                                                                onMouseEnter={[Function]}
+                                                              >
+                                                                WATCH DEMO
+                                                              </a>
+                                                            </StyledComponent>
+                                                          </Button__LinkContent>
+                                                        </Link>
+                                                      </div>
+                                                    </StyledComponent>
+                                                  </Button__ButtonWrapper>
+                                                </Button>
                                               </div>
                                             </StyledComponent>
                                           </styled.div>
@@ -1861,80 +989,209 @@ exports[`Index page should match snapshot 1`] = `
                                               <div
                                                 className="sc-bdVaJa iFqWfr"
                                               >
-                                                <ButtonAlternative
+                                                <Button
+                                                  className="alternative"
+                                                  disabled={false}
                                                   href="/howitworks"
                                                   key="howitworks"
                                                   text="HOW IT WORKS"
                                                   type="button"
                                                 >
-                                                  <Link
-                                                    href="/howitworks"
-                                                  >
-                                                    <ButtonAlternative__LinkContent
-                                                      onClick={[Function]}
-                                                      onMouseEnter={[Function]}
-                                                    >
-                                                      <StyledComponent
-                                                        forwardedComponent={
-                                                          Object {
-                                                            "$$typeof": Symbol(react.forward_ref),
-                                                            "attrs": Array [],
-                                                            "componentStyle": ComponentStyle {
-                                                              "componentId": "ButtonAlternative__LinkContent-sc-4kmbfx-1",
-                                                              "isStatic": false,
-                                                              "lastClassName": "iNyJcP",
-                                                              "rules": Array [
-                                                                "display:inline-flex;border-radius:",
-                                                                [Function],
-                                                                ";color:white;transition:all 0.05s ease-in-out;background:",
-                                                                [Function],
-                                                                ";padding:15px 25px 15px 25px;font-size:15px;font-weight:bold;text-transform:uppercase;&:hover{background-image:linear-gradient( to bottom,",
-                                                                [Function],
-                                                                ",",
-                                                                [Function],
-                                                                " );color:",
-                                                                [Function],
-                                                                ";box-shadow:inset 0px -3px 0px 0px ",
-                                                                [Function],
-                                                                ";}&:active{background-image:linear-gradient( to bottom,",
-                                                                [Function],
-                                                                ",",
-                                                                [Function],
-                                                                " );box-shadow:inset 0px 3px 0px 0px ",
-                                                                [Function],
-                                                                ";}@media ",
-                                                                "(max-width: 575.98px)",
-                                                                "{font-size:13px;padding:10px 18px 10px 18px;}",
-                                                                " &:hover{text-decoration:none;color:",
-                                                                [Function],
-                                                                ";}",
-                                                              ],
-                                                            },
-                                                            "displayName": "ButtonAlternative__LinkContent",
-                                                            "foldedComponentIds": Array [],
-                                                            "render": [Function],
-                                                            "styledComponentId": "ButtonAlternative__LinkContent-sc-4kmbfx-1",
-                                                            "target": "a",
-                                                            "toString": [Function],
-                                                            "warnTooManyClasses": [Function],
-                                                            "withComponent": [Function],
-                                                          }
+                                                  <Button__ButtonWrapper>
+                                                    <StyledComponent
+                                                      forwardedComponent={
+                                                        Object {
+                                                          "$$typeof": Symbol(react.forward_ref),
+                                                          "attrs": Array [],
+                                                          "componentStyle": ComponentStyle {
+                                                            "componentId": "Button__ButtonWrapper-sc-160bmy5-2",
+                                                            "isStatic": false,
+                                                            "lastClassName": "gBWKLt",
+                                                            "rules": Array [
+                                                              "position:relative;display:block;",
+                                                            ],
+                                                          },
+                                                          "displayName": "Button__ButtonWrapper",
+                                                          "foldedComponentIds": Array [],
+                                                          "render": [Function],
+                                                          "styledComponentId": "Button__ButtonWrapper-sc-160bmy5-2",
+                                                          "target": "div",
+                                                          "toString": [Function],
+                                                          "warnTooManyClasses": [Function],
+                                                          "withComponent": [Function],
                                                         }
-                                                        forwardedRef={[Function]}
-                                                        onClick={[Function]}
-                                                        onMouseEnter={[Function]}
+                                                      }
+                                                      forwardedRef={null}
+                                                    >
+                                                      <div
+                                                        className="Button__ButtonWrapper-sc-160bmy5-2 gBWKLt"
                                                       >
-                                                        <a
-                                                          className="ButtonAlternative__LinkContent-sc-4kmbfx-1 iNyJcP"
-                                                          onClick={[Function]}
-                                                          onMouseEnter={[Function]}
+                                                        <Link
+                                                          href="/howitworks"
                                                         >
-                                                          HOW IT WORKS
-                                                        </a>
-                                                      </StyledComponent>
-                                                    </ButtonAlternative__LinkContent>
-                                                  </Link>
-                                                </ButtonAlternative>
+                                                          <Button__LinkContent
+                                                            className="alternative"
+                                                            disabled={false}
+                                                            onClick={[Function]}
+                                                            onMouseEnter={[Function]}
+                                                          >
+                                                            <StyledComponent
+                                                              className="alternative"
+                                                              disabled={false}
+                                                              forwardedComponent={
+                                                                Object {
+                                                                  "$$typeof": Symbol(react.forward_ref),
+                                                                  "attrs": Array [],
+                                                                  "componentStyle": ComponentStyle {
+                                                                    "componentId": "Button__LinkContent-sc-160bmy5-1",
+                                                                    "isStatic": false,
+                                                                    "lastClassName": "gZpdDj",
+                                                                    "rules": Array [
+                                                                      "margin-left:4px;cursor:",
+                                                                      [Function],
+                                                                      ";margin-right:4px;display:flex;line-height:1;padding:10px 20px 10px 20px;font-size:15px;font-weight:bold;text-align:center;transition:all 0.07s ease-in-out;border:2px solid ",
+                                                                      [Function],
+                                                                      ";font-family:",
+                                                                      [Function],
+                                                                      ";border-radius:",
+                                                                      [Function],
+                                                                      ";&:hover{text-decoration:none;}",
+                                                                      [Function],
+                                                                      "{font-size:12px;}",
+                                                                      " &.new{",
+                                                                      "background:transparent;color:",
+                                                                      [Function],
+                                                                      ";svg *{stroke:",
+                                                                      [Function],
+                                                                      ";fill:",
+                                                                      [Function],
+                                                                      ";}&:hover{color:",
+                                                                      [Function],
+                                                                      ";box-shadow:inset 0px -3px 0px 0px ",
+                                                                      [Function],
+                                                                      ";background-image:linear-gradient( to bottom,",
+                                                                      [Function],
+                                                                      ",",
+                                                                      [Function],
+                                                                      " );svg *{stroke:",
+                                                                      [Function],
+                                                                      ";fill:",
+                                                                      [Function],
+                                                                      ";}}&:active{box-shadow:inset 0px 3px 0px 0px ",
+                                                                      [Function],
+                                                                      ";background-image:linear-gradient( to bottom,",
+                                                                      [Function],
+                                                                      ",",
+                                                                      [Function],
+                                                                      " );}",
+                                                                      "}&.normal{",
+                                                                      "box-shadow:inset 0px -3px 0px 0px ",
+                                                                      [Function],
+                                                                      ";color:",
+                                                                      [Function],
+                                                                      ";svg *{stroke:",
+                                                                      [Function],
+                                                                      ";fill:",
+                                                                      [Function],
+                                                                      ";}background:linear-gradient( to bottom,",
+                                                                      [Function],
+                                                                      ",",
+                                                                      [Function],
+                                                                      " );&:hover{box-shadow:inset 0px -3px 0px 0px ",
+                                                                      [Function],
+                                                                      ";background-image:linear-gradient( to bottom,",
+                                                                      [Function],
+                                                                      ",",
+                                                                      [Function],
+                                                                      " );}&:active{box-shadow:inset 0px 3px 0px 0px ",
+                                                                      [Function],
+                                                                      ";background-image:linear-gradient( to bottom,",
+                                                                      [Function],
+                                                                      ",",
+                                                                      [Function],
+                                                                      " );}",
+                                                                      "}&.alternative{",
+                                                                      "background:",
+                                                                      [Function],
+                                                                      ";border:2px solid ",
+                                                                      [Function],
+                                                                      ";color:white;svg *{stroke:white;fill:white;}&:hover{background-image:linear-gradient( to bottom,",
+                                                                      [Function],
+                                                                      ",",
+                                                                      [Function],
+                                                                      " );border:2px solid ",
+                                                                      [Function],
+                                                                      ";color:",
+                                                                      [Function],
+                                                                      ";svg *{stroke:",
+                                                                      [Function],
+                                                                      ";fill:",
+                                                                      [Function],
+                                                                      ";}box-shadow:inset 0px -3px 0px 0px ",
+                                                                      [Function],
+                                                                      ";}&:active{background-image:linear-gradient( to bottom,",
+                                                                      [Function],
+                                                                      ",",
+                                                                      [Function],
+                                                                      " );box-shadow:inset 0px 3px 0px 0px ",
+                                                                      [Function],
+                                                                      ";}",
+                                                                      "}&.dark{",
+                                                                      "background:",
+                                                                      [Function],
+                                                                      ";border:2px solid #000;color:white;svg *{stroke:white;fill:white;}&:hover{background-image:linear-gradient( to bottom,",
+                                                                      [Function],
+                                                                      ",",
+                                                                      [Function],
+                                                                      " );color:",
+                                                                      [Function],
+                                                                      ";border:2px solid ",
+                                                                      [Function],
+                                                                      ";svg *{stroke:",
+                                                                      [Function],
+                                                                      ";fill:",
+                                                                      [Function],
+                                                                      ";}box-shadow:inset 0px -3px 0px 0px ",
+                                                                      [Function],
+                                                                      ";}&:active{background-image:linear-gradient( to bottom,",
+                                                                      [Function],
+                                                                      ",",
+                                                                      [Function],
+                                                                      " );box-shadow:inset 0px 3px 0px 0px ",
+                                                                      [Function],
+                                                                      ";}",
+                                                                      "}",
+                                                                    ],
+                                                                  },
+                                                                  "displayName": "Button__LinkContent",
+                                                                  "foldedComponentIds": Array [],
+                                                                  "render": [Function],
+                                                                  "styledComponentId": "Button__LinkContent-sc-160bmy5-1",
+                                                                  "target": "a",
+                                                                  "toString": [Function],
+                                                                  "warnTooManyClasses": [Function],
+                                                                  "withComponent": [Function],
+                                                                }
+                                                              }
+                                                              forwardedRef={[Function]}
+                                                              onClick={[Function]}
+                                                              onMouseEnter={[Function]}
+                                                            >
+                                                              <a
+                                                                className="Button__LinkContent-sc-160bmy5-1 gZpdDj alternative"
+                                                                disabled={false}
+                                                                onClick={[Function]}
+                                                                onMouseEnter={[Function]}
+                                                              >
+                                                                HOW IT WORKS
+                                                              </a>
+                                                            </StyledComponent>
+                                                          </Button__LinkContent>
+                                                        </Link>
+                                                      </div>
+                                                    </StyledComponent>
+                                                  </Button__ButtonWrapper>
+                                                </Button>
                                               </div>
                                             </StyledComponent>
                                           </styled.div>
@@ -9305,82 +8562,209 @@ exports[`Index page should match snapshot 1`] = `
                       <div
                         className="sc-bdVaJa ktRQFG"
                       >
-                        <ButtonNew
+                        <Button
+                          className="new"
+                          disabled={false}
                           href="/our-coaches"
                           key="ourcoaches"
                           text="OUR COACHES"
                           type="button"
                         >
-                          <Link
-                            href="/our-coaches"
-                          >
-                            <ButtonNew__LinkContent
-                              onClick={[Function]}
-                              onMouseEnter={[Function]}
-                            >
-                              <StyledComponent
-                                forwardedComponent={
-                                  Object {
-                                    "$$typeof": Symbol(react.forward_ref),
-                                    "attrs": Array [],
-                                    "componentStyle": ComponentStyle {
-                                      "componentId": "ButtonNew__LinkContent-sj5i96-1",
-                                      "isStatic": false,
-                                      "lastClassName": "fBXtwL",
-                                      "rules": Array [
-                                        "display:inline-flex;border-radius:",
-                                        [Function],
-                                        ";border:2px solid ",
-                                        [Function],
-                                        ";color:",
-                                        [Function],
-                                        ";transition:all 0.05s ease-in-out;background:transparent;padding:13px 25px 13px 25px;font-size:15px;font-weight:bold;&:hover{background-image:linear-gradient( to bottom,",
-                                        [Function],
-                                        ",",
-                                        [Function],
-                                        " );color:",
-                                        [Function],
-                                        ";box-shadow:inset 0px -3px 0px 0px ",
-                                        [Function],
-                                        ";}&:active{background-image:linear-gradient( to bottom,",
-                                        [Function],
-                                        ",",
-                                        [Function],
-                                        " );box-shadow:inset 0px 3px 0px 0px ",
-                                        [Function],
-                                        ";}@media ",
-                                        "(max-width: 575.98px)",
-                                        "{font-size:13px;padding:10px 18px 10px 18px;}",
-                                        " &:hover{text-decoration:none;color:",
-                                        [Function],
-                                        ";}",
-                                      ],
-                                    },
-                                    "displayName": "ButtonNew__LinkContent",
-                                    "foldedComponentIds": Array [],
-                                    "render": [Function],
-                                    "styledComponentId": "ButtonNew__LinkContent-sj5i96-1",
-                                    "target": "a",
-                                    "toString": [Function],
-                                    "warnTooManyClasses": [Function],
-                                    "withComponent": [Function],
-                                  }
+                          <Button__ButtonWrapper>
+                            <StyledComponent
+                              forwardedComponent={
+                                Object {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": Array [],
+                                  "componentStyle": ComponentStyle {
+                                    "componentId": "Button__ButtonWrapper-sc-160bmy5-2",
+                                    "isStatic": false,
+                                    "lastClassName": "gBWKLt",
+                                    "rules": Array [
+                                      "position:relative;display:block;",
+                                    ],
+                                  },
+                                  "displayName": "Button__ButtonWrapper",
+                                  "foldedComponentIds": Array [],
+                                  "render": [Function],
+                                  "styledComponentId": "Button__ButtonWrapper-sc-160bmy5-2",
+                                  "target": "div",
+                                  "toString": [Function],
+                                  "warnTooManyClasses": [Function],
+                                  "withComponent": [Function],
                                 }
-                                forwardedRef={[Function]}
-                                onClick={[Function]}
-                                onMouseEnter={[Function]}
+                              }
+                              forwardedRef={null}
+                            >
+                              <div
+                                className="Button__ButtonWrapper-sc-160bmy5-2 gBWKLt"
                               >
-                                <a
-                                  className="ButtonNew__LinkContent-sj5i96-1 fBXtwL"
-                                  onClick={[Function]}
-                                  onMouseEnter={[Function]}
+                                <Link
+                                  href="/our-coaches"
                                 >
-                                  OUR COACHES
-                                </a>
-                              </StyledComponent>
-                            </ButtonNew__LinkContent>
-                          </Link>
-                        </ButtonNew>
+                                  <Button__LinkContent
+                                    className="new"
+                                    disabled={false}
+                                    onClick={[Function]}
+                                    onMouseEnter={[Function]}
+                                  >
+                                    <StyledComponent
+                                      className="new"
+                                      disabled={false}
+                                      forwardedComponent={
+                                        Object {
+                                          "$$typeof": Symbol(react.forward_ref),
+                                          "attrs": Array [],
+                                          "componentStyle": ComponentStyle {
+                                            "componentId": "Button__LinkContent-sc-160bmy5-1",
+                                            "isStatic": false,
+                                            "lastClassName": "gZpdDj",
+                                            "rules": Array [
+                                              "margin-left:4px;cursor:",
+                                              [Function],
+                                              ";margin-right:4px;display:flex;line-height:1;padding:10px 20px 10px 20px;font-size:15px;font-weight:bold;text-align:center;transition:all 0.07s ease-in-out;border:2px solid ",
+                                              [Function],
+                                              ";font-family:",
+                                              [Function],
+                                              ";border-radius:",
+                                              [Function],
+                                              ";&:hover{text-decoration:none;}",
+                                              [Function],
+                                              "{font-size:12px;}",
+                                              " &.new{",
+                                              "background:transparent;color:",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}&:hover{color:",
+                                              [Function],
+                                              ";box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}}&:active{box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );}",
+                                              "}&.normal{",
+                                              "box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";color:",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}background:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );&:hover{box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );}&:active{box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );}",
+                                              "}&.alternative{",
+                                              "background:",
+                                              [Function],
+                                              ";border:2px solid ",
+                                              [Function],
+                                              ";color:white;svg *{stroke:white;fill:white;}&:hover{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );border:2px solid ",
+                                              [Function],
+                                              ";color:",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";}&:active{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";}",
+                                              "}&.dark{",
+                                              "background:",
+                                              [Function],
+                                              ";border:2px solid #000;color:white;svg *{stroke:white;fill:white;}&:hover{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );color:",
+                                              [Function],
+                                              ";border:2px solid ",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";}&:active{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";}",
+                                              "}",
+                                            ],
+                                          },
+                                          "displayName": "Button__LinkContent",
+                                          "foldedComponentIds": Array [],
+                                          "render": [Function],
+                                          "styledComponentId": "Button__LinkContent-sc-160bmy5-1",
+                                          "target": "a",
+                                          "toString": [Function],
+                                          "warnTooManyClasses": [Function],
+                                          "withComponent": [Function],
+                                        }
+                                      }
+                                      forwardedRef={[Function]}
+                                      onClick={[Function]}
+                                      onMouseEnter={[Function]}
+                                    >
+                                      <a
+                                        className="Button__LinkContent-sc-160bmy5-1 gZpdDj new"
+                                        disabled={false}
+                                        onClick={[Function]}
+                                        onMouseEnter={[Function]}
+                                      >
+                                        OUR COACHES
+                                      </a>
+                                    </StyledComponent>
+                                  </Button__LinkContent>
+                                </Link>
+                              </div>
+                            </StyledComponent>
+                          </Button__ButtonWrapper>
+                        </Button>
                       </div>
                     </StyledComponent>
                   </styled.div>
@@ -10166,98 +9550,205 @@ exports[`Index page should match snapshot 1`] = `
                               </Page__PriceFeatureContent>
                             </PriceFeature>
                           </div>
-                          <ButtonAlternative
+                          <Button
+                            className="dark"
+                            disabled={false}
                             key="login"
                             onClick={[Function]}
                             text="Get Started"
                             type="button"
                           >
-                            <ButtonDark__ButtonContent
-                              onClick={[Function]}
-                              type="button"
-                            >
+                            <Button__ButtonWrapper>
                               <StyledComponent
                                 forwardedComponent={
                                   Object {
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
                                     "componentStyle": ComponentStyle {
-                                      "componentId": "ButtonDark__ButtonContent-le6ouf-0",
+                                      "componentId": "Button__ButtonWrapper-sc-160bmy5-2",
                                       "isStatic": false,
-                                      "lastClassName": "bztDKt",
+                                      "lastClassName": "gBWKLt",
                                       "rules": Array [
-                                        "&.",
-                                        "bp3-button",
-                                        "{",
-                                        "display:inline-flex;border-radius:",
-                                        [Function],
-                                        ";color:white;transition:all 0.05s ease-in-out;background:",
-                                        [Function],
-                                        ";padding:10px 25px 10px 25px;font-size:15px;font-weight:bold;text-transform:uppercase;&:hover{background-image:linear-gradient( to bottom,",
-                                        [Function],
-                                        ",",
-                                        [Function],
-                                        " );color:",
-                                        [Function],
-                                        ";box-shadow:inset 0px -3px 0px 0px ",
-                                        [Function],
-                                        ";}&:active{background-image:linear-gradient( to bottom,",
-                                        [Function],
-                                        ",",
-                                        [Function],
-                                        " );box-shadow:inset 0px 3px 0px 0px ",
-                                        [Function],
-                                        ";}@media ",
-                                        "(max-width: 575.98px)",
-                                        "{font-size:13px;padding:10px 18px 10px 18px;}",
-                                        " outline:none;font-family:",
-                                        [Function],
-                                        ";&:active{outline:none;}}",
+                                        "position:relative;display:block;",
                                       ],
                                     },
-                                    "displayName": "ButtonDark__ButtonContent",
+                                    "displayName": "Button__ButtonWrapper",
                                     "foldedComponentIds": Array [],
                                     "render": [Function],
-                                    "styledComponentId": "ButtonDark__ButtonContent-le6ouf-0",
-                                    "target": [Function],
+                                    "styledComponentId": "Button__ButtonWrapper-sc-160bmy5-2",
+                                    "target": "div",
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
                                   }
                                 }
                                 forwardedRef={null}
-                                onClick={[Function]}
-                                type="button"
                               >
-                                <Blueprint3.Button
-                                  className="ButtonDark__ButtonContent-le6ouf-0 bztDKt"
-                                  onClick={[Function]}
-                                  type="button"
+                                <div
+                                  className="Button__ButtonWrapper-sc-160bmy5-2 gBWKLt"
                                 >
-                                  <button
-                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 bztDKt"
+                                  <Button__ButtonContent
+                                    className="dark"
+                                    disabled={false}
                                     onClick={[Function]}
-                                    onKeyDown={[Function]}
-                                    onKeyUp={[Function]}
                                     type="button"
                                   >
-                                    <Blueprint3.Icon
-                                      key="leftIcon"
-                                    />
-                                    <span
-                                      className="bp3-button-text"
-                                      key="text"
+                                    <StyledComponent
+                                      className="dark"
+                                      disabled={false}
+                                      forwardedComponent={
+                                        Object {
+                                          "$$typeof": Symbol(react.forward_ref),
+                                          "attrs": Array [],
+                                          "componentStyle": ComponentStyle {
+                                            "componentId": "Button__ButtonContent-sc-160bmy5-0",
+                                            "isStatic": false,
+                                            "lastClassName": "eEYEEw",
+                                            "rules": Array [
+                                              "margin-left:4px;cursor:",
+                                              [Function],
+                                              ";margin-right:4px;display:flex;line-height:1;padding:10px 20px 10px 20px;font-size:15px;font-weight:bold;text-align:center;transition:all 0.07s ease-in-out;border:2px solid ",
+                                              [Function],
+                                              ";font-family:",
+                                              [Function],
+                                              ";border-radius:",
+                                              [Function],
+                                              ";&:hover{text-decoration:none;}",
+                                              [Function],
+                                              "{font-size:12px;}",
+                                              " &.new{",
+                                              "background:transparent;color:",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}&:hover{color:",
+                                              [Function],
+                                              ";box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}}&:active{box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );}",
+                                              "}&.normal{",
+                                              "box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";color:",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}background:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );&:hover{box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );}&:active{box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );}",
+                                              "}&.alternative{",
+                                              "background:",
+                                              [Function],
+                                              ";border:2px solid ",
+                                              [Function],
+                                              ";color:white;svg *{stroke:white;fill:white;}&:hover{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );border:2px solid ",
+                                              [Function],
+                                              ";color:",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";}&:active{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";}",
+                                              "}&.dark{",
+                                              "background:",
+                                              [Function],
+                                              ";border:2px solid #000;color:white;svg *{stroke:white;fill:white;}&:hover{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );color:",
+                                              [Function],
+                                              ";border:2px solid ",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";}&:active{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";}",
+                                              "}",
+                                            ],
+                                          },
+                                          "displayName": "Button__ButtonContent",
+                                          "foldedComponentIds": Array [],
+                                          "render": [Function],
+                                          "styledComponentId": "Button__ButtonContent-sc-160bmy5-0",
+                                          "target": "button",
+                                          "toString": [Function],
+                                          "warnTooManyClasses": [Function],
+                                          "withComponent": [Function],
+                                        }
+                                      }
+                                      forwardedRef={null}
+                                      onClick={[Function]}
+                                      type="button"
                                     >
-                                      Get Started
-                                    </span>
-                                    <Blueprint3.Icon
-                                      key="rightIcon"
-                                    />
-                                  </button>
-                                </Blueprint3.Button>
+                                      <button
+                                        className="Button__ButtonContent-sc-160bmy5-0 eEYEEw dark"
+                                        disabled={false}
+                                        onClick={[Function]}
+                                        type="button"
+                                      >
+                                        Get Started
+                                      </button>
+                                    </StyledComponent>
+                                  </Button__ButtonContent>
+                                </div>
                               </StyledComponent>
-                            </ButtonDark__ButtonContent>
-                          </ButtonAlternative>
+                            </Button__ButtonWrapper>
+                          </Button>
                         </div>
                       </StyledComponent>
                     </Page__PriceCardContent>
@@ -10495,98 +9986,205 @@ exports[`Index page should match snapshot 1`] = `
                               </Page__PriceFeatureContent>
                             </PriceFeature>
                           </div>
-                          <ButtonAlternative
+                          <Button
+                            className="dark"
+                            disabled={false}
                             key="login"
                             onClick={[Function]}
                             text="Get Started"
                             type="button"
                           >
-                            <ButtonDark__ButtonContent
-                              onClick={[Function]}
-                              type="button"
-                            >
+                            <Button__ButtonWrapper>
                               <StyledComponent
                                 forwardedComponent={
                                   Object {
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
                                     "componentStyle": ComponentStyle {
-                                      "componentId": "ButtonDark__ButtonContent-le6ouf-0",
+                                      "componentId": "Button__ButtonWrapper-sc-160bmy5-2",
                                       "isStatic": false,
-                                      "lastClassName": "bztDKt",
+                                      "lastClassName": "gBWKLt",
                                       "rules": Array [
-                                        "&.",
-                                        "bp3-button",
-                                        "{",
-                                        "display:inline-flex;border-radius:",
-                                        [Function],
-                                        ";color:white;transition:all 0.05s ease-in-out;background:",
-                                        [Function],
-                                        ";padding:10px 25px 10px 25px;font-size:15px;font-weight:bold;text-transform:uppercase;&:hover{background-image:linear-gradient( to bottom,",
-                                        [Function],
-                                        ",",
-                                        [Function],
-                                        " );color:",
-                                        [Function],
-                                        ";box-shadow:inset 0px -3px 0px 0px ",
-                                        [Function],
-                                        ";}&:active{background-image:linear-gradient( to bottom,",
-                                        [Function],
-                                        ",",
-                                        [Function],
-                                        " );box-shadow:inset 0px 3px 0px 0px ",
-                                        [Function],
-                                        ";}@media ",
-                                        "(max-width: 575.98px)",
-                                        "{font-size:13px;padding:10px 18px 10px 18px;}",
-                                        " outline:none;font-family:",
-                                        [Function],
-                                        ";&:active{outline:none;}}",
+                                        "position:relative;display:block;",
                                       ],
                                     },
-                                    "displayName": "ButtonDark__ButtonContent",
+                                    "displayName": "Button__ButtonWrapper",
                                     "foldedComponentIds": Array [],
                                     "render": [Function],
-                                    "styledComponentId": "ButtonDark__ButtonContent-le6ouf-0",
-                                    "target": [Function],
+                                    "styledComponentId": "Button__ButtonWrapper-sc-160bmy5-2",
+                                    "target": "div",
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
                                   }
                                 }
                                 forwardedRef={null}
-                                onClick={[Function]}
-                                type="button"
                               >
-                                <Blueprint3.Button
-                                  className="ButtonDark__ButtonContent-le6ouf-0 bztDKt"
-                                  onClick={[Function]}
-                                  type="button"
+                                <div
+                                  className="Button__ButtonWrapper-sc-160bmy5-2 gBWKLt"
                                 >
-                                  <button
-                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 bztDKt"
+                                  <Button__ButtonContent
+                                    className="dark"
+                                    disabled={false}
                                     onClick={[Function]}
-                                    onKeyDown={[Function]}
-                                    onKeyUp={[Function]}
                                     type="button"
                                   >
-                                    <Blueprint3.Icon
-                                      key="leftIcon"
-                                    />
-                                    <span
-                                      className="bp3-button-text"
-                                      key="text"
+                                    <StyledComponent
+                                      className="dark"
+                                      disabled={false}
+                                      forwardedComponent={
+                                        Object {
+                                          "$$typeof": Symbol(react.forward_ref),
+                                          "attrs": Array [],
+                                          "componentStyle": ComponentStyle {
+                                            "componentId": "Button__ButtonContent-sc-160bmy5-0",
+                                            "isStatic": false,
+                                            "lastClassName": "eEYEEw",
+                                            "rules": Array [
+                                              "margin-left:4px;cursor:",
+                                              [Function],
+                                              ";margin-right:4px;display:flex;line-height:1;padding:10px 20px 10px 20px;font-size:15px;font-weight:bold;text-align:center;transition:all 0.07s ease-in-out;border:2px solid ",
+                                              [Function],
+                                              ";font-family:",
+                                              [Function],
+                                              ";border-radius:",
+                                              [Function],
+                                              ";&:hover{text-decoration:none;}",
+                                              [Function],
+                                              "{font-size:12px;}",
+                                              " &.new{",
+                                              "background:transparent;color:",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}&:hover{color:",
+                                              [Function],
+                                              ";box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}}&:active{box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );}",
+                                              "}&.normal{",
+                                              "box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";color:",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}background:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );&:hover{box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );}&:active{box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );}",
+                                              "}&.alternative{",
+                                              "background:",
+                                              [Function],
+                                              ";border:2px solid ",
+                                              [Function],
+                                              ";color:white;svg *{stroke:white;fill:white;}&:hover{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );border:2px solid ",
+                                              [Function],
+                                              ";color:",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";}&:active{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";}",
+                                              "}&.dark{",
+                                              "background:",
+                                              [Function],
+                                              ";border:2px solid #000;color:white;svg *{stroke:white;fill:white;}&:hover{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );color:",
+                                              [Function],
+                                              ";border:2px solid ",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";}&:active{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";}",
+                                              "}",
+                                            ],
+                                          },
+                                          "displayName": "Button__ButtonContent",
+                                          "foldedComponentIds": Array [],
+                                          "render": [Function],
+                                          "styledComponentId": "Button__ButtonContent-sc-160bmy5-0",
+                                          "target": "button",
+                                          "toString": [Function],
+                                          "warnTooManyClasses": [Function],
+                                          "withComponent": [Function],
+                                        }
+                                      }
+                                      forwardedRef={null}
+                                      onClick={[Function]}
+                                      type="button"
                                     >
-                                      Get Started
-                                    </span>
-                                    <Blueprint3.Icon
-                                      key="rightIcon"
-                                    />
-                                  </button>
-                                </Blueprint3.Button>
+                                      <button
+                                        className="Button__ButtonContent-sc-160bmy5-0 eEYEEw dark"
+                                        disabled={false}
+                                        onClick={[Function]}
+                                        type="button"
+                                      >
+                                        Get Started
+                                      </button>
+                                    </StyledComponent>
+                                  </Button__ButtonContent>
+                                </div>
                               </StyledComponent>
-                            </ButtonDark__ButtonContent>
-                          </ButtonAlternative>
+                            </Button__ButtonWrapper>
+                          </Button>
                         </div>
                       </StyledComponent>
                     </Page__PriceCardContent>
@@ -10824,98 +10422,205 @@ exports[`Index page should match snapshot 1`] = `
                               </Page__PriceFeatureContent>
                             </PriceFeature>
                           </div>
-                          <ButtonAlternative
+                          <Button
+                            className="dark"
+                            disabled={false}
                             key="login"
                             onClick={[Function]}
                             text="Get Started"
                             type="button"
                           >
-                            <ButtonDark__ButtonContent
-                              onClick={[Function]}
-                              type="button"
-                            >
+                            <Button__ButtonWrapper>
                               <StyledComponent
                                 forwardedComponent={
                                   Object {
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
                                     "componentStyle": ComponentStyle {
-                                      "componentId": "ButtonDark__ButtonContent-le6ouf-0",
+                                      "componentId": "Button__ButtonWrapper-sc-160bmy5-2",
                                       "isStatic": false,
-                                      "lastClassName": "bztDKt",
+                                      "lastClassName": "gBWKLt",
                                       "rules": Array [
-                                        "&.",
-                                        "bp3-button",
-                                        "{",
-                                        "display:inline-flex;border-radius:",
-                                        [Function],
-                                        ";color:white;transition:all 0.05s ease-in-out;background:",
-                                        [Function],
-                                        ";padding:10px 25px 10px 25px;font-size:15px;font-weight:bold;text-transform:uppercase;&:hover{background-image:linear-gradient( to bottom,",
-                                        [Function],
-                                        ",",
-                                        [Function],
-                                        " );color:",
-                                        [Function],
-                                        ";box-shadow:inset 0px -3px 0px 0px ",
-                                        [Function],
-                                        ";}&:active{background-image:linear-gradient( to bottom,",
-                                        [Function],
-                                        ",",
-                                        [Function],
-                                        " );box-shadow:inset 0px 3px 0px 0px ",
-                                        [Function],
-                                        ";}@media ",
-                                        "(max-width: 575.98px)",
-                                        "{font-size:13px;padding:10px 18px 10px 18px;}",
-                                        " outline:none;font-family:",
-                                        [Function],
-                                        ";&:active{outline:none;}}",
+                                        "position:relative;display:block;",
                                       ],
                                     },
-                                    "displayName": "ButtonDark__ButtonContent",
+                                    "displayName": "Button__ButtonWrapper",
                                     "foldedComponentIds": Array [],
                                     "render": [Function],
-                                    "styledComponentId": "ButtonDark__ButtonContent-le6ouf-0",
-                                    "target": [Function],
+                                    "styledComponentId": "Button__ButtonWrapper-sc-160bmy5-2",
+                                    "target": "div",
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
                                   }
                                 }
                                 forwardedRef={null}
-                                onClick={[Function]}
-                                type="button"
                               >
-                                <Blueprint3.Button
-                                  className="ButtonDark__ButtonContent-le6ouf-0 bztDKt"
-                                  onClick={[Function]}
-                                  type="button"
+                                <div
+                                  className="Button__ButtonWrapper-sc-160bmy5-2 gBWKLt"
                                 >
-                                  <button
-                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 bztDKt"
+                                  <Button__ButtonContent
+                                    className="dark"
+                                    disabled={false}
                                     onClick={[Function]}
-                                    onKeyDown={[Function]}
-                                    onKeyUp={[Function]}
                                     type="button"
                                   >
-                                    <Blueprint3.Icon
-                                      key="leftIcon"
-                                    />
-                                    <span
-                                      className="bp3-button-text"
-                                      key="text"
+                                    <StyledComponent
+                                      className="dark"
+                                      disabled={false}
+                                      forwardedComponent={
+                                        Object {
+                                          "$$typeof": Symbol(react.forward_ref),
+                                          "attrs": Array [],
+                                          "componentStyle": ComponentStyle {
+                                            "componentId": "Button__ButtonContent-sc-160bmy5-0",
+                                            "isStatic": false,
+                                            "lastClassName": "eEYEEw",
+                                            "rules": Array [
+                                              "margin-left:4px;cursor:",
+                                              [Function],
+                                              ";margin-right:4px;display:flex;line-height:1;padding:10px 20px 10px 20px;font-size:15px;font-weight:bold;text-align:center;transition:all 0.07s ease-in-out;border:2px solid ",
+                                              [Function],
+                                              ";font-family:",
+                                              [Function],
+                                              ";border-radius:",
+                                              [Function],
+                                              ";&:hover{text-decoration:none;}",
+                                              [Function],
+                                              "{font-size:12px;}",
+                                              " &.new{",
+                                              "background:transparent;color:",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}&:hover{color:",
+                                              [Function],
+                                              ";box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}}&:active{box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );}",
+                                              "}&.normal{",
+                                              "box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";color:",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}background:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );&:hover{box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );}&:active{box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );}",
+                                              "}&.alternative{",
+                                              "background:",
+                                              [Function],
+                                              ";border:2px solid ",
+                                              [Function],
+                                              ";color:white;svg *{stroke:white;fill:white;}&:hover{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );border:2px solid ",
+                                              [Function],
+                                              ";color:",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";}&:active{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";}",
+                                              "}&.dark{",
+                                              "background:",
+                                              [Function],
+                                              ";border:2px solid #000;color:white;svg *{stroke:white;fill:white;}&:hover{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );color:",
+                                              [Function],
+                                              ";border:2px solid ",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";}&:active{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";}",
+                                              "}",
+                                            ],
+                                          },
+                                          "displayName": "Button__ButtonContent",
+                                          "foldedComponentIds": Array [],
+                                          "render": [Function],
+                                          "styledComponentId": "Button__ButtonContent-sc-160bmy5-0",
+                                          "target": "button",
+                                          "toString": [Function],
+                                          "warnTooManyClasses": [Function],
+                                          "withComponent": [Function],
+                                        }
+                                      }
+                                      forwardedRef={null}
+                                      onClick={[Function]}
+                                      type="button"
                                     >
-                                      Get Started
-                                    </span>
-                                    <Blueprint3.Icon
-                                      key="rightIcon"
-                                    />
-                                  </button>
-                                </Blueprint3.Button>
+                                      <button
+                                        className="Button__ButtonContent-sc-160bmy5-0 eEYEEw dark"
+                                        disabled={false}
+                                        onClick={[Function]}
+                                        type="button"
+                                      >
+                                        Get Started
+                                      </button>
+                                    </StyledComponent>
+                                  </Button__ButtonContent>
+                                </div>
                               </StyledComponent>
-                            </ButtonDark__ButtonContent>
-                          </ButtonAlternative>
+                            </Button__ButtonWrapper>
+                          </Button>
                         </div>
                       </StyledComponent>
                     </Page__PriceCardContent>
@@ -11153,98 +10858,205 @@ exports[`Index page should match snapshot 1`] = `
                               </Page__PriceFeatureContent>
                             </PriceFeature>
                           </div>
-                          <ButtonAlternative
+                          <Button
+                            className="dark"
+                            disabled={false}
                             key="login"
                             onClick={[Function]}
                             text="Get Started"
                             type="button"
                           >
-                            <ButtonDark__ButtonContent
-                              onClick={[Function]}
-                              type="button"
-                            >
+                            <Button__ButtonWrapper>
                               <StyledComponent
                                 forwardedComponent={
                                   Object {
                                     "$$typeof": Symbol(react.forward_ref),
                                     "attrs": Array [],
                                     "componentStyle": ComponentStyle {
-                                      "componentId": "ButtonDark__ButtonContent-le6ouf-0",
+                                      "componentId": "Button__ButtonWrapper-sc-160bmy5-2",
                                       "isStatic": false,
-                                      "lastClassName": "bztDKt",
+                                      "lastClassName": "gBWKLt",
                                       "rules": Array [
-                                        "&.",
-                                        "bp3-button",
-                                        "{",
-                                        "display:inline-flex;border-radius:",
-                                        [Function],
-                                        ";color:white;transition:all 0.05s ease-in-out;background:",
-                                        [Function],
-                                        ";padding:10px 25px 10px 25px;font-size:15px;font-weight:bold;text-transform:uppercase;&:hover{background-image:linear-gradient( to bottom,",
-                                        [Function],
-                                        ",",
-                                        [Function],
-                                        " );color:",
-                                        [Function],
-                                        ";box-shadow:inset 0px -3px 0px 0px ",
-                                        [Function],
-                                        ";}&:active{background-image:linear-gradient( to bottom,",
-                                        [Function],
-                                        ",",
-                                        [Function],
-                                        " );box-shadow:inset 0px 3px 0px 0px ",
-                                        [Function],
-                                        ";}@media ",
-                                        "(max-width: 575.98px)",
-                                        "{font-size:13px;padding:10px 18px 10px 18px;}",
-                                        " outline:none;font-family:",
-                                        [Function],
-                                        ";&:active{outline:none;}}",
+                                        "position:relative;display:block;",
                                       ],
                                     },
-                                    "displayName": "ButtonDark__ButtonContent",
+                                    "displayName": "Button__ButtonWrapper",
                                     "foldedComponentIds": Array [],
                                     "render": [Function],
-                                    "styledComponentId": "ButtonDark__ButtonContent-le6ouf-0",
-                                    "target": [Function],
+                                    "styledComponentId": "Button__ButtonWrapper-sc-160bmy5-2",
+                                    "target": "div",
                                     "toString": [Function],
                                     "warnTooManyClasses": [Function],
                                     "withComponent": [Function],
                                   }
                                 }
                                 forwardedRef={null}
-                                onClick={[Function]}
-                                type="button"
                               >
-                                <Blueprint3.Button
-                                  className="ButtonDark__ButtonContent-le6ouf-0 bztDKt"
-                                  onClick={[Function]}
-                                  type="button"
+                                <div
+                                  className="Button__ButtonWrapper-sc-160bmy5-2 gBWKLt"
                                 >
-                                  <button
-                                    className="bp3-button ButtonDark__ButtonContent-le6ouf-0 bztDKt"
+                                  <Button__ButtonContent
+                                    className="dark"
+                                    disabled={false}
                                     onClick={[Function]}
-                                    onKeyDown={[Function]}
-                                    onKeyUp={[Function]}
                                     type="button"
                                   >
-                                    <Blueprint3.Icon
-                                      key="leftIcon"
-                                    />
-                                    <span
-                                      className="bp3-button-text"
-                                      key="text"
+                                    <StyledComponent
+                                      className="dark"
+                                      disabled={false}
+                                      forwardedComponent={
+                                        Object {
+                                          "$$typeof": Symbol(react.forward_ref),
+                                          "attrs": Array [],
+                                          "componentStyle": ComponentStyle {
+                                            "componentId": "Button__ButtonContent-sc-160bmy5-0",
+                                            "isStatic": false,
+                                            "lastClassName": "eEYEEw",
+                                            "rules": Array [
+                                              "margin-left:4px;cursor:",
+                                              [Function],
+                                              ";margin-right:4px;display:flex;line-height:1;padding:10px 20px 10px 20px;font-size:15px;font-weight:bold;text-align:center;transition:all 0.07s ease-in-out;border:2px solid ",
+                                              [Function],
+                                              ";font-family:",
+                                              [Function],
+                                              ";border-radius:",
+                                              [Function],
+                                              ";&:hover{text-decoration:none;}",
+                                              [Function],
+                                              "{font-size:12px;}",
+                                              " &.new{",
+                                              "background:transparent;color:",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}&:hover{color:",
+                                              [Function],
+                                              ";box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}}&:active{box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );}",
+                                              "}&.normal{",
+                                              "box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";color:",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}background:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );&:hover{box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );}&:active{box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );}",
+                                              "}&.alternative{",
+                                              "background:",
+                                              [Function],
+                                              ";border:2px solid ",
+                                              [Function],
+                                              ";color:white;svg *{stroke:white;fill:white;}&:hover{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );border:2px solid ",
+                                              [Function],
+                                              ";color:",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";}&:active{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";}",
+                                              "}&.dark{",
+                                              "background:",
+                                              [Function],
+                                              ";border:2px solid #000;color:white;svg *{stroke:white;fill:white;}&:hover{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );color:",
+                                              [Function],
+                                              ";border:2px solid ",
+                                              [Function],
+                                              ";svg *{stroke:",
+                                              [Function],
+                                              ";fill:",
+                                              [Function],
+                                              ";}box-shadow:inset 0px -3px 0px 0px ",
+                                              [Function],
+                                              ";}&:active{background-image:linear-gradient( to bottom,",
+                                              [Function],
+                                              ",",
+                                              [Function],
+                                              " );box-shadow:inset 0px 3px 0px 0px ",
+                                              [Function],
+                                              ";}",
+                                              "}",
+                                            ],
+                                          },
+                                          "displayName": "Button__ButtonContent",
+                                          "foldedComponentIds": Array [],
+                                          "render": [Function],
+                                          "styledComponentId": "Button__ButtonContent-sc-160bmy5-0",
+                                          "target": "button",
+                                          "toString": [Function],
+                                          "warnTooManyClasses": [Function],
+                                          "withComponent": [Function],
+                                        }
+                                      }
+                                      forwardedRef={null}
+                                      onClick={[Function]}
+                                      type="button"
                                     >
-                                      Get Started
-                                    </span>
-                                    <Blueprint3.Icon
-                                      key="rightIcon"
-                                    />
-                                  </button>
-                                </Blueprint3.Button>
+                                      <button
+                                        className="Button__ButtonContent-sc-160bmy5-0 eEYEEw dark"
+                                        disabled={false}
+                                        onClick={[Function]}
+                                        type="button"
+                                      >
+                                        Get Started
+                                      </button>
+                                    </StyledComponent>
+                                  </Button__ButtonContent>
+                                </div>
                               </StyledComponent>
-                            </ButtonDark__ButtonContent>
-                          </ButtonAlternative>
+                            </Button__ButtonWrapper>
+                          </Button>
                         </div>
                       </StyledComponent>
                     </Page__PriceCardContent>

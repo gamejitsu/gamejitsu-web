@@ -7,7 +7,6 @@ import styled from "styled-components"
 import AnalysisCompletedSVG from "../../svgs/analysis-completed.svg"
 import CoachDashboardSVG from "../../svgs/coach-dashboard.svg"
 import LinkLeftMenu from "./LinkLeftMenu"
-import NavbarLeftMenu from "./NavbarLeftMenu"
 import SettingsSVG from "../../svgs/settings.svg"
 
 import { breakpointDown } from "../utils/mediaQueryDevices"
@@ -149,7 +148,6 @@ const LayoutWithMenuUser: FunctionComponent<Props> = ({ title, children }) => (
       <title>{title === undefined ? companyName : `${companyName} - ${title}`}</title>
     </Head>
 
-    <NavbarLeftMenu />
     <Wrapper>
       <LeftMenu>
         <InnerWrapper>
