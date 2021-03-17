@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Box } from "rebass/styled-components"
 import Head from "next/head"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import { Footer, Navbar } from "gamejitsu/components"
+import { Footer } from "gamejitsu/components"
 import {
   Container,
   MainTitle,
