@@ -15,8 +15,7 @@ import LayoutWithMenuUser from "./LayoutWithMenuUser"
 import Link from "./Link"
 import LinkSocialIcon from "./LinkSocialIcon"
 import LinkDark from "./LinkDark"
-import LinkBold from "./LinkBold"
-import LinkMailBold from "./LinkBold"
+import LinkMailBold from "./LinkMailBold"
 import LinkLeftMenu from "./LinkLeftMenu"
 import Patch from "./Patch"
 import PatchFull from "./PatchFull"
@@ -49,7 +48,6 @@ export {
   LayoutWithMenuUser,
   Link,
   LinkDark,
-  LinkBold,
   LinkMailBold,
   LinkLeftMenu,
   LinkSocialIcon,

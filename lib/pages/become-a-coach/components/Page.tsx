@@ -89,7 +89,7 @@ const Page: AuthenticatedComponent = () => {
           </ParagraphText>
           <ParagraphText>
             Email us at{" "}
-            <LinkMailBold href="mailto:support@gamejitsu.gg">support@gamejitsu.gg</LinkMailBold>
+            <LinkMailBold mailto="support@gamejitsu.gg">support@gamejitsu.gg</LinkMailBold>
           </ParagraphText>
         </Box>
       </Box>

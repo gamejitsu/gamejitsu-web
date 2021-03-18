@@ -28,9 +28,13 @@ const Page: AuthenticatedComponent = () => (
           Gamejitsu is an e-sport and entertainment software company founded in 2019 and based in
           London, UK. The company's debut product, a learning platform for Dota 2 players, was
           launched in March 2021. Today, Gamejitsu is composed by its founders and software
-          engineers. For press inquiries,{" "}
-          <LinkMailBold href="mailto:admin@gamejitsu.gg">contact admins</LinkMailBold>.
+          engineers.
         </ParagraphText>
+        <br />
+        <div>
+          For press inquiries{" "}
+          <LinkMailBold mailto="admin@gamejitsu.gg">contact admins</LinkMailBold>.
+        </div>
       </Box>
     </Box>
     <Spacer padding={60} />

@@ -55,7 +55,7 @@ const Page: AuthenticatedComponent = () => {
           <ParagraphTitle>Contacts</ParagraphTitle>
           <ParagraphText>
             Want to learn more about our mission? Feel free to contact us at:{" "}
-            <LinkMailBold href="mailto:support@gamejitsu.gg">support@gamejitsu.gg</LinkMailBold>
+            <LinkMailBold mailto="support@gamejitsu.gg">support@gamejitsu.gg</LinkMailBold>
           </ParagraphText>
         </Box>
       </Box>

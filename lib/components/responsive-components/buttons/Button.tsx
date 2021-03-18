@@ -230,7 +230,7 @@ const LinkContent = styled.a`
 
 const ButtonWrapper = styled.div`
   position: relative;
-  display: block;
+  display: inline-block;
 `
 
 const Button: FunctionComponent<Props> = ({ text, href, type, onClick, color, icon, ...props }) => {

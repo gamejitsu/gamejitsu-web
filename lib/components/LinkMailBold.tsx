@@ -3,12 +3,10 @@ import styled from "styled-components"
 import { FunctionComponent } from "react"
 
 interface Props {
-  href: string
-  className?: string
-  mt?: number
+  mailto: string
 }
 
-const Content = styled.a`
+const MailTo = styled.a`
   color: white;
   font-weight: bold;
   cursor: pointer;
@@ -18,8 +16,10 @@ const Content = styled.a`
   }
 `
 
-const LinkMailBold: FunctionComponent<Props> = ({ children, href }) => (
-  <Content href={href}>{children}</Content>
+const LinkMailBold: FunctionComponent<Props> = ({ children, mailto }) => (
+  <MailTo href={`mailto:${mailto}`} target="_blank">
+    {children}
+  </MailTo>
 )
 
 export default LinkMailBold
