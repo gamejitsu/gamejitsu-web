@@ -1,12 +1,10 @@
-import React, { useContext, useEffect } from "react"
-import styled from "styled-components"
+import React, { useContext } from "react"
 import { Box } from "rebass/styled-components"
 import Head from "next/head"
 import { Callout } from "@blueprintjs/core"
-import queryString from "query-string"
 import { UserContext } from "gamejitsu/contexts"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import { Footer, Navbar, LinkMailBold } from "gamejitsu/components"
+import { Footer, LinkMail } from "gamejitsu/components"
 import {
   Container,
   MainTitle,
@@ -20,34 +18,15 @@ const getCurrentUser = () => useContext(UserContext)
 
 const Page: AuthenticatedComponent = () => {
   const user = getCurrentUser()
-  const urlBase = "https://steamcommunity.com/openid/login"
 
-  let redirectLink = ""
-  useEffect(() => {
-    redirectLink = window.origin + "/auth?redirect=/coach-signup"
-  })
-
-  const urlQuery = {
-    "openid.claimed_id": "http://specs.openid.net/auth/2.0/identifier_select",
-    "openid.identity": "http://specs.openid.net/auth/2.0/identifier_select",
-    "openid.mode": "checkid_setup",
-    "openid.ns": "http://specs.openid.net/auth/2.0",
-    "openid.realm": redirectLink,
-    "openid.return_to": redirectLink
-  }
-
-  const stringified = queryString.stringify(urlQuery)
   return (
     <Container>
       <Head>
         <link rel="shortcut icon" href="/favicon.png" />
         <title>Gamejitsu - Become a Coach</title>
       </Head>
-      <Navbar />
-      <Spacer padding={80} />
-      <Box px={[4]}>
+      <Box px={[4]} pt={[4]}>
         <Box>
-          <SecondaryTitle>Gamejitsu</SecondaryTitle>
           <MainTitle>Become a Coach</MainTitle>
         </Box>
         <Box>
@@ -109,12 +88,11 @@ const Page: AuthenticatedComponent = () => {
             one at the Gamejitsu.
           </ParagraphText>
           <ParagraphText>
-            Email us at{" "}
-            <LinkMailBold href="mailto:support@gamejitsu.gg">support@gamejitsu.gg</LinkMailBold>
+            Email us at <LinkMail mailto="support@gamejitsu.gg">support@gamejitsu.gg</LinkMail>
           </ParagraphText>
         </Box>
       </Box>
-      <Spacer padding={80} />
+      <Spacer padding={60} />
       <Footer />
     </Container>
   )

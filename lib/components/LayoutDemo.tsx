@@ -3,15 +3,12 @@ import styled from "styled-components"
 import { Box, Flex } from "rebass/styled-components"
 import { FunctionComponent } from "react"
 import { useRouter } from "next/router"
-
-import NavbarLeftMenu from "./NavbarLeftMenu"
 import LinkLeftMenu from "./LinkLeftMenu"
-
 import CoachDashboardSVG from "../../svgs/coach-dashboard.svg"
 import AnalysisCompletedSVG from "../../svgs/analysis-completed.svg"
 import SettingsSVG from "../../svgs/settings.svg"
 import { transparentize } from "polished"
-
+import { down } from "customUtils"
 import { breakpointDown } from "../utils/mediaQueryDevices"
 
 const companyName = "Gamejitsu"
@@ -44,16 +41,16 @@ const LeftMenu = styled(Flex)`
   width: 280px;
   flex-direction: column;
   background-color: ${(props) => props.theme.colors.lightBackgroundColor};
-  min-height: 90vh;
+  order: 2;
 
   @media ${breakpointDown.lg} {
+    order: 1;
     justify-content: center;
     padding-top: 0;
     width: 100%;
     flex-direction: row;
     min-height: 0;
     top: 0;
-    z-index: 2;
   }
 `
 
@@ -99,11 +96,25 @@ const LeftMenuLinkContent = styled(LinkLeftMenu)<LeftMenuLinkContentProps>`
 const DemoMode = styled(Flex)`
   justify-content: center;
   font-weight: bold;
-  color: #0bff09;
+  font-size: 10px;
+  color: ${(props) => props.theme.colors.primaryColor};
+  border-top: 1px dotted ${(props) => props.theme.colors.primaryColor};
+  order: 1;
+
+  @media ${breakpointDown.lg} {
+    order: 2;
+  }
 `
 
 const Wrapper = styled(Flex)`
   flex-wrap: wrap;
+  height: 100%;
+  min-height: calc(100vh - 75px);
+
+  @media ${breakpointDown.lg} {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 `
 
 const MenuFooterParent = styled(Box)`
@@ -151,13 +162,12 @@ const LayoutWithMenu: FunctionComponent<Props> = ({ title, children }) => (
       <title>{title === undefined ? companyName : `${companyName} - ${title}`}</title>
     </Head>
 
-    <NavbarLeftMenu />
     <Wrapper>
+      <DemoMode py={2} width="100%">
+        DEMO MODE
+      </DemoMode>
       <LeftMenu>
         <InnerWrapper>
-          <MenuElementWrapper>
-            <DemoMode pb={3}>DEMO MODE</DemoMode>
-          </MenuElementWrapper>
           <MenuElementWrapper>
             <LeftMenuLink href="#">
               <CoachDashboardSVG width="60" height="35" />
@@ -183,7 +193,7 @@ const LayoutWithMenu: FunctionComponent<Props> = ({ title, children }) => (
           </MenuFooter>
         </MenuFooterParent>
       </LeftMenu>
-      <Container>{children}</Container>
+      <Container order={[3]}>{children}</Container>
     </Wrapper>
   </>
 )

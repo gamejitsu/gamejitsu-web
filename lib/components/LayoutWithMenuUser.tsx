@@ -7,7 +7,6 @@ import styled from "styled-components"
 import AnalysisCompletedSVG from "../../svgs/analysis-completed.svg"
 import CoachDashboardSVG from "../../svgs/coach-dashboard.svg"
 import LinkLeftMenu from "./LinkLeftMenu"
-import NavbarLeftMenu from "./NavbarLeftMenu"
 import SettingsSVG from "../../svgs/settings.svg"
 
 import { breakpointDown } from "../utils/mediaQueryDevices"
@@ -66,6 +65,10 @@ const Container = styled(Flex)`
   background-position: top;
   background-repeat: no-repeat;
 
+  @media ${breakpointDown.lg} {
+    width: 100%;
+  }
+
   @media ${breakpointDown.md} {
     padding: 32px 16px;
     min-height: 72vh;
@@ -94,12 +97,13 @@ const LeftMenuLinkContent = styled(LinkLeftMenu)<LeftMenuLinkContentProps>`
 `
 
 const Wrapper = styled(Flex)`
-  flex-wrap: nowrap;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 100%;
+  min-height: calc(100vh - 75px);
 
   @media ${breakpointDown.lg} {
-    flex-wrap: wrap;
-    align-items: stretch;
+    align-items: flex-start;
+    flex-direction: column;
   }
 `
 
@@ -149,7 +153,6 @@ const LayoutWithMenuUser: FunctionComponent<Props> = ({ title, children }) => (
       <title>{title === undefined ? companyName : `${companyName} - ${title}`}</title>
     </Head>
 
-    <NavbarLeftMenu />
     <Wrapper>
       <LeftMenu>
         <InnerWrapper>

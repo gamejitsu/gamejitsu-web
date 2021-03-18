@@ -4,7 +4,6 @@ import { Box, Flex } from "rebass/styled-components"
 import { FunctionComponent } from "react"
 import { useRouter } from "next/router"
 
-import NavbarLeftMenu from "./NavbarLeftMenu"
 import LinkLeftMenu from "./LinkLeftMenu"
 
 import CoachDashboardSVG from "../../svgs/coach-dashboard.svg"
@@ -67,6 +66,10 @@ const Container = styled(Flex)`
   background-position: top;
   background-repeat: no-repeat;
 
+  @media ${breakpointDown.lg} {
+    width: 100%;
+  }
+
   @media ${breakpointDown.md} {
     padding: 32px 16px;
     min-height: 79vh;
@@ -96,6 +99,13 @@ const LeftMenuLinkContent = styled(LinkLeftMenu)<LeftMenuLinkContentProps>`
 
 const Wrapper = styled(Flex)`
   flex-wrap: wrap;
+  height: 100%;
+  min-height: calc(100vh - 75px);
+
+  @media ${breakpointDown.lg} {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 `
 
 const MenuFooterParent = styled(Box)`
@@ -143,8 +153,6 @@ const LayoutWithMenu: FunctionComponent<Props> = ({ title, children }) => (
       <link rel="shortcut icon" href="/favicon.png" />
       <title>{title === undefined ? companyName : `${companyName} - ${title}`}</title>
     </Head>
-
-    <NavbarLeftMenu />
     <Wrapper>
       <LeftMenu>
         <InnerWrapper>

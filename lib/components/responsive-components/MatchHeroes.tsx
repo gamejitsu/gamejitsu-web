@@ -14,28 +14,29 @@ interface HeroPicProps {
   player: Player
 }
 
-const HeroPic: FunctionComponent<HeroPicProps> = ({ player }) => {
-  interface PictureContainerProps {
-    isYourHero: boolean
-    heroPortraitUrl: string
+interface PictureContainerProps {
+  isYourHero: boolean
+  heroPortraitUrl: string
+}
+
+const PictureContainer = styled.div<PictureContainerProps>`
+  opacity: 0.85;
+  background-size: cover;
+  background-image: url("${(props) => props.heroPortraitUrl}");
+  width: 19.5%;
+  cursor: pointer;
+  border-radius: 4px;
+  border: ${(props) =>
+    props.isYourHero
+      ? `2px solid  ${props.theme.colors.primaryColor}`
+      : `1px solid ${props.theme.colors.textColor}`};
+
+  &:hover{
+    opacity: 1;
   }
+`
 
-  const PictureContainer = styled.div<PictureContainerProps>`
-    opacity: 0.85;
-    background-size: cover;
-    background-image: url("${(props) => props.heroPortraitUrl}");
-    width: 19.5%;
-    cursor: pointer;
-    border-radius: 4px;
-    border: ${(props) =>
-      props.isYourHero
-        ? `2px solid  ${props.theme.colors.primaryColor}`
-        : `1px solid ${props.theme.colors.textColor}`};
-
-    &:hover{
-      opacity: 1;
-    }
-  `
+const HeroPic: FunctionComponent<HeroPicProps> = ({ player }) => {
   const TooltipArea = styled.div`
     height: 100%;
     width: 100%;

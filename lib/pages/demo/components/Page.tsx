@@ -4,13 +4,7 @@ import React, { SyntheticEvent, useRef, useState, useEffect } from "react"
 import styled from "styled-components"
 
 import { Comment } from "gamejitsu/api/types/comment"
-import {
-  CommentBar,
-  CommentFormNew,
-  CommentList,
-  LayoutDemo,
-  useWarnIfUnsavedChanges
-} from "gamejitsu/components"
+import { CommentBar, CommentFormNew, CommentList, LayoutDemo } from "gamejitsu/components"
 import { Review } from "gamejitsu/api/resources/review"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { demoComments } from "../demo-comments/demo-comments"

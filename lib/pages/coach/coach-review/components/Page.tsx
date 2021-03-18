@@ -1,7 +1,7 @@
 import { Flex, Box } from "rebass/styled-components"
 import { NextPageContext, NextPage } from "next"
 import { Position, Toaster, Intent, Switch } from "@blueprintjs/core"
-import React, { SyntheticEvent, useRef, useState, useEffect, useCallback } from "react"
+import React, { SyntheticEvent, useRef, useState, useEffect } from "react"
 import styled from "styled-components"
 import BackTenSecSVG from "../../../../../svgs/back10.svg"
 import ForwardTenSecSVG from "../../../../../svgs/forward10.svg"

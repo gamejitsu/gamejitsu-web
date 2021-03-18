@@ -2,11 +2,10 @@ import React from "react"
 import { Box } from "rebass/styled-components"
 import Head from "next/head"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import { Footer, LinkMailBold, Navbar } from "gamejitsu/components"
+import { Footer, LinkMail } from "gamejitsu/components"
 import {
   Container,
   MainTitle,
-  SecondaryTitle,
   Spacer,
   ParagraphText,
   ParagraphTitle
@@ -19,11 +18,8 @@ const Page: AuthenticatedComponent = () => {
         <link rel="shortcut icon" href="/favicon.png" />
         <title>Gamejitsu - About Us</title>
       </Head>
-      <Navbar />
-      <Spacer padding={80} />
-      <Box px={[4]}>
+      <Box px={[4]} pt={[4]}>
         <Box>
-          <SecondaryTitle>Gamejitsu</SecondaryTitle>
           <MainTitle>About Us</MainTitle>
         </Box>
         <Box>
@@ -59,11 +55,11 @@ const Page: AuthenticatedComponent = () => {
           <ParagraphTitle>Contacts</ParagraphTitle>
           <ParagraphText>
             Want to learn more about our mission? Feel free to contact us at:{" "}
-            <LinkMailBold href="mailto:support@gamejitsu.gg">support@gamejitsu.gg</LinkMailBold>
+            <LinkMail mailto="support@gamejitsu.gg">support@gamejitsu.gg</LinkMail>
           </ParagraphText>
         </Box>
       </Box>
-      <Spacer padding={80} />
+      <Spacer padding={60} />
       <Footer />
     </Container>
   )

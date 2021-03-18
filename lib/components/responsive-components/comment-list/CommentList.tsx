@@ -74,28 +74,35 @@ const CommentList: FunctionComponent<Props> = ({ comments, selectedComment, onSe
   }
   return (
     <>
-      <Flex width="100%" flexDirection="column" ml={[0, 0, 3]} height={["100%"]}>
+      <Flex width="100%" flexDirection="column" pt={[3, 3, 0]} ml={[0, 0, 3]} height={["100%"]}>
         <Header>
-          <Flex width="100%">
-            <Flex width="100%">
-              <CommentListTitle>REPLAY ANALYSIS</CommentListTitle>
-              <Flex key="saveButton" justifyContent="flex-end" alignItems="center" width="50%">
-                <Box>
-                  {isAllCollapsed ? (
-                    <Button
-                      text="Expand all"
-                      type="button"
-                      onClick={onExpandAllComments.bind(null, comments)}
-                    />
-                  ) : (
-                    <Button
-                      text="Collapse all"
-                      type="button"
-                      onClick={onCollapseAllComments.bind(null, comments)}
-                    />
-                  )}
-                </Box>
-              </Flex>
+          <Flex
+            width="100%"
+            flexWrap={["nowrap", "nowrap", "wrap", "nowrap", "nowrap"]}
+            alignItems={"center"}
+          >
+            <CommentListTitle>REPLAY ANALYSIS</CommentListTitle>
+            <Flex
+              key="saveButton"
+              alignItems="center"
+              justifyContent={["flex-end", "flex-end", "flex-start", "flex-end", "flex-end"]}
+              width={["100%", "100%", "100%", "100%", "50%"]}
+            >
+              <Box>
+                {isAllCollapsed ? (
+                  <Button
+                    text="Expand all"
+                    type="button"
+                    onClick={onExpandAllComments.bind(null, comments)}
+                  />
+                ) : (
+                  <Button
+                    text="Collapse all"
+                    type="button"
+                    onClick={onCollapseAllComments.bind(null, comments)}
+                  />
+                )}
+              </Box>
             </Flex>
           </Flex>
         </Header>

@@ -3,7 +3,7 @@ import { FunctionComponent } from "react"
 import { Box, Flex } from "rebass/styled-components"
 import { LinkDark, LinkSocialIcon } from "."
 import { Container } from "./UtilsComponents"
-import LinkMailBold from "gamejitsu/components/LinkMailBold"
+import { LinkMail } from "gamejitsu/components"
 import { breakpointDown } from "../../lib/utils/mediaQueryDevices"
 
 interface Props {}
@@ -108,13 +108,13 @@ const Footer: FunctionComponent<Props> = () => (
         <Box mt={[3]}>
           <FooterText>
             Are you a Streamer/You Tuber/High Ranked?{" "}
-            <LinkMailBold href="mailto:support@gamejitsu.gg">Apply for Partnership</LinkMailBold>
+            <LinkMail mailto="support@gamejitsu.gg">Apply for Partnership</LinkMail>
           </FooterText>
         </Box>
         <Box>
           <FooterText>
             Need help? Email us at{" "}
-            <LinkMailBold href="mailto:support@gamejitsu.gg">support@gamejitsu.gg</LinkMailBold>
+            <LinkMail mailto="support@gamejitsu.gg">support@gamejitsu.gg</LinkMail>
           </FooterText>
         </Box>
       </FooterColL>

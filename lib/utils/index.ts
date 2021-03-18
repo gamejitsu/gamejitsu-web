@@ -1,3 +1,3 @@
-import { media } from "./styledMediaQuery"
+import { up, down, between, only } from "./styledMediaQuery"
 
-export { media }
+export { up, down, between, only }
