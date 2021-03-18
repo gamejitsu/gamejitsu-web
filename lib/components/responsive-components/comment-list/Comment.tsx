@@ -6,6 +6,7 @@ import { Comment as CommentType } from "gamejitsu/api/types/comment"
 import { Box, Flex } from "rebass/styled-components"
 import { darken } from "polished"
 import { formatTimestamp } from "gamejitsu/utils/duration"
+import { theme } from "gamejitsu"
 
 interface CommentProps {
   comment: CommentType
@@ -33,8 +34,11 @@ const Comment: FunctionComponent<CommentProps> = ({
   const [commentText, setCommentText] = useState("")
 
   useEffect(() => {
-    if (selectedComment === comment && commentRef && commentRef.current != null) {
-      commentRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" })
+    let intViewportWidth = window.innerWidth
+    if (intViewportWidth >= parseInt(theme.breakpointsObj.md.replace("px", ""))) {
+      if (selectedComment === comment && commentRef && commentRef.current != null) {
+        commentRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" })
+      }
     }
   }, [selectedComment])
 

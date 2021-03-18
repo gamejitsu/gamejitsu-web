@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { FunctionComponent, useState } from "react"
 import styled from "styled-components"
 import SideBar from "./Sidebar"
 import { down } from "customUtils"
@@ -42,7 +42,7 @@ const StyledBurger = styled.div<StyledBurgerProps>`
   }
 `
 
-const Burger = () => {
+const Burger: FunctionComponent = () => {
   const [isOpen, setOpen] = useState(false)
 
   return (

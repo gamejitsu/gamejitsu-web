@@ -3,14 +3,12 @@ import styled from "styled-components"
 import { Box, Flex } from "rebass/styled-components"
 import { FunctionComponent } from "react"
 import { useRouter } from "next/router"
-
 import LinkLeftMenu from "./LinkLeftMenu"
-
 import CoachDashboardSVG from "../../svgs/coach-dashboard.svg"
 import AnalysisCompletedSVG from "../../svgs/analysis-completed.svg"
 import SettingsSVG from "../../svgs/settings.svg"
 import { transparentize } from "polished"
-
+import { down } from "customUtils"
 import { breakpointDown } from "../utils/mediaQueryDevices"
 
 const companyName = "Gamejitsu"
@@ -43,7 +41,6 @@ const LeftMenu = styled(Flex)`
   width: 280px;
   flex-direction: column;
   background-color: ${(props) => props.theme.colors.lightBackgroundColor};
-  min-height: 90vh;
 
   @media ${breakpointDown.lg} {
     justify-content: center;
@@ -98,11 +95,18 @@ const LeftMenuLinkContent = styled(LinkLeftMenu)<LeftMenuLinkContentProps>`
 const DemoMode = styled(Flex)`
   justify-content: center;
   font-weight: bold;
-  color: #0bff09;
+  font-size: 10px;
+  color: ${(props) => props.theme.colors.primaryColor};
+  border-top: 1px dotted ${(props) => props.theme.colors.primaryColor};
 `
 
 const Wrapper = styled(Flex)`
   flex-wrap: wrap;
+  min-height: calc(100vh - 75px);
+
+  @media ${breakpointDown.lg} {
+    align-items: stretch;
+  }
 `
 
 const MenuFooterParent = styled(Box)`
@@ -151,11 +155,11 @@ const LayoutWithMenu: FunctionComponent<Props> = ({ title, children }) => (
     </Head>
 
     <Wrapper>
-      <LeftMenu>
+      <DemoMode order={[2, 2, 2, 2, 1]} py={2} width="100%">
+        DEMO MODE
+      </DemoMode>
+      <LeftMenu order={[1, 1, 1, 1, 2]}>
         <InnerWrapper>
-          <MenuElementWrapper>
-            <DemoMode pb={3}>DEMO MODE</DemoMode>
-          </MenuElementWrapper>
           <MenuElementWrapper>
             <LeftMenuLink href="#">
               <CoachDashboardSVG width="60" height="35" />
@@ -181,7 +185,7 @@ const LayoutWithMenu: FunctionComponent<Props> = ({ title, children }) => (
           </MenuFooter>
         </MenuFooterParent>
       </LeftMenu>
-      <Container>{children}</Container>
+      <Container order={[3]}>{children}</Container>
     </Wrapper>
   </>
 )

@@ -66,6 +66,10 @@ const Container = styled(Flex)`
   background-position: top;
   background-repeat: no-repeat;
 
+  @media ${breakpointDown.lg} {
+    width: 100%;
+  }
+
   @media ${breakpointDown.md} {
     padding: 32px 16px;
     min-height: 79vh;
@@ -95,6 +99,13 @@ const LeftMenuLinkContent = styled(LinkLeftMenu)<LeftMenuLinkContentProps>`
 
 const Wrapper = styled(Flex)`
   flex-wrap: wrap;
+  height: 100%;
+  min-height: calc(100vh - 75px);
+
+  @media ${breakpointDown.lg} {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 `
 
 const MenuFooterParent = styled(Box)`
