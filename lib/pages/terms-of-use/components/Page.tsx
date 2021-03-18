@@ -18,10 +18,8 @@ const Page: AuthenticatedComponent = () => (
       <link rel="shortcut icon" href="/favicon.png" />
       <title>Gamejitsu - Terms of Use</title>
     </Head>
-    <Spacer padding={80} />
-    <Box px={[4]}>
+    <Box px={[4]} pt={[4]}>
       <Box>
-        <SecondaryTitle>Gamejitsu</SecondaryTitle>
         <MainTitle>Site Terms of Use</MainTitle>
       </Box>
       <Box>
@@ -234,7 +232,7 @@ const Page: AuthenticatedComponent = () => (
         </ParagraphText>
       </Box>
     </Box>
-    <Spacer padding={80} />
+    <Spacer padding={60} />
     <Footer />
   </Container>
 )

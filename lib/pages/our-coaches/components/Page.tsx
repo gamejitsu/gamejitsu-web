@@ -27,10 +27,8 @@ const Page: AuthenticatedComponent = () => (
       <link rel="shortcut icon" href="/favicon.png" />
       <title>Gamejitsu - Our Coaches</title>
     </Head>
-    <Spacer padding={80} />
-    <Box px={[4]}>
+    <Box px={[4]} pt={[4]}>
       <Box>
-        <SecondaryTitle>Gamejitsu</SecondaryTitle>
         <MainTitle>Our Coaches</MainTitle>
       </Box>
       <Flex flexWrap="wrap" justifyContent="space-between">
@@ -43,7 +41,7 @@ const Page: AuthenticatedComponent = () => (
         )}
       </Flex>
     </Box>
-    <Spacer padding={80} />
+    <Spacer padding={60} />
     <Footer />
   </Container>
 )

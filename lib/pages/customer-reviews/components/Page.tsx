@@ -18,10 +18,8 @@ const Page: AuthenticatedComponent = () => (
       <link rel="shortcut icon" href="/favicon.png" />
       <title>Gamejitsu - Customer Reviews</title>
     </Head>
-    <Spacer padding={80} />
-    <Box px={[4]}>
+    <Box px={[4]} pt={[4]}>
       <Box>
-        <SecondaryTitle>Gamejitsu</SecondaryTitle>
         <MainTitle>Customer Reviews</MainTitle>
       </Box>
       <Box>

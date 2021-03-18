@@ -41,15 +41,16 @@ const LeftMenu = styled(Flex)`
   width: 280px;
   flex-direction: column;
   background-color: ${(props) => props.theme.colors.lightBackgroundColor};
+  order: 2;
 
   @media ${breakpointDown.lg} {
+    order: 1;
     justify-content: center;
     padding-top: 0;
     width: 100%;
     flex-direction: row;
     min-height: 0;
     top: 0;
-    z-index: 2;
   }
 `
 
@@ -98,14 +99,21 @@ const DemoMode = styled(Flex)`
   font-size: 10px;
   color: ${(props) => props.theme.colors.primaryColor};
   border-top: 1px dotted ${(props) => props.theme.colors.primaryColor};
+  order: 1;
+
+  @media ${breakpointDown.lg} {
+    order: 2;
+  }
 `
 
 const Wrapper = styled(Flex)`
   flex-wrap: wrap;
+  height: 100%;
   min-height: calc(100vh - 75px);
 
   @media ${breakpointDown.lg} {
-    align-items: stretch;
+    align-items: flex-start;
+    flex-direction: column;
   }
 `
 
@@ -155,10 +163,10 @@ const LayoutWithMenu: FunctionComponent<Props> = ({ title, children }) => (
     </Head>
 
     <Wrapper>
-      <DemoMode order={[2, 2, 2, 2, 1]} py={2} width="100%">
+      <DemoMode py={2} width="100%">
         DEMO MODE
       </DemoMode>
-      <LeftMenu order={[1, 1, 1, 1, 2]}>
+      <LeftMenu>
         <InnerWrapper>
           <MenuElementWrapper>
             <LeftMenuLink href="#">

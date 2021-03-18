@@ -19,10 +19,8 @@ const Page: AuthenticatedComponent = () => (
       <link rel="shortcut icon" href="/favicon.png" />
       <title>Gamejitsu - How It Works</title>
     </Head>
-    <Spacer padding={80} />
-    <Box px={[4]}>
+    <Box px={[4]} pt={[4]}>
       <Box>
-        <SecondaryTitle>Gamejitsu</SecondaryTitle>
         <MainTitle>How It Works</MainTitle>
       </Box>
       <Box>
@@ -57,7 +55,7 @@ const Page: AuthenticatedComponent = () => (
         <FlowImage url="/images/coach-dashboard.png" imageHeight="61" />
       </Box>
     </Box>
-    <Spacer padding={80} />
+    <Spacer padding={60} />
     <Footer />
   </Container>
 )

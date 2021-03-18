@@ -6,7 +6,6 @@ import { Footer, LinkMailBold } from "gamejitsu/components"
 import {
   Container,
   MainTitle,
-  SecondaryTitle,
   Spacer,
   ParagraphText,
   ParagraphTitle
@@ -19,10 +18,8 @@ const Page: AuthenticatedComponent = () => {
         <link rel="shortcut icon" href="/favicon.png" />
         <title>Gamejitsu - About Us</title>
       </Head>
-      <Spacer padding={80} />
-      <Box px={[4]}>
+      <Box px={[4]} pt={[4]}>
         <Box>
-          <SecondaryTitle>Gamejitsu</SecondaryTitle>
           <MainTitle>About Us</MainTitle>
         </Box>
         <Box>
@@ -62,7 +59,7 @@ const Page: AuthenticatedComponent = () => {
           </ParagraphText>
         </Box>
       </Box>
-      <Spacer padding={80} />
+      <Spacer padding={60} />
       <Footer />
     </Container>
   )
