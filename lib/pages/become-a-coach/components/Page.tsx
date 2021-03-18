@@ -4,7 +4,7 @@ import Head from "next/head"
 import { Callout } from "@blueprintjs/core"
 import { UserContext } from "gamejitsu/contexts"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import { Footer, LinkMailBold } from "gamejitsu/components"
+import { Footer, LinkMail } from "gamejitsu/components"
 import {
   Container,
   MainTitle,
@@ -88,8 +88,7 @@ const Page: AuthenticatedComponent = () => {
             one at the Gamejitsu.
           </ParagraphText>
           <ParagraphText>
-            Email us at{" "}
-            <LinkMailBold mailto="support@gamejitsu.gg">support@gamejitsu.gg</LinkMailBold>
+            Email us at <LinkMail mailto="support@gamejitsu.gg">support@gamejitsu.gg</LinkMail>
           </ParagraphText>
         </Box>
       </Box>

@@ -13223,10 +13223,10 @@ exports[`Index page should match snapshot 1`] = `
                                     >
                                       Are you a Streamer/You Tuber/High Ranked?
                                        
-                                      <LinkMailBold
+                                      <LinkMail
                                         mailto="support@gamejitsu.gg"
                                       >
-                                        <LinkMailBold__MailTo
+                                        <LinkMail__MailTo
                                           href="mailto:support@gamejitsu.gg"
                                           target="_blank"
                                         >
@@ -13236,19 +13236,19 @@ exports[`Index page should match snapshot 1`] = `
                                                 "$$typeof": Symbol(react.forward_ref),
                                                 "attrs": Array [],
                                                 "componentStyle": ComponentStyle {
-                                                  "componentId": "LinkMailBold__MailTo-sc-1iiohhx-0",
+                                                  "componentId": "LinkMail__MailTo-n16pin-0",
                                                   "isStatic": false,
-                                                  "lastClassName": "dJYjYk",
+                                                  "lastClassName": "fJTXLi",
                                                   "rules": Array [
                                                     "color:white;font-weight:bold;cursor:pointer;&:hover{text-decoration:none;color:",
                                                     [Function],
                                                     ";}",
                                                   ],
                                                 },
-                                                "displayName": "LinkMailBold__MailTo",
+                                                "displayName": "LinkMail__MailTo",
                                                 "foldedComponentIds": Array [],
                                                 "render": [Function],
-                                                "styledComponentId": "LinkMailBold__MailTo-sc-1iiohhx-0",
+                                                "styledComponentId": "LinkMail__MailTo-n16pin-0",
                                                 "target": "a",
                                                 "toString": [Function],
                                                 "warnTooManyClasses": [Function],
@@ -13260,15 +13260,15 @@ exports[`Index page should match snapshot 1`] = `
                                             target="_blank"
                                           >
                                             <a
-                                              className="LinkMailBold__MailTo-sc-1iiohhx-0 dJYjYk"
+                                              className="LinkMail__MailTo-n16pin-0 fJTXLi"
                                               href="mailto:support@gamejitsu.gg"
                                               target="_blank"
                                             >
                                               Apply for Partnership
                                             </a>
                                           </StyledComponent>
-                                        </LinkMailBold__MailTo>
-                                      </LinkMailBold>
+                                        </LinkMail__MailTo>
+                                      </LinkMail>
                                     </div>
                                   </StyledComponent>
                                 </Footer__FooterText>
@@ -13354,10 +13354,10 @@ exports[`Index page should match snapshot 1`] = `
                                     >
                                       Need help? Email us at
                                        
-                                      <LinkMailBold
+                                      <LinkMail
                                         mailto="support@gamejitsu.gg"
                                       >
-                                        <LinkMailBold__MailTo
+                                        <LinkMail__MailTo
                                           href="mailto:support@gamejitsu.gg"
                                           target="_blank"
                                         >
@@ -13367,19 +13367,19 @@ exports[`Index page should match snapshot 1`] = `
                                                 "$$typeof": Symbol(react.forward_ref),
                                                 "attrs": Array [],
                                                 "componentStyle": ComponentStyle {
-                                                  "componentId": "LinkMailBold__MailTo-sc-1iiohhx-0",
+                                                  "componentId": "LinkMail__MailTo-n16pin-0",
                                                   "isStatic": false,
-                                                  "lastClassName": "dJYjYk",
+                                                  "lastClassName": "fJTXLi",
                                                   "rules": Array [
                                                     "color:white;font-weight:bold;cursor:pointer;&:hover{text-decoration:none;color:",
                                                     [Function],
                                                     ";}",
                                                   ],
                                                 },
-                                                "displayName": "LinkMailBold__MailTo",
+                                                "displayName": "LinkMail__MailTo",
                                                 "foldedComponentIds": Array [],
                                                 "render": [Function],
-                                                "styledComponentId": "LinkMailBold__MailTo-sc-1iiohhx-0",
+                                                "styledComponentId": "LinkMail__MailTo-n16pin-0",
                                                 "target": "a",
                                                 "toString": [Function],
                                                 "warnTooManyClasses": [Function],
@@ -13391,15 +13391,15 @@ exports[`Index page should match snapshot 1`] = `
                                             target="_blank"
                                           >
                                             <a
-                                              className="LinkMailBold__MailTo-sc-1iiohhx-0 dJYjYk"
+                                              className="LinkMail__MailTo-n16pin-0 fJTXLi"
                                               href="mailto:support@gamejitsu.gg"
                                               target="_blank"
                                             >
                                               support@gamejitsu.gg
                                             </a>
                                           </StyledComponent>
-                                        </LinkMailBold__MailTo>
-                                      </LinkMailBold>
+                                        </LinkMail__MailTo>
+                                      </LinkMail>
                                     </div>
                                   </StyledComponent>
                                 </Footer__FooterText>

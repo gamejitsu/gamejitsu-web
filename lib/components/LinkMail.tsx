@@ -16,10 +16,10 @@ const MailTo = styled.a`
   }
 `
 
-const LinkMailBold: FunctionComponent<Props> = ({ children, mailto }) => (
+const LinkMail: FunctionComponent<Props> = ({ children, mailto }) => (
   <MailTo href={`mailto:${mailto}`} target="_blank">
     {children}
   </MailTo>
 )
 
-export default LinkMailBold
+export default LinkMail

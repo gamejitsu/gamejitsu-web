@@ -2,7 +2,7 @@ import React from "react"
 import { Box } from "rebass/styled-components"
 import Head from "next/head"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import { Footer, LinkMailBold } from "gamejitsu/components"
+import { Footer, LinkMail } from "gamejitsu/components"
 import {
   Container,
   MainTitle,
@@ -55,7 +55,7 @@ const Page: AuthenticatedComponent = () => {
           <ParagraphTitle>Contacts</ParagraphTitle>
           <ParagraphText>
             Want to learn more about our mission? Feel free to contact us at:{" "}
-            <LinkMailBold mailto="support@gamejitsu.gg">support@gamejitsu.gg</LinkMailBold>
+            <LinkMail mailto="support@gamejitsu.gg">support@gamejitsu.gg</LinkMail>
           </ParagraphText>
         </Box>
       </Box>
