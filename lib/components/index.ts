@@ -29,6 +29,7 @@ import GenericToaster from "./responsive-components/GenericToaster"
 import CommentList from "./responsive-components/comment-list/CommentList"
 import MatchHeroes from "./responsive-components/MatchHeroes"
 import Button from "./responsive-components/buttons/Button"
+import Carousel from "./responsive-components/carousel/Carousel"
 
 export {
   Card,
@@ -61,5 +62,6 @@ export {
   MarkdownDialog,
   MatchHeroes,
   GenericToaster,
-  Button
+  Button,
+  Carousel
 }

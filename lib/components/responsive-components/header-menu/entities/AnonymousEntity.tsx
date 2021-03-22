@@ -39,6 +39,7 @@ const UserEntity: FunctionComponent<AnonymousEntityProps> = () => {
   }
   return (
     <>
+      <MenuLink text={"DOTA GUIDES"} href={"/guides"} />
       <MenuLink text={"WATCH DEMO"} href={"/demo"} />
       <Button key="login" text={"SIGN IN"} onClick={login} className={"new"} icon={<SteamIcon />} />
     </>

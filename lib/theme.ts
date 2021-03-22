@@ -6,10 +6,10 @@ const theme: DefaultTheme = {
     xs: "576px",
     sm: "768px",
     md: "1024px",
-    lg: "1420px"
+    lg: "1280px"
   },
   // Used for Rebass
-  breakpoints: ["576px", "768px", "1024px", "1420px"],
+  breakpoints: ["576px", "768px", "1024px", "1280px"],
   colors: {
     activeColor: "#454545",
     backgroundColor: "#00030c",
