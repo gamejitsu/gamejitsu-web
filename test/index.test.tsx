@@ -2,7 +2,7 @@ import { mount } from "enzyme"
 import React from "react"
 import { ThemeProvider } from "styled-components"
 import { theme } from "gamejitsu"
-import IndexPage from "../pages/index"
+import DemoPage from "../pages/demo"
 import { UserContext } from "../lib/contexts"
 
 const user = {
@@ -16,7 +16,7 @@ test("Index page should match snapshot", () => {
   const home = mount(
     <ThemeProvider theme={theme}>
       <UserContext.Provider value={user}>
-        <IndexPage />
+        <DemoPage />
       </UserContext.Provider>
     </ThemeProvider>
   )
