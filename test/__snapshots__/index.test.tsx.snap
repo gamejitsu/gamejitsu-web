@@ -37,6 +37,8 @@ exports[`Index page should match snapshot 1`] = `
   <DemoPage>
     <LayoutWithMenu
       title="Coach Demo"
+      toggleUserDemo={[Function]}
+      userDemo={true}
     >
       <Head>
         <Component
@@ -54,7 +56,7 @@ exports[`Index page should match snapshot 1`] = `
               "componentStyle": ComponentStyle {
                 "componentId": "LayoutDemo__Wrapper-a0ium0-4",
                 "isStatic": false,
-                "lastClassName": "cmQTZV",
+                "lastClassName": "hRbgNZ",
                 "rules": Array [
                   "box-sizing: border-box;",
                   "margin: 0;",
@@ -65,7 +67,7 @@ exports[`Index page should match snapshot 1`] = `
                   [Function],
                   [Function],
                   "display: flex;",
-                  "flex-wrap:wrap;height:100%;min-height:calc(100vh - 75px);@media ",
+                  "flex-wrap:wrap;height:100%;@media ",
                   "(max-width: 1199.98px)",
                   "{align-items:flex-start;flex-direction:column;}",
                 ],
@@ -86,9 +88,10 @@ exports[`Index page should match snapshot 1`] = `
           forwardedRef={null}
         >
           <div
-            className="sc-bdVaJa sc-bwzfXH LayoutDemo__Wrapper-a0ium0-4 cmQTZV"
+            className="sc-bdVaJa sc-bwzfXH LayoutDemo__Wrapper-a0ium0-4 hRbgNZ"
           >
             <LayoutDemo__DemoMode
+              height="30px"
               py={2}
               width="100%"
             >
@@ -100,7 +103,7 @@ exports[`Index page should match snapshot 1`] = `
                     "componentStyle": ComponentStyle {
                       "componentId": "LayoutDemo__DemoMode-a0ium0-3",
                       "isStatic": false,
-                      "lastClassName": "kqDEDM",
+                      "lastClassName": "fELrEf",
                       "rules": Array [
                         "box-sizing: border-box;",
                         "margin: 0;",
@@ -134,14 +137,58 @@ exports[`Index page should match snapshot 1`] = `
                   }
                 }
                 forwardedRef={null}
+                height="30px"
                 py={2}
                 width="100%"
               >
                 <div
-                  className="sc-bdVaJa sc-bwzfXH LayoutDemo__DemoMode-a0ium0-3 kqDEDM"
+                  className="sc-bdVaJa sc-bwzfXH LayoutDemo__DemoMode-a0ium0-3 fELrEf"
+                  height="30px"
                   width="100%"
                 >
-                  DEMO MODE
+                  <Blueprint3.Switch
+                    checked={true}
+                    label=" USER VIEW - DEMO"
+                    onChange={[Function]}
+                    style={
+                      Object {
+                        "marginBottom": 0,
+                      }
+                    }
+                  >
+                    <Control
+                      checked={true}
+                      indicatorChildren={null}
+                      label=" USER VIEW - DEMO"
+                      onChange={[Function]}
+                      style={
+                        Object {
+                          "marginBottom": 0,
+                        }
+                      }
+                      type="checkbox"
+                      typeClassName="bp3-switch"
+                    >
+                      <label
+                        className="bp3-control bp3-switch"
+                        style={
+                          Object {
+                            "marginBottom": 0,
+                          }
+                        }
+                      >
+                        <input
+                          checked={true}
+                          onChange={[Function]}
+                          type="checkbox"
+                        />
+                        <span
+                          className="bp3-control-indicator"
+                        />
+                         USER VIEW - DEMO
+                      </label>
+                    </Control>
+                  </Blueprint3.Switch>
                 </div>
               </StyledComponent>
             </LayoutDemo__DemoMode>
@@ -154,7 +201,7 @@ exports[`Index page should match snapshot 1`] = `
                     "componentStyle": ComponentStyle {
                       "componentId": "LayoutDemo__LeftMenu-a0ium0-0",
                       "isStatic": false,
-                      "lastClassName": "bGVfIE",
+                      "lastClassName": "ciUbZL",
                       "rules": Array [
                         "box-sizing: border-box;",
                         "margin: 0;",
@@ -165,7 +212,7 @@ exports[`Index page should match snapshot 1`] = `
                         [Function],
                         [Function],
                         "display: flex;",
-                        "position:relative;padding:64px 0 0;width:280px;flex-direction:column;background-color:",
+                        "position:relative;padding:64px 0 0;width:280px;flex-direction:column;min-height:calc(100vh - 105px);background-color:",
                         [Function],
                         ";order:2;@media ",
                         "(max-width: 1199.98px)",
@@ -188,7 +235,7 @@ exports[`Index page should match snapshot 1`] = `
                 forwardedRef={null}
               >
                 <div
-                  className="sc-bdVaJa sc-bwzfXH LayoutDemo__LeftMenu-a0ium0-0 bGVfIE"
+                  className="sc-bdVaJa sc-bwzfXH LayoutDemo__LeftMenu-a0ium0-0 ciUbZL"
                 >
                   <LayoutDemo__InnerWrapper>
                     <StyledComponent
@@ -464,7 +511,7 @@ exports[`Index page should match snapshot 1`] = `
                                                         <div
                                                           className="LayoutDemo__MenuLinkText-a0ium0-9 kOtEbg"
                                                         >
-                                                          Coach Dashboard
+                                                          Dashboard
                                                         </div>
                                                       </StyledComponent>
                                                     </LayoutDemo__MenuLinkText>
@@ -725,7 +772,7 @@ exports[`Index page should match snapshot 1`] = `
                                                         <div
                                                           className="LayoutDemo__MenuLinkText-a0ium0-9 kOtEbg"
                                                         >
-                                                          Analysis Completed
+                                                          Reviews Completed
                                                         </div>
                                                       </StyledComponent>
                                                     </LayoutDemo__MenuLinkText>
@@ -1118,7 +1165,7 @@ exports[`Index page should match snapshot 1`] = `
                     "componentStyle": ComponentStyle {
                       "componentId": "LayoutDemo__Container-a0ium0-1",
                       "isStatic": false,
-                      "lastClassName": "hTQPqU",
+                      "lastClassName": "chBAbM",
                       "rules": Array [
                         "box-sizing: border-box;",
                         "margin: 0;",
@@ -1129,11 +1176,9 @@ exports[`Index page should match snapshot 1`] = `
                         [Function],
                         [Function],
                         "display: flex;",
-                        "flex:1;flex-wrap:wrap;padding:32px 32px;background-image:url(\\"/images/background-hero-unit.jpg\\");background-position:center;background-position:top;background-repeat:no-repeat;@media ",
-                        "(max-width: 991.98px)",
-                        "{padding:32px 16px;}@media ",
-                        "(max-width: 767.98px)",
-                        "{min-height:72vh;}",
+                        "flex:1;flex-wrap:wrap;padding:32px 32px;background-image:url(\\"/images/background-hero-unit.jpg\\");background-position:center;background-position:top;background-repeat:no-repeat;",
+                        [Function],
+                        "{min-height:calc(100vh - 200px);padding:32px 16px;}",
                       ],
                     },
                     "displayName": "LayoutDemo__Container",
@@ -1157,7 +1202,7 @@ exports[`Index page should match snapshot 1`] = `
                 }
               >
                 <div
-                  className="sc-bdVaJa sc-bwzfXH LayoutDemo__Container-a0ium0-1 hTQPqU"
+                  className="sc-bdVaJa sc-bwzfXH LayoutDemo__Container-a0ium0-1 chBAbM"
                   order={
                     Array [
                       3,
@@ -1168,6 +1213,7 @@ exports[`Index page should match snapshot 1`] = `
                     flexDirection="column"
                     width={
                       Array [
+                        "100%",
                         "100%",
                         "100%",
                         "67%",
@@ -1213,14 +1259,16 @@ exports[`Index page should match snapshot 1`] = `
                         Array [
                           "100%",
                           "100%",
+                          "100%",
                           "67%",
                         ]
                       }
                     >
                       <div
-                        className="sc-bdVaJa sc-bwzfXH fPlDFZ"
+                        className="sc-bdVaJa sc-bwzfXH hyXivT"
                         width={
                           Array [
+                            "100%",
                             "100%",
                             "100%",
                             "67%",
@@ -1338,7 +1386,7 @@ exports[`Index page should match snapshot 1`] = `
                                       "componentStyle": ComponentStyle {
                                         "componentId": "sc-bdVaJa",
                                         "isStatic": false,
-                                        "lastClassName": "kyHyAC",
+                                        "lastClassName": "gtVQmG",
                                         "rules": Array [
                                           "box-sizing: border-box;",
                                           "margin: 0;",
@@ -1598,7 +1646,7 @@ exports[`Index page should match snapshot 1`] = `
                                             "componentStyle": ComponentStyle {
                                               "componentId": "sc-bdVaJa",
                                               "isStatic": false,
-                                              "lastClassName": "kyHyAC",
+                                              "lastClassName": "gtVQmG",
                                               "rules": Array [
                                                 "box-sizing: border-box;",
                                                 "margin: 0;",
@@ -1685,7 +1733,7 @@ exports[`Index page should match snapshot 1`] = `
                                             "componentStyle": ComponentStyle {
                                               "componentId": "sc-bdVaJa",
                                               "isStatic": false,
-                                              "lastClassName": "kyHyAC",
+                                              "lastClassName": "gtVQmG",
                                               "rules": Array [
                                                 "box-sizing: border-box;",
                                                 "margin: 0;",
@@ -1821,7 +1869,7 @@ exports[`Index page should match snapshot 1`] = `
                                       "componentStyle": ComponentStyle {
                                         "componentId": "sc-bdVaJa",
                                         "isStatic": false,
-                                        "lastClassName": "kyHyAC",
+                                        "lastClassName": "gtVQmG",
                                         "rules": Array [
                                           "box-sizing: border-box;",
                                           "margin: 0;",
@@ -7748,837 +7796,13 @@ If the enemy spots you having an Observer Ward in the inventory, they will know 
                             </div>
                           </StyledComponent>
                         </Styled(styled.div)>
-                        <Styled(styled.div)
-                          flexDirection="column"
-                        >
-                          <StyledComponent
-                            flexDirection="column"
-                            forwardedComponent={
-                              Object {
-                                "$$typeof": Symbol(react.forward_ref),
-                                "attrs": Array [],
-                                "componentStyle": ComponentStyle {
-                                  "componentId": "sc-bwzfXH",
-                                  "isStatic": false,
-                                  "lastClassName": "groswK",
-                                  "rules": Array [
-                                    "box-sizing: border-box;",
-                                    "margin: 0;",
-                                    "min-width: 0;",
-                                    [Function],
-                                    [Function],
-                                    [Function],
-                                    [Function],
-                                    [Function],
-                                    "display: flex;",
-                                  ],
-                                },
-                                "displayName": "Styled(styled.div)",
-                                "foldedComponentIds": Array [
-                                  "sc-bdVaJa",
-                                ],
-                                "render": [Function],
-                                "styledComponentId": "sc-bwzfXH",
-                                "target": "div",
-                                "toString": [Function],
-                                "warnTooManyClasses": [Function],
-                                "withComponent": [Function],
-                              }
-                            }
-                            forwardedRef={null}
-                          >
-                            <div
-                              className="sc-bdVaJa sc-bwzfXH iNSiJW"
-                            >
-                              <styled.div
-                                pt={3}
-                              >
-                                <StyledComponent
-                                  forwardedComponent={
-                                    Object {
-                                      "$$typeof": Symbol(react.forward_ref),
-                                      "attrs": Array [],
-                                      "componentStyle": ComponentStyle {
-                                        "componentId": "sc-bdVaJa",
-                                        "isStatic": false,
-                                        "lastClassName": "kyHyAC",
-                                        "rules": Array [
-                                          "box-sizing: border-box;",
-                                          "margin: 0;",
-                                          "min-width: 0;",
-                                          [Function],
-                                          [Function],
-                                          [Function],
-                                          [Function],
-                                          [Function],
-                                        ],
-                                      },
-                                      "displayName": "styled.div",
-                                      "foldedComponentIds": Array [],
-                                      "render": [Function],
-                                      "styledComponentId": "sc-bdVaJa",
-                                      "target": "div",
-                                      "toString": [Function],
-                                      "warnTooManyClasses": [Function],
-                                      "withComponent": [Function],
-                                    }
-                                  }
-                                  forwardedRef={null}
-                                  pt={3}
-                                >
-                                  <div
-                                    className="sc-bdVaJa encrCX"
-                                  >
-                                    <Styled(styled.div)
-                                      justifyContent="space-between"
-                                      pt={3}
-                                    >
-                                      <StyledComponent
-                                        forwardedComponent={
-                                          Object {
-                                            "$$typeof": Symbol(react.forward_ref),
-                                            "attrs": Array [],
-                                            "componentStyle": ComponentStyle {
-                                              "componentId": "sc-bwzfXH",
-                                              "isStatic": false,
-                                              "lastClassName": "groswK",
-                                              "rules": Array [
-                                                "box-sizing: border-box;",
-                                                "margin: 0;",
-                                                "min-width: 0;",
-                                                [Function],
-                                                [Function],
-                                                [Function],
-                                                [Function],
-                                                [Function],
-                                                "display: flex;",
-                                              ],
-                                            },
-                                            "displayName": "Styled(styled.div)",
-                                            "foldedComponentIds": Array [
-                                              "sc-bdVaJa",
-                                            ],
-                                            "render": [Function],
-                                            "styledComponentId": "sc-bwzfXH",
-                                            "target": "div",
-                                            "toString": [Function],
-                                            "warnTooManyClasses": [Function],
-                                            "withComponent": [Function],
-                                          }
-                                        }
-                                        forwardedRef={null}
-                                        justifyContent="space-between"
-                                        pt={3}
-                                      >
-                                        <div
-                                          className="sc-bdVaJa sc-bwzfXH cHOUbT"
-                                        >
-                                          <styled.div>
-                                            <StyledComponent
-                                              forwardedComponent={
-                                                Object {
-                                                  "$$typeof": Symbol(react.forward_ref),
-                                                  "attrs": Array [],
-                                                  "componentStyle": ComponentStyle {
-                                                    "componentId": "sc-bdVaJa",
-                                                    "isStatic": false,
-                                                    "lastClassName": "kyHyAC",
-                                                    "rules": Array [
-                                                      "box-sizing: border-box;",
-                                                      "margin: 0;",
-                                                      "min-width: 0;",
-                                                      [Function],
-                                                      [Function],
-                                                      [Function],
-                                                      [Function],
-                                                      [Function],
-                                                    ],
-                                                  },
-                                                  "displayName": "styled.div",
-                                                  "foldedComponentIds": Array [],
-                                                  "render": [Function],
-                                                  "styledComponentId": "sc-bdVaJa",
-                                                  "target": "div",
-                                                  "toString": [Function],
-                                                  "warnTooManyClasses": [Function],
-                                                  "withComponent": [Function],
-                                                }
-                                              }
-                                              forwardedRef={null}
-                                            >
-                                              <div
-                                                className="sc-bdVaJa gtVQmG"
-                                              >
-                                                <Page__Title>
-                                                  <StyledComponent
-                                                    forwardedComponent={
-                                                      Object {
-                                                        "$$typeof": Symbol(react.forward_ref),
-                                                        "attrs": Array [],
-                                                        "componentStyle": ComponentStyle {
-                                                          "componentId": "Page__Title-sc-1kskk2-2",
-                                                          "isStatic": false,
-                                                          "lastClassName": "bsMgRw",
-                                                          "rules": Array [
-                                                            "color:white;font-size:18px;font-weight:bold;",
-                                                          ],
-                                                        },
-                                                        "displayName": "Page__Title",
-                                                        "foldedComponentIds": Array [],
-                                                        "render": [Function],
-                                                        "styledComponentId": "Page__Title-sc-1kskk2-2",
-                                                        "target": "h1",
-                                                        "toString": [Function],
-                                                        "warnTooManyClasses": [Function],
-                                                        "withComponent": [Function],
-                                                      }
-                                                    }
-                                                    forwardedRef={null}
-                                                  >
-                                                    <h1
-                                                      className="Page__Title-sc-1kskk2-2 bsMgRw"
-                                                    >
-                                                      INSERT COMMENT BY COACH
-                                                    </h1>
-                                                  </StyledComponent>
-                                                </Page__Title>
-                                              </div>
-                                            </StyledComponent>
-                                          </styled.div>
-                                          <Blueprint3.Switch
-                                            alignIndicator="right"
-                                            checked={true}
-                                            label="Pause video on focus"
-                                            onChange={[Function]}
-                                          >
-                                            <Control
-                                              alignIndicator="right"
-                                              checked={true}
-                                              indicatorChildren={null}
-                                              label="Pause video on focus"
-                                              onChange={[Function]}
-                                              type="checkbox"
-                                              typeClassName="bp3-switch"
-                                            >
-                                              <label
-                                                className="bp3-control bp3-switch bp3-align-right"
-                                              >
-                                                <input
-                                                  checked={true}
-                                                  onChange={[Function]}
-                                                  type="checkbox"
-                                                />
-                                                <span
-                                                  className="bp3-control-indicator"
-                                                />
-                                                Pause video on focus
-                                              </label>
-                                            </Control>
-                                          </Blueprint3.Switch>
-                                        </div>
-                                      </StyledComponent>
-                                    </Styled(styled.div)>
-                                    <CommentFormNew
-                                      comment={null}
-                                      onDelete={[Function]}
-                                      onDeselect={[Function]}
-                                      onSave={[Function]}
-                                      pauseVideo={[Function]}
-                                      timestamp={0}
-                                    >
-                                      <div>
-                                        <Styled(styled.div)
-                                          alignItems="center"
-                                        >
-                                          <StyledComponent
-                                            alignItems="center"
-                                            forwardedComponent={
-                                              Object {
-                                                "$$typeof": Symbol(react.forward_ref),
-                                                "attrs": Array [],
-                                                "componentStyle": ComponentStyle {
-                                                  "componentId": "sc-bwzfXH",
-                                                  "isStatic": false,
-                                                  "lastClassName": "groswK",
-                                                  "rules": Array [
-                                                    "box-sizing: border-box;",
-                                                    "margin: 0;",
-                                                    "min-width: 0;",
-                                                    [Function],
-                                                    [Function],
-                                                    [Function],
-                                                    [Function],
-                                                    [Function],
-                                                    "display: flex;",
-                                                  ],
-                                                },
-                                                "displayName": "Styled(styled.div)",
-                                                "foldedComponentIds": Array [
-                                                  "sc-bdVaJa",
-                                                ],
-                                                "render": [Function],
-                                                "styledComponentId": "sc-bwzfXH",
-                                                "target": "div",
-                                                "toString": [Function],
-                                                "warnTooManyClasses": [Function],
-                                                "withComponent": [Function],
-                                              }
-                                            }
-                                            forwardedRef={null}
-                                          >
-                                            <div
-                                              className="sc-bdVaJa sc-bwzfXH kXJQuI"
-                                            >
-                                              <styled.div
-                                                width="100%"
-                                              >
-                                                <StyledComponent
-                                                  forwardedComponent={
-                                                    Object {
-                                                      "$$typeof": Symbol(react.forward_ref),
-                                                      "attrs": Array [],
-                                                      "componentStyle": ComponentStyle {
-                                                        "componentId": "sc-bdVaJa",
-                                                        "isStatic": false,
-                                                        "lastClassName": "kyHyAC",
-                                                        "rules": Array [
-                                                          "box-sizing: border-box;",
-                                                          "margin: 0;",
-                                                          "min-width: 0;",
-                                                          [Function],
-                                                          [Function],
-                                                          [Function],
-                                                          [Function],
-                                                          [Function],
-                                                        ],
-                                                      },
-                                                      "displayName": "styled.div",
-                                                      "foldedComponentIds": Array [],
-                                                      "render": [Function],
-                                                      "styledComponentId": "sc-bdVaJa",
-                                                      "target": "div",
-                                                      "toString": [Function],
-                                                      "warnTooManyClasses": [Function],
-                                                      "withComponent": [Function],
-                                                    }
-                                                  }
-                                                  forwardedRef={null}
-                                                  width="100%"
-                                                >
-                                                  <div
-                                                    className="sc-bdVaJa gUUsSJ"
-                                                    width="100%"
-                                                  >
-                                                    <form
-                                                      onSubmit={[Function]}
-                                                    >
-                                                      <Blueprint3.TextArea
-                                                        fill={true}
-                                                        intent="primary"
-                                                        large={true}
-                                                        name="text"
-                                                        onChange={[Function]}
-                                                        onFocus={[Function]}
-                                                        style={
-                                                          Object {
-                                                            "backgroundColor": "#212122",
-                                                            "boxShadow": "1px 1px #212212",
-                                                            "color": "#eee",
-                                                            "height": "150px",
-                                                            "maxHeight": "180px",
-                                                            "opacity": 0.9,
-                                                            "padding": "12px",
-                                                            "resize": "none",
-                                                          }
-                                                        }
-                                                        value=""
-                                                      >
-                                                        <textarea
-                                                          className="bp3-input bp3-intent-primary bp3-fill bp3-large"
-                                                          name="text"
-                                                          onChange={[Function]}
-                                                          onFocus={[Function]}
-                                                          style={
-                                                            Object {
-                                                              "backgroundColor": "#212122",
-                                                              "boxShadow": "1px 1px #212212",
-                                                              "color": "#eee",
-                                                              "height": "150px",
-                                                              "maxHeight": "180px",
-                                                              "opacity": 0.9,
-                                                              "padding": "12px",
-                                                              "resize": "none",
-                                                            }
-                                                          }
-                                                          value=""
-                                                        />
-                                                      </Blueprint3.TextArea>
-                                                      <Styled(styled.div)
-                                                        justifyContent="flex-end"
-                                                      >
-                                                        <StyledComponent
-                                                          forwardedComponent={
-                                                            Object {
-                                                              "$$typeof": Symbol(react.forward_ref),
-                                                              "attrs": Array [],
-                                                              "componentStyle": ComponentStyle {
-                                                                "componentId": "sc-bwzfXH",
-                                                                "isStatic": false,
-                                                                "lastClassName": "groswK",
-                                                                "rules": Array [
-                                                                  "box-sizing: border-box;",
-                                                                  "margin: 0;",
-                                                                  "min-width: 0;",
-                                                                  [Function],
-                                                                  [Function],
-                                                                  [Function],
-                                                                  [Function],
-                                                                  [Function],
-                                                                  "display: flex;",
-                                                                ],
-                                                              },
-                                                              "displayName": "Styled(styled.div)",
-                                                              "foldedComponentIds": Array [
-                                                                "sc-bdVaJa",
-                                                              ],
-                                                              "render": [Function],
-                                                              "styledComponentId": "sc-bwzfXH",
-                                                              "target": "div",
-                                                              "toString": [Function],
-                                                              "warnTooManyClasses": [Function],
-                                                              "withComponent": [Function],
-                                                            }
-                                                          }
-                                                          forwardedRef={null}
-                                                          justifyContent="flex-end"
-                                                        >
-                                                          <div
-                                                            className="sc-bdVaJa sc-bwzfXH kmQGnS"
-                                                          >
-                                                            <styled.div
-                                                              fontSize="0.8rem"
-                                                              onClick={[Function]}
-                                                              p={1}
-                                                              style={
-                                                                Object {
-                                                                  "color": "#08ff07",
-                                                                  "cursor": "pointer",
-                                                                }
-                                                              }
-                                                            >
-                                                              <StyledComponent
-                                                                fontSize="0.8rem"
-                                                                forwardedComponent={
-                                                                  Object {
-                                                                    "$$typeof": Symbol(react.forward_ref),
-                                                                    "attrs": Array [],
-                                                                    "componentStyle": ComponentStyle {
-                                                                      "componentId": "sc-bdVaJa",
-                                                                      "isStatic": false,
-                                                                      "lastClassName": "kyHyAC",
-                                                                      "rules": Array [
-                                                                        "box-sizing: border-box;",
-                                                                        "margin: 0;",
-                                                                        "min-width: 0;",
-                                                                        [Function],
-                                                                        [Function],
-                                                                        [Function],
-                                                                        [Function],
-                                                                        [Function],
-                                                                      ],
-                                                                    },
-                                                                    "displayName": "styled.div",
-                                                                    "foldedComponentIds": Array [],
-                                                                    "render": [Function],
-                                                                    "styledComponentId": "sc-bdVaJa",
-                                                                    "target": "div",
-                                                                    "toString": [Function],
-                                                                    "warnTooManyClasses": [Function],
-                                                                    "withComponent": [Function],
-                                                                  }
-                                                                }
-                                                                forwardedRef={null}
-                                                                onClick={[Function]}
-                                                                p={1}
-                                                                style={
-                                                                  Object {
-                                                                    "color": "#08ff07",
-                                                                    "cursor": "pointer",
-                                                                  }
-                                                                }
-                                                              >
-                                                                <div
-                                                                  className="sc-bdVaJa fPyknq"
-                                                                  fontSize="0.8rem"
-                                                                  onClick={[Function]}
-                                                                  style={
-                                                                    Object {
-                                                                      "color": "#08ff07",
-                                                                      "cursor": "pointer",
-                                                                    }
-                                                                  }
-                                                                >
-                                                                  Formatting help
-                                                                </div>
-                                                              </StyledComponent>
-                                                            </styled.div>
-                                                          </div>
-                                                        </StyledComponent>
-                                                      </Styled(styled.div)>
-                                                      <MarkdownDialog
-                                                        isOpen={false}
-                                                        toggleModal={[Function]}
-                                                      >
-                                                        <Blueprint3.Dialog
-                                                          autoFocus={true}
-                                                          canEscapeKeyClose={true}
-                                                          canOutsideClickClose={true}
-                                                          enforceFocus={true}
-                                                          icon="info-sign"
-                                                          isOpen={false}
-                                                          onClose={[Function]}
-                                                          title="Markdown syntax"
-                                                          usePortal={true}
-                                                        >
-                                                          <Blueprint3.Overlay
-                                                            autoFocus={true}
-                                                            backdropProps={Object {}}
-                                                            canEscapeKeyClose={true}
-                                                            canOutsideClickClose={true}
-                                                            className="bp3-overlay-scroll-container"
-                                                            enforceFocus={true}
-                                                            hasBackdrop={true}
-                                                            icon="info-sign"
-                                                            isOpen={false}
-                                                            lazy={true}
-                                                            onClose={[Function]}
-                                                            title="Markdown syntax"
-                                                            transitionDuration={300}
-                                                            transitionName="bp3-overlay"
-                                                            usePortal={true}
-                                                          />
-                                                        </Blueprint3.Dialog>
-                                                      </MarkdownDialog>
-                                                      <styled.div
-                                                        mt={3}
-                                                      >
-                                                        <StyledComponent
-                                                          forwardedComponent={
-                                                            Object {
-                                                              "$$typeof": Symbol(react.forward_ref),
-                                                              "attrs": Array [],
-                                                              "componentStyle": ComponentStyle {
-                                                                "componentId": "sc-bdVaJa",
-                                                                "isStatic": false,
-                                                                "lastClassName": "kyHyAC",
-                                                                "rules": Array [
-                                                                  "box-sizing: border-box;",
-                                                                  "margin: 0;",
-                                                                  "min-width: 0;",
-                                                                  [Function],
-                                                                  [Function],
-                                                                  [Function],
-                                                                  [Function],
-                                                                  [Function],
-                                                                ],
-                                                              },
-                                                              "displayName": "styled.div",
-                                                              "foldedComponentIds": Array [],
-                                                              "render": [Function],
-                                                              "styledComponentId": "sc-bdVaJa",
-                                                              "target": "div",
-                                                              "toString": [Function],
-                                                              "warnTooManyClasses": [Function],
-                                                              "withComponent": [Function],
-                                                            }
-                                                          }
-                                                          forwardedRef={null}
-                                                          mt={3}
-                                                        >
-                                                          <div
-                                                            className="sc-bdVaJa kyHyAC"
-                                                          >
-                                                            <Button
-                                                              className="normal"
-                                                              disabled={false}
-                                                              text="Insert comment"
-                                                              type="submit"
-                                                            >
-                                                              <Button__ButtonWrapper>
-                                                                <StyledComponent
-                                                                  forwardedComponent={
-                                                                    Object {
-                                                                      "$$typeof": Symbol(react.forward_ref),
-                                                                      "attrs": Array [],
-                                                                      "componentStyle": ComponentStyle {
-                                                                        "componentId": "Button__ButtonWrapper-sc-160bmy5-2",
-                                                                        "isStatic": false,
-                                                                        "lastClassName": "dUAFtL",
-                                                                        "rules": Array [
-                                                                          "position:relative;display:inline-block;",
-                                                                        ],
-                                                                      },
-                                                                      "displayName": "Button__ButtonWrapper",
-                                                                      "foldedComponentIds": Array [],
-                                                                      "render": [Function],
-                                                                      "styledComponentId": "Button__ButtonWrapper-sc-160bmy5-2",
-                                                                      "target": "div",
-                                                                      "toString": [Function],
-                                                                      "warnTooManyClasses": [Function],
-                                                                      "withComponent": [Function],
-                                                                    }
-                                                                  }
-                                                                  forwardedRef={null}
-                                                                >
-                                                                  <div
-                                                                    className="Button__ButtonWrapper-sc-160bmy5-2 dUAFtL"
-                                                                  >
-                                                                    <Button__ButtonContent
-                                                                      className="normal"
-                                                                      disabled={false}
-                                                                      onClick={[Function]}
-                                                                      type="submit"
-                                                                    >
-                                                                      <StyledComponent
-                                                                        className="normal"
-                                                                        disabled={false}
-                                                                        forwardedComponent={
-                                                                          Object {
-                                                                            "$$typeof": Symbol(react.forward_ref),
-                                                                            "attrs": Array [],
-                                                                            "componentStyle": ComponentStyle {
-                                                                              "componentId": "Button__ButtonContent-sc-160bmy5-0",
-                                                                              "isStatic": false,
-                                                                              "lastClassName": "gvJFxS",
-                                                                              "rules": Array [
-                                                                                "margin-left:4px;cursor:",
-                                                                                [Function],
-                                                                                ";margin-right:4px;display:flex;line-height:1;padding:10px 20px 10px 20px;font-size:15px;font-weight:bold;text-align:center;transition:all 0.07s ease-in-out;border:2px solid ",
-                                                                                [Function],
-                                                                                ";font-family:",
-                                                                                [Function],
-                                                                                ";border-radius:",
-                                                                                [Function],
-                                                                                ";&:hover{text-decoration:none;}",
-                                                                                [Function],
-                                                                                "{font-size:12px;}",
-                                                                                " &.new{",
-                                                                                "background:transparent;color:",
-                                                                                [Function],
-                                                                                ";svg *{stroke:",
-                                                                                [Function],
-                                                                                ";fill:",
-                                                                                [Function],
-                                                                                ";}&:hover{color:",
-                                                                                [Function],
-                                                                                ";box-shadow:inset 0px -3px 0px 0px ",
-                                                                                [Function],
-                                                                                ";background-image:linear-gradient( to bottom,",
-                                                                                [Function],
-                                                                                ",",
-                                                                                [Function],
-                                                                                " );svg *{stroke:",
-                                                                                [Function],
-                                                                                ";fill:",
-                                                                                [Function],
-                                                                                ";}}&:active{box-shadow:inset 0px 3px 0px 0px ",
-                                                                                [Function],
-                                                                                ";background-image:linear-gradient( to bottom,",
-                                                                                [Function],
-                                                                                ",",
-                                                                                [Function],
-                                                                                " );}",
-                                                                                "}&.normal{",
-                                                                                "box-shadow:inset 0px -3px 0px 0px ",
-                                                                                [Function],
-                                                                                ";color:",
-                                                                                [Function],
-                                                                                ";svg *{stroke:",
-                                                                                [Function],
-                                                                                ";fill:",
-                                                                                [Function],
-                                                                                ";}background:linear-gradient( to bottom,",
-                                                                                [Function],
-                                                                                ",",
-                                                                                [Function],
-                                                                                " );&:hover{box-shadow:inset 0px -3px 0px 0px ",
-                                                                                [Function],
-                                                                                ";background-image:linear-gradient( to bottom,",
-                                                                                [Function],
-                                                                                ",",
-                                                                                [Function],
-                                                                                " );}&:active{box-shadow:inset 0px 3px 0px 0px ",
-                                                                                [Function],
-                                                                                ";background-image:linear-gradient( to bottom,",
-                                                                                [Function],
-                                                                                ",",
-                                                                                [Function],
-                                                                                " );}",
-                                                                                "}&.alternative{",
-                                                                                "background:",
-                                                                                [Function],
-                                                                                ";border:2px solid ",
-                                                                                [Function],
-                                                                                ";color:white;svg *{stroke:white;fill:white;}&:hover{background-image:linear-gradient( to bottom,",
-                                                                                [Function],
-                                                                                ",",
-                                                                                [Function],
-                                                                                " );border:2px solid ",
-                                                                                [Function],
-                                                                                ";color:",
-                                                                                [Function],
-                                                                                ";svg *{stroke:",
-                                                                                [Function],
-                                                                                ";fill:",
-                                                                                [Function],
-                                                                                ";}box-shadow:inset 0px -3px 0px 0px ",
-                                                                                [Function],
-                                                                                ";}&:active{background-image:linear-gradient( to bottom,",
-                                                                                [Function],
-                                                                                ",",
-                                                                                [Function],
-                                                                                " );box-shadow:inset 0px 3px 0px 0px ",
-                                                                                [Function],
-                                                                                ";}",
-                                                                                "}&.dark{",
-                                                                                "background:",
-                                                                                [Function],
-                                                                                ";border:2px solid #000;color:white;svg *{stroke:white;fill:white;}&:hover{background-image:linear-gradient( to bottom,",
-                                                                                [Function],
-                                                                                ",",
-                                                                                [Function],
-                                                                                " );color:",
-                                                                                [Function],
-                                                                                ";border:2px solid ",
-                                                                                [Function],
-                                                                                ";svg *{stroke:",
-                                                                                [Function],
-                                                                                ";fill:",
-                                                                                [Function],
-                                                                                ";}box-shadow:inset 0px -3px 0px 0px ",
-                                                                                [Function],
-                                                                                ";}&:active{background-image:linear-gradient( to bottom,",
-                                                                                [Function],
-                                                                                ",",
-                                                                                [Function],
-                                                                                " );box-shadow:inset 0px 3px 0px 0px ",
-                                                                                [Function],
-                                                                                ";}",
-                                                                                "}",
-                                                                              ],
-                                                                            },
-                                                                            "displayName": "Button__ButtonContent",
-                                                                            "foldedComponentIds": Array [],
-                                                                            "render": [Function],
-                                                                            "styledComponentId": "Button__ButtonContent-sc-160bmy5-0",
-                                                                            "target": "button",
-                                                                            "toString": [Function],
-                                                                            "warnTooManyClasses": [Function],
-                                                                            "withComponent": [Function],
-                                                                          }
-                                                                        }
-                                                                        forwardedRef={null}
-                                                                        onClick={[Function]}
-                                                                        type="submit"
-                                                                      >
-                                                                        <button
-                                                                          className="Button__ButtonContent-sc-160bmy5-0 gvJFxS normal"
-                                                                          disabled={false}
-                                                                          onClick={[Function]}
-                                                                          type="submit"
-                                                                        >
-                                                                          Insert comment
-                                                                        </button>
-                                                                      </StyledComponent>
-                                                                    </Button__ButtonContent>
-                                                                  </div>
-                                                                </StyledComponent>
-                                                              </Button__ButtonWrapper>
-                                                            </Button>
-                                                          </div>
-                                                        </StyledComponent>
-                                                      </styled.div>
-                                                    </form>
-                                                    <Blueprint3.Dialog
-                                                      autoFocus={true}
-                                                      canEscapeKeyClose={true}
-                                                      canOutsideClickClose={true}
-                                                      className="bp3-dialog"
-                                                      enforceFocus={true}
-                                                      icon="info-sign"
-                                                      isOpen={false}
-                                                      onClose={[Function]}
-                                                      title="Delete comment confirmation"
-                                                      usePortal={true}
-                                                    >
-                                                      <Blueprint3.Overlay
-                                                        autoFocus={true}
-                                                        backdropProps={Object {}}
-                                                        canEscapeKeyClose={true}
-                                                        canOutsideClickClose={true}
-                                                        className="bp3-overlay-scroll-container"
-                                                        enforceFocus={true}
-                                                        hasBackdrop={true}
-                                                        icon="info-sign"
-                                                        isOpen={false}
-                                                        lazy={true}
-                                                        onClose={[Function]}
-                                                        title="Delete comment confirmation"
-                                                        transitionDuration={300}
-                                                        transitionName="bp3-overlay"
-                                                        usePortal={true}
-                                                      />
-                                                    </Blueprint3.Dialog>
-                                                    <Blueprint3.Dialog
-                                                      autoFocus={true}
-                                                      canEscapeKeyClose={true}
-                                                      canOutsideClickClose={true}
-                                                      className="bp3-dialog"
-                                                      enforceFocus={true}
-                                                      icon="info-sign"
-                                                      isOpen={false}
-                                                      onClose={[Function]}
-                                                      title="Update comment confirmation"
-                                                      usePortal={true}
-                                                    >
-                                                      <Blueprint3.Overlay
-                                                        autoFocus={true}
-                                                        backdropProps={Object {}}
-                                                        canEscapeKeyClose={true}
-                                                        canOutsideClickClose={true}
-                                                        className="bp3-overlay-scroll-container"
-                                                        enforceFocus={true}
-                                                        hasBackdrop={true}
-                                                        icon="info-sign"
-                                                        isOpen={false}
-                                                        lazy={true}
-                                                        onClose={[Function]}
-                                                        title="Update comment confirmation"
-                                                        transitionDuration={300}
-                                                        transitionName="bp3-overlay"
-                                                        usePortal={true}
-                                                      />
-                                                    </Blueprint3.Dialog>
-                                                  </div>
-                                                </StyledComponent>
-                                              </styled.div>
-                                            </div>
-                                          </StyledComponent>
-                                        </Styled(styled.div)>
-                                      </div>
-                                    </CommentFormNew>
-                                  </div>
-                                </StyledComponent>
-                              </styled.div>
-                            </div>
-                          </StyledComponent>
-                        </Styled(styled.div)>
                       </div>
                     </StyledComponent>
                   </Styled(styled.div)>
                   <Styled(styled.div)
                     width={
                       Array [
+                        "100%",
                         "100%",
                         "100%",
                         "33%",
@@ -8623,14 +7847,16 @@ If the enemy spots you having an Observer Ward in the inventory, they will know 
                         Array [
                           "100%",
                           "100%",
+                          "100%",
                           "33%",
                         ]
                       }
                     >
                       <div
-                        className="sc-bdVaJa sc-bwzfXH ecGgCD"
+                        className="sc-bdVaJa sc-bwzfXH kZdvb"
                         width={
                           Array [
+                            "100%",
                             "100%",
                             "100%",
                             "33%",
@@ -8794,11 +8020,13 @@ If the enemy spots you having an Observer Ward in the inventory, they will know 
                               Array [
                                 0,
                                 0,
+                                0,
                                 3,
                               ]
                             }
                             pt={
                               Array [
+                                3,
                                 3,
                                 3,
                                 0,
@@ -8850,11 +8078,13 @@ If the enemy spots you having an Observer Ward in the inventory, they will know 
                                 Array [
                                   0,
                                   0,
+                                  0,
                                   3,
                                 ]
                               }
                               pt={
                                 Array [
+                                  3,
                                   3,
                                   3,
                                   0,
@@ -8863,7 +8093,7 @@ If the enemy spots you having an Observer Ward in the inventory, they will know 
                               width="100%"
                             >
                               <div
-                                className="sc-bdVaJa sc-bwzfXH gknVgs"
+                                className="sc-bdVaJa sc-bwzfXH liUGJQ"
                                 height={
                                   Array [
                                     "100%",
@@ -9107,7 +8337,7 @@ If the enemy spots you having an Observer Ward in the inventory, they will know 
                                                           "componentStyle": ComponentStyle {
                                                             "componentId": "sc-bdVaJa",
                                                             "isStatic": false,
-                                                            "lastClassName": "kyHyAC",
+                                                            "lastClassName": "gtVQmG",
                                                             "rules": Array [
                                                               "box-sizing: border-box;",
                                                               "margin: 0;",

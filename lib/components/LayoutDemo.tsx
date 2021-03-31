@@ -8,13 +8,16 @@ import CoachDashboardSVG from "../../svgs/coach-dashboard.svg"
 import AnalysisCompletedSVG from "../../svgs/analysis-completed.svg"
 import SettingsSVG from "../../svgs/settings.svg"
 import { transparentize } from "polished"
-import { down } from "customUtils"
 import { breakpointDown } from "../utils/mediaQueryDevices"
+import { Switch } from "@blueprintjs/core"
+import { down } from "customUtils"
 
 const companyName = "Gamejitsu"
 
 interface Props {
   title?: string
+  userDemo: boolean
+  toggleUserDemo: () => void
 }
 
 interface LeftMenuLinkContentProps {
@@ -40,6 +43,7 @@ const LeftMenu = styled(Flex)`
   padding: 64px 0 0;
   width: 280px;
   flex-direction: column;
+  min-height: calc(100vh - 105px);
   background-color: ${(props) => props.theme.colors.lightBackgroundColor};
   order: 2;
 
@@ -63,12 +67,9 @@ const Container = styled(Flex)`
   background-position: top;
   background-repeat: no-repeat;
 
-  @media ${breakpointDown.md} {
+  ${down("md")} {
+    min-height: calc(100vh - 200px);
     padding: 32px 16px;
-  }
-
-  @media ${breakpointDown.sm} {
-    min-height: 72vh;
   }
 `
 
@@ -109,7 +110,7 @@ const DemoMode = styled(Flex)`
 const Wrapper = styled(Flex)`
   flex-wrap: wrap;
   height: 100%;
-  min-height: calc(100vh - 75px);
+  /* min-height: calc(100vh - 75px); */
 
   @media ${breakpointDown.lg} {
     align-items: flex-start;
@@ -155,7 +156,12 @@ const MenuLinkText = styled.div`
   }
 `
 
-const LayoutWithMenu: FunctionComponent<Props> = ({ title, children }) => (
+const LayoutWithMenu: FunctionComponent<Props> = ({
+  title,
+  userDemo,
+  toggleUserDemo,
+  children
+}) => (
   <>
     <Head>
       <link rel="shortcut icon" href="/favicon.png" />
@@ -163,27 +169,32 @@ const LayoutWithMenu: FunctionComponent<Props> = ({ title, children }) => (
     </Head>
 
     <Wrapper>
-      <DemoMode py={2} width="100%">
-        DEMO MODE
+      <DemoMode py={2} width="100%" height={"30px"}>
+        <Switch
+          style={{ marginBottom: 0 }}
+          checked={userDemo}
+          label={userDemo ? " USER VIEW - DEMO" : "COACH VIEW - DEMO"}
+          onChange={(e) => toggleUserDemo()}
+        />
       </DemoMode>
       <LeftMenu>
         <InnerWrapper>
           <MenuElementWrapper>
             <LeftMenuLink href="#">
               <CoachDashboardSVG width="60" height="35" />
-              <MenuLinkText>Coach Dashboard</MenuLinkText>
+              <MenuLinkText>{userDemo ? "Dashboard" : "Coach Dashboard"}</MenuLinkText>
             </LeftMenuLink>
           </MenuElementWrapper>
           <MenuElementWrapper>
             <LeftMenuLink href="#">
               <AnalysisCompletedSVG width="60" height="35" />
-              <MenuLinkText>Analysis Completed</MenuLinkText>
+              <MenuLinkText>{userDemo ? "Reviews Completed" : "Analysis Completed"}</MenuLinkText>
             </LeftMenuLink>
           </MenuElementWrapper>
           <MenuElementWrapper>
             <LeftMenuLink href="#">
               <SettingsSVG width="60" height="35" />
-              <MenuLinkText>Settings</MenuLinkText>
+              <MenuLinkText>{userDemo ? "Settings" : "Settings"}</MenuLinkText>
             </LeftMenuLink>
           </MenuElementWrapper>
         </InnerWrapper>

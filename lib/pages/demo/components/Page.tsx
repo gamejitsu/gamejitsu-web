@@ -52,6 +52,7 @@ const DemoPage: AuthenticatedComponent = () => {
   const [autoPauseEnabled, setAutoPause] = useState(true)
   const [videoTimestamp, setVideoTimestamp] = useState(0)
   const [selectedComment, setSelectedComment] = useState<Comment | null>(null)
+  const [userDemo, setUserDemo] = useState(true)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   const onSaveComment = async (savedComment: Comment) => {
@@ -168,8 +169,12 @@ const DemoPage: AuthenticatedComponent = () => {
   }, [videoTimestamp])
 
   return (
-    <LayoutDemo title="Coach Demo">
-      <Flex width={["100%", "100%", "67%"]} flexDirection="column">
+    <LayoutDemo
+      title="Coach Demo"
+      userDemo={userDemo}
+      toggleUserDemo={() => setUserDemo(!userDemo)}
+    >
+      <Flex width={["100%", "100%", "100%", "67%"]} flexDirection="column">
         <VideoContainer>
           <video
             ref={videoRef}
@@ -236,31 +241,33 @@ const DemoPage: AuthenticatedComponent = () => {
             onSelect={onSelectComment}
           />
         </Flex>
-        <Flex flexDirection="column">
-          <Box pt={3}>
-            <Flex pt={3} justifyContent={"space-between"}>
-              <Box>
-                <Title>INSERT COMMENT BY COACH</Title>
-              </Box>
-              <Switch
-                checked={autoPauseEnabled}
-                alignIndicator={"right"}
-                label={"Pause video on focus"}
-                onChange={(e) => toggleAutoPause()}
+        {!userDemo ? (
+          <Flex flexDirection="column">
+            <Box pt={3}>
+              <Flex pt={3} justifyContent={"space-between"}>
+                <Box>
+                  <Title>INSERT COMMENT BY COACH</Title>
+                </Box>
+                <Switch
+                  checked={autoPauseEnabled}
+                  alignIndicator={"right"}
+                  label={"Pause video on focus"}
+                  onChange={(e) => toggleAutoPause()}
+                />
+              </Flex>
+              <CommentFormNew
+                comment={selectedComment}
+                onSave={onSaveComment}
+                onDelete={onDeleteComment}
+                onDeselect={onDeselectComment}
+                timestamp={videoTimestamp}
+                pauseVideo={pauseVideo}
               />
-            </Flex>
-            <CommentFormNew
-              comment={selectedComment}
-              onSave={onSaveComment}
-              onDelete={onDeleteComment}
-              onDeselect={onDeselectComment}
-              timestamp={videoTimestamp}
-              pauseVideo={pauseVideo}
-            />
-          </Box>
-        </Flex>
+            </Box>
+          </Flex>
+        ) : null}
       </Flex>
-      <Flex width={["100%", "100%", "33%"]}>
+      <Flex width={["100%", "100%", "100%", "33%"]}>
         <CommentList
           comments={review.comments}
           selectedComment={selectedComment}

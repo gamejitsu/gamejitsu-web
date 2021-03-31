@@ -74,7 +74,13 @@ const CommentList: FunctionComponent<Props> = ({ comments, selectedComment, onSe
   }
   return (
     <>
-      <Flex width="100%" flexDirection="column" pt={[3, 3, 0]} ml={[0, 0, 3]} height={["100%"]}>
+      <Flex
+        width="100%"
+        flexDirection="column"
+        pt={[3, 3, 3, 0]}
+        ml={[0, 0, 0, 3]}
+        height={["100%"]}
+      >
         <Header>
           <Flex
             width="100%"
