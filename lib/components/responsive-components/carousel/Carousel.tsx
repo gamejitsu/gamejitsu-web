@@ -46,7 +46,7 @@ const Carousel: FunctionComponent<CarouselProps> = ({ children, carouselId }) =>
         pagination
         loop={true}
         speed={800}
-        autoplay={{ delay: 2500 }}
+        autoplay={{ delay: 4500 }}
       >
         {slides.length > 0 ? slides : null}
       </Swiper>

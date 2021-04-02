@@ -15,6 +15,7 @@ const theme: DefaultTheme = {
     backgroundColor: "#00030c",
     highlightColor: "#3518e5",
     lightBackgroundColor: "#212329",
+    darkBackground: "#1d1d1d",
     linkColor: "#ffffff",
     primaryColor: "#08ff07",
     secondaryColor: "#6d6d6d",

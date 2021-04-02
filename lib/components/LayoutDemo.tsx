@@ -44,7 +44,7 @@ const LeftMenu = styled(Flex)`
   width: 280px;
   flex-direction: column;
   min-height: calc(100vh - 105px);
-  background-color: ${(props) => props.theme.colors.lightBackgroundColor};
+  background-color: ${(props) => props.theme.colors.darkBackground};
   order: 2;
 
   @media ${breakpointDown.lg} {
@@ -130,7 +130,7 @@ const MenuFooterParent = styled(Box)`
 
 const MenuFooter = styled(Flex)`
   text-align: center;
-  background-color: ${(props) => props.theme.colors.lightBackgroundColor};
+  background-color: ${(props) => props.theme.colors.darkBackground};
 `
 const MenuElementWrapper = styled.div`
   @media ${breakpointDown.lg} {

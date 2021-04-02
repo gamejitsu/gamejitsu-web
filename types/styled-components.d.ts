@@ -22,6 +22,7 @@ declare module "styled-components" {
       textColorDark: string
       highlightColor: string
       lineColor: string
+      darkBackground: string
       line2Color: string
     }
     textFont: string

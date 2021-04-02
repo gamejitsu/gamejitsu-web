@@ -20,6 +20,7 @@ exports[`Index page should match snapshot 1`] = `
       "colors": Object {
         "activeColor": "#454545",
         "backgroundColor": "#00030c",
+        "darkBackground": "#1d1d1d",
         "highlightColor": "#3518e5",
         "lightBackgroundColor": "#212329",
         "line2Color": "#3c3c3c",
@@ -201,7 +202,7 @@ exports[`Index page should match snapshot 1`] = `
                     "componentStyle": ComponentStyle {
                       "componentId": "LayoutDemo__LeftMenu-a0ium0-0",
                       "isStatic": false,
-                      "lastClassName": "ciUbZL",
+                      "lastClassName": "cZtjKR",
                       "rules": Array [
                         "box-sizing: border-box;",
                         "margin: 0;",
@@ -235,7 +236,7 @@ exports[`Index page should match snapshot 1`] = `
                 forwardedRef={null}
               >
                 <div
-                  className="sc-bdVaJa sc-bwzfXH LayoutDemo__LeftMenu-a0ium0-0 ciUbZL"
+                  className="sc-bdVaJa sc-bwzfXH LayoutDemo__LeftMenu-a0ium0-0 cZtjKR"
                 >
                   <LayoutDemo__InnerWrapper>
                     <StyledComponent
@@ -1104,7 +1105,7 @@ exports[`Index page should match snapshot 1`] = `
                                 "componentStyle": ComponentStyle {
                                   "componentId": "LayoutDemo__MenuFooter-a0ium0-6",
                                   "isStatic": false,
-                                  "lastClassName": "eQsxOZ",
+                                  "lastClassName": "elrhAf",
                                   "rules": Array [
                                     "box-sizing: border-box;",
                                     "margin: 0;",
@@ -1138,7 +1139,7 @@ exports[`Index page should match snapshot 1`] = `
                             pb={4}
                           >
                             <div
-                              className="sc-bdVaJa sc-bwzfXH LayoutDemo__MenuFooter-a0ium0-6 eQsxOZ"
+                              className="sc-bdVaJa sc-bwzfXH LayoutDemo__MenuFooter-a0ium0-6 elrhAf"
                             >
                               © 2021 - Gamejitsu Copyright.
                             </div>
@@ -2090,7 +2091,7 @@ If the enemy spots you having an Observer Ward in the inventory, they will know 
                                         "componentStyle": ComponentStyle {
                                           "componentId": "CommentBar__Container-sc-8acpbl-0",
                                           "isStatic": false,
-                                          "lastClassName": "cwdZcU",
+                                          "lastClassName": "jzItCx",
                                           "rules": Array [
                                             "box-sizing: border-box;",
                                             "margin: 0;",
@@ -2102,9 +2103,7 @@ If the enemy spots you having an Observer Ward in the inventory, they will know 
                                             [Function],
                                             "background-color:",
                                             [Function],
-                                            ";position:relative;height:90px;background:",
-                                            [Function],
-                                            ";border:1px solid ",
+                                            ";position:relative;height:90px;opacity:0.85;border:1px solid ",
                                             [Function],
                                             ";",
                                           ],
@@ -2124,7 +2123,7 @@ If the enemy spots you having an Observer Ward in the inventory, they will know 
                                     forwardedRef={null}
                                   >
                                     <div
-                                      className="sc-bdVaJa CommentBar__Container-sc-8acpbl-0 cwdZcU"
+                                      className="sc-bdVaJa CommentBar__Container-sc-8acpbl-0 jzItCx"
                                     >
                                       <Styled(styled.div)
                                         height="100%"
@@ -2187,7 +2186,7 @@ If the enemy spots you having an Observer Ward in the inventory, they will know 
                                                     "componentStyle": ComponentStyle {
                                                       "componentId": "CommentBar__Bar-sc-8acpbl-3",
                                                       "isStatic": false,
-                                                      "lastClassName": "cmbfdv",
+                                                      "lastClassName": "fvkOgm",
                                                       "rules": Array [
                                                         "box-sizing: border-box;",
                                                         "margin: 0;",
@@ -2217,7 +2216,7 @@ If the enemy spots you having an Observer Ward in the inventory, they will know 
                                                 forwardedRef={
                                                   Object {
                                                     "current": <div
-                                                      class="sc-bdVaJa CommentBar__Bar-sc-8acpbl-3 cmbfdv"
+                                                      class="sc-bdVaJa CommentBar__Bar-sc-8acpbl-3 fvkOgm"
                                                     >
                                                       <div
                                                         class="sc-bdVaJa sc-bwzfXH jArUnU"
@@ -2530,7 +2529,7 @@ If the enemy spots you having an Observer Ward in the inventory, they will know 
                                                 onClick={[Function]}
                                               >
                                                 <div
-                                                  className="sc-bdVaJa CommentBar__Bar-sc-8acpbl-3 cmbfdv"
+                                                  className="sc-bdVaJa CommentBar__Bar-sc-8acpbl-3 fvkOgm"
                                                   onClick={[Function]}
                                                 >
                                                   <Styled(styled.div)
@@ -8416,7 +8415,7 @@ If the enemy spots you having an Observer Ward in the inventory, they will know 
                                                                         "componentStyle": ComponentStyle {
                                                                           "componentId": "Button__ButtonContent-sc-160bmy5-0",
                                                                           "isStatic": false,
-                                                                          "lastClassName": "gvJFxS",
+                                                                          "lastClassName": "hawGWl",
                                                                           "rules": Array [
                                                                             "margin-left:4px;cursor:",
                                                                             [Function],
@@ -8531,6 +8530,26 @@ If the enemy spots you having an Observer Ward in the inventory, they will know 
                                                                             " );box-shadow:inset 0px 3px 0px 0px ",
                                                                             [Function],
                                                                             ";}",
+                                                                            "}&.bw{",
+                                                                            "background:",
+                                                                            [Function],
+                                                                            ";border:2px solid ",
+                                                                            [Function],
+                                                                            ";color:white;&:hover{background-image:linear-gradient( to bottom,",
+                                                                            [Function],
+                                                                            ",",
+                                                                            [Function],
+                                                                            " );border:2px solid ",
+                                                                            [Function],
+                                                                            ";color:white;box-shadow:inset 0px -3px 0px 0px ",
+                                                                            [Function],
+                                                                            ";}&:active{background-image:linear-gradient( to bottom,",
+                                                                            [Function],
+                                                                            ",",
+                                                                            [Function],
+                                                                            " );box-shadow:inset 0px 3px 0px 0px ",
+                                                                            [Function],
+                                                                            ";}",
                                                                             "}",
                                                                           ],
                                                                         },
@@ -8549,7 +8568,7 @@ If the enemy spots you having an Observer Ward in the inventory, they will know 
                                                                     type="button"
                                                                   >
                                                                     <button
-                                                                      className="Button__ButtonContent-sc-160bmy5-0 gvJFxS normal"
+                                                                      className="Button__ButtonContent-sc-160bmy5-0 hawGWl normal"
                                                                       disabled={false}
                                                                       onClick={[Function]}
                                                                       type="button"

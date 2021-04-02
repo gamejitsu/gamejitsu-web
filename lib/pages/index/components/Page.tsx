@@ -18,6 +18,7 @@ import {
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { Button, Footer, Table, Carousel } from "gamejitsu/components"
 import CtaTryDemo from "./components/CtaTryDemo"
+import DotaBloodLaunch from "./components/DotaBloodLaunch"
 
 const dota2Diagonal = "/images/dota2-bs-crop-cut.png"
 const csgoDiagonal = "/images/csgo-container-final-2.png"
@@ -311,7 +312,7 @@ const Page: AuthenticatedComponent = () => {
         </span>
       </StyledCookieConsent>
       <Carousel carouselId={"homepageCarousel"}>
-        {[<CtaTryDemo key="demo1" />, <CtaTryDemo key="demo2" />]}
+        {[<CtaTryDemo key="demo1" />, <DotaBloodLaunch key="demo2" />]}
       </Carousel>
       <GamesBarWrapper>
         <Container>

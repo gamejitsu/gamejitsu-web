@@ -129,7 +129,7 @@ const Position5MasterGuide: AuthenticatedComponent = () => {
           Enchantress might get more survivability out of other items first, before getting her
           Shard later in the game.
         </GuideParagraph>
-        <GuideHeading3>Crystal Mayden</GuideHeading3>
+        <GuideHeading3>Crystal Maiden</GuideHeading3>
         <GuideParagraph>
           At level 2, CM has one of the best nuking combos in the game. 280 damage combined with 1.5
           seconds of root and 5 seconds of slow. She also provides solid mana sustain for her entire

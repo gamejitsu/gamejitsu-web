@@ -24,10 +24,10 @@ interface TProps {
 }
 
 const Container = styled(Box)`
-  background-color: ${(props) => props.theme.colors.backgroundColor};
+  background-color: ${(props) => props.theme.colors.darkBackground};
   position: relative;
   height: 90px;
-  background: ${(props) => props.theme.colors.lightBackgroundColor};
+  opacity: 0.85;
   border: 1px solid ${(props) => props.theme.colors.activeColor};
 `
 
@@ -58,7 +58,7 @@ const ElementComment = styled(Box)<ElementCommentProps>`
 `
 
 const Bar = styled(Box)`
-  background-color: ${(props) => props.theme.colors.lightBackgroundColor};
+  background-color: ${(props) => props.theme.colors.darkBackground};
   width: 100%;
 `
 

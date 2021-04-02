@@ -11,7 +11,7 @@ interface Props {
   disabled?: boolean
   href?: string
   color?: string
-  className?: "normal" | "new" | "alternative" | "dark"
+  className?: "normal" | "new" | "alternative" | "dark" | "bw"
   icon?: React.ReactNode | null | undefined
 }
 
@@ -188,6 +188,33 @@ const BtnDarkStyles = css<BaseProps>`
   }
 `
 
+const BtnBWStyles = css<BaseProps>`
+  background: ${(props) => props.theme.colors.lightBackgroundColor};
+  border: 2px solid ${(props) => props.theme.colors.lightBackgroundColor};
+  color: white;
+
+  &:hover {
+    background-image: linear-gradient(
+      to bottom,
+      ${(props) => props.theme.colors.lightBackgroundColor},
+      ${(props) => darken(0.02, props.theme.colors.lightBackgroundColor)}
+    );
+    border: 2px solid ${(props) => props.theme.colors.primaryColor};
+    color: white;
+    box-shadow: inset 0px -3px 0px 0px ${(props) => darken(0.1, props.theme.colors.lightBackgroundColor)};
+  }
+
+  &:active {
+    background-image: linear-gradient(
+      to bottom,
+      ${(props) => props.theme.colors.lightBackgroundColor},
+      ${(props) => darken(0.07, props.theme.colors.lightBackgroundColor)}
+    );
+    box-shadow: inset 0px 3px 0px 0px
+      ${(props) => darken(0.11, props.theme.colors.lightBackgroundColor)};
+  }
+`
+
 const ButtonContent = styled.button`
   ${baseStyles}
 
@@ -205,6 +232,10 @@ const ButtonContent = styled.button`
 
   &.dark {
     ${BtnDarkStyles}
+  }
+
+  &.bw {
+    ${BtnBWStyles}
   }
 `
 
@@ -225,6 +256,10 @@ const LinkContent = styled.a`
 
   &.dark {
     ${BtnDarkStyles}
+  }
+
+  &.bw {
+    ${BtnBWStyles}
   }
 `
 

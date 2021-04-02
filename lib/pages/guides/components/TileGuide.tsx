@@ -52,6 +52,7 @@ const ContentWrapper = styled(Flex)`
 `
 const Abstract = styled(Flex)`
   flex-direction: column;
+  line-height: 1.25;
 
   h2 {
     font-size: 1.5rem;

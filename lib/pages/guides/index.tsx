@@ -9,7 +9,24 @@ import { TileGuide } from "./components/TileGuide"
 const Guides: AuthenticatedComponent = () => {
   return (
     <Container>
-      <Box px={[4]} pt={[4]}>
+      <Box px={[4]} py={[4]}>
+        <Box>
+          <MainTitle>News</MainTitle>
+        </Box>
+        <TileGuide
+          href={"/guides/the_ultimate_tutorial_for_new_dota2_players"}
+          title={"Ultimate tutorial for new Dota 2 Players - 1 / 10"}
+          abstract={
+            "With the recent Netflix Dota 2 series being a huge hit, I imagined that there aresome new players who want to try out Dota 2 itself but are struggling to do so because Dota 2 is notoriously hard to learn. While Dota 2 does have some new player content available on the web (and Valve is hard at work refurbishing the new player experience... hopefully), however there is a drastic lack of written content."
+          }
+          thumbnail={
+            "https://gamejitsu-assets.s3.eu-central-1.amazonaws.com/png/guides/tutorial_new_dota_players/thumb_compressed_medium.jpg"
+          }
+          coach={"Storm"}
+          pusblish_date={"02/03/2021"}
+        />
+      </Box>
+      <Box px={[4]} py={[4]}>
         <Box>
           <MainTitle>Guides</MainTitle>
         </Box>
@@ -23,7 +40,7 @@ const Guides: AuthenticatedComponent = () => {
             "https://gamejitsu-assets.s3.eu-central-1.amazonaws.com/png/guides/position_5_master_guide/position_5_master_guide_thumb.png"
           }
           coach={"Otomo"}
-          pusblish_date={"10/21/2021"}
+          pusblish_date={"21/10/2021"}
         />
       </Box>
       <Spacer padding={60} />
