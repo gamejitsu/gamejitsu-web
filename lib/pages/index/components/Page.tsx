@@ -16,7 +16,9 @@ import {
 } from "../../../components/UtilsComponents"
 
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
-import { Button, Footer, Table } from "gamejitsu/components"
+import { Button, Footer, Table, Carousel } from "gamejitsu/components"
+import CtaTryDemo from "./components/CtaTryDemo"
+import DotaBloodLaunch from "./components/DotaBloodLaunch"
 
 const dota2Diagonal = "/images/dota2-bs-crop-cut.png"
 const csgoDiagonal = "/images/csgo-container-final-2.png"
@@ -26,7 +28,6 @@ const lolDiagonal = "/images/lol-container-new-4.png"
 const dota2Logo = "/images/dota2-resized-logo.png"
 const fortniteLogo = "/images/fortnite-resized-logo.png"
 const lolLogo = "/images/lol-resized-logo.png"
-const mainLogo = "/images/gamejitsu-mascotte-crop.png"
 const overwatchLogo = "/images/overwatch-logo.png"
 
 interface PriceCardProps {
@@ -61,30 +62,6 @@ const FlowText = styled.p`
 
 const GamesBarImage = styled.img`
   width: 170px;
-`
-
-const MainImageContainer = styled(Flex)`
-  justify-content: center;
-
-  @media ${breakpointDown.md} {
-    justify-content: flex-end;
-    padding-right: 32px;
-  }
-
-  @media ${breakpointDown.xs} {
-    justify-content: center;
-    padding-right: 0;
-  }
-`
-
-const MainImage = styled.img`
-  position: relative;
-  max-width: 500px;
-  width: 100%;
-
-  @media ${breakpointDown.md} {
-    max-width: 400px;
-  }
 `
 
 const OutsideCircle = styled.div`
@@ -334,42 +311,9 @@ const Page: AuthenticatedComponent = () => {
           For more detailed information about the cookies we use, see our cookies page.
         </span>
       </StyledCookieConsent>
-      <Wrapper>
-        <Background src="/images/background-hero-unit.jpg" opacity="0.35" />
-        <Container>
-          <Spacer padding={80} />
-          <Flex flexWrap="wrap">
-            <ResponsiveElem width="50%">
-              <Box padding="8px 32px">
-                <SecondaryTitle>Esport coaching Platform</SecondaryTitle>
-                <MainTitle>Hire a Pro Coach from 10$</MainTitle>
-                <ParagraphText>Get your game analyzed asynchronously</ParagraphText>
-                <ParagraphText>by top quality coaches and start winning</ParagraphText>
-                <Flex>
-                  <Box pt={4}>
-                    <Button key="demo" text="WATCH DEMO" href="/demo" className={"new"} />
-                  </Box>
-                  <Box pt={4} pl={[3]}>
-                    <Button
-                      key="howitworks"
-                      text="HOW IT WORKS"
-                      href="/howitworks"
-                      className={"alternative"}
-                    />
-                  </Box>
-                </Flex>
-              </Box>
-            </ResponsiveElem>
-            <ResponsiveElem width="50%">
-              <MainImageContainer>
-                <Box>
-                  <MainImage src={mainLogo} />
-                </Box>
-              </MainImageContainer>
-            </ResponsiveElem>
-          </Flex>
-        </Container>
-      </Wrapper>
+      <Carousel carouselId={"homepageCarousel"}>
+        {[<CtaTryDemo key="demo1" />, <DotaBloodLaunch key="demo2" />]}
+      </Carousel>
       <GamesBarWrapper>
         <Container>
           <Flex

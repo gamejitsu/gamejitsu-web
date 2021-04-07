@@ -7,5 +7,7 @@ module.exports = {
     "^gamejitsu/(.*)": "<rootDir>/lib/$1",
     "^gamejitsu": "<rootDir>/lib",
     "^customUtils": "<rootDir>/lib/utils",
+    "\\.(css|less|scss)$": "identity-obj-proxy"
   }
 }
+

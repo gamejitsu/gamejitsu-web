@@ -1,6 +1,6 @@
 import { Box } from "rebass/styled-components"
 import styled from "styled-components"
-import { breakpointDown } from "../utils/mediaQueryDevices"
+import { down } from "customUtils"
 
 const Container = styled.div`
   position: relative;
@@ -9,19 +9,22 @@ const Container = styled.div`
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  max-width: 1120px;
-  z-index: 10;
+  max-width: 1240px;
+  z-index: 5;
 
-  @media ${breakpointDown.md} {
+  ${down("md")} {
     max-width: 960px;
     padding-right: 0;
     padding-left: 0;
   }
 
-  @media ${breakpointDown.md} {
+  ${down("sm")} {
     max-width: 100%;
+    padding-right: 0;
+    padding-left: 0;
   }
 `
+
 interface BackgroundProps {
   src: string
   opacity?: string
@@ -50,10 +53,10 @@ const Spacer = styled.div<SpacerProps>`
   padding-top: ${(props) => `${props.padding}px`};
   padding-bottom: ${(props) => `${props.padding}px`};
 
-  @media ${breakpointDown.md} {
+  ${down("sm")} {
     width: 100%;
-    padding-top: ${(props) => `${Math.trunc(props.padding / 3)}px`};
-    padding-bottom: ${(props) => `${Math.trunc(props.padding / 3)}px`};
+    padding-top: ${(props) => `${Math.trunc(props.padding / 2)}px`};
+    padding-bottom: ${(props) => `${Math.trunc(props.padding / 2)}px`};
   }
 `
 const MainTitle = styled.h1`

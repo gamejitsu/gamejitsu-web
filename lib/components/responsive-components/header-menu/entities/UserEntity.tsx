@@ -16,9 +16,10 @@ const UserEntity: FunctionComponent<UserEntityProps> = ({ user }) => {
   return (
     <>
       <MenuLink text={"WATCH DEMO"} href={"/demo"} />
+      <MenuLink text={"BLOG"} href={"/guides"} />
       <MenuLink text={"DASHBOARD"} href={"/dashboard"} />
       <MenuLink text={"REVIEWS"} href={"/reviews"} />
-      <MenuLink text={user.username} href={"/settings"} />
+      {/* <MenuLink text={user.username} href={"/settings"} /> */}
       <Button key="logout" text={"LOGOUT"} onClick={logout} className={"new"} />
     </>
   )
