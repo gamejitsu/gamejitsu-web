@@ -7,10 +7,22 @@ const GuideParagraph = styled.div`
   line-height: 1.5;
   font-size: 1.1rem;
   padding-bottom: 1.25rem;
+  b {
+    font-weight: bold;
+  }
+  ul,
+  ol {
+    padding-left: 2rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.5rem;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
 
   ul {
-    list-style-type: circle;
-    padding-left: 24px;
+    list-style-type: square;
   }
 `
 
@@ -20,9 +32,19 @@ const GuideUpdate = styled.div`
     color: ${(props) => props.theme.colors.primaryColor};
   }
 
+  ul,
+  ol {
+    padding-left: 2rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.5rem;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
   ul {
-    list-style-type: circle;
-    padding-left: 24px;
+    list-style-type: square;
   }
 
   line-height: 1.5;
@@ -52,7 +74,7 @@ const GuideHeading3 = styled.h5`
 `
 
 interface GuideImageProps {
-  caption: string
+  caption?: string
   src: string
 }
 
@@ -76,7 +98,7 @@ const GuideImage: FunctionComponent<GuideImageProps> = ({ src, caption }) => {
           style={{ fontSize: "0.85rem", maxWidth: "800px", lineHeight: "1.25" }}
           justifyContent={"center"}
         >
-          {caption}
+          {caption ? caption : null}
         </Flex>
       </Box>
     </ImageContainer>

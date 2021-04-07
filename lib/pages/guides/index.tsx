@@ -23,7 +23,7 @@ const Guides: AuthenticatedComponent = () => {
             "https://gamejitsu-assets.s3.eu-central-1.amazonaws.com/png/guides/tutorial_new_dota_players/thumb_compressed_medium.jpg"
           }
           coach={"Storm"}
-          pusblish_date={"02/03/2021"}
+          pusblish_date={"04/04/2021"}
         />
       </Box>
       <Box px={[4]} py={[4]}>
@@ -40,7 +40,7 @@ const Guides: AuthenticatedComponent = () => {
             "https://gamejitsu-assets.s3.eu-central-1.amazonaws.com/png/guides/position_5_master_guide/position_5_master_guide_thumb.png"
           }
           coach={"Otomo"}
-          pusblish_date={"21/10/2021"}
+          pusblish_date={"21/01/2021"}
         />
       </Box>
       <Spacer padding={60} />
