@@ -12,7 +12,7 @@ import BackTenSecSVG from "../../../../svgs/back10.svg"
 import ForwardTenSecSVG from "../../../../svgs/forward10.svg"
 
 const VideoContainer = styled(Box)`
-  width: 100%;
+  width: 99%;
   border: 1px solid ${(props) => props.theme.colors.secondaryColor};
 `
 interface SelectedSpeedProps {
