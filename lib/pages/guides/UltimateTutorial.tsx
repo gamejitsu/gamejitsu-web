@@ -1,9 +1,10 @@
 import React from "react"
-import { Box } from "rebass/styled-components"
+import { Box, Flex } from "rebass/styled-components"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { Footer } from "gamejitsu/components"
 import styled from "styled-components"
 import { Container, MainTitle, Spacer } from "../../components/UtilsComponents"
+import Link from "next/link"
 import {
   GuideImage,
   GuideHeading3,
@@ -12,6 +13,7 @@ import {
   GuideUpdate,
   GuideParagraph
 } from "./components/GuideElements"
+import { WhatsNext } from "./components/WhatsNext"
 
 const GuideBanner = styled.img`
   width: 100%;
@@ -22,6 +24,7 @@ const UltimateTutorial: AuthenticatedComponent = () => {
   return (
     <Container>
       <Box px={[4]} pt={[4]}>
+        <a id="start"></a>
         <Box display={["none", "none", "block"]}>
           <GuideBanner
             src={
@@ -40,10 +43,10 @@ const UltimateTutorial: AuthenticatedComponent = () => {
           <br />
           While Dota 2 does have some new player content available on the web (and Valve is hard at
           work refurbishing the new player experience… hopefully), however,
-          <b>there is a drastic lack of written content</b>.<br />
+          <b> there is a drastic lack of written content</b>.<br />
           <br />
           With this, I decided to come up with a guide on
-          <b>Davion the Dragon Knight, specifically for new players</b>. The guide will have around
+          <b> Davion the Dragon Knight, specifically for new players</b>. The guide will have around
           10 episodes, and I will release a final collective post afterwards for ease of access.
           (You don’t need to send 10 links to your friends who want to learn Dota!)
           <br />
@@ -1307,6 +1310,19 @@ const UltimateTutorial: AuthenticatedComponent = () => {
           faster, itemization in various situations, jungling and the mighty Roshan. Stay tuned!
         </GuideParagraph>
       </Box>
+      <Flex>
+        <Box pr={[3]}>
+          <Link href="/guides">
+            <div style={{ fontWeight: "bold", cursor: "pointer" }}>&larr;Back</div>
+          </Link>
+        </Box>
+        <Box>
+          <Link href="#start">
+            <div style={{ fontWeight: "bold", cursor: "pointer" }}>&uarr;Top</div>
+          </Link>
+        </Box>
+      </Flex>
+      <WhatsNext />
       <Spacer padding={60} />
       <Footer />
     </Container>

@@ -1,8 +1,9 @@
 import React from "react"
-import { Box } from "rebass/styled-components"
+import { Box, Flex } from "rebass/styled-components"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { Footer } from "gamejitsu/components"
 import { Container, MainTitle, Spacer } from "../../components/UtilsComponents"
+import Link from "next/link"
 import {
   GuideImage,
   GuideHeading3,
@@ -11,11 +12,13 @@ import {
   GuideUpdate,
   GuideParagraph
 } from "./components/GuideElements"
+import { WhatsNext } from "./components/WhatsNext"
 
 const Position5MasterGuide: AuthenticatedComponent = () => {
   return (
     <Container>
       <Box px={[4]} pt={[4]}>
+        <a id="start"></a>
         <Box>
           <MainTitle>Position 5 master guide</MainTitle>
         </Box>
@@ -452,6 +455,19 @@ const Position5MasterGuide: AuthenticatedComponent = () => {
           It's not a complete solution of course, enemies with AOE disables could catch both Banes.
           However it's an extra headache for enemies and that's the whole point of Bane isn't it?
         </GuideParagraph>
+        <Flex>
+          <Box pr={[3]}>
+            <Link href="/guides">
+              <div style={{ fontWeight: "bold", cursor: "pointer" }}>&larr;Back</div>
+            </Link>
+          </Box>
+          <Box>
+            <Link href="#start">
+              <div style={{ fontWeight: "bold", cursor: "pointer" }}>&uarr;Top</div>
+            </Link>
+          </Box>
+        </Flex>
+        <WhatsNext />
       </Box>
       <Spacer padding={60} />
       <Footer />

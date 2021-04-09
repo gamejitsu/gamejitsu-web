@@ -26,10 +26,22 @@ const Guides: AuthenticatedComponent = () => {
           pusblish_date={"04/04/2021"}
         />
       </Box>
-      <Box px={[4]} py={[4]}>
+      <Box px={[4]} pb={[4]}>
         <Box>
           <MainTitle>Guides</MainTitle>
         </Box>
+        <TileGuide
+          href={"/guides/7k_mmr_phoenix_position_5_guide"}
+          title={"7k MMR Phoenix position 5 guide "}
+          abstract={
+            " If you've followed Singapore Major recently, you'll see iG picked 4 games of Phoenix in the grand finals, which is played by both Kaka and Oli respectively. Phoenix is a very flexible hero and is capable of playing in any role, but realistically he or she is best suited for 5. Extremely well as a 4 and occasionally as a 3. <b>This guide is assuming Phoenix as a 5. Why Phoenix? What are its strengths?"
+          }
+          thumbnail={
+            "https://gamejitsu-assets.s3.eu-central-1.amazonaws.com/png/guides/7k_mmr_phoenix_position_5_guide/lowq_000_banner.jpg"
+          }
+          coach={"Storm"}
+          pusblish_date={"08/04/2021"}
+        />
         <TileGuide
           href={"/guides/position_5_master_guide"}
           title={"Position 5 master guide"}

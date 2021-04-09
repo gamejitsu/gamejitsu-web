@@ -1285,7 +1285,7 @@ exports[`Index page should match snapshot 1`] = `
                                 "componentStyle": ComponentStyle {
                                   "componentId": "Page__VideoContainer-sc-1kskk2-0",
                                   "isStatic": false,
-                                  "lastClassName": "CLRAj",
+                                  "lastClassName": "NihhE",
                                   "rules": Array [
                                     "box-sizing: border-box;",
                                     "margin: 0;",
@@ -1295,7 +1295,7 @@ exports[`Index page should match snapshot 1`] = `
                                     [Function],
                                     [Function],
                                     [Function],
-                                    "width:100%;border:1px solid ",
+                                    "width:99%;border:1px solid ",
                                     [Function],
                                     ";",
                                   ],
@@ -1315,7 +1315,7 @@ exports[`Index page should match snapshot 1`] = `
                             forwardedRef={null}
                           >
                             <div
-                              className="sc-bdVaJa Page__VideoContainer-sc-1kskk2-0 CLRAj"
+                              className="sc-bdVaJa Page__VideoContainer-sc-1kskk2-0 NihhE"
                             >
                               <video
                                 controls={true}

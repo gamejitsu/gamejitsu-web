@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
-import { Flex } from "rebass/styled-components"
+import { Flex, Box } from "rebass/styled-components"
 import { down } from "customUtils"
 import NextLink from "next/link"
 
@@ -93,29 +93,31 @@ const TileGuide: FunctionComponent<TileGuideProps> = ({
   coach
 }) => {
   return (
-    <NextLink href={href}>
-      <TileGuideContainer p={[3]}>
-        <Thubnail thumbnail={thumbnail} />
-        <ContentWrapper px={[0, 0, 3]}>
-          <Abstract>
-            <h2>{title}</h2>
-            <p>{abstract}</p>
-          </Abstract>
-          <Info
-            mt={[3]}
-            pt={[2]}
-            justifyContent={["flex-start", "flex-start", "flex-start", "flex-end"]}
-          >
-            <InfoElement>
-              <b>Pushished: </b>&nbsp;{pusblish_date}
-            </InfoElement>
-            <InfoElement>
-              <b>Written by: </b>&nbsp;{coach}
-            </InfoElement>
-          </Info>
-        </ContentWrapper>
-      </TileGuideContainer>
-    </NextLink>
+    <Box pb={[4]}>
+      <NextLink href={href}>
+        <TileGuideContainer p={[3]}>
+          <Thubnail thumbnail={thumbnail} />
+          <ContentWrapper px={[0, 0, 3]}>
+            <Abstract>
+              <h2>{title}</h2>
+              <p>{abstract}</p>
+            </Abstract>
+            <Info
+              mt={[3]}
+              pt={[2]}
+              justifyContent={["flex-start", "flex-start", "flex-start", "flex-end"]}
+            >
+              <InfoElement>
+                <b>Pushished: </b>&nbsp;{pusblish_date}
+              </InfoElement>
+              <InfoElement>
+                <b>Written by: </b>&nbsp;{coach}
+              </InfoElement>
+            </Info>
+          </ContentWrapper>
+        </TileGuideContainer>
+      </NextLink>
+    </Box>
   )
 }
 
