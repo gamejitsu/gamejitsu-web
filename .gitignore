@@ -5,5 +5,4 @@
 /.vscode
 /build
 /node_modules
-/public/sitemap.xml
 npm-debug.log*
