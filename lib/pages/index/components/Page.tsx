@@ -312,7 +312,7 @@ const Page: AuthenticatedComponent = () => {
         </span>
       </StyledCookieConsent>
       <Carousel carouselId={"homepageCarousel"}>
-        {[<CtaTryDemo key="demo1" />, <DotaBloodLaunch key="demo2" />]}
+        {[<DotaBloodLaunch key="demo2" />, <CtaTryDemo key="demo1" />]}
       </Carousel>
       <GamesBarWrapper>
         <Container>

@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "next start",
     "test": "npm run prettier -- --check && jest",
+    "generate-sitemap": "node ./scripts/generate-sitemap.js",
     "generate-resources": "ts-node-script ./scripts/generate-resources.ts && prettier --write \"lib/api/{resources,types}/**/*.ts\"",
     "ngrok": "ngrok http -hostname=gamejitsu-dev-us.ngrok.io 4000"
   },
@@ -76,6 +77,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "enzyme-to-json": "^3.4.3",
+    "globby": "^11.0.3",
     "husky": "^3.1.0",
     "identity-obj-proxy": "^3.0.0",
     "io-ts-types": "^0.5.6",
