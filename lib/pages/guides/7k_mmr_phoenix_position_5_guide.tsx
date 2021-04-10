@@ -351,4 +351,7 @@ const Position5PhoenixGuide: AuthenticatedComponent = () => {
     </Container>
   )
 }
+
+Position5PhoenixGuide.skipAuthentication = true
+
 export { Position5PhoenixGuide }
