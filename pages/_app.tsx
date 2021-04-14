@@ -119,6 +119,7 @@ export default class App extends NextApp<Props> {
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
+                gtag('config', 'UA-184859550-1');
                 gtag('config', 'G-DD40PZGYEM', {
                   page_path: window.location.pathname,
                 });
