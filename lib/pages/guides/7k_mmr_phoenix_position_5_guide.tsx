@@ -2,6 +2,7 @@ import React from "react"
 import { Box, Flex } from "rebass/styled-components"
 import { AuthenticatedComponent } from "gamejitsu/interfaces"
 import { Footer } from "gamejitsu/components"
+import styled from "styled-components"
 import { Container, MainTitle, Spacer } from "../../components/UtilsComponents"
 import Link from "next/link"
 import {
@@ -14,11 +15,22 @@ import {
 } from "./components/GuideElements"
 import { WhatsNext } from "./components/WhatsNext"
 
+const GuideBanner = styled.img`
+  width: 100%;
+  height: auto;
+`
 const Position5PhoenixGuide: AuthenticatedComponent = () => {
   return (
     <Container>
       <Box px={[4]} pt={[4]}>
         <a id="start"></a>
+        <Box display={["none", "none", "block"]}>
+          <GuideBanner
+            src={
+              "https://gamejitsu-assets.s3.eu-central-1.amazonaws.com/png/guides/7k_mmr_phoenix_position_5_guide/005_bannerwithtext.jpg"
+            }
+          />
+        </Box>
         <Box>
           <MainTitle>7k MMR Phoenix position 5 guide</MainTitle>
         </Box>
