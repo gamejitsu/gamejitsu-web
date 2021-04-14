@@ -15,6 +15,9 @@ const GuideParagraph = styled.div`
     padding-left: 2rem;
     padding-top: 0.25rem;
     padding-bottom: 0.5rem;
+    li {
+      padding-top: 0.65rem;
+    }
   }
 
   ol {
