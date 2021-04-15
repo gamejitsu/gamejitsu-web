@@ -169,11 +169,7 @@ const DemoPage: AuthenticatedComponent = () => {
   }, [videoTimestamp])
 
   return (
-    <LayoutDemo
-      title="Coach Demo"
-      userDemo={userDemo}
-      toggleUserDemo={() => setUserDemo(!userDemo)}
-    >
+    <LayoutDemo title="Demo" userDemo={userDemo} toggleUserDemo={() => setUserDemo(!userDemo)}>
       <Flex width={["100%", "100%", "100%", "67%"]} flexDirection="column">
         <VideoContainer>
           <video
