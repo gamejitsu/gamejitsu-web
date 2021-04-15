@@ -37,7 +37,7 @@ exports[`Index page should match snapshot 1`] = `
 >
   <DemoPage>
     <LayoutWithMenu
-      title="Coach Demo"
+      title="Demo"
       toggleUserDemo={[Function]}
       userDemo={true}
     >

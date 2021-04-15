@@ -31,6 +31,7 @@ const WhatsNextContainer = styled(Flex)`
     color: ${(props) => props.theme.colors.primaryColor};
     font-weight: bold;
     font-size: 1.5rem;
+    text-align: center;
   }
 
   .action-container {
@@ -57,7 +58,7 @@ const WhatsNext: FunctionComponent = () => {
   return (
     <WhatsNextContainer flexWrap={"wrap"} pt={[4, 5]}>
       <Flex width={"100%"} justifyContent={"center"} className={"whats-next-title"}>
-        Enjoyed the content? Here's whats next:{" "}
+        Enjoyed the content? Here's whats next:
       </Flex>
       <Flex width={"100%"} justifyContent={"center"} py={["2rem", "4rem"]} flexWrap={"wrap"}>
         <Flex
@@ -68,7 +69,7 @@ const WhatsNext: FunctionComponent = () => {
           flexWrap={"wrap"}
         >
           <Box width="100%" style={{ textAlign: "center" }}>
-            Try out Gamejitsu's system for free:{" "}
+            Try out Gamejitsu's system for free:
           </Box>
           <Box width="100%" style={{ textAlign: "center" }} pt={[3, 4]}>
             <Button
@@ -108,6 +109,13 @@ const WhatsNext: FunctionComponent = () => {
               />
             )}
           </Box>
+        </Flex>
+        <Flex px={[3, 4, 4, 5, 5]} pt={"3rem"}>
+          <p style={{ fontSize: "1.35rem", lineHeight: "1.25", textAlign: "center" }}>
+            Gamejitsu is an innovative coaching methodology that combines online replay viewing with
+            professional coaches to form an online replay analysis coaching platform. Login
+            immediately to access your recent games. Up to 8k MMR coaches at your service.
+          </p>
         </Flex>
       </Flex>
     </WhatsNextContainer>
