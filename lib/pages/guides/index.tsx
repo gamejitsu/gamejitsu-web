@@ -36,10 +36,22 @@ const Guides: AuthenticatedComponent = () => {
             <MainTitle>Guides</MainTitle>
           </Box>
           <TileGuide
+            href={"/guides/why_you_should_be_playing_dawnbreaker_offlane"}
+            title={"Why you should be playing Dawnbreaker offlane, not safelane"}
+            abstract={
+              "Being the latest addition to the Dota 2 universe, Valora the Dawnbreaker is tested in multiple roles, starting with the middle lane and then the safelane. However, according to a few of our coaches from Gamejitsu, She is actually, in fact, best played in the offlane."
+            }
+            thumbnail={
+              "https://gamejitsu-assets.s3.eu-central-1.amazonaws.com/png/guides/why_you_should_be_playing_dawnbreaker_offlane/banner_nodesign_thumb_crop.jpg"
+            }
+            coach={"Storm"}
+            pusblish_date={"15/04/2021"}
+          />
+          <TileGuide
             href={"/guides/7k_mmr_phoenix_position_5_guide"}
             title={"7k MMR Phoenix position 5 guide "}
             abstract={
-              " If you've followed Singapore Major recently, you'll see iG picked 4 games of Phoenix in the grand finals, which is played by both Kaka and Oli respectively. Phoenix is a very flexible hero and is capable of playing in any role, but realistically he or she is best suited for 5. Extremely well as a 4 and occasionally as a 3. <b>This guide is assuming Phoenix as a 5. Why Phoenix? What are its strengths?"
+              "If you've followed Singapore Major recently, you'll see iG picked 4 games of Phoenix in the grand finals, which is played by both Kaka and Oli respectively. Phoenix is a very flexible hero and is capable of playing in any role, but realistically he or she is best suited for 5. Extremely well as a 4 and occasionally as a 3. <b>This guide is assuming Phoenix as a 5. Why Phoenix? What are its strengths?"
             }
             thumbnail={
               "https://gamejitsu-assets.s3.eu-central-1.amazonaws.com/png/guides/7k_mmr_phoenix_position_5_guide/lowq_000_banner.jpg"
