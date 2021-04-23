@@ -36,6 +36,54 @@ const Guides: AuthenticatedComponent = () => {
             <MainTitle>Guides</MainTitle>
           </Box>
           <TileGuide
+            href={"/guides/7_8k_mmr_mid_puck_guide"}
+            title={"7.8k MMR Mid Puck guide"}
+            abstract={
+              "Puck is one of the most versatile heroes in the game as it can be rotated into position 2, 3, 4 and even 5. The focus of this guide, is on position 2 Puck, arguably the most common role Puck is played in pubs. Puck can clear creep waves instantly and is able to escape from danger as long as you have great map awareness. This allows Puck to shove waves deeply without getting caught, something extremely valuable for the mid-late game phase."
+            }
+            thumbnail={
+              "https://gamejitsu-assets.s3.eu-central-1.amazonaws.com/png/guides/7_8k_mmr_mid_puck_guide/puckwallpaper.jpg"
+            }
+            coach={"Gamejitsu"}
+            pusblish_date={"23/04/2021"}
+          />
+          <TileGuide
+            href={"/guides/6_3k_mmr_position_4_or_5_spirit_breaker_guide"}
+            title={"6.3k MMR Pos 4/5 Spirit Breaker master guide"}
+            abstract={
+              "Hello everyone and welcome to this Dota 2 guide for Spirit Breaker, One of my favorite heroes and my most played. I've been meaning to write hero specific guides for a long time and thought \"why not start with the hero I know best?\" This guide will be in the form of questions I expect players would have about Spirit breaker. It's something new I wanna try so bear with me if it's not your cup of tea. Without further ado, let's begin."
+            }
+            thumbnail={
+              "https://gamejitsu-assets.s3.eu-central-1.amazonaws.com/png/guides/7_3k_mmr_position_4_or_5_spirit_breaker_guide/sbwallpaper.jpg"
+            }
+            coach={"Otomo"}
+            pusblish_date={"23/04/2021"}
+          />
+          <TileGuide
+            href={"/guides/6_3k_mmr_offlane_guide_for_dummies"}
+            title={"6.3k MMR’s dummy guide to Position 3"}
+            abstract={
+              "Out of all the roles in Dota 2, Position 3, as known as the Offlane, is probably the least popular role in the game. You could queue all roles and somehow get more offlane games than support games, especially in higher MMR games because lower MMR players may tolerate playing the Offlane because they pick semi-carries like Windranger and Sven and go farm the Offlane anyway"
+            }
+            thumbnail={
+              "https://gamejitsu-assets.s3.eu-central-1.amazonaws.com/png/guides/6_3k_mmr_offlane_guide_for_dummies/axewallpaper.jpg"
+            }
+            coach={"Aurora"}
+            pusblish_date={"23/04/2021"}
+          />
+          <TileGuide
+            href={"/guides/puck_position_4_guide"}
+            title={"The nimble drafting option - 6k MMR Puck support guide"}
+            abstract={
+              "Puck is a ranged intelligence hero notorious for her ability to evade capture and cheat death on the regular, while disrupting her enemies with an array of spells. Puck is one of the most mobile heroes in all of Dota, having the ability to confuse her opponents with unpredictable moves. Over the past few years, it  had always been played as an initiating core, which is a position 2 or 3. Blink Dagger and Veil of Discord was the general go-to kit, so what happened for Puck to suddenly become so versatile in drafting it can be played in 4 positions?"
+            }
+            thumbnail={
+              "https://gamejitsu-assets.s3.eu-central-1.amazonaws.com/png/guides/puck_position_4_guide/wallpaper.jpg"
+            }
+            coach={"Gamejitsu"}
+            pusblish_date={"23/04/2021"}
+          />
+          <TileGuide
             href={"/guides/why_you_should_be_playing_dawnbreaker_offlane"}
             title={"Why you should be playing Dawnbreaker offlane, not safelane"}
             abstract={
