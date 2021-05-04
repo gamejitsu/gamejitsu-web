@@ -32,8 +32,9 @@ Page.getInitialProps = async (ctx) => {
     if (replayUrl) {
       await axios.head(replayUrl)
       if (replayDuration > 4320) {
-        replayIsAvailable = false;
-        replayIsAvailableMessage = "Sorry, your replay duration is too long. We currently support games with a duration of up to 72 minutes"
+        replayIsAvailable = false
+        replayIsAvailableMessage =
+          "Sorry, your replay duration is too long. We currently support games with a duration of up to 72 minutes"
       }
     }
   } catch (err) {
