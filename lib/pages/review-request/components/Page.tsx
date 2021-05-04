@@ -23,31 +23,36 @@ Page.getInitialProps = async (ctx) => {
   if (!data) {
     throw new Error(`Expected to find reply with id ${replayId}`)
   }
-  let replayIsPresent = true
-  let replayIsPresentMessage = "Your replay is eligible for a review!"
+  let replayIsAvailable = true
+  let replayIsAvailableMessage = "Your replay is eligible for a review!"
   try {
     const gameInfo = await axios.get(`https://api.opendota.com/api/matches/${data.matchId}`)
+    const replayDuration = get(gameInfo, ["data", "duration"], null)
     const replayUrl = get(gameInfo, ["data", "replay_url"], false)
     if (replayUrl) {
       await axios.head(replayUrl)
+      if (replayDuration > 4320) {
+        replayIsAvailable = false;
+        replayIsAvailableMessage = "Sorry, your replay duration is too long. We currently support games with a duration of up to 72 minutes"
+      }
     }
   } catch (err) {
     const openDotaRegExp = new RegExp("opendota.com")
     const valveRegExp = new RegExp("valve.net")
 
     if (openDotaRegExp.test(err.config.url)) {
-      replayIsPresent = true
-      replayIsPresentMessage = "We cannot detect if your replay is ready"
+      replayIsAvailable = true
+      replayIsAvailableMessage = "We cannot detect if your replay is ready"
     } else if (valveRegExp.test(err.config.url) && err.response.status == 404) {
-      replayIsPresent = false
-      replayIsPresentMessage =
+      replayIsAvailable = false
+      replayIsAvailableMessage =
         "We cannot find your replay, please retry later or try with a different match"
     }
   }
 
   return {
     replay: decorateReplays([data])[0],
-    replayAvailability: [replayIsPresent, replayIsPresentMessage]
+    replayAvailability: [replayIsAvailable, replayIsAvailableMessage]
   }
 }
 
