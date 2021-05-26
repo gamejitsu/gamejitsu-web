@@ -11,7 +11,7 @@ interface Props {
   disabled?: boolean
   href?: string
   color?: string
-  className?: "normal" | "new" | "alternative" | "dark" | "bw"
+  className?: "normal" | "new" | "alternative" | "dark" | "bw" | "new sign-in"
   icon?: React.ReactNode | null | undefined
 }
 
