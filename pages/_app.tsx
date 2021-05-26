@@ -120,10 +120,30 @@ export default class App extends NextApp<Props> {
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
                 gtag('config', 'UA-184859550-1');
+                gtag('config', 'AW-401053565');
                 gtag('config', 'G-DD40PZGYEM', {
                   page_path: window.location.pathname,
                 });
               `
+              }}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                console.log("Load Custom Events");
+                window.addEventListener('load',function(){
+                  for (i = 0; i < document.querySelectorAll('.sign-in').length; i++) {
+                    document.querySelectorAll('.new')[i].onclick = function() {
+                      gtag('event', 'conversion', {'send_to': 'AW-401053565/LFdzCObF76QCEP2unr8B'});
+                    }
+                  }
+                  for (j = 0; j < document.querySelectorAll('a[href="/demo"]').length; j++) {
+                    document.querySelectorAll('a[href="/demo"]')[j].onclick = function() {
+                      gtag('event', 'conversion', {'send_to': 'AW-401053565/d0PpCNSB8KQCEP2unr8B'});
+                    }
+                  }
+                })
+                `
               }}
             />
             <script
