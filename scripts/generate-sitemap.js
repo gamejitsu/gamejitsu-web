@@ -4,7 +4,7 @@ const prettier = require("prettier");
 
 const getDate = new Date().toISOString();
 
-const DOMAIN = "https://gamejitsu.gg";
+const DOMAIN = "https://gamejitsu.io";
 const PAGES_TO_SKIP = ["update-email","coach-signup","coach-dashboard","coach-reviews","auth","dashboard","settings"];
 
 const formatted = sitemap => prettier.format(sitemap, { parser: "html" });
