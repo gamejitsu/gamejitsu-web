@@ -60,7 +60,7 @@ const CoachDeletedReviewCard: FunctionComponent<Props> = ({ review }) => {
         <div className={Classes.DIALOG_BODY}>
           <p>
             <b>
-              Please, contact the support at support@gamejitsu.gg and provide an explanation. Thank
+              Please, contact the support at support@gamejitsu.io and provide an explanation. Thank
               you.
             </b>
           </p>

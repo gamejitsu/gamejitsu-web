@@ -33,7 +33,7 @@ const Page: AuthenticatedComponent = () => (
       </Box>
       <ParagraphText>
         Below you can find common questions that we get asked a lot about our service, our payment
-        system and other service-related inquiries. Please feel free to email support@gamejitsu.gg
+        system and other service-related inquiries. Please feel free to email support@gamejitsu.io
         at any time, if you have a question regarding our service and your account, or anything else
         that we can help you with.
       </ParagraphText>

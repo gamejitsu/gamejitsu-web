@@ -41,7 +41,7 @@ const Page: AuthenticatedComponent = () => (
           suspected fraud and account abuse issues. If you have discovered a vulnerability in
           Gamejitsu and/or a Gamejitsu product or have a security incident to report, we encourage
           you to submit a report to our email. You may instead send email describing the issue to{" "}
-          <LinkMail mailto="support@gamejitsu.gg">support@gamejitsu.gg</LinkMail>. If you feel the
+          <LinkMail mailto="support@gamejitsu.io">support@gamejitsu.io</LinkMail>. If you feel the
           need, please use our public key to encrypt your communications with us. We believe in
           responsible security disclosure practices. In accordance with this we appreciate reporters
           privately notifying us of vulnerabilities and setting reasonable time frames for response

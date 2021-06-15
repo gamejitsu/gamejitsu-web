@@ -29,7 +29,7 @@ const Page: AuthenticatedComponent = () => (
           very seriously. This privacy policy applies to our use of any and all Data collected by us
           or provided by you in relation to your use of the Website. This privacy policy should be
           read alongside, and in addition to, our Terms and Conditions, which can be found
-          at: gamejitsu.gg/terms-of-use. Please read this privacy policy carefully.
+          at: gamejitsu.io/terms-of-use. Please read this privacy policy carefully.
         </ParagraphText>
         <ParagraphTitle>Definitions and interpretation</ParagraphTitle>
         <ParagraphText>
@@ -51,7 +51,7 @@ const Page: AuthenticatedComponent = () => (
           not either (i) employed by Gamejitsu LTD and acting in the course of their employment or
           (ii) engaged as a consultant or otherwise providing services to Gamejitsu LTD and
           accessing the Website in connection with the provision of such services; and Website the
-          website that you are currently using, gamejitsu.gg, and any sub-domains of this site
+          website that you are currently using, gamejitsu.io, and any sub-domains of this site
           unless expressly excluded by their own terms and conditions. 2. In this privacy policy,
           unless the context requires a different interpretation: a. the singular includes the
           plural and vice versa; b. references to sub-clauses, clauses, schedules or appendices are
@@ -126,7 +126,7 @@ const Page: AuthenticatedComponent = () => (
           your Data on secure servers. 14. Technical and organizational measures include measures to
           deal with any suspected data breach. If you suspect any misuse or loss or unauthorized
           access to your Data, please let us know immediately by contacting us via this e-mail
-          address: admin@gamejitsu.gg. 15. If you want detailed information from Get Safe Online on
+          address: admin@gamejitsu.io. 15. If you want detailed information from Get Safe Online on
           how to protect your information and your computers and devices against fraud, identity
           theft, viruses and many other online problems, please visit www.getsafeonline.org. Get
           Safe Online is supported by HM Government and leading businesses.
@@ -154,7 +154,7 @@ const Page: AuthenticatedComponent = () => (
           to our use of your Data including where we use it for our legitimate interests. 19. To
           make enquiries, exercise any of your rights set out above, or withdraw your consent to the
           processing of your Data (where consent is our legal basis for processing your Data),
-          please contact us via this e-mail address: admin@gamejitsu.gg. 20. If you are not
+          please contact us via this e-mail address: admin@gamejitsu.io. 20. If you are not
           satisfied with the way a complaint you make in relation to your Data is handled by us, you
           may be able to refer your complaint to the relevant data protection authority. For the UK,
           this is the Information Commissioner's Office (ICO). The ICO's contact details can be
@@ -227,7 +227,7 @@ const Page: AuthenticatedComponent = () => (
           necessary from time to time or as may be required by law. Any changes will be immediately
           posted on the Website and you are deemed to have accepted the terms of the privacy policy
           on your first use of the Website following the alterations. You may contact Gamejitsu
-          LTD by email at admin@gamejitsu.gg.
+          LTD by email at admin@gamejitsu.io.
         </ParagraphText>
         <ParagraphTitle>Attribution</ParagraphTitle>
         <ParagraphText>
