@@ -23,7 +23,7 @@ const CoachSignUpPage: NextPage = () => {
             <Callout title="Coach registration successful" intent="success">
               You can register only once to be a coach.
               <br />
-              If you are experiencing issues, send an email to support@gamejitsu.gg
+              If you are experiencing issues, send an email to support@gamejitsu.io
               <br />
               <br />
               You status of approval is: approved.
@@ -32,7 +32,7 @@ const CoachSignUpPage: NextPage = () => {
             <Callout title="Coach registration under examination" intent="warning">
               You can register only once to be a coach. We process the applications in 24h.
               <br />
-              If your status does not change, send an email to support@gamejitsu.gg
+              If your status does not change, send an email to support@gamejitsu.io
               <br />
               <br />
               You status of approval is: {user.coach.isApproved ? "approved" : "under examination"}.

@@ -88,7 +88,7 @@ const Page: AuthenticatedComponent = () => {
             one at the Gamejitsu.
           </ParagraphText>
           <ParagraphText>
-            Email us at <LinkMail mailto="support@gamejitsu.gg">support@gamejitsu.gg</LinkMail>
+            Email us at <LinkMail mailto="support@gamejitsu.io">support@gamejitsu.io</LinkMail>
           </ParagraphText>
         </Box>
       </Box>

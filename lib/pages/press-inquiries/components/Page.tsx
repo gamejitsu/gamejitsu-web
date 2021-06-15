@@ -32,7 +32,7 @@ const Page: AuthenticatedComponent = () => (
         </ParagraphText>
         <br />
         <div>
-          For press inquiries <LinkMail mailto="admin@gamejitsu.gg">contact admins</LinkMail>.
+          For press inquiries <LinkMail mailto="admin@gamejitsu.io">contact admins</LinkMail>.
         </div>
       </Box>
     </Box>

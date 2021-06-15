@@ -108,13 +108,13 @@ const Footer: FunctionComponent<Props> = () => (
         <Box mt={[3]}>
           <FooterText>
             Are you a Streamer/You Tuber/High Ranked?{" "}
-            <LinkMail mailto="support@gamejitsu.gg">Apply for Partnership</LinkMail>
+            <LinkMail mailto="support@gamejitsu.io">Apply for Partnership</LinkMail>
           </FooterText>
         </Box>
         <Box>
           <FooterText>
             Need help? Email us at{" "}
-            <LinkMail mailto="support@gamejitsu.gg">support@gamejitsu.gg</LinkMail>
+            <LinkMail mailto="support@gamejitsu.io">support@gamejitsu.io</LinkMail>
           </FooterText>
         </Box>
       </FooterColL>
