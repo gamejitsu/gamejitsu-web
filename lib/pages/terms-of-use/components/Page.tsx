@@ -126,7 +126,7 @@ const Page: AuthenticatedComponent = () => (
           14. Use of the Website is also governed by our Privacy Policy and Cookies Policy, which
           are incorporated into these terms and conditions by this reference. To view the Privacy
           Policy and Cookies Policy, please click on the
-          following: gamejitsu.gg/privacy-policy and gamejitsu.gg/cookies-policy.
+          following: gamejitsu.io/privacy-policy and gamejitsu.io/cookies-policy.
         </ParagraphText>
         <ParagraphTitle>Availability of the Website and disclaimers</ParagraphTitle>
         <ParagraphText>
@@ -222,8 +222,8 @@ const Page: AuthenticatedComponent = () => (
         <ParagraphText>
           29. Gamejitsu LTD is a company incorporated in England and Wales with registered
           number 12096404 whose registered address is 20-22 Wenlock Road, London, N1 7GU and
-          it  operates the Website gamejitsu.gg. You can contact Gamejitsu LTD by email
-          on admin@gamejitsu.gg.
+          it  operates the Website gamejitsu.io. You can contact Gamejitsu LTD by email
+          on admin@gamejitsu.io.
         </ParagraphText>
         <ParagraphTitle>Attribution</ParagraphTitle>
         <ParagraphText>

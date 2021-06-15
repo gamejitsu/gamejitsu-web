@@ -4,8 +4,8 @@ const withSASS = require('@zeit/next-sass')
 const webpackMerge = require('webpack-merge')
 
 const defaultEnv = {
-  API_ENDPOINT: "https://staging-api.gamejitsu.gg",
-  SOCKET_ENDPOINT: "wss://staging-api.gamejitsu.gg",
+  API_ENDPOINT: "https://staging-api.gamejitsu.io",
+  SOCKET_ENDPOINT: "wss://staging-api.gamejitsu.io",
   STRIPE_PUBLIC_KEY: "pk_test_gO4hZHVOjk7E3GjH0etoiBAO00c0qpfX0m",
   GOOGLE_RECAPTCHA_PUBLIC_KEY: "6LclgLkZAAAAAKwkD9aCAi3QivbwAwHm6HvRoJDv"
 }

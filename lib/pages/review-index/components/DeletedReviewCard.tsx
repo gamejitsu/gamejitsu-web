@@ -80,7 +80,7 @@ const DeletedReviewCard: FunctionComponent<Props> = ({ review }) => {
       >
         <div className={Classes.DIALOG_BODY}>
           <p>
-            <b>Please, contact the support at support@gamejitsu.gg.</b>
+            <b>Please, contact the support at support@gamejitsu.io.</b>
           </p>
         </div>
         <div className={Classes.DIALOG_FOOTER}>
